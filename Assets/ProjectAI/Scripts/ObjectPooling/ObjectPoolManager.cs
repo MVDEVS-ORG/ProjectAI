@@ -1,19 +1,22 @@
+using Assets.Services;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.Pool;
+using Zenject;
 
-public class ObjectPoolManager : MonoBehaviour
+public class ObjectPoolManager
 {
-    [SerializeField] private bool _addToDontDestroyOnLoad = false;
-
+    [Inject] private IAssetService _assetService;
+    [Inject] private ISceneManager _sceneManager;
     private GameObject _emptyHolder;
 
-    private static GameObject _particleSystemsEmpty;
-    private static GameObject _gameObjectsEmpty;
-    private static GameObject _soundFXEmpty;
+    private GameObject _particleSystemsEmpty;
+    private GameObject _gameObjectsEmpty;
+    private GameObject _soundFXEmpty;
 
-    private static Dictionary<GameObject, ObjectPool<GameObject>> _objectPools;
-    private static Dictionary<GameObject, GameObject> _cloneToPrefab;
+    private Dictionary<string, List<GameObject>> _objectPools;
+    private List<GameObject> _poolObject;
+    private Dictionary<GameObject, string> _objectPrefabMap;
 
     public enum PoolType
     {
@@ -22,13 +25,16 @@ public class ObjectPoolManager : MonoBehaviour
         SoundFX
     }
 
-    public static PoolType PoolingType;
+    public PoolType PoolingType;
 
-    private void Awake()
+    [Inject]
+    private void Initialize()
     {
         _objectPools = new();
-        _cloneToPrefab = new();
+        _poolObject = new();
+        _objectPrefabMap = new();
         SetUpEmpties();
+        _sceneManager.BeforeChangeScene += RemoveAllPoolObjects;
     }
 
     private void SetUpEmpties()
@@ -40,79 +46,23 @@ public class ObjectPoolManager : MonoBehaviour
         _gameObjectsEmpty.transform.SetParent(_emptyHolder.transform);
         _soundFXEmpty = new GameObject("Sound FX");
         _soundFXEmpty.transform.SetParent(_emptyHolder.transform);
-
-        if (_addToDontDestroyOnLoad)
-        {
-            DontDestroyOnLoad(_emptyHolder);
-        }
+        GameObject.DontDestroyOnLoad(_emptyHolder);
     }
 
-    private static void CreatePool(GameObject prefab, Vector3 pos, Quaternion rot, PoolType poolType = PoolType.GameObjects)
+    private void CreatePool(string prefabAddress)
     {
-        ObjectPool<GameObject> pool = new ObjectPool<GameObject>(
-            createFunc: () => CreateObject(prefab, pos, rot, poolType),
-            actionOnGet: OnGetObject,
-            actionOnRelease: OnReleasedObject,
-            actionOnDestroy: OnDestroyObject
-            );
-        _objectPools.Add(prefab, pool);
-
-
+        List<GameObject> pool = new();
+        _objectPools.Add(prefabAddress, pool);
     }
 
-    private static void CreatePool(GameObject prefab, Transform parent, Quaternion rot, PoolType poolType = PoolType.GameObjects)
+    private async Awaitable<GameObject> CreateObject(string prefabAddress, PoolType poolType = PoolType.GameObjects)
     {
-        ObjectPool<GameObject> pool = new ObjectPool<GameObject>(
-            createFunc: () => CreateObject(prefab, parent, rot, poolType),
-            actionOnGet: OnGetObject,
-            actionOnRelease: OnReleasedObject,
-            actionOnDestroy: OnDestroyObject
-            );
-        _objectPools.Add(prefab, pool);
-
-
-    }
-
-    private static GameObject CreateObject(GameObject prefab, Vector3 pos, Quaternion rot, PoolType poolType = PoolType.GameObjects)
-    {
-        prefab.SetActive(false);
-        GameObject obj = Instantiate(prefab, pos, rot);
-        prefab.SetActive(true);
-        GameObject parentObject = SetParentObject(poolType);
-        obj.transform.SetParent(parentObject.transform);
-        return obj;
-    }
-
-    private static GameObject CreateObject(GameObject prefab, Transform parent, Quaternion rot, PoolType poolType = PoolType.GameObjects)
-    {
-        prefab.SetActive(false);
-        GameObject obj = Instantiate(prefab, parent);
-        obj.transform.localPosition = Vector3.zero;
-        obj.transform.rotation = rot;
-        obj.transform.localScale = Vector3.one;
-        prefab.SetActive(true);
-        return obj;
-    }
-
-    private static void OnGetObject(GameObject obj)
-    {
-
-    }
-
-    private static void OnReleasedObject(GameObject obj)
-    {
+        GameObject obj = await _assetService.InstantiateWithParentAsync(prefabAddress,SetParentObject(poolType).transform);
         obj.SetActive(false);
+        return obj;
     }
 
-    private static void OnDestroyObject(GameObject obj)
-    {
-        if (_cloneToPrefab.ContainsKey(obj))
-        {
-            _cloneToPrefab.Remove(obj);
-        }
-    }
-
-    private static GameObject SetParentObject(PoolType poolType)
+    private GameObject SetParentObject(PoolType poolType)
     {
         switch (poolType)
         {
@@ -127,115 +77,75 @@ public class ObjectPoolManager : MonoBehaviour
         }
     }
 
-    private static T SpawnObjects<T>(GameObject objectsToSpawn, Vector3 spawnPos, Quaternion spawnRotation, PoolType poolType = PoolType.GameObjects) where T : Object
+    private async Awaitable<GameObject> GetObjectFromPool(string prefabAddress,PoolType poolType)
     {
-        if (!_objectPools.ContainsKey(objectsToSpawn))
+        if(_objectPools.ContainsKey(prefabAddress))
         {
-            CreatePool(objectsToSpawn, spawnPos, spawnRotation, poolType);
-        }
-
-        GameObject obj = _objectPools[objectsToSpawn].Get();
-
-        if (obj != null)
-        {
-            if (!_cloneToPrefab.ContainsKey(obj))
+            if (_objectPools[prefabAddress].Count!=0)
             {
-                _cloneToPrefab.Add(obj, objectsToSpawn);
+                return _objectPools[prefabAddress][0];
             }
-            obj.transform.position = spawnPos;
-            obj.transform.rotation = spawnRotation;
-            obj.SetActive(true);
-
-            if (typeof(T) == typeof(GameObject))
+            else
             {
-                return obj as T;
-            }
-
-            T component = obj.GetComponent<T>();
-            if (component == null)
-            {
-                Debug.LogError($"Objects {objectsToSpawn.name} doesn't have component of type {typeof(T)}");
-                return null;
-            }
-            return component;
-        }
-        return null;
-    }
-
-    public static T SpawnObject<T>(T prefab, Vector3 spawnPos, Quaternion spawnRotation, PoolType poolType = PoolType.GameObjects) where T : Component
-    {
-        return SpawnObjects<T>(prefab.gameObject, spawnPos, spawnRotation, poolType);
-    }
-
-    public static GameObject SpawnObject(GameObject objectToSpawn, Vector3 spawnPos, Quaternion spawnRotation, PoolType poolType = PoolType.GameObjects)
-    {
-        return SpawnObjects<GameObject>(objectToSpawn, spawnPos, spawnRotation, poolType);
-    }
-
-    public static T SpawnObject<T>(T prefab, Transform parent, Quaternion spawnRotation, PoolType poolType = PoolType.GameObjects) where T : Component
-    {
-        return SpawnObjects<T>(prefab.gameObject, parent, spawnRotation, poolType);
-    }
-
-    public static GameObject SpawnObject(GameObject objectToSpawn, Transform parent, Quaternion spawnRotation, PoolType poolType = PoolType.GameObjects)
-    {
-        return SpawnObjects<GameObject>(objectToSpawn, parent, spawnRotation, poolType);
-    }
-
-    public static void ReturnObjectToPool(GameObject obj, PoolType poolType = PoolType.GameObjects)
-    {
-        if (_cloneToPrefab.TryGetValue(obj, out GameObject prefab))
-        {
-            GameObject parentObject = SetParentObject(poolType);
-
-            if (obj.transform.parent != parentObject.transform)
-            {
-                obj.transform.SetParent(parentObject.transform);
-            }
-            if (_objectPools.TryGetValue(prefab, out ObjectPool<GameObject> pool))
-            {
-                pool.Release(obj);
+                GameObject obj = await CreateObject(prefabAddress, poolType);
+                _objectPrefabMap.Add(obj, prefabAddress);
+                return obj;
             }
         }
         else
         {
-            Debug.LogWarning("Trying to return an object that is not pooled: " + obj.name);
+            return null;
         }
     }
 
-    private static T SpawnObjects<T>(GameObject objectsToSpawn, Transform parent, Quaternion spawnRotation, PoolType poolType = PoolType.GameObjects) where T : Object
+    private async Awaitable<GameObject> SpawnObjects(string prefabAddress, Vector3 spawnPos, Quaternion spawnRotation, PoolType poolType = PoolType.GameObjects) 
     {
-        if (!_objectPools.ContainsKey(objectsToSpawn))
+        if (!_objectPools.ContainsKey(prefabAddress))
         {
-            CreatePool(objectsToSpawn, parent, spawnRotation, poolType);
+            CreatePool(prefabAddress);
         }
 
-        GameObject obj = _objectPools[objectsToSpawn].Get();
+        GameObject obj = await GetObjectFromPool(prefabAddress,poolType);
+        _objectPools[prefabAddress].Remove(obj);
 
         if (obj != null)
         {
-            if (!_cloneToPrefab.ContainsKey(obj))
-            {
-                _cloneToPrefab.Add(obj, objectsToSpawn);
-            }
-            obj.transform.SetParent(parent);
-            obj.transform.localPosition = Vector3.zero;
+            _poolObject.Add(obj);
+            obj.transform.parent = null;
+            obj.transform.position = spawnPos;
             obj.transform.rotation = spawnRotation;
             obj.SetActive(true);
-
-            if (typeof(T) == typeof(GameObject))
-            {
-                return obj as T;
-            }
-
-            T component = obj.GetComponent<T>();
-            if (component == null)
-            {
-                Debug.LogError($"Objects {objectsToSpawn.name} doesn't have component of type {typeof(T)}");
-                return null;
-            }
-            return component;
+            return obj;
         }
-        return null;
+        return obj;
+    }
+
+    public async Awaitable<GameObject> SpawnObjectAsync(string prefabAddress, Vector3 spawnPos, Quaternion spawnRotation, PoolType poolType = PoolType.GameObjects)
+    {
+        return await SpawnObjects(prefabAddress, spawnPos, spawnRotation, poolType);
+    }
+
+    public void ReleaseGameObject(GameObject gameObject,PoolType poolType)
+    {
+        gameObject.SetActive(false);
+        gameObject.transform.parent = SetParentObject(poolType).transform;
+        _objectPools[_objectPrefabMap[gameObject]].Add(gameObject);
+    }
+
+    public void DestroyObject(GameObject gameobject)
+    {
+        string address = _objectPrefabMap[gameobject];
+        _objectPrefabMap.Remove(gameobject);
+        _objectPools[address].Remove(gameobject);
+        _poolObject.Remove(gameobject);
+        GameObject.Destroy(gameobject);
+    }
+
+    public void RemoveAllPoolObjects()
+    {
+        foreach (GameObject gameObject in _poolObject)
+        {
+            DestroyObject(gameObject);
+        }
     }
 }
