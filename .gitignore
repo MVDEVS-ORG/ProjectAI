@@ -83,3 +83,6 @@ crashlytics-build.properties
 /[Aa]ssets/Unity.VisualScripting.Generated/VisualScripting.Flow/UnitOptions.db.meta
 /[Aa]ssets/Unity.VisualScripting.Generated/VisualScripting.Core/Property Providers
 /[Aa]ssets/Unity.VisualScripting.Generated/VisualScripting.Core/Property Providers.meta
+Assets/Plugins/Zenject/OptionalExtras/ReflectionBaking/Zenject-ReflectionBaking.csproj.meta
+Assets/Plugins/Zenject/OptionalExtras/Signals/Zenject-Signals.csproj.meta
+Assets/Plugins/Zenject/Source/Zenject.csproj.meta
