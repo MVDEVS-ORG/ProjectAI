@@ -1,7 +1,7 @@
 using UnityEngine;
 using Zenject;
 
-public class GameInstaller : MonoInstaller
+public class MainMenuInstaller : MonoInstaller
 {
     public override void InstallBindings()
     {

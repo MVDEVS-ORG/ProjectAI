@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 235513540}
   - component: {fileID: 235513541}
   m_Layer: 0
-  m_Name: SceneContext (1)
+  m_Name: SceneContext
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
