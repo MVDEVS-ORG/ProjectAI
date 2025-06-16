@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace Assets.DungenGame.Scripts.NewAlgo
+namespace Assets.ProjectAI.Scripts.DungeonScripts
 {
     public abstract class AbstractDungeonGenerator: MonoBehaviour
     {

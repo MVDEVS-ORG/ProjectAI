@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.DungenGame.Scripts.NewAlgo
+namespace Assets.ProjectAI.Scripts.DungeonScripts
 {
     public class WallTypesHelper : MonoBehaviour
     {

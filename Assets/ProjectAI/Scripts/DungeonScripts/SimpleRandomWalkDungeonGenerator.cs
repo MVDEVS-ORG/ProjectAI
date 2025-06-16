@@ -6,7 +6,7 @@ using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Assets.DungenGame.Scripts.NewAlgo
+namespace Assets.ProjectAI.Scripts.DungeonScripts
 {
     public class SimpleRandomWalkDungeonGenerator : AbstractDungeonGenerator
     {

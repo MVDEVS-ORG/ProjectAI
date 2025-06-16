@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.DungenGame.Scripts.NewAlgo
+namespace Assets.ProjectAI.Scripts.DungeonScripts
 {
     public static class WallGenerator
     {

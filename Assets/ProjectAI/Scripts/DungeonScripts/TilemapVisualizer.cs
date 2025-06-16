@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace Assets.DungenGame.Scripts.NewAlgo
+namespace Assets.ProjectAI.Scripts.DungeonScripts
 {
     public class TilemapVisualizer : MonoBehaviour
     {

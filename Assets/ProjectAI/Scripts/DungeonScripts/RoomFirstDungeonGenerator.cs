@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.DungenGame.Scripts.NewAlgo
+namespace Assets.ProjectAI.Scripts.DungeonScripts
 {
     public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
     {
@@ -20,7 +20,6 @@ namespace Assets.DungenGame.Scripts.NewAlgo
         {
             CreateRooms();
         }
-
         private void CreateRooms()
         {
             var roomsList = ProceduralGenerationAlgorithms.BinarySpacePartitioning(new BoundsInt((Vector3Int)startPosition, new Vector3Int(dungeonWidth, dungeonHeight, 0)), minRoomWidth, minRoomHeight);
