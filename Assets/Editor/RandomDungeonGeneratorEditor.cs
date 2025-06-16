@@ -1,4 +1,4 @@
-﻿using Assets.DungenGame.Scripts.NewAlgo;
+﻿using Assets.ProjectAI.Scripts.DungeonScripts;
 using UnityEditor;
 using UnityEngine;
 
