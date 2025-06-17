@@ -23,7 +23,10 @@ public class CharacterView : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _rigidBody.linearVelocity = _moveInput * _playerModel.Speed;
+        if (_playerController!=null && _playerController.Initialized)
+        {
+            _rigidBody.linearVelocity = _moveInput * _playerModel.Speed;
+        }
     }
 
     public void Move(InputAction.CallbackContext context)

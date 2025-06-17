@@ -26,6 +26,7 @@ public class PlayerController : IPlayerController
     {
         try
         {
+            //Get the character prefab address
             string prefabAddress = null;
             switch (playerCharacter.CharacterType)
             {
@@ -41,20 +42,27 @@ public class PlayerController : IPlayerController
                     prefabAddress = AddressableIds.Pyro;
                     break;
             }
+            //test if the prefabaddress is available
             if (prefabAddress == null)
             {
                 throw new Exception("Character type not implemented in addressableIds");
             }
+            //instantiate the asset
             var result = await _assetService.InstantiateAsync(prefabAddress);
             _characterView = result.GetComponent<CharacterView>();
+            //Create a new player model for that character
             _playerModel = new PlayerModel(playerCharacter);
             Debug.Log("PlayerModel initialized");
+            //Asign the player model and the controlle to the view
             _characterView.Initialize(this, _playerModel);
             Debug.Log("PlayerView Initialized");
+
+            //Create the player UI alongside the player and pass the model for data
             result = await _assetService.InstantiateAsync(AddressableIds.PlayerUI);
             _playerUI = result.GetComponent<PlayerUI>();
             _playerUI.Initialize(_playerModel);
             Debug.Log("PlayerUI Initialized");
+
             _initialized = true;
             _movementPossible = true;
         }
@@ -62,6 +70,18 @@ public class PlayerController : IPlayerController
         {
             Debug.LogError(exception.Message);
         }
+    }
+
+    void IPlayerController.TakeDamage(int damage)
+    {
+        _playerModel.Health = Mathf.Max(0, _playerModel.Health - damage);
+        _playerUI.AlterHealthBar();
+    }
+
+    void IPlayerController.RestoreHealth(int health)
+    {
+        _playerModel.Health = Mathf.Min(_playerModel.Health + health, _playerModel.MaxHealth);
+        _playerUI.AlterHealthBar();
     }
 }
 
