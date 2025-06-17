@@ -12,4 +12,7 @@ public static class AddressableIds
     public const string GunnerDataSO = "gunnerDataSO";
     public const string ShotgunnerDataSO = "shotgunnerDataSO";
     public const string PyroDataSO = "pyroDataSO";
+
+    public const string BulletCursor = "bulletCursor";
+    public const string BullerCursorUI = "bulletCursorUI";
 }
