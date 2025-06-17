@@ -16,9 +16,25 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
         [SerializeField]
         private bool randomWalkRooms = false;
 
+        //PCG Data
+        private Dictionary<Vector2Int, HashSet<Vector2Int>> roomsDictionary = new Dictionary<Vector2Int, HashSet<Vector2Int>>();
+        private HashSet<Vector2Int> floorPositions, corridorPositions;
+
+        //GizmosData
+        private List<Color> roomColors = new List<Color>();
+        [SerializeField]
+        private bool showRoomGizmo = false, showCorridorsPositions;
+
         protected override void RunProceduralGeneration()
         {
             CreateRooms();
+            DungeonData data = new DungeonData
+            {
+                roomsDictionary = this.roomsDictionary,
+                corridorPositions = this.corridorPositions,
+                floorPositions = this.floorPositions,
+            };
+            //call GenerateRoomContent() in RoomContentFGeneration
         }
         private void CreateRooms()
         {
@@ -44,6 +60,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
 
             HashSet<Vector2Int> corridors = ConnectRooms(roomCenters);
             floor.UnionWith(corridors);
+            floorPositions = floor;
             tilemapVisualizer.PaintFloorTiles(floor);
             WallGenerator.CreateWalls(floor, tilemapVisualizer);
         }
@@ -63,8 +80,21 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
                         floor.Add(position);
                     }
                 }
+                SaveRoomData(roomCenter, floor);
             }
             return floor;
+        }
+
+        private void ClearRoomData()
+        {
+            roomsDictionary.Clear();
+            roomColors.Clear();
+        }
+
+        private void SaveRoomData(Vector2Int roomCenter, HashSet<Vector2Int> floor)
+        {
+            roomsDictionary[roomCenter] = floor;
+            roomColors.Add(Random.ColorHSV());
         }
 
         private HashSet<Vector2Int> ConnectRooms(List<Vector2Int> roomCenters)
@@ -81,6 +111,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
                 currentRoomCenter = closest;
                 corridors.UnionWith(newCorridor);
             }
+            corridorPositions = new HashSet<Vector2Int>(corridors);
             return corridors;
         }
 
