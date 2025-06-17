@@ -6,43 +6,44 @@ public class PlayerUI : MonoBehaviour
 {
     [SerializeField] private Image _heartShape;
     [SerializeField] private Image _health;
+    [SerializeField] private Image _rallyHealth;
+    private int _cachedHealth;
     private PlayerModel _model;
-    private float _healthFill;
     private float _timer;
-    [Range(0.1f,1f)][SerializeField] private float _healthDropTime;
-    private Coroutine _healthDropCoroutine = null;
+    [Range(0.1f,3f)][SerializeField] private float _healthDropTime;
+    private Coroutine _healthChangeCoroutine = null;
 
     public void Initialize(PlayerModel model)
     {
         _model = model;
-        _healthFill = model.Health / model.MaxHealth;
-        _health.fillAmount = _healthFill;
-
+        _health.fillAmount = _model.Health / _model.MaxHealth;
+        _rallyHealth.fillAmount = _model.Health / _model.MaxHealth;
+        _cachedHealth = model.Health;
     }
 
-    public void DisplayDamage(int damage)
+    public void AlterHealthBar()
     {
-        if(_healthDropCoroutine!=null)
+        if(_healthChangeCoroutine!=null)
         {
-            StopCoroutine(_healthDropCoroutine);
-            _healthDropCoroutine = null;
+            _rallyHealth.fillAmount =(float) _cachedHealth / _model.MaxHealth;
+            StopCoroutine( _healthChangeCoroutine );
+            _healthChangeCoroutine = null;
         }
-        _healthDropCoroutine = StartCoroutine(drainHealth(damage));
+        _health.fillAmount = (float)_model.Health / _model.MaxHealth;
+        _healthChangeCoroutine = StartCoroutine(ChangeRallyHealth(_cachedHealth));
+        _cachedHealth = _model.Health;
     }
 
-    IEnumerator drainHealth(int damage)
+    IEnumerator ChangeRallyHealth(int startRallyHealth)
     {
         _timer = 0f;
-        while(_timer<=1)
+        while (_timer <= 1)
         {
-            var temp = Mathf.Lerp(_model.Health, Mathf.Max(_model.Health - damage, 0), _timer);
-            _healthFill = temp / _model.MaxHealth;
-            _health.fillAmount = _healthFill;
-            _timer += _timer + Time.deltaTime/ _healthDropTime;
-            yield return Awaitable.EndOfFrameAsync();
+            _rallyHealth.fillAmount = (float)((float)Mathf.Lerp(startRallyHealth, _model.Health, _timer) / _model.MaxHealth);
+            _timer += Time.deltaTime / _healthDropTime;
+            yield return new WaitForEndOfFrame();
         }
-        var t = Mathf.Lerp(_model.Health, Mathf.Max(_model.Health - damage, 0), 1);
-        _healthFill = t / _model.MaxHealth;
-        _timer += _timer + Time.deltaTime / _healthDropTime;
+        _timer = 1f;
+        _rallyHealth.fillAmount = Mathf.Lerp(startRallyHealth, _model.Health, 1) / _model.MaxHealth;
     }
 }

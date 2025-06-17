@@ -20,8 +20,33 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 45a29eafa380a824dbec9cadfeb477f5
+    m_Address: pyro
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 600f4cb2bddade34d9fc41b2888b5ce7
     m_Address: gunner
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a8b54be9f08666f4998c08679e7d8a61
+    m_Address: shotgunner
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: af042b94217b745479ce64b5f37ad4e8
+    m_Address: gunnerDataSO
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dddd5a292d80c0d4ba17c283dd200fd3
+    m_Address: pyroDataSO
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: edb34dcaef4556644bc3f8bcf7ccec8d
+    m_Address: shotgunnerDataSO
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
