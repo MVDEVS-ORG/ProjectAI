@@ -9,7 +9,6 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] private Image _rallyHealth;
     private int _cachedHealth;
     private PlayerModel _model;
-    private float _rallyHealthFill;
     private float _timer;
     [Range(0.1f,3f)][SerializeField] private float _healthDropTime;
     private Coroutine _healthChangeCoroutine = null;
@@ -47,31 +46,4 @@ public class PlayerUI : MonoBehaviour
         _timer = 1f;
         _rallyHealth.fillAmount = Mathf.Lerp(startRallyHealth, _model.Health, 1) / _model.MaxHealth;
     }
-
-    /*public void DisplayDamage(int damage,int healthBeforeDamage)
-    {
-        if(_healthDropCoroutine!=null)
-        {
-            StopCoroutine(_healthDropCoroutine);
-            _healthDropCoroutine = null;
-        }
-        _health.fillAmount = Mathf.Max(_model.Health - damage, 0) / _model.MaxHealth;
-        _healthDropCoroutine = StartCoroutine(drainHealth());
-    }
-
-    IEnumerator drainHealth()
-    {
-        _timer = 0f;
-        while(_timer<=1)
-        {
-            var temp = Mathf.Lerp(_model.RallyHealth,_model.Health, _timer);
-            _rallyHealthFill = temp / _model.MaxHealth;
-            _rallyHealth.fillAmount = _rallyHealthFill;
-            _timer += _timer + Time.deltaTime/ _healthDropTime;
-            yield return Awaitable.EndOfFrameAsync();
-        }
-        var t = Mathf.Lerp(_model.RallyHealth, _model.Health, 1);
-        _rallyHealthFill = t / _model.MaxHealth;
-        _timer += _timer + Time.deltaTime / _healthDropTime;
-    }*/
 }
