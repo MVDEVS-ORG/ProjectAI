@@ -3,19 +3,9 @@ using UnityEngine;
 
 namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items
 {
-    public class ItemData : MonoBehaviour
+    [CreateAssetMenu]
+    public class ItemData : ScriptableObject
     {
 
-        // Use this for initialization
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
     }
 }
