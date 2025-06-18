@@ -1,6 +1,8 @@
-﻿using Assets.ProjectAI.Scripts.DungeonScripts;
+﻿# if UNITY_EDITOR
+using Assets.ProjectAI.Scripts.DungeonScripts;
 using UnityEditor;
 using UnityEngine;
+
 
 [CustomEditor(typeof(AbstractDungeonGenerator), true)]
 public class RandomDungeonGeneratorEditor : Editor
@@ -21,3 +23,4 @@ public class RandomDungeonGeneratorEditor : Editor
         }
     }
 }
+#endif

@@ -24,6 +24,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.DecisionSystem
             graphReady = true;
         }
 
+#if UNITY_EDITOR
         private void OnDrawGizmosSelected()
         {
             if (graphReady && dijkstraResult != null)
@@ -37,5 +38,6 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.DecisionSystem
                 }
             }
         }
+#endif
     }
 }
