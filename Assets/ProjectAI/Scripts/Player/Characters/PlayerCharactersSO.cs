@@ -6,6 +6,8 @@ public class PlayerCharactersSO : ScriptableObject
     public int MaxHealth;
     public Character CharacterType;
     public float Speed;
+    public float FireRate;
+    public float CursorDistance;
 }
 
 public enum Character

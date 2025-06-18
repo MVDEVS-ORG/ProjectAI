@@ -15,3 +15,5 @@ MonoBehaviour:
   MaxHealth: 100
   CharacterType: 0
   Speed: 5
+  FireRate: 0
+  CursorDistance: 5

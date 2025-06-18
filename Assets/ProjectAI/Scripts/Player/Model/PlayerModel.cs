@@ -6,11 +6,15 @@ public class PlayerModel
     public int Health;
     public float Speed;
     public Character Character;
+    public float FireRate; //No of rounds per second
+    public float CursorDistance;
     public PlayerModel(PlayerCharactersSO playerModelData)
     {
         Character = playerModelData.CharacterType;
         MaxHealth = playerModelData.MaxHealth;
         Speed = playerModelData.Speed;
         Health = MaxHealth;
+        FireRate = playerModelData.FireRate;
+        CursorDistance = playerModelData.CursorDistance;
     }
 }

@@ -53,8 +53,9 @@ public class PlayerController : IPlayerController
             //Create a new player model for that character
             _playerModel = new PlayerModel(playerCharacter);
             Debug.Log("PlayerModel initialized");
-            //Asign the player model and the controlle to the view
-            _characterView.Initialize(this, _playerModel);
+            //Asign the player model and the controller to the view alongside the player cursor aka reticle for shooting
+            GameObject bulletCursor = await PlayerCursorInitialization();
+            _characterView.Initialize(this, _playerModel, bulletCursor);
             Debug.Log("PlayerView Initialized");
 
             //Create the player UI alongside the player and pass the model for data
@@ -72,6 +73,15 @@ public class PlayerController : IPlayerController
         }
     }
 
+    private async Awaitable<GameObject> PlayerCursorInitialization()
+    {
+        GameObject bulletCursor=await _assetService.InstantiateAsync(AddressableIds.BulletCursor);
+        GameObject bulletCursorUI = await _assetService.InstantiateAsync(AddressableIds.BullerCursorUI);
+        FollowScript bulletCursorFollow = bulletCursorUI.GetComponent<FollowScript>();
+        bulletCursorFollow.Initialize(bulletCursor.transform);
+        return bulletCursor;
+    }
+
     void IPlayerController.TakeDamage(int damage)
     {
         _playerModel.Health = Mathf.Max(0, _playerModel.Health - damage);
@@ -82,6 +92,11 @@ public class PlayerController : IPlayerController
     {
         _playerModel.Health = Mathf.Min(_playerModel.Health + health, _playerModel.MaxHealth);
         _playerUI.AlterHealthBar();
+    }
+
+    void IPlayerController.Shoot(Vector2 direction)
+    {
+        //instantiate characters fire here 
     }
 }
 

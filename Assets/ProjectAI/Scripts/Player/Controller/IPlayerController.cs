@@ -7,4 +7,5 @@ public interface IPlayerController
     bool MovementPossible { get; }
     void TakeDamage(int damage);
     void RestoreHealth(int health);
+    void Shoot(Vector2 direction);
 }
