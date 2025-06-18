@@ -2,13 +2,13 @@
     "name": "KeyboardAndMouse",
     "maps": [
         {
-            "name": "KeyBoard&Mouse",
-            "id": "3edcf7f1-4bc3-41b9-8450-f8d6a4e40dac",
+            "name": "Universal",
+            "id": "dfe8da1a-4827-4c09-ac32-3c7ef90a9e9c",
             "actions": [
                 {
                     "name": "Move",
                     "type": "Value",
-                    "id": "7c5162f9-2e71-4d16-8828-07633fdf21b5",
+                    "id": "dde517ac-31f5-4a85-adc4-352c9f2aa286",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
@@ -17,7 +17,7 @@
                 {
                     "name": "Attack",
                     "type": "Button",
-                    "id": "cf0f1bc7-f675-4c29-b4cb-1b5a284b4249",
+                    "id": "03606ce7-d933-4dda-b8a1-24d6ee493cad",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -26,7 +26,16 @@
                 {
                     "name": "Look",
                     "type": "Value",
-                    "id": "0e264442-a85c-4c12-aca8-ec962edbece1",
+                    "id": "24dc0c86-cfc6-436e-8bb8-77258e2e36aa",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "LookMouse",
+                    "type": "Value",
+                    "id": "2d33e17e-81c6-482e-adbd-3f5913096e77",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
@@ -35,8 +44,8 @@
             ],
             "bindings": [
                 {
-                    "name": "WASD",
-                    "id": "9bd6c5bc-55d3-44c9-ab47-40003562b7bd",
+                    "name": "2D Vector",
+                    "id": "56224c03-3bd5-4b1e-9c95-5324e416697d",
                     "path": "2DVector",
                     "interactions": "",
                     "processors": "",
@@ -47,140 +56,154 @@
                 },
                 {
                     "name": "up",
-                    "id": "764ac4fa-21b3-43af-96c9-a502aae8f884",
+                    "id": "e2d4a601-c6fb-4df0-92ee-848e936c6813",
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "KBM",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "down",
-                    "id": "a4d81579-238c-4b8a-b119-a07cbf57e819",
+                    "id": "c50b59ca-45b2-49dd-8565-2bbb9090c726",
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "KBM",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "left",
-                    "id": "53b179d1-f69b-4704-a8c0-e2c4f70658e6",
+                    "id": "547b6871-9e5e-4a8e-965d-d865a1bd0249",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "KBM",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "right",
-                    "id": "71f4b622-13e8-4ac5-a9ac-66e75a510a70",
+                    "id": "d142e4b5-3626-46a8-9d25-a707e30dcfeb",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "KBM",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "",
-                    "id": "89ce9e42-aa89-44a4-baf6-3b3f71c04bad",
-                    "path": "<Keyboard>/f",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Attack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "85e5a8f2-4881-4c3f-bb53-cc9a3951fdc4",
-                    "path": "<Mouse>/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Look",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "Controller",
-            "id": "ec350910-1c88-4659-88c0-7996f45aa7ae",
-            "actions": [
-                {
-                    "name": "Move",
-                    "type": "Value",
-                    "id": "d54bc235-6589-4da1-87f1-0f6631d5442f",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "Attack",
-                    "type": "Button",
-                    "id": "2dce8fd6-8177-4d00-9bb3-8028101d69a6",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Look",
-                    "type": "Value",
-                    "id": "eb96ca2a-4485-4d2a-bf4c-d013ae42a141",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "0edb103f-9b5c-4354-aba7-60fd0b4712af",
+                    "id": "080192e6-bee1-47be-a0c3-4235f61b12e6",
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Controller",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "33982c48-870c-43ff-aac1-2c5d0bcfcf1c",
+                    "id": "debccb43-6a6b-4216-82b6-451bf5f3efff",
                     "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Controller",
                     "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "00697f29-1a2a-448a-a8b0-4cfa9115f9a0",
+                    "id": "899ff0e7-4664-41a9-8d55-dc0b3b6147ff",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KBM",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5f60ce7c-cd67-4500-843d-bd38b01d0736",
                     "path": "<Gamepad>/rightStick",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Controller",
                     "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c67cc7cf-3910-4c39-8689-1f1378fef692",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KBM",
+                    "action": "LookMouse",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
             ]
         }
     ],
-    "controlSchemes": []
+    "controlSchemes": [
+        {
+            "name": "SchemaDefault",
+            "bindingGroup": "SchemaDefault",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Gamepad>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "Controller",
+            "bindingGroup": "Controller",
+            "devices": [
+                {
+                    "devicePath": "<Gamepad>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "KBM",
+            "bindingGroup": "KBM",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
 }

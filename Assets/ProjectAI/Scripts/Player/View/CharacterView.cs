@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,6 +14,8 @@ public class CharacterView : MonoBehaviour
     private PlayerInput _playerInput;
     private Vector3 _lastValidDirection = Vector3.right;
 
+    private bool _isControllerInUse = false;
+
     public void Initialize(IPlayerController playerController, PlayerModel playerModel, GameObject bulletCursor)
     {
         _playerController = playerController;
@@ -24,25 +27,25 @@ public class CharacterView : MonoBehaviour
     {
         _rigidBody = GetComponent<Rigidbody2D>();
         Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = true;
+        Cursor.visible = false;
         _playerInput = GetComponent<PlayerInput>();
-        //_playerInput.SwitchCurrentActionMap("Controller");
+        InputSystem.onDeviceChange += OnDeviceChange;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_playerController!=null && _playerController.Initialized)
+        if (_playerController != null && _playerController.Initialized)
         {
             _rigidBody.linearVelocity = _moveInput * _playerModel.Speed;
         }
-        if(_playerInput.currentActionMap == _playerInput.actions.FindActionMap("Controller") && _BulletCursor!=null)
+        if (_playerInput.currentControlScheme == "Controller" && _BulletCursor != null)
         {
             Vector2 direction = _playerInput.actions.FindAction("Look").ReadValue<Vector2>();
             Vector3 dir = direction;
             if (dir.magnitude >= 0.25f)
             {
-                _lastValidDirection = dir/Vector3.Magnitude(dir);
+                _lastValidDirection = dir / Vector3.Magnitude(dir);
             }
             _BulletCursor.transform.position = transform.position + (_lastValidDirection * _playerModel.CursorDistance);
         }
@@ -53,31 +56,26 @@ public class CharacterView : MonoBehaviour
         _moveInput = context.ReadValue<Vector2>();
     }
 
-    public void Shoot(InputAction.CallbackContext context)
+    public void OnApplicationFocus(bool focus)
     {
-        if(context.performed)
+        if (focus == true)
         {
-            Debug.Log("Performed");
-        }
-        if(context.canceled)
-        {
-            Debug.Log("Cancelled");
+            if (Gamepad.all.Count > 0)
+            {
+                _playerInput.SwitchCurrentControlScheme("Controller", Gamepad.current);
+            }
         }
     }
 
-    public void PointCursor(InputAction.CallbackContext context)
+    public void Shoot(InputAction.CallbackContext context)
     {
-        if (_BulletCursor != null)
+        if (context.performed)
         {
-            /*Vector2 direction = context.ReadValue<Vector2>();
-            Debug.LogError("Raw"+ direction);
-            Vector3 dir = new Vector3(direction.x, direction.y, 0);
-            Vector3 lastValidDirection = Vector3.zero;
-            if (direction.magnitude>0.5f)
-            {
-                lastValidDirection = dir / Vector3.Magnitude(dir);
-            }
-            _BulletCursor.transform.position = transform.position + (dir * _playerModel.CursorDistance);*/
+            Debug.Log("Performed");
+        }
+        if (context.canceled)
+        {
+            Debug.Log("Cancelled");
         }
     }
 
@@ -89,6 +87,32 @@ public class CharacterView : MonoBehaviour
             Vector3 posInWorldSpace = Camera.main.ScreenToWorldPoint(position);
             posInWorldSpace.z = 0;
             _BulletCursor.transform.position = posInWorldSpace;
+        }
+    }
+
+    public void InputChange(PlayerInput controller)
+    {
+        Debug.Log("Changed Input");
+        Debug.Log(controller.currentControlScheme);
+    }
+
+    private void OnDeviceChange(InputDevice device, InputDeviceChange change)
+    {
+        try
+        {
+            if (device is Gamepad && !(change == InputDeviceChange.Disconnected || change == InputDeviceChange.Disabled))
+            {
+                _playerInput.SwitchCurrentControlScheme("Controller", Gamepad.current);
+            }
+            else
+            {
+                _playerInput.SwitchCurrentControlScheme("KBM", Keyboard.current, Mouse.current);
+            }
+        }
+        catch (Exception exception)
+        {
+            Debug.Log(exception);
+            _playerInput.SwitchCurrentControlScheme("KBM", Keyboard.current, Mouse.current);
         }
     }
 }

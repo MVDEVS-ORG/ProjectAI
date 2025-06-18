@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5985174004680674880}
   - component: {fileID: 2455672226327335337}
   - component: {fileID: 2326315397728171776}
-  - component: {fileID: 7343343521491225803}
   - component: {fileID: 5428964057762681750}
   - component: {fileID: 5937355393129719574}
   m_Layer: 0
@@ -102,50 +101,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fc73b443e61c154ea1dd83d3f20414f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7343343521491225803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1408297854879292345}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 621567455fd1c4ceb811cc8a00b6a1a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_NotificationBehavior: 0
-  m_MaxPlayerCount: -1
-  m_AllowJoining: 0
-  m_JoinBehavior: 0
-  m_PlayerJoinedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_PlayerLeftEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_JoinAction:
-    m_UseReference: 0
-    m_Action:
-      m_Name: 
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: 3b512975-5288-4e51-8c1f-df1faca42a38
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Reference: {fileID: 0}
-  m_PlayerPrefab: {fileID: 1408297854879292345}
-  m_SplitScreen: 0
-  m_MaintainAspectRatioInSplitScreen: 0
-  m_FixedNumberOfSplitScreens: -1
-  m_SplitScreenRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
 --- !u!114 &5428964057762681750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,7 +124,19 @@ MonoBehaviour:
       m_Calls: []
   m_ControlsChangedEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2326315397728171776}
+        m_TargetAssemblyTypeName: CharacterView, Assembly-CSharp
+        m_MethodName: InputChange
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
@@ -185,8 +152,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 7c5162f9-2e71-4d16-8828-07633fdf21b5
-    m_ActionName: 'KeyBoard&Mouse/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
+    m_ActionId: dde517ac-31f5-4a85-adc4-352c9f2aa286
+    m_ActionName: 'Universal/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/DualShock4GamepadHID/leftStick]'
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2326315397728171776}
@@ -201,8 +168,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: cf0f1bc7-f675-4c29-b4cb-1b5a284b4249
-    m_ActionName: 'KeyBoard&Mouse/Attack[/Keyboard/f]'
+    m_ActionId: 03606ce7-d933-4dda-b8a1-24d6ee493cad
+    m_ActionName: 'Universal/Attack[/DualShock4GamepadHID/buttonWest]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 24dc0c86-cfc6-436e-8bb8-77258e2e36aa
+    m_ActionName: 'Universal/Look[/DualShock4GamepadHID/rightStick,/Mouse/position]'
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2326315397728171776}
@@ -217,59 +188,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 0e264442-a85c-4c12-aca8-ec962edbece1
-    m_ActionName: 'KeyBoard&Mouse/Look[/Mouse/position]'
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2326315397728171776}
-        m_TargetAssemblyTypeName: CharacterView, Assembly-CSharp
-        m_MethodName: Move
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: d54bc235-6589-4da1-87f1-0f6631d5442f
-    m_ActionName: 'Controller/Move[/DualShock4GamepadHID/leftStick]'
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2326315397728171776}
-        m_TargetAssemblyTypeName: CharacterView, Assembly-CSharp
-        m_MethodName: Shoot
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 2dce8fd6-8177-4d00-9bb3-8028101d69a6
-    m_ActionName: 'Controller/Attack[/DualShock4GamepadHID/buttonWest]'
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2326315397728171776}
-        m_TargetAssemblyTypeName: CharacterView, Assembly-CSharp
-        m_MethodName: PointCursor
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: eb96ca2a-4485-4d2a-bf4c-d013ae42a141
-    m_ActionName: 'Controller/Look[/DualShock4GamepadHID/rightStick]'
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Controller
+    m_ActionId: 2d33e17e-81c6-482e-adbd-3f5913096e77
+    m_ActionName: 'Universal/LookMouse[/Mouse/position]'
+  m_NeverAutoSwitchControlSchemes: 1
+  m_DefaultControlScheme: Controller
+  m_DefaultActionMap: Universal
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!50 &5937355393129719574
