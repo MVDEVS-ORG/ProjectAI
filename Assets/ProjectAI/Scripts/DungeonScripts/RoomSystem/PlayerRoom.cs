@@ -22,9 +22,9 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem
             List<GameObject> placedObjects = _prefabPlacer.PlaceAllItems(itemData, itemPlacementHelper);
 
             Vector2Int playerSpawnPoint = roomCenter;
-            GameObject playerObject =
-                _prefabPlacer.CreateObject(player, playerSpawnPoint + new Vector2(0.5f, 0.5f));
-            placedObjects.Add(playerObject);
+            //GameObject playerObject =
+                //_prefabPlacer.CreateObject(player, playerSpawnPoint + new Vector2(0.5f, 0.5f));
+            //placedObjects.Add(playerObject);
             return placedObjects;
         }
     }

@@ -30,6 +30,7 @@ public class CharacterView : MonoBehaviour
         Cursor.visible = false;
         _playerInput = GetComponent<PlayerInput>();
         InputSystem.onDeviceChange += OnDeviceChange;
+        CheckInitialControlSchema();
     }
 
     // Update is called once per frame
@@ -90,6 +91,7 @@ public class CharacterView : MonoBehaviour
         }
     }
 
+    #region Control schema
     public void InputChange(PlayerInput controller)
     {
         Debug.Log("Changed Input");
@@ -115,4 +117,21 @@ public class CharacterView : MonoBehaviour
             _playerInput.SwitchCurrentControlScheme("KBM", Keyboard.current, Mouse.current);
         }
     }
+
+    private void CheckInitialControlSchema()
+    {
+        if(_playerInput.currentControlScheme == "KBM")
+        {
+            if(Gamepad.all.Count > 0)
+            {
+                _playerInput.SwitchCurrentControlScheme("Controller", Gamepad.current);
+            }
+        }
+        else if(Gamepad.all.Count == 0)
+        {
+            _playerInput.SwitchCurrentControlScheme("KBM", Keyboard.current, Mouse.current);
+        }
+    }
+
+    #endregion
 }

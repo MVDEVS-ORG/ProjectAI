@@ -191,7 +191,7 @@ MonoBehaviour:
     m_ActionId: 2d33e17e-81c6-482e-adbd-3f5913096e77
     m_ActionName: 'Universal/LookMouse[/Mouse/position]'
   m_NeverAutoSwitchControlSchemes: 1
-  m_DefaultControlScheme: Controller
+  m_DefaultControlScheme: KBM
   m_DefaultActionMap: Universal
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
