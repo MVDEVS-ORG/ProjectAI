@@ -1,4 +1,5 @@
 ﻿using Assets.ProjectAI.Scripts.DungeonScripts.DecisionSystem;
+using Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using UnityEngine;
 
 namespace Assets.ProjectAI.Scripts.DungeonScripts
 {
-    public class RoomContentGeneration : MonoBehaviour
+    public class RoomContentGenerator : MonoBehaviour
     {
         [SerializeField]
         private RoomGenerator playerRoom, defaultRoom;
@@ -19,6 +20,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
 
         public void GenerateRoomContent(DungeonData dungeonData)
         {
+            Debug.LogError("Generating Room Content");
             foreach (GameObject obj in spawnedObjects)
             {
                 DestroyImmediate(obj);
@@ -67,11 +69,4 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
         }
     }
 
-}
-public abstract class RoomGenerator : MonoBehaviour
-{
-    public abstract List<GameObject> ProcessRoom(
-        Vector2Int roomCenter,
-        HashSet<Vector2Int> roomFloor,
-        HashSet<Vector2Int> corridors);
 }

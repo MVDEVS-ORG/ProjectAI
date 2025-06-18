@@ -11,46 +11,58 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
         [SerializeField]
         private int dungeonWidth = 20, dungeonHeight = 20;
         [SerializeField]
-        [Range(0,10)]
+        [Range(0, 10)]
         private int offset = 1;
         [SerializeField]
         private bool randomWalkRooms = false;
+        [SerializeField]
+        private RoomContentGenerator roomContentGenerator;
 
-        //PCG Data
-        private Dictionary<Vector2Int, HashSet<Vector2Int>> roomsDictionary = new Dictionary<Vector2Int, HashSet<Vector2Int>>();
-        private HashSet<Vector2Int> floorPositions, corridorPositions;
+        // PCG Data
+        private Dictionary<Vector2Int, HashSet<Vector2Int>> _roomsDictionary = new Dictionary<Vector2Int, HashSet<Vector2Int>>();
+        private HashSet<Vector2Int> _floorPositions = new HashSet<Vector2Int>();
+        private HashSet<Vector2Int> _corridorPositions = new HashSet<Vector2Int>();
 
-        //GizmosData
+        // GizmosData
         private List<Color> roomColors = new List<Color>();
         [SerializeField]
         private bool showRoomGizmo = false, showCorridorsPositions;
 
         protected override void RunProceduralGeneration()
         {
+            ClearRoomData();
             CreateRooms();
+
             DungeonData data = new DungeonData
             {
-                roomsDictionary = this.roomsDictionary,
-                corridorPositions = this.corridorPositions,
-                floorPositions = this.floorPositions,
+                roomsDictionary = this._roomsDictionary,
+                corridorPositions = this._corridorPositions,
+                floorPositions = this._floorPositions,
             };
-            //call GenerateRoomContent() in RoomContentFGeneration
+
+            var serializableData = new DungeonDataSerializable(data);
+            string json = JsonUtility.ToJson(serializableData); // pretty print
+            Debug.LogError("[DungeonData JSON]\n" + json);
+
+            roomContentGenerator.GenerateRoomContent(data);
         }
+
         private void CreateRooms()
         {
-            var roomsList = ProceduralGenerationAlgorithms.BinarySpacePartitioning(new BoundsInt((Vector3Int)startPosition, new Vector3Int(dungeonWidth, dungeonHeight, 0)), minRoomWidth, minRoomHeight);
+            var roomsList = ProceduralGenerationAlgorithms.BinarySpacePartitioning(
+                new BoundsInt((Vector3Int)startPosition, new Vector3Int(dungeonWidth, dungeonHeight, 0)),
+                minRoomWidth, minRoomHeight);
 
-            HashSet<Vector2Int> floor = new HashSet<Vector2Int>();
+            _floorPositions.Clear();
 
             if (randomWalkRooms)
             {
-                floor = CreateRoomsRandomly(roomsList);
+                CreateRoomsRandomly(roomsList);
             }
             else
             {
-                floor = CreateSimpleRooms(roomsList);
+                CreateSimpleRooms(roomsList);
             }
-            
 
             List<Vector2Int> roomCenters = new List<Vector2Int>();
             foreach (var room in roomsList)
@@ -59,125 +71,136 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
             }
 
             HashSet<Vector2Int> corridors = ConnectRooms(roomCenters);
-            floor.UnionWith(corridors);
-            floorPositions = floor;
-            tilemapVisualizer.PaintFloorTiles(floor);
-            WallGenerator.CreateWalls(floor, tilemapVisualizer);
+            _floorPositions.UnionWith(corridors);
+
+            Debug.LogError($"No of floors {_floorPositions.Count}");
+            tilemapVisualizer.PaintFloorTiles(_floorPositions);
+            WallGenerator.CreateWalls(_floorPositions, tilemapVisualizer);
         }
 
-        private HashSet<Vector2Int> CreateRoomsRandomly(List<BoundsInt> roomsList)
+        private void CreateRoomsRandomly(List<BoundsInt> roomsList)
         {
-            HashSet<Vector2Int> floor = new HashSet<Vector2Int>();
-            for (int i = 0; i < roomsList.Count; i++)
+            foreach (var roomBounds in roomsList)
             {
-                var roomBounds = roomsList[i];
-                var roomCenter = new Vector2Int(Mathf.RoundToInt(roomBounds.center.x), Mathf.RoundToInt(roomBounds.center.y));
-                var roomFloor = RunRandomWalk(randomWalkParameters, roomCenter);
+                Vector2Int roomCenter = new Vector2Int(
+                    Mathf.RoundToInt(roomBounds.center.x),
+                    Mathf.RoundToInt(roomBounds.center.y)
+                );
+
+                HashSet<Vector2Int> roomFloor = RunRandomWalk(randomWalkParameters, roomCenter);
+
+                HashSet<Vector2Int> boundedRoomFloor = new HashSet<Vector2Int>();
                 foreach (var position in roomFloor)
                 {
-                    if(position.x >= (roomBounds.xMin+offset) && position.x<= (roomBounds.xMax - offset) && position.y >= (roomBounds.yMin - offset) && position.y <= (roomBounds.yMax - offset))
+                    if (position.x >= (roomBounds.xMin + offset) && position.x <= (roomBounds.xMax - offset) &&
+                        position.y >= (roomBounds.yMin + offset) && position.y <= (roomBounds.yMax - offset))
                     {
-                        floor.Add(position);
+                        boundedRoomFloor.Add(position);
+                        _floorPositions.Add(position);
                     }
                 }
-                SaveRoomData(roomCenter, floor);
+
+                SaveRoomData(roomCenter, boundedRoomFloor);
             }
-            return floor;
         }
 
-        private void ClearRoomData()
+        private void CreateSimpleRooms(List<BoundsInt> roomsList)
         {
-            roomsDictionary.Clear();
-            roomColors.Clear();
-        }
+            foreach (var roomBounds in roomsList)
+            {
+                Vector2Int roomCenter = new Vector2Int(
+                    Mathf.RoundToInt(roomBounds.center.x),
+                    Mathf.RoundToInt(roomBounds.center.y)
+                );
 
-        private void SaveRoomData(Vector2Int roomCenter, HashSet<Vector2Int> floor)
-        {
-            roomsDictionary[roomCenter] = floor;
-            roomColors.Add(Random.ColorHSV());
+                HashSet<Vector2Int> roomFloor = new HashSet<Vector2Int>();
+
+                for (int col = offset; col < roomBounds.size.x - offset; col++)
+                {
+                    for (int row = offset; row < roomBounds.size.y - offset; row++)
+                    {
+                        Vector2Int position = (Vector2Int)roomBounds.min + new Vector2Int(col, row);
+                        roomFloor.Add(position);
+                        _floorPositions.Add(position);
+                    }
+                }
+
+                SaveRoomData(roomCenter, roomFloor);
+            }
         }
 
         private HashSet<Vector2Int> ConnectRooms(List<Vector2Int> roomCenters)
         {
             HashSet<Vector2Int> corridors = new HashSet<Vector2Int>();
-            var currentRoomCenter = roomCenters[Random.Range(0, roomCenters.Count)];
+            Vector2Int currentRoomCenter = roomCenters[Random.Range(0, roomCenters.Count)];
             roomCenters.Remove(currentRoomCenter);
 
             while (roomCenters.Count > 0)
             {
                 Vector2Int closest = FindClosestPointTo(currentRoomCenter, roomCenters);
                 roomCenters.Remove(closest);
+
                 HashSet<Vector2Int> newCorridor = CreateCorridor(currentRoomCenter, closest);
-                currentRoomCenter = closest;
                 corridors.UnionWith(newCorridor);
+
+                currentRoomCenter = closest;
             }
-            corridorPositions = new HashSet<Vector2Int>(corridors);
+
+            _corridorPositions = corridors;
             return corridors;
         }
 
-        private HashSet<Vector2Int> CreateCorridor(Vector2Int currentRoomCenter, Vector2Int destination)
+        private HashSet<Vector2Int> CreateCorridor(Vector2Int start, Vector2Int end)
         {
             HashSet<Vector2Int> corridor = new HashSet<Vector2Int>();
-            var position = currentRoomCenter;
+            Vector2Int position = start;
             corridor.Add(position);
-            while (position.y != destination.y)
+
+            while (position.y != end.y)
             {
-                if(destination.y> position.y)
-                {
-                    position += Vector2Int.up;
-                }
-                else if(destination.y < position.y)
-                {
-                    position += Vector2Int.down;
-                }
+                position += (end.y > position.y) ? Vector2Int.up : Vector2Int.down;
                 corridor.Add(position);
             }
-            while (position.x != destination.x)
+
+            while (position.x != end.x)
             {
-                if (destination.x > position.x)
-                {
-                    position += Vector2Int.right;
-                }
-                else if (destination.x < position.x)
-                {
-                    position += Vector2Int.left;
-                }
+                position += (end.x > position.x) ? Vector2Int.right : Vector2Int.left;
                 corridor.Add(position);
             }
+
             return corridor;
         }
 
-        private Vector2Int FindClosestPointTo(Vector2Int currentRoomCenter, List<Vector2Int> roomCenters)
+        private Vector2Int FindClosestPointTo(Vector2Int current, List<Vector2Int> positions)
         {
             Vector2Int closest = Vector2Int.zero;
-            float distance = float.MaxValue;
-            foreach (var position in roomCenters)
+            float minDistance = float.MaxValue;
+
+            foreach (var position in positions)
             {
-                float currentDistance = Vector2.Distance(currentRoomCenter, position);
-                if(currentDistance < distance)
+                float distance = Vector2.Distance(current, position);
+                if (distance < minDistance)
                 {
-                    distance = currentDistance;
+                    minDistance = distance;
                     closest = position;
                 }
             }
+
             return closest;
         }
 
-        private HashSet<Vector2Int> CreateSimpleRooms(List<BoundsInt> roomsList)
+        private void SaveRoomData(Vector2Int center, HashSet<Vector2Int> roomFloor)
         {
-            HashSet<Vector2Int> floor = new HashSet<Vector2Int>();
-            foreach (var room in roomsList)
-            {
-                for (int col = offset; col<room.size.x-offset; col++)
-                {
-                    for (int row = 0; row < room.size.y - offset; row++)
-                    {
-                        Vector2Int position = (Vector2Int)room.min + new Vector2Int(col, row);
-                        floor.Add(position);
-                    }
-                }
-            }
-            return floor;
+            _roomsDictionary[center] = roomFloor;
+            roomColors.Add(Random.ColorHSV());
+        }
+
+        private void ClearRoomData()
+        {
+            _roomsDictionary.Clear();
+            roomColors.Clear();
+            _floorPositions.Clear();
+            _corridorPositions.Clear();
         }
     }
 }

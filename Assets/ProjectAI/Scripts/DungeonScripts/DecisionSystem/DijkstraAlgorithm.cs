@@ -35,7 +35,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.DecisionSystem
                     if (distanceDictionary.ContainsKey(neighbor))
                         continue;
                     unfinishedVertices.Enqueue(neighbor);
-                    parentDictionary[neighbor] = neighbor;
+                    parentDictionary[neighbor] = vertex;
                 }
             }
             return distanceDictionary;
