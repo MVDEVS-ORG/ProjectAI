@@ -50,6 +50,13 @@ public class CharacterView : MonoBehaviour
             }
             _BulletCursor.transform.position = transform.position + (_lastValidDirection * _playerModel.CursorDistance);
         }
+        if (_BulletCursor != null && _playerInput.currentControlScheme == "KBM")
+        {
+            Vector2 position = _playerInput.actions.FindAction("LookMouse").ReadValue<Vector2>();
+            Vector3 posInWorldSpace = Camera.main.ScreenToWorldPoint(position);
+            posInWorldSpace.z = 0;
+            _BulletCursor.transform.position = posInWorldSpace;
+        }
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -82,13 +89,13 @@ public class CharacterView : MonoBehaviour
 
     public void PointerCursorMouse(InputAction.CallbackContext context)
     {
-        if (_BulletCursor != null)
+        /*if (_BulletCursor != null)
         {
             Vector2 position = context.ReadValue<Vector2>();
             Vector3 posInWorldSpace = Camera.main.ScreenToWorldPoint(position);
             posInWorldSpace.z = 0;
             _BulletCursor.transform.position = posInWorldSpace;
-        }
+        }*/
     }
 
     #region Control schema
