@@ -13,12 +13,12 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
         [SerializeField]
         protected SimpleRandomWalkSO randomWalkParameters;
 
-        protected override void RunProceduralGeneration()
+        protected override async Awaitable RunProceduralGeneration()
         {
             HashSet<Vector2Int> floorPositions = RunRandomWalk(randomWalkParameters, startPosition);
             tilemapVisualizer.Clear();
             tilemapVisualizer.PaintFloorTiles(floorPositions);
-            WallGenerator.CreateWalls(floorPositions, tilemapVisualizer);
+            await WallGenerator.CreateWalls(floorPositions, tilemapVisualizer);
         }
 
         protected HashSet<Vector2Int> RunRandomWalk(SimpleRandomWalkSO parameters, Vector2Int position)

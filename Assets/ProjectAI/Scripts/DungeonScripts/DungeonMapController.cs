@@ -7,11 +7,11 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
     {
         [SerializeField]
         private RoomFirstDungeonGenerator roomFirstDungeonGenerator;
-        // Use this for initialization
-        void Start()
-        {
-            roomFirstDungeonGenerator.GenerateDungeon();
-        }
 
+        // Use this for initialization
+        public async Awaitable Initialize()
+        {
+            await roomFirstDungeonGenerator.GenerateDungeon();
+        }
     }
 }
