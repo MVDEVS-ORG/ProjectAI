@@ -1,6 +1,7 @@
 using Assets.Services;
 using System;
 using System.Threading.Tasks;
+using Unity.Cinemachine;
 using UnityEngine;
 using Zenject;
 
@@ -16,6 +17,12 @@ public class PlayerController : IPlayerController
     private bool _movementPossible = false;
     bool IPlayerController.Initialized => _initialized;
     bool IPlayerController.MovementPossible => _movementPossible;
+
+    private CinemachineCamera _camera;
+    public void SetCam(CinemachineCamera cam)
+    {
+        _camera = cam;
+    }
 
     public void Initialize()
     {
@@ -63,7 +70,10 @@ public class PlayerController : IPlayerController
             _playerUI = result.GetComponent<PlayerUI>();
             _playerUI.Initialize(_playerModel);
             Debug.Log("PlayerUI Initialized");
-
+            if (_camera != null)
+            {
+                _camera.Target.TrackingTarget = _characterView.transform;
+            }
             _initialized = true;
             _movementPossible = true;
         }
