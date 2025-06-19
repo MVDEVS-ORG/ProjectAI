@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 100
   CharacterType: 0
-  Speed: 5
+  Speed: 3
   FireRate: 0
-  CursorDistance: 5
+  CursorDistance: 3
   RollDuration: 0.2
-  RollSpeed: 25
-  MaxNoOfDashes: 0
-  NoOfDashes: 0
-  DashCooldown: 0
+  RollSpeed: 10
+  MaxNoOfDashes: 2
+  NoOfDashes: 2
+  DashCooldown: 5
