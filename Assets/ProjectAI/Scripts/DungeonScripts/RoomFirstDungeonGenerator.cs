@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Assets.ProjectAI.Scripts.DungeonScripts.Interfaces;
+using System.Threading.Tasks;
 namespace Assets.ProjectAI.Scripts.DungeonScripts
 {
-    public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
+    public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator, IDungeonGenerator
     {
         [SerializeField]
         private int minRoomWidth = 4, minRoomHeight = 4;
@@ -28,10 +29,10 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
         [SerializeField]
         private bool showRoomGizmo = false, showCorridorsPositions;
 
-        protected override void RunProceduralGeneration()
+        protected override async Awaitable RunProceduralGeneration()
         {
             ClearRoomData();
-            CreateRooms();
+            await CreateRooms();
 
             DungeonData data = new DungeonData
             {
@@ -39,15 +40,10 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
                 corridorPositions = this._corridorPositions,
                 floorPositions = this._floorPositions,
             };
-
-            var serializableData = new DungeonDataSerializable(data);
-            string json = JsonUtility.ToJson(serializableData); // pretty print
-            Debug.LogError("[DungeonData JSON]\n" + json);
-
             roomContentGenerator.GenerateRoomContent(data);
         }
 
-        private void CreateRooms()
+        private async Awaitable CreateRooms()
         {
             var roomsList = ProceduralGenerationAlgorithms.BinarySpacePartitioning(
                 new BoundsInt((Vector3Int)startPosition, new Vector3Int(dungeonWidth, dungeonHeight, 0)),
@@ -75,7 +71,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
 
             Debug.LogError($"No of floors {_floorPositions.Count}");
             tilemapVisualizer.PaintFloorTiles(_floorPositions);
-            WallGenerator.CreateWalls(_floorPositions, tilemapVisualizer);
+            await WallGenerator.CreateWalls(_floorPositions, tilemapVisualizer);
         }
 
         private void CreateRoomsRandomly(List<BoundsInt> roomsList)

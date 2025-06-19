@@ -5,7 +5,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.Properties;
-using UnityEditor;
 using UnityEngine;
 using Zenject;
 
@@ -23,16 +22,9 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items
                 return null;
             }
             GameObject newItem;
-            if (Application.isPlaying)
-            {
-                newItem = Instantiate(prefab, placementPosition, Quaternion.identity);
-            }
-            else
-            {
-                newItem = PrefabUtility.InstantiatePrefab(prefab) as GameObject;
-                newItem.transform.position = placementPosition;
-                newItem.transform.rotation = Quaternion.identity;
-            }
+
+            newItem = Instantiate(prefab, placementPosition, Quaternion.identity);
+
             return newItem;
         }
 

@@ -10,12 +10,12 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
         [SerializeField]
         protected Vector2Int startPosition = Vector2Int.zero;
 
-        public void GenerateDungeon()
+        public async Awaitable GenerateDungeon()
         {
             tilemapVisualizer.Clear();
-            RunProceduralGeneration();
+            await RunProceduralGeneration();
         }
 
-        protected abstract void RunProceduralGeneration();
+        protected abstract Awaitable RunProceduralGeneration();
     }
 }
