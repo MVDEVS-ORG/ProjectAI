@@ -1,21 +1,23 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Assets.ProjectAI.Scripts.DungeonScripts
 {
     public static class WallGenerator
     {
-        public static void CreateWalls(HashSet<Vector2Int> floorPositions, TilemapVisualizer tilemapVisualizer)
+        public static async Awaitable CreateWalls(HashSet<Vector2Int> floorPositions, TilemapVisualizer tilemapVisualizer)
         {
             var basicWallPositions = FindWallsInDirections(floorPositions, Direction2D.cardinalDirectionList);
             var cornerWallPositions = FindWallsInDirections(floorPositions, Direction2D.diagonalDirectionList);
-            CreateBasicWall(tilemapVisualizer, basicWallPositions, floorPositions);
-            CreateCornerWalls(tilemapVisualizer, cornerWallPositions, floorPositions);
+            Debug.LogError(basicWallPositions.Count + cornerWallPositions.Count);
+            await CreateBasicWall(tilemapVisualizer, basicWallPositions, floorPositions);
+            await CreateCornerWalls(tilemapVisualizer, cornerWallPositions, floorPositions);
         }
 
-        private static void CreateCornerWalls(TilemapVisualizer tilemapVisualizer, HashSet<Vector2Int> cornerWallPositions, HashSet<Vector2Int> floorPositions)
+        private static async Awaitable CreateCornerWalls(TilemapVisualizer tilemapVisualizer, HashSet<Vector2Int> cornerWallPositions, HashSet<Vector2Int> floorPositions)
         {
             foreach(var position in cornerWallPositions)
             {
@@ -32,11 +34,11 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
                         neighborsBinaryType += "0";
                     }
                 }
-                tilemapVisualizer.PaintSingleCornerWall(position, neighborsBinaryType);
+                await tilemapVisualizer.PaintSingleCornerWall(position, neighborsBinaryType);
             }
         }
 
-        private static void CreateBasicWall(TilemapVisualizer tilemapVisualizer, HashSet<Vector2Int> basicWallPositions, HashSet<Vector2Int> floorPositions)
+        private static async Awaitable CreateBasicWall(TilemapVisualizer tilemapVisualizer, HashSet<Vector2Int> basicWallPositions, HashSet<Vector2Int> floorPositions)
         {
             foreach (var position in basicWallPositions)
             {
@@ -53,7 +55,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
                         neighborsBinaryType += "0";
                     }
                 }
-                tilemapVisualizer.PaintSingleBasicWall(position, neighborsBinaryType);
+                await tilemapVisualizer.PaintSingleBasicWall(position, neighborsBinaryType);
             }
         }
 
