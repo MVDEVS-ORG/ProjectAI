@@ -129,10 +129,10 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
             {
                 tileBase = AddressableIds.Wall_Bottom;
             }
-            /*if (string.IsNullOrEmpty(tileBase))
+            if (string.IsNullOrEmpty(tileBase))
             {
-                tileBase = AddressableIds.Wall_Full; ;
-            }*/
+                return;
+            }
             try
             {
                 TileBase tile = await _assetService.LoadAssetAsync<TileBase>(tileBase);

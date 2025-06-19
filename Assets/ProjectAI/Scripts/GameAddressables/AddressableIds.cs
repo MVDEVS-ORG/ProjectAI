@@ -16,6 +16,8 @@ public static class AddressableIds
     public const string BulletCursor = "bulletCursor";
     public const string BullerCursorUI = "bulletCursorUI";
 
+    public const string Item = "Item";
+
     #region TileMap Addressables
 
     public const string Floor = "floor";

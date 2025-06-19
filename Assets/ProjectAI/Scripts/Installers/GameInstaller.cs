@@ -10,7 +10,7 @@ public class GameInstaller : MonoInstaller
     [SerializeField] private RoomFirstDungeonGenerator _roomFirstDungeonGenerator;
     [SerializeField] private RoomContentGenerator _roomContentGenerator;
     [SerializeField] private TilemapVisualizer _tilemapVisualizer;
-    [SerializeField] private PrefabPlacer _prefabPlacer;
+    [SerializeField] private GameObject _prefabPlacer;
     public override void InstallBindings()
     {
         Container.Bind<PlayerPicker>().AsSingle();
@@ -19,7 +19,7 @@ public class GameInstaller : MonoInstaller
         Container.Bind<TilemapVisualizer>().FromInstance(_tilemapVisualizer).AsSingle();
         Container.Inject(_tilemapVisualizer);
         Container.Bind<RoomContentGenerator>().FromInstance(_roomContentGenerator).AsSingle();
-        Container.Bind<PrefabPlacer>().FromInstance(_prefabPlacer).AsSingle();
+        Container.Bind<PrefabPlacer>().FromNewComponentOnNewPrefab(_prefabPlacer).AsTransient();
         Container.BindInterfacesAndSelfTo<RoomFirstDungeonGenerator>()
             .FromInstance(_roomFirstDungeonGenerator)
             .AsSingle();

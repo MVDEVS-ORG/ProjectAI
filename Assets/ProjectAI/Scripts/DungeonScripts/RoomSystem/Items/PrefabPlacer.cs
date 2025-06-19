@@ -1,4 +1,5 @@
 ﻿using Assets.ProjectAI.Scripts.HelperClasses;
+using Assets.Services;
 using NUnit.Framework;
 using System;
 using System.Collections;
@@ -12,23 +13,18 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items
 {
     public class PrefabPlacer : MonoBehaviour
     {
-        [SerializeField]
-        private GameObject _itemPrefab;
-
-        public GameObject CreateObject(GameObject prefab, Vector2 placementPosition)
+        public async Awaitable<GameObject> CreateObject(string prefabAddress, Vector2 placementPosition, IAssetService assetService)
         {
-            if(prefab == null)
+            if(prefabAddress == null)
             {
                 return null;
             }
             GameObject newItem;
-
-            newItem = Instantiate(prefab, placementPosition, Quaternion.identity);
-
+            newItem = await assetService.InstantiateWithPRAsync(prefabAddress, placementPosition, Quaternion.identity);
             return newItem;
         }
 
-        public List<GameObject> PlaceAllItems(List<ItemPlacementData> itemData, ItemPlacementHelper itemPlacementHelper)
+        public async Awaitable<List<GameObject>> PlaceAllItems(List<ItemPlacementData> itemData, ItemPlacementHelper itemPlacementHelper, IAssetService assetService)
         {
             List<GameObject> placedObjects = new List<GameObject>();
 
@@ -47,14 +43,14 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items
                         );
                     if( possiblePlacementSpot.HasValue )
                     {
-                        placedObjects.Add(PlaceItem(placementData.itemData, possiblePlacementSpot.Value));
+                        placedObjects.Add(await PlaceItem(placementData.itemData, possiblePlacementSpot.Value, assetService));
                     }
                 }
             }
             return placedObjects;
         }
 
-        public List<GameObject> PlaceEnemies(List<EnemyPlacementData> enemyPlacementData, ItemPlacementHelper itemPlacementHelper)
+        public async Awaitable<List<GameObject>> PlaceEnemies(List<EnemyPlacementData> enemyPlacementData, ItemPlacementHelper itemPlacementHelper, IAssetService assetService)
         {
             List<GameObject> placedObjects = new List<GameObject>();
 
@@ -70,17 +66,18 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items
                         );
                     if (possiblePlacementSpot.HasValue)
                     {
-
-                        placedObjects.Add(CreateObject(placementData.enemyPrefab, possiblePlacementSpot.Value + new Vector2(0.5f, 0.5f))); //Instantiate(placementData.enemyPrefab,possiblePlacementSpot.Value + new Vector2(0.5f, 0.5f), Quaternion.identity)
+                        var go = await CreateObject(placementData.enemyPrefabAddress, possiblePlacementSpot.Value + new Vector2(0.5f, 0.5f), assetService);
+                        placedObjects.Add(go); 
+                        //Instantiate(placementData.enemyPrefab,possiblePlacementSpot.Value + new Vector2(0.5f, 0.5f), Quaternion.identity)
                     }
                 }
             }
             return placedObjects;
         }
 
-        private GameObject PlaceItem(ItemData itemData, Vector2 value)
+        private async Awaitable<GameObject> PlaceItem(ItemData itemData, Vector2 value, IAssetService assetService)
         {
-            GameObject newItem = CreateObject(_itemPrefab, value);
+            GameObject newItem = await CreateObject(AddressableIds.Item, value, assetService);
             newItem.GetComponent<Item>().Initialize(itemData);
             return newItem;
         }
