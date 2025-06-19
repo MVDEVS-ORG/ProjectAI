@@ -74,6 +74,8 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
             {
                 tileBase = AddressableIds.Wall_Full;
             }
+            if (tileBase == null)
+                return;
             try
             {
                 TileBase tile = await _assetService.LoadAssetAsync<TileBase>(tileBase);
@@ -129,10 +131,8 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
             {
                 tileBase = AddressableIds.Wall_Bottom;
             }
-            /*if (string.IsNullOrEmpty(tileBase))
-            {
-                tileBase = AddressableIds.Wall_Full; ;
-            }*/
+            if (tileBase == null)
+                return;
             try
             {
                 TileBase tile = await _assetService.LoadAssetAsync<TileBase>(tileBase);
@@ -150,8 +150,6 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
                 Debug.LogError($"error in loading addressable Id: {tileBase} \n {ex}");
                 return;
             }
-
-            
         }
     }
 }

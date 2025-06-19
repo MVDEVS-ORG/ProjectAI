@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,6 +16,7 @@ public class CharacterView : MonoBehaviour
     private Vector3 _lastValidDirection = Vector3.right;
 
     private bool _isControllerInUse = false;
+    private Vector2 _rollDirection;
 
     public void Initialize(IPlayerController playerController, PlayerModel playerModel, GameObject bulletCursor)
     {
@@ -38,7 +40,20 @@ public class CharacterView : MonoBehaviour
     {
         if (_playerController != null && _playerController.Initialized)
         {
-            _rigidBody.linearVelocity = _moveInput * _playerModel.Speed;
+            if (_playerController.MoveState == State.Moving)
+            {
+                _moveInput = _playerInput.actions.FindAction("Move").ReadValue<Vector2>();
+            }
+            switch (_playerController.MoveState)
+            {
+                case State.Moving:
+                    _rigidBody.linearVelocity = _moveInput * _playerModel.Speed;
+                    break;
+
+                case State.RollDash:
+                    _rigidBody.linearVelocity = _rollDirection * _playerModel.RollSpeed;
+                    break;
+            }
         }
         if (_playerInput.currentControlScheme == "Controller" && _BulletCursor != null)
         {
@@ -57,11 +72,6 @@ public class CharacterView : MonoBehaviour
             posInWorldSpace.z = 0;
             _BulletCursor.transform.position = posInWorldSpace;
         }
-    }
-
-    public void Move(InputAction.CallbackContext context)
-    {
-        _moveInput = context.ReadValue<Vector2>();
     }
 
     public void OnApplicationFocus(bool focus)
@@ -87,16 +97,15 @@ public class CharacterView : MonoBehaviour
         }
     }
 
-    public void PointerCursorMouse(InputAction.CallbackContext context)
+    public void Dash(InputAction.CallbackContext context)
     {
-        /*if (_BulletCursor != null)
+        if(context.performed)
         {
-            Vector2 position = context.ReadValue<Vector2>();
-            Vector3 posInWorldSpace = Camera.main.ScreenToWorldPoint(position);
-            posInWorldSpace.z = 0;
-            _BulletCursor.transform.position = posInWorldSpace;
-        }*/
+            _rollDirection = _playerController.Dash(_moveInput);
+        }
     }
+
+    
 
     #region Control schema
     public void InputChange(PlayerInput controller)

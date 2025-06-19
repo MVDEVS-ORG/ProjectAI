@@ -8,4 +8,12 @@ public interface IPlayerController
     void TakeDamage(int damage);
     void RestoreHealth(int health);
     void Shoot(Vector2 direction);
+    State MoveState { get; }
+    Vector2 Dash(Vector2 MoveInput);
+}
+
+public enum State
+{
+    Moving,
+    RollDash
 }

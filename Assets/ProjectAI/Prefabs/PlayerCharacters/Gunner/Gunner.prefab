@@ -175,10 +175,14 @@ MonoBehaviour:
     m_ActionId: 24dc0c86-cfc6-436e-8bb8-77258e2e36aa
     m_ActionName: 'Universal/Look[/DualShock4GamepadHID/rightStick,/Mouse/position]'
   - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2d33e17e-81c6-482e-adbd-3f5913096e77
+    m_ActionName: 'Universal/LookMouse[/Mouse/position]'
+  - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2326315397728171776}
         m_TargetAssemblyTypeName: CharacterView, Assembly-CSharp
-        m_MethodName: PointerCursorMouse
+        m_MethodName: Dash
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -188,8 +192,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 2d33e17e-81c6-482e-adbd-3f5913096e77
-    m_ActionName: 'Universal/LookMouse[/Mouse/position]'
+    m_ActionId: 377e86ce-e6c4-4e6b-9cb0-5a62e7078e1f
+    m_ActionName: 'Universal/RollDash[/DualShock4GamepadHID/buttonSouth,/Keyboard/shift]'
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: KBM
   m_DefaultActionMap: Universal

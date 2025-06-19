@@ -17,3 +17,8 @@ MonoBehaviour:
   Speed: 5
   FireRate: 0
   CursorDistance: 5
+  RollDuration: 0.2
+  RollSpeed: 25
+  MaxNoOfDashes: 0
+  NoOfDashes: 0
+  DashCooldown: 0

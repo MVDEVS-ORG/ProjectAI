@@ -1,5 +1,6 @@
 using Assets.Services;
 using System;
+using System.Collections;
 using System.Threading.Tasks;
 using Unity.Cinemachine;
 using UnityEngine;
@@ -19,6 +20,9 @@ public class PlayerController : IPlayerController
     bool IPlayerController.MovementPossible => _movementPossible;
 
     private CinemachineCamera _camera;
+
+    private State _moveState = State.Moving;
+    State IPlayerController.MoveState => _moveState;
     public void SetCam(CinemachineCamera cam)
     {
         _camera = cam;
@@ -107,6 +111,31 @@ public class PlayerController : IPlayerController
     void IPlayerController.Shoot(Vector2 direction)
     {
         //instantiate characters fire here 
+    }
+
+    Vector2 IPlayerController.Dash(Vector2 MoveInput)
+    {
+        if(_moveState == State.Moving && MoveInput!= Vector2.zero && _playerModel.NoOfDashes>0) //also need to addd the stamina part here
+        {
+            _playerModel.NoOfDashes--;
+            _characterView.StartCoroutine(RollDash());
+            _characterView.StartCoroutine(DashCoolDown());
+            return MoveInput;
+        }
+        return Vector2.zero;
+    }
+
+    IEnumerator DashCoolDown()
+    {
+        yield return Awaitable.WaitForSecondsAsync(_playerModel.DashCooldown);
+        _playerModel.NoOfDashes = _playerModel.NoOfDashes < _playerModel.MaxNoOfDashes ? _playerModel.NoOfDashes + 1 : _playerModel.NoOfDashes ;
+    }
+
+    IEnumerator RollDash()
+    {
+        _moveState = State.RollDash;
+        yield return Awaitable.WaitForSecondsAsync(_playerModel.RollDuration);
+        _moveState = State.Moving;
     }
 }
 

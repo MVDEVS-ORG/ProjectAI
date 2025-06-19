@@ -3,7 +3,6 @@ using Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items;
 using Assets.ProjectAI.Scripts.DungeonScripts;
 using UnityEngine;
 using Zenject;
-using Assets.ProjectAI.Scripts.DungeonScripts.Interfaces;
 
 public class GameInstaller : MonoInstaller
 {
