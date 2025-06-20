@@ -1,13 +1,8 @@
 ﻿using Assets.ProjectAI.Scripts.HelperClasses;
 using Assets.Services;
-using NUnit.Framework;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.Properties;
 using UnityEngine;
-using Zenject;
 
 namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items
 {
