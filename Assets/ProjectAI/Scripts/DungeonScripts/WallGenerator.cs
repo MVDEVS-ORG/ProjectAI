@@ -12,7 +12,6 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
         {
             var basicWallPositions = FindWallsInDirections(floorPositions, Direction2D.cardinalDirectionList);
             var cornerWallPositions = FindWallsInDirections(floorPositions, Direction2D.diagonalDirectionList);
-            Debug.LogError(basicWallPositions.Count + cornerWallPositions.Count);
             await CreateBasicWall(tilemapVisualizer, basicWallPositions, floorPositions);
             await CreateCornerWalls(tilemapVisualizer, cornerWallPositions, floorPositions);
         }

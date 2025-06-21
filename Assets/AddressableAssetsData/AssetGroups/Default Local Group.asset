@@ -60,6 +60,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6a22a3c5e1fa4c941bdd41b9ea5e064b
+    m_Address: Item
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 809171e13e7908f40a916074c244f08c
     m_Address: WallDiagonalCornerUpRight
     m_ReadOnly: 0

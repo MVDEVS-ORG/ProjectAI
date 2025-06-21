@@ -1,5 +1,6 @@
 ﻿using Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items;
 using Assets.ProjectAI.Scripts.HelperClasses;
+using Assets.Services;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,11 +16,10 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem
         [SerializeField]
         private PrefabPlacer _prefabPlacer;
 
-        public override List<GameObject> ProcessRoom(Vector2Int roomCenter, HashSet<Vector2Int> roomFloor, HashSet<Vector2Int> roomFloorNoCorridors)
+        public override async Awaitable<List<GameObject>> ProcessRoom(Vector2Int roomCenter, HashSet<Vector2Int> roomFloor, HashSet<Vector2Int> roomFloorNoCorridors, IAssetService assetService)
         {
             ItemPlacementHelper itemPlacementHelper = new ItemPlacementHelper(roomFloor,roomFloorNoCorridors);
-            Debug.LogError($"ItemPlacementDatas: {itemData.Count}");
-            List<GameObject> placedObjects = _prefabPlacer.PlaceAllItems(itemData, itemPlacementHelper);
+            List<GameObject> placedObjects = await _prefabPlacer.PlaceAllItems(itemData, itemPlacementHelper, assetService);
 
             Vector2Int playerSpawnPoint = roomCenter;
             //GameObject playerObject =
@@ -47,7 +47,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem
     [Serializable]
     public class EnemyPlacementData: PlacementData
     {
-        public GameObject enemyPrefab;
+        public string enemyPrefabAddress;
         public Vector2Int enemySize = Vector2Int.one;
     }
 }

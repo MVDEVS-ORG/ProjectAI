@@ -40,7 +40,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
                 corridorPositions = this._corridorPositions,
                 floorPositions = this._floorPositions,
             };
-            roomContentGenerator.GenerateRoomContent(data);
+            await roomContentGenerator.GenerateRoomContent(data);
         }
 
         private async Awaitable CreateRooms()
@@ -69,7 +69,6 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
             HashSet<Vector2Int> corridors = ConnectRooms(roomCenters);
             _floorPositions.UnionWith(corridors);
 
-            Debug.LogError($"No of floors {_floorPositions.Count}");
             tilemapVisualizer.PaintFloorTiles(_floorPositions);
             await WallGenerator.CreateWalls(_floorPositions, tilemapVisualizer);
         }
