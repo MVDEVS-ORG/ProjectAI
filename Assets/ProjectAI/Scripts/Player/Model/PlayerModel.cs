@@ -10,9 +10,9 @@ public class PlayerModel
     public float CursorDistance;
     public float RollDuration;
     public float RollSpeed;
-    public int NoOfDashes;
-    public int MaxNoOfDashes;
-    public float DashCooldown;
+    public int NoOfRoll;
+    public int MaxNoOfRolls;
+    public float RolllCooldown;
     public PlayerModel(PlayerCharactersSO playerModelData)
     {
         Character = playerModelData.CharacterType;
@@ -23,8 +23,8 @@ public class PlayerModel
         CursorDistance = playerModelData.CursorDistance;
         RollDuration = playerModelData.RollDuration;
         RollSpeed = playerModelData.RollSpeed;  
-        NoOfDashes = playerModelData.NoOfDashes;
-        DashCooldown = playerModelData.DashCooldown;
-        MaxNoOfDashes = playerModelData.MaxNoOfDashes;
+        NoOfRoll = playerModelData.NoOfRolls;
+        RolllCooldown = playerModelData.RollCooldown;
+        MaxNoOfRolls = playerModelData.MaxNoOfRolls;
     }
 }

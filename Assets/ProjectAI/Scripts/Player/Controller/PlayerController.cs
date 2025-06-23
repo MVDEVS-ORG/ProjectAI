@@ -116,9 +116,9 @@ public class PlayerController : IPlayerController
 
     Vector2 IPlayerController.Dash(Vector2 MoveInput)
     {
-        if(_moveState == State.Moving && MoveInput!= Vector2.zero && _playerModel.NoOfDashes>0) //also need to addd the stamina part here
+        if(_moveState == State.Moving && MoveInput!= Vector2.zero && _playerModel.NoOfRoll>0) //also need to addd the stamina part here
         {
-            _playerModel.NoOfDashes--;
+            _playerModel.NoOfRoll--;
             _characterView.StartCoroutine(RollDash());
             _characterView.StartCoroutine(DashCoolDown());
             return MoveInput;
@@ -128,8 +128,8 @@ public class PlayerController : IPlayerController
 
     IEnumerator DashCoolDown()
     {
-        yield return Awaitable.WaitForSecondsAsync(_playerModel.DashCooldown);
-        _playerModel.NoOfDashes = _playerModel.NoOfDashes < _playerModel.MaxNoOfDashes ? _playerModel.NoOfDashes + 1 : _playerModel.NoOfDashes ;
+        yield return Awaitable.WaitForSecondsAsync(_playerModel.RolllCooldown);
+        _playerModel.NoOfRoll = _playerModel.NoOfRoll < _playerModel.MaxNoOfRolls ? _playerModel.NoOfRoll + 1 : _playerModel.NoOfRoll ;
     }
 
     IEnumerator RollDash()
