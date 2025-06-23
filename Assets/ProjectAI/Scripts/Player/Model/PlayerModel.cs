@@ -8,6 +8,11 @@ public class PlayerModel
     public Character Character;
     public float FireRate; //No of rounds per second
     public float CursorDistance;
+    public float RollDuration;
+    public float RollSpeed;
+    public int NoOfRoll;
+    public int MaxNoOfRolls;
+    public float RolllCooldown;
     public PlayerModel(PlayerCharactersSO playerModelData)
     {
         Character = playerModelData.CharacterType;
@@ -16,5 +21,10 @@ public class PlayerModel
         Health = MaxHealth;
         FireRate = playerModelData.FireRate;
         CursorDistance = playerModelData.CursorDistance;
+        RollDuration = playerModelData.RollDuration;
+        RollSpeed = playerModelData.RollSpeed;  
+        NoOfRoll = playerModelData.NoOfRolls;
+        RolllCooldown = playerModelData.RollCooldown;
+        MaxNoOfRolls = playerModelData.MaxNoOfRolls;
     }
 }

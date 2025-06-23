@@ -8,6 +8,11 @@ public class PlayerCharactersSO : ScriptableObject
     public float Speed;
     public float FireRate;
     public float CursorDistance;
+    public float RollDuration;
+    public float RollSpeed;
+    public int MaxNoOfRolls;
+    public int NoOfRolls;  
+    public float RollCooldown;
 }
 
 public enum Character

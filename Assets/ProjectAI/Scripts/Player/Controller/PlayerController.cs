@@ -1,6 +1,8 @@
 using Assets.Services;
 using System;
+using System.Collections;
 using System.Threading.Tasks;
+using Unity.Cinemachine;
 using UnityEngine;
 using Zenject;
 
@@ -17,6 +19,15 @@ public class PlayerController : IPlayerController
     bool IPlayerController.Initialized => _initialized;
     bool IPlayerController.MovementPossible => _movementPossible;
 
+    private CinemachineCamera _camera;
+
+    private State _moveState = State.Moving;
+    State IPlayerController.MoveState => _moveState;
+    public void SetCam(CinemachineCamera cam)
+    {
+        _camera = cam;
+    }
+
     public void Initialize()
     {
 
@@ -26,6 +37,7 @@ public class PlayerController : IPlayerController
     {
         try
         {
+            Debug.LogError(pos);
             //Get the character prefab address
             string prefabAddress = null;
             switch (playerCharacter.CharacterType)
@@ -48,7 +60,7 @@ public class PlayerController : IPlayerController
                 throw new Exception("Character type not implemented in addressableIds");
             }
             //instantiate the asset
-            var result = await _assetService.InstantiateAsync(prefabAddress);
+            var result = await _assetService.InstantiateWithPRAsync(prefabAddress, pos , Quaternion.identity);
             _characterView = result.GetComponent<CharacterView>();
             //Create a new player model for that character
             _playerModel = new PlayerModel(playerCharacter);
@@ -63,7 +75,10 @@ public class PlayerController : IPlayerController
             _playerUI = result.GetComponent<PlayerUI>();
             _playerUI.Initialize(_playerModel);
             Debug.Log("PlayerUI Initialized");
-
+            if (_camera != null)
+            {
+                _camera.Target.TrackingTarget = _characterView.transform;
+            }
             _initialized = true;
             _movementPossible = true;
         }
@@ -97,6 +112,31 @@ public class PlayerController : IPlayerController
     void IPlayerController.Shoot(Vector2 direction)
     {
         //instantiate characters fire here 
+    }
+
+    Vector2 IPlayerController.Dash(Vector2 MoveInput)
+    {
+        if(_moveState == State.Moving && MoveInput!= Vector2.zero && _playerModel.NoOfRoll>0) //also need to addd the stamina part here
+        {
+            _playerModel.NoOfRoll--;
+            _characterView.StartCoroutine(RollDash());
+            _characterView.StartCoroutine(DashCoolDown());
+            return MoveInput;
+        }
+        return Vector2.zero;
+    }
+
+    IEnumerator DashCoolDown()
+    {
+        yield return Awaitable.WaitForSecondsAsync(_playerModel.RolllCooldown);
+        _playerModel.NoOfRoll = _playerModel.NoOfRoll < _playerModel.MaxNoOfRolls ? _playerModel.NoOfRoll + 1 : _playerModel.NoOfRoll ;
+    }
+
+    IEnumerator RollDash()
+    {
+        _moveState = State.RollDash;
+        yield return Awaitable.WaitForSecondsAsync(_playerModel.RollDuration);
+        _moveState = State.Moving;
     }
 }
 

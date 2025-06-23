@@ -11,6 +11,9 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
 {
     public class RoomContentGenerator : MonoBehaviour
     {
+        [Inject] private IAssetService _assetService;
+        [Inject] private IPlayerController _playerController;
+        [Inject] private PlayerPicker _playerPicker;
         [SerializeField]
         private RoomGenerator playerRoom, defaultRoom;
 
@@ -19,7 +22,6 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
         private GraphTest graphTest;
 
         public Transform itemParent;
-        [Inject] private IAssetService _assetService;
         public async Awaitable GenerateRoomContent(DungeonData dungeonData)
         {
             foreach (GameObject obj in spawnedObjects)
@@ -68,6 +70,9 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
                 dungeonData.GetRoomFloorwithoutCorridors(roomIndex),
                 _assetService
                 );
+             Vector2 spawnPosition = (playerRoom as PlayerRoom).GetPlayerSpawnLocation();
+
+            _playerController.SpawnPlayer(spawnPosition, _playerPicker.PickPlayer());
             spawnedObjects.AddRange( placedPrefabs );
             dungeonData.roomsDictionary.Remove(playerSpawnPoint);
         }

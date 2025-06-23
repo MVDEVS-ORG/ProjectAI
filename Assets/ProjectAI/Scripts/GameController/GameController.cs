@@ -16,8 +16,8 @@ public class GameController : IGameController
     }
     async Task IGameController.StartGame()
     {
-        await _dungeonMapController.Initialize();
         await _playerPicker.SetPlayer();
-        await _playerController.SpawnPlayer(Vector3.zero, _playerPicker.PickPlayer());
+        await _dungeonMapController.Initialize();
+        //await _playerController.SpawnPlayer(Vector3.zero, _playerPicker.PickPlayer());
     }
 }
