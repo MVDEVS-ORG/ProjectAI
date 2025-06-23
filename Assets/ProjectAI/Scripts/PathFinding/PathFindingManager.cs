@@ -46,9 +46,9 @@ namespace Assets.ProjectAI.Scripts.PathFinding
                 Debug.LogError($"Baking {isBaked}");
             }
             GameObject enemyGo = Instantiate(enemyPrefab, spawnPosition.position, Quaternion.identity, spawnPosition);
-            /*var enemyAI = enemyGo.GetComponent<EnemyAI>();
+            var enemyAI = enemyGo.GetComponent<EnemyAI>();
             enemyAI.player = player;
-            enemyAI.floorTilemap = floorTilemap;*/
+            enemyAI.floorTilemap = floorTilemap;
         }
 #if UNITY_EDITOR
         private void OnDrawGizmos()
