@@ -22,17 +22,16 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
         private GraphTest graphTest;
 
         public Transform itemParent;
-
-        public void GenerateRoomContent(DungeonData dungeonData)
+        [Inject] private IAssetService _assetService;
+        public async Awaitable GenerateRoomContent(DungeonData dungeonData)
         {
-            Debug.LogError("Generating Room Content");
             foreach (GameObject obj in spawnedObjects)
             {
                 DestroyImmediate(obj);
             }
             spawnedObjects.Clear();
-            SelectPlayerSpawnPoint(dungeonData);
-            SelectEnemySpawnPoint(dungeonData);
+            await SelectPlayerSpawnPoint(dungeonData);
+            await SelectEnemySpawnPoint(dungeonData);
 
             foreach (GameObject obj in spawnedObjects)
             {
@@ -41,22 +40,24 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
             }
         }
 
-        private void SelectEnemySpawnPoint(DungeonData dungeonData)
+        private async Awaitable SelectEnemySpawnPoint(DungeonData dungeonData)
         {
             foreach (KeyValuePair<Vector2Int, HashSet<Vector2Int>> roomData in dungeonData.roomsDictionary)
             {
+                var roomObjects = await defaultRoom.ProcessRoom(
+                    roomData.Key,
+                    roomData.Value,
+                    dungeonData.GetRoomFloorwithoutCorridors(roomData.Key),
+                    _assetService
+                );
                 spawnedObjects.AddRange(
-                    defaultRoom.ProcessRoom(
-                        roomData.Key,
-                        roomData.Value,
-                        dungeonData.GetRoomFloorwithoutCorridors(roomData.Key)
-                        )
+                    roomObjects
                 );
 
             }
         }
 
-        private void SelectPlayerSpawnPoint(DungeonData dungeonData)
+        private async Awaitable SelectPlayerSpawnPoint(DungeonData dungeonData)
         {
             int randomRoomIndex = Random.Range(0, dungeonData.roomsDictionary.Count);
             Vector2Int playerSpawnPoint = dungeonData.roomsDictionary.Keys.ElementAt(randomRoomIndex);
@@ -64,10 +65,11 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
             graphTest.RunDijkstraAlgorithm(playerSpawnPoint, dungeonData.floorPositions);
 
             Vector2Int roomIndex = dungeonData.roomsDictionary.Keys.ElementAt(randomRoomIndex);
-            List<GameObject> placedPrefabs = playerRoom.ProcessRoom(
+            List<GameObject> placedPrefabs = await playerRoom.ProcessRoom(
                 playerSpawnPoint,
                 dungeonData.roomsDictionary.Values.ElementAt(randomRoomIndex),
-                dungeonData.GetRoomFloorwithoutCorridors(roomIndex)
+                dungeonData.GetRoomFloorwithoutCorridors(roomIndex),
+                _assetService
                 );
              Vector2 spawnPosition = (playerRoom as PlayerRoom).GetPlayerSpawnLocation();
 
