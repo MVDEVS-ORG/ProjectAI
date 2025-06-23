@@ -1,4 +1,5 @@
 using Assets.Services;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -127,9 +128,16 @@ public class ObjectPoolManager
 
     public void ReleaseGameObject(GameObject gameObject,PoolType poolType)
     {
-        gameObject.SetActive(false);
-        gameObject.transform.parent = SetParentObject(poolType).transform;
-        _objectPools[_objectPrefabMap[gameObject]].Add(gameObject);
+        try
+        {
+            gameObject.SetActive(false);
+            gameObject.transform.parent = SetParentObject(poolType).transform;
+            _objectPools[_objectPrefabMap[gameObject]].Add(gameObject);
+        }
+        catch(Exception ex)
+        {
+            Debug.LogException(ex);
+        }
     }
 
     public void DestroyObject(GameObject gameobject)

@@ -25,6 +25,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1bae72ca03177bf4f8df9ecf9f34280e
+    m_Address: SimpleBullet
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 22c9f328675568942a63b2770a6a63dc
     m_Address: WallTop
     m_ReadOnly: 0
@@ -107,6 +112,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: dddd5a292d80c0d4ba17c283dd200fd3
     m_Address: pyroDataSO
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ea97c90449b2de04aaee6f9134831bea
+    m_Address: SimpleGun
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

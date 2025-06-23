@@ -10,6 +10,7 @@ public interface IPlayerController
     void Shoot(Vector2 direction);
     State MoveState { get; }
     Vector2 Dash(Vector2 MoveInput);
+    Transform GetPlayerTransform();
 }
 
 public enum State

@@ -12,17 +12,19 @@ public class CharacterView : MonoBehaviour
     private Vector2 _moveInput;
 
     private GameObject _BulletCursor = null;
+    private GameObject _BulletCursorUI = null;
     private PlayerInput _playerInput;
     private Vector3 _lastValidDirection = Vector3.right;
 
     private bool _isControllerInUse = false;
     private Vector2 _rollDirection;
 
-    public void Initialize(IPlayerController playerController, PlayerModel playerModel, GameObject bulletCursor)
+    public void Initialize(IPlayerController playerController, PlayerModel playerModel, GameObject bulletCursor, GameObject bulletCursorUI)
     {
         _playerController = playerController;
         _playerModel = playerModel;
         _BulletCursor = bulletCursor;
+        _BulletCursorUI = bulletCursorUI;
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -89,7 +91,7 @@ public class CharacterView : MonoBehaviour
     {
         if (context.performed)
         {
-            Debug.Log("Performed");
+            _playerController.Shoot((_BulletCursorUI.transform.position-transform.position).normalized);
         }
         if (context.canceled)
         {

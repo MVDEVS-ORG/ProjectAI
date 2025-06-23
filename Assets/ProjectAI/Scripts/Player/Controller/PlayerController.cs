@@ -9,6 +9,7 @@ using Zenject;
 public class PlayerController : IPlayerController
 {
     [Inject] IAssetService _assetService;
+    [Inject] IGunsController _gunsController;
 
     private PlayerModel _playerModel;
     private CharacterView _characterView;// The players view
@@ -37,7 +38,6 @@ public class PlayerController : IPlayerController
     {
         try
         {
-            Debug.LogError(pos);
             //Get the character prefab address
             string prefabAddress = null;
             switch (playerCharacter.CharacterType)
@@ -66,9 +66,12 @@ public class PlayerController : IPlayerController
             _playerModel = new PlayerModel(playerCharacter);
             Debug.Log("PlayerModel initialized");
             //Asign the player model and the controller to the view alongside the player cursor aka reticle for shooting
-            GameObject bulletCursor = await PlayerCursorInitialization();
-            _characterView.Initialize(this, _playerModel, bulletCursor);
+            (GameObject,GameObject) bulletCursor = await PlayerCursorInitialization();
+            _characterView.Initialize(this, _playerModel, bulletCursor.Item1, bulletCursor.Item2);
             Debug.Log("PlayerView Initialized");
+
+            var gun = await _assetService.InstantiateAsync("SimpleGun");
+            _gunsController.SetCurrentActiveGun(gun.GetComponent<GunsView>(), _characterView.transform);
 
             //Create the player UI alongside the player and pass the model for data
             result = await _assetService.InstantiateAsync(AddressableIds.PlayerUI);
@@ -88,13 +91,13 @@ public class PlayerController : IPlayerController
         }
     }
 
-    private async Awaitable<GameObject> PlayerCursorInitialization()
+    private async Awaitable<(GameObject,GameObject)> PlayerCursorInitialization()
     {
         GameObject bulletCursor=await _assetService.InstantiateAsync(AddressableIds.BulletCursor);
         GameObject bulletCursorUI = await _assetService.InstantiateAsync(AddressableIds.BullerCursorUI);
         FollowScript bulletCursorFollow = bulletCursorUI.GetComponent<FollowScript>();
         bulletCursorFollow.Initialize(bulletCursor.transform);
-        return bulletCursor;
+        return (bulletCursor,bulletCursorUI);
     }
 
     void IPlayerController.TakeDamage(int damage)
@@ -111,7 +114,7 @@ public class PlayerController : IPlayerController
 
     void IPlayerController.Shoot(Vector2 direction)
     {
-        //instantiate characters fire here 
+        _gunsController.Fire(direction);
     }
 
     Vector2 IPlayerController.Dash(Vector2 MoveInput)
@@ -137,6 +140,16 @@ public class PlayerController : IPlayerController
         _moveState = State.RollDash;
         yield return Awaitable.WaitForSecondsAsync(_playerModel.RollDuration);
         _moveState = State.Moving;
+    }
+
+    Transform IPlayerController.GetPlayerTransform()
+    {
+        if(_characterView!=null)
+        {
+            return _characterView.transform;
+        }
+        Debug.LogError("Character view is not set");
+        return null;
     }
 }
 
