@@ -22,7 +22,6 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
         private GraphTest graphTest;
 
         public Transform itemParent;
-        [Inject] private IAssetService _assetService;
         public async Awaitable GenerateRoomContent(DungeonData dungeonData)
         {
             foreach (GameObject obj in spawnedObjects)

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 100
   CharacterType: 0
-  Speed: 3
+  Speed: 5
   FireRate: 0
   CursorDistance: 3
   RollDuration: 0.2
