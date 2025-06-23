@@ -15,6 +15,9 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem
         [SerializeField]
         private PrefabPlacer _prefabPlacer;
 
+
+        private Vector2 _playerSpawnPoint = Vector2.zero;
+
         public override List<GameObject> ProcessRoom(Vector2Int roomCenter, HashSet<Vector2Int> roomFloor, HashSet<Vector2Int> roomFloorNoCorridors)
         {
             ItemPlacementHelper itemPlacementHelper = new ItemPlacementHelper(roomFloor,roomFloorNoCorridors);
@@ -22,10 +25,21 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem
             List<GameObject> placedObjects = _prefabPlacer.PlaceAllItems(itemData, itemPlacementHelper);
 
             Vector2Int playerSpawnPoint = roomCenter;
+            _playerSpawnPoint = roomCenter;
             //GameObject playerObject =
                 //_prefabPlacer.CreateObject(player, playerSpawnPoint + new Vector2(0.5f, 0.5f));
             //placedObjects.Add(playerObject);
             return placedObjects;
+        }
+
+        public Vector3 GetPlayerSpawnLocation()
+        {
+            if(_playerSpawnPoint!=Vector2.zero)
+            {
+                return _playerSpawnPoint;
+            }
+            Debug.LogError("Player spawn point is not set for some reason.");
+            return _playerSpawnPoint;
         }
     }
 

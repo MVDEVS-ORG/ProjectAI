@@ -20,6 +20,7 @@ public class GameInstaller : MonoInstaller
         Container.Bind<TilemapVisualizer>().FromInstance(_tilemapVisualizer).AsSingle();
         Container.Inject(_tilemapVisualizer);
         Container.Bind<RoomContentGenerator>().FromInstance(_roomContentGenerator).AsSingle();
+        Container.Inject(_roomContentGenerator);
         Container.Bind<PrefabPlacer>().FromInstance(_prefabPlacer).AsSingle();
         Container.BindInterfacesAndSelfTo<RoomFirstDungeonGenerator>()
             .FromInstance(_roomFirstDungeonGenerator)

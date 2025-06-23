@@ -1,14 +1,19 @@
 ﻿using Assets.ProjectAI.Scripts.DungeonScripts.DecisionSystem;
 using Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem;
+using Assets.Services;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Zenject;
 
 namespace Assets.ProjectAI.Scripts.DungeonScripts
 {
     public class RoomContentGenerator : MonoBehaviour
     {
+        [Inject] private IAssetService _assetService;
+        [Inject] private IPlayerController _playerController;
+        [Inject] private PlayerPicker _playerPicker;
         [SerializeField]
         private RoomGenerator playerRoom, defaultRoom;
 
@@ -64,6 +69,9 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
                 dungeonData.roomsDictionary.Values.ElementAt(randomRoomIndex),
                 dungeonData.GetRoomFloorwithoutCorridors(roomIndex)
                 );
+             Vector2 spawnPosition = (playerRoom as PlayerRoom).GetPlayerSpawnLocation();
+
+            _playerController.SpawnPlayer(spawnPosition, _playerPicker.PickPlayer());
             spawnedObjects.AddRange( placedPrefabs );
             dungeonData.roomsDictionary.Remove(playerSpawnPoint);
         }

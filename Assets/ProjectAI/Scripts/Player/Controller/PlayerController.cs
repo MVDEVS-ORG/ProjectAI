@@ -37,6 +37,7 @@ public class PlayerController : IPlayerController
     {
         try
         {
+            Debug.LogError(pos);
             //Get the character prefab address
             string prefabAddress = null;
             switch (playerCharacter.CharacterType)
@@ -59,7 +60,7 @@ public class PlayerController : IPlayerController
                 throw new Exception("Character type not implemented in addressableIds");
             }
             //instantiate the asset
-            var result = await _assetService.InstantiateAsync(prefabAddress);
+            var result = await _assetService.InstantiateWithPRAsync(prefabAddress, pos , Quaternion.identity);
             _characterView = result.GetComponent<CharacterView>();
             //Create a new player model for that character
             _playerModel = new PlayerModel(playerCharacter);
