@@ -7,9 +7,10 @@ public interface IPlayerController
     bool MovementPossible { get; }
     void TakeDamage(int damage);
     void RestoreHealth(int health);
-    void Shoot(Vector2 direction);
+    void Shoot(bool firing);
     State MoveState { get; }
     Vector2 Dash(Vector2 MoveInput);
+    Transform GetPlayerTransform();
 }
 
 public enum State
