@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8790797904540918420}
   - component: {fileID: 4465635335065950385}
-  - component: {fileID: 7203062366137043366}
+  - component: {fileID: 1018115798818606167}
   m_Layer: 0
   m_Name: SimpleBullet
   m_TagString: Untagged
@@ -88,7 +88,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7203062366137043366
+--- !u!114 &1018115798818606167
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

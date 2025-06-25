@@ -91,11 +91,11 @@ public class CharacterView : MonoBehaviour
     {
         if (context.performed)
         {
-            _playerController.Shoot((_BulletCursorUI.transform.position-transform.position).normalized);
+            _playerController.Shoot(true);
         }
         if (context.canceled)
         {
-            Debug.Log("Cancelled");
+            _playerController.Shoot(false);
         }
     }
 

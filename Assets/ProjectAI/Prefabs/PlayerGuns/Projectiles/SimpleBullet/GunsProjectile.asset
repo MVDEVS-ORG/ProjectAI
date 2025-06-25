@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: GunsProjectile
   m_EditorClassIdentifier: 
   ProjectileDuration: 4
-  ProjectileSpeed: 10
+  ProjectileSpeed: 2
   ProjectileDistance: 0

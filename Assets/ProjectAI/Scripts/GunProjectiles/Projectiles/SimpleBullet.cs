@@ -44,7 +44,6 @@ public class SimpleBullet : MonoBehaviour , IGunProjectileBehavior
     IEnumerator DestroyProjectile()
     {
         yield return Awaitable.WaitForSecondsAsync(ProjectileProperties.ProjectileDuration);
-        Debug.LogError(_objectPoolManager);
         _objectPoolManager.ReleaseGameObject(gameObject, ObjectPoolManager.PoolType.GameObjects);
     }
 

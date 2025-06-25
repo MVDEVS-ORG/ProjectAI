@@ -71,7 +71,7 @@ public class PlayerController : IPlayerController
             Debug.Log("PlayerView Initialized");
 
             var gun = await _assetService.InstantiateAsync("SimpleGun");
-            _gunsController.SetCurrentActiveGun(gun.GetComponent<GunsView>(), _characterView.transform);
+            _gunsController.SetCurrentActiveGun(gun.GetComponent<GunsView>(), _characterView.transform, bulletCursor.Item2.transform);
 
             //Create the player UI alongside the player and pass the model for data
             result = await _assetService.InstantiateAsync(AddressableIds.PlayerUI);
@@ -112,9 +112,9 @@ public class PlayerController : IPlayerController
         _playerUI.AlterHealthBar();
     }
 
-    void IPlayerController.Shoot(Vector2 direction)
+    void IPlayerController.Shoot(bool firing)
     {
-        _gunsController.Fire(direction);
+        _gunsController.Fire(firing);
     }
 
     Vector2 IPlayerController.Dash(Vector2 MoveInput)

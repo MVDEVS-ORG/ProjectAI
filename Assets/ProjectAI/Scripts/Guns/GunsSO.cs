@@ -5,9 +5,11 @@ public class GunsSO : ScriptableObject
 {
     public string PrimaryProjectileAddressable;
     public string SecondaryProjectileAddressable;
+    public string GunUIAddressable;
     public float FireRate;
     public float OverHeatLimit;
     public float OverHeatRate;
     public float CoolDownRate;
     public float MinCooldownThreshold;
+    public float GunWindUpTime;
 }
