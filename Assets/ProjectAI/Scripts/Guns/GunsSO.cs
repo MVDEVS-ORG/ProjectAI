@@ -1,10 +1,15 @@
 using UnityEngine;
 
-public class GunsSO
+[CreateAssetMenu(fileName = "GunsSO", menuName = "Scriptable Objects/GunsSO")]
+public class GunsSO : ScriptableObject
 {
-    public GameObject PrimaryProjectile;
-    public GameObject SecondaryProjectile;
+    public string PrimaryProjectileAddressable;
+    public string SecondaryProjectileAddressable;
+    public string GunUIAddressable;
     public float FireRate;
-    public bool RequiresReload;
-    public float ReloadSpeed;
+    public float OverHeatLimit;
+    public float OverHeatRate;
+    public float CoolDownRate;
+    public float MinCooldownThreshold;
+    public float GunWindUpTime;
 }
