@@ -19,6 +19,6 @@ MonoBehaviour:
   CursorDistance: 3
   RollDuration: 0.2
   RollSpeed: 10
-  MaxNoOfDashes: 2
-  NoOfDashes: 2
-  DashCooldown: 5
+  MaxNoOfRolls: 2
+  NoOfRolls: 2
+  RollCooldown: 2

@@ -28,33 +28,36 @@ namespace Assets.ProjectAI.Scripts.PathFinding
         public bool isBaked => nodes != null;
 
 
-        public GameObject enemyPrefab;
+        /*public GameObject enemyPrefab;
         public Transform spawnPosition;
-        public Transform player;
+        public Transform player;*/
 
         private void Awake()
         {
             if (Instance == null) Instance = this;
             else Destroy(gameObject);
         }
-        private void Start()
+        public async Awaitable<bool> BakeMap()
         {
             BakeGrid();
             Debug.LogError($"Baking {isBaked}");
             while (!isBaked)
             {
+                await Awaitable.EndOfFrameAsync();
                 Debug.LogError($"Baking {isBaked}");
             }
-            GameObject enemyGo = Instantiate(enemyPrefab, spawnPosition.position, Quaternion.identity, spawnPosition);
+            return true;
+/*            GameObject enemyGo = Instantiate(enemyPrefab, spawnPosition.position, Quaternion.identity, spawnPosition);
             var enemyAI = enemyGo.GetComponent<EnemyAI>();
             enemyAI.player = player;
-            enemyAI.floorTilemap = floorTilemap;
+            enemyAI.floorTilemap = floorTilemap;*/
         }
 #if UNITY_EDITOR
         private void OnDrawGizmos()
         {
             if (!debugDrawGrid || nodes == null) return;
 
+            Debug.LogError("coloring");
             for (int x = 0; x < width; x++)
             {
                 for (int y = 0; y < height; y++)
