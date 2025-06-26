@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.ProjectAI.Scripts.PathFinding;
+using System.Collections;
 using UnityEngine;
 
 namespace Assets.ProjectAI.Scripts.DungeonScripts
@@ -12,6 +13,11 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
         public async Awaitable Initialize()
         {
             await roomFirstDungeonGenerator.GenerateDungeon();
+            var isMapBaked = await PathFindingManager.Instance.BakeMap();
+            if (isMapBaked)
+            {
+                Debug.LogError("Baking Complete");
+            }
         }
     }
 }

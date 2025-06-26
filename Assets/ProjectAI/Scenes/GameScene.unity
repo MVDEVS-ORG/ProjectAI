@@ -198,11 +198,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &103436173 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 666736119914924260, guid: 084af825213255f4bbc879f53710542b, type: 3}
-  m_PrefabInstance: {fileID: 1074080882}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &306467598
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,7 +335,28 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!43 &380981065
+--- !u!114 &454358175 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6605950156024319504, guid: 084af825213255f4bbc879f53710542b, type: 3}
+  m_PrefabInstance: {fileID: 1074080882}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4596bcacaf448947afd7796312cc7bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1839735485 &575079548 stripped
+Tilemap:
+  m_CorrespondingSourceObject: {fileID: 7860892945105457831, guid: 084af825213255f4bbc879f53710542b, type: 3}
+  m_PrefabInstance: {fileID: 1074080882}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1839735485 &757459340 stripped
+Tilemap:
+  m_CorrespondingSourceObject: {fileID: 8023739332899901663, guid: 084af825213255f4bbc879f53710542b, type: 3}
+  m_PrefabInstance: {fileID: 1074080882}
+  m_PrefabAsset: {fileID: 0}
+--- !u!43 &809321191
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -505,17 +521,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!114 &454358175 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6605950156024319504, guid: 084af825213255f4bbc879f53710542b, type: 3}
-  m_PrefabInstance: {fileID: 1074080882}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4596bcacaf448947afd7796312cc7bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &985444601 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2090961810433112212, guid: 084af825213255f4bbc879f53710542b, type: 3}
@@ -14559,23 +14564,32 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 666736119914924260, guid: 084af825213255f4bbc879f53710542b, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 3771301518482000598, guid: 084af825213255f4bbc879f53710542b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1074080884}
+      addedObject: {fileID: 1283275186}
   m_SourcePrefab: {fileID: 100100000, guid: 084af825213255f4bbc879f53710542b, type: 3}
---- !u!114 &1074080884
+--- !u!1 &1283275184 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3771301518482000598, guid: 084af825213255f4bbc879f53710542b, type: 3}
+  m_PrefabInstance: {fileID: 1074080882}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1283275186
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 103436173}
+  m_GameObject: {fileID: 1283275184}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9dbd1e1ba7e6e51439681cc2034d82dd, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c2c1e082797e744592649e8a8141b1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomFirstDungeonGenerator: {fileID: 985444601}
+  wallTileMap: {fileID: 575079548}
+  floorTilemap: {fileID: 757459340}
+  debugDrawGrid: 1
+  walkableColor: {r: 0, g: 1, b: 0, a: 0.3}
+  unwalkableColor: {r: 1, g: 0, b: 0, a: 0.3}
 --- !u!43 &1661120371
 Mesh:
   m_ObjectHideFlags: 0
@@ -14818,7 +14832,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7ca6efa2552354a81bf5215b42da5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dungeonMapController: {fileID: 1074080884}
+  cam: {fileID: 0}
+  _dungeonMapController: {fileID: 0}
   _roomFirstDungeonGenerator: {fileID: 985444601}
   _roomContentGenerator: {fileID: 454358175}
   _tilemapVisualizer: {fileID: 2143017242}
