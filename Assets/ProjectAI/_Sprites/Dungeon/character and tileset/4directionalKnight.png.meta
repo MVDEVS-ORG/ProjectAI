@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 4eda27fe042e205418a28275d72ff045
+guid: 3965dad124f913a42910aae5be601061
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 49891880447364413
-    second: SimpleGun_0
+      213: 8594029002341844095
+    second: 4directionalKnight_0
   - first:
-      213: -60522994749556026
-    second: SimpleGun_1
+      213: 1370346917327768984
+    second: 4directionalKnight_1
   - first:
-      213: -1986918706453714674
-    second: SimpleGun_2
+      213: 8035695413771065286
+    second: 4directionalKnight_2
   - first:
-      213: -1474070968204954581
-    second: SimpleGun_3
+      213: -7510354243172994704
+    second: 4directionalKnight_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -57,10 +57,10 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 15
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -135,13 +135,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SimpleGun_0
+      name: 4directionalKnight_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1
         y: 0
-        width: 32
-        height: 32
+        width: 15
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,20 +150,42 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d3dcd33a66041b000800000000000000
-      internalID: 49891880447364413
+      spriteID: f748df138df144770800000000000000
+      internalID: 8594029002341844095
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SimpleGun_1
+      name: 4directionalKnight_1
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 1
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89d8f5ac243740310800000000000000
+      internalID: 1370346917327768984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 4directionalKnight_2
       rect:
         serializedVersion: 2
         x: 32
         y: 0
-        width: 32
-        height: 32
+        width: 15
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,20 +194,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6cab53d28aaf82ff0800000000000000
-      internalID: -60522994749556026
+      spriteID: 6c75f056766848f60800000000000000
+      internalID: 8035695413771065286
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SimpleGun_2
+      name: 4directionalKnight_3
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
-        height: 32
+        x: 50
+        y: 1
+        width: 12
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -194,30 +216,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e096f30b6fb0d64e0800000000000000
-      internalID: -1986918706453714674
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SimpleGun_3
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b247d6ea34c0b8be0800000000000000
-      internalID: -1474070968204954581
+      spriteID: 071735e7b9cd5c790800000000000000
+      internalID: -7510354243172994704
       vertices: []
       indices: 
       edges: []
@@ -226,7 +226,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: a85b3a2b66054c44d90912877ffdaab2
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -236,10 +236,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      SimpleGun_0: 49891880447364413
-      SimpleGun_1: -60522994749556026
-      SimpleGun_2: -1986918706453714674
-      SimpleGun_3: -1474070968204954581
+      4directionalKnight_0: 8594029002341844095
+      4directionalKnight_1: 1370346917327768984
+      4directionalKnight_2: 8035695413771065286
+      4directionalKnight_3: -7510354243172994704
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

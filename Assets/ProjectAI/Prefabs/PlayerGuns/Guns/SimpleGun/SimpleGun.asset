@@ -21,3 +21,9 @@ MonoBehaviour:
   CoolDownRate: 20
   MinCooldownThreshold: 20
   GunWindUpTime: 0
+  ElipseVerticalRadius: 0.5
+  ElipseHorizontalRadius: 1
+  GunRight: {fileID: 49891880447364413, guid: 4eda27fe042e205418a28275d72ff045, type: 3}
+  GunLeft: {fileID: -1986918706453714674, guid: 4eda27fe042e205418a28275d72ff045, type: 3}
+  GunUp: {fileID: -60522994749556026, guid: 4eda27fe042e205418a28275d72ff045, type: 3}
+  GunDown: {fileID: -60522994749556026, guid: 4eda27fe042e205418a28275d72ff045, type: 3}

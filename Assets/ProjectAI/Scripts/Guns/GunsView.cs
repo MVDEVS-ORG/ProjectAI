@@ -13,7 +13,12 @@ public class GunsView : MonoBehaviour
     private ObjectPoolManager _poolManager;
     public Transform GunBulletSpawnTransform;
     private Transform _playerCursor;
+    private SpriteRenderer _spriteRenderer;
 
+    private void Start()
+    {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+    }
     public GunsModel InitializeGun(GunsController controller, ObjectPoolManager objectPoolManager, Transform playerTrasform, Transform playerCursor)
     {
         Debug.Log("Gun initialized");
@@ -58,7 +63,56 @@ public class GunsView : MonoBehaviour
     {
         if(_gunActive)
         {
-            transform.position = _playerTransform.position;
+            /*transform.position = _playerTransform.position;*/
+            OrbitalMotion();
         }
+    }
+
+    public void OrbitalMotion()
+    {
+        float angle = MathF.Atan2(_playerCursor.position.y - _playerTransform.position.y, _playerCursor.position.x - _playerTransform.position.x);
+        if (angle > 0)
+        {
+            _spriteRenderer.sortingOrder = 4;
+        }
+        else
+        {
+            _spriteRenderer.sortingOrder = 10;
+        }
+        transform.position = _playerTransform.position + new Vector3(_gunsModel.ElipseHorizontalRadius * MathF.Sin(Mathf.PI * (0.5f) - angle), _gunsModel.ElipseVerticalRadius * MathF.Cos(Mathf.PI * (0.5f) - angle), transform.position.z);
+        transform.right = (_playerCursor.position - _playerTransform.position).normalized;
+        #region Needs to be improved and tested
+        //Debug.LogError($"abs angle {Mathf.Abs(angle)} && should be greater than {(Mathf.PI / 4)} && should be less than {(float)(Mathf.PI * (3f/ 4f))}");
+        /*if (Mathf.Abs(angle) > (Mathf.PI / 4) && Mathf.Abs(angle) < (Mathf.PI * (3f / 4f)))
+        {
+            if (angle > 0)
+            {
+                _spriteRenderer.sprite = _gunsModel.GunUp;
+            }
+            else
+            {
+                _spriteRenderer.sprite = _gunsModel.GunDown;
+            }
+        }
+        else
+        {
+            if (MathF.Abs(angle) > Mathf.PI / 2)
+            {
+                _spriteRenderer.sprite = _gunsModel.GunLeft;
+            }
+            else
+            {
+                _spriteRenderer.sprite = _gunsModel.GunRight;
+            }
+        }*/
+        if (MathF.Abs(angle) > Mathf.PI / 2)
+        {
+            _spriteRenderer.sprite = _gunsModel.GunLeft;
+        }
+        else
+        {
+            _spriteRenderer.sprite = _gunsModel.GunRight;
+        }
+        #endregion
     }
 }

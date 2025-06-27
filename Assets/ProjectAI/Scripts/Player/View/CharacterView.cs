@@ -12,19 +12,21 @@ public class CharacterView : MonoBehaviour
     private Vector2 _moveInput;
 
     private GameObject _BulletCursor = null;
-    private GameObject _BulletCursorUI = null;
+    private GameObject _bulletCursorUI = null;
     private PlayerInput _playerInput;
     private Vector3 _lastValidDirection = Vector3.right;
 
     private bool _isControllerInUse = false;
     private Vector2 _rollDirection;
 
+    private SpriteRenderer _spriteRenderer;
+
     public void Initialize(IPlayerController playerController, PlayerModel playerModel, GameObject bulletCursor, GameObject bulletCursorUI)
     {
         _playerController = playerController;
         _playerModel = playerModel;
         _BulletCursor = bulletCursor;
-        _BulletCursorUI = bulletCursorUI;
+        _bulletCursorUI = bulletCursorUI;
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -35,6 +37,7 @@ public class CharacterView : MonoBehaviour
         _playerInput = GetComponent<PlayerInput>();
         InputSystem.onDeviceChange += OnDeviceChange;
         CheckInitialControlSchema();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -56,6 +59,7 @@ public class CharacterView : MonoBehaviour
                     _rigidBody.linearVelocity = _rollDirection * _playerModel.RollSpeed;
                     break;
             }
+            TurnCharacter();
         }
         if (_playerInput.currentControlScheme == "Controller" && _BulletCursor != null)
         {
@@ -151,5 +155,37 @@ public class CharacterView : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region to be deleted or improved
+    public void TurnCharacter()
+    {
+        if (_bulletCursorUI!=null && _spriteRenderer!=null)
+        {
+            float angle = Mathf.Atan2(_bulletCursorUI.transform.position.y - transform.position.y, _bulletCursorUI.transform.position.x - transform.position.x);
+            if (MathF.Abs(angle) > (MathF.PI / 4f) && MathF.Abs(angle) < (MathF.PI * 3f / 4f))
+            {
+                if (angle > 0)
+                {
+                    _spriteRenderer.sprite = _playerModel.UpSprite;
+                }
+                else
+                {
+                    _spriteRenderer.sprite = _playerModel.DownSprite;
+                }
+            }
+            else
+            {
+                if (MathF.Abs(angle) > MathF.PI / 2f)
+                {
+                    _spriteRenderer.sprite = _playerModel.LeftSprite;
+                }
+                else
+                {
+                    _spriteRenderer.sprite = _playerModel.RightSprite;
+                }
+            }
+        }
+    }
     #endregion
 }

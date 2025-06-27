@@ -15,10 +15,13 @@ MonoBehaviour:
   MaxHealth: 100
   CharacterType: 0
   Speed: 5
-  FireRate: 0
   CursorDistance: 3
   RollDuration: 0.2
   RollSpeed: 10
   MaxNoOfRolls: 2
   NoOfRolls: 2
   RollCooldown: 2
+  UpSprite: {fileID: -7510354243172994704, guid: 3965dad124f913a42910aae5be601061, type: 3}
+  DownSprite: {fileID: 1370346917327768984, guid: 3965dad124f913a42910aae5be601061, type: 3}
+  LeftSprite: {fileID: 8035695413771065286, guid: 3965dad124f913a42910aae5be601061, type: 3}
+  RightSprite: {fileID: 8594029002341844095, guid: 3965dad124f913a42910aae5be601061, type: 3}
