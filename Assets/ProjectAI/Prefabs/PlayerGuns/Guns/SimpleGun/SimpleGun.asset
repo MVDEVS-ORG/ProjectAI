@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PrimaryProjectileAddressable: SimpleBullet
   SecondaryProjectileAddressable: 
+  GunUIAddressable: SimpleGunUI
   FireRate: 10
-  OverHeatLimit: 19
-  OverHeatRate: 1
-  CoolDownRate: 2
-  MinCooldownThreshold: 3
+  OverHeatLimit: 100
+  OverHeatRate: 5
+  CoolDownRate: 20
+  MinCooldownThreshold: 20
+  GunWindUpTime: 0

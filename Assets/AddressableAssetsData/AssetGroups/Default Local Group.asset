@@ -115,6 +115,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: df74987f9ca26f141b2af642ae8d39c0
+    m_Address: SimpleGunUI
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ea97c90449b2de04aaee6f9134831bea
     m_Address: SimpleGun
     m_ReadOnly: 0
