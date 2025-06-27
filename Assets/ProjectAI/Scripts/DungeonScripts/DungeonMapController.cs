@@ -15,14 +15,18 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
         public async Awaitable Initialize()
         {
             DungeonData data = await roomFirstDungeonGenerator.GenerateDungeon();
-            var isMapBaked = await PathFindingManager.Instance.BakeMap();
+            var isMapBaked = await PathFindingManager.Instance.BakeMap(data);
             if (isMapBaked)
             {
                 Debug.LogError("Baking 1 Complete");
                 isMapBaked = false;
             }
-            await roomContentGenerator.GenerateRoomContent(data);
-            isMapBaked = await PathFindingManager.Instance.BakeMap();
+            var items = await roomContentGenerator.GenerateRoomContent(data);
+            foreach (var item in items)
+            {
+                data.items.Add(item);
+            }
+            isMapBaked = await PathFindingManager.Instance.BakeMap(data);
             if (isMapBaked)
             {
                 Debug.LogError("Baking Complete");

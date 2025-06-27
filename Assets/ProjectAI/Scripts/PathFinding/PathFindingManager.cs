@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using Assets.ProjectAI.Scripts.DungeonScripts;
+
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -37,9 +39,9 @@ namespace Assets.ProjectAI.Scripts.PathFinding
             if (Instance == null) Instance = this;
             else Destroy(gameObject);
         }
-        public async Awaitable<bool> BakeMap()
+        public async Awaitable<bool> BakeMap(DungeonData data)
         {
-            BakeGrid();
+            BakeGrid(data);
             Debug.LogError($"Baking {isBaked}");
             while (!isBaked)
             {
@@ -73,7 +75,7 @@ namespace Assets.ProjectAI.Scripts.PathFinding
         }
 #endif
 
-        void BakeGrid()
+        public void BakeGrid(DungeonData data)
         {
             BoundsInt bounds = wallTileMap.cellBounds;
             width = bounds.size.x;
@@ -83,16 +85,68 @@ namespace Assets.ProjectAI.Scripts.PathFinding
 
             nodes = new PathNode[width, height];
 
+            // Gather room tiles only
+            HashSet<Vector2Int> roomTiles = new HashSet<Vector2Int>();
+            foreach (var kvp in data.roomsDictionary)
+            {
+                roomTiles.UnionWith(kvp.Value);
+            }
+
+            // Collect blocked tiles due to item footprints
+            HashSet<Vector2Int> blockedByItems = new HashSet<Vector2Int>();
+            Debug.LogError(data.items?.Count);
+            if (data.items != null)
+            {
+                foreach (var item in data.items)
+                {
+                    if (item == null) continue;
+
+                    // Get base tile position
+                    Vector3Int itemOriginCell = floorTilemap.WorldToCell(item.transform.position);
+
+                    // Get size of the item
+                    var collider = item.GetComponent<BoxCollider2D>();
+                    if (collider == null)
+                    {
+                        blockedByItems.Add((Vector2Int)itemOriginCell); // fallback
+                        continue;
+                    }
+
+                    Vector2 size = collider.size;
+                    Vector2 offset = collider.offset;
+
+                    // Calculate base world position from item position and collider offset. offset to center using 0.5f
+                    Vector3 baseWorld = item.transform.position + (Vector3)(offset - size * 0.5f); 
+                    Vector3Int baseCell = floorTilemap.WorldToCell(baseWorld);
+
+                    int tileWidth = Mathf.CeilToInt(size.x);
+                    int tileHeight = Mathf.CeilToInt(size.y);
+
+                    for (int dx = 0; dx < tileWidth; dx++)
+                    {
+                        for (int dy = 0; dy < tileHeight; dy++)
+                        {
+                            Vector2Int blockedCell = new Vector2Int(baseCell.x + dx, baseCell.y + dy);
+                            blockedByItems.Add(blockedCell);
+                        }
+                    }
+                }
+            }
+
+            // Bake only walkable tiles
             for (int x = 0; x < width; x++)
             {
                 for (int y = 0; y < height; y++)
                 {
                     Vector3Int cell = new Vector3Int(x + offsetX, y + offsetY, 0);
+                    Vector2Int cell2D = new Vector2Int(cell.x, cell.y);
 
-                    bool isInsideFloor = floorTilemap.HasTile(cell);
+                    if (!roomTiles.Contains(cell2D)) continue;              // Skip if not in room
+                    if (blockedByItems.Contains(cell2D)) continue;          // Skip if item is blocking
+
                     bool isBlocked = wallTileMap.HasTile(cell);
-                    bool isWalkable = isInsideFloor && !isBlocked;
-                    if (!isInsideFloor) continue;
+                    bool isWalkable = !isBlocked;
+
                     nodes[x, y] = new PathNode
                     {
                         position = cell,
@@ -100,8 +154,10 @@ namespace Assets.ProjectAI.Scripts.PathFinding
                     };
                 }
             }
-            Debug.Log("Pathfinding Grid is baked");
+
+            Debug.Log("Room-only Pathfinding Grid (with large items excluded) is baked");
         }
+
 
         public List<Vector3Int> FindPath(Vector3Int startCell, Vector3Int targetCell)
         {
