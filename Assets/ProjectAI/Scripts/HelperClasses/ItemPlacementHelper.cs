@@ -66,32 +66,35 @@ namespace Assets.ProjectAI.Scripts.HelperClasses
             return null;
         }
 
-        private (bool, List<Vector2Int>) PlaceBigItem(Vector2Int originPosition, Vector2Int size, bool addoffset)
+        private (bool, List<Vector2Int>) PlaceBigItem(Vector2Int originPosition, Vector2Int size, bool addOffset)
         {
-            List<Vector2Int> positions = new List<Vector2Int>() { originPosition };
-            int maxX = addoffset ? size.x + 1 : size.x;
-            int maxY = addoffset ? size.y + 1 : size.y;
-            int minX = addoffset ? -1 : 0;
-            int minY = addoffset ? -1 : 0;
+            List<Vector2Int> positions = new();
 
-            for(int row = minX; row <= maxX; row++)
+            // Adjust offset if required
+            int offsetX = addOffset ? -1 : 0;
+            int offsetY = addOffset ? -1 : 0;
+            int width = size.x + (addOffset ? 2 : 0);
+            int height = size.y + (addOffset ? 2 : 0);
+
+            // Treat originPosition as bottom-left corner
+            for (int x = 0; x < width; x++)
             {
-                for(int col = minY; col <= maxY; col++)
+                for (int y = 0; y < height; y++)
                 {
-                    if(col == 0 && row == 0)
+                    Vector2Int pos = new Vector2Int(originPosition.x + offsetX + x, originPosition.y + offsetY + y);
+
+                    if (!roomFloorNoCorridor.Contains(pos))
                     {
-                        continue;
+                        return (false, positions); // early exit on failure
                     }
-                    Vector2Int newPosToCheck = new Vector2Int(originPosition.x + row, originPosition.y + col);
-                    if(roomFloorNoCorridor.Contains(newPosToCheck) == false)
-                    {
-                        return (false, positions);
-                    }
-                    positions.Add(newPosToCheck);
+
+                    positions.Add(pos);
                 }
             }
+
             return (true, positions);
         }
+
     }
 
     public enum PlacementType

@@ -1,5 +1,6 @@
 ﻿using Assets.ProjectAI.Scripts.DungeonScripts.DecisionSystem;
 using Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem;
+using Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items;
 using Assets.Services;
 using System.Collections;
 using System.Collections.Generic;
@@ -22,7 +23,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
         private GraphTest graphTest;
 
         public Transform itemParent;
-        public async Awaitable GenerateRoomContent(DungeonData dungeonData)
+        public async Awaitable<List<Item>> GenerateRoomContent(DungeonData dungeonData)
         {
             foreach (GameObject obj in spawnedObjects)
             {
@@ -37,6 +38,18 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
                 if (obj != null)
                     obj.transform.SetParent(itemParent, false);
             }
+            List<Item> spawnedItem = new List<Item>();
+            spawnedObjects.ForEach(
+                item =>
+                {
+                    var itemComponent = item.GetComponent<Item>();
+                    if ( itemComponent!= null)
+                    {
+                        spawnedItem.Add(itemComponent);
+                    }
+                }
+                );
+            return spawnedItem;
         }
 
         private async Awaitable SelectEnemySpawnPoint(DungeonData dungeonData)
