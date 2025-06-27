@@ -41,19 +41,27 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
 
         private async Awaitable SelectEnemySpawnPoint(DungeonData dungeonData)
         {
+            var playerTransform = await _playerController.GetPlayerTransform();
             foreach (KeyValuePair<Vector2Int, HashSet<Vector2Int>> roomData in dungeonData.roomsDictionary)
             {
                 var roomObjects = await defaultRoom.ProcessRoom(
                     roomData.Key,
                     roomData.Value,
                     dungeonData.GetRoomFloorwithoutCorridors(roomData.Key),
-                    _assetService
+                    _assetService,
+                    playerTransform
                 );
                 spawnedObjects.AddRange(
                     roomObjects
                 );
 
             }
+        }
+
+        public List<GameObject> GetSpawnedGameObjects<T>()
+        {
+            var gameObjects = spawnedObjects.FindAll(go => go.GetComponent<T>() != null);
+            return gameObjects;
         }
 
         private async Awaitable SelectPlayerSpawnPoint(DungeonData dungeonData)

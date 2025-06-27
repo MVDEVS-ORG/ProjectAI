@@ -13,9 +13,10 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
         [SerializeField]
         [Range(0.1f, 1)]
         private float roomPercent = 0.8f;
-        protected override async Awaitable RunProceduralGeneration()
+        protected override async Awaitable<DungeonData> RunProceduralGeneration()
         {
             await CorridorFirstDungeonGeneration();
+            return null;
         }
 
         private async Awaitable CorridorFirstDungeonGeneration()

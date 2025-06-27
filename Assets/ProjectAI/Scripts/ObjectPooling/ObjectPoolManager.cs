@@ -14,6 +14,7 @@ public class ObjectPoolManager
     private GameObject _particleSystemsEmpty;
     private GameObject _gameObjectsEmpty;
     private GameObject _soundFXEmpty;
+    private GameObject _enemies;
 
     private Dictionary<string, List<GameObject>> _objectPools;
     private List<GameObject> _poolObject;
@@ -23,7 +24,8 @@ public class ObjectPoolManager
     {
         ParticleSystems,
         GameObjects,
-        SoundFX
+        SoundFX,
+        Enemies
     }
 
     public PoolType PoolingType;
@@ -47,6 +49,8 @@ public class ObjectPoolManager
         _gameObjectsEmpty.transform.SetParent(_emptyHolder.transform);
         _soundFXEmpty = new GameObject("Sound FX");
         _soundFXEmpty.transform.SetParent(_emptyHolder.transform);
+        _enemies = new GameObject("Enemies");
+        _enemies.transform.SetParent(_emptyHolder.transform);
         GameObject.DontDestroyOnLoad(_emptyHolder);
     }
 
@@ -73,6 +77,8 @@ public class ObjectPoolManager
                 return _particleSystemsEmpty;
             case PoolType.SoundFX:
                 return _soundFXEmpty;
+            case PoolType.Enemies:
+                return _enemies;
             default:
                 return null;
         }

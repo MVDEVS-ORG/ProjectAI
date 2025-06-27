@@ -125,18 +125,36 @@ namespace Assets.ProjectAI.Scripts.PathFinding
             PathNode startNode = nodes[sx, sy];
             PathNode endNode = nodes[tx, ty];
 
-            if (startNode == null || endNode == null)
+            if (startNode == null || endNode == null || !startNode.walkable || !endNode.walkable)
             {
-                Debug.LogWarning("Start or target node is null.");
+                Debug.LogWarning("Start or target node is null or not walkable.");
                 return null;
             }
 
-            if (!startNode.walkable || !endNode.walkable)
+            // 1. Cache original walkability of other enemies' positions
+            Dictionary<PathNode, bool> modifiedNodes = new Dictionary<PathNode, bool>();
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+            foreach (GameObject enemy in enemies)
             {
-                Debug.LogWarning("Start or target node is not walkable.");
-                return null;
+                if (enemy == null || enemy.transform == null) continue;
+
+                Vector3Int enemyCell = floorTilemap.WorldToCell(enemy.transform.position);
+                int ex = enemyCell.x - offsetX;
+                int ey = enemyCell.y - offsetY;
+
+                if (IsInBounds(ex, ey))
+                {
+                    PathNode node = nodes[ex, ey];
+                    if (node != null && node.walkable && node != startNode && node != endNode)
+                    {
+                        modifiedNodes[node] = node.walkable;
+                        node.walkable = false;
+                    }
+                }
             }
 
+            // 2. Reset all nodes
             foreach (var node in nodes)
             {
                 node?.Reset();
@@ -156,6 +174,7 @@ namespace Assets.ProjectAI.Scripts.PathFinding
 
                 if (current == endNode)
                 {
+                    RestoreWalkableNodes(modifiedNodes); // <- restore before return
                     return ReconstrucPath(startNode, endNode);
                 }
 
@@ -169,17 +188,18 @@ namespace Assets.ProjectAI.Scripts.PathFinding
                     PathNode neighbor = nodes[nx, ny];
                     if (neighbor == null || !neighbor.walkable || neighbor.closed) continue;
 
+                    // Diagonal check
                     if (Mathf.Abs(direction.x) == 1 && Mathf.Abs(direction.y) == 1)
                     {
                         Vector3Int horizontal = new Vector3Int(current.position.x + direction.x, current.position.y, 0);
                         Vector3Int vertical = new Vector3Int(current.position.x, current.position.y + direction.y, 0);
 
-                        if (!floorTilemap.HasTile(horizontal) ||
-                            !floorTilemap.HasTile(vertical))
+                        if (!floorTilemap.HasTile(horizontal) || !floorTilemap.HasTile(vertical))
                         {
                             continue;
                         }
                     }
+
                     int moveCost = current.gCost + ((direction.x == 0 || direction.y == 0) ? 10 : 14);
                     if (moveCost < neighbor.gCost)
                     {
@@ -192,9 +212,17 @@ namespace Assets.ProjectAI.Scripts.PathFinding
             }
 
             Debug.LogWarning("No path found.");
+            RestoreWalkableNodes(modifiedNodes);
             return null;
         }
 
+        private void RestoreWalkableNodes(Dictionary<PathNode, bool> modifiedNodes)
+        {
+            foreach (var kvp in modifiedNodes)
+            {
+                kvp.Key.walkable = kvp.Value;
+            }
+        }
 
         private List<Vector3Int> ReconstrucPath(PathNode startnode, PathNode endNode)
         {

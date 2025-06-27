@@ -29,7 +29,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
         [SerializeField]
         private bool showRoomGizmo = false, showCorridorsPositions;
 
-        protected override async Awaitable RunProceduralGeneration()
+        protected override async Awaitable<DungeonData> RunProceduralGeneration()
         {
             ClearRoomData();
             await CreateRooms();
@@ -40,7 +40,8 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
                 corridorPositions = this._corridorPositions,
                 floorPositions = this._floorPositions,
             };
-            await roomContentGenerator.GenerateRoomContent(data);
+            return data;
+            //await roomContentGenerator.GenerateRoomContent(data);
         }
 
         private async Awaitable CreateRooms()
