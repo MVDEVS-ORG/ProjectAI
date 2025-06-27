@@ -45,7 +45,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabPlacer: {fileID: 2182287869053027293, guid: d6acdd40924c5f9409603dd8825c5640, type: 3}
-  enemyPlacementData: []
+  enemyPlacementData:
+  - minQuantity: 2
+    maxQuantity: 6
+    enemyPrefabAddress: Goblin
+    enemySize: {x: 1, y: 1}
   itemData:
   - minQuantity: 3
     maxQuantity: 6

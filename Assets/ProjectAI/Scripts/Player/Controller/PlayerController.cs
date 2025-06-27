@@ -142,14 +142,14 @@ public class PlayerController : IPlayerController
         _moveState = State.Moving;
     }
 
-    Transform IPlayerController.GetPlayerTransform()
+    async Awaitable<Transform> IPlayerController.GetPlayerTransform()
     {
-        if(_characterView!=null)
+        while(_characterView == null)
         {
-            return _characterView.transform;
+            Debug.LogError("Waiting for player to spawn");
+            await Awaitable.EndOfFrameAsync();
         }
-        Debug.LogError("Character view is not set");
-        return null;
+        return _characterView.transform;
     }
 }
 

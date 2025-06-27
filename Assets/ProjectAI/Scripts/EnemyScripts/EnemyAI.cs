@@ -27,7 +27,7 @@ public class EnemyAI : MonoBehaviour
     {
         while (!PathFindingManager.Instance.isBaked)
             yield return null;
-
+        floorTilemap = PathFindingManager.Instance.floorTilemap;
         TransitionToState(new IdleState());
     }
 
@@ -68,12 +68,14 @@ public class EnemyAI : MonoBehaviour
 
     public bool IsPlayerVisible()
     {
+        if (player == null)
+            return false;
         return Vector3.Distance(transform.position, player.position) < detectionRange;
     }
 
     public bool IsPlayerInAttackRange()
     {
-        return Vector3.Distance(transform.position, player.position) < attackRange;
+        return Vector3.Distance(transform.position, player.position) <= attackRange;
     }
     public Vector3Int GetRandomWalkableTile()
     {
@@ -104,7 +106,7 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-#if UNITY_EDITOR
+/*#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         if (currentPath == null || currentPath.Count == 0 || PathFindingManager.Instance == null)
@@ -138,5 +140,5 @@ public class EnemyAI : MonoBehaviour
         Gizmos.color = new Color(1f, 0.3f, 0f); // Orange
         Gizmos.DrawWireSphere(transform.position, attackRange);
     }
-#endif
+#endif*/
 }
