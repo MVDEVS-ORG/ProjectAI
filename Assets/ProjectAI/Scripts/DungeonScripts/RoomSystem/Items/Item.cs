@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Rendering.Universal;
 
 namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items
 {
@@ -13,12 +14,17 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items
         private BoxCollider2D _itemCollider;
 
         [SerializeField]
-        int health = 3;
+        int _health = 3;
         [SerializeField]
-        bool nonDestructible;
+        bool _nonDestructible;
 
         [SerializeField]
-        private GameObject hitFeedback, destroyFeedback;
+        private GameObject _hitFeedback, _destroyFeedback;
+
+        [SerializeField]
+        private Light2D _light;
+        [SerializeField]
+        private ShadowCaster2D _shadowCaster;
 
         public UnityEvent OnGetHit {  get; private set; }
 
@@ -26,23 +32,30 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items
         {
             _spriteRenderer.sprite = itemData.sprite;
             _spriteRenderer.transform.localPosition = new Vector2(0.5f * itemData.size.x, 0.5f * itemData.size.y);
-            _itemCollider.size = itemData.size;
+            //_itemCollider.size = itemData.size;
             _itemCollider.offset = _spriteRenderer.transform.localPosition;
-
+            if(itemData.litObject)
+            {
+                _light.enabled = true;
+            }
+            else
+            {
+                _shadowCaster.enabled = true;
+            }
             if (itemData.nonDestructible)
             {
-                nonDestructible = true;
+                _nonDestructible = true;
             }
-            this.health = itemData.health;
+            this._health = itemData.health;
         }
 
         public void GetHit(int damage, GameObject damageDealer)
         {
-            if (nonDestructible)
+            if (_nonDestructible)
             {
                 return;
             }
-            if (health > 1)
+            if (_health > 1)
             {
                 //Instantiate hit feedback
                 //Instantiate(hitFeedback, spriteRenderer.transform.position, Quaternion.identity);
@@ -56,8 +69,8 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items
 
         private void ReduceHealth()
         {
-            health--;
-            if (health <= 0)
+            _health--;
+            if (_health <= 0)
             {
                 //Show Effects
                 Destroy(gameObject);

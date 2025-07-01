@@ -14,10 +14,14 @@ public class GunsView : MonoBehaviour
     public Transform GunBulletSpawnTransform;
     private Transform _playerCursor;
     private SpriteRenderer _spriteRenderer;
+    private Vector3 _scale;
+    private Vector3 _reverseScale;
 
     private void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _scale = transform.localScale;
+        _reverseScale = new Vector3(transform.localScale.x, -transform.localScale.y, transform.localScale.z);
     }
     public GunsModel InitializeGun(GunsController controller, ObjectPoolManager objectPoolManager, Transform playerTrasform, Transform playerCursor)
     {
@@ -39,7 +43,7 @@ public class GunsView : MonoBehaviour
         _gunActive = false;
     }
 
-    public async Awaitable Fire()
+    public virtual async Awaitable Fire()
     {
         try
         {
@@ -81,38 +85,13 @@ public class GunsView : MonoBehaviour
         }
         transform.position = _playerTransform.position + new Vector3(_gunsModel.ElipseHorizontalRadius * MathF.Sin(Mathf.PI * (0.5f) - angle), _gunsModel.ElipseVerticalRadius * MathF.Cos(Mathf.PI * (0.5f) - angle), transform.position.z);
         transform.right = (_playerCursor.position - _playerTransform.position).normalized;
-        #region Needs to be improved and tested
-        //Debug.LogError($"abs angle {Mathf.Abs(angle)} && should be greater than {(Mathf.PI / 4)} && should be less than {(float)(Mathf.PI * (3f/ 4f))}");
-        /*if (Mathf.Abs(angle) > (Mathf.PI / 4) && Mathf.Abs(angle) < (Mathf.PI * (3f / 4f)))
-        {
-            if (angle > 0)
-            {
-                _spriteRenderer.sprite = _gunsModel.GunUp;
-            }
-            else
-            {
-                _spriteRenderer.sprite = _gunsModel.GunDown;
-            }
-        }
-        else
-        {
-            if (MathF.Abs(angle) > Mathf.PI / 2)
-            {
-                _spriteRenderer.sprite = _gunsModel.GunLeft;
-            }
-            else
-            {
-                _spriteRenderer.sprite = _gunsModel.GunRight;
-            }
-        }*/
         if (MathF.Abs(angle) > Mathf.PI / 2)
         {
-            _spriteRenderer.sprite = _gunsModel.GunLeft;
+            transform.localScale = _reverseScale; 
         }
         else
         {
-            _spriteRenderer.sprite = _gunsModel.GunRight;
+            transform.localScale = _scale;
         }
-        #endregion
     }
 }

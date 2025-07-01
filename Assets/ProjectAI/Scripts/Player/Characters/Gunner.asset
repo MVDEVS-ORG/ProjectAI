@@ -16,7 +16,7 @@ MonoBehaviour:
   CharacterType: 0
   Speed: 5
   CursorDistance: 3
-  RollDuration: 0.2
+  RollDuration: 0.4
   RollSpeed: 10
   MaxNoOfRolls: 2
   NoOfRolls: 2

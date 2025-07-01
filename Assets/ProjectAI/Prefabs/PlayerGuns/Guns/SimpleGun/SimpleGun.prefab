@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 726834444381145426}
   - component: {fileID: 3405238873134761790}
-  - component: {fileID: 2000092569216322155}
+  - component: {fileID: 8713709464044153060}
   m_Layer: 0
   m_Name: SimpleGun
   m_TagString: Untagged
@@ -60,7 +60,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3.58, y: 3.58, z: 3.58}
-  m_ConstrainProportionsScale: 1
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3671848373652129859}
   m_Father: {fileID: 0}
@@ -120,7 +120,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2000092569216322155
+--- !u!114 &8713709464044153060
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
