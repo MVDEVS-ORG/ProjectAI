@@ -17,6 +17,7 @@ public static class AddressableIds
     public const string BullerCursorUI = "bulletCursorUI";
 
     public const string Item = "Item";
+    public const string Goblin = "Goblin";
 
     #region TileMap Addressables
 

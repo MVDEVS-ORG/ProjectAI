@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using Assets.ProjectAI.Scripts.DungeonScripts;
+
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -37,9 +39,9 @@ namespace Assets.ProjectAI.Scripts.PathFinding
             if (Instance == null) Instance = this;
             else Destroy(gameObject);
         }
-        public async Awaitable<bool> BakeMap()
+        public async Awaitable<bool> BakeMap(DungeonData data)
         {
-            BakeGrid();
+            BakeGrid(data);
             Debug.LogError($"Baking {isBaked}");
             while (!isBaked)
             {
@@ -73,7 +75,7 @@ namespace Assets.ProjectAI.Scripts.PathFinding
         }
 #endif
 
-        void BakeGrid()
+        public void BakeGrid(DungeonData data)
         {
             BoundsInt bounds = wallTileMap.cellBounds;
             width = bounds.size.x;
@@ -83,16 +85,68 @@ namespace Assets.ProjectAI.Scripts.PathFinding
 
             nodes = new PathNode[width, height];
 
+            // Gather room tiles only
+            HashSet<Vector2Int> roomTiles = new HashSet<Vector2Int>();
+            foreach (var kvp in data.roomsDictionary)
+            {
+                roomTiles.UnionWith(kvp.Value);
+            }
+
+            // Collect blocked tiles due to item footprints
+            HashSet<Vector2Int> blockedByItems = new HashSet<Vector2Int>();
+            Debug.LogError(data.items?.Count);
+            if (data.items != null)
+            {
+                foreach (var item in data.items)
+                {
+                    if (item == null) continue;
+
+                    // Get base tile position
+                    Vector3Int itemOriginCell = floorTilemap.WorldToCell(item.transform.position);
+
+                    // Get size of the item
+                    var collider = item.GetComponent<BoxCollider2D>();
+                    if (collider == null)
+                    {
+                        blockedByItems.Add((Vector2Int)itemOriginCell); // fallback
+                        continue;
+                    }
+
+                    Vector2 size = collider.size;
+                    Vector2 offset = collider.offset;
+
+                    // Calculate base world position from item position and collider offset. offset to center using 0.5f
+                    Vector3 baseWorld = item.transform.position + (Vector3)(offset - size * 0.5f); 
+                    Vector3Int baseCell = floorTilemap.WorldToCell(baseWorld);
+
+                    int tileWidth = Mathf.CeilToInt(size.x);
+                    int tileHeight = Mathf.CeilToInt(size.y);
+
+                    for (int dx = 0; dx < tileWidth; dx++)
+                    {
+                        for (int dy = 0; dy < tileHeight; dy++)
+                        {
+                            Vector2Int blockedCell = new Vector2Int(baseCell.x + dx, baseCell.y + dy);
+                            blockedByItems.Add(blockedCell);
+                        }
+                    }
+                }
+            }
+
+            // Bake only walkable tiles
             for (int x = 0; x < width; x++)
             {
                 for (int y = 0; y < height; y++)
                 {
                     Vector3Int cell = new Vector3Int(x + offsetX, y + offsetY, 0);
+                    Vector2Int cell2D = new Vector2Int(cell.x, cell.y);
 
-                    bool isInsideFloor = floorTilemap.HasTile(cell);
+                    if (!roomTiles.Contains(cell2D)) continue;              // Skip if not in room
+                    if (blockedByItems.Contains(cell2D)) continue;          // Skip if item is blocking
+
                     bool isBlocked = wallTileMap.HasTile(cell);
-                    bool isWalkable = isInsideFloor && !isBlocked;
-                    if (!isInsideFloor) continue;
+                    bool isWalkable = !isBlocked;
+
                     nodes[x, y] = new PathNode
                     {
                         position = cell,
@@ -100,8 +154,10 @@ namespace Assets.ProjectAI.Scripts.PathFinding
                     };
                 }
             }
-            Debug.Log("Pathfinding Grid is baked");
+
+            Debug.Log("Room-only Pathfinding Grid (with large items excluded) is baked");
         }
+
 
         public List<Vector3Int> FindPath(Vector3Int startCell, Vector3Int targetCell)
         {
@@ -125,18 +181,36 @@ namespace Assets.ProjectAI.Scripts.PathFinding
             PathNode startNode = nodes[sx, sy];
             PathNode endNode = nodes[tx, ty];
 
-            if (startNode == null || endNode == null)
+            if (startNode == null || endNode == null || !startNode.walkable || !endNode.walkable)
             {
-                Debug.LogWarning("Start or target node is null.");
+                Debug.LogWarning("Start or target node is null or not walkable.");
                 return null;
             }
 
-            if (!startNode.walkable || !endNode.walkable)
+            // 1. Cache original walkability of other enemies' positions
+            Dictionary<PathNode, bool> modifiedNodes = new Dictionary<PathNode, bool>();
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+            foreach (GameObject enemy in enemies)
             {
-                Debug.LogWarning("Start or target node is not walkable.");
-                return null;
+                if (enemy == null || enemy.transform == null) continue;
+
+                Vector3Int enemyCell = floorTilemap.WorldToCell(enemy.transform.position);
+                int ex = enemyCell.x - offsetX;
+                int ey = enemyCell.y - offsetY;
+
+                if (IsInBounds(ex, ey))
+                {
+                    PathNode node = nodes[ex, ey];
+                    if (node != null && node.walkable && node != startNode && node != endNode)
+                    {
+                        modifiedNodes[node] = node.walkable;
+                        node.walkable = false;
+                    }
+                }
             }
 
+            // 2. Reset all nodes
             foreach (var node in nodes)
             {
                 node?.Reset();
@@ -156,6 +230,7 @@ namespace Assets.ProjectAI.Scripts.PathFinding
 
                 if (current == endNode)
                 {
+                    RestoreWalkableNodes(modifiedNodes); // <- restore before return
                     return ReconstrucPath(startNode, endNode);
                 }
 
@@ -169,17 +244,18 @@ namespace Assets.ProjectAI.Scripts.PathFinding
                     PathNode neighbor = nodes[nx, ny];
                     if (neighbor == null || !neighbor.walkable || neighbor.closed) continue;
 
+                    // Diagonal check
                     if (Mathf.Abs(direction.x) == 1 && Mathf.Abs(direction.y) == 1)
                     {
                         Vector3Int horizontal = new Vector3Int(current.position.x + direction.x, current.position.y, 0);
                         Vector3Int vertical = new Vector3Int(current.position.x, current.position.y + direction.y, 0);
 
-                        if (!floorTilemap.HasTile(horizontal) ||
-                            !floorTilemap.HasTile(vertical))
+                        if (!floorTilemap.HasTile(horizontal) || !floorTilemap.HasTile(vertical))
                         {
                             continue;
                         }
                     }
+
                     int moveCost = current.gCost + ((direction.x == 0 || direction.y == 0) ? 10 : 14);
                     if (moveCost < neighbor.gCost)
                     {
@@ -192,9 +268,17 @@ namespace Assets.ProjectAI.Scripts.PathFinding
             }
 
             Debug.LogWarning("No path found.");
+            RestoreWalkableNodes(modifiedNodes);
             return null;
         }
 
+        private void RestoreWalkableNodes(Dictionary<PathNode, bool> modifiedNodes)
+        {
+            foreach (var kvp in modifiedNodes)
+            {
+                kvp.Key.walkable = kvp.Value;
+            }
+        }
 
         private List<Vector3Int> ReconstrucPath(PathNode startnode, PathNode endNode)
         {

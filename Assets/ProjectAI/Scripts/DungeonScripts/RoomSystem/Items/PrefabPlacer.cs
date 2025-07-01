@@ -45,7 +45,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items
             return placedObjects;
         }
 
-        public async Awaitable<List<GameObject>> PlaceEnemies(List<EnemyPlacementData> enemyPlacementData, ItemPlacementHelper itemPlacementHelper, IAssetService assetService)
+        public async Awaitable<List<GameObject>> PlaceEnemies(List<EnemyPlacementData> enemyPlacementData, ItemPlacementHelper itemPlacementHelper, IAssetService assetService, Transform characterView)
         {
             List<GameObject> placedObjects = new List<GameObject>();
 
@@ -62,7 +62,8 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items
                     if (possiblePlacementSpot.HasValue)
                     {
                         var go = await CreateObject(placementData.enemyPrefabAddress, possiblePlacementSpot.Value + new Vector2(0.5f, 0.5f), assetService);
-                        placedObjects.Add(go); 
+                        placedObjects.Add(go);
+                        go.GetComponent<EnemyAI>().player = characterView;
                         //Instantiate(placementData.enemyPrefab,possiblePlacementSpot.Value + new Vector2(0.5f, 0.5f), Quaternion.identity)
                     }
                 }

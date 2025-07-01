@@ -5,6 +5,6 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.Interfaces
 {
     public interface IDungeonGenerator
     {
-        Awaitable GenerateDungeon();
+        Awaitable<DungeonData> GenerateDungeon();
     }
 }

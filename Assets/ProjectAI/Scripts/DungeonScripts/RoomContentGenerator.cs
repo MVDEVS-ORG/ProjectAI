@@ -1,5 +1,6 @@
 ﻿using Assets.ProjectAI.Scripts.DungeonScripts.DecisionSystem;
 using Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem;
+using Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items;
 using Assets.Services;
 using System.Collections;
 using System.Collections.Generic;
@@ -22,7 +23,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
         private GraphTest graphTest;
 
         public Transform itemParent;
-        public async Awaitable GenerateRoomContent(DungeonData dungeonData)
+        public async Awaitable<List<Item>> GenerateRoomContent(DungeonData dungeonData)
         {
             foreach (GameObject obj in spawnedObjects)
             {
@@ -37,23 +38,43 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
                 if (obj != null)
                     obj.transform.SetParent(itemParent, false);
             }
+            List<Item> spawnedItem = new List<Item>();
+            spawnedObjects.ForEach(
+                item =>
+                {
+                    var itemComponent = item.GetComponent<Item>();
+                    if ( itemComponent!= null)
+                    {
+                        spawnedItem.Add(itemComponent);
+                    }
+                }
+                );
+            return spawnedItem;
         }
 
         private async Awaitable SelectEnemySpawnPoint(DungeonData dungeonData)
         {
+            var playerTransform = await _playerController.GetPlayerTransform();
             foreach (KeyValuePair<Vector2Int, HashSet<Vector2Int>> roomData in dungeonData.roomsDictionary)
             {
                 var roomObjects = await defaultRoom.ProcessRoom(
                     roomData.Key,
                     roomData.Value,
                     dungeonData.GetRoomFloorwithoutCorridors(roomData.Key),
-                    _assetService
+                    _assetService,
+                    playerTransform
                 );
                 spawnedObjects.AddRange(
                     roomObjects
                 );
 
             }
+        }
+
+        public List<GameObject> GetSpawnedGameObjects<T>()
+        {
+            var gameObjects = spawnedObjects.FindAll(go => go.GetComponent<T>() != null);
+            return gameObjects;
         }
 
         private async Awaitable SelectPlayerSpawnPoint(DungeonData dungeonData)

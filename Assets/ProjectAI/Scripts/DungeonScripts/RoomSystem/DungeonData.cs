@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
         public Dictionary<Vector2Int, HashSet<Vector2Int>> roomsDictionary;
         public HashSet<Vector2Int> floorPositions;
         public HashSet<Vector2Int> corridorPositions;
+        public HashSet<Item> items = new HashSet<Item>();
 
         public HashSet<Vector2Int> GetRoomFloorwithoutCorridors(Vector2Int dictionaryKey)
         {
