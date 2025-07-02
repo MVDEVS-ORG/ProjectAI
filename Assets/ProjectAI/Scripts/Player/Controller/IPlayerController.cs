@@ -11,6 +11,7 @@ public interface IPlayerController
     State MoveState { get; }
     Vector2 Dash(Vector2 MoveInput);
     Awaitable<Transform> GetPlayerTransform();
+    void SwapPlayerGuns(GunsView gun);
 }
 
 public enum State

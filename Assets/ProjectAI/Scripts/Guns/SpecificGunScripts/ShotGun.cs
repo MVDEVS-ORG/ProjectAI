@@ -1,10 +1,11 @@
-using System.Collections;
-using System.Threading.Tasks;
-using UnityEditor.EditorTools;
 using UnityEngine;
 
-public class SimpleGun : GunsView
+public class ShotGun : GunsView
 {
+
+
+    public int NoOfPellets;
+
     private bool StartFiring = false;
     private Awaitable FiringGun;
     private bool _overheat = false;
@@ -12,7 +13,7 @@ public class SimpleGun : GunsView
     {
         _firing = firing;
         Debug.Log("SimpleGunFire");
-        if(FiringGun==null)
+        if (FiringGun == null)
         {
             FiringGun = Firing();
         }
@@ -21,7 +22,7 @@ public class SimpleGun : GunsView
     public override void DeactivateGun(Vector3 position)
     {
         base.DeactivateGun(position);
-        if (FiringGun!=null)
+        if (FiringGun != null)
         {
             FiringGun.Cancel();
             FiringGun = null;
@@ -34,9 +35,9 @@ public class SimpleGun : GunsView
         {
             if (_firing && GunsModel.OverHeatValue < GunsModel.OverHeatLimit && !_overheat)
             {
-                _ = FireBullet();
+                _ = FireBullet((PlayerCursor.position - GunBulletSpawnTransform.position).normalized);
                 GunsModel.OverHeatValue += GunsModel.OverHeatRate;
-                if(GunsModel.OverHeatValue >= GunsModel.OverHeatLimit)
+                if (GunsModel.OverHeatValue >= GunsModel.OverHeatLimit)
                 {
                     _overheat = true;
                 }
@@ -57,14 +58,19 @@ public class SimpleGun : GunsView
             }
         }
     }
-
-    private async Awaitable FireBullet()
+    private async Awaitable FireBullet(Vector3 MainDirection)
     {
-        GameObject bullet = await PoolManager.SpawnObjectAsync(GunsModel.PrimaryProjectileAddressable, GunBulletSpawnTransform.position, Quaternion.identity, ObjectPoolManager.PoolType.GameObjects);
-        IGunProjectileBehavior weaponBehavior = bullet.GetComponent<IGunProjectileBehavior>();
-        weaponBehavior.Initialize(PoolManager);
-        weaponBehavior.SpawnProjectileAnimation();
-        weaponBehavior.AddModifications();
-        weaponBehavior.MoveProjectile((PlayerCursor.position - GunBulletSpawnTransform.position).normalized);
+        float angle = Mathf.Atan2(MainDirection.y, MainDirection.x);
+        float delta = Mathf.PI / 20;
+        float startAngle = angle - (delta * NoOfPellets/2);
+        for (int i = 1; i <= NoOfPellets; i++)
+        {
+            GameObject bullet = await PoolManager.SpawnObjectAsync(GunsModel.PrimaryProjectileAddressable, GunBulletSpawnTransform.position, Quaternion.identity, ObjectPoolManager.PoolType.GameObjects);
+            IGunProjectileBehavior weaponBehavior = bullet.GetComponent<IGunProjectileBehavior>();
+            weaponBehavior.Initialize(PoolManager);
+            weaponBehavior.SpawnProjectileAnimation();
+            weaponBehavior.AddModifications();
+            weaponBehavior.MoveProjectile(new Vector3(Mathf.Cos(startAngle+(i*delta)),Mathf.Sin(startAngle+(i*delta)),0));
+        }
     }
 }

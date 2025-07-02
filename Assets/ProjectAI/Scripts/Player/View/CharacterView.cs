@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -20,6 +21,8 @@ public class CharacterView : MonoBehaviour
     private Vector2 _rollDirection;
 
     private SpriteRenderer _spriteRenderer;
+
+    private List<GameObject> _interactableObjects = new();
 
     public void Initialize(IPlayerController playerController, PlayerModel playerModel, GameObject bulletCursor, GameObject bulletCursorUI)
     {
@@ -111,7 +114,37 @@ public class CharacterView : MonoBehaviour
         }
     }
 
-    
+    public void Interact(InputAction.CallbackContext context)
+    {
+        if (context.performed && _interactableObjects.Count>0)
+        {
+            if (_interactableObjects[0].TryGetComponent<GunsView>(out GunsView gun))
+            {
+                _playerController.SwapPlayerGuns(gun);
+            }
+            else if (_interactableObjects[0].TryGetComponent(out IInteractable interaction))
+            {
+                interaction.Interact();
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.LogError(collision.transform.name);
+        if (collision.transform.TryGetComponent(out IInteractable interactableObject))
+        {
+            _interactableObjects.Add(collision.gameObject);
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (_interactableObjects.Contains(collision.gameObject))
+        {
+            _interactableObjects.Remove(collision.gameObject);
+        }
+    }
+
 
     #region Control schema
     public void InputChange(PlayerInput controller)

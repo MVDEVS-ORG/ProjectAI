@@ -1,71 +1,76 @@
 using Assets.Services;
 using System;
+using System.Collections;
 using UnityEngine;
 using Zenject;
 
-public class GunsView : MonoBehaviour
+public class GunsView : MonoBehaviour, IInteractable
 {
-    private GunsModel _gunsModel;
-    private GunsController _gunsController;
-    private bool _gunActive;
+    [HideInInspector]public GunsModel GunsModel;
+    [HideInInspector]public GunsController GunsController;
+    [HideInInspector] public bool GunActive;
     public GunsSO GunsDataModel;
-    private Transform _playerTransform;
-    private ObjectPoolManager _poolManager;
+    [HideInInspector] public Transform PlayerTransform;
+    [HideInInspector] public ObjectPoolManager PoolManager;
     public Transform GunBulletSpawnTransform;
-    private Transform _playerCursor;
-    private SpriteRenderer _spriteRenderer;
-    private Vector3 _scale;
-    private Vector3 _reverseScale;
+    [HideInInspector] public Transform PlayerCursor;
+    [HideInInspector] public SpriteRenderer SpriteRenderer;
+    [HideInInspector] public Vector3 Scale;
+    [HideInInspector] public Vector3 ReverseScale;
+    [HideInInspector] public BoxCollider2D Collider;
+
+    [HideInInspector] public bool _firing = false;
+    [HideInInspector] public IGunUI GunUI;
 
     private void Start()
     {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-        _scale = transform.localScale;
-        _reverseScale = new Vector3(transform.localScale.x, -transform.localScale.y, transform.localScale.z);
+        SpriteRenderer = GetComponent<SpriteRenderer>();
+        Scale = transform.localScale;
+        ReverseScale = new Vector3(transform.localScale.x, -transform.localScale.y, transform.localScale.z);
+        Collider = GetComponent<BoxCollider2D>();
     }
     public GunsModel InitializeGun(GunsController controller, ObjectPoolManager objectPoolManager, Transform playerTrasform, Transform playerCursor)
     {
         Debug.Log("Gun initialized");
-        _gunsController = controller;
-        if (_gunsModel == null)
+        GunsController = controller;
+        if (GunsModel == null)
         {
-            _gunsModel = new GunsModel(GunsDataModel);
+            GunsModel = new GunsModel(GunsDataModel);
         }
-        _gunActive = true;
-        _playerTransform = playerTrasform;
-        _poolManager = objectPoolManager;
-        _playerCursor = playerCursor;
-        return _gunsModel;
+        GunActive = true;
+        PlayerTransform = playerTrasform;
+        PoolManager = objectPoolManager;
+        PlayerCursor = playerCursor;
+        Collider.enabled = false;
+        return GunsModel;
     }
 
-    public void DeactivateGun()
+    public void SetGunUI(IGunUI gunUI)
     {
-        _gunActive = false;
+        GunUI = gunUI;
     }
 
-    public virtual async Awaitable Fire()
+    public virtual void DeactivateGun(Vector3 position)
     {
-        try
-        {
-            Debug.Log(_gunsModel!=null);
-            GameObject projectile = await _poolManager.SpawnObjectAsync(_gunsModel.PrimaryProjectileAddressable, GunBulletSpawnTransform.position, Quaternion.identity, ObjectPoolManager.PoolType.GameObjects);
-            IGunProjectileBehavior weaponBehavior = projectile.GetComponent<IGunProjectileBehavior>();
-            weaponBehavior.Initialize(_poolManager);
-            weaponBehavior.SpawnProjectileAnimation();
-            weaponBehavior.AddModifications();
-            weaponBehavior.MoveProjectile((_playerCursor.position - GunBulletSpawnTransform.position).normalized);
-            //add projectile spawn and modification logic here adn this should be called by guns controller when the projectile actually needs spawning
-            //Then add the weapon overheat and so on
-        }
-        catch (Exception exception)
-        {
-            Debug.LogError($"{exception.Message}");
-        }
+        GunActive = false;
+        Collider.enabled = true;
+        transform.rotation = Quaternion.identity;
+        transform.localScale = Scale;
+        transform.position = position;
+        PlayerTransform = null;
     }
+
+    public virtual void Fire(bool firing)
+    {
+        _firing = firing;
+        Debug.Log("Firing Trigger is Pressed");
+    }
+
+
 
     public void Update()
     {
-        if(_gunActive)
+        if(GunActive)
         {
             /*transform.position = _playerTransform.position;*/
             OrbitalMotion();
@@ -74,24 +79,29 @@ public class GunsView : MonoBehaviour
 
     public void OrbitalMotion()
     {
-        float angle = MathF.Atan2(_playerCursor.position.y - _playerTransform.position.y, _playerCursor.position.x - _playerTransform.position.x);
+        float angle = MathF.Atan2(PlayerCursor.position.y - PlayerTransform.position.y, PlayerCursor.position.x - PlayerTransform.position.x);
         if (angle > 0)
         {
-            _spriteRenderer.sortingOrder = 4;
+            SpriteRenderer.sortingOrder = 4;
         }
         else
         {
-            _spriteRenderer.sortingOrder = 10;
+            SpriteRenderer.sortingOrder = 10;
         }
-        transform.position = _playerTransform.position + new Vector3(_gunsModel.ElipseHorizontalRadius * MathF.Sin(Mathf.PI * (0.5f) - angle), _gunsModel.ElipseVerticalRadius * MathF.Cos(Mathf.PI * (0.5f) - angle), transform.position.z);
-        transform.right = (_playerCursor.position - _playerTransform.position).normalized;
+        transform.position = PlayerTransform.position + new Vector3(GunsModel.ElipseHorizontalRadius * MathF.Sin(Mathf.PI * (0.5f) - angle), GunsModel.ElipseVerticalRadius * MathF.Cos(Mathf.PI * (0.5f) - angle), transform.position.z);
+        transform.right = (PlayerCursor.position - PlayerTransform.position).normalized;
         if (MathF.Abs(angle) > Mathf.PI / 2)
         {
-            transform.localScale = _reverseScale; 
+            transform.localScale = ReverseScale; 
         }
         else
         {
-            transform.localScale = _scale;
+            transform.localScale = Scale;
         }
+    }
+
+    void IInteractable.Interact()
+    {
+        Debug.Log("GunPickUp Available");
     }
 }

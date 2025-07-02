@@ -21,7 +21,7 @@ public class GunsController : IGunsController
     {
         if (_currentActiveGun != null)
         {
-            _firing = firing;
+            _currentActiveGun.Fire(firing);
         }
         else
         {
@@ -29,48 +29,22 @@ public class GunsController : IGunsController
         }
     }
 
-    async void IGunsController.SetCurrentActiveGun(GunsView gun, Transform playerTransform, Transform playerCursor)
+    async Awaitable IGunsController.SetCurrentActiveGun(GunsView gun, Transform playerTransform, Transform playerCursor)
     {
         _currentActiveGun = gun;
         _gunsModel = gun.InitializeGun(this,_poolManager, playerTransform, playerCursor);
         var gunUIgameObject = await _assetService.InstantiateAsync(_gunsModel.GunUIAddressable);
-        _gunUI = gunUIgameObject.GetComponent<GunUI>();
+        _gunUI = gunUIgameObject.GetComponent<IGunUI>();
         _gunUI.Initialize(_gunsModel, playerTransform);
-        _gunFiring = _currentActiveGun.StartCoroutine(FireGun());
+        gun.SetGunUI(_gunUI);
     }
 
-    void IGunsController.SwapGuns(GunsView gun)
+    async Awaitable IGunsController.SwapGuns(GunsView gun, Transform playerTransform, Transform playerCursor)
     {
-        _currentActiveGun.DeactivateGun();
-        _currentActiveGun.StopCoroutine(_gunFiring);
-        _currentActiveGun = gun;
-    }
-
-    IEnumerator FireGun()
-    {
-        while (_currentActiveGun != null && _gunsModel != null)
-        {
-            if (_firing && _gunsModel.OverHeatValue < _gunsModel.OverHeatLimit && !_overheat)
-            {
-                yield return Awaitable.WaitForSecondsAsync(_gunsModel.GunWindUpTime);
-                _ = _currentActiveGun.Fire();
-                _gunsModel.OverHeatValue += _gunsModel.OverHeatRate;
-                if(_gunsModel.OverHeatValue>=_gunsModel.OverHeatLimit)
-                {
-                    _overheat = true;
-                }
-                yield return Awaitable.WaitForSecondsAsync(1 / _gunsModel.FireRate);
-            }
-            else
-            {
-                yield return Awaitable.EndOfFrameAsync();
-                _gunsModel.OverHeatValue = _gunsModel.OverHeatValue > 0 ? _gunsModel.OverHeatValue - _gunsModel.CoolDownRate * Time.deltaTime : 0;
-                if(_gunsModel.OverHeatValue<_gunsModel.MinCooldownThreshold)
-                {
-                    _overheat = false;
-                }
-            }
-            _gunUI.UpdateCoolDown();
-        }
+        _currentActiveGun.DeactivateGun(gun.transform.position);
+        //_currentActiveGun.StopCoroutine(_gunFiring);
+        GameObject.Destroy((_gunUI as GunUI).gameObject);
+        _gunUI = null;
+        await (this as IGunsController).SetCurrentActiveGun(gun, playerTransform, playerCursor);
     }
 }

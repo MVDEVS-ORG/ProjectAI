@@ -49,6 +49,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "b064a136-324c-4e51-a8d5-2bd124a9902b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -121,7 +130,7 @@
                 {
                     "name": "",
                     "id": "debccb43-6a6b-4216-82b6-451bf5f3efff",
-                    "path": "<Gamepad>/buttonWest",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Controller",
@@ -132,7 +141,7 @@
                 {
                     "name": "",
                     "id": "899ff0e7-4664-41a9-8d55-dc0b3b6147ff",
-                    "path": "<Keyboard>/f",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "KBM",
@@ -181,6 +190,28 @@
                     "processors": "",
                     "groups": ";KBM",
                     "action": "RollDash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ced69d3d-41ab-4e3b-af08-7aeca46288d1",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Controller",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cf89b77a-ac67-4760-936e-db94cf088cfa",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";KBM",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
