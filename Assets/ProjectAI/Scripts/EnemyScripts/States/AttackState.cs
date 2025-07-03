@@ -2,22 +2,24 @@
 
 public class AttackState : IEnemyState
 {
-    private EnemyAI enemy;
+    private EnemyAI _enemy;
+    private Transform _player;
     private float attackCooldown = 1.5f;
     private float timer;
 
-    public void Enter(EnemyAI enemy)
+    public void Enter(EnemyAI enemy, Transform player)
     {
-        this.enemy = enemy;
+        _enemy = enemy;
+        _player = player;
         timer = attackCooldown;
         enemy.StopMovement();
     }
 
     public void Update()
     {
-        if (!enemy.IsPlayerInAttackRange())
+        if (!_enemy.IsPlayerInAttackRange())
         {
-            enemy.TransitionToState(new ChaseState());
+            _enemy.TransitionToState(new ChaseState());
             return;
         }
 
@@ -34,6 +36,6 @@ public class AttackState : IEnemyState
     private void Attack()
     {
         Debug.Log("Enemy attacks!");
-        // You can play animation, shoot bullet, reduce health here
+        // You can play animation, shoot bullet, reduce _health here
     }
 }

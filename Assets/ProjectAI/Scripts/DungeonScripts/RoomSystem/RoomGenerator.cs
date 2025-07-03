@@ -12,7 +12,8 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem
             HashSet<Vector2Int> roomFloor,
             HashSet<Vector2Int> roomFloorNoCorridors,
             IAssetService assetService,
-            Transform playerTransform
+            Transform playerTransform,
+            ObjectPoolManager opManager
         );
     }
 }

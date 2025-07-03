@@ -61,4 +61,14 @@ public class SimpleBullet : MonoBehaviour , IGunProjectileBehavior
         }
         _objectPoolManager.ReleaseGameObject(gameObject,ObjectPoolManager.PoolType.GameObjects);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //create system to deal damage to enemies
+        if (collision.transform.TryGetComponent<IHealthSystem>(out IHealthSystem health))
+        {
+            health.TakeDamage(ProjectileProperties.Damage);
+        }
+        _objectPoolManager.ReleaseGameObject(gameObject, ObjectPoolManager.PoolType.GameObjects);
+    }
 }

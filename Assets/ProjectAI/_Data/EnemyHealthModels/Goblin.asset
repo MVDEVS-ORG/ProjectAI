@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fb3f0347f78d6b439577ae736149fdc, type: 3}
-  m_Name: GunsProjectile
+  m_Script: {fileID: 11500000, guid: 3e691885d13e85d4383e0b4424221464, type: 3}
+  m_Name: Goblin
   m_EditorClassIdentifier: 
-  ProjectileDuration: 4
-  ProjectileSpeed: 8
-  ProjectileDistance: 0
-  Damage: 2
+  MaxHealth: 10
+  Health: 10

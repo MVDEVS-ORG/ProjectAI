@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class SearchState : IEnemyState
 {
-    private EnemyAI enemy;
+    private EnemyAI _enemy;
+    private Transform _player;
     private float searchTime = 3f;
     private float timer;
     private Vector3 lastKnownPos;
 
-    public void Enter(EnemyAI enemy)
+    public void Enter(EnemyAI enemy, Transform player)
     {
-        this.enemy = enemy;
-        lastKnownPos = enemy.player.position;
+        _enemy = enemy;
+        _player = player;
+        lastKnownPos = _player.position;
         Vector3Int start = enemy.floorTilemap.WorldToCell(enemy.transform.position);
         Vector3Int goal = enemy.floorTilemap.WorldToCell(lastKnownPos);
         List<Vector3Int> path = PathFindingManager.Instance.FindPath(start, goal);
@@ -24,15 +26,15 @@ public class SearchState : IEnemyState
     {
         timer += Time.deltaTime;
 
-        if (enemy.IsPlayerVisible())
+        if (_enemy.IsPlayerVisible())
         {
-            enemy.TransitionToState(new ChaseState());
+            _enemy.TransitionToState(new ChaseState());
             return;
         }
 
         if (timer > searchTime)
         {
-            enemy.TransitionToState(new IdleState());
+            _enemy.TransitionToState(new IdleState());
         }
     }
 

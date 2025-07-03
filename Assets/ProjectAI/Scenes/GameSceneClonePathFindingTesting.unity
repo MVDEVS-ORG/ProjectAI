@@ -477,7 +477,7 @@ PrefabInstance:
     - target: {fileID: 8018093379425579728, guid: 084af825213255f4bbc879f53710542b, type: 3}
       propertyPath: m_ShadowMesh.m_Mesh
       value: 
-      objectReference: {fileID: 1071969011}
+      objectReference: {fileID: 966550233}
     - target: {fileID: 8374989604668990844, guid: 084af825213255f4bbc879f53710542b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -646,7 +646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dbd1e1ba7e6e51439681cc2034d82dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!43 &1071969011
+--- !u!43 &966550233
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

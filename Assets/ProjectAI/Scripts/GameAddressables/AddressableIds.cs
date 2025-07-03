@@ -18,6 +18,7 @@ public static class AddressableIds
 
     public const string Item = "Item";
     public const string Goblin = "Goblin";
+    public const string EnemySpawner = "EnemySpawner";
 
     #region TileMap Addressables
 

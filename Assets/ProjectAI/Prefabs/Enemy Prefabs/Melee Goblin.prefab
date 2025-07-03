@@ -843,10 +843,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8db810d4c4191b4181b470c1c55b339, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   floorTilemap: {fileID: 0}
   moveSpeed: 2
   attackRange: 1.5
   detectionRange: 6
+  healthModel: {fileID: 11400000, guid: dd952a87abf29984e94e6f574d9340a4, type: 2}
+  _enemyCollider: {fileID: 8934129548823439409}
   currentPath: []
   currentPathIndex: 0

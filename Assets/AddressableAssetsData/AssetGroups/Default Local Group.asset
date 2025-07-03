@@ -55,6 +55,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 48f266dd4a05b16408bd7850a444eafd
+    m_Address: EnemySpawner
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 56a025a4f1e8ec14ebfa0c2300d95b8e
     m_Address: WallSideRight
     m_ReadOnly: 0

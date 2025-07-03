@@ -64,10 +64,10 @@ public class PlayerController : IPlayerController
             //instantiate the asset
             var result = await _assetService.InstantiateWithPRAsync(prefabAddress, pos , Quaternion.identity);
             _characterView = result.GetComponent<CharacterView>();
-            //Create a new player model for that character
+            //Create a new _player model for that character
             _playerModel = new PlayerModel(playerCharacter);
             Debug.Log("PlayerModel initialized");
-            //Asign the player model and the controller to the view alongside the player cursor aka reticle for shooting
+            //Asign the _player model and the controller to the view alongside the _player cursor aka reticle for shooting
             (GameObject,GameObject) bulletCursor = await PlayerCursorInitialization();
             _characterView.Initialize(this, _playerModel, bulletCursor.Item1, bulletCursor.Item2);
             _bulletCursorUI = bulletCursor.Item2.transform;
@@ -76,7 +76,7 @@ public class PlayerController : IPlayerController
             var gun = await _assetService.InstantiateAsync("SimpleGun");
             await _gunsController.SetCurrentActiveGun(gun.GetComponent<GunsView>(), _characterView.transform, bulletCursor.Item2.transform);
 
-            //Create the player UI alongside the player and pass the model for data
+            //Create the _player UI alongside the _player and pass the model for data
             result = await _assetService.InstantiateAsync(AddressableIds.PlayerUI);
             _playerUI = result.GetComponent<PlayerUI>();
             _playerUI.Initialize(_playerModel);
@@ -149,7 +149,7 @@ public class PlayerController : IPlayerController
     {
         while(_characterView == null)
         {
-            Debug.LogError("Waiting for player to spawn");
+            Debug.LogError("Waiting for _player to spawn");
             await Awaitable.EndOfFrameAsync();
         }
         return _characterView.transform;
