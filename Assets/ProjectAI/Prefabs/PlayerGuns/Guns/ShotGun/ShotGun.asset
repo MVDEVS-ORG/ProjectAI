@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e13508731fb6ce4c94d554fac0acf48, type: 3}
-  m_Name: SimpleGun
+  m_Name: ShotGun
   m_EditorClassIdentifier: 
   PrimaryProjectileAddressable: SimpleBullet
   SecondaryProjectileAddressable: 
   GunUIAddressable: SimpleGunUI
-  FireRate: 10
+  FireRate: 1
   OverHeatLimit: 100
-  OverHeatRate: 5
-  CoolDownRate: 20
+  OverHeatRate: 20
+  CoolDownRate: 10
   MinCooldownThreshold: 20
   GunWindUpTime: 0
   ElipseVerticalRadius: 0.5

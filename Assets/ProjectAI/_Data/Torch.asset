@@ -18,3 +18,4 @@ MonoBehaviour:
   addOffset: 0
   health: -1
   nonDestructible: 1
+  litObject: 1

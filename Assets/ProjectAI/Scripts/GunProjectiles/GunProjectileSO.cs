@@ -6,4 +6,5 @@ public class GunProjectileSO : ScriptableObject
     public float ProjectileDuration;
     public float ProjectileSpeed;
     public float ProjectileDistance;
+    public int Damage;
 }

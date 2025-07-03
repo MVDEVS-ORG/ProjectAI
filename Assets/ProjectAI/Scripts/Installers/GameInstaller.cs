@@ -27,6 +27,8 @@ public class GameInstaller : MonoInstaller
             .AsSingle();
         Container.Bind<DungeonMapController>().FromInstance(_dungeonMapController).AsSingle();
         Container.Bind<IGameController>().To<GameController>().AsCached().NonLazy();
+
+        Container.DeclareSignal<CamEffectsSignal>();
     }
 
     private void PlayerCameraSetup(InjectContext context,object playerController)
