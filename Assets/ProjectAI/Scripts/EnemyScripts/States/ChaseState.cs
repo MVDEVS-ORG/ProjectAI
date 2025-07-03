@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Assets.ProjectAI.Scripts.PathFinding;
 using Assets.ProjectAI.Scripts.EnemyScripts;
-using System.Linq;
 
 public class ChaseState : IEnemyState
 {
@@ -53,9 +52,14 @@ public class ChaseState : IEnemyState
     }
     private Vector3 GetOffsetAroundPlayer(GameObject self, Transform player)
     {
-        List<GameObject> allEnemies = EnemyManager.spawnedEnemies
-        .Where(e => Vector3.Distance(e.transform.position, player.position) < 6f)
-        .ToList();
+        List<GameObject> allEnemies = new List<GameObject>();
+        foreach(var enemy in EnemyManager.spawnedEnemies)
+        {
+            if(Vector3.Distance(enemy.transform.position, player.position) < 6f)
+            {
+                allEnemies.Add(enemy);
+            }   
+        }
         int index = allEnemies.IndexOf(self);
         int nearbyEnemyCount = allEnemies.Count;
         float angle = (360f / Mathf.Max(nearbyEnemyCount, 1)) * index;

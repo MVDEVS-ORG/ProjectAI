@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine.Tilemaps;
 using System.Collections;
 using Assets.ProjectAI.Scripts.PathFinding;
-using Unity.VisualScripting;
 
 public class EnemyAI : MonoBehaviour, IHealthSystem
 {
