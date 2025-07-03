@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using Assets.ProjectAI.Scripts.PathFinding;
+using Assets.ProjectAI.Scripts.EnemyScripts;
+using System.Linq;
 
 public class ChaseState : IEnemyState
 {
@@ -41,23 +43,19 @@ public class ChaseState : IEnemyState
 
     private void RequestPath()
     {
-        Vector3 targetPos = GetOffsetAroundPlayer();
+        Vector3 targetPos = GetOffsetAroundPlayer(enemy.gameObject, enemy.player);
         Vector3Int start = enemy.floorTilemap.WorldToCell(enemy.transform.position);
         Vector3Int goal = enemy.floorTilemap.WorldToCell(targetPos);
         List<Vector3Int> path = PathFindingManager.Instance.FindPath(start, goal);
         enemy.StartPathMovement(path);
     }
-    private Vector3 GetOffsetAroundPlayer()
+    private Vector3 GetOffsetAroundPlayer(GameObject self, Transform player)
     {
-        int nearbyEnemyCount = 0;
-        var allEnemies = GameObject.FindGameObjectsWithTag("Enemy"); // Make sure your enemies are tagged
-        foreach (var e in allEnemies)
-        {
-            if (Vector3.Distance(e.transform.position, enemy.player.position) < 6f)
-                nearbyEnemyCount++;
-        }
-
-        int index = System.Array.IndexOf(allEnemies, enemy.gameObject);
+        List<GameObject> allEnemies = EnemyManager.spawnedEnemies
+        .Where(e => Vector3.Distance(e.transform.position, player.position) < 6f)
+        .ToList();
+        int index = allEnemies.IndexOf(self);
+        int nearbyEnemyCount = allEnemies.Count;
         float angle = (360f / Mathf.Max(nearbyEnemyCount, 1)) * index;
         float radius = 1.5f; // Distance from the player
 

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Assets.ProjectAI.Scripts.DungeonScripts;
+using Assets.ProjectAI.Scripts.EnemyScripts;
+
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -189,9 +191,9 @@ namespace Assets.ProjectAI.Scripts.PathFinding
 
             // 1. Cache original walkability of other enemies' positions
             Dictionary<PathNode, bool> modifiedNodes = new Dictionary<PathNode, bool>();
-            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            var enemies = EnemyManager.spawnedEnemies;
 
-            foreach (GameObject enemy in enemies)
+            foreach (var enemy in enemies)
             {
                 if (enemy == null || enemy.transform == null) continue;
 

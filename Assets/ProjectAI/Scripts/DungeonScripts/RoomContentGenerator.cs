@@ -15,9 +15,11 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
         [Inject] private IAssetService _assetService;
         [Inject] private IPlayerController _playerController;
         [Inject] private PlayerPicker _playerPicker;
+        [Inject] private ObjectPoolManager _objectPoolManager;
+
         [SerializeField]
         private RoomGenerator playerRoom, defaultRoom;
-
+        [SerializeField] GameObject _doorPrefab;
         List<GameObject> spawnedObjects = new List<GameObject>();
         [SerializeField]
         private GraphTest graphTest;
@@ -32,6 +34,16 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
             spawnedObjects.Clear();
             await SelectPlayerSpawnPoint(dungeonData);
             await SelectEnemySpawnPoint(dungeonData);
+
+            foreach (var doorPos in dungeonData.doorPositions)
+            {
+                if (_doorPrefab != null)
+                {
+                    Vector3 spawnWorldPos = new Vector3(doorPos.x + 0.5f, doorPos.y + 0.5f, 0); // center on tile
+                    GameObject doorInstance = GameObject.Instantiate(_doorPrefab, spawnWorldPos, Quaternion.identity);
+                    spawnedObjects.Add(doorInstance);
+                }
+            }
 
             foreach (GameObject obj in spawnedObjects)
             {
@@ -62,7 +74,8 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
                     roomData.Value,
                     dungeonData.GetRoomFloorwithoutCorridors(roomData.Key),
                     _assetService,
-                    playerTransform
+                    playerTransform,
+                    _objectPoolManager
                 );
                 spawnedObjects.AddRange(
                     roomObjects
@@ -93,7 +106,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
                 );
              Vector2 spawnPosition = (playerRoom as PlayerRoom).GetPlayerSpawnLocation();
 
-            _playerController.SpawnPlayer(spawnPosition, _playerPicker.PickPlayer());
+            await _playerController.SpawnPlayer(spawnPosition, _playerPicker.PickPlayer());
             spawnedObjects.AddRange( placedPrefabs );
             dungeonData.roomsDictionary.Remove(playerSpawnPoint);
         }

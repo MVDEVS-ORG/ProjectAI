@@ -1,4 +1,5 @@
 ﻿using Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items;
+using Assets.ProjectAI.Scripts.EnemyScripts;
 using Assets.ProjectAI.Scripts.HelperClasses;
 using Assets.ProjectAI.Scripts.PathFinding;
 using Assets.Services;
@@ -22,7 +23,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem
             HashSet<Vector2Int> roomFloorNoCorridors,
             IAssetService assetService)
         {
-            return await ProcessRoom(roomCenter, roomFloor, roomFloorNoCorridors, assetService, null);
+            return await ProcessRoom(roomCenter, roomFloor, roomFloorNoCorridors, assetService, null, null);
         }
 
         public override async Awaitable<List<GameObject>> ProcessRoom(
@@ -30,7 +31,8 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem
                HashSet<Vector2Int> roomFloor,
                HashSet<Vector2Int> roomFloorNoCorridors,
                IAssetService assetService,
-               Transform playerTransform
+               Transform playerTransform,
+                ObjectPoolManager opManager
            )
         {
             var itemPlacementHelper = new ItemPlacementHelper(roomFloor, roomFloorNoCorridors);
@@ -38,11 +40,11 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem
             Transform characterView = playerTransform;
 
             var placedObjects = await prefabPlacer.PlaceAllItems(itemData, itemPlacementHelper, assetService);
-            while (!PathFindingManager.Instance.isBaked)
-            {
-                await Awaitable.EndOfFrameAsync();
-            }
-            placedObjects.AddRange(await prefabPlacer.PlaceEnemies(enemyPlacementData, itemPlacementHelper, assetService, characterView));
+            /*placedObjects.AddRange(await prefabPlacer.PlaceEnemies(enemyPlacementData, itemPlacementHelper, assetService, characterView));*/
+            var enemySpawnerObj = await assetService.InstantiateWithPRAsync(AddressableIds.EnemySpawner, (Vector3)itemPlacementHelper.GetItemPlacementPosition(PlacementType.OpenSpace, 1, Vector2Int.one, false), Quaternion.identity);
+            placedObjects.Add(enemySpawnerObj);
+            var enemySpawner = enemySpawnerObj.GetComponent<EnemySpawner>();
+            enemySpawner.InitializeSpawner(opManager, enemyPlacementData, itemPlacementHelper, playerTransform);
 
             return placedObjects;
         }

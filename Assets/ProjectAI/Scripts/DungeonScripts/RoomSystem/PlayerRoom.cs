@@ -21,7 +21,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem
         public override async Awaitable<List<GameObject>> ProcessRoom(Vector2Int roomCenter, HashSet<Vector2Int> roomFloor, HashSet<Vector2Int> roomFloorNoCorridors, IAssetService assetService)
 
         {
-            return await ProcessRoom(roomCenter, roomFloor, roomFloorNoCorridors, assetService, null);
+            return await ProcessRoom(roomCenter, roomFloor, roomFloorNoCorridors, assetService, null, null);
         }
 
         public Vector3 GetPlayerSpawnLocation()
@@ -39,7 +39,8 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem
             HashSet<Vector2Int> roomFloor,
             HashSet<Vector2Int> roomFloorNoCorridors,
             IAssetService assetService,
-            Transform playerTransform
+            Transform playerTransform,
+            ObjectPoolManager opManager
         )
         {
             ItemPlacementHelper itemPlacementHelper = new ItemPlacementHelper(roomFloor, roomFloorNoCorridors);
