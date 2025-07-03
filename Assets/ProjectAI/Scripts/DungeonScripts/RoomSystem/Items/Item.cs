@@ -32,7 +32,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items
         {
             _spriteRenderer.sprite = itemData.sprite;
             _spriteRenderer.transform.localPosition = new Vector2(0.5f * itemData.size.x, 0.5f * itemData.size.y);
-            //_itemCollider.size = itemData.size;
+            _itemCollider.size = itemData.size;
             _itemCollider.offset = _spriteRenderer.transform.localPosition;
             if(itemData.litObject)
             {

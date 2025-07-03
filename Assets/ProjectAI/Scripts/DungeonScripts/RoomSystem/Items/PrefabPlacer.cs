@@ -64,7 +64,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items
                     {
                         var go = await opManager.SpawnObjectAsync(placementData.enemyPrefabAddress, possiblePlacementSpot.Value + new Vector2(0.5f, 0.5f), Quaternion.identity, ObjectPoolManager.PoolType.Enemies);
                         placedObjects.Add(go);
-                        go.GetComponent<EnemyAI>().player = characterView;
+                        go.GetComponent<EnemyAI>().InitializeEnemy(characterView, opManager);
                         EnemyManager.spawnedEnemies.Add(go);
                         //Instantiate(placementData.enemyPrefab,possiblePlacementSpot.Value + new Vector2(0.5f, 0.5f), Quaternion.identity)
                     }

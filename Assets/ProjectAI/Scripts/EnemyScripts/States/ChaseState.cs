@@ -6,36 +6,38 @@ using System.Linq;
 
 public class ChaseState : IEnemyState
 {
-    private EnemyAI enemy;
-    private float pathRefreshTime = Random.Range(0.5f, 1f);
-    private float timer;
+    private EnemyAI _enemy;
+    private Transform _player;
+    private float _pathRefreshTime = Random.Range(0.5f, 1f);
+    private float _timer;
 
-    public void Enter(EnemyAI enemy)
+    public void Enter(EnemyAI enemy, Transform player)
     {
-        this.enemy = enemy;
+        _enemy = enemy;
+        _player = player;
         RequestPath();
-        timer = 0f;
+        _timer = 0f;
     }
 
     public void Update()
     {
-        if (!enemy.IsPlayerVisible())
+        if (!_enemy.IsPlayerVisible())
         {
-            enemy.TransitionToState(new SearchState());
+            _enemy.TransitionToState(new SearchState());
             return;
         }
 
-        if (enemy.IsPlayerInAttackRange())
+        if (_enemy.IsPlayerInAttackRange())
         {
-            enemy.TransitionToState(new AttackState());
+            _enemy.TransitionToState(new AttackState());
             return;
         }
 
-        timer += Time.deltaTime;
-        if (timer > pathRefreshTime)
+        _timer += Time.deltaTime;
+        if (_timer > _pathRefreshTime)
         {
             RequestPath();
-            timer = 0f;
+            _timer = 0f;
         }
     }
 
@@ -43,11 +45,11 @@ public class ChaseState : IEnemyState
 
     private void RequestPath()
     {
-        Vector3 targetPos = GetOffsetAroundPlayer(enemy.gameObject, enemy.player);
-        Vector3Int start = enemy.floorTilemap.WorldToCell(enemy.transform.position);
-        Vector3Int goal = enemy.floorTilemap.WorldToCell(targetPos);
+        Vector3 targetPos = GetOffsetAroundPlayer(_enemy.gameObject, _player);
+        Vector3Int start = _enemy.floorTilemap.WorldToCell(_enemy.transform.position);
+        Vector3Int goal = _enemy.floorTilemap.WorldToCell(targetPos);
         List<Vector3Int> path = PathFindingManager.Instance.FindPath(start, goal);
-        enemy.StartPathMovement(path);
+        _enemy.StartPathMovement(path);
     }
     private Vector3 GetOffsetAroundPlayer(GameObject self, Transform player)
     {
@@ -57,7 +59,7 @@ public class ChaseState : IEnemyState
         int index = allEnemies.IndexOf(self);
         int nearbyEnemyCount = allEnemies.Count;
         float angle = (360f / Mathf.Max(nearbyEnemyCount, 1)) * index;
-        float radius = 1.5f; // Distance from the player
+        float radius = 1.5f; // Distance from the _player
 
         Vector3 offset = new Vector3(
             Mathf.Cos(angle * Mathf.Deg2Rad),
@@ -65,6 +67,6 @@ public class ChaseState : IEnemyState
             0
         ) * radius;
 
-        return enemy.player.position + offset;
+        return _player.position + offset;
     }
 }

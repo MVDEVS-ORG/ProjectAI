@@ -483,6 +483,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRoom: {fileID: 7574187362026677088, guid: 5db6deb8911497d4ab22312a97edd53a, type: 3}
   defaultRoom: {fileID: 5217115828469075333, guid: 0dd97d8515920874387cd463f7aa6b13, type: 3}
+  _doorPrefab: {fileID: 1044465160487414943, guid: 4e45843f4fee0534e92f8055c2dafbfc, type: 3}
   graphTest: {fileID: 3099579629096834593}
   itemParent: {fileID: 8574788839658864228}
 --- !u!1 &7606397123137005984

@@ -2,7 +2,7 @@
 
 public class DeadState : IEnemyState
 {
-    public void Enter(EnemyAI enemy)
+    public void Enter(EnemyAI enemy, Transform player)
     {
         GameObject.Destroy(enemy.gameObject);
         //Add Object pooling

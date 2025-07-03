@@ -34,7 +34,7 @@ namespace Assets.ProjectAI.Scripts.PathFinding
 
         /*public GameObject enemyPrefab;
         public Transform spawnPosition;
-        public Transform player;*/
+        public Transform _player;*/
 
         private void Awake()
         {
@@ -53,7 +53,7 @@ namespace Assets.ProjectAI.Scripts.PathFinding
             return true;
 /*            GameObject enemyGo = Instantiate(enemyPrefab, spawnPosition.position, Quaternion.identity, spawnPosition);
             var enemyAI = enemyGo.GetComponent<EnemyAI>();
-            enemyAI.player = player;
+            enemyAI._player = _player;
             enemyAI.floorTilemap = floorTilemap;*/
         }
 #if UNITY_EDITOR

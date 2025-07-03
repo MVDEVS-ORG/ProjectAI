@@ -2,28 +2,28 @@
 
 public class IdleState : IEnemyState
 {
-    private EnemyAI enemy;
+    private EnemyAI _enemy;
     private float waitTime = 2f;
     private float timer;
 
-    public void Enter(EnemyAI enemy)
+    public void Enter(EnemyAI enemy, Transform player)
     {
-        this.enemy = enemy;
+        this._enemy = enemy;
         timer = 0f;
     }
 
     public void Update()
     {
-        if (enemy.IsPlayerVisible())
+        if (_enemy.IsPlayerVisible())
         {
-            enemy.TransitionToState(new ChaseState());
+            _enemy.TransitionToState(new ChaseState());
             return;
         }
 
         timer += Time.deltaTime;
         if (timer > waitTime)
         {
-            enemy.TransitionToState(new PatrolState());
+            _enemy.TransitionToState(new PatrolState());
         }
     }
 
