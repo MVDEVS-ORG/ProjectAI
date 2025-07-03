@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 7159616174197427928}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.13, y: 0.009, z: 0}
+  m_LocalPosition: {x: 0.511, y: 0.009, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -41,10 +41,10 @@ GameObject:
   m_Component:
   - component: {fileID: 726834444381145426}
   - component: {fileID: 3405238873134761790}
-  - component: {fileID: 844477670371865519}
-  - component: {fileID: 255763762318978339}
+  - component: {fileID: 2064932311874430085}
+  - component: {fileID: 6986642673572518593}
   m_Layer: 0
-  m_Name: SimpleGun
+  m_Name: ShotGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60,8 +60,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.58, y: 3.58, z: 3.58}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3671848373652129859}
   m_Father: {fileID: 0}
@@ -110,7 +110,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 20
-  m_Sprite: {fileID: 49891880447364413, guid: 4eda27fe042e205418a28275d72ff045, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4e024ad029743584d94fe1cfc1ac9f6c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -121,7 +121,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &844477670371865519
+--- !u!61 &2064932311874430085
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -155,19 +155,19 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.000579834, y: -0.022583295}
+  m_Offset: {x: 0, y: -0.015820026}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 0.32}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 0.28, y: 0.19}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.28027433, y: 0.17988628}
+  m_Size: {x: 1, y: 0.4339887}
   m_EdgeRadius: 0
---- !u!114 &255763762318978339
+--- !u!114 &6986642673572518593
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -176,11 +176,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8429341738848859878}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e2f12eb20d18de46914ed902cfbcaa4, type: 3}
+  m_Script: {fileID: 11500000, guid: 8b33d7353916da14980785412a1bf687, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   GunActive: 0
-  GunsDataModel: {fileID: 11400000, guid: 90f6f58e26a7c544090ddb73a91c275e, type: 2}
+  GunsDataModel: {fileID: 11400000, guid: e8dbdc8801f804e49bc78431c553d3c3, type: 2}
   PlayerTransform: {fileID: 0}
   GunBulletSpawnTransform: {fileID: 3671848373652129859}
   PlayerCursor: {fileID: 0}
@@ -189,3 +189,4 @@ MonoBehaviour:
   ReverseScale: {x: 0, y: 0, z: 0}
   Collider: {fileID: 0}
   _firing: 0
+  NoOfPellets: 10

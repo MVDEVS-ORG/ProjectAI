@@ -273,10 +273,10 @@ MonoBehaviour:
   tilemapVisualizer: {fileID: 4568488876918413640}
   startPosition: {x: 0, y: 0}
   randomWalkParameters: {fileID: 11400000, guid: 5c1a55e8e6c238a4fab03eaaf293360f, type: 2}
-  minRoomWidth: 10
-  minRoomHeight: 10
-  dungeonWidth: 70
-  dungeonHeight: 70
+  minRoomWidth: 13
+  minRoomHeight: 12
+  dungeonWidth: 100
+  dungeonHeight: 100
   offset: 2
   randomWalkRooms: 0
   roomContentGenerator: {fileID: 6605950156024319504}
@@ -339,6 +339,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4382944735215581816}
   - component: {fileID: 5383001068911224073}
+  - component: {fileID: 6731705574373163731}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -375,6 +376,23 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
+--- !u!114 &6731705574373163731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3771301518482000598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c2c1e082797e744592649e8a8141b1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wallTileMap: {fileID: 7860892945105457831}
+  floorTilemap: {fileID: 8023739332899901663}
+  debugDrawGrid: 1
+  walkableColor: {r: 0, g: 1, b: 0, a: 0.3}
+  unwalkableColor: {r: 1, g: 0, b: 0, a: 0.3}
 --- !u!1 &5964548398302593810
 GameObject:
   m_ObjectHideFlags: 0

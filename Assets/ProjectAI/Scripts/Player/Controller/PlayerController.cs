@@ -24,6 +24,8 @@ public class PlayerController : IPlayerController
 
     private State _moveState = State.Moving;
     State IPlayerController.MoveState => _moveState;
+
+    private Transform _bulletCursorUI;
     public void SetCam(CinemachineCamera cam)
     {
         _camera = cam;
@@ -68,10 +70,11 @@ public class PlayerController : IPlayerController
             //Asign the player model and the controller to the view alongside the player cursor aka reticle for shooting
             (GameObject,GameObject) bulletCursor = await PlayerCursorInitialization();
             _characterView.Initialize(this, _playerModel, bulletCursor.Item1, bulletCursor.Item2);
+            _bulletCursorUI = bulletCursor.Item2.transform;
             Debug.Log("PlayerView Initialized");
 
             var gun = await _assetService.InstantiateAsync("SimpleGun");
-            _gunsController.SetCurrentActiveGun(gun.GetComponent<GunsView>(), _characterView.transform, bulletCursor.Item2.transform);
+            await _gunsController.SetCurrentActiveGun(gun.GetComponent<GunsView>(), _characterView.transform, bulletCursor.Item2.transform);
 
             //Create the player UI alongside the player and pass the model for data
             result = await _assetService.InstantiateAsync(AddressableIds.PlayerUI);
@@ -150,6 +153,11 @@ public class PlayerController : IPlayerController
             await Awaitable.EndOfFrameAsync();
         }
         return _characterView.transform;
+    }
+
+    void IPlayerController.SwapPlayerGuns(GunsView gun)
+    {
+        _gunsController.SwapGuns(gun, _characterView.transform, _bulletCursorUI);
     }
 }
 

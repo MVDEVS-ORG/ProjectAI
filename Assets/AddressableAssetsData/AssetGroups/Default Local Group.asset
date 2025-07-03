@@ -80,6 +80,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 86e1c7b3bc50aa24e8688f7ae146dc69
+    m_Address: ShotGun
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 990709a76d4f9124db8ca4026e79a932
     m_Address: WallDiagonalCornerUpLeft
     m_ReadOnly: 0
