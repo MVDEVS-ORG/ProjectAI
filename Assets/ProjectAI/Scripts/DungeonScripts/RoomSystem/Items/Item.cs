@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.ProjectAI.Scripts.PathFinding;
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -6,7 +7,7 @@ using UnityEngine.Rendering.Universal;
 
 namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items
 {
-    public class Item : MonoBehaviour
+    public class Item : MonoBehaviour, IHealthSystem
     {
         [SerializeField]
         private SpriteRenderer _spriteRenderer;
@@ -15,6 +16,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items
 
         [SerializeField]
         int _health = 3;
+        int _maxHealth = 3;
         [SerializeField]
         bool _nonDestructible;
 
@@ -26,9 +28,11 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items
         [SerializeField]
         private ShadowCaster2D _shadowCaster;
 
-        public UnityEvent OnGetHit {  get; private set; }
+        public int Health => _health;
 
-        public void Initialize(ItemData itemData)
+        public int MaxHealth => _maxHealth;
+
+        public void InitializeItemData(ItemData itemData)
         {
             _spriteRenderer.sprite = itemData.sprite;
             _spriteRenderer.transform.localPosition = new Vector2(0.5f * itemData.size.x, 0.5f * itemData.size.y);
@@ -46,35 +50,39 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items
             {
                 _nonDestructible = true;
             }
-            this._health = itemData.health;
+            _health = itemData.health;
+            _maxHealth = itemData.maxHealth;
         }
 
-        public void GetHit(int damage, GameObject damageDealer)
+        public void TakeDamage(int damage)
         {
             if (_nonDestructible)
             {
                 return;
             }
-            if (_health > 1)
-            {
-                //Instantiate hit feedback
-                //Instantiate(hitFeedback, spriteRenderer.transform.position, Quaternion.identity);
-            }
-            else
-            {
-                //Instantiate(destoyFeedback, spriteRenderer.transform.position, Quaternion.identity);
-            }
-            ReduceHealth();
-        }
-
-        private void ReduceHealth()
-        {
-            _health--;
+            _health = Mathf.Clamp(_health - damage, 0, _maxHealth);
             if (_health <= 0)
             {
-                //Show Effects
+                Debug.LogError("Item destroyed");
+                PathFindingManager.Instance.UnblockItemArea(this);
                 Destroy(gameObject);
             }
+        }
+
+        public void Heal(int healing)
+        {
+            //throw new NotImplementedException();
+        }
+
+        public void Initialize(HealthModels model)
+        {
+            
+            //_health = MaxHealth;
+        }
+
+        public void ResetHealth()
+        {
+            _health = _maxHealth;
         }
     }
 }

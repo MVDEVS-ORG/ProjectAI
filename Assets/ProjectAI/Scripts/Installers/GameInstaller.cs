@@ -18,9 +18,7 @@ public class GameInstaller : MonoInstaller
         Container.Bind<IPlayerController>().To<PlayerController>().AsCached().OnInstantiated(PlayerCameraSetup);
         Container.Bind<IGunsController>().To<GunsController>().AsCached();
         Container.Bind<TilemapVisualizer>().FromInstance(_tilemapVisualizer).AsSingle();
-        Container.Inject(_tilemapVisualizer);
         Container.Bind<RoomContentGenerator>().FromInstance(_roomContentGenerator).AsSingle();
-        Container.Inject(_roomContentGenerator);
         Container.Bind<PrefabPlacer>().FromNewComponentOnNewPrefab(_prefabPlacer).AsTransient();
         Container.BindInterfacesAndSelfTo<RoomFirstDungeonGenerator>()
             .FromInstance(_roomFirstDungeonGenerator)

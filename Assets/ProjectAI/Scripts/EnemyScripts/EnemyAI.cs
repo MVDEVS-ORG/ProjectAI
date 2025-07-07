@@ -48,7 +48,7 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
 
     IEnumerator WaitForBakeAndStart()
     {
-        while (!PathFindingManager.Instance.isBaked)
+        while (!PathFindingManager.Instance.IsMapBaked)
             yield return null;
         floorTilemap = PathFindingManager.Instance.floorTilemap;
         TransitionToState(new IdleState());

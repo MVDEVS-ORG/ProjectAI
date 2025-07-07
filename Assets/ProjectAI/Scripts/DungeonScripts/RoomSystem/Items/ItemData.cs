@@ -12,6 +12,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items
         public PlacementType placementType;
         public bool addOffset;
         public int health = 1;
+        public int maxHealth = 3;
         public bool nonDestructible;
         public bool litObject;
     }

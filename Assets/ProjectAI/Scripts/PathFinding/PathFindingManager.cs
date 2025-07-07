@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Assets.ProjectAI.Scripts.DungeonScripts;
-using Assets.ProjectAI.Scripts.EnemyScripts;
-
+using Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -23,61 +21,32 @@ namespace Assets.ProjectAI.Scripts.PathFinding
 
         [Header("Debug Grid (Editor Only)")]
         public bool debugDrawGrid = true;
-        public Color walkableColor = new Color(0, 1, 0, 0.3f);   // semi-transparent green
-        public Color unwalkableColor = new Color(1, 0, 0, 0.3f); // semi-transparent red
+        public Color walkableColor = new Color(0, 1, 0, 0.3f);
+        public Color unwalkableColor = new Color(1, 0, 0, 0.3f);
 
         private PathNode[,] nodes;
+        private bool[,] baseWalkable;
+        private HashSet<Vector2Int> blockedByItems = new HashSet<Vector2Int>();
+
         private int width, height, offsetX, offsetY;
+        private bool _initialBaked = false;
+        private bool _itemsBaked = false;
 
-        public bool isBaked => nodes != null;
-
-
-        /*public GameObject enemyPrefab;
-        public Transform spawnPosition;
-        public Transform _player;*/
+        /// <summary>
+        /// True once both static and item bakes have been performed successfully.
+        /// </summary>
+        public bool IsMapBaked => _initialBaked && _itemsBaked;
 
         private void Awake()
         {
             if (Instance == null) Instance = this;
             else Destroy(gameObject);
         }
-        public async Awaitable<bool> BakeMap(DungeonData data)
-        {
-            BakeGrid(data);
-            Debug.LogError($"Baking {isBaked}");
-            while (!isBaked)
-            {
-                await Awaitable.EndOfFrameAsync();
-                Debug.LogError($"Baking {isBaked}");
-            }
-            return true;
-/*            GameObject enemyGo = Instantiate(enemyPrefab, spawnPosition.position, Quaternion.identity, spawnPosition);
-            var enemyAI = enemyGo.GetComponent<EnemyAI>();
-            enemyAI._player = _player;
-            enemyAI.floorTilemap = floorTilemap;*/
-        }
-#if UNITY_EDITOR
-        private void OnDrawGizmos()
-        {
-            if (!debugDrawGrid || nodes == null) return;
 
-            Debug.LogError("coloring");
-            for (int x = 0; x < width; x++)
-            {
-                for (int y = 0; y < height; y++)
-                {
-                    PathNode node = nodes[x, y];
-                    if (node == null) continue;
-
-                    Vector3 worldPos = wallTileMap.GetCellCenterWorld(node.position);
-                    Gizmos.color = node.walkable ? walkableColor : unwalkableColor;
-                    Gizmos.DrawCube(worldPos, Vector3.one * 0.9f);
-                }
-            }
-        }
-#endif
-
-        public void BakeGrid(DungeonData data)
+        /// <summary>
+        /// Static initial bake: rooms, corridors, walls.
+        /// </summary>
+        public void InitialBake(DungeonData data)
         {
             BoundsInt bounds = wallTileMap.cellBounds;
             width = bounds.size.x;
@@ -86,182 +55,198 @@ namespace Assets.ProjectAI.Scripts.PathFinding
             offsetY = bounds.yMin;
 
             nodes = new PathNode[width, height];
+            baseWalkable = new bool[width, height];
 
-            // Gather room tiles only
-            HashSet<Vector2Int> roomTiles = new HashSet<Vector2Int>();
+            // Combine room and corridor tiles
+            HashSet<Vector2Int> walkableTiles = new HashSet<Vector2Int>();
             foreach (var kvp in data.roomsDictionary)
-            {
-                roomTiles.UnionWith(kvp.Value);
-            }
+                walkableTiles.UnionWith(kvp.Value);
+            walkableTiles.UnionWith(data.corridorPositions);
 
-            // Collect blocked tiles due to item footprints
-            HashSet<Vector2Int> blockedByItems = new HashSet<Vector2Int>();
-            Debug.LogError(data.items?.Count);
-            if (data.items != null)
-            {
-                foreach (var item in data.items)
-                {
-                    if (item == null) continue;
-
-                    // Get base tile position
-                    Vector3Int itemOriginCell = floorTilemap.WorldToCell(item.transform.position);
-
-                    // Get size of the item
-                    var collider = item.GetComponent<BoxCollider2D>();
-                    if (collider == null)
-                    {
-                        blockedByItems.Add((Vector2Int)itemOriginCell); // fallback
-                        continue;
-                    }
-
-                    Vector2 size = collider.size;
-                    Vector2 offset = collider.offset;
-
-                    // Calculate base world position from item position and collider offset. offset to center using 0.5f
-                    Vector3 baseWorld = item.transform.position + (Vector3)(offset - size * 0.5f); 
-                    Vector3Int baseCell = floorTilemap.WorldToCell(baseWorld);
-
-                    int tileWidth = Mathf.CeilToInt(size.x);
-                    int tileHeight = Mathf.CeilToInt(size.y);
-
-                    for (int dx = 0; dx < tileWidth; dx++)
-                    {
-                        for (int dy = 0; dy < tileHeight; dy++)
-                        {
-                            Vector2Int blockedCell = new Vector2Int(baseCell.x + dx, baseCell.y + dy);
-                            blockedByItems.Add(blockedCell);
-                        }
-                    }
-                }
-            }
-
-            // Bake only walkable tiles
             for (int x = 0; x < width; x++)
             {
                 for (int y = 0; y < height; y++)
                 {
                     Vector3Int cell = new Vector3Int(x + offsetX, y + offsetY, 0);
-                    Vector2Int cell2D = new Vector2Int(cell.x, cell.y);
-
-                    if (!roomTiles.Contains(cell2D)) continue;              // Skip if not in room
-                    if (blockedByItems.Contains(cell2D)) continue;          // Skip if item is blocking
-
-                    bool isBlocked = wallTileMap.HasTile(cell);
-                    bool isWalkable = !isBlocked;
-
-                    nodes[x, y] = new PathNode
-                    {
-                        position = cell,
-                        walkable = isWalkable,
-                    };
+                    Vector2Int c2 = new Vector2Int(cell.x, cell.y);
+                    bool canWalk = walkableTiles.Contains(c2) && !wallTileMap.HasTile(cell);
+                    baseWalkable[x, y] = canWalk;
+                    nodes[x, y] = new PathNode { position = cell, walkable = canWalk };
                 }
             }
 
-            Debug.Log("Room-only Pathfinding Grid (with large items excluded) is baked");
+            _initialBaked = true;
+
+#if UNITY_EDITOR
+            if (debugDrawGrid) SceneView.RepaintAll();
+#endif
         }
 
+        /// <summary>
+        /// Awaitable wrapper around InitialBake.
+        /// </summary>
+        public async Awaitable<bool> InitialBakeAsync(DungeonData data)
+        {
+            try
+            {
+                _initialBaked = false;
+                InitialBake(data);
+                await Awaitable.NextFrameAsync();
+                _itemsBaked = false; // require items bake afterwards
+                return true;
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError($"InitialBakeAsync failed: {e}");
+                return false;
+            }
+        }
 
+        /// <summary>
+        /// Apply all current items as blocked areas.
+        /// </summary>
+        public void BakeItems(DungeonData data)
+        {
+            blockedByItems.Clear();
+            _itemsBaked = false;
+
+            if (data.items != null)
+                foreach (var item in data.items)
+                    BlockItemArea(item);
+
+            _itemsBaked = true;
+        }
+
+        /// <summary>
+        /// Awaitable wrapper around BakeItems.
+        /// </summary>
+        public async Awaitable<bool> BakeItemsAsync(DungeonData data)
+        {
+            try
+            {
+                BakeItems(data);
+                await Awaitable.NextFrameAsync();
+                return true;
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError($"BakeItemsAsync failed: {e}");
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Block tiles under an item immediately.
+        /// </summary>
+        public void BlockItemArea(Item item)
+        {
+            if (item == null) return;
+            var collider = item.GetComponent<BoxCollider2D>();
+            if (collider == null) return;
+            Bounds b = collider.bounds;
+            Vector3Int minCell = floorTilemap.WorldToCell(b.min);
+            Vector3Int maxCell = floorTilemap.WorldToCell(b.max - new Vector3(0.001f, 0.001f, 0));
+            for (int wx = minCell.x; wx <= maxCell.x; wx++)
+                for (int wy = minCell.y; wy <= maxCell.y; wy++)
+                {
+                    var pos = new Vector2Int(wx, wy);
+                    blockedByItems.Add(pos);
+                    int ix = wx - offsetX, iy = wy - offsetY;
+                    if (IsInBounds(ix, iy) && nodes[ix, iy] != null)
+                        nodes[ix, iy].walkable = false;
+                }
+#if UNITY_EDITOR
+            if (debugDrawGrid) SceneView.RepaintAll();
+#endif
+        }
+
+        /// <summary>
+        /// Unblock tiles under a destroyed item immediately.
+        /// </summary>
+        public void UnblockItemArea(Item item)
+        {
+            if (item == null) return;
+            var collider = item.GetComponent<BoxCollider2D>();
+            if (collider == null) return;
+            Bounds b = collider.bounds;
+            Vector3Int minCell = floorTilemap.WorldToCell(b.min);
+            Vector3Int maxCell = floorTilemap.WorldToCell(b.max - new Vector3(0.001f, 0.001f, 0));
+            for (int wx = minCell.x; wx <= maxCell.x; wx++)
+                for (int wy = minCell.y; wy <= maxCell.y; wy++)
+                {
+                    var pos = new Vector2Int(wx, wy);
+                    blockedByItems.Remove(pos);
+                    int ix = wx - offsetX, iy = wy - offsetY;
+                    if (IsInBounds(ix, iy) && nodes[ix, iy] != null)
+                        nodes[ix, iy].walkable = baseWalkable[ix, iy];
+                }
+#if UNITY_EDITOR
+            if (debugDrawGrid) SceneView.RepaintAll();
+#endif
+        }
+
+        /// <summary>
+        /// Find a path using A* from start to target.
+        /// </summary>
         public List<Vector3Int> FindPath(Vector3Int startCell, Vector3Int targetCell)
         {
-            if (nodes == null)
-            {
-                Debug.LogWarning("Pathfinding grid not baked yet.");
-                return null;
-            }
+            if (nodes == null) return null;
 
             int sx = startCell.x - offsetX;
             int sy = startCell.y - offsetY;
             int tx = targetCell.x - offsetX;
             int ty = targetCell.y - offsetY;
 
-            if (!IsInBounds(sx, sy) || !IsInBounds(tx, ty))
-            {
-                Debug.LogWarning($"Start or target out of bounds. Start: {sx},{sy}, Target: {tx},{ty}");
-                return null;
-            }
+            if (!IsInBounds(sx, sy) || !IsInBounds(tx, ty)) return null;
 
             PathNode startNode = nodes[sx, sy];
             PathNode endNode = nodes[tx, ty];
+            if (startNode == null || endNode == null) return null;
 
-            if (startNode == null || endNode == null || !startNode.walkable || !endNode.walkable)
-            {
-                Debug.LogWarning("Start or target node is null or not walkable.");
-                return null;
-            }
+            // Check static and dynamic walkability
+            if (!baseWalkable[sx, sy] || !baseWalkable[tx, ty]) return null;
+            if (blockedByItems.Contains((Vector2Int)startCell) || blockedByItems.Contains((Vector2Int)targetCell)) return null;
 
-            // 1. Cache original walkability of other enemies' positions
-            Dictionary<PathNode, bool> modifiedNodes = new Dictionary<PathNode, bool>();
-            var enemies = EnemyManager.spawnedEnemies;
-
-            foreach (var enemy in enemies)
-            {
-                if (enemy == null || enemy.transform == null) continue;
-
-                Vector3Int enemyCell = floorTilemap.WorldToCell(enemy.transform.position);
-                int ex = enemyCell.x - offsetX;
-                int ey = enemyCell.y - offsetY;
-
-                if (IsInBounds(ex, ey))
-                {
-                    PathNode node = nodes[ex, ey];
-                    if (node != null && node.walkable && node != startNode && node != endNode)
-                    {
-                        modifiedNodes[node] = node.walkable;
-                        node.walkable = false;
-                    }
-                }
-            }
-
-            // 2. Reset all nodes
+            // Reset nodes
             foreach (var node in nodes)
-            {
                 node?.Reset();
-            }
 
+            // A* setup
             startNode.gCost = 0;
             startNode.hCost = Heuristic(startNode.position, endNode.position);
-
             var openSet = new SimplePriorityQueue<PathNode>();
             openSet.Enqueue(startNode, startNode.fCost);
 
             while (openSet.Count > 0)
             {
                 PathNode current = openSet.Dequeue();
-                if (current.closed) continue;
                 current.closed = true;
 
                 if (current == endNode)
-                {
-                    RestoreWalkableNodes(modifiedNodes); // <- restore before return
                     return ReconstrucPath(startNode, endNode);
-                }
 
-                foreach (var direction in Direction2D.eightDirectionList)
+                foreach (var dir in Direction2D.eightDirectionList)
                 {
-                    int nx = current.position.x - offsetX + direction.x;
-                    int ny = current.position.y - offsetY + direction.y;
-
+                    int nx = current.position.x - offsetX + dir.x;
+                    int ny = current.position.y - offsetY + dir.y;
                     if (!IsInBounds(nx, ny)) continue;
 
                     PathNode neighbor = nodes[nx, ny];
-                    if (neighbor == null || !neighbor.walkable || neighbor.closed) continue;
+                    if (neighbor == null || neighbor.closed || !neighbor.walkable) continue;
 
-                    // Diagonal check
-                    if (Mathf.Abs(direction.x) == 1 && Mathf.Abs(direction.y) == 1)
+                    // Diagonal corner-cutting check
+                    if (dir.x != 0 && dir.y != 0)
                     {
-                        Vector3Int horizontal = new Vector3Int(current.position.x + direction.x, current.position.y, 0);
-                        Vector3Int vertical = new Vector3Int(current.position.x, current.position.y + direction.y, 0);
-
-                        if (!floorTilemap.HasTile(horizontal) || !floorTilemap.HasTile(vertical))
-                        {
+                        Vector3Int c1 = new Vector3Int(current.position.x + dir.x, current.position.y, 0);
+                        Vector3Int c2 = new Vector3Int(current.position.x, current.position.y + dir.y, 0);
+                        if (!floorTilemap.HasTile(c1) || !floorTilemap.HasTile(c2))
                             continue;
-                        }
                     }
 
-                    int moveCost = current.gCost + ((direction.x == 0 || direction.y == 0) ? 10 : 14);
-                    if (moveCost < neighbor.gCost)
+                    int newCost = current.gCost + ((dir.x == 0 || dir.y == 0) ? 10 : 14);
+                    if (newCost < neighbor.gCost)
                     {
-                        neighbor.gCost = moveCost;
+                        neighbor.gCost = newCost;
                         neighbor.hCost = Heuristic(neighbor.position, endNode.position);
                         neighbor.parent = current;
                         openSet.Enqueue(neighbor, neighbor.fCost);
@@ -269,32 +254,27 @@ namespace Assets.ProjectAI.Scripts.PathFinding
                 }
             }
 
-            Debug.LogWarning("No path found.");
-            RestoreWalkableNodes(modifiedNodes);
             return null;
         }
 
-        private void RestoreWalkableNodes(Dictionary<PathNode, bool> modifiedNodes)
+#if UNITY_EDITOR
+        private void OnDrawGizmos()
         {
-            foreach (var kvp in modifiedNodes)
-            {
-                kvp.Key.walkable = kvp.Value;
-            }
-        }
+            if (!debugDrawGrid || nodes == null) return;
+            for (int x = 0; x < width; x++)
+                for (int y = 0; y < height; y++)
+                {
+                    var node = nodes[x, y];
+                    if (node == null) continue;
 
-        private List<Vector3Int> ReconstrucPath(PathNode startnode, PathNode endNode)
-        {
-            List<Vector3Int> path = new();
-            PathNode current = endNode;
-
-            while (current != startnode)
-            {
-                path.Add(current.position);
-                current = current.parent;
-            }
-            path.Reverse();
-            return path;
+                    Vector2Int coord = new Vector2Int(node.position.x, node.position.y);
+                    bool showWalkable = baseWalkable[x, y] && !blockedByItems.Contains(coord);
+                    Vector3 worldPos = wallTileMap.GetCellCenterWorld(node.position);
+                    Gizmos.color = showWalkable ? walkableColor : unwalkableColor;
+                    Gizmos.DrawCube(worldPos, Vector3.one * 0.9f);
+                }
         }
+#endif
 
         private int Heuristic(Vector3Int a, Vector3Int b)
         {
@@ -303,12 +283,26 @@ namespace Assets.ProjectAI.Scripts.PathFinding
             return 14 * Mathf.Min(dx, dy) + 10 * Mathf.Abs(dx - dy);
         }
 
+        private List<Vector3Int> ReconstrucPath(PathNode startNode, PathNode endNode)
+        {
+            List<Vector3Int> path = new List<Vector3Int>();
+            PathNode current = endNode;
+            while (current != startNode)
+            {
+                path.Add(current.position);
+                current = current.parent;
+            }
+            path.Reverse();
+            return path;
+        }
+
         private bool IsInBounds(int x, int y)
         {
             return x >= 0 && x < width && y >= 0 && y < height;
         }
     }
 }
+
 public class SimplePriorityQueue<T>
 {
     private List<(T item, int priority)> elements = new();

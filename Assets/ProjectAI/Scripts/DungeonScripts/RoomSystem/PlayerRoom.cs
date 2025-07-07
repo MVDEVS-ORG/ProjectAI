@@ -1,5 +1,6 @@
 ﻿using Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items;
 using Assets.ProjectAI.Scripts.HelperClasses;
+using Assets.ProjectAI.Scripts.PathFinding;
 using Assets.Services;
 using System;
 using System.Collections.Generic;
