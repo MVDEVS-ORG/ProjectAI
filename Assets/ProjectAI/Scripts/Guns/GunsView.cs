@@ -17,6 +17,7 @@ public class GunsView : MonoBehaviour, IInteractable
     [HideInInspector] public SpriteRenderer SpriteRenderer;
     [HideInInspector] public Vector3 Scale;
     [HideInInspector] public Vector3 ReverseScale;
+    [HideInInspector] public Vector3 LateralInversion;
     [HideInInspector] public BoxCollider2D Collider;
 
     [HideInInspector] public bool _firing = false;
@@ -90,7 +91,11 @@ public class GunsView : MonoBehaviour, IInteractable
         }
         transform.position = PlayerTransform.position + new Vector3(GunsModel.ElipseHorizontalRadius * MathF.Sin(Mathf.PI * (0.5f) - angle), GunsModel.ElipseVerticalRadius * MathF.Cos(Mathf.PI * (0.5f) - angle), transform.position.z);
         transform.right = (PlayerCursor.position - PlayerTransform.position).normalized;
-        if (MathF.Abs(angle) > Mathf.PI / 2)
+        if(transform.rotation.y==1) //This if statement is to prevent a bug where the transform.rotation.y becomes 180 because of gimble lock
+        {
+            transform.localScale = Scale;
+        }
+        else if (MathF.Abs(angle) > Mathf.PI / 2 )
         {
             transform.localScale = ReverseScale; 
         }

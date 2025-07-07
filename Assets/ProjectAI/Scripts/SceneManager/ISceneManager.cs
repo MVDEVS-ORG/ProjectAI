@@ -4,7 +4,9 @@ using UnityEngine;
 
 public interface ISceneManager
 {
-    Task LoadSceneAsync(string sceneName);
+    Awaitable LoadSceneAsync(string sceneName);
     event Action BeforeChangeScene;
     event Action AfterChangeScene;
+    Awaitable FadeToBlack();
+    Awaitable FadeBack();
 }

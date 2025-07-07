@@ -38,5 +38,6 @@ public static class AddressableIds
 
     #region Main Menu
     public const string MainMenuUI = "MainMenuUI";
+    public const string FadeScreen = "FadeScreen";
     #endregion
 }
