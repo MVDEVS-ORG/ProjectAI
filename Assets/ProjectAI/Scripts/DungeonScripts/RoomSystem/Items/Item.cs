@@ -54,34 +54,6 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items
             _maxHealth = itemData.maxHealth;
         }
 
-        /*public void GetHit(int damage, GameObject damageDealer)
-        {
-            if (_nonDestructible)
-            {
-                return;
-            }
-            if (_health > 1)
-            {
-                //Instantiate hit feedback
-                //Instantiate(hitFeedback, spriteRenderer.transform.position, Quaternion.identity);
-            }
-            else
-            {
-                //Instantiate(destoyFeedback, spriteRenderer.transform.position, Quaternion.identity);
-            }
-            ReduceHealth();
-        }
-
-        private void ReduceHealth()
-        {
-            _health--;
-            if (_health <= 0)
-            {
-                //Show Effects
-                Destroy(gameObject);
-            }
-        }*/
-
         public void TakeDamage(int damage)
         {
             if (_nonDestructible)

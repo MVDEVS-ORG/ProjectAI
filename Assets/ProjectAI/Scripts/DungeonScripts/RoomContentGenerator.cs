@@ -25,7 +25,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
         private GraphTest graphTest;
 
         public Transform itemParent;
-        private Vector2Int _playerPawnPoint;
+        private Vector2Int _playerSpawnPoint;
         public async Awaitable<List<Item>> GenerateRoomContent(DungeonData dungeonData)
         {
             foreach (GameObject obj in spawnedObjects)
@@ -70,7 +70,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
             var playerTransform = await _playerController.GetPlayerTransform();
             var roomDictionary = new Dictionary<Vector2Int, HashSet<Vector2Int>>(dungeonData.roomsDictionary);
 
-            roomDictionary.Remove(_playerPawnPoint);
+            roomDictionary.Remove(_playerSpawnPoint);
             foreach (KeyValuePair<Vector2Int, HashSet<Vector2Int>> roomData in roomDictionary)
             {
                 var roomObjects = await defaultRoom.ProcessRoom(
@@ -112,7 +112,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
 
             await _playerController.SpawnPlayer(spawnPosition, _playerPicker.PickPlayer());
             spawnedObjects.AddRange( placedPrefabs );
-            _playerPawnPoint = playerSpawnPoint;
+            _playerSpawnPoint = playerSpawnPoint;
             //dungeonData.roomsDictionary.Remove(playerSpawnPoint);
         }
     }
