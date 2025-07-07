@@ -26,6 +26,7 @@ public class GameController : IGameController
             await _playerPicker.SetPlayer();
             await _dungeonMapController.Initialize();
             _enemies = _dungeonMapController.GetAllSpawnedEnemies();
+            _playerController.EnableController(true);
             Debug.LogError($"Spawned Enemies are: {_enemies.Count}");
         }
         catch (Exception exception)

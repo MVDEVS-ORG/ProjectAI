@@ -85,7 +85,7 @@ public class PlayerController : IPlayerController
             {
                 _camera.Target.TrackingTarget = _characterView.transform;
             }
-            _initialized = true;
+            //_initialized = true;
             _movementPossible = true;
         }
         catch (Exception exception)
@@ -158,6 +158,11 @@ public class PlayerController : IPlayerController
     void IPlayerController.SwapPlayerGuns(GunsView gun)
     {
         _gunsController.SwapGuns(gun, _characterView.transform, _bulletCursorUI);
+    }
+
+    public void EnableController(bool enable)
+    {
+        _initialized = enable;
     }
 }
 
