@@ -35,4 +35,9 @@ public static class AddressableIds
     public const string Wall_Diagonal_Corner_Up_Right = "WallDiagonalCornerUpRight";
     public const string Wall_Diagonal_Corner_Up_Left = "WallDiagonalCornerUpLeft";
     #endregion
+
+    #region Main Menu
+    public const string MainMenuUI = "MainMenuUI";
+    public const string FadeScreen = "FadeScreen";
+    #endregion
 }

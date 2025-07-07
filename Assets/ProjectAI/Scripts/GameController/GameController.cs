@@ -10,6 +10,7 @@ public class GameController : IGameController
     [Inject] private IPlayerController _playerController;
     [Inject] private PlayerPicker _playerPicker;
     [Inject] private DungeonMapController _dungeonMapController;
+    [Inject] private ISceneManager _sceneManager;
 
     private List<GameObject> _enemies = new List<GameObject>();
 
@@ -27,6 +28,7 @@ public class GameController : IGameController
             await _dungeonMapController.Initialize();
             _enemies = _dungeonMapController.GetAllSpawnedEnemies();
             _playerController.EnableController(true);
+            await _sceneManager.FadeBack();
             Debug.LogError($"Spawned Enemies are: {_enemies.Count}");
         }
         catch (Exception exception)
