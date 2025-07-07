@@ -33,7 +33,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts
             //Check for _player position and spawn enemies when in Range
             if (Vector3.Distance(transform.position, _playerTransform.position) <= _detectionRange)
             {
-                Debug.LogError("Spawing enemies");
+                Debug.Log("Spawing enemies");
                 _hasSpawned = true; // Ensure this runs only once (optional, depends on your design)
                 SpawnEnemies();
             }

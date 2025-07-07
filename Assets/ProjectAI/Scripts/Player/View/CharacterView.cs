@@ -135,7 +135,6 @@ public class CharacterView : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.LogError(collision.transform.name);
         if (collision.transform.TryGetComponent(out IInteractable interactableObject))
         {
             _interactableObjects.Add(collision.gameObject);
@@ -153,8 +152,7 @@ public class CharacterView : MonoBehaviour
     #region Control schema
     public void InputChange(PlayerInput controller)
     {
-        Debug.Log("Changed Input");
-        Debug.Log(controller.currentControlScheme);
+        Debug.Log($"Changed Input:  + {controller.currentControlScheme}");
     }
 
     private void OnDeviceChange(InputDevice device, InputDeviceChange change)

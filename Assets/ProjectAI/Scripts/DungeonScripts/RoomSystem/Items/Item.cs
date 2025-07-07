@@ -63,7 +63,6 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items
             _health = Mathf.Clamp(_health - damage, 0, _maxHealth);
             if (_health <= 0)
             {
-                Debug.LogError("Item destroyed");
                 PathFindingManager.Instance.UnblockItemArea(this);
                 Destroy(gameObject);
             }

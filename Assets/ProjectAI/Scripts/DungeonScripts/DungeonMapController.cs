@@ -24,7 +24,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
             isMapBaked = await PathFindingManager.Instance.BakeItemsAsync(data);
             if (isMapBaked)
             {
-                Debug.LogError("Baking Complete");
+                Debug.Log("Baking Complete");
             }
         }
 
