@@ -51,7 +51,6 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
 
         public async Awaitable PaintSingleBasicWall(Vector2Int position, string binaryType)
         {
-            Debug.LogWarning("Generated");
             int typeAsInt = Convert.ToInt32(binaryType, 2);
             string tileBase = null;
             if (WallTypesHelper.wallTop.Contains(typeAsInt))
@@ -96,7 +95,6 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
 
         public async Awaitable PaintSingleCornerWall(Vector2Int position, string binaryType)
         {
-            Debug.LogWarning("Generated");
             int typeAsInt = Convert.ToInt32(binaryType, 2);
             string tileBase = null;
             if (WallTypesHelper.wallInnerCornerDownLeft.Contains(typeAsInt))
