@@ -120,7 +120,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
 
             tilemapVisualizer.PaintFloorTiles(_floorPositions);
             await WallGenerator.CreateWalls(_floorPositions, tilemapVisualizer);
-            DetectDoorPositions();
+            //DetectDoorPositions();
         }
 
         private void CreateRoomsRandomly(List<BoundsInt> roomsList)
@@ -206,7 +206,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
                 {
                     cleanCorridors.Remove(corridorPos); // Remove from corridor
 
-                    // ✅ Add corridorPos to the closest room in _roomsDictionary
+                    // Add corridorPos to the closest room in _roomsDictionary
                     Vector2Int nearestRoomKey = GetNearestRoomKey(corridorPos);
                     if (_roomsDictionary.ContainsKey(nearestRoomKey))
                     {

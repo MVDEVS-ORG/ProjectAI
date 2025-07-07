@@ -63,24 +63,25 @@ public class CharacterView : MonoBehaviour
                     break;
             }
             TurnCharacter();
-        }
-        if (_playerInput.currentControlScheme == "Controller" && _BulletCursor != null)
-        {
-            Vector2 direction = _playerInput.actions.FindAction("Look").ReadValue<Vector2>();
-            Vector3 dir = direction;
-            if (dir.magnitude >= 0.25f)
+            if (_playerInput.currentControlScheme == "Controller" && _BulletCursor != null)
             {
-                _lastValidDirection = dir / Vector3.Magnitude(dir);
+                Vector2 direction = _playerInput.actions.FindAction("Look").ReadValue<Vector2>();
+                Vector3 dir = direction;
+                if (dir.magnitude >= 0.25f)
+                {
+                    _lastValidDirection = dir / Vector3.Magnitude(dir);
+                }
+                _BulletCursor.transform.position = transform.position + (_lastValidDirection * _playerModel.CursorDistance);
             }
-            _BulletCursor.transform.position = transform.position + (_lastValidDirection * _playerModel.CursorDistance);
+            if (_BulletCursor != null && _playerInput.currentControlScheme == "KBM")
+            {
+                Vector2 position = _playerInput.actions.FindAction("LookMouse").ReadValue<Vector2>();
+                Vector3 posInWorldSpace = Camera.main.ScreenToWorldPoint(position);
+                posInWorldSpace.z = 0;
+                _BulletCursor.transform.position = posInWorldSpace;
+            }
         }
-        if (_BulletCursor != null && _playerInput.currentControlScheme == "KBM")
-        {
-            Vector2 position = _playerInput.actions.FindAction("LookMouse").ReadValue<Vector2>();
-            Vector3 posInWorldSpace = Camera.main.ScreenToWorldPoint(position);
-            posInWorldSpace.z = 0;
-            _BulletCursor.transform.position = posInWorldSpace;
-        }
+        
     }
 
     public void OnApplicationFocus(bool focus)
@@ -96,6 +97,7 @@ public class CharacterView : MonoBehaviour
 
     public void Shoot(InputAction.CallbackContext context)
     {
+        if (!_playerController.Initialized) return;
         if (context.performed)
         {
             _playerController.Shoot(true);
@@ -108,7 +110,8 @@ public class CharacterView : MonoBehaviour
 
     public void Dash(InputAction.CallbackContext context)
     {
-        if(context.performed)
+        if (!_playerController.Initialized) return;
+        if (context.performed)
         {
             _rollDirection = _playerController.Dash(_moveInput);
         }
@@ -116,6 +119,7 @@ public class CharacterView : MonoBehaviour
 
     public void Interact(InputAction.CallbackContext context)
     {
+        if (!_playerController.Initialized) return;
         if (context.performed && _interactableObjects.Count>0)
         {
             if (_interactableObjects[0].TryGetComponent<GunsView>(out GunsView gun))

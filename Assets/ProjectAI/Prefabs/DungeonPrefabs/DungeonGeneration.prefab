@@ -273,15 +273,15 @@ MonoBehaviour:
   tilemapVisualizer: {fileID: 4568488876918413640}
   startPosition: {x: 0, y: 0}
   randomWalkParameters: {fileID: 11400000, guid: 5c1a55e8e6c238a4fab03eaaf293360f, type: 2}
-  minRoomWidth: 13
-  minRoomHeight: 12
+  minRoomWidth: 15
+  minRoomHeight: 15
   dungeonWidth: 100
   dungeonHeight: 100
-  offset: 2
+  offset: 4
   randomWalkRooms: 0
   roomContentGenerator: {fileID: 6605950156024319504}
   showRoomGizmo: 1
-  showCorridorsPositions: 0
+  showCorridorsPositions: 1
 --- !u!1 &3740773268491300678
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,7 +390,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wallTileMap: {fileID: 7860892945105457831}
   floorTilemap: {fileID: 8023739332899901663}
-  debugDrawGrid: 1
+  debugDrawGrid: 0
   walkableColor: {r: 0, g: 1, b: 0, a: 0.3}
   unwalkableColor: {r: 1, g: 0, b: 0, a: 0.3}
 --- !u!1 &5964548398302593810

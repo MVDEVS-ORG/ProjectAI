@@ -25,6 +25,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
         private GraphTest graphTest;
 
         public Transform itemParent;
+        private Vector2Int _playerPawnPoint;
         public async Awaitable<List<Item>> GenerateRoomContent(DungeonData dungeonData)
         {
             foreach (GameObject obj in spawnedObjects)
@@ -35,7 +36,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
             await SelectPlayerSpawnPoint(dungeonData);
             await SelectEnemySpawnPoint(dungeonData);
 
-            foreach (var doorPos in dungeonData.doorPositions)
+            /*foreach (var doorPos in dungeonData.doorPositions)
             {
                 if (_doorPrefab != null)
                 {
@@ -43,7 +44,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
                     GameObject doorInstance = GameObject.Instantiate(_doorPrefab, spawnWorldPos, Quaternion.identity);
                     spawnedObjects.Add(doorInstance);
                 }
-            }
+            }*/
 
             foreach (GameObject obj in spawnedObjects)
             {
@@ -67,7 +68,10 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
         private async Awaitable SelectEnemySpawnPoint(DungeonData dungeonData)
         {
             var playerTransform = await _playerController.GetPlayerTransform();
-            foreach (KeyValuePair<Vector2Int, HashSet<Vector2Int>> roomData in dungeonData.roomsDictionary)
+            var roomDictionary = new Dictionary<Vector2Int, HashSet<Vector2Int>>(dungeonData.roomsDictionary);
+
+            roomDictionary.Remove(_playerPawnPoint);
+            foreach (KeyValuePair<Vector2Int, HashSet<Vector2Int>> roomData in roomDictionary)
             {
                 var roomObjects = await defaultRoom.ProcessRoom(
                     roomData.Key,
@@ -108,7 +112,8 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
 
             await _playerController.SpawnPlayer(spawnPosition, _playerPicker.PickPlayer());
             spawnedObjects.AddRange( placedPrefabs );
-            dungeonData.roomsDictionary.Remove(playerSpawnPoint);
+            _playerPawnPoint = playerSpawnPoint;
+            //dungeonData.roomsDictionary.Remove(playerSpawnPoint);
         }
     }
 
