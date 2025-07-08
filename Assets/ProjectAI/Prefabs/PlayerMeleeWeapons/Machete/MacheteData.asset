@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: MacheteData
   m_EditorClassIdentifier: 
   AttackSpeed: 3
-  AttackTime: 0.3
+  AttackTime: 0.1
   AttackChainLimit: 3
   AttackRechargeDelay: 2
+  DistanceFromPlayer: 2
