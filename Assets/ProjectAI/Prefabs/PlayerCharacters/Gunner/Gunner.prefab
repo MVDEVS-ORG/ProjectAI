@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7701791576289312374}
   - component: {fileID: 2658627384385861367}
   - component: {fileID: 8671594667344144745}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Gunner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,6 +147,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: b064a136-324c-4e51-a8d5-2bd124a9902b
     m_ActionName: 'Universal/Interact[/DualShock4GamepadHID/buttonWest,/Keyboard/e]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2326315397728171776}
+        m_TargetAssemblyTypeName: CharacterView, Assembly-CSharp
+        m_MethodName: MeleeAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 96c6838e-d52d-4627-8e7f-0619d93905e1
+    m_ActionName: 'Universal/MeleeAttack[/DualShock4GamepadHID/rightShoulder,/Mouse/rightButton]'
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: KBM
   m_DefaultActionMap: Universal
@@ -336,7 +352,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7777116299070727219}
   - component: {fileID: 6691994230416250780}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}

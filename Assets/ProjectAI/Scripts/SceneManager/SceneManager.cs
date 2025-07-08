@@ -52,7 +52,7 @@ public class SceneManager : ISceneManager
 
     private async Awaitable CreateFadeScreen()
     {
-        GameObject temp = await _assetService.InstantiateAsync(AddressableIds.FadeScreen);
+        GameObject temp = await _assetService.InstantiateAsync(AddressableIds.Fade_Screen);
         _fadeScreen = temp.transform.GetChild(0).GetComponent<Image>();
         _loadingText = temp.transform.GetChild(1).GetComponent<TMP_Text>();
         GameObject.DontDestroyOnLoad(temp);

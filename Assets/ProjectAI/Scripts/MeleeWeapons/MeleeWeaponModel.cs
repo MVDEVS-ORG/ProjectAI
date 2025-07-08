@@ -6,6 +6,7 @@ public class MeleeWeaponModel
     public float AttackTime;
     public int AttackChainLimit;
     public float AttackRechargeDelay;
+    public float DistanceFromPlayer;
     public int Attacks;
     public MeleeWeaponModel(MeleeWeaponSO meleeWeaponSO) 
     {
@@ -14,5 +15,6 @@ public class MeleeWeaponModel
         AttackTime = meleeWeaponSO.AttackTime;
         AttackChainLimit = meleeWeaponSO.AttackChainLimit;
         AttackRechargeDelay = meleeWeaponSO .AttackRechargeDelay;
+        DistanceFromPlayer = meleeWeaponSO .DistanceFromPlayer;
     }
 }
