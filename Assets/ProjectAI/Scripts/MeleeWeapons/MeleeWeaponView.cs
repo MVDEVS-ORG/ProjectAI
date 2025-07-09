@@ -10,6 +10,8 @@ public class MeleeWeaponView : MonoBehaviour
     private Transform _cursorTransform;
     private Coroutine _attackCoroutine;
 
+    private int _meleeAttacksNo = 0;
+
     public MeleeWeaponModel SetupAndActivate(Transform playerTransform, Transform cursorTransform)
     {
         _playerTransform = playerTransform;
@@ -26,7 +28,7 @@ public class MeleeWeaponView : MonoBehaviour
             float endAngle = 0;
             Vector2 direction = (_cursorTransform.position - _playerTransform.position).normalized;
             float angle = Mathf.Atan2(direction.y, direction.x);
-            if (attackNo % 2 == 0)
+            if (_meleeAttacksNo % 2 == 0)
             {
                 startingAngle = angle - Mathf.PI / 2;
                 endAngle = angle + Mathf.PI / 2;
@@ -47,16 +49,20 @@ public class MeleeWeaponView : MonoBehaviour
 
     IEnumerator MeleeMotion(float startAngle,float endAngle)
     {
-        Debug.LogError("Triggered melee motion ");
+        int directionOfMotion = 0;
+        directionOfMotion = startAngle < endAngle ? 1 : -1;
         float angle = startAngle;
         Debug.LogError(startAngle < endAngle ? "true" : "falseeer");
         while(startAngle < endAngle ? angle < endAngle : angle > endAngle)
         {
-            angle = angle + Time.deltaTime / (_model.AttackTime);
-            transform.position = _playerTransform.position + new Vector3(_model.DistanceFromPlayer * Mathf.Cos(angle), _model.DistanceFromPlayer * Mathf.Sin(angle),0);
+            angle = angle + (directionOfMotion * Time.deltaTime) / (_model.AttackTime);
+            transform.position = _playerTransform.position + new Vector3(_model.DistanceFromPlayer * Mathf.Cos(angle), (_model.DistanceFromPlayer - 1) * Mathf.Sin(angle),0);
             transform.right = new Vector3(Mathf.Cos(angle),  Mathf.Sin(angle),0); 
             yield return Awaitable.EndOfFrameAsync();
         }
+        transform.position = -100 * Vector3.one;
+        _model.Attacks--;
+        _meleeAttacksNo++;
         _attackCoroutine = null;
     }    
 
