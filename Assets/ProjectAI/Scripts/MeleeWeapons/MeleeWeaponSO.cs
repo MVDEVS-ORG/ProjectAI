@@ -8,4 +8,5 @@ public class MeleeWeaponSO : ScriptableObject
     public int AttackChainLimit;
     public float AttackRechargeDelay;
     public float DistanceFromPlayer;
+    public int Damage;
 }

@@ -33,11 +33,10 @@ public class MeleeWeaponController : IMeleeWeaponController
         {
             return;
         }
-        else
+        else if(_model.Attacks<_model.AttackChainLimit)
         {
-            Debug.LogError("Melee Attack called fomr Melee Weapons controller");
             _view.Attack(_model.Attacks);
-            _model.Attacks = Mathf.Clamp(_model.Attacks++,0,_model.AttackChainLimit);
+            _model.Attacks = _model.Attacks+1;
             _view.StartCoroutine(AttackCoolDown());
         }
     }
@@ -45,6 +44,6 @@ public class MeleeWeaponController : IMeleeWeaponController
     IEnumerator AttackCoolDown()
     {
         yield return Awaitable.WaitForSecondsAsync(_model.AttackRechargeDelay);
-        _model.Attacks++;
+        _model.Attacks--;
     }
 }

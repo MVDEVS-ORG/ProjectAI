@@ -52,18 +52,24 @@ public class MeleeWeaponView : MonoBehaviour
         int directionOfMotion = 0;
         directionOfMotion = startAngle < endAngle ? 1 : -1;
         float angle = startAngle;
-        Debug.LogError(startAngle < endAngle ? "true" : "falseeer");
         while(startAngle < endAngle ? angle < endAngle : angle > endAngle)
         {
             angle = angle + (directionOfMotion * Time.deltaTime) / (_model.AttackTime);
-            transform.position = _playerTransform.position + new Vector3(_model.DistanceFromPlayer * Mathf.Cos(angle), (_model.DistanceFromPlayer - 1) * Mathf.Sin(angle),0);
+            transform.position = _playerTransform.position + new Vector3(_model.DistanceFromPlayer * Mathf.Cos(angle), _model.DistanceFromPlayer * Mathf.Sin(angle),0);
             transform.right = new Vector3(Mathf.Cos(angle),  Mathf.Sin(angle),0); 
             yield return Awaitable.EndOfFrameAsync();
         }
         transform.position = -100 * Vector3.one;
-        _model.Attacks--;
         _meleeAttacksNo++;
         _attackCoroutine = null;
-    }    
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.TryGetComponent(out IHealthSystem health))
+        {
+            health.TakeDamage(_model.Damage);
+        }
+    }
 
 }

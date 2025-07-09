@@ -189,7 +189,6 @@ public class PlayerController : IPlayerController
     {
         if(_meleeWeaponController.Initialized)
         {
-            Debug.LogError("Melee attack called from Player Controller");
             _meleeWeaponController.MeleeAttack();
         }
     }
