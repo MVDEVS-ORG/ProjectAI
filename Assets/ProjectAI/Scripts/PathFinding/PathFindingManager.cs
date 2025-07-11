@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using Assets.ProjectAI.Scripts.DungeonScripts;
 using Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items;
-using NUnit.Framework.Interfaces;
 
 
 #if UNITY_EDITOR
