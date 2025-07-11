@@ -20,3 +20,4 @@ MonoBehaviour:
   maxHealth: 5
   nonDestructible: 0
   litObject: 0
+  itemId: Barrel

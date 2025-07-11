@@ -13,6 +13,7 @@ public interface IPlayerController
     Awaitable<Transform> GetPlayerTransform();
     void SwapPlayerGuns(GunsView gun);
     void EnableController(bool enable);
+    void MeleeAttack();
 }
 
 public enum State

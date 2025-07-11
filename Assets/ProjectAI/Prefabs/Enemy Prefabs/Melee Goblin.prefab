@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3533197772047944339}
   - component: {fileID: 6164537999517940721}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Left Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7374445753411503163}
   - component: {fileID: 2307059773481341871}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,7 +181,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7823450961984717450}
   - component: {fileID: 5175221788725234023}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -271,7 +271,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8073493327801648879}
   - component: {fileID: 2234780276347309151}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -358,7 +358,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2925723665894459759}
   - component: {fileID: 6582067513596207213}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Left Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -445,7 +445,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2795738889298848458}
   - component: {fileID: 3762994731706084950}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -532,7 +532,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9092363955704228201}
   - component: {fileID: 1388080834760184869}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Right Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -619,7 +619,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2554098001397685374}
   - component: {fileID: 5592885664563065692}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Right Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -709,7 +709,7 @@ GameObject:
   - component: {fileID: 8934129548823439409}
   - component: {fileID: 4482614373282887068}
   - component: {fileID: -5161850288367881503}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Melee Goblin
   m_TagString: Enemy
   m_Icon: {fileID: 0}

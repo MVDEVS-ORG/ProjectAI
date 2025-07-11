@@ -6,6 +6,7 @@ public class AttackState : IEnemyState
     private Transform _player;
     private float attackCooldown = 1.5f;
     private float timer;
+    private CharacterView _characterView;
 
     public void Enter(EnemyAI enemy, Transform player)
     {
@@ -35,7 +36,6 @@ public class AttackState : IEnemyState
 
     private void Attack()
     {
-        Debug.Log("Enemy attacks!");
-        // You can play animation, shoot bullet, reduce _health here
+
     }
 }

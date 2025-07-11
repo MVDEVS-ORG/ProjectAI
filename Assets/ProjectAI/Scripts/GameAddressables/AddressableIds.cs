@@ -1,24 +1,32 @@
-using UnityEngine;
-using Zenject;
-
 public static class AddressableIds
 {
-    public const string GunnerCharacter = "gunner";
-    public const string ShotgunnerCharacter = "shotgunner";
+    #region player data
+    public const string Gunner_Character = "gunner";
+    public const string Shotgunner_Character = "shotgunner";
     public const string Pyro = "pyro";
 
-    public const string PlayerUI = "playerUI";
+    public const string Player_UI = "playerUI";
 
-    public const string GunnerDataSO = "gunnerDataSO";
-    public const string ShotgunnerDataSO = "shotgunnerDataSO";
-    public const string PyroDataSO = "pyroDataSO";
+    public const string Gunner_Data_SO = "gunnerDataSO";
+    public const string Shotgunner_Data_SO = "shotgunnerDataSO";
+    public const string Pyro_Data_SO = "pyroDataSO";
+    #endregion
 
-    public const string BulletCursor = "bulletCursor";
-    public const string BullerCursorUI = "bulletCursorUI";
+    #region gundata
+    public const string Simple_Gun = "SimpleGun";
+    public const string Shot_Gun = "ShotGun";
+
+    public const string Bullet_Cursor = "bulletCursor";
+    public const string Bullet_Cursor_UI = "bulletCursorUI";
+    #endregion
+
+    #region meleedata
+    public const string Machete = "Machete";
+    #endregion
 
     public const string Item = "Item";
     public const string Goblin = "Goblin";
-    public const string EnemySpawner = "EnemySpawner";
+    public const string Enemy_Spawner = "EnemySpawner";
 
     #region TileMap Addressables
 
@@ -37,7 +45,7 @@ public static class AddressableIds
     #endregion
 
     #region Main Menu
-    public const string MainMenuUI = "MainMenuUI";
-    public const string FadeScreen = "FadeScreen";
+    public const string Main_Menu_UI = "MainMenuUI";
+    public const string Fade_Screen = "FadeScreen";
     #endregion
 }

@@ -15,6 +15,9 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
         public HashSet<Vector2Int> doorPositions;
         public HashSet<Item> items = new HashSet<Item>();
 
+        public Vector2Int? bossRoomCenter;
+        public Vector2Int? treasureRoomCenter;
+
         public HashSet<Vector2Int> GetRoomFloorwithoutCorridors(Vector2Int dictionaryKey)
         {
             HashSet<Vector2Int> roomFloorNoCorridors = new HashSet<Vector2Int>(roomsDictionary[dictionaryKey]);

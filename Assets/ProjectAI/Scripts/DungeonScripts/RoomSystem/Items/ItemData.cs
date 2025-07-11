@@ -15,5 +15,6 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items
         public int maxHealth = 3;
         public bool nonDestructible;
         public bool litObject;
+        public string itemId;
     }
 }
