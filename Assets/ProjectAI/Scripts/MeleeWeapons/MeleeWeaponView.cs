@@ -44,9 +44,9 @@ public class MeleeWeaponView : MonoBehaviour
     IEnumerator MeleeMotion(bool isLeftSwing,float startAngle,float endAngle)
     {
         int directionOfMotion = 0;
-        directionOfMotion = startAngle < endAngle ? 1 : -1;
+        directionOfMotion = isLeftSwing ? 1 : -1;
         float angle = startAngle;
-        while(startAngle < endAngle ? angle < endAngle : angle > endAngle)
+        while(directionOfMotion*angle < directionOfMotion*endAngle)
         {
             angle = angle + (directionOfMotion * Time.deltaTime) / (_model.AttackTime);
             transform.position = _playerTransform.position + new Vector3(_model.DistanceFromPlayer * Mathf.Cos(angle), _model.DistanceFromPlayer * Mathf.Sin(angle),0);
