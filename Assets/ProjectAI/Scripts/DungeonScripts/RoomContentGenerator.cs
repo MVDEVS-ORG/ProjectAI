@@ -102,15 +102,6 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
 
                 var bossRoomObjects = await _portalRoom.ProcessRoom(bossCenter, bossRoom, bossRoomFloor, _assetService, playerTransform, _objectPoolManager);
                 spawnedObjects.AddRange(bossRoomObjects);
-                /*var placementHelper = new ItemPlacementHelper(bossRoom, bossRoomFloor);
-                Vector2? portalPos = placementHelper.GetItemPlacementPosition(PlacementType.OpenSpace, 30, Vector2Int.one, false);
-
-                if (portalPos.HasValue && _portalPrefab != null)
-                {
-                    Vector3 spawnWorld = new Vector3(portalPos.Value.x + 0.5f, portalPos.Value.y + 0.5f, 0);
-                    var portal = Instantiate(_portalPrefab, spawnWorld, Quaternion.identity);
-                    spawnedObjects.Add(portal);
-                }*/
             }
 
             if (dungeonData.treasureRoomCenter.HasValue)
