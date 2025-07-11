@@ -49,13 +49,13 @@ MonoBehaviour:
   - minQuantity: 4
     maxQuantity: 6
     itemData: {fileID: 11400000, guid: 01f9b9b54b8389847a1d4b93668c0c08, type: 2}
-  - minQuantity: 2
-    maxQuantity: 6
-    itemData: {fileID: 11400000, guid: 79e633210c77de5469f5a3f2d15b02a3, type: 2}
   - minQuantity: 4
     maxQuantity: 6
     itemData: {fileID: 11400000, guid: 64e3fff920dc3194f9eb908f30e064c6, type: 2}
-  - minQuantity: 2
-    maxQuantity: 4
+  - minQuantity: 4
+    maxQuantity: 6
+    itemData: {fileID: 11400000, guid: e28bfa7ead1c5794fb61cd332b48b287, type: 2}
+  - minQuantity: 4
+    maxQuantity: 6
     itemData: {fileID: 11400000, guid: 3e1b7eab1b19d1942a486bd3b3d7bdb8, type: 2}
   _prefabPlacer: {fileID: 2182287869053027293, guid: d6acdd40924c5f9409603dd8825c5640, type: 3}

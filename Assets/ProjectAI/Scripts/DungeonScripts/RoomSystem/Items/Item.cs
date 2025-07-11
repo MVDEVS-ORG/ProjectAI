@@ -11,8 +11,6 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items
     {
         [SerializeField]
         private SpriteRenderer _spriteRenderer;
-        [SerializeField]
-        private BoxCollider2D _itemCollider;
 
         [SerializeField]
         int _health = 3;
@@ -27,18 +25,21 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items
         private Light2D _light;
         [SerializeField]
         private ShadowCaster2D _shadowCaster;
-
+        [SerializeField]
+        private Collider2D _itemCollider;
         public int Health => _health;
 
         public int MaxHealth => _maxHealth;
 
+
+        public Vector2Int itemSize;
         public void InitializeItemData(ItemData itemData)
         {
             _spriteRenderer.sprite = itemData.sprite;
             _spriteRenderer.transform.localPosition = new Vector2(0.5f * itemData.size.x, 0.5f * itemData.size.y);
-            _itemCollider.size = itemData.size;
+
             _itemCollider.offset = _spriteRenderer.transform.localPosition;
-            if(itemData.litObject)
+            if (itemData.litObject)
             {
                 _light.enabled = true;
             }
@@ -52,6 +53,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items
             }
             _health = itemData.health;
             _maxHealth = itemData.maxHealth;
+            itemSize = itemData.size;
         }
 
         public void TakeDamage(int damage)
@@ -83,5 +85,6 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items
         {
             _health = _maxHealth;
         }
+        
     }
 }

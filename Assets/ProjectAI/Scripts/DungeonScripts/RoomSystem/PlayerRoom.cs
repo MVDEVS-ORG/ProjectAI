@@ -49,9 +49,6 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem
 
             Vector2Int playerSpawnPoint = roomCenter;
             _playerSpawnPoint = roomCenter;
-            //GameObject playerObject =
-            //_prefabPlacer.CreateObject(_player, playerSpawnPoint + new Vector2(0.5f, 0.5f));
-            //placedObjects.Add(playerObject);
             return placedObjects;
         }
     }
