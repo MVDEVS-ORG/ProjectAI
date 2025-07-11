@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f5853ce55987e334192cd2d9d09062c3, type: 3}
-  m_Name: Barrel
+  m_Name: Portal
   m_EditorClassIdentifier: 
-  sprite: {fileID: -60726250400011180, guid: fc5028170ab84ed4bbf43948f12a52d6, type: 3}
+  sprite: {fileID: 21300000, guid: 080226571baca0d45b59c00d50580ed4, type: 3}
   size: {x: 1, y: 1}
-  placementType: 1
+  placementType: 0
   addOffset: 0
   health: 5
   maxHealth: 5
-  nonDestructible: 0
-  litObject: 0
-  itemId: Barrel
+  nonDestructible: 1
+  litObject: 1
+  itemId: Portal

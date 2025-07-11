@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using Assets.ProjectAI.Scripts.DungeonScripts;
 using Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items;
+using NUnit.Framework.Interfaces;
+
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -141,20 +143,38 @@ namespace Assets.ProjectAI.Scripts.PathFinding
         public void BlockItemArea(Item item)
         {
             if (item == null) return;
-            var collider = item.GetComponent<BoxCollider2D>();
-            if (collider == null) return;
-            Bounds b = collider.bounds;
-            Vector3Int minCell = floorTilemap.WorldToCell(b.min);
-            Vector3Int maxCell = floorTilemap.WorldToCell(b.max - new Vector3(0.001f, 0.001f, 0));
-            for (int wx = minCell.x; wx <= maxCell.x; wx++)
-                for (int wy = minCell.y; wy <= maxCell.y; wy++)
+
+            Vector2Int size = item.itemSize;
+            Vector3 itemPos = item.transform.position;
+
+            Vector3Int centerTile = floorTilemap.WorldToCell(itemPos);
+
+            // Correct bottom-left calculation that works for both even and odd sizes
+            int halfWidth = Mathf.FloorToInt((size.x - 1) / 2f);
+            int halfHeight = Mathf.FloorToInt((size.y - 1) / 2f);
+
+            Vector3Int bottomLeft = new Vector3Int(
+                centerTile.x - halfWidth,
+                centerTile.y - halfHeight,
+                0
+            );
+
+            for (int x = 0; x < size.x; x++)
+            {
+                for (int y = 0; y < size.y; y++)
                 {
-                    var pos = new Vector2Int(wx, wy);
+                    Vector3Int tile = bottomLeft + new Vector3Int(x, y, 0);
+                    Vector2Int pos = new Vector2Int(tile.x, tile.y);
                     blockedByItems.Add(pos);
-                    int ix = wx - offsetX, iy = wy - offsetY;
+
+                    int ix = tile.x - offsetX;
+                    int iy = tile.y - offsetY;
+
                     if (IsInBounds(ix, iy) && nodes[ix, iy] != null)
                         nodes[ix, iy].walkable = false;
                 }
+            }
+
 #if UNITY_EDITOR
             if (debugDrawGrid) SceneView.RepaintAll();
 #endif
@@ -166,24 +186,42 @@ namespace Assets.ProjectAI.Scripts.PathFinding
         public void UnblockItemArea(Item item)
         {
             if (item == null) return;
-            var collider = item.GetComponent<BoxCollider2D>();
-            if (collider == null) return;
-            Bounds b = collider.bounds;
-            Vector3Int minCell = floorTilemap.WorldToCell(b.min);
-            Vector3Int maxCell = floorTilemap.WorldToCell(b.max - new Vector3(0.001f, 0.001f, 0));
-            for (int wx = minCell.x; wx <= maxCell.x; wx++)
-                for (int wy = minCell.y; wy <= maxCell.y; wy++)
+
+            Vector2Int size = item.itemSize;
+            Vector3 itemPos = item.transform.position;
+
+            Vector3Int centerTile = floorTilemap.WorldToCell(itemPos);
+
+            int halfWidth = Mathf.FloorToInt((size.x - 1) / 2f);
+            int halfHeight = Mathf.FloorToInt((size.y - 1) / 2f);
+
+            Vector3Int bottomLeft = new Vector3Int(
+                centerTile.x - halfWidth,
+                centerTile.y - halfHeight,
+                0
+            );
+
+            for (int x = 0; x < size.x; x++)
+            {
+                for (int y = 0; y < size.y; y++)
                 {
-                    var pos = new Vector2Int(wx, wy);
+                    Vector3Int tile = bottomLeft + new Vector3Int(x, y, 0);
+                    Vector2Int pos = new Vector2Int(tile.x, tile.y);
                     blockedByItems.Remove(pos);
-                    int ix = wx - offsetX, iy = wy - offsetY;
+
+                    int ix = tile.x - offsetX;
+                    int iy = tile.y - offsetY;
+
                     if (IsInBounds(ix, iy) && nodes[ix, iy] != null)
                         nodes[ix, iy].walkable = baseWalkable[ix, iy];
                 }
+            }
+
 #if UNITY_EDITOR
             if (debugDrawGrid) SceneView.RepaintAll();
 #endif
         }
+
 
         /// <summary>
         /// Find a path using A* from start to target.
@@ -237,10 +275,23 @@ namespace Assets.ProjectAI.Scripts.PathFinding
                     // Diagonal corner-cutting check
                     if (dir.x != 0 && dir.y != 0)
                     {
-                        Vector3Int c1 = new Vector3Int(current.position.x + dir.x, current.position.y, 0);
-                        Vector3Int c2 = new Vector3Int(current.position.x, current.position.y + dir.y, 0);
-                        if (!floorTilemap.HasTile(c1) || !floorTilemap.HasTile(c2))
-                            continue;
+                        int adj1x = current.position.x + dir.x;
+                        int adj1y = current.position.y;
+                        int adj2x = current.position.x;
+                        int adj2y = current.position.y + dir.y;
+
+                        Vector2Int adj1 = new(adj1x, adj1y);
+                        Vector2Int adj2 = new(adj2x, adj2y);
+
+                        int a1x = adj1x - offsetX;
+                        int a1y = adj1y - offsetY;
+                        int a2x = adj2x - offsetX;
+                        int a2y = adj2y - offsetY;
+
+                        // Block diagonal if either adjacent tile is not walkable (static or dynamic)
+                        if (!IsInBounds(a1x, a1y) || !IsInBounds(a2x, a2y)) continue;
+                        if (!baseWalkable[a1x, a1y] || !baseWalkable[a2x, a2y]) continue;
+                        if (blockedByItems.Contains(adj1) || blockedByItems.Contains(adj2)) continue;
                     }
 
                     int newCost = current.gCost + ((dir.x == 0 || dir.y == 0) ? 10 : 14);

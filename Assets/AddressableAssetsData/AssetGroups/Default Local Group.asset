@@ -20,6 +20,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 17a9917889797d142b2d4c439c5563e6
+    m_Address: Table_Long
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 17de16fed6ed8cc4fa8aed5e072ee432
     m_Address: WallBottom
     m_ReadOnly: 0
@@ -80,6 +85,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7fd8b207a21522e40a70d3fd5e00919f
+    m_Address: Barrel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 809171e13e7908f40a916074c244f08c
     m_Address: WallDiagonalCornerUpRight
     m_ReadOnly: 0
@@ -87,6 +97,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 86e1c7b3bc50aa24e8688f7ae146dc69
     m_Address: ShotGun
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9436b610b1158a346b23a1399604faeb
+    m_Address: Bookshelf
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -112,6 +127,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a8b54be9f08666f4998c08679e7d8a61
     m_Address: shotgunner
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: aa31c2d3f367c594292d327ca2f7c134
+    m_Address: Treasure
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -160,8 +180,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: efcd726b8b024d944b67e1f336112dc8
+    m_Address: Portal
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f0876383a0a9e9f4a8f543d8515e12c0
     m_Address: WallDiagonalCornerDownLeft
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f0bc24bc58adfc24d8759e7982ced24a
+    m_Address: Table_Short
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
