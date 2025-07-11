@@ -1,4 +1,5 @@
 public interface IProjectileUpgradeSO
 {
-    void Upgrade(); //TODO needs looking into
+    void MovementChange(); //TODO needs looking into
+    void ImpactChange();
 }
