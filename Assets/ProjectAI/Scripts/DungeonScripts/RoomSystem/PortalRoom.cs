@@ -26,7 +26,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem
             var itemPlacementHelper = new ItemPlacementHelper(roomFloor, roomFloorNoCorridors);
 
             var placedObjects = await prefabPlacer.PlaceAllItems(itemData, itemPlacementHelper, assetService);
-            var enemySpawnerObj = await assetService.InstantiateWithPRAsync(AddressableIds.EnemySpawner, (Vector3)itemPlacementHelper.GetItemPlacementPosition(PlacementType.OpenSpace, 1, Vector2Int.one, false), Quaternion.identity);
+            var enemySpawnerObj = await assetService.InstantiateWithPRAsync(AddressableIds.Enemy_Spawner, (Vector3)itemPlacementHelper.GetItemPlacementPosition(PlacementType.OpenSpace, 1, Vector2Int.one, false), Quaternion.identity);
             placedObjects.Add(enemySpawnerObj);
             var enemySpawner = enemySpawnerObj.GetComponent<EnemySpawner>();
             enemySpawner.InitializeSpawner(opManager, enemyPlacementData, itemPlacementHelper, playerTransform);

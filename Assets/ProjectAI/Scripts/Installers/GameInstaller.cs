@@ -15,8 +15,9 @@ public class GameInstaller : MonoInstaller
     public override void InstallBindings()
     {
         Container.Bind<PlayerPicker>().AsSingle();
-        Container.Bind<IPlayerController>().To<PlayerController>().AsCached().OnInstantiated(PlayerCameraSetup);
-        Container.Bind<IGunsController>().To<GunsController>().AsCached();
+        Container.Bind<IGunsController>().To<GunsController>().AsSingle();
+        Container.Bind<IMeleeWeaponController>().To<MeleeWeaponController>().AsSingle();
+        Container.Bind<IPlayerController>().To<PlayerController>().AsSingle().OnInstantiated(PlayerCameraSetup);
         Container.Bind<TilemapVisualizer>().FromInstance(_tilemapVisualizer).AsSingle();
         Container.Bind<RoomContentGenerator>().FromInstance(_roomContentGenerator).AsSingle();
         Container.Bind<PrefabPlacer>().FromNewComponentOnNewPrefab(_prefabPlacer).AsTransient();
@@ -25,7 +26,6 @@ public class GameInstaller : MonoInstaller
             .AsSingle();
         Container.Bind<DungeonMapController>().FromInstance(_dungeonMapController).AsSingle();
         Container.Bind<IGameController>().To<GameController>().AsCached().NonLazy();
-
         Container.DeclareSignal<CamEffectsSignal>();
     }
 

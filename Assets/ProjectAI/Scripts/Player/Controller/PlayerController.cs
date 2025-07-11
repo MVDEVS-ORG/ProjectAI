@@ -10,6 +10,7 @@ public class PlayerController : IPlayerController
 {
     [Inject] IAssetService _assetService;
     [Inject] IGunsController _gunsController;
+    [Inject] IMeleeWeaponController _meleeWeaponController;
 
     private PlayerModel _playerModel;
     private CharacterView _characterView;// The players view
@@ -40,20 +41,25 @@ public class PlayerController : IPlayerController
     {
         try
         {
+            #region player selection and instantiation
             //Get the character prefab address
             string prefabAddress = null;
+            string gunAddress = null;
             switch (playerCharacter.CharacterType)
             {
                 case Character.Gunner:
-                    prefabAddress = AddressableIds.GunnerCharacter;
+                    prefabAddress = AddressableIds.Gunner_Character;
+                    gunAddress = AddressableIds.Simple_Gun;
                     break;
 
                 case Character.Shotgun:
-                    prefabAddress = AddressableIds.ShotgunnerCharacter;
+                    prefabAddress = AddressableIds.Shotgunner_Character;
+                    gunAddress = AddressableIds.Shot_Gun;
                     break;
 
                 case Character.Pyro:
                     prefabAddress = AddressableIds.Pyro;
+                    gunAddress = AddressableIds.Shot_Gun;
                     break;
             }
             //test if the prefabaddress is available
@@ -69,15 +75,19 @@ public class PlayerController : IPlayerController
             Debug.Log("PlayerModel initialized");
             //Asign the _player model and the controller to the view alongside the _player cursor aka reticle for shooting
             (GameObject,GameObject) bulletCursor = await PlayerCursorInitialization();
-            _characterView.Initialize(this, _playerModel, bulletCursor.Item1, bulletCursor.Item2);
             _bulletCursorUI = bulletCursor.Item2.transform;
+            _characterView.Initialize(this, _playerModel, bulletCursor.Item1, bulletCursor.Item2);
             Debug.Log("PlayerView Initialized");
+            #endregion
 
-            var gun = await _assetService.InstantiateAsync("SimpleGun");
+            #region Gun instantiation
+            var gun = await _assetService.InstantiateAsync(gunAddress);
             await _gunsController.SetCurrentActiveGun(gun.GetComponent<GunsView>(), _characterView.transform, bulletCursor.Item2.transform);
+            #endregion
 
+            #region player ui instantiation
             //Create the _player UI alongside the _player and pass the model for data
-            result = await _assetService.InstantiateAsync(AddressableIds.PlayerUI);
+            result = await _assetService.InstantiateAsync(AddressableIds.Player_UI);
             _playerUI = result.GetComponent<PlayerUI>();
             _playerUI.Initialize(_playerModel);
             Debug.Log("PlayerUI Initialized");
@@ -85,7 +95,17 @@ public class PlayerController : IPlayerController
             {
                 _camera.Target.TrackingTarget = _characterView.transform;
             }
-            //_initialized = true;
+            #endregion
+
+            #region melee instantiation
+
+            var melee = await _assetService.InstantiateAsync(AddressableIds.Machete);
+            MeleeWeaponView meleeView = melee.GetComponent<MeleeWeaponView>();
+            _meleeWeaponController.Initialize(_characterView.transform,_bulletCursorUI);
+            _meleeWeaponController.SetupWeapon(meleeView);
+
+            #endregion
+
             _movementPossible = true;
         }
         catch (Exception exception)
@@ -96,8 +116,8 @@ public class PlayerController : IPlayerController
 
     private async Awaitable<(GameObject,GameObject)> PlayerCursorInitialization()
     {
-        GameObject bulletCursor=await _assetService.InstantiateAsync(AddressableIds.BulletCursor);
-        GameObject bulletCursorUI = await _assetService.InstantiateAsync(AddressableIds.BullerCursorUI);
+        GameObject bulletCursor=await _assetService.InstantiateAsync(AddressableIds.Bullet_Cursor);
+        GameObject bulletCursorUI = await _assetService.InstantiateAsync(AddressableIds.Bullet_Cursor_UI);
         FollowScript bulletCursorFollow = bulletCursorUI.GetComponent<FollowScript>();
         bulletCursorFollow.Initialize(bulletCursor.transform);
         return (bulletCursor,bulletCursorUI);
@@ -163,6 +183,14 @@ public class PlayerController : IPlayerController
     public void EnableController(bool enable)
     {
         _initialized = enable;
+    }
+
+    void IPlayerController.MeleeAttack()
+    {
+        if(_meleeWeaponController.Initialized)
+        {
+            _meleeWeaponController.MeleeAttack();
+        }
     }
 }
 

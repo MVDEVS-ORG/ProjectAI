@@ -132,6 +132,15 @@ public class CharacterView : MonoBehaviour
             }
         }
     }
+     
+    public void MeleeAttack(InputAction.CallbackContext context)
+    {
+        if (!_playerController.Initialized) return;
+        if(context.performed)
+        {
+            _playerController.MeleeAttack();
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

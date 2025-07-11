@@ -40,6 +40,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 317375fb36b25364ca51b367926eca22
+    m_Address: Machete
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 32fb4d0075b44bf43b045b03663afc2c
     m_Address: WallInnerCornerDownRight
     m_ReadOnly: 0

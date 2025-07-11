@@ -16,7 +16,7 @@ public class MainMenuController
 
     private async Awaitable StartMainMenu()
     {
-        GameObject mainMenu = await _assetService.InstantiateAsync(AddressableIds.MainMenuUI);
+        GameObject mainMenu = await _assetService.InstantiateAsync(AddressableIds.Main_Menu_UI);
         _mainMenuUI = mainMenu.GetComponent<MainMenuUI>();
         _mainMenuUI.PlayButton.onClick.AddListener(PlayGameScene);
     }

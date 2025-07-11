@@ -19,8 +19,8 @@ public class PlayerPicker
 
     public async Task SetPlayer()
     {
-        _selectableCharacters.Add(await _assetService.LoadAssetAsync<PlayerCharactersSO>(AddressableIds.GunnerDataSO));
-        _selectableCharacters.Add(await _assetService.LoadAssetAsync<PlayerCharactersSO>(AddressableIds.ShotgunnerDataSO));
-        _selectableCharacters.Add(await _assetService.LoadAssetAsync<PlayerCharactersSO>(AddressableIds.PyroDataSO));
+        _selectableCharacters.Add(await _assetService.LoadAssetAsync<PlayerCharactersSO>(AddressableIds.Gunner_Data_SO));
+        _selectableCharacters.Add(await _assetService.LoadAssetAsync<PlayerCharactersSO>(AddressableIds.Shotgunner_Data_SO));
+        _selectableCharacters.Add(await _assetService.LoadAssetAsync<PlayerCharactersSO>(AddressableIds.Pyro_Data_SO));
     }
 }
