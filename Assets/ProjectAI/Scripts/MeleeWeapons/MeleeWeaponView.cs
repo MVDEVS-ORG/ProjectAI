@@ -9,6 +9,7 @@ public class MeleeWeaponView : MonoBehaviour
     private Transform _playerTransform;
     private Transform _cursorTransform;
     private Coroutine _attackCoroutine;
+    private bool _isLeftSwing=false;
 
     private int _meleeAttacksNo = 0;
 
@@ -20,25 +21,18 @@ public class MeleeWeaponView : MonoBehaviour
         return _model;
     }
 
-    public void Attack(int attackNo)
+    public void Attack()
     {
-        if (_playerTransform != null && _cursorTransform != null && _attackCoroutine==null)
+        if (_playerTransform != null && _cursorTransform != null && _attackCoroutine == null)
         {
-            float startingAngle= 0;
+            _isLeftSwing = !_isLeftSwing;
+            float startingAngle = 0;
             float endAngle = 0;
             Vector2 direction = (_cursorTransform.position - _playerTransform.position).normalized;
             float angle = Mathf.Atan2(direction.y, direction.x);
-            if (_meleeAttacksNo % 2 == 0)
-            {
-                startingAngle = angle - Mathf.PI / 2;
-                endAngle = angle + Mathf.PI / 2;
-            }
-            else
-            {
-                startingAngle = angle + Mathf.PI / 2;
-                endAngle = angle - Mathf.PI / 2;
-            }
-            _attackCoroutine = StartCoroutine(MeleeMotion(startingAngle, endAngle));
+            startingAngle = _isLeftSwing ? angle - Mathf.PI / 2 : angle + Mathf.PI / 2;
+            endAngle = _isLeftSwing ? angle + Mathf.PI / 2 : angle - Mathf.PI / 2;
+            _attackCoroutine = StartCoroutine(MeleeMotion(_isLeftSwing, startingAngle, endAngle));
         }
     }
 
@@ -47,7 +41,7 @@ public class MeleeWeaponView : MonoBehaviour
         return _attackCoroutine != null;
     }
 
-    IEnumerator MeleeMotion(float startAngle,float endAngle)
+    IEnumerator MeleeMotion(bool isLeftSwing,float startAngle,float endAngle)
     {
         int directionOfMotion = 0;
         directionOfMotion = startAngle < endAngle ? 1 : -1;

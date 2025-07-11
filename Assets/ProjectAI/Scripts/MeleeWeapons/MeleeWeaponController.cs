@@ -35,7 +35,7 @@ public class MeleeWeaponController : IMeleeWeaponController
         }
         else if(_model.Attacks<_model.AttackChainLimit)
         {
-            _view.Attack(_model.Attacks);
+            _view.Attack();
             _model.Attacks = _model.Attacks+1;
             _view.StartCoroutine(AttackCoolDown());
         }
