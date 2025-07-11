@@ -481,8 +481,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4596bcacaf448947afd7796312cc7bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerRoom: {fileID: 7574187362026677088, guid: 5db6deb8911497d4ab22312a97edd53a, type: 3}
-  defaultRoom: {fileID: 5217115828469075333, guid: 0dd97d8515920874387cd463f7aa6b13, type: 3}
+  _playerRoom: {fileID: 7574187362026677088, guid: 5db6deb8911497d4ab22312a97edd53a, type: 3}
+  _defaultRoom: {fileID: 5217115828469075333, guid: 0dd97d8515920874387cd463f7aa6b13, type: 3}
+  _treasureRoom: {fileID: 4681091359353749640, guid: cdffaa8847ee98d43bba16618ad59692, type: 3}
+  _portalRoom: {fileID: -8637961452197208135, guid: 917398da35537b04ebb2f552bc6fd41b, type: 3}
   _doorPrefab: {fileID: 1044465160487414943, guid: 4e45843f4fee0534e92f8055c2dafbfc, type: 3}
   graphTest: {fileID: 3099579629096834593}
   itemParent: {fileID: 8574788839658864228}

@@ -474,10 +474,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: DungeonGeneration
       objectReference: {fileID: 0}
+    - target: {fileID: 2090961810433112212, guid: 084af825213255f4bbc879f53710542b, type: 3}
+      propertyPath: offset
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6731705574373163731, guid: 084af825213255f4bbc879f53710542b, type: 3}
+      propertyPath: debugDrawGrid
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8018093379425579728, guid: 084af825213255f4bbc879f53710542b, type: 3}
       propertyPath: m_ShadowMesh.m_Mesh
       value: 
-      objectReference: {fileID: 992417725}
+      objectReference: {fileID: 1540724033}
     - target: {fileID: 8374989604668990844, guid: 084af825213255f4bbc879f53710542b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -646,7 +654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dbd1e1ba7e6e51439681cc2034d82dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!43 &992417725
+--- !u!43 &1049776494
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -894,7 +902,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!43 &1839295952
+--- !u!43 &1540724033
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -22,6 +22,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items
 
         public async Awaitable<List<GameObject>> PlaceAllItems(List<ItemPlacementData> itemData, ItemPlacementHelper itemPlacementHelper, IAssetService assetService)
         {
+            if (itemData == null) return null;
             List<GameObject> placedObjects = new List<GameObject>();
 
             IEnumerable<ItemPlacementData> sortedList = new List<ItemPlacementData>(itemData).OrderByDescending(placementData=>
@@ -75,7 +76,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items
 
         private async Awaitable<GameObject> PlaceItem(ItemData itemData, Vector2 value, IAssetService assetService)
         {
-            GameObject newItem = await CreateObject(AddressableIds.Item, value, assetService);
+            GameObject newItem = await CreateObject(itemData.itemId, value, assetService);
             newItem.GetComponent<Item>().InitializeItemData(itemData);
             return newItem;
         }
