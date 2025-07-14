@@ -14,8 +14,4 @@ public class GunsSO : ScriptableObject
     public float GunWindUpTime;
     public float ElipseVerticalRadius;
     public float ElipseHorizontalRadius;
-    public Sprite GunRight;
-    public Sprite GunLeft;
-    public Sprite GunUp;
-    public Sprite GunDown;
 }

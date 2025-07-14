@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 
+[Serializable]
 public class GunsModel
 {
     public string PrimaryProjectileAddressable;
@@ -14,10 +16,6 @@ public class GunsModel
     public float OverHeatValue;
     public float ElipseVerticalRadius;
     public float ElipseHorizontalRadius;
-    public Sprite GunRight;
-    public Sprite GunLeft;
-    public Sprite GunUp;
-    public Sprite GunDown;
     public GunsModel(GunsSO gunsData)
     {
         PrimaryProjectileAddressable = gunsData.PrimaryProjectileAddressable;
@@ -31,10 +29,6 @@ public class GunsModel
         GunWindUpTime = gunsData.GunWindUpTime;
         ElipseHorizontalRadius = gunsData.ElipseHorizontalRadius;
         ElipseVerticalRadius = gunsData.ElipseVerticalRadius;
-        GunRight = gunsData.GunRight;
-        GunLeft = gunsData.GunLeft;
-        GunUp = gunsData.GunUp;
-        GunDown = gunsData.GunDown;
         OverHeatValue = 0;
     }
 }
