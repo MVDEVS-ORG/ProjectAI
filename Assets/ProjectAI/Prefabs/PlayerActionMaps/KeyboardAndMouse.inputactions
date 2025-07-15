@@ -67,6 +67,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "TestEditorThings",
+                    "type": "Button",
+                    "id": "a007315a-4ccb-4e6e-9269-d7cb00e9b0d1",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -309,6 +318,17 @@
                     "processors": "",
                     "groups": ";Controller",
                     "action": "MeleeAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "18eb9e9e-af17-4735-901b-3094afbec52c",
+                    "path": "<Keyboard>/t",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";KBM",
+                    "action": "TestEditorThings",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

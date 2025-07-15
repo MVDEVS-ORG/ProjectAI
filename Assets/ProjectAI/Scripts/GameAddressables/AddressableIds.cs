@@ -1,3 +1,4 @@
+
 public static class AddressableIds
 {
     #region player data
@@ -18,6 +19,8 @@ public static class AddressableIds
 
     public const string Bullet_Cursor = "bulletCursor";
     public const string Bullet_Cursor_UI = "bulletCursorUI";
+
+    public const string Shotgun_Sprite = "ShotgunSprite";
     #endregion
 
     #region meleedata
@@ -47,5 +50,11 @@ public static class AddressableIds
     #region Main Menu
     public const string Main_Menu_UI = "MainMenuUI";
     public const string Fade_Screen = "FadeScreen";
+    #endregion
+
+    #region
+    public const string Upgrades_Popup = "UpgradesPopup";
+    public const string Upgrades_list = "UpgradesList";
+    public const string Upgrades_List_1 = "UpgradeList1";
     #endregion
 }

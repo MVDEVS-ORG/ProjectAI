@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb3e83c82a21b99448c1a9b802fc5f4f, type: 3}
+  m_Name: GunOverheatDecrease1
+  m_EditorClassIdentifier: 
+  Header: Gun Overheat Rate Decrease
+  Description: Slightly decreases the guns overheat rate
+  SpriteAddressable: ShotgunSprite
+  Type: 0
+  UpgradeTier: 0
+  UpgradeType: 1
+  playerModel:
+    MaxHealth: 0
+    Health: 0
+    Speed: 0
+    Character: 0
+    CursorDistance: 0
+    RollDuration: 0
+    RollSpeed: 0
+    NoOfRoll: 0
+    MaxNoOfRolls: 0
+    RolllCooldown: 0
+  gunsModel:
+    PrimaryProjectileAddressable: 
+    SecondaryProjectileAddressable: 
+    GunUIAddressable: 
+    FireRate: 0
+    GunWindUpTime: 0
+    OverHeatLimit: 0
+    OverHeatRate: -3
+    CoolDownRate: 0
+    MinCooldownThreshold: 0
+    OverHeatValue: 0
+    ElipseVerticalRadius: 0
+    ElipseHorizontalRadius: 0
+    Empty: 0
+  meleeWeaponModel:
+    AttackSpeed: 0
+    AttackTime: 0
+    AttackChainLimit: 0
+    AttackRechargeDelay: 0
+    DistanceFromPlayer: 0
+    Attacks: 0
+    Damage: 0
+  FuturePath: {fileID: 0}
