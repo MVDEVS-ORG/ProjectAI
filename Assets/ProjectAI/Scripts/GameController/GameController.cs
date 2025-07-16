@@ -17,6 +17,7 @@ public class GameController : IGameController
     [Inject]
     private void Initialize()
     {
+        UnityEngine.Random.InitState((int)Time.time);
         Debug.Log("Game Initialize started");
         _ = (this as IGameController).StartGame();
     }

@@ -708,7 +708,7 @@ GameObject:
   - component: {fileID: 7609802166594476148}
   - component: {fileID: 8934129548823439409}
   - component: {fileID: 4482614373282887068}
-  - component: {fileID: -5161850288367881503}
+  - component: {fileID: 8874432116343300551}
   m_Layer: 11
   m_Name: Melee Goblin
   m_TagString: Enemy
@@ -831,7 +831,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &-5161850288367881503
+--- !u!114 &8874432116343300551
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -840,7 +840,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8961486606960257030}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8db810d4c4191b4181b470c1c55b339, type: 3}
+  m_Script: {fileID: 11500000, guid: 186a2c1ccb679344bbea3e12ce614eff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   floorTilemap: {fileID: 0}
