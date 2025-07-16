@@ -12,10 +12,6 @@ public class PlayerCharactersSO : ScriptableObject
     public int MaxNoOfRolls;
     public int NoOfRolls;  
     public float RollCooldown;
-    /*public Sprite UpSprite;
-    public Sprite DownSprite;
-    public Sprite LeftSprite;
-    public Sprite RightSprite;*/
 }
 
 public enum Character
