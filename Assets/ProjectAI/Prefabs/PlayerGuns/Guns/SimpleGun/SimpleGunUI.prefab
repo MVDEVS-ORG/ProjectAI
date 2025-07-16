@@ -161,7 +161,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &6432192021973782833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,6 +192,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthBarFill: {fileID: 5603402516863453320}
+  _gun:
+    PrimaryProjectileAddressable: 
+    SecondaryProjectileAddressable: 
+    GunUIAddressable: 
+    FireRate: 0
+    GunWindUpTime: 0
+    OverHeatLimit: 0
+    OverHeatRate: 0
+    CoolDownRate: 0
+    MinCooldownThreshold: 0
+    OverHeatValue: 0
+    ElipseVerticalRadius: 0
+    ElipseHorizontalRadius: 0
   _gunBar: {fileID: 617570093139982292}
 --- !u!1 &8226064215875603948
 GameObject:

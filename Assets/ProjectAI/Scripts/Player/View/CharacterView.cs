@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Zenject;
 
 public class CharacterView : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class CharacterView : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
 
     private List<GameObject> _interactableObjects = new();
+
 
     public void Initialize(IPlayerController playerController, PlayerModel playerModel, GameObject bulletCursor, GameObject bulletCursorUI)
     {
@@ -62,7 +64,7 @@ public class CharacterView : MonoBehaviour
                     _rigidBody.linearVelocity = _rollDirection * _playerModel.RollSpeed;
                     break;
             }
-            TurnCharacter();
+            //TurnCharacter();
             if (_playerInput.currentControlScheme == "Controller" && _BulletCursor != null)
             {
                 Vector2 direction = _playerInput.actions.FindAction("Look").ReadValue<Vector2>();
@@ -95,6 +97,7 @@ public class CharacterView : MonoBehaviour
         }
     }
 
+    #region button inputs
     public void Shoot(InputAction.CallbackContext context)
     {
         if (!_playerController.Initialized) return;
@@ -113,6 +116,7 @@ public class CharacterView : MonoBehaviour
         if (!_playerController.Initialized) return;
         if (context.performed)
         {
+            Debug.LogError(_playerModel.GetHashCode());
             _rollDirection = _playerController.Dash(_moveInput);
         }
     }
@@ -142,6 +146,17 @@ public class CharacterView : MonoBehaviour
         }
     }
 
+    public void TestThings(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            _playerController.Test();
+        }
+    }
+
+    #endregion
+
+    #region collision
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.TryGetComponent(out IInteractable interactableObject))
@@ -156,7 +171,7 @@ public class CharacterView : MonoBehaviour
             _interactableObjects.Remove(collision.gameObject);
         }
     }
-
+    #endregion
 
     #region Control schema
     public void InputChange(PlayerInput controller)
@@ -201,7 +216,7 @@ public class CharacterView : MonoBehaviour
 
     #endregion
 
-    #region to be deleted or improved
+    /*#region to be deleted or improved
     public void TurnCharacter()
     {
         if (_bulletCursorUI!=null && _spriteRenderer!=null)
@@ -231,5 +246,5 @@ public class CharacterView : MonoBehaviour
             }
         }
     }
-    #endregion
+    #endregion*/
 }

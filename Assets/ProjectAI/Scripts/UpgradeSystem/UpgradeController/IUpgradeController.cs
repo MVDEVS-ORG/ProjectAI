@@ -1,0 +1,15 @@
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+public interface IUpgradeController
+{
+    Awaitable Initialize();
+    void DisplayUpgrades();
+    void SelectedUpgrade(List<UpgradeSO> upgrades);
+
+    event Action<List<UpgradeSO>> OnUpgrade;
+    void RefreshUpgrades();
+    void SaveUpgrades();
+    void LoadUpgrades();
+}

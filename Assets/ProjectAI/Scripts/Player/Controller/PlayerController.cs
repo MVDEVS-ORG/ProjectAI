@@ -1,7 +1,8 @@
 using Assets.Services;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
-using System.Threading.Tasks;
+using System.Collections.Generic;
 using Unity.Cinemachine;
 using UnityEngine;
 using Zenject;
@@ -11,6 +12,7 @@ public class PlayerController : IPlayerController
     [Inject] IAssetService _assetService;
     [Inject] IGunsController _gunsController;
     [Inject] IMeleeWeaponController _meleeWeaponController;
+    [Inject] IUpgradeController _upgradeController;
 
     private PlayerModel _playerModel;
     private CharacterView _characterView;// The players view
@@ -106,11 +108,33 @@ public class PlayerController : IPlayerController
 
             #endregion
 
+            _upgradeController.OnUpgrade += UpgradePlayer;
             _movementPossible = true;
         }
         catch (Exception exception)
         {
             Debug.LogError(exception.Message);
+        }
+    }
+
+    private void UpgradePlayer(List<UpgradeSO> upgrades)
+    {
+        foreach (UpgradeSO upgrade in upgrades)
+        {
+            switch (upgrade.Type)
+            {
+                case StatType.Additive:
+                    _playerModel = _playerModel + upgrade.playerModel;
+                    break;
+
+                case StatType.Multiplicative:
+                    _playerModel = _playerModel * upgrade.playerModel;
+                    break;
+
+                case StatType.Set:
+                    _playerModel = _playerModel % upgrade.playerModel;
+                    break;
+            }
         }
     }
 
@@ -142,9 +166,10 @@ public class PlayerController : IPlayerController
 
     Vector2 IPlayerController.Dash(Vector2 MoveInput)
     {
-        if(_moveState == State.Moving && MoveInput!= Vector2.zero && _playerModel.NoOfRoll>0) //also need to addd the stamina part here
+        Debug.LogError(_playerModel.GetHashCode());
+        if (_moveState == State.Moving && MoveInput!= Vector2.zero && _playerModel.NoOfRoll<_playerModel.MaxNoOfRolls) //also need to addd the stamina part here
         {
-            _playerModel.NoOfRoll--;
+            _playerModel.NoOfRoll++;
             _characterView.StartCoroutine(RollDash());
             _characterView.StartCoroutine(DashCoolDown());
             return MoveInput;
@@ -155,7 +180,7 @@ public class PlayerController : IPlayerController
     IEnumerator DashCoolDown()
     {
         yield return Awaitable.WaitForSecondsAsync(_playerModel.RolllCooldown);
-        _playerModel.NoOfRoll = _playerModel.NoOfRoll < _playerModel.MaxNoOfRolls ? _playerModel.NoOfRoll + 1 : _playerModel.NoOfRoll ;
+        _playerModel.NoOfRoll = _playerModel.NoOfRoll > 0 ? _playerModel.NoOfRoll - 1 : 0 ;
     }
 
     IEnumerator RollDash()
@@ -180,17 +205,22 @@ public class PlayerController : IPlayerController
         _gunsController.SwapGuns(gun, _characterView.transform, _bulletCursorUI);
     }
 
-    public void EnableController(bool enable)
-    {
-        _initialized = enable;
-    }
-
     void IPlayerController.MeleeAttack()
     {
         if(_meleeWeaponController.Initialized)
         {
             _meleeWeaponController.MeleeAttack();
         }
+    }
+
+    void IPlayerController.EnableController(bool enable)
+    {
+        _initialized = enable;
+    }
+
+    void IPlayerController.Test()
+    {
+        _upgradeController.DisplayUpgrades();
     }
 }
 
