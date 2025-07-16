@@ -14,6 +14,7 @@ public interface IPlayerController
     void SwapPlayerGuns(GunsView gun);
     void EnableController(bool enable);
     void MeleeAttack();
+    void Test();
 }
 
 public enum State

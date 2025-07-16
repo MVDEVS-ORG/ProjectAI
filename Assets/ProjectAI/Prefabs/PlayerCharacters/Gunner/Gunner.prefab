@@ -163,6 +163,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 96c6838e-d52d-4627-8e7f-0619d93905e1
     m_ActionName: 'Universal/MeleeAttack[/DualShock4GamepadHID/rightShoulder,/Mouse/rightButton]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2326315397728171776}
+        m_TargetAssemblyTypeName: CharacterView, Assembly-CSharp
+        m_MethodName: TestThings
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a007315a-4ccb-4e6e-9269-d7cb00e9b0d1
+    m_ActionName: 'Universal/TestEditorThings[/Keyboard/t]'
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: KBM
   m_DefaultActionMap: Universal
@@ -218,7 +234,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: a4967a1d5beed3e42b847694d23d658a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -35,6 +35,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2176721871dfa704eaa2c9befc2994a2
+    m_Address: UpgradesPopup
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 22c9f328675568942a63b2770a6a63dc
     m_Address: WallTop
     m_ReadOnly: 0
@@ -72,6 +77,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 48f266dd4a05b16408bd7850a444eafd
     m_Address: EnemySpawner
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4e024ad029743584d94fe1cfc1ac9f6c
+    m_Address: ShotgunSprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -137,6 +147,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: aa31c2d3f367c594292d327ca2f7c134
     m_Address: Treasure
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: abc8678da50460e4d856238974356252
+    m_Address: UpgradeList1
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

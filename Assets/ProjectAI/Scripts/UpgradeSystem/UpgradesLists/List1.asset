@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4d82f93c86325c488fd85b87ff096b6, type: 3}
+  m_Name: List1
+  m_EditorClassIdentifier: 
+  Tier1:
+  - {fileID: 11400000, guid: 3a757f64a8c6a9847ae060b1d067dcdc, type: 2}
+  - {fileID: 11400000, guid: 2247a6ba8fa5a1c4fa59269a72fd84e1, type: 2}
+  - {fileID: 11400000, guid: 8d427ec3ff822dc4f9d85fcd69aa5ac2, type: 2}
+  - {fileID: 11400000, guid: da2fb692bfd9c0c4088a3c14ee6835d5, type: 2}
+  - {fileID: 11400000, guid: 90f55156db22b8e4ba807211a481590e, type: 2}
+  - {fileID: 11400000, guid: 50c37ae7c851b0f47ae539f56025c42b, type: 2}
+  - {fileID: 11400000, guid: afae1e9f19f9b364e9f09721bb3a182d, type: 2}
+  - {fileID: 11400000, guid: d608dc259ab59ec4fa86c22328c9dd22, type: 2}
+  Tier2: []
+  Tier3: []
+  Cursed: []
+  Blessed: []

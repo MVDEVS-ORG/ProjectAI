@@ -1,4 +1,5 @@
 using Assets.Services;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -34,9 +35,10 @@ public class GunsView : MonoBehaviour, IInteractable
     {
         Debug.Log("Gun initialized");
         GunsController = controller;
-        if (GunsModel == null)
+        if (!GunsModel.Empty)
         {
             GunsModel = new GunsModel(GunsDataModel);
+            GunsModel.Empty = true;
         }
         GunActive = true;
         PlayerTransform = playerTrasform;

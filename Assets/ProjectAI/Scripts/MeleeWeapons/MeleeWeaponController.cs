@@ -1,8 +1,11 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class MeleeWeaponController : IMeleeWeaponController
 {
+    [Inject] private IUpgradeController _upgradeController;
     private MeleeWeaponModel _model;
     private MeleeWeaponView _view;
 
@@ -23,10 +26,14 @@ public class MeleeWeaponController : IMeleeWeaponController
         _playerTransform = playerTransform;
         _cursorTransform = cursorTransform;
     }
+
+
+
     void IMeleeWeaponController.SetupWeapon(MeleeWeaponView view)
     {
         _view = view;
         _model = view.SetupAndActivate(_playerTransform,_cursorTransform);
+        _upgradeController.OnUpgrade += UpgradeMeleeWeapon;
         _initialized = true;
     }
 
@@ -41,6 +48,30 @@ public class MeleeWeaponController : IMeleeWeaponController
             Attack();
             _model.Attacks = _model.Attacks+1;
             _playerView.StartCoroutine(AttackCoolDown());
+        }
+    }
+
+    private void UpgradeMeleeWeapon(List<UpgradeSO> upgrades)
+    {
+        foreach (UpgradeSO upgrade in upgrades)
+        {
+            if (upgrade.UpgradeType == UpgradeType.MeleeWeapon)
+            {
+                switch (upgrade.Type)
+                {
+                    case StatType.Additive:
+                        _model = _model + upgrade.meleeWeaponModel;
+                        break;
+
+                    case StatType.Multiplicative:
+                        _model = _model * upgrade.meleeWeaponModel;
+                        break;
+
+                    case StatType.Set:
+                        _model = _model % upgrade.meleeWeaponModel;
+                        break;
+                }
+            }
         }
     }
 
