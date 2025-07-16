@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8671594667344144745}
   m_Layer: 10
   m_Name: Gunner
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

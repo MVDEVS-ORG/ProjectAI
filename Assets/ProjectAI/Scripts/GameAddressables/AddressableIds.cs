@@ -31,6 +31,8 @@ public static class AddressableIds
     public const string Goblin = "Goblin";
     public const string Enemy_Spawner = "EnemySpawner";
 
+    public const string Enemy_Melee_Attack = "EnemyMeleeAttack";
+
     #region TileMap Addressables
 
     public const string Floor = "floor";

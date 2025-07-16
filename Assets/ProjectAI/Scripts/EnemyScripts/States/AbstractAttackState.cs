@@ -2,14 +2,16 @@
 
 public abstract class AbstractAttackState : IEnemyState
 {
-    private EnemyAI _enemy;
-    private Transform _player;
+    protected EnemyAI _enemy;
+    protected Transform _player;
+    protected ObjectPoolManager _poolManager;
     private float attackCooldown = 1.5f;
     private float timer;
     private CharacterView _characterView;
 
     public virtual void Enter(EnemyAI enemy, Transform player, ObjectPoolManager op)
     {
+        _poolManager = op;
         _enemy = enemy;
         _player = player;
         timer = attackCooldown;

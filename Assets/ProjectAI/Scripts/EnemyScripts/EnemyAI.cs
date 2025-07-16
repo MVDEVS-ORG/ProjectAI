@@ -10,6 +10,8 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
     public float moveSpeed = 2f;
     public float attackRange = 1.5f;
     public float detectionRange = 6f;
+    public Transform attackSpawnPos;
+    public float attackOffset = 0;
     public HealthModels healthModel;
 
     [SerializeField] private Collider2D _enemyCollider;

@@ -8,7 +8,15 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.States
         public override void Attack()
         {
             base.Attack();
-            Debug.LogError("attacking different attacks");
+            foreach (var attack in _enemy.attackBehaviors)
+            {
+                if (attack.CanExecute(_enemy))
+                {
+                    attack.Execute(_enemy, _poolManager);
+                    break;
+                }
+            }
+
         }
     }
 }
