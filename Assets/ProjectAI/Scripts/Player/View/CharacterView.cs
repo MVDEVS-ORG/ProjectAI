@@ -156,6 +156,12 @@ public class CharacterView : MonoBehaviour
 
     #endregion
 
+    public void TakeDamage(int damage)
+    {
+        if (!_playerController.Initialized) return;
+        _playerController.TakeDamage(damage);
+    }
+
     #region collision
     private void OnTriggerEnter2D(Collider2D collision)
     {

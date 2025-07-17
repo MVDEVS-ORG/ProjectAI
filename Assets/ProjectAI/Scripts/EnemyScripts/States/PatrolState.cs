@@ -11,7 +11,7 @@ public class PatrolState : IEnemyState
     private float waitTimer;
     private bool waiting;
 
-    public void Enter(EnemyAI enemy, Transform player)
+    public void Enter(EnemyAI enemy, Transform player, ObjectPoolManager op)
     {
         _enemy = enemy;
         _player = player;
@@ -49,8 +49,7 @@ public class PatrolState : IEnemyState
     private void SetNewPatrolTarget()
     {
         patrolTarget = _enemy.GetRandomWalkableTile();
-        Vector3Int start = _enemy.floorTilemap.WorldToCell(_enemy.transform.position);
-        List<Vector3Int> path = PathFindingManager.Instance.FindPath(start, patrolTarget);
+        List<Vector3Int> path = PathFindingManager.Instance.FindPath(_enemy.transform.position, patrolTarget);
         _enemy.StartPathMovement(path);
     }
 }

@@ -225,10 +225,12 @@ namespace Assets.ProjectAI.Scripts.PathFinding
         /// <summary>
         /// Find a path using A* from start to target.
         /// </summary>
-        public List<Vector3Int> FindPath(Vector3Int startCell, Vector3Int targetCell)
+        public List<Vector3Int> FindPath(Vector3 startPostition, Vector3 targetPosition)
         {
             if (nodes == null) return null;
 
+            Vector3Int startCell = floorTilemap.WorldToCell(startPostition);
+            Vector3Int targetCell = floorTilemap.WorldToCell(targetPosition);
             int sx = startCell.x - offsetX;
             int sy = startCell.y - offsetY;
             int tx = targetCell.x - offsetX;

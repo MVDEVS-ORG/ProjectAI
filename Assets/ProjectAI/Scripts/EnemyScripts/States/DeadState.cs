@@ -1,11 +1,25 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class DeadState : IEnemyState
 {
-    public void Enter(EnemyAI enemy, Transform player)
+    private EnemyAI _enemy;
+    private ObjectPoolManager _objectPoolmanager;
+    public void Enter(EnemyAI enemy, Transform player, ObjectPoolManager op)
     {
-        GameObject.Destroy(enemy.gameObject);
+        _enemy = enemy;
+        _objectPoolmanager = op;
+        Debug.LogError("Enemy Dead");
+        _objectPoolmanager.ReleaseGameObject(_enemy.gameObject, ObjectPoolManager.PoolType.Enemies);
+        //_ = DeathAnimation();
         //Add Object pooling
+    }
+
+    async Awaitable DeathAnimation()
+    {
+        await Awaitable.WaitForSecondsAsync(1000);
+        _objectPoolmanager.ReleaseGameObject(_enemy.gameObject, ObjectPoolManager.PoolType.Enemies);
     }
 
     public void Update() { }

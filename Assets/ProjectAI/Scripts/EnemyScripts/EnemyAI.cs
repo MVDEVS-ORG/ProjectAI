@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine.Tilemaps;
 using System.Collections;
 using Assets.ProjectAI.Scripts.PathFinding;
+using Assets.ProjectAI.Scripts.EnemyScripts;
 
 public class EnemyAI : MonoBehaviour, IHealthSystem
 {
-    public Tilemap floorTilemap;
     public float moveSpeed = 2f;
     public float attackRange = 1.5f;
     public float detectionRange = 6f;
+    public Transform attackSpawnPos;
+    public float attackOffset = 0;
     public HealthModels healthModel;
 
     [SerializeField] private Collider2D _enemyCollider;
@@ -18,6 +20,7 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
     private int _health = 10; 
     private int _maxHealth = 10; 
 
+    private Tilemap floorTilemap;
     private IEnemyState currentState;
     private Coroutine moveRoutine;
 
@@ -25,10 +28,10 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
     [HideInInspector] public int currentPathIndex;
 
     public int Health => _health;
-
+    public Transform Target => _player;
     public int MaxHealth => _maxHealth;
-
-    public void InitializeEnemy(Transform playerTransform, ObjectPoolManager poolManager)
+    public List<IAttackBehavior> attackBehaviors = new List<IAttackBehavior>();
+    public virtual void InitializeEnemy(Transform playerTransform, ObjectPoolManager poolManager)
     {
         _player = playerTransform;
         _objectPoolmanager = poolManager;
@@ -63,7 +66,7 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
     {
         currentState?.Exit();
         currentState = newState;
-        currentState.Enter(this, _player);
+        currentState.Enter(this, _player, _objectPoolmanager);
     }
 
     public void StartPathMovement(List<Vector3Int> path)
@@ -143,7 +146,7 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
         _health = Mathf.Clamp(_health + healing, 0, _maxHealth);
     }
 
-    public void Initialize(HealthModels model)
+    public virtual void Initialize(HealthModels model)
     {
         _health = model.Health;
         _maxHealth = model.MaxHealth;

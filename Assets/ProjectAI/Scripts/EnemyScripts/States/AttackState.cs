@@ -1,41 +1,22 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
-public class AttackState : IEnemyState
+namespace Assets.ProjectAI.Scripts.EnemyScripts.States
 {
-    private EnemyAI _enemy;
-    private Transform _player;
-    private float attackCooldown = 1.5f;
-    private float timer;
-    private CharacterView _characterView;
-
-    public void Enter(EnemyAI enemy, Transform player)
+    public class AttackState : AbstractAttackState
     {
-        _enemy = enemy;
-        _player = player;
-        timer = attackCooldown;
-        enemy.StopMovement();
-    }
-
-    public void Update()
-    {
-        if (!_enemy.IsPlayerInAttackRange())
+        public override void Attack()
         {
-            _enemy.TransitionToState(new ChaseState());
-            return;
+            base.Attack();
+            foreach (var attack in _enemy.attackBehaviors)
+            {
+                if (attack.CanExecute(_enemy))
+                {
+                    attack.Execute(_enemy, _poolManager);
+                    break;
+                }
+            }
+
         }
-
-        timer += Time.deltaTime;
-        if (timer >= attackCooldown)
-        {
-            Attack();
-            timer = 0f;
-        }
-    }
-
-    public void Exit() { }
-
-    private void Attack()
-    {
-
     }
 }

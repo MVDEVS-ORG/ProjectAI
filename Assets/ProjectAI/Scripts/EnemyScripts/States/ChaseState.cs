@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Assets.ProjectAI.Scripts.PathFinding;
 using Assets.ProjectAI.Scripts.EnemyScripts;
+using Assets.ProjectAI.Scripts.EnemyScripts.States;
 
 public class ChaseState : IEnemyState
 {
@@ -10,7 +11,7 @@ public class ChaseState : IEnemyState
     private float _pathRefreshTime = Random.Range(0.5f, 1f);
     private float _timer;
 
-    public void Enter(EnemyAI enemy, Transform player)
+    public void Enter(EnemyAI enemy, Transform player, ObjectPoolManager op)
     {
         _enemy = enemy;
         _player = player;
@@ -45,9 +46,7 @@ public class ChaseState : IEnemyState
     private void RequestPath()
     {
         Vector3 targetPos = GetOffsetAroundPlayer(_enemy.gameObject, _player);
-        Vector3Int start = _enemy.floorTilemap.WorldToCell(_enemy.transform.position);
-        Vector3Int goal = _enemy.floorTilemap.WorldToCell(targetPos);
-        List<Vector3Int> path = PathFindingManager.Instance.FindPath(start, goal);
+        List<Vector3Int> path = PathFindingManager.Instance.FindPath(_enemy.transform.position, targetPos);
         _enemy.StartPathMovement(path);
     }
     private Vector3 GetOffsetAroundPlayer(GameObject self, Transform player)

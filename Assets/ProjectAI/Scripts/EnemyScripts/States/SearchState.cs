@@ -1,6 +1,7 @@
 ﻿using Assets.ProjectAI.Scripts.PathFinding;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class SearchState : IEnemyState
 {
@@ -9,15 +10,12 @@ public class SearchState : IEnemyState
     private float searchTime = 3f;
     private float timer;
     private Vector3 lastKnownPos;
-
-    public void Enter(EnemyAI enemy, Transform player)
+    public void Enter(EnemyAI enemy, Transform player, ObjectPoolManager op)
     {
         _enemy = enemy;
         _player = player;
         lastKnownPos = _player.position;
-        Vector3Int start = enemy.floorTilemap.WorldToCell(enemy.transform.position);
-        Vector3Int goal = enemy.floorTilemap.WorldToCell(lastKnownPos);
-        List<Vector3Int> path = PathFindingManager.Instance.FindPath(start, goal);
+        List<Vector3Int> path = PathFindingManager.Instance.FindPath(enemy.transform.position, lastKnownPos);
         enemy.StartPathMovement(path);
         timer = 0f;
     }

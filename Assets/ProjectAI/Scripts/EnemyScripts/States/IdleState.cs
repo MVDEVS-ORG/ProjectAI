@@ -6,7 +6,7 @@ public class IdleState : IEnemyState
     private float waitTime = 2f;
     private float timer;
 
-    public void Enter(EnemyAI enemy, Transform player)
+    public void Enter(EnemyAI enemy, Transform player, ObjectPoolManager op)
     {
         this._enemy = enemy;
         timer = 0f;

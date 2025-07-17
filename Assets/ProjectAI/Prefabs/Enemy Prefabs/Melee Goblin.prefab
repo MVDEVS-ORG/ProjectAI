@@ -522,6 +522,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &4524012220906731419
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2280534470889601991}
+  m_Layer: 11
+  m_Name: meleeAttackPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2280534470889601991
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4524012220906731419}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8752495998351135751}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6420897393970782262
 GameObject:
   m_ObjectHideFlags: 0
@@ -708,7 +739,7 @@ GameObject:
   - component: {fileID: 7609802166594476148}
   - component: {fileID: 8934129548823439409}
   - component: {fileID: 4482614373282887068}
-  - component: {fileID: -5161850288367881503}
+  - component: {fileID: 8874432116343300551}
   m_Layer: 11
   m_Name: Melee Goblin
   m_TagString: Enemy
@@ -734,6 +765,7 @@ Transform:
   - {fileID: 9092363955704228201}
   - {fileID: 2795738889298848458}
   - {fileID: 7374445753411503163}
+  - {fileID: 2280534470889601991}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &7609802166594476148
@@ -831,7 +863,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &-5161850288367881503
+--- !u!114 &8874432116343300551
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -840,13 +872,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 8961486606960257030}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8db810d4c4191b4181b470c1c55b339, type: 3}
+  m_Script: {fileID: 11500000, guid: 186a2c1ccb679344bbea3e12ce614eff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floorTilemap: {fileID: 0}
   moveSpeed: 2
   attackRange: 1.5
   detectionRange: 6
+  attackSpawnPos: {fileID: 2280534470889601991}
+  attackOffset: 1
   healthModel: {fileID: 11400000, guid: dd952a87abf29984e94e6f574d9340a4, type: 2}
   _enemyCollider: {fileID: 8934129548823439409}
   currentPath: []
