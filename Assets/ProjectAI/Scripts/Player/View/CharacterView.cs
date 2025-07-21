@@ -18,7 +18,6 @@ public class CharacterView : MonoBehaviour
     private PlayerInput _playerInput;
     private Vector3 _lastValidDirection = Vector3.right;
 
-    private bool _isControllerInUse = false;
     private Vector2 _rollDirection;
 
     private SpriteRenderer _spriteRenderer;
