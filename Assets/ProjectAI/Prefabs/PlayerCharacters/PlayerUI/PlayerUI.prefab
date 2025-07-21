@@ -162,6 +162,7 @@ GameObject:
   - component: {fileID: 1990713735875493842}
   - component: {fileID: 7935636295558170895}
   - component: {fileID: 7436979923135045901}
+  - component: {fileID: 3986096656312425487}
   m_Layer: 5
   m_Name: Heart
   m_TagString: Untagged
@@ -226,6 +227,28 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &3986096656312425487
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3811664775473014335}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: def043402120e5545bab5a83d5c48c45, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4316918456069238131
 GameObject:
   m_ObjectHideFlags: 0
@@ -556,6 +579,7 @@ MonoBehaviour:
   _heartShape: {fileID: 7436979923135045901}
   _health: {fileID: 6708912265887698219}
   _rallyHealth: {fileID: 8700500455849202149}
+  _heartAnimator: {fileID: 3986096656312425487}
   _healthDropTime: 1
 --- !u!1 &6634053317098187561
 GameObject:

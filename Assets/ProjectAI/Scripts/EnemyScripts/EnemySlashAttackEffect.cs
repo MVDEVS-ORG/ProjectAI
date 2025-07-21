@@ -8,13 +8,14 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts
         public ObjectPoolManager poolManager;
         public int slashDamage = 5;
         public LayerMask playerMask;
+        public Transform EnemyTransform;
         bool canDamagePlayer = false;
         private CharacterView playerHealthSystem;
         public void GiveDamage()
         {
             if (canDamagePlayer && playerHealthSystem != null)
             {
-                playerHealthSystem.TakeDamage(slashDamage);
+                playerHealthSystem.TakeDamage(slashDamage,EnemyTransform.position);
             }
         }
 

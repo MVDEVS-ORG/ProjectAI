@@ -20,8 +20,10 @@ public class PlayerController : IPlayerController
 
     private bool _initialized = false;
     private bool _movementPossible = false;
+    private bool _isInvincible = false;
     bool IPlayerController.Initialized => _initialized;
     bool IPlayerController.MovementPossible => _movementPossible;
+    bool IPlayerController.IsInvincible => _isInvincible;
 
     private CinemachineCamera _camera;
 
@@ -151,6 +153,17 @@ public class PlayerController : IPlayerController
     {
         _playerModel.Health = Mathf.Max(0, _playerModel.Health - damage);
         _playerUI.AlterHealthBar();
+        _moveState = State.TakeDamage;
+        _isInvincible = true;
+        if(_characterView!=null)
+        {
+            _characterView.StartCoroutine(InvincibilityDuration());
+            _characterView.StartCoroutine(DamageKickbackTimer());
+        }
+        else
+        {
+            _isInvincible = false;
+        }
     }
 
     void IPlayerController.RestoreHealth(int health)
@@ -221,6 +234,18 @@ public class PlayerController : IPlayerController
     void IPlayerController.Test()
     {
         _upgradeController.DisplayUpgrades();
+    }
+
+    IEnumerator InvincibilityDuration()
+    {
+        yield return Awaitable.WaitForSecondsAsync(_playerModel.InvincibilityTime);
+        _isInvincible = false;
+    }
+
+    IEnumerator DamageKickbackTimer()
+    {
+        yield return Awaitable.WaitForSecondsAsync(_playerModel.DamageKickBackTime);
+        _moveState = State.Moving;
     }
 }
 

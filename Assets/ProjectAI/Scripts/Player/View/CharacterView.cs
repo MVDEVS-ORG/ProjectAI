@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
 
+[RequireComponent(typeof(FlashFeedback))]
 public class CharacterView : MonoBehaviour
 {
     private IPlayerController _playerController;
@@ -17,12 +18,15 @@ public class CharacterView : MonoBehaviour
     private GameObject _bulletCursorUI = null;
     private PlayerInput _playerInput;
     private Vector3 _lastValidDirection = Vector3.right;
+    private Vector2 _lastDamageTickDirection = Vector2.zero;
 
     private Vector2 _rollDirection;
 
     private SpriteRenderer _spriteRenderer;
 
     private List<GameObject> _interactableObjects = new();
+
+    private FlashFeedback _flashFeedback;
 
 
     public void Initialize(IPlayerController playerController, PlayerModel playerModel, GameObject bulletCursor, GameObject bulletCursorUI)
@@ -42,6 +46,7 @@ public class CharacterView : MonoBehaviour
         InputSystem.onDeviceChange += OnDeviceChange;
         CheckInitialControlSchema();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _flashFeedback = GetComponent<FlashFeedback>();
     }
 
     // Update is called once per frame
@@ -61,6 +66,10 @@ public class CharacterView : MonoBehaviour
 
                 case State.RollDash:
                     _rigidBody.linearVelocity = _rollDirection * _playerModel.RollSpeed;
+                    break;
+
+                case State.TakeDamage:
+                    _rigidBody.linearVelocity = _lastDamageTickDirection * _playerModel.DamageKickBackSpeed;
                     break;
             }
             //TurnCharacter();
@@ -155,10 +164,13 @@ public class CharacterView : MonoBehaviour
 
     #endregion
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage,Vector2 direction)
     {
-        if (!_playerController.Initialized) return;
+        Debug.Log(_playerController.IsInvincible);
+        if (!_playerController.Initialized || _playerController.IsInvincible) return;
         _playerController.TakeDamage(damage);
+        _lastDamageTickDirection = new Vector2(transform.position.x,transform.position.y) - direction;
+        _flashFeedback.Flash(_playerModel.InvincibilityTime);
     }
 
     #region collision
@@ -221,35 +233,4 @@ public class CharacterView : MonoBehaviour
 
     #endregion
 
-    /*#region to be deleted or improved
-    public void TurnCharacter()
-    {
-        if (_bulletCursorUI!=null && _spriteRenderer!=null)
-        {
-            float angle = Mathf.Atan2(_bulletCursorUI.transform.position.y - transform.position.y, _bulletCursorUI.transform.position.x - transform.position.x);
-            if (MathF.Abs(angle) > (MathF.PI / 4f) && MathF.Abs(angle) < (MathF.PI * 3f / 4f))
-            {
-                if (angle > 0)
-                {
-                    _spriteRenderer.sprite = _playerModel.UpSprite;
-                }
-                else
-                {
-                    _spriteRenderer.sprite = _playerModel.DownSprite;
-                }
-            }
-            else
-            {
-                if (MathF.Abs(angle) > MathF.PI / 2f)
-                {
-                    _spriteRenderer.sprite = _playerModel.LeftSprite;
-                }
-                else
-                {
-                    _spriteRenderer.sprite = _playerModel.RightSprite;
-                }
-            }
-        }
-    }
-    #endregion*/
 }
