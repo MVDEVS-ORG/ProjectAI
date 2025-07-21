@@ -5,12 +5,12 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.AttackBehaviour
 {
     public class MeleeAttack : AbstractAttackState
     {
-        public bool CanExecute()
+        private bool CanExecute()
         {
             return _enemy.IsPlayerInAttackRange();
         }
 
-        public async void Execute()
+        private async void Execute()
         {
             Debug.LogError("Melee Slash!");
             var attackDirection = (_enemy.Target.position - _enemy.transform.position).normalized;
@@ -45,7 +45,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.AttackBehaviour
         }
         public override void Attack()
         {
-            Debug.LogError($"This is being called! but value is {CanExecute()}");
+            Debug.Log($"This is being called! but value is {CanExecute()}");
             if (CanExecute())
             {
                 Execute();

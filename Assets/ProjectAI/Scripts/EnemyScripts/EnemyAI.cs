@@ -21,6 +21,7 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
     public Transform attackSpawnPos;
     public float attackOffset = 0;
     public float attackCooldown = 1.5f;
+
     public HealthModels healthModel;
     public Animator animator;
 

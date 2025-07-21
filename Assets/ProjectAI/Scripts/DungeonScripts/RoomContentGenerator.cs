@@ -95,7 +95,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
             var playerTransform = await _playerController.GetPlayerTransform();
             if (dungeonData.bossRoomCenter.HasValue)
             {
-                Debug.LogError("Spawning boss room");
+                Debug.Log("Spawning boss room");
                 var bossCenter = dungeonData.bossRoomCenter.Value;
                 var bossRoomFloor = dungeonData.GetRoomFloorwithoutCorridors(bossCenter);
                 var bossRoom = dungeonData.roomsDictionary[bossCenter];
@@ -106,7 +106,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
 
             if (dungeonData.treasureRoomCenter.HasValue)
             {
-                Debug.LogError("Spawning treasure room");
+                Debug.Log("Spawning treasure room");
                 var treasureCenter = dungeonData.treasureRoomCenter.Value;
                 var treasureRoomFloor = dungeonData.GetRoomFloorwithoutCorridors(treasureCenter);
                 var treasureRoom = dungeonData.roomsDictionary[treasureCenter];

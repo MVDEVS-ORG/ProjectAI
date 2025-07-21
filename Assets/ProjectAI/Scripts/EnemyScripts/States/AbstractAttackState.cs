@@ -1,6 +1,5 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
-
 public abstract class AbstractAttackState : IEnemyState
 {
     protected EnemyAI _enemy;
@@ -9,6 +8,7 @@ public abstract class AbstractAttackState : IEnemyState
     protected float _attackCooldown = 1.5f;
     protected float timer;
     protected CharacterView _characterView;
+
 
     public virtual void Enter(EnemyAI enemy, Transform player, ObjectPoolManager op)
     {

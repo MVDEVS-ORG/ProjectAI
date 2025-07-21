@@ -32,6 +32,7 @@ public static class AddressableIds
     public const string Enemy_Spawner = "EnemySpawner";
 
     public const string Enemy_Melee_Attack = "EnemyMeleeAttack";
+
     public const string Enemy_Laser_Beam = "EnemyLaseBeam";
 
     #region TileMap Addressables

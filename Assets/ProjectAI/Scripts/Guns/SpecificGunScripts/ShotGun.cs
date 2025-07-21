@@ -5,8 +5,6 @@ public class ShotGun : GunsView
 
 
     public int NoOfPellets;
-
-    private bool StartFiring = false;
     private Awaitable FiringGun;
     private bool _overheat = false;
     public override void Fire(bool firing)
