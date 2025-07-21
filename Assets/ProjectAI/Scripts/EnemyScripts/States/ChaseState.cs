@@ -17,19 +17,20 @@ public class ChaseState : IEnemyState
         _player = player;
         RequestPath();
         _timer = 0f;
+        _enemy.animator.SetBool("Walking", true);
     }
 
     public void Update()
     {
         if (!_enemy.IsPlayerVisible())
         {
-            _enemy.TransitionToState(new SearchState());
+            _enemy.TransitionToState(_enemy.GetNextStateFromMap(EnemyStateTypes.Search));
             return;
         }
 
         if (_enemy.IsPlayerInAttackRange())
         {
-            _enemy.TransitionToState(new AttackState());
+            _enemy.TransitionToState(_enemy.GetNextStateFromMap(EnemyStateTypes.Attack));
             return;
         }
 
@@ -41,7 +42,13 @@ public class ChaseState : IEnemyState
         }
     }
 
-    public void Exit() { }
+    public void Exit() 
+    {
+        _enemy.animator.SetBool("Walking", false);
+        _enemy = null;
+        _player = null;
+        _timer = 0f;
+    }
 
     private void RequestPath()
     {

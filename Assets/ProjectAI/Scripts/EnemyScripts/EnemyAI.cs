@@ -5,6 +5,14 @@ using System.Collections;
 using Assets.ProjectAI.Scripts.PathFinding;
 using Assets.ProjectAI.Scripts.EnemyScripts;
 
+public enum EnemyStateTypes {
+    Idle,
+    Patrol,
+    Chase,
+    Attack,
+    Dead,
+    Search
+}
 public class EnemyAI : MonoBehaviour, IHealthSystem
 {
     public float moveSpeed = 2f;
@@ -12,7 +20,9 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
     public float detectionRange = 6f;
     public Transform attackSpawnPos;
     public float attackOffset = 0;
+    public float attackCooldown = 1.5f;
     public HealthModels healthModel;
+    public Animator animator;
 
     [SerializeField] private Collider2D _enemyCollider;
     private ObjectPoolManager _objectPoolmanager;
@@ -21,8 +31,10 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
     private int _maxHealth = 10; 
 
     private Tilemap floorTilemap;
-    private IEnemyState currentState;
     private Coroutine moveRoutine;
+
+    protected Dictionary<IEnemyState, EnemyStateTypes> stateMap = new();
+    protected IEnemyState currentState;
 
     [HideInInspector] public List<Vector3Int> currentPath;
     [HideInInspector] public int currentPathIndex;
@@ -35,6 +47,11 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
     {
         _player = playerTransform;
         _objectPoolmanager = poolManager;
+    }
+
+    public virtual void InitializeStates()
+    {
+        Debug.LogError("States not Initialized");
     }
     void Start()
     {
@@ -150,6 +167,7 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
     {
         _health = model.Health;
         _maxHealth = model.MaxHealth;
+        InitializeStates();
     }
 
     public void ResetHealth()
@@ -157,52 +175,72 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
         _health = _maxHealth;
     }
 
-    public void OnEnemyDeath()
+    private void OnEnemyDeath()
     {
         //Add death animation
         _enemyCollider.enabled = false;
-        StartCoroutine(DeathAnimation());
+        TransitionToState(GetNextStateFromMap(EnemyStateTypes.Dead));
     }
 
-    IEnumerator DeathAnimation()
+
+    private List<IEnemyState> GetStateFromMap(EnemyStateTypes stateType)
     {
-        yield return new WaitForSeconds(1f);
-        _objectPoolmanager.ReleaseGameObject(gameObject, ObjectPoolManager.PoolType.Enemies);
+        List<IEnemyState> enemyState = new();
+        foreach (var state in stateMap)
+        {
+            if (stateType == state.Value)
+            {
+                enemyState.Add(state.Key);
+            }
+        }
+        if(enemyState.Count == 0)
+        {
+            Debug.LogError("State Can not be found!");
+            enemyState.Add(new IdleState());
+        }
+
+        return enemyState;
     }
 
-    /*#if UNITY_EDITOR
-        private void OnDrawGizmos()
+    public IEnemyState GetNextStateFromMap(EnemyStateTypes stateType)
+    {
+        List<IEnemyState> enemyState = GetStateFromMap(stateType);
+        int index = Random.Range(0, enemyState.Count);
+        return enemyState[index];
+    }
+#if UNITY_EDITOR
+    private void OnDrawGizmos()
+    {
+        if (currentPath == null || currentPath.Count == 0 || PathFindingManager.Instance == null)
+            return;
+
+        Tilemap floor = PathFindingManager.Instance.floorTilemap;
+
+        //  Green Dot: Current Position
+        Gizmos.color = Color.green;
+        Gizmos.DrawSphere(transform.position, 0.1f);
+
+        //  Red Dot: Final Destination
+        Vector3 finalPos = floor.GetCellCenterWorld(currentPath[^1]);
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(finalPos, 0.15f);
+
+        //  Blue Line: Path to be followed
+        Gizmos.color = Color.blue;
+        for (int i = 0; i < currentPath.Count - 1; i++)
         {
-            if (currentPath == null || currentPath.Count == 0 || PathFindingManager.Instance == null)
-                return;
-
-            Tilemap floor = PathFindingManager.Instance.floorTilemap;
-
-            //  Green Dot: Current Position
-            Gizmos.color = Color.green;
-            Gizmos.DrawSphere(transform.position, 0.1f);
-
-            //  Red Dot: Final Destination
-            Vector3 finalPos = floor.GetCellCenterWorld(currentPath[^1]);
-            Gizmos.color = Color.red;
-            Gizmos.DrawSphere(finalPos, 0.15f);
-
-            //  Blue Line: Path to be followed
-            Gizmos.color = Color.blue;
-            for (int i = 0; i < currentPath.Count - 1; i++)
-            {
-                Vector3 from = floor.GetCellCenterWorld(currentPath[i]);
-                Vector3 to = floor.GetCellCenterWorld(currentPath[i + 1]);
-                Gizmos.DrawLine(from, to);
-            }
-
-            //  Optional: Detection Range (Scene Only)
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawWireSphere(transform.position, detectionRange);
-
-            //  Optional: Attack Range
-            Gizmos.color = new Color(1f, 0.3f, 0f); // Orange
-            Gizmos.DrawWireSphere(transform.position, attackRange);
+            Vector3 from = floor.GetCellCenterWorld(currentPath[i]);
+            Vector3 to = floor.GetCellCenterWorld(currentPath[i + 1]);
+            Gizmos.DrawLine(from, to);
         }
-    #endif*/
+
+        //  Optional: Detection Range (Scene Only)
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, detectionRange);
+
+        //  Optional: Attack Range
+        Gizmos.color = new Color(1f, 0.3f, 0f); // Orange
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+    }
+#endif
 }

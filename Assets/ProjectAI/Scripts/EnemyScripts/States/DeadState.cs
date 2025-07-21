@@ -23,5 +23,9 @@ public class DeadState : IEnemyState
     }
 
     public void Update() { }
-    public void Exit() { }
+    public void Exit() 
+    {
+        _enemy = null;
+        _objectPoolmanager = null;
+    }
 }
