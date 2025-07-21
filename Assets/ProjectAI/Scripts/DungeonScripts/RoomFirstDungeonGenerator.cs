@@ -27,7 +27,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
         // GizmosData
         private List<Color> roomColors = new List<Color>();
         [SerializeField]
-        private bool showRoomGizmo = false, showCorridorsPositions;
+        private bool showCorridorsPositions;
 
         protected override async Awaitable<DungeonData> RunProceduralGeneration()
         {

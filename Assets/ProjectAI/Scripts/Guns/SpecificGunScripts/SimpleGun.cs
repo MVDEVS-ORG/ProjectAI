@@ -5,13 +5,11 @@ using UnityEngine;
 
 public class SimpleGun : GunsView
 {
-    private bool StartFiring = false;
     private Awaitable FiringGun;
     private bool _overheat = false;
     public override void Fire(bool firing)
     {
         _firing = firing;
-        Debug.Log("SimpleGunFire");
         if(FiringGun==null)
         {
             FiringGun = Firing();

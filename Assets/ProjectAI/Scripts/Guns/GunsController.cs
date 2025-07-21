@@ -15,9 +15,7 @@ public class GunsController : IGunsController
     private GunsModel _gunsModel;
 
     private Coroutine _gunFiring;
-    private bool _firing = false;
 
-    private bool _overheat=false;
     private IGunUI _gunUI;
 
     void IGunsController.Fire(bool firing)
@@ -36,7 +34,6 @@ public class GunsController : IGunsController
     {
         _currentActiveGun = gun;
         _gunsModel = gun.InitializeGun(this,_poolManager, playerTransform, playerCursor);
-        Debug.LogError(JsonConvert.SerializeObject(_gunsModel));
         var gunUIgameObject = await _assetService.InstantiateAsync(_gunsModel.GunUIAddressable);
         _gunUI = gunUIgameObject.GetComponent<IGunUI>();
         _gunUI.Initialize(_gunsModel, playerTransform);
