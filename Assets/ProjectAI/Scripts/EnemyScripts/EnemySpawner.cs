@@ -41,7 +41,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts
         private async void SpawnEnemies()
         {
             if (_enemyPlacementData == null) return;
-            await _prefabPlacer.PlaceEnemies(_poolManager, _enemyPlacementData, _itemPlacementHelper, _playerTransform);
+            await _prefabPlacer.PlaceEnemies(_poolManager, _enemyPlacementData, _itemPlacementHelper, _playerTransform, transform);
         }
     }
 }

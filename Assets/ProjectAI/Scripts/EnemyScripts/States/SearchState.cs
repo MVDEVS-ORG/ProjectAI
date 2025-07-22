@@ -15,7 +15,9 @@ public class SearchState : IEnemyState
         _enemy = enemy;
         _player = player;
         lastKnownPos = _player.position;
-        List<Vector3Int> path = PathFindingManager.Instance.FindPath(enemy.transform.position, lastKnownPos);
+        var startPos = PathFindingManager.Instance.floorTilemap.WorldToCell(_enemy.transform.position);
+        var targetPositon = PathFindingManager.Instance.floorTilemap.WorldToCell(lastKnownPos);
+        List<Vector3Int> path = PathFindingManager.Instance.FindPath(startPos, targetPositon);
         enemy.StartPathMovement(path);
         timer = 0f;
     }
