@@ -7,6 +7,7 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] private Image _heartShape;
     [SerializeField] private Image _health;
     [SerializeField] private Image _rallyHealth;
+    [SerializeField] private Animator _heartAnimator;
     private int _cachedHealth;
     private PlayerModel _model;
     private float _timer;
@@ -19,6 +20,7 @@ public class PlayerUI : MonoBehaviour
         _health.fillAmount = _model.Health / _model.MaxHealth;
         _rallyHealth.fillAmount = _model.Health / _model.MaxHealth;
         _cachedHealth = model.Health;
+        _heartAnimator.SetFloat("Health", _model.Health * 100 / _model.MaxHealth );
     }
 
     public void AlterHealthBar()
@@ -32,6 +34,7 @@ public class PlayerUI : MonoBehaviour
         _health.fillAmount = (float)_model.Health / _model.MaxHealth;
         _healthChangeCoroutine = StartCoroutine(ChangeRallyHealth(_cachedHealth));
         _cachedHealth = _model.Health;
+        _heartAnimator.SetFloat("Health", _model.Health * 100 / _model.MaxHealth );
     }
 
     IEnumerator ChangeRallyHealth(int startRallyHealth)

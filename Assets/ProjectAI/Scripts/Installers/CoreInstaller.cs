@@ -10,5 +10,6 @@ public class CoreInstaller : MonoInstaller
         Container.Bind<IAssetService>().To<AssetService>().AsSingle().NonLazy();
         Container.Bind<ISceneManager>().To<SceneManager>().AsSingle().NonLazy();
         Container.Bind<ObjectPoolManager>().AsSingle().NonLazy();
+        SignalBusInstaller.Install(Container);
     }
 }

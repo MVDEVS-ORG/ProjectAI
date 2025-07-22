@@ -89,7 +89,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: a4967a1d5beed3e42b847694d23d658a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -179,6 +179,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b33d7353916da14980785412a1bf687, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GunsModel:
+    PrimaryProjectileAddressable: 
+    SecondaryProjectileAddressable: 
+    GunUIAddressable: 
+    FireRate: 0
+    GunWindUpTime: 0
+    OverHeatLimit: 0
+    OverHeatRate: 0
+    CoolDownRate: 0
+    MinCooldownThreshold: 0
+    OverHeatValue: 0
+    ElipseVerticalRadius: 0
+    ElipseHorizontalRadius: 0
+    Empty: 0
   GunActive: 0
   GunsDataModel: {fileID: 11400000, guid: e8dbdc8801f804e49bc78431c553d3c3, type: 2}
   PlayerTransform: {fileID: 0}
@@ -187,6 +201,7 @@ MonoBehaviour:
   SpriteRenderer: {fileID: 0}
   Scale: {x: 0, y: 0, z: 0}
   ReverseScale: {x: 0, y: 0, z: 0}
+  LateralInversion: {x: 0, y: 0, z: 0}
   Collider: {fileID: 0}
   _firing: 0
   NoOfPellets: 10

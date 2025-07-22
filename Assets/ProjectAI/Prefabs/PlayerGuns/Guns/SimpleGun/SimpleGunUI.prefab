@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: a4967a1d5beed3e42b847694d23d658a, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -161,7 +161,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &6432192021973782833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,6 +205,7 @@ MonoBehaviour:
     OverHeatValue: 0
     ElipseVerticalRadius: 0
     ElipseHorizontalRadius: 0
+    Empty: 0
   _gunBar: {fileID: 617570093139982292}
 --- !u!1 &8226064215875603948
 GameObject:

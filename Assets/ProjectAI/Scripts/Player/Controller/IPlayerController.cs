@@ -5,6 +5,7 @@ public interface IPlayerController
     Awaitable SpawnPlayer(Vector3 pos, PlayerCharactersSO playerCharcter);
     bool Initialized { get; }
     bool MovementPossible { get; }
+    bool IsInvincible { get; }
     void TakeDamage(int damage);
     void RestoreHealth(int health);
     void Shoot(bool firing);
@@ -20,5 +21,7 @@ public interface IPlayerController
 public enum State
 {
     Moving,
-    RollDash
+    RollDash,
+    TakeDamage
 }
+
