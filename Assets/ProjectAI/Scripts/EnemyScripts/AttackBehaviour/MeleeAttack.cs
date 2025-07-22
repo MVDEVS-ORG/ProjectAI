@@ -12,7 +12,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.AttackBehaviour
 
         private async void Execute()
         {
-            Debug.LogError("Melee Slash!");
+            //Debug.LogError("Melee Slash!");
             var attackDirection = (_enemy.Target.position - _enemy.transform.position).normalized;
             Quaternion attackRotation = Quaternion.FromToRotation(Vector3.right, attackDirection); 
             Vector3 spawnPosition = _enemy.attackSpawnPos.position + attackDirection * _enemy.attackOffset;
@@ -23,6 +23,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.AttackBehaviour
                 ObjectPoolManager.PoolType.ParticleSystems
             );
             var effect = go.GetComponent<EnemySlashAttackEffect>();
+            effect.EnemyTransform = enemy.transform;
             effect.slashDamage = 10;
             effect.poolManager = _poolManager;
         }

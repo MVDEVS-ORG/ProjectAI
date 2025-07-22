@@ -36,6 +36,6 @@ public abstract class AbstractAttackState : IEnemyState
 
     public virtual void Attack()
     {
-        Debug.LogError("Attacking");
+        //Debug.LogError("Attacking");
     }
 }

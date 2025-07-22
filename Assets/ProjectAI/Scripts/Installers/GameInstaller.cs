@@ -6,7 +6,7 @@ using Zenject;
 
 public class GameInstaller : MonoInstaller
 {
-    [SerializeField] private CinemachineCamera cam;
+    [SerializeField] private CinemachineCamera _cam;
     [SerializeField] private DungeonMapController _dungeonMapController;
     [SerializeField] private RoomFirstDungeonGenerator _roomFirstDungeonGenerator;
     [SerializeField] private RoomContentGenerator _roomContentGenerator;
@@ -14,11 +14,13 @@ public class GameInstaller : MonoInstaller
     [SerializeField] private GameObject _prefabPlacer;
     public override void InstallBindings()
     {
+        Container.Bind<GamepadRumble>().AsSingle();
+        Container.Bind<CameraController>().AsSingle().OnInstantiated(PlayerCameraSetup);
         Container.Bind<IUpgradeController>().To<UpgradeController>().AsSingle();
         Container.Bind<PlayerPicker>().AsSingle();
         Container.Bind<IGunsController>().To<GunsController>().AsSingle();
         Container.Bind<IMeleeWeaponController>().To<MeleeWeaponController>().AsSingle();
-        Container.Bind<IPlayerController>().To<PlayerController>().AsSingle().OnInstantiated(PlayerCameraSetup);
+        Container.Bind<IPlayerController>().To<PlayerController>().AsSingle();
         Container.Bind<TilemapVisualizer>().FromInstance(_tilemapVisualizer).AsSingle();
         Container.Bind<RoomContentGenerator>().FromInstance(_roomContentGenerator).AsSingle();
         Container.Bind<PrefabPlacer>().FromNewComponentOnNewPrefab(_prefabPlacer).AsTransient();
@@ -30,9 +32,9 @@ public class GameInstaller : MonoInstaller
         Container.DeclareSignal<CamEffectsSignal>();
     }
 
-    private void PlayerCameraSetup(InjectContext context,object playerController)
+    private void PlayerCameraSetup(InjectContext context,object cameraController)
     {
-        (playerController as PlayerController).SetCam(cam);
+        (cameraController as CameraController).InitializeCamera(_cam);
     }
 
 }

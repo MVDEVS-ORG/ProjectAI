@@ -14,6 +14,9 @@ public class PlayerModel
     public int NoOfRoll;
     public int MaxNoOfRolls;
     public float RolllCooldown;
+    public float InvincibilityTime;
+    public float DamageKickBackSpeed;
+    public float DamageKickBackTime;
 
     public PlayerModel()
     {
@@ -32,6 +35,9 @@ public class PlayerModel
         NoOfRoll = playerModelData.NoOfRolls;
         RolllCooldown = playerModelData.RollCooldown;
         MaxNoOfRolls = playerModelData.MaxNoOfRolls;
+        InvincibilityTime = playerModelData.InvincibilityTime;
+        DamageKickBackSpeed = playerModelData.DamageKickBackSpeed;
+        DamageKickBackTime = playerModelData.DamageKickBackTime;
     }
 
     public static PlayerModel operator +(PlayerModel left, PlayerModel right)
@@ -42,7 +48,8 @@ public class PlayerModel
         left.RollSpeed = left.RollSpeed + right.RollSpeed;
         left.MaxNoOfRolls = left.MaxNoOfRolls + right.MaxNoOfRolls;
         left.RolllCooldown = left.RolllCooldown + right.RolllCooldown;
-
+        left.InvincibilityTime = left.InvincibilityTime + right.InvincibilityTime;
+        left.DamageKickBackSpeed = left.DamageKickBackSpeed + right.DamageKickBackSpeed;
         return left;
 
     }
@@ -55,7 +62,8 @@ public class PlayerModel
         left.RollSpeed = left.RollSpeed * right.RollSpeed;
         left.MaxNoOfRolls = left.MaxNoOfRolls * right.MaxNoOfRolls;
         left.RolllCooldown = left.RolllCooldown * right.RolllCooldown;
-
+        left.InvincibilityTime = left.InvincibilityTime * right.InvincibilityTime;
+        left.DamageKickBackSpeed = left.DamageKickBackSpeed * right.DamageKickBackSpeed;
         return left;
     }
 
@@ -67,7 +75,8 @@ public class PlayerModel
         left.RollSpeed = right.RollSpeed != 0 ? right.RollSpeed : left.RollSpeed;
         left.MaxNoOfRolls = right.MaxNoOfRolls != 0 ? right.MaxNoOfRolls : left.MaxNoOfRolls;
         left.RolllCooldown = right.RolllCooldown != 0 ? right.RolllCooldown : left.RolllCooldown;
-
+        left.InvincibilityTime = right.InvincibilityTime !=0 ? right.InvincibilityTime : left.InvincibilityTime;
+        left.DamageKickBackSpeed = right.DamageKickBackSpeed !=0 ? right.DamageKickBackSpeed : left.DamageKickBackSpeed;
         return left;
     }
 }

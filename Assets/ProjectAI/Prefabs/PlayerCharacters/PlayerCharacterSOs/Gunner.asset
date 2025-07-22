@@ -21,3 +21,6 @@ MonoBehaviour:
   MaxNoOfRolls: 2
   NoOfRolls: 0
   RollCooldown: 10
+  InvincibilityTime: 1.5
+  DamageKickBackSpeed: 7
+  DamageKickBackTime: 0.3
