@@ -95,6 +95,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 634aaa578b76cc84da829865314d5cf8
+    m_Address: EnemyLaseBeam
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6a22a3c5e1fa4c941bdd41b9ea5e064b
     m_Address: Item
     m_ReadOnly: 0
@@ -172,6 +177,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: bc907278e70e85b4d9e628d218024a8a
     m_Address: FadeScreen
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cc9c4697144a7d74b8b97b995483e328
+    m_Address: RangedRoomba
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

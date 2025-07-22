@@ -236,15 +236,27 @@ namespace Assets.ProjectAI.Scripts.PathFinding
             int tx = targetCell.x - offsetX;
             int ty = targetCell.y - offsetY;
 
-            if (!IsInBounds(sx, sy) || !IsInBounds(tx, ty)) return null;
+            if (!IsInBounds(sx, sy) || !IsInBounds(tx, ty))
+            {
+                return null;
+            }
 
             PathNode startNode = nodes[sx, sy];
             PathNode endNode = nodes[tx, ty];
-            if (startNode == null || endNode == null) return null;
+            if (startNode == null || endNode == null)
+            {
+                return null;
+            }
 
             // Check static and dynamic walkability
-            if (!baseWalkable[sx, sy] || !baseWalkable[tx, ty]) return null;
-            if (blockedByItems.Contains((Vector2Int)startCell) || blockedByItems.Contains((Vector2Int)targetCell)) return null;
+            if (!baseWalkable[sx, sy] || !baseWalkable[tx, ty])
+            {
+                return null;
+            }
+            if (blockedByItems.Contains((Vector2Int)startCell) || blockedByItems.Contains((Vector2Int)targetCell))
+            {
+                return null;
+            }
 
             // Reset nodes
             foreach (var node in nodes)

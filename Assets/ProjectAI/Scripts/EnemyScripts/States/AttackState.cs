@@ -16,7 +16,6 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.States
                     break;
                 }
             }
-
         }
     }
 }

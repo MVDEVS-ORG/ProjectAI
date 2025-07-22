@@ -47,8 +47,12 @@ MonoBehaviour:
   prefabPlacer: {fileID: 2182287869053027293, guid: d6acdd40924c5f9409603dd8825c5640, type: 3}
   enemyPlacementData:
   - minQuantity: 2
-    maxQuantity: 6
+    maxQuantity: 3
     enemyPrefabAddress: Goblin
+    enemySize: {x: 1, y: 1}
+  - minQuantity: 2
+    maxQuantity: 3
+    enemyPrefabAddress: RangedRoomba
     enemySize: {x: 1, y: 1}
   itemData:
   - minQuantity: 2

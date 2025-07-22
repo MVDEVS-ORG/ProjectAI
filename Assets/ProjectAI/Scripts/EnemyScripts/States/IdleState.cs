@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class IdleState : IEnemyState
 {
@@ -10,22 +11,29 @@ public class IdleState : IEnemyState
     {
         this._enemy = enemy;
         timer = 0f;
+        enemy.animator.SetBool("Idle", true);
     }
 
     public void Update()
     {
         if (_enemy.IsPlayerVisible())
         {
-            _enemy.TransitionToState(new ChaseState());
+            _enemy.TransitionToState(_enemy.GetNextStateFromMap(EnemyStateTypes.Chase));
             return;
         }
+        
 
         timer += Time.deltaTime;
         if (timer > waitTime)
         {
-            _enemy.TransitionToState(new PatrolState());
+            _enemy.TransitionToState(_enemy.GetNextStateFromMap(EnemyStateTypes.Patrol));
         }
     }
 
-    public void Exit() { }
+    public void Exit() 
+    {
+        _enemy.animator.SetBool("Idle", false);
+        _enemy = null;
+        timer = 0f;
+    }
 }

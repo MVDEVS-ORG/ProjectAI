@@ -881,6 +881,7 @@ MonoBehaviour:
   attackSpawnPos: {fileID: 2280534470889601991}
   attackOffset: 1
   healthModel: {fileID: 11400000, guid: dd952a87abf29984e94e6f574d9340a4, type: 2}
+  animator: {fileID: 7609802166594476148}
   _enemyCollider: {fileID: 8934129548823439409}
   currentPath: []
   currentPathIndex: 0
