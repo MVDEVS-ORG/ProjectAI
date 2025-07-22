@@ -17,13 +17,14 @@ public class PatrolState : IEnemyState
         _player = player;
         waiting = false;
         SetNewPatrolTarget();
+        _enemy.animator.SetBool("Walking", true);
     }
 
     public void Update()
     {
         if (_enemy.IsPlayerVisible())
         {
-            _enemy.TransitionToState(new ChaseState());
+            _enemy.TransitionToState(_enemy.GetNextStateFromMap(EnemyStateTypes.Chase));
             return;
         }
 
@@ -44,12 +45,22 @@ public class PatrolState : IEnemyState
         }
     }
 
-    public void Exit() { }
+    public void Exit() 
+    {
+        _enemy.animator.SetBool("Walking", false);
+
+        _enemy = null;
+        waiting = false;
+        _player = null;
+        waitTimer = 0;
+    }
 
     private void SetNewPatrolTarget()
     {
         patrolTarget = _enemy.GetRandomWalkableTile();
         List<Vector3Int> path = PathFindingManager.Instance.FindPath(_enemy.transform.position, patrolTarget);
+        if (path != null)
+            Debug.LogError("Path of the enemy is null");
         _enemy.StartPathMovement(path);
     }
 }

@@ -26,15 +26,21 @@ public class SearchState : IEnemyState
 
         if (_enemy.IsPlayerVisible())
         {
-            _enemy.TransitionToState(new ChaseState());
+            _enemy.TransitionToState(_enemy.GetNextStateFromMap(EnemyStateTypes.Chase));
             return;
         }
 
         if (timer > searchTime)
         {
-            _enemy.TransitionToState(new IdleState());
+            _enemy.TransitionToState(_enemy.GetNextStateFromMap(EnemyStateTypes.Idle));
         }
     }
 
-    public void Exit() { }
+    public void Exit() 
+    {
+        _enemy = null;
+        _player = null;
+        lastKnownPos = Vector2.zero;
+        timer = 0f;
+    }
 }
