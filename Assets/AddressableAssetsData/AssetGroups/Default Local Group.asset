@@ -115,6 +115,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 829b9e98dcb0d784a8344048072a4a3b
+    m_Address: Slicenator
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 86e1c7b3bc50aa24e8688f7ae146dc69
     m_Address: ShotGun
     m_ReadOnly: 0

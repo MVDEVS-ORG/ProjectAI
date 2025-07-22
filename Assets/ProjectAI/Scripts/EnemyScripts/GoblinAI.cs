@@ -26,10 +26,8 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts
 
         public void Attack()
         {
-            if(currentState is AbstractAttackState attackState)
-            {
-                (attackState as RangedAttack).Attack();
-            }
+            Debug.LogError(currentState);
+            (currentState as MeleeAttack)?.Attack();
         }
     }
 }
