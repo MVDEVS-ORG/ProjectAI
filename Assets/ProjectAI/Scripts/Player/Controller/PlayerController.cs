@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Zenject;
 
 public class PlayerController : IPlayerController
@@ -13,6 +14,9 @@ public class PlayerController : IPlayerController
     [Inject] IGunsController _gunsController;
     [Inject] IMeleeWeaponController _meleeWeaponController;
     [Inject] IUpgradeController _upgradeController;
+    [Inject] CameraController _cameraController;
+    [Inject] GamepadRumble _rumbleController;
+    [Inject] SignalBus _signalBus;
 
     private PlayerModel _playerModel;
     private CharacterView _characterView;// The players view
@@ -25,16 +29,10 @@ public class PlayerController : IPlayerController
     bool IPlayerController.MovementPossible => _movementPossible;
     bool IPlayerController.IsInvincible => _isInvincible;
 
-    private CinemachineCamera _camera;
-
     private State _moveState = State.Moving;
     State IPlayerController.MoveState => _moveState;
 
     private Transform _bulletCursorUI;
-    public void SetCam(CinemachineCamera cam)
-    {
-        _camera = cam;
-    }
 
     public void Initialize()
     {
@@ -80,7 +78,7 @@ public class PlayerController : IPlayerController
             //Asign the _player model and the controller to the view alongside the _player cursor aka reticle for shooting
             (GameObject,GameObject) bulletCursor = await PlayerCursorInitialization();
             _bulletCursorUI = bulletCursor.Item2.transform;
-            _characterView.Initialize(this, _playerModel, bulletCursor.Item1, bulletCursor.Item2);
+            _characterView.Initialize(this, _playerModel, bulletCursor.Item1, bulletCursor.Item2,_signalBus);
             Debug.Log("PlayerView Initialized");
             #endregion
 
@@ -95,10 +93,8 @@ public class PlayerController : IPlayerController
             _playerUI = result.GetComponent<PlayerUI>();
             _playerUI.Initialize(_playerModel);
             Debug.Log("PlayerUI Initialized");
-            if (_camera != null)
-            {
-                _camera.Target.TrackingTarget = _characterView.transform;
-            }
+            _cameraController.Initialize(_characterView.transform);
+            _rumbleController.Initialize(_characterView);
             #endregion
 
             #region melee instantiation
@@ -154,6 +150,8 @@ public class PlayerController : IPlayerController
         _playerModel.Health = Mathf.Max(0, _playerModel.Health - damage);
         _playerUI.AlterHealthBar();
         _moveState = State.TakeDamage;
+        _rumbleController.Rumble(0.25f, 1f, 0.5f);
+        _signalBus.Fire(new CamEffectsSignal(new CamEffectsSignal.SignalEffect().WithEffect(CamEffect.CamShakeConstant).WithFrequency(1f).WithAmplitude(5f).WithDuration(0.1f)));
         _isInvincible = true;
         if(_characterView!=null)
         {

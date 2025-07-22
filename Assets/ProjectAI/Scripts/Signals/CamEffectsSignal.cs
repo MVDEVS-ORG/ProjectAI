@@ -4,38 +4,47 @@ using Zenject;
 
 public class CamEffectsSignal
 {
-    public Vector3 Direction;
-    public Vector3 Position;
+    public float Amplitude;
+    public float Frequency;
+    public float Duration;
     public CamEffect CamEffect;
 
     public CamEffectsSignal(SignalEffect build)
     {
-        Direction = build.Direction;
-        Position = build.Position;
+        Amplitude = build.Amplitude;
+        Frequency = build.Frequency;
         CamEffect = build.CamEffect;
+        Duration = build.Duration;
     }
 
     public class SignalEffect
     {
-        public Vector3 Direction = Vector3.zero;
-        public Vector3 Position = Vector3.zero;
-        public CamEffect CamEffect = CamEffect.CamShake;
+        public float Amplitude = 1f;
+        public float Frequency = 1f;
+        public float Duration = 1f; 
+        public CamEffect CamEffect = CamEffect.CamShakeConstant;
 
-        public SignalEffect WithDirection(Vector3 direction)
+        public SignalEffect WithAmplitude(float amplitude)
         {
-            this.Direction = direction;
+            this.Amplitude = amplitude;
             return this;
         }
 
-        public SignalEffect WithPosition(Vector3 position)
+        public SignalEffect WithFrequency(float frequency)
         {
-            this.Position = position;
+            this.Frequency = frequency;
             return this;
         }
 
         public SignalEffect WithEffect(CamEffect camEffect)
         {
             this.CamEffect = camEffect;
+            return this;
+        }
+
+        public SignalEffect WithDuration(float duration)
+        {
+            this.Duration = Mathf.Abs(duration);
             return this;
         }
 
@@ -48,7 +57,8 @@ public class CamEffectsSignal
 
 public enum CamEffect
 {
-    CamShake,
+    CamShakeConstant,
+    CamShakeDecreasing,
     CamWobble
 }
 

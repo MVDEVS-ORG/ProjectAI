@@ -28,13 +28,16 @@ public class CharacterView : MonoBehaviour
 
     private FlashFeedback _flashFeedback;
 
+    private SignalBus _signalBus;
 
-    public void Initialize(IPlayerController playerController, PlayerModel playerModel, GameObject bulletCursor, GameObject bulletCursorUI)
+
+    public void Initialize(IPlayerController playerController, PlayerModel playerModel, GameObject bulletCursor, GameObject bulletCursorUI, SignalBus signalBus)
     {
         _playerController = playerController;
         _playerModel = playerModel;
         _BulletCursor = bulletCursor;
         _bulletCursorUI = bulletCursorUI;
+        _signalBus = signalBus;
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -166,7 +169,6 @@ public class CharacterView : MonoBehaviour
 
     public void TakeDamage(int damage,Vector2 direction)
     {
-        Debug.Log(_playerController.IsInvincible);
         if (!_playerController.Initialized || _playerController.IsInvincible) return;
         _playerController.TakeDamage(damage);
         _lastDamageTickDirection = new Vector2(transform.position.x,transform.position.y) - direction;

@@ -12,7 +12,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.AttackBehaviour
 
         public async void Execute(EnemyAI enemy, ObjectPoolManager op)
         {
-            Debug.LogError("Melee Slash!");
+            //Debug.LogError("Melee Slash!");
             var attackDirection = (enemy.Target.position - enemy.transform.position).normalized;
             Quaternion attackRotation = Quaternion.FromToRotation(Vector3.right, attackDirection); 
             Vector3 spawnPosition = enemy.attackSpawnPos.position + attackDirection * enemy.attackOffset;
