@@ -23,7 +23,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.AttackBehaviour
                 ObjectPoolManager.PoolType.ParticleSystems
             );
             var effect = go.GetComponent<EnemySlashAttackEffect>();
-            effect.EnemyTransform = enemy.transform;
+            effect.EnemyTransform = _enemy.transform;
             effect.slashDamage = 10;
             effect.poolManager = _poolManager;
         }
