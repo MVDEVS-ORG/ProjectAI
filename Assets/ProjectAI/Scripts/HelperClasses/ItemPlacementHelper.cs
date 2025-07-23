@@ -1,5 +1,4 @@
 ﻿using Assets.ProjectAI.Scripts.HelperClass;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -32,6 +31,44 @@ namespace Assets.ProjectAI.Scripts.HelperClasses
                 tileByType[type].Add(position);
             }
         }
+        public Vector2? GetPlacementNearPosition(Vector2 origin, PlacementType placementType, int searchRadius, Vector2Int size, bool addOffset)
+        {
+            Vector2Int originInt = Vector2Int.FloorToInt(origin);
+
+            List<Vector2Int> validPositions = new();
+
+            foreach (var pos in tileByType[placementType])
+            {
+                if (Vector2Int.Distance(originInt, pos) <= searchRadius)
+                {
+                    validPositions.Add(pos);
+                }
+            }
+
+            // Sort by proximity to origin
+            validPositions = validPositions.OrderBy(p => Vector2Int.Distance(originInt, p)).ToList();
+
+            foreach (var position in validPositions)
+            {
+                if (size.x * size.y > 1)
+                {
+                    var (result, placementTiles) = PlaceBigItem(position, size, addOffset);
+                    if (result)
+                    {
+                        tileByType[placementType].ExceptWith(placementTiles);
+                        return position;
+                    }
+                }
+                else
+                {
+                    tileByType[placementType].Remove(position);
+                    return position;
+                }
+            }
+
+            return null;
+        }
+
 
         public Vector2? GetItemPlacementPosition(PlacementType placementType, int iterationsMax, Vector2Int size, bool addoffset)
         {

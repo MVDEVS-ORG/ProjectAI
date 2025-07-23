@@ -65,14 +65,15 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
     {
         _enemyCollider.enabled = true;
         Initialize(healthModel);
+        StartCoroutine(WaitForBakeAndStart());
     }
 
     IEnumerator WaitForBakeAndStart()
     {
+        floorTilemap = PathFindingManager.Instance.floorTilemap;
         while (!PathFindingManager.Instance.IsMapBaked)
             yield return null;
-        floorTilemap = PathFindingManager.Instance.floorTilemap;
-        TransitionToState(new IdleState());
+        TransitionToState(GetNextStateFromMap(EnemyStateTypes.Idle));
     }
 
     void Update()
@@ -121,25 +122,7 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
     {
         return Vector3.Distance(transform.position, _player.position) <= attackRange;
     }
-    public Vector3Int GetRandomWalkableTile()
-    {
-        int attempts = 0;
-        while (attempts < 100)
-        {
-            int x = Random.Range(0, floorTilemap.cellBounds.size.x);
-            int y = Random.Range(0, floorTilemap.cellBounds.size.y);
-            Vector3Int cell = new Vector3Int(x + floorTilemap.cellBounds.xMin, y + floorTilemap.cellBounds.yMin, 0);
 
-            if (floorTilemap.HasTile(cell) && !PathFindingManager.Instance.wallTileMap.HasTile(cell))
-            {
-                return cell;
-            }
-
-            attempts++;
-        }
-
-        return floorTilemap.WorldToCell(transform.position); // fallback
-    }
 
     public void StopMovement()
     {
@@ -209,8 +192,30 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
         int index = Random.Range(0, enemyState.Count);
         return enemyState[index];
     }
+
+    public void ResetEnemyAI()
+    {
+        StopAllCoroutines();
+
+        // Reset movement
+        StopMovement();
+        currentPath = null;
+        currentPathIndex = 0;
+
+        // Reset health
+        _health = _maxHealth;
+
+        // Reset animation state
+        animator?.Rebind();
+        animator?.Update(0f);
+
+        // Reset collider
+        if (_enemyCollider != null)
+            _enemyCollider.enabled = true;
+    }
+
 #if UNITY_EDITOR
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         if (currentPath == null || currentPath.Count == 0 || PathFindingManager.Instance == null)
             return;

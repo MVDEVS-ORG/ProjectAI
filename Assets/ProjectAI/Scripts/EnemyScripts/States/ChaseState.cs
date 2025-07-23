@@ -53,7 +53,9 @@ public class ChaseState : IEnemyState
     private void RequestPath()
     {
         Vector3 targetPos = GetOffsetAroundPlayer(_enemy.gameObject, _player);
-        List<Vector3Int> path = PathFindingManager.Instance.FindPath(_enemy.transform.position, targetPos);
+        var startPos = PathFindingManager.Instance.floorTilemap.WorldToCell(_enemy.transform.position);
+        var targetPositon = PathFindingManager.Instance.floorTilemap.WorldToCell(targetPos);
+        List<Vector3Int> path = PathFindingManager.Instance.FindPath(startPos, targetPositon);
         _enemy.StartPathMovement(path);
     }
     private Vector3 GetOffsetAroundPlayer(GameObject self, Transform player)

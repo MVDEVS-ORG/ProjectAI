@@ -11,6 +11,7 @@ public class DeadState : IEnemyState
         _enemy = enemy;
         _objectPoolmanager = op;
         Debug.LogError("Enemy Dead");
+        _enemy.ResetEnemyAI();
         _objectPoolmanager.ReleaseGameObject(_enemy.gameObject, ObjectPoolManager.PoolType.Enemies);
         //_ = DeathAnimation();
         //Add Object pooling

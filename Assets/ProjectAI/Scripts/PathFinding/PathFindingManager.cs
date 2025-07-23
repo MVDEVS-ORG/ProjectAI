@@ -220,49 +220,75 @@ namespace Assets.ProjectAI.Scripts.PathFinding
             if (debugDrawGrid) SceneView.RepaintAll();
 #endif
         }
+        public Vector3Int GetRandomWalkableTile()
+        {
+            int attempts = 0;
 
+            while (attempts < 100)
+            {
+                int x = Random.Range(0, floorTilemap.cellBounds.size.x);
+                int y = Random.Range(0, floorTilemap.cellBounds.size.y);
+                Vector3Int cell = new Vector3Int(x + floorTilemap.cellBounds.xMin, y + floorTilemap.cellBounds.yMin, 0);
+
+                int nx = cell.x - offsetX;
+                int ny = cell.y - offsetY;
+
+                if (!IsInBounds(nx, ny))
+                {
+                    attempts++;
+                    continue;
+                }
+
+                PathNode node = nodes[nx, ny];
+                if (node != null && node.walkable && baseWalkable[nx, ny] && !blockedByItems.Contains((Vector2Int)cell))
+                {
+                    return cell;
+                }
+
+                attempts++;
+            }
+
+            // Fallback to current position snapped to tile
+            return floorTilemap.WorldToCell(transform.position);
+        }
 
         /// <summary>
         /// Find a path using A* from start to target.
         /// </summary>
-        public List<Vector3Int> FindPath(Vector3 startPostition, Vector3 targetPosition)
+        public List<Vector3Int> FindPath(Vector3Int startCell, Vector3Int targetCell)
         {
             if (nodes == null) return null;
 
-            Vector3Int startCell = floorTilemap.WorldToCell(startPostition);
-            Vector3Int targetCell = floorTilemap.WorldToCell(targetPosition);
-            int sx = startCell.x - offsetX;
-            int sy = startCell.y - offsetY;
-            int tx = targetCell.x - offsetX;
-            int ty = targetCell.y - offsetY;
+
+            if (!floorTilemap.HasTile(startCell) || !floorTilemap.HasTile(targetCell))
+                return null;
+
+            Vector2Int start = (Vector2Int)startCell;
+            Vector2Int target = (Vector2Int)targetCell;
+
+            int sx = start.x - offsetX;
+            int sy = start.y - offsetY;
+            int tx = target.x - offsetX;
+            int ty = target.y - offsetY;
 
             if (!IsInBounds(sx, sy) || !IsInBounds(tx, ty))
-            {
                 return null;
-            }
 
             PathNode startNode = nodes[sx, sy];
             PathNode endNode = nodes[tx, ty];
-            if (startNode == null || endNode == null)
-            {
-                return null;
-            }
 
-            // Check static and dynamic walkability
+            if (startNode == null || endNode == null || !startNode.walkable || !endNode.walkable)
+                return null;
+
             if (!baseWalkable[sx, sy] || !baseWalkable[tx, ty])
-            {
                 return null;
-            }
-            if (blockedByItems.Contains((Vector2Int)startCell) || blockedByItems.Contains((Vector2Int)targetCell))
-            {
-                return null;
-            }
 
-            // Reset nodes
+            if (blockedByItems.Contains(start) || blockedByItems.Contains(target))
+                return null;
+
             foreach (var node in nodes)
                 node?.Reset();
 
-            // A* setup
             startNode.gCost = 0;
             startNode.hCost = Heuristic(startNode.position, endNode.position);
             var openSet = new SimplePriorityQueue<PathNode>();
@@ -283,25 +309,20 @@ namespace Assets.ProjectAI.Scripts.PathFinding
                     if (!IsInBounds(nx, ny)) continue;
 
                     PathNode neighbor = nodes[nx, ny];
-                    if (neighbor == null || neighbor.closed || !neighbor.walkable) continue;
+                    if (neighbor == null || neighbor.closed || !neighbor.walkable)
+                        continue;
 
-                    // Diagonal corner-cutting check
+                    // Diagonal corner-cutting prevention
                     if (dir.x != 0 && dir.y != 0)
                     {
-                        int adj1x = current.position.x + dir.x;
-                        int adj1y = current.position.y;
-                        int adj2x = current.position.x;
-                        int adj2y = current.position.y + dir.y;
+                        Vector2Int adj1 = new(current.position.x + dir.x, current.position.y);
+                        Vector2Int adj2 = new(current.position.x, current.position.y + dir.y);
 
-                        Vector2Int adj1 = new(adj1x, adj1y);
-                        Vector2Int adj2 = new(adj2x, adj2y);
+                        int a1x = adj1.x - offsetX;
+                        int a1y = adj1.y - offsetY;
+                        int a2x = adj2.x - offsetX;
+                        int a2y = adj2.y - offsetY;
 
-                        int a1x = adj1x - offsetX;
-                        int a1y = adj1y - offsetY;
-                        int a2x = adj2x - offsetX;
-                        int a2y = adj2y - offsetY;
-
-                        // Block diagonal if either adjacent tile is not walkable (static or dynamic)
                         if (!IsInBounds(a1x, a1y) || !IsInBounds(a2x, a2y)) continue;
                         if (!baseWalkable[a1x, a1y] || !baseWalkable[a2x, a2y]) continue;
                         if (blockedByItems.Contains(adj1) || blockedByItems.Contains(adj2)) continue;
@@ -318,8 +339,9 @@ namespace Assets.ProjectAI.Scripts.PathFinding
                 }
             }
 
-            return null;
+            return null; // No path found
         }
+
 
 #if UNITY_EDITOR
         private void OnDrawGizmos()
