@@ -167,11 +167,11 @@ public class CharacterView : MonoBehaviour
 
     #endregion
 
-    public void TakeDamage(int damage,Vector2 direction)
+    public void TakeDamage(int damage,Vector2 direction, float kickbackMultiplier = 0f)
     {
         if (!_playerController.Initialized || _playerController.IsInvincible) return;
         _playerController.TakeDamage(damage);
-        _lastDamageTickDirection = new Vector2(transform.position.x,transform.position.y) - direction;
+        _lastDamageTickDirection = (new Vector2(transform.position.x,transform.position.y) - direction).normalized * kickbackMultiplier;
         _flashFeedback.Flash(_playerModel.InvincibilityTime);
     }
 
