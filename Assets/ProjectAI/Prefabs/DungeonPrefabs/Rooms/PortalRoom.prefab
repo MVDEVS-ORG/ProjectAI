@@ -48,7 +48,7 @@ MonoBehaviour:
   enemyPlacementData:
   - minQuantity: 5
     maxQuantity: 10
-    enemyPrefabAddress: Goblin
+    enemyPrefabAddress: Slicenator
     enemySize: {x: 1, y: 1}
   itemData:
   - minQuantity: 1

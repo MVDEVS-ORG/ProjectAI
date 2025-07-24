@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 1503831990353612171}
   - component: {fileID: 5602585989204928776}
   - component: {fileID: 2298294354932179435}
-  - component: {fileID: 4207733872525921247}
+  - component: {fileID: -3015575224204400077}
   m_Layer: 11
   m_Name: Slicenator
   m_TagString: Enemy
@@ -231,7 +231,7 @@ PolygonCollider2D:
       - {x: 0.46156278, y: 0.20655194}
       - {x: 0.23691446, y: 0.35865036}
   m_UseDelaunayMesh: 0
---- !u!114 &4207733872525921247
+--- !u!114 &-3015575224204400077
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -240,16 +240,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 7588810801392026419}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 186a2c1ccb679344bbea3e12ce614eff, type: 3}
+  m_Script: {fileID: 11500000, guid: 6d3af38b9e6b7b54ab0f0f82321512cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2
   attackRange: 1.5
   detectionRange: 6
   attackSpawnPos: {fileID: 8504197059348783951}
-  attackOffset: 0
+  attackOffset: 1
   attackCooldown: 1.5
-  healthModel: {fileID: 11400000, guid: dd952a87abf29984e94e6f574d9340a4, type: 2}
+  healthModel: {fileID: 11400000, guid: 06f5326d63099334aa4e7fed63e39d7d, type: 2}
   animator: {fileID: 2018304359489993399}
   _enemyCollider: {fileID: 2298294354932179435}
   currentPath: []
