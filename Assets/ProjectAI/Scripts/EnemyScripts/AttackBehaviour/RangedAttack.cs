@@ -83,12 +83,13 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.AttackBehaviour
         }
         public override void Exit()
         {
+            _enemy.animator.SetBool("AttackEnd", true);
             if (_activeLaserBeam != null && _activeLaserBeam.gameObject.activeSelf)
             {
                 _activeLaserBeam.Interrupt();
                 _activeLaserBeam = null;
             }
-            _enemy.animator.SetBool("AttackEnd", true);
+            _isWaitingForAttackEnd = false;
             base.Exit();
             
         }
