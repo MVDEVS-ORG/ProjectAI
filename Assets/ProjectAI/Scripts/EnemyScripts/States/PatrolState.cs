@@ -1,5 +1,6 @@
 ﻿using Assets.ProjectAI.Scripts.PathFinding;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PatrolState : IEnemyState
@@ -57,10 +58,16 @@ public class PatrolState : IEnemyState
 
     private void SetNewPatrolTarget()
     {
-        patrolTarget = _enemy.GetRandomWalkableTile();
-        List<Vector3Int> path = PathFindingManager.Instance.FindPath(_enemy.transform.position, patrolTarget);
-        if (path != null)
-            Debug.LogError("Path of the enemy is null");
+        patrolTarget = PathFindingManager.Instance.GetRandomWalkableTile();
+        var startPos = PathFindingManager.Instance.floorTilemap.WorldToCell(_enemy.transform.position);
+        var targetPos = PathFindingManager.Instance.floorTilemap.WorldToCell(patrolTarget);
+        Debug.LogError($"{_enemy.name} is at {startPos} and want to go {targetPos}");
+        List<Vector3Int> path = PathFindingManager.Instance.FindPath(startPos, targetPos);
+        if (path == null)
+        {
+            Debug.LogError($"{_enemy.name} no path found s-{startPos}, e- {targetPos}");
+            return;
+        }
         _enemy.StartPathMovement(path);
     }
 }

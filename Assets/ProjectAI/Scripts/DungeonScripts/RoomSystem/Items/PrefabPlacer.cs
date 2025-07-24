@@ -47,7 +47,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items
             return placedObjects;
         }
 
-        public async Awaitable<List<GameObject>> PlaceEnemies(ObjectPoolManager opManager, List<EnemyPlacementData> enemyPlacementData, ItemPlacementHelper itemPlacementHelper, Transform characterView)
+        public async Awaitable<List<GameObject>> PlaceEnemies(ObjectPoolManager opManager, List<EnemyPlacementData> enemyPlacementData, ItemPlacementHelper itemPlacementHelper, Transform characterView, Transform spawnerTransform)
         {
             List<GameObject> placedObjects = new List<GameObject>();
 
@@ -55,22 +55,31 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items
             {
                 for (int i = 0; i < placementData.Quantity; i++)
                 {
-                    Vector2? possiblePlacementSpot = itemPlacementHelper.GetItemPlacementPosition(
-                        PlacementType.OpenSpace,
-                        100,
-                        placementData.enemySize,
-                        false
-                        );
+                    Vector2? possiblePlacementSpot = itemPlacementHelper.GetPlacementNearPosition(
+                        spawnerTransform.position,
+                        PlacementType.NearWall, // Or OpenSpace if you prefer
+                        searchRadius: 8,
+                        size: placementData.enemySize,
+                        addOffset: false
+                    );
+
                     if (possiblePlacementSpot.HasValue)
                     {
-                        var go = await opManager.SpawnObjectAsync(placementData.enemyPrefabAddress, possiblePlacementSpot.Value + new Vector2(0.5f, 0.5f), Quaternion.identity, ObjectPoolManager.PoolType.Enemies);
+                        Vector2 position = possiblePlacementSpot.Value + new Vector2(0.5f, 0.5f);
+                        var go = await opManager.SpawnObjectAsync(
+                            placementData.enemyPrefabAddress,
+                            position,
+                            Quaternion.identity,
+                            ObjectPoolManager.PoolType.Enemies
+                        );
+
                         placedObjects.Add(go);
                         go.GetComponent<EnemyAI>().InitializeEnemy(characterView, opManager);
                         EnemyManager.spawnedEnemies.Add(go);
-                        //Instantiate(placementData.enemyPrefab,possiblePlacementSpot.Value + new Vector2(0.5f, 0.5f), Quaternion.identity)
                     }
                 }
             }
+
             return placedObjects;
         }
 

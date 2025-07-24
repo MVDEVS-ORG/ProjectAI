@@ -88,6 +88,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.AttackBehaviour
                 _activeLaserBeam.Interrupt();
                 _activeLaserBeam = null;
             }
+            _enemy.animator.SetBool("AttackEnd", true);
             base.Exit();
             
         }

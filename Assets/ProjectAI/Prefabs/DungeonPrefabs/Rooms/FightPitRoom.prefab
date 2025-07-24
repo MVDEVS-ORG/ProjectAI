@@ -48,11 +48,11 @@ MonoBehaviour:
   enemyPlacementData:
   - minQuantity: 2
     maxQuantity: 3
-    enemyPrefabAddress: Goblin
+    enemyPrefabAddress: RangedRoomba
     enemySize: {x: 1, y: 1}
   - minQuantity: 2
     maxQuantity: 3
-    enemyPrefabAddress: RangedRoomba
+    enemyPrefabAddress: Slicenator
     enemySize: {x: 1, y: 1}
   itemData:
   - minQuantity: 2

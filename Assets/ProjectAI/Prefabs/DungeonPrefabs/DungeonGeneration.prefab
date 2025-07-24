@@ -277,10 +277,9 @@ MonoBehaviour:
   minRoomHeight: 15
   dungeonWidth: 100
   dungeonHeight: 100
-  offset: 4
+  offset: 2
   randomWalkRooms: 0
   roomContentGenerator: {fileID: 6605950156024319504}
-  showRoomGizmo: 1
   showCorridorsPositions: 1
 --- !u!1 &3740773268491300678
 GameObject:
