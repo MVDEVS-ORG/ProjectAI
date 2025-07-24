@@ -99,7 +99,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts
             if (other.CompareTag("Player"))
             {
                 var playerHealth = other.GetComponent<CharacterView>();
-                playerHealth?.TakeDamage(damage);
+                playerHealth?.TakeDamage(damage,_origin , 0.2f);
                 _damageApplied = true;
             }
         }
