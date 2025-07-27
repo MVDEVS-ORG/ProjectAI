@@ -11,27 +11,22 @@ public class DeadState : IEnemyState
         _enemy = enemy;
         _objectPoolmanager = op;
 
-
-        // Set animator trigger or bool to play death animation
         _enemy.animator.SetTrigger("Dead");
 
-        // Start coroutine to wait for animation and then release
         _enemy.StartCoroutine(PlayDeathAndRelease());
     }
 
     private IEnumerator PlayDeathAndRelease()
     {
         float timer = 0f;
-        float maxWaitTime = 5f; // fallback in case animation never plays
+        float maxWaitTime = 5f;
 
-        // Wait until animation starts
         while (!_enemy.animator.GetCurrentAnimatorStateInfo(0).IsName("Die") && timer < maxWaitTime)
         {
             timer += Time.deltaTime;
             yield return null;
         }
 
-        // Wait until animation finishes
         while (_enemy.animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f && timer < maxWaitTime)
         {
             timer += Time.deltaTime;
