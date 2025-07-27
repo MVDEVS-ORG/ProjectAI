@@ -61,7 +61,6 @@ public class PatrolState : IEnemyState
         patrolTarget = PathFindingManager.Instance.GetRandomWalkableTile();
         var startPos = PathFindingManager.Instance.floorTilemap.WorldToCell(_enemy.transform.position);
         var targetPos = PathFindingManager.Instance.floorTilemap.WorldToCell(patrolTarget);
-        Debug.LogError($"{_enemy.name} is at {startPos} and want to go {targetPos}");
         List<Vector3Int> path = PathFindingManager.Instance.FindPath(startPos, targetPos);
         if (path == null)
         {

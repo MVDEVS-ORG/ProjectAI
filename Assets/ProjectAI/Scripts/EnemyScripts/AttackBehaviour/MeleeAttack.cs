@@ -8,6 +8,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.AttackBehaviour
         private bool _isWaitingForAttackEnd = false;
         private bool _hasPerformedAttack = false;
         private float _lastAttackTime = -Mathf.Infinity;
+        private Coroutine _exitCoroutine;
 
         public override void Enter(EnemyAI enemy, Transform player, ObjectPoolManager op)
         {
@@ -23,7 +24,6 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.AttackBehaviour
 
         private async void Execute()
         {
-            //Debug.LogError("Melee Slash!");
             var attackDirection = (_enemy.Target.position - _enemy.transform.position).normalized;
             Quaternion attackRotation = Quaternion.FromToRotation(Vector3.right, attackDirection);
             Vector3 spawnPosition = _enemy.attackSpawnPos.position + attackDirection * _enemy.attackOffset;
@@ -58,7 +58,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.AttackBehaviour
                 _hasPerformedAttack = false;
                 _enemy.animator.SetBool("Attack", false);
                 _enemy.animator.SetBool("AttackEnd", true);
-                _enemy.StartCoroutine(WaitForAttackEndAndTransition());
+                _exitCoroutine = _enemy.StartCoroutine(WaitForAttackEndAndTransition());
             }
         }
 
@@ -89,6 +89,11 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.AttackBehaviour
         public override void Exit()
         {
             _enemy.animator.SetBool("AttackEnd", true);
+            if (_exitCoroutine != null)
+            {
+                _enemy.StopCoroutine(_exitCoroutine);
+                _exitCoroutine = null;
+            }
             base.Exit();
         }
     }

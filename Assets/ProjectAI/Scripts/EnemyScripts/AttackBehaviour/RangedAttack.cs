@@ -9,6 +9,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.AttackBehaviour
         private bool _hasPerformedAttack = false;
         private float _lastAttackTime = -Mathf.Infinity;
         private EnemyLaserBeam _activeLaserBeam;
+        private Coroutine _exitCoroutine;
         public override void Enter(EnemyAI enemy, Transform player, ObjectPoolManager op)
         {
             base.Enter(enemy, player, op);
@@ -22,7 +23,6 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.AttackBehaviour
 
         private async void Execute()
         {
-            Debug.LogError("Ranged Attack");
             Vector3 origin = _enemy.attackSpawnPos.position;
 
             GameObject beamGO = await _poolManager.SpawnObjectAsync(
@@ -56,7 +56,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.AttackBehaviour
                 _hasPerformedAttack = false;
                 _enemy.animator.SetBool("Attack", false);
                 _enemy.animator.SetBool("AttackEnd", true);
-                _enemy.StartCoroutine(WaitForAttackEndAndTransition());
+                _exitCoroutine = _enemy.StartCoroutine(WaitForAttackEndAndTransition());
             }
         }
 
@@ -84,6 +84,11 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.AttackBehaviour
         public override void Exit()
         {
             _enemy.animator.SetBool("AttackEnd", true);
+            if (_exitCoroutine != null)
+            {
+                _enemy.StopCoroutine(_exitCoroutine);
+                _exitCoroutine = null;
+            }
             if (_activeLaserBeam != null && _activeLaserBeam.gameObject.activeSelf)
             {
                 _activeLaserBeam.Interrupt();

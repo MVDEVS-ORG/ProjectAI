@@ -52,10 +52,26 @@ public class ChaseState : IEnemyState
 
     private void RequestPath()
     {
-        Vector3 targetPos = GetOffsetAroundPlayer(_enemy.gameObject, _player);
-        var startPos = PathFindingManager.Instance.floorTilemap.WorldToCell(_enemy.transform.position);
-        var targetPositon = PathFindingManager.Instance.floorTilemap.WorldToCell(targetPos);
-        List<Vector3Int> path = PathFindingManager.Instance.FindPath(startPos, targetPositon);
+        Vector3 targetPos;
+
+        // If enemy is close to player, calculate offset to spread around
+        float distanceToPlayer = Vector3.Distance(_enemy.transform.position, _player.position);
+        if (distanceToPlayer < 2f)
+        {
+            targetPos = GetOffsetAroundPlayer(_enemy.gameObject, _player);
+        }
+        else
+        {
+            targetPos = _player.position + Vector3.down * 1.5f;
+        }
+
+        Vector2Int targetCell = Vector2Int.RoundToInt(targetPos);
+        Vector2Int nearestValidTarget = PathFindingManager.Instance.GetNearestValidWalkableTile(targetCell);
+
+        Vector3Int startCell = PathFindingManager.Instance.floorTilemap.WorldToCell(_enemy.transform.position);
+        Vector3Int finalTargetCell = (Vector3Int)nearestValidTarget;
+
+        List<Vector3Int> path = PathFindingManager.Instance.FindPath(startCell, finalTargetCell);
         _enemy.StartPathMovement(path);
     }
     private Vector3 GetOffsetAroundPlayer(GameObject self, Transform player)

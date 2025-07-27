@@ -29,13 +29,12 @@ public abstract class AbstractAttackState : IEnemyState
     {
         _enemy = null;
         _player = null;
-        _poolManager = null;
         _characterView = null;
         timer = 0f;
     }
 
     public virtual void Attack()
     {
-        //Debug.LogError("Attacking");
+        
     }
 }
