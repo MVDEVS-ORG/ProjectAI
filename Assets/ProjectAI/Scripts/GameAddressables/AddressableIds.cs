@@ -7,6 +7,7 @@ public static class AddressableIds
     public const string Pyro = "pyro";
 
     public const string Player_UI = "playerUI";
+    public const string Player_Level_Chart = "playerLevelChart";
 
     public const string Gunner_Data_SO = "gunnerDataSO";
     public const string Shotgunner_Data_SO = "shotgunnerDataSO";
@@ -56,7 +57,7 @@ public static class AddressableIds
     public const string Fade_Screen = "FadeScreen";
     #endregion
 
-    #region
+    #region upgrades
     public const string Upgrades_Popup = "UpgradesPopup";
     public const string Upgrades_list = "UpgradesList";
     public const string Upgrades_List_1 = "UpgradeList1";

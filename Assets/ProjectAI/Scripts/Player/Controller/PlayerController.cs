@@ -34,6 +34,8 @@ public class PlayerController : IPlayerController
 
     private Transform _bulletCursorUI;
 
+    private List<int> _xpLevelMap;
+
     public void Initialize()
     {
 
@@ -108,6 +110,12 @@ public class PlayerController : IPlayerController
 
             _upgradeController.OnUpgrade += UpgradePlayer;
             _movementPossible = true;
+
+            #region XP bar
+            ExperienceListSO experienceList = await _assetService.LoadAssetAsync<ExperienceListSO>(AddressableIds.Player_Level_Chart);
+            _xpLevelMap = new List<int>(experienceList.ExperiencePerLevel);
+            _assetService.UnloadAsset(experienceList);
+            #endregion
         }
         catch (Exception exception)
         {
@@ -244,6 +252,16 @@ public class PlayerController : IPlayerController
     {
         yield return Awaitable.WaitForSecondsAsync(_playerModel.DamageKickBackTime);
         _moveState = State.Moving;
+    }
+
+    void IPlayerController.AddXP(int xp)
+    {
+        if(_playerModel.PlayerLevel< _xpLevelMap.Count && _playerModel.Experience> _xpLevelMap[_playerModel.PlayerLevel])
+        {
+            _playerModel.PlayerLevel = _playerModel.PlayerLevel<_xpLevelMap.Count?_playerModel.PlayerLevel+1:_xpLevelMap.Count;
+            _upgradeController.DisplayUpgrades();
+        }
+        _playerModel.Experience += xp;
     }
 }
 

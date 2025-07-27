@@ -94,7 +94,20 @@ public class CharacterView : MonoBehaviour
                 _BulletCursor.transform.position = posInWorldSpace;
             }
         }
-        
+
+        #region check overlay colliders for particles
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _playerModel.XPCollectionRadius);
+        foreach (Collider2D collider in colliders)
+        {
+            if(collider.TryGetComponent<XPParticle>(out XPParticle particle))
+            {
+                if(particle.MoveToPlayer!=false)
+                {
+                    particle.CollectParticle(transform);
+                }
+            }
+        }
+        #endregion
     }
 
     public void OnApplicationFocus(bool focus)
