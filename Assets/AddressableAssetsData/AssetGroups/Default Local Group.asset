@@ -136,7 +136,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 97176d965564a924382ee7e4ae61d069
-    m_Address: Assets/ProjectAI/Scripts/Player/ExperienceProgression/List1.asset
+    m_Address: playerLevelChart
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
