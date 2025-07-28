@@ -24,3 +24,4 @@ MonoBehaviour:
   InvincibilityTime: 1.5
   DamageKickBackSpeed: 7
   DamageKickBackTime: 0.3
+  XPCollectionRadius: 0.5

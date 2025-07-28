@@ -190,6 +190,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c89c5d3d64ce72048bad77a1c0afc082
+    m_Address: ExperienceParticleMetalSmall
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: cc9c4697144a7d74b8b97b995483e328
     m_Address: RangedRoomba
     m_ReadOnly: 0
