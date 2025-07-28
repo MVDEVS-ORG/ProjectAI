@@ -35,6 +35,6 @@ public abstract class AbstractAttackState : IEnemyState
 
     public virtual void Attack()
     {
-        
+        Debug.LogError("Attacking using virtual Function");
     }
 }
