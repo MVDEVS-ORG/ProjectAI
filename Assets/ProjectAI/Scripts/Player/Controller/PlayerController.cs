@@ -256,12 +256,13 @@ public class PlayerController : IPlayerController
 
     void IPlayerController.AddXP(int xp)
     {
-        if(_playerModel.PlayerLevel< _xpLevelMap.Count && _playerModel.Experience> _xpLevelMap[_playerModel.PlayerLevel])
+        _playerModel.Experience += xp;
+        if (_playerModel.PlayerLevel< _xpLevelMap.Count && _playerModel.Experience> _xpLevelMap[_playerModel.PlayerLevel])
         {
+            _playerModel.Experience = _playerModel.Experience % _xpLevelMap[_playerModel.PlayerLevel];
             _playerModel.PlayerLevel = _playerModel.PlayerLevel<_xpLevelMap.Count?_playerModel.PlayerLevel+1:_xpLevelMap.Count;
             _upgradeController.DisplayUpgrades();
         }
-        _playerModel.Experience += xp;
         _playerUI.UpdateXpBar();
     }
 }

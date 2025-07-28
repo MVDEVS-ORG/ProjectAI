@@ -99,13 +99,18 @@ public class CharacterView : MonoBehaviour
         if (_playerModel != null)
         {
             Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _playerModel.XPCollectionRadius);
+            Debug.Log(colliders.Length);
             foreach (Collider2D collider in colliders)
             {
                 if (collider.TryGetComponent<XPParticle>(out XPParticle particle))
                 {
-                    if (particle.MoveToPlayer != false)
+                    if (!particle.MoveToPlayer )
                     {
                         particle.CollectParticle(this);
+                    }
+                    else
+                    {
+                        particle.MoveToPlayer = true;
                     }
                 }
             }

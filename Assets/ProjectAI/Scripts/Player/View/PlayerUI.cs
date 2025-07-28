@@ -60,7 +60,7 @@ public class PlayerUI : MonoBehaviour
 
     public void UpdateXpBar()
     {
-        _xpBar.fillAmount = _model.Experience/_xpLevelMap[_model.PlayerLevel];
+        _xpBar.fillAmount = (float)_model.Experience/_xpLevelMap[_model.PlayerLevel];
         _levelText.text = $"{_model.PlayerLevel + 1}";
     }
 }

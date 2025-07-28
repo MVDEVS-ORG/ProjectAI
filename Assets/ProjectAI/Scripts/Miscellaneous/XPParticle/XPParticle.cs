@@ -16,8 +16,8 @@ public class XPParticle : MonoBehaviour
         _xp = xp;
         _objectPool = poolManager;
         _rb = GetComponent<Rigidbody2D>();
-        _rb.linearDamping = Random.Range(0.2f,0.4f);
-        _rb.AddForce(Random.insideUnitCircle * Random.Range(1, 5));
+        _rb.linearDamping = Random.Range(0.5f,0.8f);
+        _rb.AddForce(Random.insideUnitCircle * Random.Range(5, 10));
         _rb.gravityScale = 0f;
     }
 
@@ -40,6 +40,14 @@ public class XPParticle : MonoBehaviour
         }
         transform.position = Vector2.Lerp(_initialPos, _playerView.transform.position,1);
         _playerView.AddXP(_xp);
+        ResetParticle();
         _objectPool.ReleaseGameObject(gameObject,ObjectPoolManager.PoolType.ParticleSystems);
+    }
+
+    private void ResetParticle()
+    {
+        MoveToPlayer = false;
+        _initialPos = Vector2.zero;
+        _xp = 0;
     }
 }

@@ -62,4 +62,8 @@ public static class AddressableIds
     public const string Upgrades_list = "UpgradesList";
     public const string Upgrades_List_1 = "UpgradeList1";
     #endregion
+
+    #region Experience Particle
+    public const string Experience_Particle_Metal_Small = "ExperienceParticleMetalSmall";
+    #endregion
 }
