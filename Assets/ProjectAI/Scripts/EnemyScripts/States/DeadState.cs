@@ -10,22 +10,38 @@ public class DeadState : IEnemyState
     {
         _enemy = enemy;
         _objectPoolmanager = op;
-        Debug.LogError("Enemy Dead");
-        _enemy.ResetEnemyAI();
-        _objectPoolmanager.ReleaseGameObject(_enemy.gameObject, ObjectPoolManager.PoolType.Enemies);
-        //_ = DeathAnimation();
-        //Add Object pooling
+
+        _enemy.animator.SetTrigger("Dead");
+
+        _enemy.StartCoroutine(PlayDeathAndRelease());
     }
 
-    async Awaitable DeathAnimation()
+    private IEnumerator PlayDeathAndRelease()
     {
-        await Awaitable.WaitForSecondsAsync(1000);
+        float timer = 0f;
+        float maxWaitTime = 5f;
+
+        while (!_enemy.animator.GetCurrentAnimatorStateInfo(0).IsName("Die") && timer < maxWaitTime)
+        {
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        while (_enemy.animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f && timer < maxWaitTime)
+        {
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        _enemy.ResetEnemyAI();
         _objectPoolmanager.ReleaseGameObject(_enemy.gameObject, ObjectPoolManager.PoolType.Enemies);
     }
 
     public void Update() { }
     public void Exit() 
     {
+        _enemy.animator.Rebind();
+        _enemy.animator.Update(0);
         _enemy = null;
         _objectPoolmanager = null;
     }

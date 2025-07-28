@@ -220,6 +220,41 @@ namespace Assets.ProjectAI.Scripts.PathFinding
             if (debugDrawGrid) SceneView.RepaintAll();
 #endif
         }
+
+        public Vector2Int GetNearestValidWalkableTile(Vector2Int position)
+        {
+            int x = position.x - offsetX;
+            int y = position.y - offsetY;
+
+            if (IsInBounds(x, y) && baseWalkable[x, y] && nodes[x, y]?.walkable == true && !blockedByItems.Contains(position))
+            {
+                return position;
+            }
+
+            // Spiral outward search in 8 directions
+            int maxRadius = Mathf.Max(width, height);
+            for (int radius = 1; radius < maxRadius; radius++)
+            {
+                foreach (var dir in Direction2D.eightDirectionList)
+                {
+                    Vector2Int checkPos = position + dir * radius;
+
+                    int cx = checkPos.x - offsetX;
+                    int cy = checkPos.y - offsetY;
+
+                    if (!IsInBounds(cx, cy)) continue;
+
+                    if (baseWalkable[cx, cy] && nodes[cx, cy]?.walkable == true && !blockedByItems.Contains(checkPos))
+                    {
+                        return checkPos;
+                    }
+                }
+            }
+
+            // Fallback: return original position if nothing found
+            return position;
+        }
+
         public Vector3Int GetRandomWalkableTile()
         {
             int attempts = 0;

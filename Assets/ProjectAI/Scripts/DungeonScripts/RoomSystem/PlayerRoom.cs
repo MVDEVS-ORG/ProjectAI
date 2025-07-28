@@ -27,12 +27,18 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem
 
         public Vector3 GetPlayerSpawnLocation()
         {
-            if(_playerSpawnPoint!=Vector2.zero)
+            if (_playerSpawnPoint != Vector2.zero)
             {
-                return _playerSpawnPoint;
+                Debug.LogError($" roomCenter: {_playerSpawnPoint}");
+                Vector2Int spawnCell = Vector2Int.RoundToInt(_playerSpawnPoint);
+                Vector2Int validCell = PathFindingManager.Instance.GetNearestValidWalkableTile(spawnCell);
+                var resultPos = PathFindingManager.Instance.floorTilemap.GetCellCenterWorld((Vector3Int)validCell);
+                Debug.LogError($" roomCenter: {resultPos}");
+                return resultPos;
             }
+
             Debug.LogError("Player spawn point is not set for some reason.");
-            return _playerSpawnPoint;
+            return Vector3.zero;
         }
 
         public override async Awaitable<List<GameObject>> ProcessRoom(
