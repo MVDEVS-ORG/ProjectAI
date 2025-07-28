@@ -163,6 +163,7 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
     {
         //Add death animation
         _enemyCollider.enabled = false;
+        StopMovement();
         TransitionToState(GetNextStateFromMap(EnemyStateTypes.Dead));
     }
 
