@@ -96,14 +96,17 @@ public class CharacterView : MonoBehaviour
         }
 
         #region check overlay colliders for particles
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _playerModel.XPCollectionRadius);
-        foreach (Collider2D collider in colliders)
+        if (_playerModel != null)
         {
-            if(collider.TryGetComponent<XPParticle>(out XPParticle particle))
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _playerModel.XPCollectionRadius);
+            foreach (Collider2D collider in colliders)
             {
-                if(particle.MoveToPlayer!=false)
+                if (collider.TryGetComponent<XPParticle>(out XPParticle particle))
                 {
-                    particle.CollectParticle(transform);
+                    if (particle.MoveToPlayer != false)
+                    {
+                        particle.CollectParticle(this);
+                    }
                 }
             }
         }
@@ -247,5 +250,10 @@ public class CharacterView : MonoBehaviour
     }
 
     #endregion
+
+    public void AddXP(int xp)
+    {
+        _playerController.AddXP(xp);
+    }
 
 }
