@@ -89,11 +89,17 @@ public class PlayerController : IPlayerController
             await _gunsController.SetCurrentActiveGun(gun.GetComponent<GunsView>(), _characterView.transform, bulletCursor.Item2.transform);
             #endregion
 
+            #region XP bar
+            ExperienceListSO experienceList = await _assetService.LoadAssetAsync<ExperienceListSO>(AddressableIds.Player_Level_Chart);
+            _xpLevelMap = new List<int>(experienceList.ExperiencePerLevel);
+            _assetService.UnloadAsset(experienceList);
+            #endregion
+
             #region player ui instantiation
             //Create the _player UI alongside the _player and pass the model for data
             result = await _assetService.InstantiateAsync(AddressableIds.Player_UI);
             _playerUI = result.GetComponent<PlayerUI>();
-            _playerUI.Initialize(_playerModel);
+            _playerUI.Initialize(_playerModel , _xpLevelMap);
             Debug.Log("PlayerUI Initialized");
             _cameraController.Initialize(_characterView.transform);
             _rumbleController.Initialize(_characterView);
@@ -110,12 +116,6 @@ public class PlayerController : IPlayerController
 
             _upgradeController.OnUpgrade += UpgradePlayer;
             _movementPossible = true;
-
-            #region XP bar
-            ExperienceListSO experienceList = await _assetService.LoadAssetAsync<ExperienceListSO>(AddressableIds.Player_Level_Chart);
-            _xpLevelMap = new List<int>(experienceList.ExperiencePerLevel);
-            _assetService.UnloadAsset(experienceList);
-            #endregion
         }
         catch (Exception exception)
         {
@@ -262,6 +262,7 @@ public class PlayerController : IPlayerController
             _upgradeController.DisplayUpgrades();
         }
         _playerModel.Experience += xp;
+        _playerUI.UpdateXpBar();
     }
 }
 
