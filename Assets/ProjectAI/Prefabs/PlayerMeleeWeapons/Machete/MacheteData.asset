@@ -16,5 +16,5 @@ MonoBehaviour:
   AttackTime: 0.1
   AttackChainLimit: 3
   AttackRechargeDelay: 5
-  DistanceFromPlayer: 2
-  Damage: 100
+  DistanceFromPlayer: 1
+  Damage: 1

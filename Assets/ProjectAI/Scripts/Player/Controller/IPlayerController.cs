@@ -17,12 +17,14 @@ public interface IPlayerController
     void MeleeAttack();
     void Test();
     void AddXP(int xp);
+    void MeleeDash(Vector2 Direction);
 }
 
 public enum State
 {
     Moving,
     RollDash,
-    TakeDamage
+    TakeDamage,
+    MeleeDash
 }
 

@@ -16,6 +16,8 @@ public class PlayerCharactersSO : ScriptableObject
     public float DamageKickBackSpeed;
     public float DamageKickBackTime;
     public float XPCollectionRadius;
+    public float MeleeDashTime;
+    public float MeleeDashSpeed;
 }
 
 public enum Character
