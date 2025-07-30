@@ -34,6 +34,8 @@ public class PlayerController : IPlayerController
 
     private Transform _bulletCursorUI;
 
+    private List<int> _xpLevelMap;
+
     public void Initialize()
     {
 
@@ -87,11 +89,17 @@ public class PlayerController : IPlayerController
             await _gunsController.SetCurrentActiveGun(gun.GetComponent<GunsView>(), _characterView.transform, bulletCursor.Item2.transform);
             #endregion
 
+            #region XP bar
+            ExperienceListSO experienceList = await _assetService.LoadAssetAsync<ExperienceListSO>(AddressableIds.Player_Level_Chart);
+            _xpLevelMap = new List<int>(experienceList.ExperiencePerLevel);
+            _assetService.UnloadAsset(experienceList);
+            #endregion
+
             #region player ui instantiation
             //Create the _player UI alongside the _player and pass the model for data
             result = await _assetService.InstantiateAsync(AddressableIds.Player_UI);
             _playerUI = result.GetComponent<PlayerUI>();
-            _playerUI.Initialize(_playerModel);
+            _playerUI.Initialize(_playerModel , _xpLevelMap);
             Debug.Log("PlayerUI Initialized");
             _cameraController.Initialize(_characterView.transform);
             _rumbleController.Initialize(_characterView);
@@ -244,6 +252,18 @@ public class PlayerController : IPlayerController
     {
         yield return Awaitable.WaitForSecondsAsync(_playerModel.DamageKickBackTime);
         _moveState = State.Moving;
+    }
+
+    void IPlayerController.AddXP(int xp)
+    {
+        _playerModel.Experience += xp;
+        if (_playerModel.PlayerLevel< _xpLevelMap.Count && _playerModel.Experience> _xpLevelMap[_playerModel.PlayerLevel])
+        {
+            _playerModel.Experience = _playerModel.Experience % _xpLevelMap[_playerModel.PlayerLevel];
+            _playerModel.PlayerLevel = _playerModel.PlayerLevel<_xpLevelMap.Count?_playerModel.PlayerLevel+1:_xpLevelMap.Count;
+            _upgradeController.DisplayUpgrades();
+        }
+        _playerUI.UpdateXpBar();
     }
 }
 

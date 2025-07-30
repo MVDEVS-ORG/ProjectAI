@@ -29,7 +29,10 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
     private ObjectPoolManager _objectPoolmanager;
     private Transform _player;
     private int _health = 10; 
-    private int _maxHealth = 10; 
+    private int _maxHealth = 10;
+
+    [Header("XP on Death")]
+    public int xp;
 
     private Tilemap floorTilemap;
     private Coroutine moveRoutine;

@@ -16,6 +16,7 @@ public interface IPlayerController
     void EnableController(bool enable);
     void MeleeAttack();
     void Test();
+    void AddXP(int xp);
 }
 
 public enum State
