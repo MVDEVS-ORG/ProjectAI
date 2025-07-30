@@ -26,6 +26,7 @@ public class UpgradesPopUp : MonoBehaviour
 
     public void Initialize(IUpgradeController upgradeController, IAssetService assetService)
     {
+        EventSystem.current.firstSelectedGameObject = _upgradeCards[0].gameObject;
         _upgradeController = upgradeController;
         foreach(UpgradeCard card in _upgradeCards)
         {
