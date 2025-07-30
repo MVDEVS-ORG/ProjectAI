@@ -17,6 +17,9 @@ public class PlayerModel
     public float InvincibilityTime;
     public float DamageKickBackSpeed;
     public float DamageKickBackTime;
+    [HideInInspector] public int Experience;
+    [HideInInspector] public int PlayerLevel;
+    public float XPCollectionRadius;
 
     public PlayerModel()
     {
@@ -38,6 +41,7 @@ public class PlayerModel
         InvincibilityTime = playerModelData.InvincibilityTime;
         DamageKickBackSpeed = playerModelData.DamageKickBackSpeed;
         DamageKickBackTime = playerModelData.DamageKickBackTime;
+        XPCollectionRadius = playerModelData.XPCollectionRadius;
     }
 
     public static PlayerModel operator +(PlayerModel left, PlayerModel right)

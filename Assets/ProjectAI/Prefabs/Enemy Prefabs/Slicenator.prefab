@@ -252,6 +252,7 @@ MonoBehaviour:
   healthModel: {fileID: 11400000, guid: 06f5326d63099334aa4e7fed63e39d7d, type: 2}
   animator: {fileID: 2018304359489993399}
   _enemyCollider: {fileID: 2298294354932179435}
+  xp: 100
   currentPath: []
   currentPathIndex: 0
 --- !u!1 &7977298239561724351

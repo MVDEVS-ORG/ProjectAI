@@ -135,6 +135,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 97176d965564a924382ee7e4ae61d069
+    m_Address: playerLevelChart
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 990709a76d4f9124db8ca4026e79a932
     m_Address: WallDiagonalCornerUpLeft
     m_ReadOnly: 0
@@ -182,6 +187,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: bc907278e70e85b4d9e628d218024a8a
     m_Address: FadeScreen
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c89c5d3d64ce72048bad77a1c0afc082
+    m_Address: ExperienceParticleMetalSmall
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
