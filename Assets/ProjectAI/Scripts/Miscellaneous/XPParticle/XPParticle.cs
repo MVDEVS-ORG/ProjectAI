@@ -4,20 +4,25 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class XPParticle : MonoBehaviour
 {
-    public bool MoveToPlayer = false;
+    [HideInInspector]public bool MoveToPlayer = false;
     private CharacterView _playerView;
     private Vector2 _initialPos;
     private ObjectPoolManager _objectPool;
     private Rigidbody2D _rb;
     private int _xp;
 
+    [Range(0, 1)][SerializeField] private float _linearDampingMin;
+    [Range(0, 1)][SerializeField] private float _linearDampingMax;
+    [Range(0, 10)][SerializeField] private float _initialForceMin;
+    [Range(0, 10)][SerializeField] private float _initialForceMax;
+
     public void Initialize(ObjectPoolManager poolManager, int xp)
     {
         _xp = xp;
         _objectPool = poolManager;
         _rb = GetComponent<Rigidbody2D>();
-        _rb.linearDamping = Random.Range(0.5f,0.8f);
-        _rb.AddForce(Random.insideUnitCircle * Random.Range(5, 10));
+        _rb.linearDamping = Random.Range(_linearDampingMin, _linearDampingMax); // 0.5,0.8 tested values
+        _rb.AddForce(Random.insideUnitCircle * Random.Range(_initialForceMin, _initialForceMax)); //5,10 tested values
         _rb.gravityScale = 0f;
     }
 

@@ -130,6 +130,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveToPlayer: 0
+  _linearDampingMin: 0.5
+  _linearDampingMax: 0.8
+  _initialForceMin: 5
+  _initialForceMax: 10
 --- !u!58 &8463772720645543664
 CircleCollider2D:
   m_ObjectHideFlags: 0
