@@ -54,7 +54,7 @@ public class PlayerController : IPlayerController
             {
                 case Character.Gunner:
                     prefabAddress = AddressableIds.Gunner_Character;
-                    gunAddress = AddressableIds.Simple_Gun;
+                    gunAddress = AddressableIds.Shot_Gun;
                     break;
 
                 case Character.Shotgun:
