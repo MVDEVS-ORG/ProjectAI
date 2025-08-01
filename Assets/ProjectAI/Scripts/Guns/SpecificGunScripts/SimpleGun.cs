@@ -63,6 +63,6 @@ public class SimpleGun : GunsView
         weaponBehavior.Initialize(PoolManager);
         weaponBehavior.SpawnProjectileAnimation();
         weaponBehavior.AddModifications();
-        weaponBehavior.MoveProjectile((PlayerCursor.position - GunBulletSpawnTransform.position).normalized);
+        weaponBehavior.MoveProjectile((PlayerCursor.position - PlayerTransform.position).normalized);
     }
 }
