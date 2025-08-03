@@ -25,3 +25,5 @@ MonoBehaviour:
   DamageKickBackSpeed: 7
   DamageKickBackTime: 0.3
   XPCollectionRadius: 0.5
+  MeleeDashTime: 0.1
+  MeleeDashSpeed: 16

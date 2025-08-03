@@ -16,11 +16,13 @@ public class GunsController : IGunsController
 
     private Coroutine _gunFiring;
 
+    GunsView IGunsController.View => _currentActiveGun;
+
     private IGunUI _gunUI;
 
     void IGunsController.Fire(bool firing)
     {
-        if (_currentActiveGun != null)
+        if (_currentActiveGun != null && _currentActiveGun.gameObject.activeSelf)
         {
             _currentActiveGun.Fire(firing);
         }

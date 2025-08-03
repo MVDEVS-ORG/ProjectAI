@@ -120,6 +120,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 86ce6d741ea853547805e6a20059404f
+    m_Address: MeleeSlash
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 86e1c7b3bc50aa24e8688f7ae146dc69
     m_Address: ShotGun
     m_ReadOnly: 0

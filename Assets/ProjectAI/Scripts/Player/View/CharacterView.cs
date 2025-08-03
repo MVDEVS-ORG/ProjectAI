@@ -19,6 +19,7 @@ public class CharacterView : MonoBehaviour
     private PlayerInput _playerInput;
     private Vector3 _lastValidDirection = Vector3.right;
     private Vector2 _lastDamageTickDirection = Vector2.zero;
+    private Vector2 _meleeDashDirection = Vector2.zero;
 
     private Vector2 _rollDirection;
 
@@ -74,6 +75,10 @@ public class CharacterView : MonoBehaviour
                 case State.TakeDamage:
                     _rigidBody.linearVelocity = _lastDamageTickDirection * _playerModel.DamageKickBackSpeed;
                     break;
+
+                case State.MeleeDash:
+                    _rigidBody.linearVelocity = _meleeDashDirection * _playerModel.MeleeDashSpeed;
+                    break;
             }
             //TurnCharacter();
             if (_playerInput.currentControlScheme == "Controller" && _BulletCursor != null)
@@ -99,7 +104,6 @@ public class CharacterView : MonoBehaviour
         if (_playerModel != null)
         {
             Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _playerModel.XPCollectionRadius);
-            Debug.Log(colliders.Length);
             foreach (Collider2D collider in colliders)
             {
                 if (collider.TryGetComponent<XPParticle>(out XPParticle particle))
@@ -148,7 +152,6 @@ public class CharacterView : MonoBehaviour
         if (!_playerController.Initialized) return;
         if (context.performed)
         {
-            Debug.LogError(_playerModel.GetHashCode());
             _rollDirection = _playerController.Dash(_moveInput);
         }
     }
@@ -184,6 +187,11 @@ public class CharacterView : MonoBehaviour
         {
             _playerController.Test();
         }
+    }
+
+    public void SetMeleeDashDirection(Vector2 Direction)
+    {
+        _meleeDashDirection = Direction;
     }
 
     #endregion
