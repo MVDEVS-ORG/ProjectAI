@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Cinemachine;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
@@ -107,9 +108,9 @@ public class PlayerController : IPlayerController
 
             #region melee instantiation
 
-            var melee = await _assetService.InstantiateAsync(AddressableIds.Machete);
+            var melee = await _assetService.InstantiateAsync(AddressableIds.MeleeSlash);
             MeleeWeaponView meleeView = melee.GetComponent<MeleeWeaponView>();
-            _meleeWeaponController.Initialize(_characterView.transform,_bulletCursorUI);
+            _meleeWeaponController.Initialize(_characterView.transform,_bulletCursorUI, this);
             _meleeWeaponController.SetupWeapon(meleeView);
 
             #endregion
@@ -257,13 +258,25 @@ public class PlayerController : IPlayerController
     void IPlayerController.AddXP(int xp)
     {
         _playerModel.Experience += xp;
-        if (_playerModel.PlayerLevel< _xpLevelMap.Count && _playerModel.Experience> _xpLevelMap[_playerModel.PlayerLevel])
+        if (_playerModel.PlayerLevel < _xpLevelMap.Count && _playerModel.Experience > _xpLevelMap[_playerModel.PlayerLevel])
         {
             _playerModel.Experience = _playerModel.Experience % _xpLevelMap[_playerModel.PlayerLevel];
-            _playerModel.PlayerLevel = _playerModel.PlayerLevel<_xpLevelMap.Count?_playerModel.PlayerLevel+1:_xpLevelMap.Count;
+            _playerModel.PlayerLevel = _playerModel.PlayerLevel < _xpLevelMap.Count ? _playerModel.PlayerLevel + 1 : _xpLevelMap.Count;
             _upgradeController.DisplayUpgrades();
         }
         _playerUI.UpdateXpBar();
+    }
+    IEnumerator MeleeDashTimer()
+    {
+        yield return Awaitable.WaitForSecondsAsync(_playerModel.MeleeDashTime);
+        _moveState = State.Moving;
+    }
+
+    void IPlayerController.MeleeDash(Vector2 Direction)
+    {
+        _characterView.SetMeleeDashDirection(Direction);
+        _moveState = State.MeleeDash;
+        _characterView.StartCoroutine(MeleeDashTimer());
     }
 }
 

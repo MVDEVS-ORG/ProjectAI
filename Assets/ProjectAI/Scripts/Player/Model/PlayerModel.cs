@@ -20,6 +20,8 @@ public class PlayerModel
     [HideInInspector] public int Experience;
     [HideInInspector] public int PlayerLevel;
     public float XPCollectionRadius;
+    public float MeleeDashTime;
+    public float MeleeDashSpeed;
 
     public PlayerModel()
     {
@@ -42,6 +44,8 @@ public class PlayerModel
         DamageKickBackSpeed = playerModelData.DamageKickBackSpeed;
         DamageKickBackTime = playerModelData.DamageKickBackTime;
         XPCollectionRadius = playerModelData.XPCollectionRadius;
+        MeleeDashTime = playerModelData.MeleeDashTime;
+        MeleeDashSpeed = playerModelData.MeleeDashSpeed;
     }
 
     public static PlayerModel operator +(PlayerModel left, PlayerModel right)
@@ -54,6 +58,7 @@ public class PlayerModel
         left.RolllCooldown = left.RolllCooldown + right.RolllCooldown;
         left.InvincibilityTime = left.InvincibilityTime + right.InvincibilityTime;
         left.DamageKickBackSpeed = left.DamageKickBackSpeed + right.DamageKickBackSpeed;
+        left.MeleeDashSpeed = left.MeleeDashSpeed + right.MeleeDashSpeed;
         return left;
 
     }
@@ -68,6 +73,7 @@ public class PlayerModel
         left.RolllCooldown = left.RolllCooldown * right.RolllCooldown;
         left.InvincibilityTime = left.InvincibilityTime * right.InvincibilityTime;
         left.DamageKickBackSpeed = left.DamageKickBackSpeed * right.DamageKickBackSpeed;
+        left.MeleeDashSpeed = left.MeleeDashSpeed * right.MeleeDashSpeed;
         return left;
     }
 
@@ -81,6 +87,7 @@ public class PlayerModel
         left.RolllCooldown = right.RolllCooldown != 0 ? right.RolllCooldown : left.RolllCooldown;
         left.InvincibilityTime = right.InvincibilityTime !=0 ? right.InvincibilityTime : left.InvincibilityTime;
         left.DamageKickBackSpeed = right.DamageKickBackSpeed !=0 ? right.DamageKickBackSpeed : left.DamageKickBackSpeed;
+        left.MeleeDashSpeed = right.MeleeDashSpeed != 0 ? right.MeleeDashSpeed : left.MeleeDashSpeed;
         return left;
     }
 }

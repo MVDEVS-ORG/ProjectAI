@@ -6,6 +6,8 @@ using Zenject;
 public class MeleeWeaponController : IMeleeWeaponController
 {
     [Inject] private IUpgradeController _upgradeController;
+    [Inject] private IGunsController _gunController;
+    [Inject] private GamepadRumble _rumbleController;
     private MeleeWeaponModel _model;
     private MeleeWeaponView _view;
 
@@ -15,13 +17,14 @@ public class MeleeWeaponController : IMeleeWeaponController
     private bool _initialized = false;
 
     private Coroutine _attackCoroutine;
-    private bool _isLeftSwing = false;
     private CharacterView _playerView;
+    private IPlayerController _playerController;
 
     public bool Initialized => _initialized;
 
-    void IMeleeWeaponController.Initialize(Transform playerTransform, Transform cursorTransform)
+    void IMeleeWeaponController.Initialize(Transform playerTransform, Transform cursorTransform, IPlayerController controller)
     {
+        _playerController = controller;
         _playerView = playerTransform.GetComponent<CharacterView>();
         _playerTransform = playerTransform;
         _cursorTransform = cursorTransform;
@@ -32,19 +35,21 @@ public class MeleeWeaponController : IMeleeWeaponController
     void IMeleeWeaponController.SetupWeapon(MeleeWeaponView view)
     {
         _view = view;
-        _model = view.SetupAndActivate(_playerTransform,_cursorTransform);
+        _model = view.SetupAndActivate(_playerTransform,_cursorTransform , this);
         _upgradeController.OnUpgrade += UpgradeMeleeWeapon;
         _initialized = true;
+        _view.gameObject.SetActive(false);
     }
 
     void IMeleeWeaponController.MeleeAttack()
     {
-        if(IsAttacking())
+        if(_view.gameObject.activeSelf)
         {
             return;
         }
         else if(_model.Attacks<_model.AttackChainLimit)
         {
+            _gunController.View.gameObject.SetActive(false); 
             Attack();
             _model.Attacks = _model.Attacks+1;
             _playerView.StartCoroutine(AttackCoolDown());
@@ -83,39 +88,21 @@ public class MeleeWeaponController : IMeleeWeaponController
 
     private void Attack()
     {
-        if (_playerTransform != null && _cursorTransform != null && _attackCoroutine == null)
+        if (_playerTransform != null && _cursorTransform != null && !_view.gameObject.activeSelf)
         {
-            _isLeftSwing = !_isLeftSwing;
-            float startingAngle = 0;
-            float endAngle = 0;
+            _rumbleController.Rumble(0.1f, 0.2f, 0.3f);
             Vector2 direction = (_cursorTransform.position - _playerTransform.position).normalized;
-            float angle = Mathf.Atan2(direction.y, direction.x);
-            startingAngle = _isLeftSwing ? angle - Mathf.PI / 2 : angle + Mathf.PI / 2;
-            endAngle = _isLeftSwing ? angle + Mathf.PI / 2 : angle - Mathf.PI / 2;
+            _playerController.MeleeDash(direction);
             _view.gameObject.SetActive(true);
-            _attackCoroutine = _view.StartCoroutine(MeleeMotion(_isLeftSwing, startingAngle, endAngle));
+            _view.transform.position = new Vector2(_playerTransform.position.x, _playerTransform.position.y) + direction * _model.DistanceFromPlayer;
+            _view.transform.right = direction;
+            _view.AttackAnimation();
         }
     }
 
-    IEnumerator MeleeMotion(bool isLeftSwing, float startAngle, float endAngle)
+    void IMeleeWeaponController.MeleeAttackDone()
     {
-        int directionOfMotion = 0;
-        directionOfMotion = isLeftSwing ? 1 : -1;
-        float angle = startAngle;
-        while (directionOfMotion * angle < directionOfMotion * endAngle)
-        {
-            angle = angle + (directionOfMotion * Time.deltaTime) / (_model.AttackTime);
-            _view.transform.position = _playerTransform.position + new Vector3(_model.DistanceFromPlayer * Mathf.Cos(angle), _model.DistanceFromPlayer * Mathf.Sin(angle), 0);
-            _view.transform.right = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0);
-            yield return Awaitable.EndOfFrameAsync();
-        }
-        //_view.transform.position = -100 * Vector3.one;
-        _attackCoroutine = null;
-        _view.gameObject.SetActive(false);
-    }
-
-    private bool IsAttacking()
-    {
-        return _attackCoroutine != null;
+        _gunController.View.gameObject.SetActive(true);
+        _gunController.View.OrbitalMotion();
     }
 }
