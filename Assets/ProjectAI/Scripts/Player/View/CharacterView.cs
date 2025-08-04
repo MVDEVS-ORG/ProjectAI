@@ -31,6 +31,12 @@ public class CharacterView : MonoBehaviour
 
     private SignalBus _signalBus;
 
+    private float _kickBackSpeed = 1f;
+    private Vector2 _kickBackDirection = Vector2.one;
+
+    private float _temporarySpeedHolder = 0f;
+    private Coroutine _KickbackBoostcoroutine = null;
+
 
     public void Initialize(IPlayerController playerController, PlayerModel playerModel, GameObject bulletCursor, GameObject bulletCursorUI, SignalBus signalBus)
     {
@@ -78,6 +84,10 @@ public class CharacterView : MonoBehaviour
 
                 case State.MeleeDash:
                     _rigidBody.linearVelocity = _meleeDashDirection * _playerModel.MeleeDashSpeed;
+                    break;
+
+                case State.KickBack:
+                    _rigidBody.linearVelocity = _kickBackDirection * _kickBackSpeed;
                     break;
             }
             //TurnCharacter();
@@ -204,6 +214,32 @@ public class CharacterView : MonoBehaviour
         _flashFeedback.Flash(_playerModel.InvincibilityTime);
     }
 
+    public void SetKickBackStrength(float strength, Vector2 direction)
+    {
+        _kickBackSpeed = strength;
+        _kickBackDirection = direction;
+    }
+
+    public void ExternalKickBack(float strength, Vector2 sourceOfKickback, float duration)
+    {
+        Vector2 direction = (new Vector2(transform.position.x, transform.position.y) - sourceOfKickback).normalized;
+        if (Vector2.Dot(direction, _moveInput) < 0.3)
+        {
+            _playerController.KickBack(strength, duration, direction);
+        }
+        else
+        {
+            if (_KickbackBoostcoroutine != null)
+            {
+                StopCoroutine(_KickbackBoostcoroutine);
+                _playerModel.Speed = _temporarySpeedHolder;
+                _KickbackBoostcoroutine = null;
+            }
+            _temporarySpeedHolder = _playerModel.Speed;
+            _KickbackBoostcoroutine = StartCoroutine(AddSpeed(duration, strength));
+        }
+    }
+
     #region collision
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -267,6 +303,13 @@ public class CharacterView : MonoBehaviour
     public void AddXP(int xp)
     {
         _playerController.AddXP(xp);
+    }
+
+    IEnumerator AddSpeed(float duration, float strength)
+    {
+        _playerModel.Speed += strength;
+        yield return Awaitable.WaitForSecondsAsync(duration);
+        _playerModel.Speed = _temporarySpeedHolder;
     }
 
 }

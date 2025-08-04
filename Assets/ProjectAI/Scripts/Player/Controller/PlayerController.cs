@@ -173,6 +173,13 @@ public class PlayerController : IPlayerController
         }
     }
 
+    void IPlayerController.KickBack(float strength, float duration, Vector2 direction)
+    {
+        _characterView.StartCoroutine(KickbackTimer(duration));
+        _characterView.SetKickBackStrength(strength, direction);
+        _moveState = State.KickBack;
+    }
+
     void IPlayerController.RestoreHealth(int health)
     {
         _playerModel.Health = Mathf.Min(_playerModel.Health + health, _playerModel.MaxHealth);
@@ -252,6 +259,12 @@ public class PlayerController : IPlayerController
     IEnumerator DamageKickbackTimer()
     {
         yield return Awaitable.WaitForSecondsAsync(_playerModel.DamageKickBackTime);
+        _moveState = State.Moving;
+    }
+
+    IEnumerator KickbackTimer(float timer)
+    {
+        yield return Awaitable.WaitForSecondsAsync(timer);
         _moveState = State.Moving;
     }
 

@@ -7,8 +7,13 @@ public class ShotGun : GunsView
     public int NoOfPellets;
     private Awaitable FiringGun;
     private bool _overheat = false;
+    private CharacterView _view;
     public override void Fire(bool firing)
     {
+        if(_view==null)
+        {
+            _view = PlayerTransform.GetComponent<CharacterView>();
+        }
         _firing = firing;
         Debug.Log("SimpleGunFire");
         if (FiringGun == null)
@@ -35,6 +40,7 @@ public class ShotGun : GunsView
             if (_firing && GunsModel.OverHeatValue < GunsModel.OverHeatLimit && !_overheat)
             {
                 _ = FireBullet((PlayerCursor.position - GunBulletSpawnTransform.position).normalized);
+                _view.ExternalKickBack(3, transform.position, 0.2f);
                 GunsModel.OverHeatValue += GunsModel.OverHeatRate;
                 if (GunUI != null)
                 {

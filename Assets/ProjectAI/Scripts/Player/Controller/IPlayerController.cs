@@ -18,6 +18,7 @@ public interface IPlayerController
     void Test();
     void AddXP(int xp);
     void MeleeDash(Vector2 Direction);
+    void KickBack(float strength, float duration, Vector2 direction);
 }
 
 public enum State
@@ -25,6 +26,7 @@ public enum State
     Moving,
     RollDash,
     TakeDamage,
-    MeleeDash
+    MeleeDash,
+    KickBack
 }
 
