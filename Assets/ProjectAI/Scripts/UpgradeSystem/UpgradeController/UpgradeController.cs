@@ -88,15 +88,23 @@ public class UpgradeController : IUpgradeController
 
     async Awaitable IUpgradeController.Initialize()
     {
-        //TODO: create multiple upgrade lists and then add append the number before loading asset
-        _upgradeList = await _assetService.LoadAssetAsync<UpgradesLists>(AddressableIds.Upgrades_List_1);
-        GameObject temp = await _assetService.InstantiateAsync(AddressableIds.Upgrades_Popup);
-        _upgradesCanvas = temp.GetComponent<Canvas>();  
-        _upgradesPopup = temp.GetComponent<UpgradesPopUp>();
-        _upgradesPopup.Initialize(this,_assetService);
-        _path = Application.persistentDataPath + "/gameData/upgrades.txt";
-        _upgradesCanvas.enabled = false;
-        _upgradesPopup.gameObject.SetActive(false);
+        try
+        {
+            //TODO: create multiple upgrade lists and then add append the number before loading asset
+            _upgradeList = await _assetService.LoadAssetAsync<UpgradesLists>(AddressableIds.Upgrades_List_1);
+            GameObject temp = await _assetService.InstantiateAsync(AddressableIds.Upgrades_Popup);
+            _upgradesCanvas = temp.GetComponent<Canvas>();
+            _upgradesPopup = temp.GetComponent<UpgradesPopUp>();
+            _upgradesPopup.Initialize(this, _assetService);
+            _path = Application.persistentDataPath + "/gameData/upgrades.txt";
+            _upgradesCanvas.enabled = false;
+            _upgradesPopup.gameObject.SetActive(false);
+        }
+        catch (Exception ex)
+        {
+            Debug.LogException(ex);
+        }
+        
     }
 
     void IUpgradeController.LoadUpgrades()

@@ -35,6 +35,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1fbda1b12f97f064983da02997000964
+    m_Address: BossRoom_LVL1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2176721871dfa704eaa2c9befc2994a2
     m_Address: UpgradesPopup
     m_ReadOnly: 0

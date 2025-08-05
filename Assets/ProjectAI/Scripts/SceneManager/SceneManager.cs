@@ -74,7 +74,7 @@ public class SceneManager : ISceneManager
     async Awaitable ISceneManager.FadeBack()
     {
         _loadingText.gameObject.SetActive(false);
-        while (_fadeScreen.color.a <= 1)
+        while (_fadeScreen.color.a > 0)
         {
             Color color = _fadeScreen.color;
             color.a = Mathf.Clamp(color.a -  Time.deltaTime,0,1);

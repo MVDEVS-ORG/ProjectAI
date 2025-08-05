@@ -38,6 +38,9 @@ public static class AddressableIds
     public const string Enemy_Laser_Beam = "EnemyLaseBeam";
 
 
+    #region BossRooms Addressables
+    public const string BossRoom_LVL_1 = "BossRoom_LVL1";
+    #endregion
     #region TileMap Addressables
 
     public const string Floor = "floor";

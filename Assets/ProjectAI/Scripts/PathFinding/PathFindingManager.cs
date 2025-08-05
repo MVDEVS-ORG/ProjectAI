@@ -117,7 +117,57 @@ namespace Assets.ProjectAI.Scripts.PathFinding
 
             _itemsBaked = true;
         }
+        public async Awaitable<bool> BakeFromTilemapsAsync()
+        {
+            try
+            {
+                BakeFromTilemaps();
+                await Awaitable.NextFrameAsync();
+                return true;
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError($"BakeFromTilemapsAsync failed: {e}");
+                return false;
+            }
+        }
+        public void BakeFromTilemaps()
+        {
+            BoundsInt bounds = floorTilemap.cellBounds;
+            width = bounds.size.x;
+            height = bounds.size.y;
+            offsetX = bounds.xMin;
+            offsetY = bounds.yMin;
 
+            nodes = new PathNode[width, height];
+            baseWalkable = new bool[width, height];
+            blockedByItems.Clear();
+
+            for (int x = 0; x < width; x++)
+            {
+                for (int y = 0; y < height; y++)
+                {
+                    Vector3Int cell = new Vector3Int(x + offsetX, y + offsetY, 0);
+                    bool hasFloor = floorTilemap.HasTile(cell);
+                    bool hasWall = wallTileMap.HasTile(cell);
+                    bool canWalk = hasFloor && !hasWall;
+
+                    baseWalkable[x, y] = canWalk;
+                    nodes[x, y] = new PathNode
+                    {
+                        position = cell,
+                        walkable = canWalk
+                    };
+                }
+            }
+
+            _initialBaked = true;
+            _itemsBaked = true;
+
+#if UNITY_EDITOR
+            if (debugDrawGrid) SceneView.RepaintAll();
+#endif
+        }
         /// <summary>
         /// Awaitable wrapper around BakeItems.
         /// </summary>
