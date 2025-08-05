@@ -193,7 +193,7 @@ public class PlayerController : IPlayerController
 
     Vector2 IPlayerController.Dash(Vector2 MoveInput)
     {
-        Debug.LogError(_playerModel.GetHashCode());
+       // Debug.LogError(_playerModel.GetHashCode());
         if (_moveState == State.Moving && MoveInput!= Vector2.zero && _playerModel.NoOfRoll<_playerModel.MaxNoOfRolls) //also need to addd the stamina part here
         {
             _playerModel.NoOfRoll++;

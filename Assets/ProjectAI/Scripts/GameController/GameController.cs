@@ -19,7 +19,7 @@ public class GameController : IGameController
     private void Initialize()
     {
         UnityEngine.Random.InitState(Environment.TickCount);
-        Debug.Log("Game Initialize started");
+        Debug.Log("Game InitializeRoom started");
         _ = (this as IGameController).StartGame();
     }
     async Task IGameController.StartGame()
