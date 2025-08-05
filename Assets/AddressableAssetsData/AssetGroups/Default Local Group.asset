@@ -45,6 +45,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2a9be9f2a09be2742ab54d00151db7b5
+    m_Address: ShotGunProjectile
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 317375fb36b25364ca51b367926eca22
     m_Address: Machete
     m_ReadOnly: 0
