@@ -2,6 +2,7 @@
 using Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem;
 using Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items;
 using Assets.ProjectAI.Scripts.HelperClasses;
+using Assets.ProjectAI.Scripts.Player;
 using Assets.Services;
 using System.Collections;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
         [Inject] private IPlayerController _playerController;
         [Inject] private PlayerPicker _playerPicker;
         [Inject] private ObjectPoolManager _objectPoolManager;
+        [Inject] private PlayerSelectionService _playerSelectionService;
 
         [SerializeField]
         private RoomGenerator _playerRoom, _defaultRoom, _treasureRoom, _portalRoom;
@@ -195,7 +197,9 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
 
             Vector2 spawnPosition = (_playerRoom as PlayerRoom).GetPlayerSpawnLocation();
 
-            await _playerController.SpawnPlayer(spawnPosition, _playerPicker.PickPlayer());
+            Character selected = _playerSelectionService.SelectedCharacter;
+            
+            await _playerController.SpawnPlayer(spawnPosition, _playerPicker.SelectPlayer(selected));
             spawnedObjects.AddRange(placedPrefabs);
             _playerSpawnPoint = playerSpawnPoint;
         }

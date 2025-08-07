@@ -3,6 +3,7 @@ using Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items;
 using Assets.ProjectAI.Scripts.DungeonScripts;
 using UnityEngine;
 using Zenject;
+using Assets.Services;
 
 public class GameInstaller : MonoInstaller
 {
@@ -17,7 +18,6 @@ public class GameInstaller : MonoInstaller
         Container.Bind<GamepadRumble>().AsSingle();
         Container.Bind<CameraController>().AsSingle().OnInstantiated(PlayerCameraSetup);
         Container.Bind<IUpgradeController>().To<UpgradeController>().AsSingle();
-        Container.Bind<PlayerPicker>().AsSingle();
         Container.Bind<IGunsController>().To<GunsController>().AsSingle();
         Container.Bind<IMeleeWeaponController>().To<MeleeWeaponController>().AsSingle();
         Container.Bind<IPlayerController>().To<PlayerController>().AsSingle();

@@ -12,6 +12,10 @@ public static class AddressableIds
     public const string Gunner_Data_SO = "gunnerDataSO";
     public const string Shotgunner_Data_SO = "shotgunnerDataSO";
     public const string Pyro_Data_SO = "pyroDataSO";
+    
+    public const string Gunner_Detail_SO = "gunnerDetailSO";
+    public const string Shotgunner_Detail_SO = "shotgunnerDetailSO";
+    public const string Pyro_Detail_SO = "pyroDetailSO";
     #endregion
 
     #region gundata
@@ -40,6 +44,9 @@ public static class AddressableIds
 
     #region BossRooms Addressables
     public const string BossRoom_LVL_1 = "BossRoom_LVL1";
+    #endregion
+    #region BossRooms Addressables
+    public const string Character_Card_UI = "CharacterCardUI";
     #endregion
     #region TileMap Addressables
 

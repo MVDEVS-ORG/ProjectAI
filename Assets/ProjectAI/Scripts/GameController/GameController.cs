@@ -1,4 +1,5 @@
 using Assets.ProjectAI.Scripts.DungeonScripts;
+using Assets.ProjectAI.Scripts.Player;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ public class GameController : IGameController
     [Inject] private DungeonMapController _dungeonMapController;
     [Inject] private ISceneManager _sceneManager;
     [Inject] private IUpgradeController _upgradeController;
+    [Inject] private PlayerSelectionService _playerSelectionService;
 
     private List<GameObject> _enemies = new List<GameObject>();
 
@@ -26,7 +28,7 @@ public class GameController : IGameController
     {
         try
         {
-            await _playerPicker.SetPlayer();
+            //await _playerPicker.SetPlayer();
             await _dungeonMapController.Initialize();
             _enemies = _dungeonMapController.GetAllSpawnedEnemies();
             _playerController.EnableController(true);
