@@ -1,7 +1,5 @@
 using Assets.ProjectAI.Scripts.Player;
 using Assets.Services;
-using UnityEngine;
-using UnityEngine.Analytics;
 using Zenject;
 
 public class CoreInstaller : MonoInstaller
