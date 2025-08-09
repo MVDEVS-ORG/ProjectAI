@@ -1,5 +1,6 @@
 using Assets.ProjectAI.Scripts.MainMenu;
 using Assets.Services;
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Zenject;
@@ -27,20 +28,16 @@ public class MainMenuController
         _currentOpenPanel = _mainMenuUI.mainMenuPanel;
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(_mainMenuUI.NewGameButton.gameObject);
-        _mainMenuUI.NewGameButton.onClick.AddListener(NewGame);
-        _mainMenuUI.CharacterSelectionButton.onClick.AddListener(OpenCharacterSelection);
+        _mainMenuUI.NewGameButton.onClick.AddListener(OpenCharacterSelection);
+        _mainMenuUI.SettingsButton.onClick.AddListener(OpenSettingsMenu);
+        _mainMenuUI.creditsButton.onClick.AddListener(OpenCredits);
+        _mainMenuUI.QuitButton.onClick.AddListener(QuitToDesktop);
+        //_mainMenuUI.CharacterSelectionButton.onClick.AddListener(OpenCharacterSelection);
     }
 
-    private async void NewGame()
-    {
-        await _sceneManager.LoadSceneAsync("GameScene");
-    }
-    private async void LoadGame()
-    {
-        await _sceneManager.LoadSceneAsync("GameScene");
-    }
     private void QuitToDesktop()
     {
+        Debug.LogError("Quitting Application");
         Application.Quit();
     }
 
@@ -54,11 +51,11 @@ public class MainMenuController
 
     private void OpenSettingsMenu()
     {
-
+        Debug.LogError("Settings Menu is not yet Implemented");
     }
 
     private void OpenCredits()
     {
-
+        Debug.LogError("Credits Scene is not yet Implemented");
     }
 }

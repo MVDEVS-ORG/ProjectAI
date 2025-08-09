@@ -6,8 +6,6 @@ public class MainMenuUI : MonoBehaviour
 {
     [Header("Buttons")]
     public Button NewGameButton;
-    public Button LoadGameButton;
-    public Button CharacterSelectionButton;
     public Button SettingsButton;
     public Button creditsButton;
     public Button QuitButton;
