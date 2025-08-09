@@ -6,7 +6,7 @@ public class CoreInstaller : MonoInstaller
 {
     public override void InstallBindings()
     {
-        Container.Bind<IAssetService>().To<AssetService>().AsSingle().NonLazy();
+        Container.Bind<IAssetService>().To<AssetService>().AsCached().NonLazy();
         Container.Bind<ISceneManager>().To<SceneManager>().AsSingle().NonLazy();
         Container.Bind<PlayerSelectionService>().AsSingle();
         Container.Bind<ObjectPoolManager>().AsSingle().NonLazy();

@@ -1,5 +1,6 @@
 using Assets.ProjectAI.Scripts.DungeonScripts;
 using Assets.ProjectAI.Scripts.Player;
+using Assets.Services;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -15,6 +16,8 @@ public class GameController : IGameController
     [Inject] private IUpgradeController _upgradeController;
     [Inject] private PlayerSelectionService _playerSelectionService;
 
+    [Inject] private IAssetService _assetService;
+
     private List<GameObject> _enemies = new List<GameObject>();
 
     [Inject]
@@ -22,6 +25,7 @@ public class GameController : IGameController
     {
         UnityEngine.Random.InitState(Environment.TickCount);
         Debug.Log("Game InitializeRoom started");
+        Debug.LogError(_assetService == null);
         _ = (this as IGameController).StartGame();
     }
     async Task IGameController.StartGame()
