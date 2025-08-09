@@ -35,7 +35,7 @@ namespace Assets.ProjectAI.Scripts.MainMenu
                 _charactercards.Add(characterCardUI);
             }
             _characterDetailsUI = _view.detailsPanel;
-            _characterDetailsUI.changeAvatarButton.onClick.AddListener(OnChangeAvatarClicked);
+            _characterDetailsUI.changeAvatarButton.onClick.AddListener(OnChangeCharacterClicked);
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(_charactercards[0].gameObject);
             _view.HideDetails();
@@ -56,7 +56,7 @@ namespace Assets.ProjectAI.Scripts.MainMenu
             _view.ShowDetails(characterData, OnCharacterSelected);
         }
 
-        private void OnChangeAvatarClicked()
+        private void OnChangeCharacterClicked()
         {
             Debug.LogError("Change character Button Clicked");
             _view.HideDetails();

@@ -25,14 +25,12 @@ public class GameController : IGameController
     {
         UnityEngine.Random.InitState(Environment.TickCount);
         Debug.Log("Game InitializeRoom started");
-        Debug.LogError(_assetService == null);
         _ = (this as IGameController).StartGame();
     }
     async Task IGameController.StartGame()
     {
         try
         {
-            //await _playerPicker.SetPlayer();
             await _dungeonMapController.Initialize();
             _enemies = _dungeonMapController.GetAllSpawnedEnemies();
             _playerController.EnableController(true);

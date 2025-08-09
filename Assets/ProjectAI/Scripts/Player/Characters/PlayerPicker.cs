@@ -12,7 +12,6 @@ public class PlayerPicker
 
     public PlayerCharactersSO PickPlayer()
     {
-        //SelectedPlayer = _selectableCharacters[Random.Range(0,_selectableCharacters.Count)];
         SelectedPlayer = _selectableCharacters[0];
         return SelectedPlayer;
     }

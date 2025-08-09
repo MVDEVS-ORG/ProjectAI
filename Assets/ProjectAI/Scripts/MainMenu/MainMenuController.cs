@@ -32,7 +32,6 @@ public class MainMenuController
         _mainMenuUI.SettingsButton.onClick.AddListener(OpenSettingsMenu);
         _mainMenuUI.creditsButton.onClick.AddListener(OpenCredits);
         _mainMenuUI.QuitButton.onClick.AddListener(QuitToDesktop);
-        //_mainMenuUI.CharacterSelectionButton.onClick.AddListener(OpenCharacterSelection);
     }
 
     private void QuitToDesktop()
