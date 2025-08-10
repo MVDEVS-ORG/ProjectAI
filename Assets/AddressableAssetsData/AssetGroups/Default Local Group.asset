@@ -55,6 +55,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 316f86ce89863d34dbac380c501e099a
+    m_Address: shotgunnerDetailSO
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 317375fb36b25364ca51b367926eca22
     m_Address: Machete
     m_ReadOnly: 0
@@ -62,6 +67,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 32fb4d0075b44bf43b045b03663afc2c
     m_Address: WallInnerCornerDownRight
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 35f7e4f6e423a444f9ab4bfe04a01ca9
+    m_Address: gunnerDetailSO
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -115,6 +125,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7198bfa652b0b5a4b98c17a633c27e5a
+    m_Address: pyroDetailSO
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7fd8b207a21522e40a70d3fd5e00919f
     m_Address: Barrel
     m_ReadOnly: 0
@@ -137,6 +152,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 86e1c7b3bc50aa24e8688f7ae146dc69
     m_Address: ShotGun
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 919db3959a3f5c445a471638dcf35a1a
+    m_Address: CharacterCardUI
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

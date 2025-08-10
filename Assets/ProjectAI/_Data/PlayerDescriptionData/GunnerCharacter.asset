@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 735da852625ffcb4da8a8d10240f661c, type: 3}
+  m_Name: GunnerCharacter
+  m_EditorClassIdentifier: 
+  character: 0
+  description: this is the gunner Character with a gun Pew Pew Pew
+  characterSprite: {fileID: 49891880447364413, guid: 4eda27fe042e205418a28275d72ff045, type: 3}
+  passiveAbility:
+    abilitySprite: {fileID: 21300000, guid: b761ff163fff29c40abcd33e3110f131, type: 3}
+    description: use melee
+  activeAbility:
+    abilitySprite: {fileID: -6007857137893288414, guid: dfde88041d3679a44a0daa060e446f67, type: 3}
+    description: health is good

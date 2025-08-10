@@ -122,8 +122,8 @@ public class UpgradeController : IUpgradeController
 
     void IUpgradeController.SaveUpgrades()
     {
-        _dataSerializer.SaveData("/GameData/upgrades.json",_activeUpgrades);
-        _dataSerializer.SaveData("/GameData/curses.json",_cursedUpgrades);
+        _dataSerializer.SaveData("/upgrades.json",_activeUpgrades);
+        _dataSerializer.SaveData("/curses.json",_cursedUpgrades);
     }
 
     void IUpgradeController.SelectedUpgrade(List<UpgradeSO> upgrades)

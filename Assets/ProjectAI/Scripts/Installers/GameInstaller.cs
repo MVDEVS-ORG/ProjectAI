@@ -17,11 +17,10 @@ public class GameInstaller : MonoInstaller
         Container.Bind<GamepadRumble>().AsSingle();
         Container.Bind<CameraController>().AsSingle().OnInstantiated(PlayerCameraSetup);
         Container.Bind<IUpgradeController>().To<UpgradeController>().AsSingle();
-        Container.Bind<PlayerPicker>().AsSingle();
         Container.Bind<IGunsController>().To<GunsController>().AsSingle();
         Container.Bind<IMeleeWeaponController>().To<MeleeWeaponController>().AsSingle();
         Container.Bind<IPlayerController>().To<PlayerController>().AsSingle();
-        Container.Bind<TilemapVisualizer>().FromInstance(_tilemapVisualizer).AsSingle();
+        Container.Bind<TilemapVisualizer>().FromInstance(_tilemapVisualizer).AsSingle().NonLazy();
         Container.Bind<RoomContentGenerator>().FromInstance(_roomContentGenerator).AsSingle();
         Container.Bind<PrefabPlacer>().FromNewComponentOnNewPrefab(_prefabPlacer).AsTransient();
         Container.BindInterfacesAndSelfTo<RoomFirstDungeonGenerator>()

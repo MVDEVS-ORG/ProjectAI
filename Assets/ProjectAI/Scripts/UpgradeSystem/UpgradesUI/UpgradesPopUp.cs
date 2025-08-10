@@ -9,6 +9,8 @@ public class UpgradesPopUp : MonoBehaviour
     private IUpgradeController _upgradeController;
     public void UpdateList(List<List<UpgradeSO>> ListOfUpgrades)
     {
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(_upgradeCards[0].gameObject);
         if (ListOfUpgrades != null)
         {
             int i = 0;
@@ -26,7 +28,6 @@ public class UpgradesPopUp : MonoBehaviour
 
     public void Initialize(IUpgradeController upgradeController, IAssetService assetService)
     {
-        EventSystem.current.firstSelectedGameObject = _upgradeCards[0].gameObject;
         _upgradeController = upgradeController;
         foreach(UpgradeCard card in _upgradeCards)
         {
