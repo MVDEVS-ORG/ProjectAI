@@ -125,6 +125,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 73ad0ed63422976409ae7fd553827e3b
+    m_Address: PopUpUI
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7fd8b207a21522e40a70d3fd5e00919f
     m_Address: Barrel
     m_ReadOnly: 0

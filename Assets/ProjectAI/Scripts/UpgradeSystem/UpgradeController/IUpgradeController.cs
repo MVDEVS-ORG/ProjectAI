@@ -12,4 +12,5 @@ public interface IUpgradeController
     void RefreshUpgrades();
     void SaveUpgrades();
     void LoadUpgrades();
+    void ClearUpgrades();
 }

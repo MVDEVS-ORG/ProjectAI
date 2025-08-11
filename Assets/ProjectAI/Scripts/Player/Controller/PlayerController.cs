@@ -116,6 +116,7 @@ public class PlayerController : IPlayerController
             #endregion
 
             _upgradeController.OnUpgrade += UpgradePlayer;
+            _upgradeController.RefreshUpgrades();
             _movementPossible = true;
         }
         catch (Exception exception)

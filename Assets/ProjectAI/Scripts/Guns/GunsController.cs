@@ -40,6 +40,7 @@ public class GunsController : IGunsController
         _gunUI = gunUIgameObject.GetComponent<IGunUI>();
         _gunUI.Initialize(_gunsModel, playerTransform);
         _upgradeController.OnUpgrade += UpgradeWeapon;
+        _upgradeController.RefreshUpgrades();
         gun.SetGunUI(_gunUI);
     }
 
