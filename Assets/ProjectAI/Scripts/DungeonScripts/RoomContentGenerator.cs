@@ -198,7 +198,6 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
             Vector2 spawnPosition = (_playerRoom as PlayerRoom).GetPlayerSpawnLocation();
 
             Character selected = _playerSelectionService.SelectedCharacter;
-            Debug.LogError(_playerPicker.SelectPlayer(selected) == null);
             await _playerController.SpawnPlayer(spawnPosition, _playerPicker.SelectPlayer(selected));
             spawnedObjects.AddRange(placedPrefabs);
             _playerSpawnPoint = playerSpawnPoint;

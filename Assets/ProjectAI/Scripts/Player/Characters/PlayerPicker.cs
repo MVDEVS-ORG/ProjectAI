@@ -33,7 +33,7 @@ public class PlayerPicker
             }
         }
 
-        Debug.LogWarning($"No player found matching character type: {character}");
+        Debug.LogError($"No player found matching character type: {character}");
         return SelectedPlayer = null;
     }
 }
