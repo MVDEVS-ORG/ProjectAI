@@ -16,7 +16,6 @@ public class GameController : IGameController
     [Inject] private IUpgradeController _upgradeController;
     [Inject] private PlayerSelectionService _playerSelectionService;
 
-
     private List<GameObject> _enemies = new List<GameObject>();
 
     [Inject]

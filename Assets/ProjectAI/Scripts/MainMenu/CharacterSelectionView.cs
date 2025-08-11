@@ -16,6 +16,7 @@ namespace Assets.ProjectAI.Scripts.MainMenu
             detailsPanel.gameObject.SetActive(false);
             detailsPanel.enterDungeonButton.onClick.RemoveAllListeners();
         }
+        
         public void ShowDetails(CharacterDescriptionSO data, Action<Character> OnCharacterSelected) => detailsPanel.Setup(data, OnCharacterSelected);
     }
 }
