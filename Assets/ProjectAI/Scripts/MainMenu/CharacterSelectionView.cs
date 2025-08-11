@@ -11,7 +11,11 @@ namespace Assets.ProjectAI.Scripts.MainMenu
         public CharacterCardUI cardPrefab;
         public CharacterDetailsUI detailsPanel;
 
-        public void HideDetails() => detailsPanel.gameObject.SetActive(false);
+        public void HideDetails()
+        {
+            detailsPanel.gameObject.SetActive(false);
+            detailsPanel.enterDungeonButton.onClick.RemoveAllListeners();
+        }
         public void ShowDetails(CharacterDescriptionSO data, Action<Character> OnCharacterSelected) => detailsPanel.Setup(data, OnCharacterSelected);
     }
 }
