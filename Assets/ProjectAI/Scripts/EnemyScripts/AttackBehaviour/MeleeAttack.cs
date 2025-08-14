@@ -13,8 +13,8 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.AttackBehaviour
         public override void Enter(EnemyAI enemy, Transform player, ObjectPoolManager op)
         {
             base.Enter(enemy, player, op);
-            _enemy.animator.SetBool("Attack", true);
-            _enemy.animator.SetBool("AttackEnd", false);
+            _enemy.animator?.SetBool("Attack", true);
+            _enemy.animator?.SetBool("AttackEnd", false);
         }
 
         private bool CanExecute()
@@ -26,7 +26,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.AttackBehaviour
         {
             var attackDirection = (_enemy.Target.position - _enemy.transform.position).normalized;
             Quaternion attackRotation = Quaternion.FromToRotation(Vector3.right, attackDirection);
-            Vector3 spawnPosition = _enemy.attackSpawnPos.position + attackDirection * _enemy.attackOffset;
+            Vector3 spawnPosition = _enemy.attackSpawnPos.position + attackDirection * _enemy.enemyModel.attackOffset;
 
             GameObject go = await _poolManager.SpawnObjectAsync(
                 AddressableIds.Enemy_Melee_Attack,
@@ -56,8 +56,8 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.AttackBehaviour
             {
                 _isWaitingForAttackEnd = true;
                 _hasPerformedAttack = false;
-                _enemy.animator.SetBool("Attack", false);
-                _enemy.animator.SetBool("AttackEnd", true);
+                _enemy.animator?.SetBool("Attack", false);
+                _enemy.animator?.SetBool("AttackEnd", true);
                 _exitCoroutine = _enemy.StartCoroutine(WaitForAttackEndAndTransition());
             }
         }
@@ -88,7 +88,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.AttackBehaviour
 
         public override void Exit()
         {
-            _enemy.animator.SetBool("AttackEnd", true);
+            _enemy.animator?.SetBool("AttackEnd", true);
             if (_exitCoroutine != null)
             {
                 _enemy.StopCoroutine(_exitCoroutine);
