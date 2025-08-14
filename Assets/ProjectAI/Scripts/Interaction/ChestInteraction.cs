@@ -14,6 +14,8 @@ public class ChestInteraction : MonoBehaviour, IInteractable
 
     void IInteractable.Interact(Transform Interactor)
     {
+        // TODO add a probablility system which gives multiple rewards like guns and cards
+        // also add an intermediary that will get the rewards list and then dispense them accordingly
         if (!_opened)
         {
             _controller.DisplayUpgrades();
