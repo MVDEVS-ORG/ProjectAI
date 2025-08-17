@@ -20,6 +20,13 @@ public class UpgradeController : IUpgradeController
 
     public event Action<List<UpgradeSO>> OnUpgrade;
 
+    void IUpgradeController.ClearUpgrades()
+    {
+        _activeUpgrades.Clear();
+        _cursedUpgrades.Clear();
+        (this as IUpgradeController).SaveUpgrades();
+    }
+
     void IUpgradeController.DisplayUpgrades()
     {
         Cursor.visible = true;
@@ -115,7 +122,7 @@ public class UpgradeController : IUpgradeController
 
     void IUpgradeController.RefreshUpgrades()
     {
-        (this as IUpgradeController).RefreshUpgrades();
+        (this as IUpgradeController).LoadUpgrades();
         OnUpgrade.Invoke(_activeUpgrades);
         OnUpgrade.Invoke(_cursedUpgrades);
     }
@@ -125,6 +132,8 @@ public class UpgradeController : IUpgradeController
         _dataSerializer.SaveData("/upgrades.json",_activeUpgrades);
         _dataSerializer.SaveData("/curses.json",_cursedUpgrades);
     }
+
+
 
     void IUpgradeController.SelectedUpgrade(List<UpgradeSO> upgrades)
     {

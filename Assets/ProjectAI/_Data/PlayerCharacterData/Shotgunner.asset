@@ -12,6 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f8bd3ea22ed56e4aab2e7256d06c264, type: 3}
   m_Name: Shotgunner
   m_EditorClassIdentifier: 
-  MaxHealth: 100
+  MaxHealth: 150
   CharacterType: 1
-  Speed: 10
+  Speed: 4
+  CursorDistance: 2
+  RollDuration: 0.4
+  RollSpeed: 8
+  MaxNoOfRolls: 2
+  NoOfRolls: 0
+  RollCooldown: 8
+  InvincibilityTime: 1.5
+  DamageKickBackSpeed: 6
+  DamageKickBackTime: 0.3
+  XPCollectionRadius: 0.5
+  MeleeDashTime: 0.1
+  MeleeDashSpeed: 14

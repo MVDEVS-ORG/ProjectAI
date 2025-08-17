@@ -10,6 +10,7 @@ public class MainMenuController
     [Inject] private IAssetService _assetService;
     [Inject] private ISceneManager _sceneManager;
     [Inject] private PlayerPicker _playerPicker;
+    [Inject] private IUpgradeController _upgradeController;
     [Inject] private CharacterSelectionController _characterSelectionController;
 
     private MainMenuUI _mainMenuUI;
@@ -32,6 +33,7 @@ public class MainMenuController
         _mainMenuUI.SettingsButton.onClick.AddListener(OpenSettingsMenu);
         _mainMenuUI.creditsButton.onClick.AddListener(OpenCredits);
         _mainMenuUI.QuitButton.onClick.AddListener(QuitToDesktop);
+        _upgradeController.ClearUpgrades();
     }
 
     private void QuitToDesktop()

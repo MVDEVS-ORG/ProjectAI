@@ -7,6 +7,7 @@ public class MainMenuInstaller : MonoInstaller
     public override void InstallBindings()
     {
         Container.Bind<CharacterSelectionController>().AsSingle();
+        Container.Bind<IUpgradeController>().To<UpgradeController>().AsSingle();
         Container.Bind<MainMenuController>().AsSingle().NonLazy();
     }
 }
