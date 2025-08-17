@@ -15,7 +15,7 @@ public abstract class AbstractAttackState : IEnemyState
         _poolManager = op;
         _enemy = enemy;
         _player = player;
-        _attackCooldown = _enemy.enemyModel.attackCooldown;
+        _attackCooldown = _enemy.enemyModel.AttackCooldown;
         timer = _attackCooldown;
         enemy.StopMovement();
     }

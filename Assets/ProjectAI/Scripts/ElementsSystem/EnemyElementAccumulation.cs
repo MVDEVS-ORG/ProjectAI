@@ -1,75 +1,145 @@
-using System;
+using System.Collections;
 using System.Collections.Generic;
+using Unity.Android.Gradle;
 using UnityEngine;
 
 public class EnemyElementAccumulation : MonoBehaviour
 {
-    private Dictionary<ElementsEnum, int> AccumulationValues = new();
-    [SerializeField] private int FireAccumulationLimit;
-    [SerializeField] private int IceAccumulationLimit;
-    [SerializeField] private int ElectricityAccumulationLimit;
+    private EnemyModel _model;
+    private Dictionary<ElementEnum, Coroutine> AfflictionCooldowns = new();
+    private int Tick = 0;
+    private const int TickRate = 10;
+    private EnemyAI _enemyAI;
 
-    private Dictionary<ElementsEnum, bool> CurrentActiveAfflictions = new();
-
-    void Start()
+    public void TakeElementAccumulation(Dictionary<ElementEnum,int> elements)
     {
-        
+        foreach (var element in elements)
+        {
+            var cuurentAfflictionData = _model.EnemyAfflictionData[element.Key];
+            cuurentAfflictionData.AfflictionAccumulation += element.Value;
+            if (cuurentAfflictionData.AfflictionAccumulation> cuurentAfflictionData.AfflictionLimit)
+            {
+                cuurentAfflictionData.AfflictionAccumulation %= cuurentAfflictionData.AfflictionLimit;
+                cuurentAfflictionData.Afflicted = true;
+                InflictAffliction(element.Key);
+            }
+            if(_model.EnemyAfflictionData[cuurentAfflictionData.OpposingElement].Afflicted)
+            {
+                DisableAffliction(cuurentAfflictionData.OpposingElement);
+            }
+        }
+    }
+
+    private void InflictAffliction(ElementEnum element)
+    {
+        float duration = _model.EnemyAfflictionData[element].AfflictionDuration;
+        if (AfflictionCooldowns[element] != null)
+        {
+            StopCoroutine(AfflictionCooldowns[element]);
+            AfflictionCooldowns[element] = null;
+        }
+        switch (element)
+        {
+            case ElementEnum.Ice:
+                AfflictionCooldowns[element] = StartCoroutine(FrostAffliction(duration));
+                break;
+
+            case ElementEnum.Fire:
+                AfflictionCooldowns[element] = StartCoroutine(OverheatAffliction(duration));
+                break;
+
+            case ElementEnum.Lightning:
+                AfflictionCooldowns[element] = StartCoroutine(LightningAffliction(duration));
+                break;
+
+            case ElementEnum.Resin:
+                AfflictionCooldowns[element] = StartCoroutine(BrittleAffliction(duration));
+                break;
+        }
+    }
+
+    private IEnumerator OverheatAffliction(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        DisableAffliction(ElementEnum.Fire);
+    }
+
+    private IEnumerator FrostAffliction(float duration)
+    {
+        _model.MoveSpeed = _model.SlowedSpeed;
+        yield return new WaitForSeconds(duration);
+        DisableAffliction(ElementEnum.Ice);
+    }
+
+    private IEnumerator LightningAffliction(float duration)
+    {
+        _model.Stunned = true;
+        yield return new WaitForSeconds(duration);
+        DisableAffliction(ElementEnum.Lightning);
+    }
+
+    private IEnumerator BrittleAffliction(float duration)
+    {
+        _model.DamageTakenMultiplier = _model.EnemyAfflictionData[ElementEnum.Lightning].EffectValue;
+        yield return new WaitForSeconds(duration);
+        DisableAffliction(ElementEnum.Resin);
+    }
+
+    private void DisableAffliction(ElementEnum element)
+    {
+        switch (element)
+        {
+            case ElementEnum.Ice:
+                _model.EnemyAfflictionData[ElementEnum.Ice].Afflicted = false;
+                _model.MoveSpeed = _model.NormalSpeed;
+                break;
+
+            case ElementEnum.Fire:
+                _model.EnemyAfflictionData[ElementEnum.Fire].Afflicted = false;
+                break;
+
+            case ElementEnum.Lightning:
+                _model.Stunned = false;
+                _model.EnemyAfflictionData[ElementEnum.Lightning].Afflicted = false;
+                break;
+
+            case ElementEnum.Resin:
+                _model.DamageTakenMultiplier = 1f;
+                _model.EnemyAfflictionData[ElementEnum.Resin].Afflicted = false;
+                break;
+        }
     }
 
     private void FixedUpdate()
     {
-        
-    }
-
-    public void AddAccumulation(Dictionary<ElementsEnum,int> values)
-    {
-        foreach(var element in values)
+        if(Tick<TickRate)
         {
-            AccumulationValues[element.Key] += element.Value;
-            int AfflictionLimit = 0;
-            switch (element.Key)
-            {
-                case ElementsEnum.Fire:
-                    AfflictionLimit = FireAccumulationLimit;
-                    break;
-
-                case ElementsEnum.Ice:
-                    AfflictionLimit = IceAccumulationLimit;
-                    break;
-
-                case ElementsEnum.Electricity:
-                    AfflictionLimit = ElectricityAccumulationLimit;
-                    break;
-            }
-            if(AccumulationValues[element.Key]>AfflictionLimit)
-            {
-                Debug.Log($"Trigger or refresh {element.Key} affliction");
-            }
-            AccumulationValues[element.Key] %= AfflictionLimit;
+            Tick += 1;
         }
-    }
-
-    private void TriggerAffliction(ElementsEnum element)
-    {
-        switch (element)
+        else
         {
-            case ElementsEnum.Fire:
-                break;
-
-            case ElementsEnum.Ice:
-                break;
-
-            case ElementsEnum.Electricity:
-                break;
+            Tick = 0;
+            if (_model.EnemyAfflictionData[ElementEnum.Fire].Afflicted)
+            {
+                _enemyAI.TakeDamage(_model.EnemyAfflictionData[ElementEnum.Fire].EffectValue);
+            }
+        }
+        foreach (var element in _model.EnemyAfflictionData)
+        {
+            if (element.Value.AfflictionAccumulation > 0)
+            {
+                element.Value.AfflictionAccumulation = Mathf.Max(element.Value.AfflictionAccumulation - element.Value.AfflictionCDRate * Time.fixedDeltaTime, 0f);
+            }
         }
     }
 }
 
-public class Element
+
+public enum ElementEnum
 {
-    public ElementsEnum AfflictionElement;
-    public int AccumulationLimit;
-    public int AccumulationCoolOffLimit;
-    public int AccumulationAfflictionTimer;
+    Ice,
+    Fire,
+    Lightning,
+    Resin
 }
 

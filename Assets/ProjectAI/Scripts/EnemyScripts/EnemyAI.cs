@@ -103,7 +103,7 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
             Vector3 targetPos = floorTilemap.GetCellCenterWorld(currentPath[currentPathIndex]);
             while (Vector3.Distance(transform.position, targetPos) > 0.05f)
             {
-                transform.position = Vector3.MoveTowards(transform.position, targetPos, enemyModel.moveSpeed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, targetPos, enemyModel.MoveSpeed * Time.deltaTime);
                 yield return new WaitForEndOfFrame();
             }
             currentPathIndex++;
@@ -114,12 +114,12 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
     {
         if (_player == null)
             return false;
-        return Vector3.Distance(transform.position, _player.position) < enemyModel.detectionRange;
+        return Vector3.Distance(transform.position, _player.position) < enemyModel.DetectionRange;
     }
 
     public bool IsPlayerInAttackRange()
     {
-        return Vector3.Distance(transform.position, _player.position) <= enemyModel.attackRange;
+        return Vector3.Distance(transform.position, _player.position) <= enemyModel.AttackRange;
     }
 
 
@@ -134,7 +134,7 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
 
     public void TakeDamage(int damage)
     {
-        _health = Mathf.Clamp(_health - damage, 0, _maxHealth);
+        _health = Mathf.Clamp(_health - (int)(damage * enemyModel.DamageTakenMultiplier), 0, _maxHealth);
         if(_health <= 0)
         {
             OnEnemyDeath();
@@ -243,11 +243,11 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
 
         //  Optional: Detection Range (Scene Only)
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, enemyModel.detectionRange);
+        Gizmos.DrawWireSphere(transform.position, enemyModel.DetectionRange);
 
         //  Optional: Attack Range
         Gizmos.color = new Color(1f, 0.3f, 0f); // Orange
-        Gizmos.DrawWireSphere(transform.position, enemyModel.attackRange);
+        Gizmos.DrawWireSphere(transform.position, enemyModel.AttackRange);
     }
 #endif
 }

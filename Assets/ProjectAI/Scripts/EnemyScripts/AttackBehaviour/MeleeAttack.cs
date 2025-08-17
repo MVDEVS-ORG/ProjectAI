@@ -26,7 +26,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.AttackBehaviour
         {
             var attackDirection = (_enemy.Target.position - _enemy.transform.position).normalized;
             Quaternion attackRotation = Quaternion.FromToRotation(Vector3.right, attackDirection);
-            Vector3 spawnPosition = _enemy.attackSpawnPos.position + attackDirection * _enemy.enemyModel.attackOffset;
+            Vector3 spawnPosition = _enemy.attackSpawnPos.position + attackDirection * _enemy.enemyModel.AttackOffset;
 
             GameObject go = await _poolManager.SpawnObjectAsync(
                 AddressableIds.Enemy_Melee_Attack,

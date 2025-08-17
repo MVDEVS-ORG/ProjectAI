@@ -48,8 +48,8 @@ public class DeadState : IEnemyState
     private async Awaitable SpawnXPParticles()
     {
         int numberOfParticles = Random.Range(1, 5);
-        int XpPerParticle = (int)_enemy.enemyModel.xp / numberOfParticles;
-        int RemainingXP = _enemy.enemyModel.xp - (XpPerParticle * numberOfParticles);
+        int XpPerParticle = (int)_enemy.enemyModel.Xp / numberOfParticles;
+        int RemainingXP = _enemy.enemyModel.Xp - (XpPerParticle * numberOfParticles);
         for(int i= 0;i<=numberOfParticles;i++)
         {
             GameObject particle = await _objectPoolmanager.SpawnObjectAsync(AddressableIds.Experience_Particle_Metal_Small,_enemy.transform.position, Quaternion.identity, ObjectPoolManager.PoolType.ParticleSystems);
