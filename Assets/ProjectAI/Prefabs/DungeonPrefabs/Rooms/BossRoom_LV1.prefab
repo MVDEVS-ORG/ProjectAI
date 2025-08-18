@@ -5208,7 +5208,7 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 1, g: 0.35542783, b: 0, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.30770135, a: 1}
   m_Intensity: 0.3
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
@@ -5254,6 +5254,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9023647891043034408}
   - component: {fileID: 3958108148338754208}
+  - component: {fileID: -4989820162841309892}
   m_Layer: 0
   m_Name: BossRoom_LV1
   m_TagString: Untagged
@@ -5295,6 +5296,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerSpawnTransform: {fileID: 965243826266760270}
   _bossSpawnTransform: {fileID: 7326231916157857651}
+  _spawnRadius: 10
+--- !u!114 &-4989820162841309892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2349278590927655300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 717a02054ef2699498e6bd4234fd7995, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _containerSource: 0
 --- !u!1 &2364625704342020502
 GameObject:
   m_ObjectHideFlags: 0
@@ -5427,7 +5442,7 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 1, g: 0.35542783, b: 0, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.30770135, a: 1}
   m_Intensity: 0.3
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
@@ -5547,7 +5562,7 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 1, g: 0.35542783, b: 0, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.30770135, a: 1}
   m_Intensity: 0.3
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
@@ -18702,7 +18717,7 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 1, g: 0.35542783, b: 0, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.30770135, a: 1}
   m_Intensity: 0.3
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
@@ -19133,7 +19148,7 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 1, g: 0.35542783, b: 0, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.30770135, a: 1}
   m_Intensity: 0.3
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
@@ -19217,7 +19232,7 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 1, g: 0.35542783, b: 0, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.30770135, a: 1}
   m_Intensity: 0.3
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
@@ -19301,7 +19316,7 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 1, g: 0.35542783, b: 0, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.30770135, a: 1}
   m_Intensity: 0.3
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0

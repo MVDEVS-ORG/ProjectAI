@@ -33,6 +33,11 @@ public static class AddressableIds
     public const string MeleeSlash = "MeleeSlash";
     #endregion
 
+
+    #region Bosses
+    public const string ORBReactor = "ORBReactor";
+    #endregion
+
     public const string Item = "Item";
     public const string Goblin = "Goblin";
     public const string Enemy_Spawner = "EnemySpawner";

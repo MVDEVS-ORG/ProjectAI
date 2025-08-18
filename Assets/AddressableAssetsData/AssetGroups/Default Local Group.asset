@@ -130,6 +130,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 76c5c3338325e3d4eb0d1abf960d5f0f
+    m_Address: ORBReactor
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7fd8b207a21522e40a70d3fd5e00919f
     m_Address: Barrel
     m_ReadOnly: 0
