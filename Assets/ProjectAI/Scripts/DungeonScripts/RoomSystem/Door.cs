@@ -7,7 +7,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem
     {
         [SerializeField] private BoxCollider2D _boxCollider;
         [SerializeField] private float _closingTime = 3f;
-        public void Interact()
+        public void Interact(Transform transform)
         {
             _boxCollider.enabled = false;
             StartCoroutine(CloseDoor());

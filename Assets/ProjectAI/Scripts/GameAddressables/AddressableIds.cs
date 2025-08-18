@@ -38,6 +38,7 @@ public static class AddressableIds
     public const string ORBReactor = "ORBReactor";
     #endregion
 
+    #region enemy
     public const string Item = "Item";
     public const string Goblin = "Goblin";
     public const string Enemy_Spawner = "EnemySpawner";
@@ -45,7 +46,7 @@ public static class AddressableIds
     public const string Enemy_Melee_Attack = "EnemyMeleeAttack";
 
     public const string Enemy_Laser_Beam = "EnemyLaseBeam";
-
+    #endregion
 
     #region BossRooms Addressables
     public const string BossRoom_LVL_1 = "BossRoom_LVL1";
@@ -82,5 +83,9 @@ public static class AddressableIds
 
     #region Experience Particle
     public const string Experience_Particle_Metal_Small = "ExperienceParticleMetalSmall";
+    #endregion
+
+    #region UI Addressables
+    public const string PopUp_UI = "PopUpUI";
     #endregion
 }

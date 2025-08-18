@@ -177,7 +177,7 @@ public class CharacterView : MonoBehaviour
             }
             else if (_interactableObjects[0].TryGetComponent(out IInteractable interaction))
             {
-                interaction.Interact();
+                interaction.Interact(transform);
             }
         }
     }

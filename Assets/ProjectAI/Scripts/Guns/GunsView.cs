@@ -107,7 +107,7 @@ public class GunsView : MonoBehaviour, IInteractable
         }
     }
 
-    void IInteractable.Interact()
+    void IInteractable.Interact(Transform transform)
     {
         Debug.Log("GunPickUp Available");
     }
