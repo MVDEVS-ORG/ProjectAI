@@ -4,6 +4,7 @@ using UnityEngine.Tilemaps;
 using System.Collections;
 using Assets.ProjectAI.Scripts.PathFinding;
 using Assets.ProjectAI.Scripts.EnemyScripts;
+using System;
 
 public enum EnemyStateTypes {
     Idle,
@@ -22,6 +23,7 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
 
     [SerializeField] private EnemyDataSO _enemyDataSO;
     [HideInInspector] public EnemyModel enemyModel;
+    [HideInInspector] public bool EnemyModelInitialized = false;
 
     [SerializeField] private Collider2D _enemyCollider;
     private ObjectPoolManager _objectPoolmanager;
@@ -56,7 +58,6 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
     {
         _enemyCollider.enabled = true;
         animator = GetComponent<Animator>();
-        Initialize(healthModel);
         StartCoroutine(WaitForBakeAndStart());
     }
 
@@ -151,6 +152,7 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
         _health = model.Health;
         _maxHealth = model.MaxHealth;
         enemyModel = new EnemyModel(_enemyDataSO);
+        EnemyModelInitialized = true;
         InitializeStates();
     }
 
@@ -190,14 +192,14 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
     public IEnemyState GetNextStateFromMap(EnemyStateTypes stateType)
     {
         List<IEnemyState> enemyState = GetStateFromMap(stateType);
-        int index = Random.Range(0, enemyState.Count);
+        int index = UnityEngine.Random.Range(0, enemyState.Count);
         return enemyState[index];
     }
 
     public void ResetEnemyAI()
     {
         StopAllCoroutines();
-
+        EnemyModelInitialized = false;
         // Reset movement
         StopMovement();
         currentPath = null;

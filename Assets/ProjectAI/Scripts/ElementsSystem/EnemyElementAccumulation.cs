@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Android.Gradle;
@@ -11,6 +12,19 @@ public class EnemyElementAccumulation : MonoBehaviour
     private const int TickRate = 10;
     private EnemyAI _enemyAI;
 
+    private async void OnEnable()
+    {
+        _enemyAI = transform.GetComponent<EnemyAI>();
+        while(!_enemyAI.EnemyModelInitialized)
+        {
+            await Awaitable.EndOfFrameAsync();
+        }
+        _model = _enemyAI.enemyModel;
+        AfflictionCooldowns[ElementEnum.Ice] = null;
+        AfflictionCooldowns[ElementEnum.Fire] = null;
+        AfflictionCooldowns[ElementEnum.Lightning] = null;
+        AfflictionCooldowns[ElementEnum.Resin] = null;
+    }
     public void TakeElementAccumulation(Dictionary<ElementEnum,int> elements)
     {
         foreach (var element in elements)
@@ -112,23 +126,26 @@ public class EnemyElementAccumulation : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(Tick<TickRate)
+        if (_model != null)
         {
-            Tick += 1;
-        }
-        else
-        {
-            Tick = 0;
-            if (_model.EnemyAfflictionData[ElementEnum.Fire].Afflicted)
+            if (Tick < TickRate)
             {
-                _enemyAI.TakeDamage(_model.EnemyAfflictionData[ElementEnum.Fire].EffectValue);
+                Tick += 1;
             }
-        }
-        foreach (var element in _model.EnemyAfflictionData)
-        {
-            if (element.Value.AfflictionAccumulation > 0)
+            else
             {
-                element.Value.AfflictionAccumulation = Mathf.Max(element.Value.AfflictionAccumulation - element.Value.AfflictionCDRate * Time.fixedDeltaTime, 0f);
+                Tick = 0;
+                if (_model.EnemyAfflictionData[ElementEnum.Fire].Afflicted)
+                {
+                    _enemyAI.TakeDamage((int)_model.EnemyAfflictionData[ElementEnum.Fire].EffectValue);
+                }
+            }
+            foreach (var element in _model.EnemyAfflictionData)
+            {
+                if (element.Value.AfflictionAccumulation > 0)
+                {
+                    element.Value.AfflictionAccumulation = Mathf.Max(element.Value.AfflictionAccumulation - element.Value.AfflictionCDRate * Time.fixedDeltaTime, 0f);
+                }
             }
         }
     }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SlicinatorData
   m_EditorClassIdentifier: 
   MoveSpeed: 2
-  SlowedSpeed: 1
+  SlowedSpeed: 0
   AttackRange: 1.5
   DetectionRange: 6
   AttackOffset: 0
@@ -21,12 +21,12 @@ MonoBehaviour:
   Xp: 100
   EnemyAfflictionData:
   - Element: 0
-    OpposingElement: 0
+    OpposingElement: 1
     AfflictionLimit: 100
     AfflictionCDRate: 10
-    AfflictionDuration: 2
+    AfflictionDuration: 5
     EffectValue: 0
-    AfflictionAccumulation: 0
+    AfflictionAccumulation: 14.000368
     Afflicted: 0
   - Element: 1
     OpposingElement: 0
@@ -37,7 +37,7 @@ MonoBehaviour:
     AfflictionAccumulation: 0
     Afflicted: 0
   - Element: 2
-    OpposingElement: 0
+    OpposingElement: 3
     AfflictionLimit: 60
     AfflictionCDRate: 10
     AfflictionDuration: 0.25
@@ -45,10 +45,10 @@ MonoBehaviour:
     AfflictionAccumulation: 0
     Afflicted: 0
   - Element: 3
-    OpposingElement: 0
+    OpposingElement: 2
     AfflictionLimit: 60
     AfflictionCDRate: 20
     AfflictionDuration: 2
-    EffectValue: 11
+    EffectValue: 1.1
     AfflictionAccumulation: 0
     Afflicted: 0

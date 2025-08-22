@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ShotgunBlast : MonoBehaviour, IGunProjectileBehavior
@@ -5,11 +6,7 @@ public class ShotgunBlast : MonoBehaviour, IGunProjectileBehavior
     private ObjectPoolManager _objectPoolManager;
     [SerializeField] private GunProjectileSO _projectileProperties;
     [SerializeField] private Animator _animator;
-
-    void IGunProjectileBehavior.AddModifications()
-    { 
-
-    }
+    private Dictionary<ElementEnum, int> ElementDamage;
 
     void IGunProjectileBehavior.DestroyManally()
     {
@@ -38,10 +35,19 @@ public class ShotgunBlast : MonoBehaviour, IGunProjectileBehavior
         {
             health.TakeDamage(_projectileProperties.Damage);
         }
+        if (collision.transform.TryGetComponent<EnemyElementAccumulation>(out EnemyElementAccumulation elementAccumulation))
+        {
+            elementAccumulation.TakeElementAccumulation(ElementDamage);
+        }
     }
 
     public void DisableBlast()
     {
         _objectPoolManager.ReleaseGameObject(gameObject, ObjectPoolManager.PoolType.GameObjects);
+    }
+
+    void IGunProjectileBehavior.AddModifications(Dictionary<ElementEnum, int> elements)
+    {
+        ElementDamage = elements;
     }
 }

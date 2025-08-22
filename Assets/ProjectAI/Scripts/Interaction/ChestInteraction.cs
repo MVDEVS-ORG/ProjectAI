@@ -20,6 +20,7 @@ public class ChestInteraction : MonoBehaviour, IInteractable
         {
             _controller.DisplayUpgrades();
             _ = DisplayMessage();
+            _ = DropWeapon();
             _chestAnimator?.Play("Opened");
             _opened = true;
         }
@@ -29,5 +30,13 @@ public class ChestInteraction : MonoBehaviour, IInteractable
     {
         GameObject obj = await _assetService.InstantiateAsync(AddressableIds.PopUp_UI);
         obj.GetComponent<PopUpUI>().DisplayTextWithDuration(_TextOnOpening, 5f);
+    }
+
+    private async Awaitable DropWeapon()
+    {
+        int rng = Random.Range(0, 10);
+        string address = rng > 5 ? AddressableIds.Simple_Gun : AddressableIds.Shot_Gun;
+        GameObject obj = await _assetService.InstantiateAsync(address);
+        obj.transform.position = new Vector2(transform.position.x, transform.position.y - 1f);
     }
 }

@@ -2,6 +2,7 @@ using Assets.Services;
 using Newtonsoft.Json;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
@@ -24,12 +25,15 @@ public class GunsView : MonoBehaviour, IInteractable
     [HideInInspector] public bool _firing = false;
     [HideInInspector] public IGunUI GunUI;
 
+    [HideInInspector] public Dictionary<ElementEnum, int> ElementalBuffs = new();
+
     private void Start()
     {
         SpriteRenderer = GetComponent<SpriteRenderer>();
         Scale = transform.localScale;
         ReverseScale = new Vector3(transform.localScale.x, -transform.localScale.y, transform.localScale.z);
         Collider = GetComponent<BoxCollider2D>();
+        gameObject.name = gameObject.name + gameObject.GetHashCode();
     }
     public GunsModel InitializeGun(GunsController controller, ObjectPoolManager objectPoolManager, Transform playerTrasform, Transform playerCursor)
     {
@@ -45,7 +49,13 @@ public class GunsView : MonoBehaviour, IInteractable
         PoolManager = objectPoolManager;
         PlayerCursor = playerCursor;
         Collider.enabled = false;
+        ActivateGun();
         return GunsModel;
+    }
+
+    public virtual void ActivateGun()
+    {
+        Debug.Log("Not written for gun " + gameObject.name);
     }
 
     public void SetGunUI(IGunUI gunUI)

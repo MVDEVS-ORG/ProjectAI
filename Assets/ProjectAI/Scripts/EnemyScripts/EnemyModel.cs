@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -50,7 +51,6 @@ public class EnemyModel
                     break;
             }
             EnemyAfflictionData[data.Element] = data;
-            break;
         }
     }
         

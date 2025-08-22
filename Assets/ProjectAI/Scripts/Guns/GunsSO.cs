@@ -6,6 +6,7 @@ public class GunsSO : ScriptableObject
     public string PrimaryProjectileAddressable;
     public string SecondaryProjectileAddressable;
     public string GunUIAddressable;
+    public string GunViewAddressableId;
     public float FireRate;
     public float OverHeatLimit;
     public float OverHeatRate;

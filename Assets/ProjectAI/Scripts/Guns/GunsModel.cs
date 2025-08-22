@@ -7,6 +7,7 @@ public class GunsModel
     public string PrimaryProjectileAddressable;
     public string SecondaryProjectileAddressable;
     public string GunUIAddressable;
+    public string GunViewAddressableId;
     public float FireRate;
     public float GunWindUpTime;
     public float OverHeatLimit;
@@ -34,6 +35,7 @@ public class GunsModel
         GunWindUpTime = gunsData.GunWindUpTime;
         ElipseHorizontalRadius = gunsData.ElipseHorizontalRadius;
         ElipseVerticalRadius = gunsData.ElipseVerticalRadius;
+        GunViewAddressableId = gunsData.GunViewAddressableId;
         OverHeatValue = 0;
     }
 

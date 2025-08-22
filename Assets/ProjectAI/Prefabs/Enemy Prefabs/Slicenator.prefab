@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 5602585989204928776}
   - component: {fileID: 2298294354932179435}
   - component: {fileID: -3015575224204400077}
+  - component: {fileID: -6517716187314477708}
   m_Layer: 11
   m_Name: Slicenator
   m_TagString: Enemy
@@ -243,19 +244,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d3af38b9e6b7b54ab0f0f82321512cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  attackRange: 1.5
-  detectionRange: 6
   attackSpawnPos: {fileID: 8504197059348783951}
-  attackOffset: 1
-  attackCooldown: 1.5
   healthModel: {fileID: 11400000, guid: 06f5326d63099334aa4e7fed63e39d7d, type: 2}
   animator: {fileID: 2018304359489993399}
   _enemyDataSO: {fileID: 11400000, guid: 8a7b511f2c847d8419a9d159ddda0a36, type: 2}
   _enemyCollider: {fileID: 2298294354932179435}
-  xp: 100
   currentPath: []
   currentPathIndex: 0
+--- !u!114 &-6517716187314477708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7588810801392026419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 203f8f4beb6e92c48828715d94b8883a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7977298239561724351
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,32 +1,66 @@
 using System.Collections;
-using System.Threading.Tasks;
-using UnityEditor.EditorTools;
+using System.Threading;
 using UnityEngine;
 
 public class SimpleGun : GunsView
 {
-    private Awaitable FiringGun;
+    private Coroutine _firingGun;
     private bool _overheat = false;
+    private CancellationTokenSource _cancellationTokenSource;
+
     public override void Fire(bool firing)
     {
         _firing = firing;
-        if(FiringGun==null)
+        if(_firingGun==null)
         {
-            FiringGun = Firing();
+            _firingGun = StartCoroutine(Firing());
+            if (_cancellationTokenSource != null)
+            {
+                _cancellationTokenSource.Cancel();
+                _cancellationTokenSource.Dispose();
+                _cancellationTokenSource = null;
+            }
+            _cancellationTokenSource = new CancellationTokenSource();
+            CancellationToken token = _cancellationTokenSource.Token;
+            _ = Cooldown(token);
+        }
+    }
+
+    public override void ActivateGun()
+    {
+        if (GunsModel.OverHeatValue > 0)
+        {
+            _cancellationTokenSource = new CancellationTokenSource();
+            CancellationToken token = _cancellationTokenSource.Token;
+            _ = Cooldown(token);
         }
     }
 
     public override void DeactivateGun(Vector3 position)
     {
         base.DeactivateGun(position);
-        if (FiringGun!=null)
+        if (_firingGun!=null)
         {
-            FiringGun.Cancel();
-            FiringGun = null;
+            StopCoroutine(_firingGun);
+            _firingGun = null;
+            _cancellationTokenSource.Cancel();
+            _cancellationTokenSource.Dispose();
+            _cancellationTokenSource = null;
+            _firing = false;
         }
     }
 
-    private async Awaitable Firing()
+    public void OnDisable()
+    {
+        if (_firingGun != null)
+        {
+            StopCoroutine(_firingGun);
+            _firingGun = null;
+            _firing = false;
+        }
+    }
+
+    private IEnumerator Firing()
     {
         while (true)
         {
@@ -38,11 +72,19 @@ public class SimpleGun : GunsView
                 {
                     _overheat = true;
                 }
-                await Awaitable.WaitForSecondsAsync(1 / GunsModel.FireRate);
+                yield return Awaitable.WaitForSecondsAsync(1 / GunsModel.FireRate);
             }
-            else
+            yield return Awaitable.EndOfFrameAsync();
+        }
+    }
+
+    private async Awaitable Cooldown(CancellationToken cancellationToken)
+    {
+        while (!cancellationToken.IsCancellationRequested)
+        {
+            await Awaitable.EndOfFrameAsync();
+            if (GunsModel.OverHeatValue > 0)
             {
-                await Awaitable.EndOfFrameAsync();
                 GunsModel.OverHeatValue = GunsModel.OverHeatValue > 0 ? GunsModel.OverHeatValue - GunsModel.CoolDownRate * Time.deltaTime : 0;
                 if (GunsModel.OverHeatValue < GunsModel.MinCooldownThreshold)
                 {
@@ -55,7 +97,7 @@ public class SimpleGun : GunsView
             }
         }
     }
-
+    
     private async Awaitable FireBullet()
     {
         GameObject bullet = await PoolManager.SpawnObjectAsync(GunsModel.PrimaryProjectileAddressable, GunBulletSpawnTransform.position, Quaternion.identity, ObjectPoolManager.PoolType.GameObjects);
@@ -63,7 +105,7 @@ public class SimpleGun : GunsView
         IGunProjectileBehavior weaponBehavior = bullet.GetComponent<IGunProjectileBehavior>();
         weaponBehavior.Initialize(PoolManager);
         weaponBehavior.SpawnProjectileAnimation();
-        weaponBehavior.AddModifications();
+        weaponBehavior.AddModifications(ElementalBuffs);
         weaponBehavior.MoveProjectile((PlayerCursor.position - PlayerTransform.position).normalized);
     }
 }

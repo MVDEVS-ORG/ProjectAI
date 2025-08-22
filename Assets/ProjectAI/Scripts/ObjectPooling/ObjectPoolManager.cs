@@ -63,7 +63,6 @@ public class ObjectPoolManager
     private async Awaitable<GameObject> CreateObject(string prefabAddress, PoolType poolType = PoolType.GameObjects)
     {
         GameObject obj = await _assetService.InstantiateWithParentAsync(prefabAddress,SetParentObject(poolType).transform);
-        obj.SetActive(false);
         return obj;
     }
 

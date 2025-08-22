@@ -27,7 +27,7 @@ public class ElementAfflictionData
     public float AfflictionLimit;
     public float AfflictionCDRate;
     public float AfflictionDuration;
-    public int EffectValue;
+    public float EffectValue;
     [HideInInspector]public float AfflictionAccumulation;
     [HideInInspector]public bool Afflicted = false;
 }

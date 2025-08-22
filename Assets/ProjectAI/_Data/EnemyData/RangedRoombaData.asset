@@ -21,7 +21,7 @@ MonoBehaviour:
   Xp: 50
   EnemyAfflictionData:
   - Element: 0
-    OpposingElement: 0
+    OpposingElement: 1
     AfflictionLimit: 100
     AfflictionCDRate: 10
     AfflictionDuration: 2
@@ -37,7 +37,7 @@ MonoBehaviour:
     AfflictionAccumulation: 0
     Afflicted: 0
   - Element: 2
-    OpposingElement: 0
+    OpposingElement: 3
     AfflictionLimit: 60
     AfflictionCDRate: 10
     AfflictionDuration: 0.25
@@ -45,10 +45,10 @@ MonoBehaviour:
     AfflictionAccumulation: 0
     Afflicted: 0
   - Element: 3
-    OpposingElement: 0
+    OpposingElement: 2
     AfflictionLimit: 60
     AfflictionCDRate: 20
     AfflictionDuration: 2
-    EffectValue: 11
+    EffectValue: 1.1
     AfflictionAccumulation: 0
     Afflicted: 0
