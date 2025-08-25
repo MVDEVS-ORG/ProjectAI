@@ -103,7 +103,7 @@ public class UpgradeController : IUpgradeController
             _upgradesCanvas = temp.GetComponent<Canvas>();
             _upgradesPopup = temp.GetComponent<UpgradesPopUp>();
             _upgradesPopup.Initialize(this, _assetService);
-            _path = Application.persistentDataPath + "/gameData/upgrades.txt";
+            _path = Application.persistentDataPath + "/upgrades.txt";
             _upgradesCanvas.enabled = false;
             _upgradesPopup.gameObject.SetActive(false);
         }
@@ -116,8 +116,8 @@ public class UpgradeController : IUpgradeController
 
     void IUpgradeController.LoadUpgrades()
     {
-        _activeUpgrades = _dataSerializer.LoadData<List<UpgradeSO>>("/GameData/upgrades.json");
-        _cursedUpgrades = _dataSerializer.LoadData<List<UpgradeSO>>("/GameData/curses.json");
+        _activeUpgrades = _dataSerializer.LoadData<List<UpgradeSO>>("/upgrades.json");
+        _cursedUpgrades = _dataSerializer.LoadData<List<UpgradeSO>>("/curses.json");
     }
 
     void IUpgradeController.RefreshUpgrades()

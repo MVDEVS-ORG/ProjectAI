@@ -19097,7 +19097,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wallTileMap: {fileID: 5370329865211918405}
   floorTilemap: {fileID: 4543115930381292227}
-  debugDrawGrid: 1
+  debugDrawGrid: 0
   walkableColor: {r: 0, g: 1, b: 0, a: 0.3}
   unwalkableColor: {r: 1, g: 0, b: 0, a: 0.3}
 --- !u!1 &7434981591483019821

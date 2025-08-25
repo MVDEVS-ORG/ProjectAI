@@ -14,6 +14,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem
         [SerializeField] private float _spawnRadius = 5f;
 
         [Inject] IAssetService _assetService;
+        [Inject] ObjectPoolManager _poolManager;
         private Transform _player;
         private IPlayerController _playerController;
 
@@ -23,27 +24,13 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem
             await PathFindingManager.Instance.BakeFromTilemapsAsync();
             await playerPicker.SetPlayer();
             await playerController.SpawnPlayer(_playerSpawnTransform.position, playerPicker.PickPlayer());
-            
-            await WaitForPlayer();
-        }
 
-        async Awaitable WaitForPlayer()
-        {
-            // Wait until the player is within spawn radius
-            _player = await _playerController.GetPlayerTransform();
-            while (Vector3.Distance(_bossSpawnTransform.position, _player.position) > _spawnRadius)
-            {
-                //Debug.LogError(Vector3.Distance(transform.position, _player.position));
-                await Awaitable.NextFrameAsync(); // Wait a frame before checking again
-                _player = await _playerController.GetPlayerTransform();
-            }
-
-            // Once player is close enough, spawn the boss
-            await _assetService.InstantiateWithPRAsync(
+            GameObject boss = await _assetService.InstantiateWithPRAsync(
                 AddressableIds.ORBReactor,
                 _bossSpawnTransform.position,
                 Quaternion.identity
             );
+            boss.GetComponent<ORBReactor>().Initilaize(_poolManager, _assetService, _playerController);
         }
     }
 }
