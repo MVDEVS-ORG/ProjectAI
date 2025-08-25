@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 324703102801763957}
   - component: {fileID: 8689835268274908973}
   - component: {fileID: 5372598789956188926}
+  - component: {fileID: 3599362661173794631}
   m_Layer: 11
   m_Name: RangedRoomba
   m_TagString: Enemy
@@ -208,18 +209,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6208a3a3b16d947429dfa3c78d330a4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  attackRange: 4
-  detectionRange: 10
   attackSpawnPos: {fileID: 3432260869315414889}
-  attackOffset: 0
-  attackCooldown: 8
   healthModel: {fileID: 11400000, guid: dd952a87abf29984e94e6f574d9340a4, type: 2}
   animator: {fileID: 6473217288016659291}
+  _enemyDataSO: {fileID: 11400000, guid: 5f3524b3ad92aab48a9ba4a1269ea173, type: 2}
   _enemyCollider: {fileID: 8689835268274908973}
-  xp: 50
   currentPath: []
   currentPathIndex: 0
+--- !u!114 &3599362661173794631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1639696121540571346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 203f8f4beb6e92c48828715d94b8883a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5348160051304304895
 GameObject:
   m_ObjectHideFlags: 0

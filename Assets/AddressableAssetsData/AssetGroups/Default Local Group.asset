@@ -30,11 +30,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 1a8bfa989c43ddc4dbd24783654a6fec
-    m_Address: LightningAttack
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1bae72ca03177bf4f8df9ecf9f34280e
     m_Address: SimpleBullet
     m_ReadOnly: 0
@@ -130,8 +125,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 76c5c3338325e3d4eb0d1abf960d5f0f
-    m_Address: ORBReactor
+  - m_GUID: 73ad0ed63422976409ae7fd553827e3b
+    m_Address: PopUpUI
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -157,6 +152,16 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 86e1c7b3bc50aa24e8688f7ae146dc69
     m_Address: ShotGun
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 87095a3371bb892479defb688fa9abda
+    m_Address: shotgunner
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8d965fecffa0ccc4aa2083fc7b27c9c0
+    m_Address: SimpleGunUI
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -246,7 +251,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: df74987f9ca26f141b2af642ae8d39c0
-    m_Address: SimpleGunUI
+    m_Address: gunUICanvas
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -277,6 +282,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f0bc24bc58adfc24d8759e7982ced24a
     m_Address: Table_Short
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f44ab2521acd52f459f35a8b1ff06c40
+    m_Address: pyro
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

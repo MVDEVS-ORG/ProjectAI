@@ -1,44 +1,77 @@
-using Unity.VisualScripting;
+using Assets.Services;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 public class GunUI : MonoBehaviour, IGunUI
 {
-    [SerializeField] private Image _healthBarFill;
-    [SerializeField] private GunsModel _gun;
-    [SerializeField] private GameObject _gunBar;
+    [Inject] IAssetService _assetService;
+
+    private GunsModel _currentGun;
+
+    Dictionary<GunsModel, GunUIHolder> GunUIs = new();
 
     private bool _initialized = false;
     private Transform _playerTransform;
-    private void Start()
-    {
-        _gunBar.SetActive(false);
-    }
 
-    void IGunUI.Initialize(GunsModel model, Transform playerTransform)
+    async Awaitable IGunUI.Initialize(GunsModel model, Transform playerTransform)
     {
-        _gun = model;
+        _currentGun = model;
         _playerTransform = playerTransform;
+        GameObject obj = await _assetService.InstantiateWithParentAsync(model.GunUIAddressable, transform);
+        GunUIHolder gunUI = obj.GetComponent<GunUIHolder>();
+        GunUIs.Add(model, gunUI);
         _initialized = true;
-        _gunBar.SetActive(true);
-    }
-
-    void IGunUI.SpecialEffects()
-    {
-        //nothing for simple gun
     }
 
     void IGunUI.UpdateCoolDown()
     {
-        (this as IGunUI).SpecialEffects();
-        _healthBarFill.fillAmount = _gun.OverHeatValue / _gun.OverHeatLimit; 
+        GunUIs[_currentGun].GunOverHeatFill.fillAmount = _currentGun.OverHeatValue / _currentGun.OverHeatLimit;
     }
 
     void Update()
     {
-        if (_initialized)
+        try
         {
-            transform.position = _playerTransform.position;
+            if (_initialized)
+            {
+                if (GunUIs[_currentGun].gameObject.activeSelf)
+                {
+                    GunUIs[_currentGun].transform.position = _playerTransform.position + new Vector3(GunUIs[_currentGun].Offset.x, GunUIs[_currentGun].Offset.y, GunUIs[_currentGun].transform.position.z);
+                }
+            }
+        }
+        catch(Exception ex)
+        {
+            Debug.LogError(ex);
         }
     }
+
+    async Awaitable IGunUI.AddGun(GunsModel model)
+    {
+        Debug.LogError(model.GunViewAddressableId);
+        GunUIs[_currentGun].gameObject.SetActive(false);
+        _currentGun = model;
+        GameObject obj = await _assetService.InstantiateWithParentAsync(model.GunUIAddressable, transform);
+        GunUIHolder gunUI = obj.GetComponent<GunUIHolder>();
+        GunUIs.Add(model, gunUI);
+    }
+
+    void IGunUI.RemoveGun(GunsModel model, GunsModel switchTo)
+    {
+        _currentGun = switchTo;
+        GameObject.Destroy(GunUIs[model].gameObject);
+        GunUIs.Remove(model);
+    }
+
+    void IGunUI.SwapGun(GunsModel model)
+    {
+        GunUIs[_currentGun].gameObject.SetActive(false);
+        _currentGun = model;
+        GunUIs[model].gameObject.SetActive(true);
+    }
 }
+

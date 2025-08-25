@@ -2,7 +2,9 @@ using UnityEngine;
 
 public interface IGunUI
 {
-    void Initialize(GunsModel model, Transform playerTransform);
+    Awaitable Initialize(GunsModel model, Transform playerTransform);
     void UpdateCoolDown();
-    void SpecialEffects();
+    Awaitable AddGun(GunsModel model);
+    void RemoveGun(GunsModel model, GunsModel switchTo);
+    void SwapGun(GunsModel model);
 }

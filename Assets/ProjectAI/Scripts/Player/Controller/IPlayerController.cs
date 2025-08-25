@@ -12,13 +12,14 @@ public interface IPlayerController
     State MoveState { get; }
     Vector2 Dash(Vector2 MoveInput);
     Awaitable<Transform> GetPlayerTransform();
-    void SwapPlayerGuns(GunsView gun);
+    void PickUpNewPlayerGun(GunsView gun);
     void EnableController(bool enable);
     void MeleeAttack();
     void Test();
     void AddXP(int xp);
     void MeleeDash(Vector2 Direction);
     void KickBack(float strength, float duration, Vector2 direction);
+    void SwapWeapons(int value);
 }
 
 public enum State

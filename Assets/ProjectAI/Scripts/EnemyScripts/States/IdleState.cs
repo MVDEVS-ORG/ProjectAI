@@ -11,7 +11,7 @@ public class IdleState : IEnemyState
     {
         this._enemy = enemy;
         timer = 0f;
-        enemy.animator.SetBool("Idle", true);
+        enemy.animator?.SetBool("Idle", true);
     }
 
     public void Update()
@@ -32,7 +32,7 @@ public class IdleState : IEnemyState
 
     public void Exit() 
     {
-        _enemy.animator.SetBool("Idle", false);
+        _enemy.animator?.SetBool("Idle", false);
         _enemy = null;
         timer = 0f;
     }
