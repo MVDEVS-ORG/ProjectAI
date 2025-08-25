@@ -85,7 +85,6 @@ public class GunsView : MonoBehaviour, IInteractable
     {
         if(GunActive)
         {
-            /*transform.position = _playerTransform.position;*/
             OrbitalMotion();
         }
     }

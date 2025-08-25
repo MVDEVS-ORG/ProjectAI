@@ -74,7 +74,10 @@ public class ShotGun : GunsView
             {
                 _ = FireBullet((PlayerCursor.position - GunBulletSpawnTransform.position).normalized);
                 _view.ExternalKickBack(3, transform.position, 0.2f);
-                GunsModel.OverHeatValue += GunsModel.OverHeatRate;
+                if (!GunsModel.DisableOverheat)
+                {
+                    GunsModel.OverHeatValue += GunsModel.OverHeatRate;
+                }
                 if (GunUI != null)
                 {
                     GunUI.UpdateCoolDown();

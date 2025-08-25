@@ -1,10 +1,9 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
-using UnityEngine.Tilemaps;
-using System.Collections;
+﻿using Assets.ProjectAI.Scripts.EnemyScripts;
 using Assets.ProjectAI.Scripts.PathFinding;
-using Assets.ProjectAI.Scripts.EnemyScripts;
-using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public enum EnemyStateTypes {
     Idle,
@@ -152,6 +151,7 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
         _health = model.Health;
         _maxHealth = model.MaxHealth;
         enemyModel = new EnemyModel(_enemyDataSO);
+        gameObject.name = gameObject.name + enemyModel.GetHashCode();
         EnemyModelInitialized = true;
         InitializeStates();
     }

@@ -67,7 +67,10 @@ public class SimpleGun : GunsView
             if (_firing && GunsModel.OverHeatValue < GunsModel.OverHeatLimit && !_overheat)
             {
                 _ = FireBullet();
-                GunsModel.OverHeatValue += GunsModel.OverHeatRate;
+                if (!GunsModel.DisableOverheat)
+                {
+                    GunsModel.OverHeatValue += GunsModel.OverHeatRate;
+                }
                 if(GunsModel.OverHeatValue >= GunsModel.OverHeatLimit)
                 {
                     _overheat = true;

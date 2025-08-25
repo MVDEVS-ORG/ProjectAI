@@ -18,6 +18,8 @@ public class GunsModel
     public float ElipseVerticalRadius;
     public float ElipseHorizontalRadius;
 
+    [HideInInspector] public bool DisableOverheat = false;
+
     [HideInInspector] public bool Empty = false;
 
     public GunsModel() { }

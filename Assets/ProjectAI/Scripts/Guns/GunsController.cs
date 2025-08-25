@@ -1,10 +1,8 @@
 using Assets.Services;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
-using static Zenject.CheatSheet;
 
 
 public class GunsController : IGunsController
