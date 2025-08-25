@@ -2,8 +2,12 @@ using UnityEngine;
 
 public interface IGunsController
 {
-    Awaitable SetCurrentActiveGun(GunsView gun, Transform playerTransform, Transform playerCursor);
+    Awaitable InitializeOnSceneLoad(string gunAddress, Transform playerTransform, Transform playerCursor);
+    void SetCurrentActiveGun(GunsView gun);
     void Fire(bool firing);
-    Awaitable SwapGuns(GunsView gun, Transform playerTransform, Transform playerCursor);
+    Awaitable ReplaceGuns(GunsView gun);
     GunsView View { get; }
+    Awaitable AddGun(GunsView gun);
+    void ChangeGunLimit(int limit);
+    void SwapGuns(int updown);
 }

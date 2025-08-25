@@ -15,6 +15,7 @@ MonoBehaviour:
   PrimaryProjectileAddressable: SimpleBullet
   SecondaryProjectileAddressable: 
   GunUIAddressable: SimpleGunUI
+  GunViewAddressableId: SimpleGun
   FireRate: 10
   OverHeatLimit: 100
   OverHeatRate: 5

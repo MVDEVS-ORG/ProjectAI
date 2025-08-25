@@ -1,9 +1,9 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
-using UnityEngine.Tilemaps;
-using System.Collections;
+﻿using Assets.ProjectAI.Scripts.EnemyScripts;
 using Assets.ProjectAI.Scripts.PathFinding;
-using Assets.ProjectAI.Scripts.EnemyScripts;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public enum EnemyStateTypes {
     Idle,
@@ -13,26 +13,22 @@ public enum EnemyStateTypes {
     Dead,
     Search
 }
+[RequireComponent(typeof(Animator))]
 public class EnemyAI : MonoBehaviour, IHealthSystem
 {
-    public float moveSpeed = 2f;
-    public float attackRange = 1.5f;
-    public float detectionRange = 6f;
     public Transform attackSpawnPos;
-    public float attackOffset = 0;
-    public float attackCooldown = 1.5f;
-
     public HealthModels healthModel;
-    public Animator animator;
+    [HideInInspector] public Animator animator;
+
+    [SerializeField] private EnemyDataSO _enemyDataSO;
+    [HideInInspector] public EnemyModel enemyModel;
+    [HideInInspector] public bool EnemyModelInitialized = false;
 
     [SerializeField] private Collider2D _enemyCollider;
     private ObjectPoolManager _objectPoolmanager;
     private Transform _player;
-    private int _health = 10; 
-    private int _maxHealth = 10;
-
-    [Header("XP on Death")]
-    public int xp;
+    private int _health; 
+    private int _maxHealth;
 
     private Tilemap floorTilemap;
     private Coroutine moveRoutine;
@@ -60,7 +56,7 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
     void Start()
     {
         _enemyCollider.enabled = true;
-        Initialize(healthModel);
+        animator = GetComponent<Animator>();
         StartCoroutine(WaitForBakeAndStart());
     }
 
@@ -107,7 +103,7 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
             Vector3 targetPos = floorTilemap.GetCellCenterWorld(currentPath[currentPathIndex]);
             while (Vector3.Distance(transform.position, targetPos) > 0.05f)
             {
-                transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, targetPos, enemyModel.MoveSpeed * Time.deltaTime);
                 yield return new WaitForEndOfFrame();
             }
             currentPathIndex++;
@@ -118,12 +114,12 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
     {
         if (_player == null)
             return false;
-        return Vector3.Distance(transform.position, _player.position) < detectionRange;
+        return Vector3.Distance(transform.position, _player.position) < enemyModel.DetectionRange;
     }
 
     public bool IsPlayerInAttackRange()
     {
-        return Vector3.Distance(transform.position, _player.position) <= attackRange;
+        return Vector3.Distance(transform.position, _player.position) <= enemyModel.AttackRange;
     }
 
 
@@ -138,7 +134,7 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
 
     public void TakeDamage(int damage)
     {
-        _health = Mathf.Clamp(_health - damage, 0, _maxHealth);
+        _health = Mathf.Clamp(_health - (int)(damage * enemyModel.DamageTakenMultiplier), 0, _maxHealth);
         if(_health <= 0)
         {
             OnEnemyDeath();
@@ -154,6 +150,9 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
     {
         _health = model.Health;
         _maxHealth = model.MaxHealth;
+        enemyModel = new EnemyModel(_enemyDataSO);
+        gameObject.name = gameObject.name + enemyModel.GetHashCode();
+        EnemyModelInitialized = true;
         InitializeStates();
     }
 
@@ -193,14 +192,14 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
     public IEnemyState GetNextStateFromMap(EnemyStateTypes stateType)
     {
         List<IEnemyState> enemyState = GetStateFromMap(stateType);
-        int index = Random.Range(0, enemyState.Count);
+        int index = UnityEngine.Random.Range(0, enemyState.Count);
         return enemyState[index];
     }
 
     public void ResetEnemyAI()
     {
         StopAllCoroutines();
-
+        EnemyModelInitialized = false;
         // Reset movement
         StopMovement();
         currentPath = null;
@@ -246,11 +245,11 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
 
         //  Optional: Detection Range (Scene Only)
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, detectionRange);
+        Gizmos.DrawWireSphere(transform.position, enemyModel.DetectionRange);
 
         //  Optional: Attack Range
         Gizmos.color = new Color(1f, 0.3f, 0f); // Orange
-        Gizmos.DrawWireSphere(transform.position, attackRange);
+        Gizmos.DrawWireSphere(transform.position, enemyModel.AttackRange);
     }
 #endif
 }

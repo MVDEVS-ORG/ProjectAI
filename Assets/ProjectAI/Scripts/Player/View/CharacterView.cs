@@ -173,7 +173,7 @@ public class CharacterView : MonoBehaviour
         {
             if (_interactableObjects[0].TryGetComponent<GunsView>(out GunsView gun))
             {
-                _playerController.SwapPlayerGuns(gun);
+                _playerController.PickUpNewPlayerGun(gun);
             }
             else if (_interactableObjects[0].TryGetComponent(out IInteractable interaction))
             {
@@ -202,6 +202,15 @@ public class CharacterView : MonoBehaviour
     public void SetMeleeDashDirection(Vector2 Direction)
     {
         _meleeDashDirection = Direction;
+    }
+
+    public void SwapWeapons(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            float val = context.ReadValue<float>();
+            _playerController.SwapWeapons((int)val);
+        }
     }
 
     #endregion

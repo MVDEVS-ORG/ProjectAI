@@ -160,6 +160,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8d965fecffa0ccc4aa2083fc7b27c9c0
+    m_Address: SimpleGunUI
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 919db3959a3f5c445a471638dcf35a1a
     m_Address: CharacterCardUI
     m_ReadOnly: 0
@@ -246,7 +251,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: df74987f9ca26f141b2af642ae8d39c0
-    m_Address: SimpleGunUI
+    m_Address: gunUICanvas
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

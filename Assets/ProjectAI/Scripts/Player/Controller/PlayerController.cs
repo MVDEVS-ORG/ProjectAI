@@ -55,6 +55,7 @@ public class PlayerController : IPlayerController
                 case Character.Gunner:
                     prefabAddress = AddressableIds.Gunner_Character;
                     gunAddress = AddressableIds.Simple_Gun;
+                    _gunsController.ChangeGunLimit(2);
                     break;
 
                 case Character.Shotgun:
@@ -86,8 +87,10 @@ public class PlayerController : IPlayerController
             #endregion
 
             #region Gun instantiation
-            var gun = await _assetService.InstantiateAsync(gunAddress);
-            await _gunsController.SetCurrentActiveGun(gun.GetComponent<GunsView>(), _characterView.transform, bulletCursor.Item2.transform);
+            await _gunsController.InitializeOnSceneLoad(gunAddress, _characterView.transform, bulletCursor.Item2.transform);
+            
+            //var gun = await _assetService.InstantiateAsync(gunAddress);
+            //await _gunsController.SetCurrentActiveGun(gun.GetComponent<GunsView>(), _characterView.transform, bulletCursor.Item2.transform);
             #endregion
 
             #region XP bar
@@ -228,9 +231,9 @@ public class PlayerController : IPlayerController
         return _characterView.transform;
     }
 
-    void IPlayerController.SwapPlayerGuns(GunsView gun)
+    void IPlayerController.PickUpNewPlayerGun(GunsView gun)
     {
-        _gunsController.SwapGuns(gun, _characterView.transform, _bulletCursorUI);
+        _gunsController.AddGun(gun);
     }
 
     void IPlayerController.MeleeAttack()
@@ -291,6 +294,11 @@ public class PlayerController : IPlayerController
         _characterView.SetMeleeDashDirection(Direction);
         _moveState = State.MeleeDash;
         _characterView.StartCoroutine(MeleeDashTimer());
+    }
+
+    void IPlayerController.SwapWeapons(int value)
+    {
+        _gunsController.SwapGuns(value);
     }
 }
 

@@ -17,7 +17,7 @@ public class ChaseState : IEnemyState
         _player = player;
         RequestPath();
         _timer = 0f;
-        _enemy.animator.SetBool("Walking", true);
+        _enemy.animator?.SetBool("Walking", true);
     }
 
     public void Update()
@@ -44,7 +44,7 @@ public class ChaseState : IEnemyState
 
     public void Exit() 
     {
-        _enemy.animator.SetBool("Walking", false);
+        _enemy.animator?.SetBool("Walking", false);
         _enemy = null;
         _player = null;
         _timer = 0f;

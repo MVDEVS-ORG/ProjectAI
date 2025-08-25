@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SimpleBullet : MonoBehaviour , IGunProjectileBehavior
@@ -8,11 +9,7 @@ public class SimpleBullet : MonoBehaviour , IGunProjectileBehavior
     private Vector3 _direction = Vector3.zero;
     public GunProjectileSO ProjectileProperties;
     private ObjectPoolManager _objectPoolManager;
-
-    void IGunProjectileBehavior.AddModifications()
-    {
-        //nothing for this
-    }
+    private Dictionary<ElementEnum, int> ElementDamage;
 
     void IGunProjectileBehavior.DestroyManally()
     {
@@ -52,16 +49,6 @@ public class SimpleBullet : MonoBehaviour , IGunProjectileBehavior
         _objectPoolManager = objectPoolManager;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        //create system to deal damage to enemies
-        if(collision.transform.TryGetComponent<IHealthSystem>(out IHealthSystem health))
-        {
-            health.TakeDamage(ProjectileProperties.Damage);
-        }
-        _objectPoolManager.ReleaseGameObject(gameObject,ObjectPoolManager.PoolType.GameObjects);
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //create system to deal damage to enemies
@@ -69,6 +56,15 @@ public class SimpleBullet : MonoBehaviour , IGunProjectileBehavior
         {
             health.TakeDamage(ProjectileProperties.Damage);
         }
+        if (collision.transform.TryGetComponent<EnemyElementAccumulation>(out EnemyElementAccumulation elementAccumulation))
+        {
+            elementAccumulation.TakeElementAccumulation(ElementDamage);
+        }
         _objectPoolManager.ReleaseGameObject(gameObject, ObjectPoolManager.PoolType.GameObjects);
+    }
+
+    void IGunProjectileBehavior.AddModifications(Dictionary<ElementEnum, int> elements)
+    {
+        ElementDamage = elements;
     }
 }

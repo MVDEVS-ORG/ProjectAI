@@ -76,6 +76,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "SwapWeapons",
+                    "type": "Value",
+                    "id": "91d49eae-114d-41dd-8999-6f9418fcdc07",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -329,6 +338,17 @@
                     "processors": "",
                     "groups": ";KBM",
                     "action": "TestEditorThings",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d96b670f-da52-4f2f-956c-86bb8556b393",
+                    "path": "<Mouse>/scroll/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";KBM",
+                    "action": "SwapWeapons",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
