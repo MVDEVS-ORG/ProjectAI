@@ -27,3 +27,6 @@ MonoBehaviour:
   XPCollectionRadius: 0.5
   MeleeDashTime: 0.1
   MeleeDashSpeed: 16
+  CharacterAbilityAddressableId: GunnerAbility
+  AbilityCooldown: 2
+  AbilityDuration: 5

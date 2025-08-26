@@ -18,6 +18,9 @@ public class PlayerCharactersSO : ScriptableObject
     public float XPCollectionRadius;
     public float MeleeDashTime;
     public float MeleeDashSpeed;
+    public string CharacterAbilityAddressableId;
+    public float AbilityCooldown;
+    public float AbilityDuration;
 }
 
 public enum Character

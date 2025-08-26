@@ -195,6 +195,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a261da66cc2744b4289eed829ea760d3
+    m_Address: GunnerAbility
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a4a8fd2caea494c45916e75fc21be5c2
     m_Address: WallInnerCornerDownLeft
     m_ReadOnly: 0
