@@ -55,6 +55,8 @@ public static class AddressableIds
     #endregion
     #region BossAttack Addressables
     public const string Enemy_Lightning = "LightningAttack";
+    public const string Warning_Indicator = "WarningIndicator";
+    public const string Lightning_Strike = "LightningStrike";
     #endregion
     #region TileMap Addressables
 

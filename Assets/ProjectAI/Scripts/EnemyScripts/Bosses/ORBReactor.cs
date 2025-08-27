@@ -13,6 +13,8 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
         [SerializeField] private Animator _bossAnimator;
         [SerializeField] private Transform _lightningAttackPosition;
         [SerializeField] private Transform _laserAttackPosition;
+        [SerializeField] private GameObject _summoningLight;
+        [SerializeField] private GameObject _LaserSmoke;
 
         [Header("Attack Settings")]
         [SerializeField] private float _delayBetweenAttacks = 2f;
@@ -73,8 +75,8 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
             List<string> attacks = new List<string>()
             {
                 "UpwardAttack",
-                "Nova",
-                "LaserAttack"
+                /*"Nova",
+                "LaserAttack"*/
             };
 
             int index = UnityEngine.Random.Range(0, attacks.Count);
@@ -89,23 +91,30 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
         public async void SummonLightning()
         {
             Debug.LogError("Summoning Lightning");
-
+            _summoningLight.SetActive(true);
             // Fire lightning _noOfLightningAttack times in a row
             for (int i = 0; i < _noOfLightningAttack; i++)
             {
-                await LightningStrike();
+                try
+                {
+                    await LightningStrike();
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError(e);
+                }
             }
 
             Debug.Log("All Lightning Strikes Finished.");
+            _summoningLight.SetActive(false);
             AttackFinished();
         }
 
         private async Awaitable LightningStrike()
         {
             Debug.LogError("Summoning Lightning on the player...");
-
             Vector3 origin = _lightningAttackPosition.position;
-            var target = await _target.GetPlayerTransform(); // assuming _target works same as LaserAttack
+            var target = await _target.GetPlayerTransform();
 
             // Spawn lightning prefab
             GameObject lightningGO = await _poolManager.SpawnObjectAsync(
@@ -118,7 +127,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
             var lightning = lightningGO.GetComponent<LightningAttack>();
             if (lightning != null)
             {
-                lightning.Fire(target.position); // lock on to player's position
+                await lightning.Fire(target.position, _poolManager); // lock on to player's position
             }
 
             // Wait for duration before next strike
@@ -132,8 +141,10 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
         {
             // laser is fired (Laser sweep) towards player
             Debug.LogError("Attacking With Laser");
+            _LaserSmoke.SetActive(true);
             // wait for attack to finish and Call AttackFinished()
             await LaserSweep();
+            _LaserSmoke.SetActive(false);
         }
 
         private async Awaitable LaserSweep()

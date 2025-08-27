@@ -13,8 +13,8 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.AttackBehaviour
         public override void Enter(EnemyAI enemy, Transform player, ObjectPoolManager op)
         {
             base.Enter(enemy, player, op);
-            _enemy.animator?.SetBool("Attack", true);
-            _enemy.animator?.SetBool("AttackEnd", false);
+            _enemy.animator.SetBool("Attack", true);
+            _enemy.animator.SetBool("AttackEnd", false);
         }
         private bool CanExecute()
         {
@@ -54,8 +54,8 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.AttackBehaviour
             {
                 _isWaitingForAttackEnd = true;
                 _hasPerformedAttack = false;
-                _enemy.animator?.SetBool("Attack", false);
-                _enemy.animator?.SetBool("AttackEnd", true);
+                _enemy.animator.SetBool("Attack", false);
+                _enemy.animator.SetBool("AttackEnd", true);
                 _exitCoroutine = _enemy.StartCoroutine(WaitForAttackEndAndTransition());
             }
         }
@@ -83,7 +83,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.AttackBehaviour
         }
         public override void Exit()
         {
-            _enemy.animator?.SetBool("AttackEnd", true);
+            _enemy.animator.SetBool("AttackEnd", true);
             if (_exitCoroutine != null)
             {
                 _enemy.StopCoroutine(_exitCoroutine);

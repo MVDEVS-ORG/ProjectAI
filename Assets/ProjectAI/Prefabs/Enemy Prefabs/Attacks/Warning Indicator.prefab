@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7797810301625368543}
   - component: {fileID: 8096402602010751263}
   m_Layer: 0
-  m_Name: Warning Indiocator
+  m_Name: Warning Indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

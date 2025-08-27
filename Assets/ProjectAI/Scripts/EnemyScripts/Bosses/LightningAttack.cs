@@ -5,84 +5,83 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
 {
     public class LightningAttack : MonoBehaviour
     {
-
         [Header("Settings")]
-        [SerializeField] private float _riseHeight = 5f;          // how high it rises before striking down
-        [SerializeField] private float _riseSpeed = 10f;          // speed of upward motion
-        [SerializeField] private float _strikeSpeed = 20f;        // speed of downward strike
-        [SerializeField] private int damage = 20;                 // damage dealt
-        [SerializeField] private float _destroyDelay = 0.5f;      // delay before destroying after hit
-        [SerializeField] private float _warningDuration = 1.5f;   // how long the warning is shown
+        [SerializeField] private float _riseHeight = 5f;         // how high it rises before disappearing
+        [SerializeField] private float _riseSpeed = 10f;         // speed of upward motion
+        [SerializeField] private int damage = 20;                // damage dealt by spawned lightning
+        [SerializeField] private float _destroyDelay = 0.5f;     // delay before pooling back
+        [SerializeField] private float _warningDuration = 1.5f;  // delay before lightning spawns
+        [SerializeField] private TrailRenderer _trailRenderer;
 
-        [Header("Prefabs")]
-        [SerializeField] private GameObject _warningIndicatorPrefab;  // warning effect prefab
+        private Vector3 _origin;
+        private Vector3 _targetPosition;
+        private ObjectPoolManager _poolManager;
+        private GameObject _warningObject;
 
-        private Vector3 _origin;                                  // start position
-        private Vector3 _targetPosition;                          // locked player position
-        private bool _damageApplied = false;
-
-        public void Fire(Vector3 target)
+        public async Awaitable Fire(Vector3 target, ObjectPoolManager poolManager)
         {
+            _trailRenderer.enabled = false;
             _origin = transform.position;
             _targetPosition = target;
+            _poolManager = poolManager;
 
-            StartCoroutine(LightningRoutine());
+            // spawn a warning indicator
+            _warningObject = await _poolManager.SpawnObjectAsync(
+                AddressableIds.Warning_Indicator,
+                _targetPosition,
+                Quaternion.identity,
+                ObjectPoolManager.PoolType.GameObjects
+            );
+
+            _ = LightningRoutine();
         }
 
-        private IEnumerator LightningRoutine()
+        private async Awaitable LightningRoutine()
         {
-            // Spawn warning indicator at the target position
-            if (_warningIndicatorPrefab)
-            {
-                GameObject warning = Instantiate(_warningIndicatorPrefab, _targetPosition, Quaternion.identity);
-                Destroy(warning, _warningDuration); // auto remove after duration
-            }
-
-            // Wait for warning duration before lightning starts
-            yield return new WaitForSeconds(_warningDuration);
-
-            // --- Phase 1: rise upward (lock X to target, only Y moves) ---
-            Vector3 riseTarget = new Vector3(_targetPosition.x, _origin.y + _riseHeight, _origin.z);
+            // Phase 1: rise upwards
+            Vector3 riseTarget = new Vector3(transform.position.x, transform.position.y + _riseHeight, transform.position.z);
+            _trailRenderer.enabled = true;
             while (Mathf.Abs(transform.position.y - riseTarget.y) > 0.1f)
             {
                 transform.position = Vector3.MoveTowards(
                     transform.position,
-                    new Vector3(_targetPosition.x, riseTarget.y, transform.position.z),
+                    riseTarget,
                     _riseSpeed * Time.deltaTime
                 );
-                yield return null;
+                await Awaitable.EndOfFrameAsync();
             }
 
-            // Phase 2: strike down (again lock X to target, move Y down)
-            Vector3 strikeTarget = new Vector3(_targetPosition.x, _targetPosition.y, _targetPosition.z);
-            while (Mathf.Abs(transform.position.y - strikeTarget.y) > 0.1f)
+            // Wait before strike (warning shown)
+            await Awaitable.WaitForSecondsAsync(_warningDuration);
+
+            // Spawn lightning at target
+            var lightning = await _poolManager.SpawnObjectAsync(
+                AddressableIds.Lightning_Strike,
+                _targetPosition,
+                Quaternion.identity,
+                ObjectPoolManager.PoolType.GameObjects
+            );
+
+            // Setup lightning damage logic (if it has its own script)
+            var lightningScript = lightning.GetComponent<SpawnedLightning>();
+            if (lightningScript != null)
             {
-                transform.position = Vector3.MoveTowards(
-                    transform.position,
-                    strikeTarget,
-                    _strikeSpeed * Time.deltaTime
-                );
-                yield return null;
+                lightningScript.Initialize(damage, _poolManager, _warningObject);
+            }
+            else
+            {
+                // fallback: release warning immediately
+                _poolManager.ReleaseGameObject(_warningObject, ObjectPoolManager.PoolType.GameObjects);
             }
 
-            // If it didn’t hit the player, destroy after delay
-            Destroy(gameObject, _destroyDelay);
+            // Reset and return this projectile to pool
+            Invoke(nameof(DestroySelf), _destroyDelay);
         }
 
-
-
-        private void OnTriggerEnter2D(Collider2D other)
+        private void DestroySelf()
         {
-            if (_damageApplied) return;
-
-            if (other.CompareTag("Player"))
-            {
-                var playerHealth = other.GetComponent<CharacterView>();
-                playerHealth?.TakeDamage(damage, _origin, 0.2f);
-                _damageApplied = true;
-
-                Destroy(gameObject, _destroyDelay); // clean up after hit
-            }
+            _trailRenderer.enabled = false;
+            _poolManager.ReleaseGameObject(gameObject, ObjectPoolManager.PoolType.ParticleSystems);
         }
     }
 }

@@ -30,6 +30,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1a8bfa989c43ddc4dbd24783654a6fec
+    m_Address: LightningAttack
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1bae72ca03177bf4f8df9ecf9f34280e
     m_Address: SimpleBullet
     m_ReadOnly: 0
@@ -105,6 +110,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5d9f0559ddea53c46ae47eca148e7405
+    m_Address: LightningStrike
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 600f4cb2bddade34d9fc41b2888b5ce7
     m_Address: gunner
     m_ReadOnly: 0
@@ -130,6 +140,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 76c5c3338325e3d4eb0d1abf960d5f0f
+    m_Address: ORBReactor
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7fd8b207a21522e40a70d3fd5e00919f
     m_Address: Barrel
     m_ReadOnly: 0
@@ -142,6 +157,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 829b9e98dcb0d784a8344048072a4a3b
     m_Address: Slicenator
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 858a0213e2f0c724481cae856a162c75
+    m_Address: WarningIndicator
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

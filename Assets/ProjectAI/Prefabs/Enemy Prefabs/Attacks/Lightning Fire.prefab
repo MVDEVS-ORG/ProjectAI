@@ -190,9 +190,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _riseHeight: 20
-  _riseSpeed: 10
-  _strikeSpeed: 30
+  _riseSpeed: 50
+  _strikeSpeed: 70
   damage: 20
   _destroyDelay: 0.5
   _warningDuration: 1.5
-  _warningIndicatorPrefab: {fileID: 3516123276507692300, guid: 858a0213e2f0c724481cae856a162c75, type: 3}
+  _trailRenderer: {fileID: 7457817725660797441}
