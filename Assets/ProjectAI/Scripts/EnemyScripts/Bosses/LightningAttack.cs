@@ -39,7 +39,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
         private async Awaitable LightningRoutine()
         {
             // Phase 1: rise upwards
-            Vector3 riseTarget = new Vector3(transform.position.x, transform.position.y + _riseHeight, transform.position.z);
+            /*Vector3 riseTarget = new Vector3(transform.position.x, transform.position.y + _riseHeight, transform.position.z);
             _trailRenderer.enabled = true;
             while (Mathf.Abs(transform.position.y - riseTarget.y) > 0.1f)
             {
@@ -49,7 +49,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
                     _riseSpeed * Time.deltaTime
                 );
                 await Awaitable.EndOfFrameAsync();
-            }
+            }*/
 
             // Wait before strike (warning shown)
             await Awaitable.WaitForSecondsAsync(_warningDuration);

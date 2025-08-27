@@ -57,6 +57,7 @@ public static class AddressableIds
     public const string Enemy_Lightning = "LightningAttack";
     public const string Warning_Indicator = "WarningIndicator";
     public const string Lightning_Strike = "LightningStrike";
+    public const string Enemy_Nova = "EnemyNova";
     #endregion
     #region TileMap Addressables
 

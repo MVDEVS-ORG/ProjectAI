@@ -75,8 +75,8 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
             List<string> attacks = new List<string>()
             {
                 "UpwardAttack",
-                /*"Nova",
-                "LaserAttack"*/
+                "Nova",
+                "LaserAttack"
             };
 
             int index = UnityEngine.Random.Range(0, attacks.Count);
@@ -179,25 +179,27 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
             _bossAnimator.SetTrigger("WakeUp");
         }
 
-        public void NovaAttack()
+        public async void PerformNovaAttack()
         {
-            StartCoroutine(Nova());
-        }
-        Awaitable x;
-        private IEnumerator Nova()
-        {
-            // Charging phase
-            Debug.LogError(" Charging Nova Attack...");
-            yield return new WaitForSeconds(_novaChargeTime);
+            Debug.LogError("Performing Nova Attack...");
 
-            // Explosion
-            Debug.LogError(" NOVA EXPLOSION! Player must hide or die instantly!");
-            // TODO: Trigger screen flash, area damage, etc.
+            GameObject novaGO = await _poolManager.SpawnObjectAsync(
+                AddressableIds.Enemy_Nova,
+                transform.position,             // spawn at boss position
+                Quaternion.identity,
+                ObjectPoolManager.PoolType.GameObjects
+            );
 
-            yield return new WaitForSeconds(_novaExplosionDuration);
+            var nova = novaGO.GetComponent<NovaAttack>();
+            if (nova != null)
+            {
+                var playerTransform = await _target.GetPlayerTransform();
+                await nova.PlayNova(_novaChargeTime, _novaExplosionDuration, playerTransform, _poolManager);
+            }
 
             Debug.Log(" Nova attack finished.");
             AttackFinished();
         }
+
     }
 }

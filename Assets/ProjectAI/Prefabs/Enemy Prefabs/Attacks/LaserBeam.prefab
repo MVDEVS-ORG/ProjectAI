@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 8549769079709509616}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.003, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -58,7 +58,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 4fd9bd9d1b9e3d44587d84cf19bfaee7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -81,10 +81,10 @@ LineRenderer:
   m_SortingOrder: 6
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
+  - {x: 0, y: 1, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.1
+    widthMultiplier: 0.5
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -102,8 +102,8 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0, g: 0.49535704, b: 1, a: 1}
-      key1: {r: 0, g: 0.99068594, b: 1, a: 1}
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -134,7 +134,7 @@ LineRenderer:
     numCapVertices: 0
     alignment: 0
     textureMode: 0
-    textureScale: {x: 1, y: 1}
+    textureScale: {x: 1, y: 0.5}
     shadowBias: 0.5
     generateLightingData: 0
   m_MaskInteraction: 0
@@ -164,8 +164,8 @@ MonoBehaviour:
   _boxCollider: {fileID: 5774702941757768956}
   _followGradient:
     serializedVersion: 2
-    key0: {r: 1, g: 0, b: 0, a: 1}
-    key1: {r: 1, g: 0, b: 0, a: 0.6039216}
+    key0: {r: 0, g: 0.760746, b: 1, a: 1}
+    key1: {r: 0, g: 0.7607844, b: 1, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
@@ -194,8 +194,8 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   _lockGradient:
     serializedVersion: 2
-    key0: {r: 0, g: 0.6970329, b: 1, a: 1}
-    key1: {r: 0, g: 0.69803923, b: 1, a: 0.75686276}
+    key0: {r: 1, g: 0, b: 0, a: 1}
+    key1: {r: 0.62352943, g: 0, b: 0, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
@@ -224,8 +224,8 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   _sweepGradient:
     serializedVersion: 2
-    key0: {r: 0.4952253, g: 1, b: 0, a: 1}
-    key1: {r: 0.3887718, g: 0.7830189, b: 0.003693494, a: 0.7411765}
+    key0: {r: 1, g: 1, b: 1, a: 1}
+    key1: {r: 1, g: 1, b: 1, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
@@ -296,5 +296,5 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.1, y: 0.1}
+  m_Size: {x: 0.52, y: 0.1}
   m_EdgeRadius: 0
