@@ -43,7 +43,6 @@ public class GunsController : IGunsController
         _currentActiveGun.gameObject.SetActive(true);
         _currentGunsModel = gun.InitializeGun(this,_poolManager, _playerTransform, _playerCursor);
         _currentGunUI.SwapGun(gun.GunsModel);
-        //_upgradeController.RefreshUpgrades();
         gun.SetGunUI(_currentGunUI);
     }
 
@@ -172,7 +171,7 @@ public class GunsController : IGunsController
     {
         try
         {
-            if (_gunLimit > 1)
+            if (_gunLimit > 1 && _allGuns.Count>1)
             {
                 int index = _orderedValues.IndexOf(_currentGunsModel);
                 index = updown > 0 ? (index + 1) : ((index - 1)<0?_orderedValues.Count-1: (index - 1));
@@ -181,9 +180,53 @@ public class GunsController : IGunsController
                 (this as IGunsController).SetCurrentActiveGun(_allGuns[_orderedValues[index]]);
             }
         }
-        catch (Exception ex)
+        catch (Exception exception)
         {
+            Debug.LogError(exception);
+        }
+    }
 
+    void IGunsController.FireAllGuns(bool toggle, bool alternateAbility)
+    {
+        if (toggle)
+        {
+            foreach (var gun in _allGuns)
+            {
+                gun.Value.gameObject.SetActive(true);
+                if (!alternateAbility)
+                {
+                    gun.Key.DisableOverheat = true;
+                }
+                gun.Value.SetStartingRotation(_orderedValues.IndexOf(gun.Key), _orderedValues.Count);
+                //gun.Value.RandomRotateGun();
+                gun.Value.AlternateRotation = true;
+                gun.Value.Fire(true);
+            }
+        }
+        else
+        {
+            foreach (var gun in _allGuns)
+            {
+                if (gun.Value == _currentActiveGun)
+                {
+                    if (!alternateAbility)
+                    {
+                        gun.Key.DisableOverheat = false;
+                    }
+                    gun.Value.Fire(false);
+                    gun.Value.AlternateRotation = false;
+                }
+                else
+                { 
+                    gun.Value.gameObject.SetActive(false);
+                    if (!alternateAbility)
+                    {
+                        gun.Key.DisableOverheat = false;
+                    }
+                    gun.Value.AlternateRotation = false;
+                    gun.Value.Fire(false);
+                }
+            }
         }
     }
 }

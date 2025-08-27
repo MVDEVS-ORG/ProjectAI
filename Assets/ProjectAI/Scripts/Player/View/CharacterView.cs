@@ -206,10 +206,20 @@ public class CharacterView : MonoBehaviour
 
     public void SwapWeapons(InputAction.CallbackContext context)
     {
-        if(context.performed)
+        if (!_playerController.Initialized) return;
+        if (context.performed)
         {
             float val = context.ReadValue<float>();
             _playerController.SwapWeapons((int)val);
+        }
+    }
+
+    public void ActivateAbility(InputAction.CallbackContext context)
+    {
+        if (!_playerController.Initialized) return;
+        if (context.performed)
+        {
+            _playerController.ActivateAbility();
         }
     }
 

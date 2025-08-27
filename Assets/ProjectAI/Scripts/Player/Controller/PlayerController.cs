@@ -22,10 +22,14 @@ public class PlayerController : IPlayerController
     private PlayerModel _playerModel;
     private CharacterView _characterView;// The players view
     private PlayerUI _playerUI;
+    private IAbilityController _abilityController = new AbilityController();
 
     private bool _initialized = false;
     private bool _movementPossible = false;
     private bool _isInvincible = false;
+    private bool _gunEnabled = true;
+
+    bool IPlayerController.GunEnabled { get => _gunEnabled; set => _gunEnabled = value; } 
     bool IPlayerController.Initialized => _initialized;
     bool IPlayerController.MovementPossible => _movementPossible;
     bool IPlayerController.IsInvincible => _isInvincible;
@@ -55,7 +59,7 @@ public class PlayerController : IPlayerController
                 case Character.Gunner:
                     prefabAddress = AddressableIds.Gunner_Character;
                     gunAddress = AddressableIds.Simple_Gun;
-                    _gunsController.ChangeGunLimit(2);
+                    _gunsController.ChangeGunLimit(5);
                     break;
 
                 case Character.Shotgun:
@@ -79,7 +83,7 @@ public class PlayerController : IPlayerController
             //Create a new _player model for that character
             _playerModel = new PlayerModel(playerCharacter);
             Debug.Log("PlayerModel initialized");
-            //Asign the _player model and the controller to the view alongside the _player cursor aka reticle for shooting
+            //Assign the _player model and the controller to the view alongside the _player cursor aka reticle for shooting
             (GameObject,GameObject) bulletCursor = await PlayerCursorInitialization();
             _bulletCursorUI = bulletCursor.Item2.transform;
             _characterView.Initialize(this, _playerModel, bulletCursor.Item1, bulletCursor.Item2,_signalBus);
@@ -121,6 +125,10 @@ public class PlayerController : IPlayerController
             _upgradeController.OnUpgrade += UpgradePlayer;
             _upgradeController.RefreshUpgrades();
             _movementPossible = true;
+
+            //Assign the player abilities
+            _ = _abilityController.Initialize(_assetService, _playerModel, (this as IPlayerController), _gunsController, _meleeWeaponController);
+
         }
         catch (Exception exception)
         {
@@ -192,7 +200,10 @@ public class PlayerController : IPlayerController
 
     void IPlayerController.Shoot(bool firing)
     {
-        _gunsController.Fire(firing);
+        if (_gunEnabled)
+        {
+            _gunsController.Fire(firing);
+        }
     }
 
     Vector2 IPlayerController.Dash(Vector2 MoveInput)
@@ -233,7 +244,10 @@ public class PlayerController : IPlayerController
 
     void IPlayerController.PickUpNewPlayerGun(GunsView gun)
     {
-        _gunsController.AddGun(gun);
+        if (_gunEnabled)
+        {
+            _gunsController.AddGun(gun);
+        }
     }
 
     void IPlayerController.MeleeAttack()
@@ -298,7 +312,15 @@ public class PlayerController : IPlayerController
 
     void IPlayerController.SwapWeapons(int value)
     {
-        _gunsController.SwapGuns(value);
+        if (_gunEnabled)
+        {
+            _gunsController.SwapGuns(value);
+        }
+    }
+
+    void IPlayerController.ActivateAbility()
+    {
+        _abilityController.UseAbility();
     }
 }
 
