@@ -1,10 +1,7 @@
-using Assets.Services;
-using Newtonsoft.Json;
 using System;
-using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
-using Zenject;
 
 public class GunsView : MonoBehaviour, IInteractable
 {
@@ -27,6 +24,9 @@ public class GunsView : MonoBehaviour, IInteractable
 
     [HideInInspector] public Dictionary<ElementEnum, int> ElementalBuffs = new();
 
+    [HideInInspector] public bool AlternateRotation = false;
+    [HideInInspector] public bool WeaponKnockback = false;
+    private float _angle;
     private void Start()
     {
         SpriteRenderer = GetComponent<SpriteRenderer>();
@@ -85,14 +85,21 @@ public class GunsView : MonoBehaviour, IInteractable
     {
         if(GunActive)
         {
-            OrbitalMotion();
+            if (!AlternateRotation)
+            {
+                OrbitalMotion();
+            }
+            else
+            {
+                RotationalMotion();
+            }
         }
     }
 
     public void OrbitalMotion()
     {
-        float angle = MathF.Atan2(PlayerCursor.position.y - PlayerTransform.position.y, PlayerCursor.position.x - PlayerTransform.position.x);
-        if (angle > 0)
+        _angle = MathF.Atan2(PlayerCursor.position.y - PlayerTransform.position.y, PlayerCursor.position.x - PlayerTransform.position.x);
+        if (_angle > 0)
         {
             SpriteRenderer.sortingOrder = 4;
         }
@@ -100,15 +107,76 @@ public class GunsView : MonoBehaviour, IInteractable
         {
             SpriteRenderer.sortingOrder = 10;
         }
-        transform.position = PlayerTransform.position + new Vector3(GunsModel.ElipseHorizontalRadius * MathF.Sin(Mathf.PI * (0.5f) - angle), GunsModel.ElipseVerticalRadius * MathF.Cos(Mathf.PI * (0.5f) - angle), transform.position.z);
+        transform.position = PlayerTransform.position + new Vector3(GunsModel.ElipseHorizontalRadius * MathF.Cos(_angle), GunsModel.ElipseVerticalRadius * MathF.Sin(_angle), transform.position.z);
         transform.right = (PlayerCursor.position - PlayerTransform.position).normalized;
         if(transform.rotation.y==1) //This if statement is to prevent a bug where the transform.rotation.y becomes 180 because of gimble lock
         {
             transform.localScale = Scale;
         }
-        else if (MathF.Abs(angle) > Mathf.PI / 2 )
+        else if (MathF.Abs(_angle) > Mathf.PI / 2 )
         {
             transform.localScale = ReverseScale; 
+        }
+        else
+        {
+            transform.localScale = Scale;
+        }
+    }
+
+    public void RandomRotateGun()
+    {
+        _angle = UnityEngine.Random.Range(0, Mathf.PI * 2);
+        transform.position = PlayerTransform.position + new Vector3(GunsModel.ElipseHorizontalRadius * MathF.Cos(_angle), GunsModel.ElipseHorizontalRadius * MathF.Sin(_angle), transform.position.z);
+        transform.right = (transform.position - PlayerTransform.position).normalized;
+        float rotationalAngle = Mathf.Atan2(transform.position.y - PlayerTransform.position.y, transform.position.x - PlayerTransform.position.x);
+        if (transform.rotation.y == 1) //This if statement is to prevent a bug where the transform.rotation.y becomes 180 because of gimble lock
+        {
+            transform.localScale = Scale;
+        }
+        else if (MathF.Abs(rotationalAngle) > Mathf.PI / 2)
+        {
+            transform.localScale = ReverseScale;
+        }
+        else
+        {
+            transform.localScale = Scale;
+        }
+    }
+
+    public void SetStartingRotation(int order,int max)
+    {
+        _angle = 0 + (Mathf.PI * 2 / max) * order;
+        transform.position = PlayerTransform.position + new Vector3(GunsModel.ElipseHorizontalRadius * MathF.Cos(_angle), GunsModel.ElipseHorizontalRadius * MathF.Sin(_angle), transform.position.z);
+        transform.right = (transform.position - PlayerTransform.position).normalized;
+        float rotationalAngle = Mathf.Atan2(transform.position.y - PlayerTransform.position.y, transform.position.x - PlayerTransform.position.x);
+        if (transform.rotation.y == 1) //This if statement is to prevent a bug where the transform.rotation.y becomes 180 because of gimble lock
+        {
+            transform.localScale = Scale;
+        }
+        else if (MathF.Abs(rotationalAngle) > Mathf.PI / 2)
+        {
+            transform.localScale = ReverseScale;
+        }
+        else
+        {
+            transform.localScale = Scale;
+        }
+    }
+
+    public void RotationalMotion()
+    {
+        //_angle += MathF.PI * GunsModel.FireRate * Time.deltaTime / 20;
+        _angle += MathF.PI * 3 * Time.deltaTime / 20;
+        transform.position = PlayerTransform.position + new Vector3(GunsModel.ElipseHorizontalRadius * MathF.Cos(_angle), GunsModel.ElipseHorizontalRadius * MathF.Sin(_angle), transform.position.z);
+        transform.right = (transform.position - PlayerTransform.position).normalized;
+        float rotationalAngle = Mathf.Atan2(transform.position.y - PlayerTransform.position.y, transform.position.x - PlayerTransform.position.x);
+        if (transform.rotation.y == 1) //This if statement is to prevent a bug where the transform.rotation.y becomes 180 because of gimble lock
+        {
+            transform.localScale = Scale;
+        }
+        else if (MathF.Abs(rotationalAngle) > Mathf.PI / 2)
+        {
+            transform.localScale = ReverseScale;
         }
         else
         {

@@ -9,6 +9,7 @@ public class ShotGun : GunsView
     private bool _overheat = false;
     private CharacterView _view;
     private CancellationTokenSource _cancellationTokenSource;
+
     public override void Fire(bool firing)
     {
         if(_view==null)
@@ -48,7 +49,8 @@ public class ShotGun : GunsView
 
     public override void ActivateGun()
     {
-        if(GunsModel.OverHeatValue > 0)
+        WeaponKnockback = true;
+        if (GunsModel.OverHeatValue > 0)
         {
             _cancellationTokenSource = new CancellationTokenSource();
             CancellationToken token = _cancellationTokenSource.Token;
@@ -73,7 +75,10 @@ public class ShotGun : GunsView
             if (_firing && GunsModel.OverHeatValue < GunsModel.OverHeatLimit && !_overheat)
             {
                 _ = FireBullet((PlayerCursor.position - GunBulletSpawnTransform.position).normalized);
-                _view.ExternalKickBack(3, transform.position, 0.2f);
+                if (WeaponKnockback && !AlternateRotation)
+                {
+                    _view.ExternalKickBack(3, transform.position, 0.2f);
+                }
                 if (!GunsModel.DisableOverheat)
                 {
                     GunsModel.OverHeatValue += GunsModel.OverHeatRate;
@@ -118,11 +123,11 @@ public class ShotGun : GunsView
         float delta = Mathf.PI / 20;
         float startAngle = angle - (delta * NoOfPellets / 2);
         GameObject bullet = await PoolManager.SpawnObjectAsync(GunsModel.PrimaryProjectileAddressable, GunBulletSpawnTransform.position, Quaternion.identity, ObjectPoolManager.PoolType.GameObjects);
-        bullet.transform.right = (PlayerCursor.position - PlayerTransform.position).normalized;
+        bullet.transform.right = transform.right;
         IGunProjectileBehavior weaponBehavior = bullet.GetComponent<IGunProjectileBehavior>();
         weaponBehavior.Initialize(PoolManager);
         weaponBehavior.SpawnProjectileAnimation();
         weaponBehavior.AddModifications(ElementalBuffs);
-        weaponBehavior.MoveProjectile((PlayerCursor.position - PlayerTransform.position).normalized);
+        weaponBehavior.MoveProjectile(transform.right);
     }
 }
