@@ -108,59 +108,21 @@ public class GunsView : MonoBehaviour, IInteractable
             SpriteRenderer.sortingOrder = 10;
         }
         transform.position = PlayerTransform.position + new Vector3(GunsModel.ElipseHorizontalRadius * MathF.Cos(_angle), GunsModel.ElipseVerticalRadius * MathF.Sin(_angle), transform.position.z);
-        transform.right = (PlayerCursor.position - PlayerTransform.position).normalized;
-        if(transform.rotation.y==1) //This if statement is to prevent a bug where the transform.rotation.y becomes 180 because of gimble lock
-        {
-            transform.localScale = Scale;
-        }
-        else if (MathF.Abs(_angle) > Mathf.PI / 2 )
-        {
-            transform.localScale = ReverseScale; 
-        }
-        else
-        {
-            transform.localScale = Scale;
-        }
+        RotateGun();
     }
 
     public void RandomRotateGun()
     {
         _angle = UnityEngine.Random.Range(0, Mathf.PI * 2);
         transform.position = PlayerTransform.position + new Vector3(GunsModel.ElipseHorizontalRadius * MathF.Cos(_angle), GunsModel.ElipseHorizontalRadius * MathF.Sin(_angle), transform.position.z);
-        transform.right = (transform.position - PlayerTransform.position).normalized;
-        float rotationalAngle = Mathf.Atan2(transform.position.y - PlayerTransform.position.y, transform.position.x - PlayerTransform.position.x);
-        if (transform.rotation.y == 1) //This if statement is to prevent a bug where the transform.rotation.y becomes 180 because of gimble lock
-        {
-            transform.localScale = Scale;
-        }
-        else if (MathF.Abs(rotationalAngle) > Mathf.PI / 2)
-        {
-            transform.localScale = ReverseScale;
-        }
-        else
-        {
-            transform.localScale = Scale;
-        }
+        RotateGun();
     }
 
     public void SetStartingRotation(int order,int max)
     {
         _angle = 0 + (Mathf.PI * 2 / max) * order;
         transform.position = PlayerTransform.position + new Vector3(GunsModel.ElipseHorizontalRadius * MathF.Cos(_angle), GunsModel.ElipseHorizontalRadius * MathF.Sin(_angle), transform.position.z);
-        transform.right = (transform.position - PlayerTransform.position).normalized;
-        float rotationalAngle = Mathf.Atan2(transform.position.y - PlayerTransform.position.y, transform.position.x - PlayerTransform.position.x);
-        if (transform.rotation.y == 1) //This if statement is to prevent a bug where the transform.rotation.y becomes 180 because of gimble lock
-        {
-            transform.localScale = Scale;
-        }
-        else if (MathF.Abs(rotationalAngle) > Mathf.PI / 2)
-        {
-            transform.localScale = ReverseScale;
-        }
-        else
-        {
-            transform.localScale = Scale;
-        }
+        RotateGun();   
     }
 
     public void RotationalMotion()
@@ -168,6 +130,16 @@ public class GunsView : MonoBehaviour, IInteractable
         //_angle += MathF.PI * GunsModel.FireRate * Time.deltaTime / 20;
         _angle += MathF.PI * 3 * Time.deltaTime / 20;
         transform.position = PlayerTransform.position + new Vector3(GunsModel.ElipseHorizontalRadius * MathF.Cos(_angle), GunsModel.ElipseHorizontalRadius * MathF.Sin(_angle), transform.position.z);
+        RotateGun();
+    }
+
+    void IInteractable.Interact(Transform transform)
+    {
+        Debug.Log("GunPickUp Available");
+    }
+
+    private void RotateGun()
+    {
         transform.right = (transform.position - PlayerTransform.position).normalized;
         float rotationalAngle = Mathf.Atan2(transform.position.y - PlayerTransform.position.y, transform.position.x - PlayerTransform.position.x);
         if (transform.rotation.y == 1) //This if statement is to prevent a bug where the transform.rotation.y becomes 180 because of gimble lock
@@ -182,10 +154,5 @@ public class GunsView : MonoBehaviour, IInteractable
         {
             transform.localScale = Scale;
         }
-    }
-
-    void IInteractable.Interact(Transform transform)
-    {
-        Debug.Log("GunPickUp Available");
     }
 }
