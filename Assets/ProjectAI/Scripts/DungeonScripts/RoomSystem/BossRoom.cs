@@ -3,6 +3,7 @@ using Assets.ProjectAI.Scripts.PathFinding;
 using Assets.Services;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 using Zenject;
 
 namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem
@@ -12,6 +13,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem
         [SerializeField] private Transform _playerSpawnTransform;
         [SerializeField] private Transform _bossSpawnTransform;
         [SerializeField] private float _spawnRadius = 5f;
+        [SerializeField] GameObject _emergencyWalls;
 
         [Inject] IAssetService _assetService;
         [Inject] ObjectPoolManager _poolManager;
@@ -30,7 +32,9 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem
                 _bossSpawnTransform.position,
                 Quaternion.identity
             );
-            boss.GetComponent<ORBReactor>().Initilaize(_poolManager, _assetService, _playerController);
+            ORBReactor ORB = boss.GetComponent<ORBReactor>();
+            ORB.Initilaize(_poolManager, _assetService, _playerController);
+            ORB.EmergencyWalls = _emergencyWalls;
         }
     }
 }

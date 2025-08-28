@@ -25,6 +25,8 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
         [SerializeField] private float _startingDistanceFormPlayer = 5f;
         [SerializeField] private int _noOfLightningAttack = 3;
 
+        public GameObject EmergencyWalls { get; set; }
+
 
         private bool _isInPhase1 = true;
         private ObjectPoolManager _poolManager;
@@ -194,9 +196,10 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
             if (nova != null)
             {
                 var playerTransform = await _target.GetPlayerTransform();
+                EmergencyWalls?.SetActive(true);
                 await nova.PlayNova(_novaChargeTime, _novaExplosionDuration, playerTransform, _poolManager);
             }
-
+            EmergencyWalls?.SetActive(false);
             Debug.Log(" Nova attack finished.");
             AttackFinished();
         }
