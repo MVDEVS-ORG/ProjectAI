@@ -34,6 +34,11 @@ public static class AddressableIds
     public const string MeleeSlash = "MeleeSlash";
     #endregion
 
+
+    #region Bosses
+    public const string ORBReactor = "ORBReactor";
+    #endregion
+
     #region enemy
     public const string Item = "Item";
     public const string Goblin = "Goblin";
@@ -43,12 +48,16 @@ public static class AddressableIds
 
     public const string Enemy_Laser_Beam = "EnemyLaseBeam";
     #endregion
+    public const string Character_Card_UI = "CharacterCardUI";
 
     #region BossRooms Addressables
     public const string BossRoom_LVL_1 = "BossRoom_LVL1";
     #endregion
-    #region BossRooms Addressables
-    public const string Character_Card_UI = "CharacterCardUI";
+    #region BossAttack Addressables
+    public const string Enemy_Lightning = "LightningAttack";
+    public const string Warning_Indicator = "WarningIndicator";
+    public const string Lightning_Strike = "LightningStrike";
+    public const string Enemy_Nova = "EnemyNova";
     #endregion
     #region TileMap Addressables
 
