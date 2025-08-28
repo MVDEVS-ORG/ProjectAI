@@ -104,11 +104,28 @@ public class SimpleGun : GunsView
     private async Awaitable FireBullet()
     {
         GameObject bullet = await PoolManager.SpawnObjectAsync(GunsModel.PrimaryProjectileAddressable, GunBulletSpawnTransform.position, Quaternion.identity, ObjectPoolManager.PoolType.GameObjects);
-        bullet.transform.right = transform.right;
+        Vector3 bulletRotationAndFireDirection;
+        if (AlternateRotation)
+        {
+            bulletRotationAndFireDirection = transform.right;
+        }
+        else
+        {
+            Debug.Log(Vector3.Dot((PlayerCursor.position - GunBulletSpawnTransform.position).normalized, (PlayerCursor.position - PlayerTransform.position).normalized));
+            if(Vector3.Dot((PlayerCursor.position- GunBulletSpawnTransform.position).normalized,(PlayerCursor.position - PlayerTransform.position).normalized)< 0.99f)// && ((PlayerCursor.position - PlayerTransform.position).magnitude < (transform.position - PlayerTransform.position).magnitude + 5))
+            {
+                bulletRotationAndFireDirection = (PlayerCursor.position - PlayerTransform.position).normalized;
+            }
+            else
+            {
+                bulletRotationAndFireDirection = (PlayerCursor.position - GunBulletSpawnTransform.position).normalized;
+            }
+        }
+        bullet.transform.right = bulletRotationAndFireDirection;
         IGunProjectileBehavior weaponBehavior = bullet.GetComponent<IGunProjectileBehavior>();
         weaponBehavior.Initialize(PoolManager);
         weaponBehavior.SpawnProjectileAnimation();
         weaponBehavior.AddModifications(ElementalBuffs);
-        weaponBehavior.MoveProjectile(transform.right);
+        weaponBehavior.MoveProjectile(bulletRotationAndFireDirection);
     }
 }

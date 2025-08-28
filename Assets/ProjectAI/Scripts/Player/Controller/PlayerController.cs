@@ -228,7 +228,9 @@ public class PlayerController : IPlayerController
     IEnumerator RollDash()
     {
         _moveState = State.RollDash;
+        _isInvincible = true;
         yield return Awaitable.WaitForSecondsAsync(_playerModel.RollDuration);
+        _isInvincible = false;
         _moveState = State.Moving;
     }
 

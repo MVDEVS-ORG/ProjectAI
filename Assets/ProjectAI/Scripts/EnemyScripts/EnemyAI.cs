@@ -151,7 +151,11 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
         _health = model.Health;
         _maxHealth = model.MaxHealth;
         enemyModel = new EnemyModel(_enemyDataSO);
-        gameObject.name = gameObject.name + enemyModel.GetHashCode();
+        if(gameObject.name.Contains("+"))
+        {
+            gameObject.name = gameObject.name.Substring(0, gameObject.name.LastIndexOf("+"));
+        }
+        gameObject.name = gameObject.name + "+" +enemyModel.GetHashCode();
         EnemyModelInitialized = true;
         InitializeStates();
     }

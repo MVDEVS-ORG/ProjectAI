@@ -50,7 +50,7 @@ public class EnemyModel
                     data.OpposingElement = ElementEnum.Lightning;
                     break;
             }
-            EnemyAfflictionData[data.Element] = data;
+            EnemyAfflictionData[data.Element] = new ElementAfflictionData(data);
         }
     }
         
