@@ -16,7 +16,7 @@ MonoBehaviour:
   SlowedSpeed: 0
   AttackRange: 1.5
   DetectionRange: 6
-  AttackOffset: 0
+  AttackOffset: 1
   AttackCooldown: 1
   Xp: 100
   EnemyAfflictionData:
@@ -26,7 +26,7 @@ MonoBehaviour:
     AfflictionCDRate: 10
     AfflictionDuration: 5
     EffectValue: 0
-    AfflictionAccumulation: 14.000368
+    AfflictionAccumulation: 0
     Afflicted: 0
   - Element: 1
     OpposingElement: 0

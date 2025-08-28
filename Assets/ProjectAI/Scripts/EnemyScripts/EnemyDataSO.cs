@@ -22,6 +22,18 @@ public class EnemyDataSO : ScriptableObject
 [Serializable]
 public class ElementAfflictionData
 {
+    public ElementAfflictionData(ElementAfflictionData data)
+    {
+        Element = data.Element;
+        OpposingElement = data.OpposingElement;
+        AfflictionLimit = data.AfflictionLimit;
+        AfflictionCDRate = data.AfflictionCDRate;
+        AfflictionDuration = data.AfflictionDuration;
+        EffectValue = data.EffectValue;
+        AfflictionAccumulation = data.AfflictionAccumulation;
+        Afflicted = data.Afflicted;
+    }
+
     public ElementEnum Element;
     [HideInInspector] public ElementEnum OpposingElement;
     public float AfflictionLimit;
