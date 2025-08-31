@@ -14,8 +14,7 @@ namespace Assets.ProjectAI.Scripts.MainMenu
         [Inject] PlayerPicker _playerPicker;
         [Inject] IUniversalDeviceController _universalDeviceController;
 
-        [SerializeField] private Transform cardsContainer;
-        [SerializeField] private CharacterDetailsUI detailsPanel;
+        [SerializeField] private Transform _cardsContainer;
         [SerializeField] private Button _backToMainMenu;
 
         private readonly List<CharacterDescriptionSO> _characters = new();
@@ -31,7 +30,7 @@ namespace Assets.ProjectAI.Scripts.MainMenu
             await LoadCharacters();
             foreach (var character in _characters)
             {
-                var card = await _assetService.InstantiateWithParentAsync(AddressableIds.Character_Card_UI, cardsContainer);
+                var card = await _assetService.InstantiateWithParentAsync(AddressableIds.Character_Card_UI, _cardsContainer);
                 card.TryGetComponent(out CharacterCardUI characterCardUI);
                 characterCardUI.Setup(character, _characterDetailsUI, this);
                 _charactercards.Add(characterCardUI);

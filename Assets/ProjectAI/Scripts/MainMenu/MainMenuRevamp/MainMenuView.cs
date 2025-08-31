@@ -1,30 +1,28 @@
 using Assets.ProjectAI.Scripts.MainMenu;
-using Assets.Services;
 using UnityEngine;
 using UnityEngine.UI;
-using Zenject;
 
 public class MainMenuView : MonoBehaviour
 {
-    [SerializeField] private Button NewGame;
-    [SerializeField] private Button Settings;
-    [SerializeField] private Button Credits;
-    [SerializeField] private Button Exit;
+    [SerializeField] private Button _newGame;
+    [SerializeField] private Button _settings;
+    [SerializeField] private Button _credits;
+    [SerializeField] private Button _exit;
 
     [Header("Transitions to")]
-    [SerializeField] private CharacterSelectionView CharacterSelection;
+    [SerializeField] private CharacterSelectionView _characterSelection;
 
     private void Start()
     {
-        NewGame.onClick.AddListener(StartNewGame);
-        Settings.onClick.AddListener(OpenSettings);
-        Credits.onClick.AddListener(OpenCredits);
-        Exit.onClick.AddListener(ExitGame);
+        _newGame.onClick.AddListener(StartNewGame);
+        _settings.onClick.AddListener(OpenSettings);
+        _credits.onClick.AddListener(OpenCredits);
+        _exit.onClick.AddListener(ExitGame);
     }
 
     private void StartNewGame()
     {
-        CharacterSelection.gameObject.SetActive(true);
+        _characterSelection.gameObject.SetActive(true);
         gameObject.SetActive(false);
     }
 

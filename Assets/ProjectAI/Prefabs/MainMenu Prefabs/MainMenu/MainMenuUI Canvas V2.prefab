@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b7cb67528802f040b165dfb813a349d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardsContainer: {fileID: 4555976297166519107}
+  _cardsContainer: {fileID: 4555976297166519107}
   detailsPanel: {fileID: 4694276059889473613}
   _backToMainMenu: {fileID: 3501436766317684981}
   _mainMenu: {fileID: 5909123148405359354}
@@ -260,7 +260,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _firstSelectedObject: {fileID: 984621593240714971}
   _primaryBackButton: {fileID: 3501436766317684981}
-  _inputAction: {fileID: 0}
 --- !u!1 &311759146890230898
 GameObject:
   m_ObjectHideFlags: 0
@@ -2429,7 +2428,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _firstSelectedObject: {fileID: 6918216252308750980}
   _primaryBackButton: {fileID: 4043287808788096886}
-  _inputAction: {fileID: 0}
 --- !u!1 &5785373333164377803
 GameObject:
   m_ObjectHideFlags: 0
@@ -3960,11 +3958,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 016fc17e2ee58b44c88c98b79bec9872, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NewGame: {fileID: 1603250414912312667}
-  Settings: {fileID: 4350789496456488281}
-  Credits: {fileID: 8479993864125601478}
-  Exit: {fileID: 6373262973077535661}
-  CharacterSelection: {fileID: 2789669021192851879}
+  _newGame: {fileID: 1603250414912312667}
+  _settings: {fileID: 4350789496456488281}
+  _credits: {fileID: 8479993864125601478}
+  _exit: {fileID: 6373262973077535661}
+  _characterSelection: {fileID: 2789669021192851879}
 --- !u!114 &7702487212579729352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3992,7 +3990,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _firstSelectedObject: {fileID: 8105813649980867580}
   _primaryBackButton: {fileID: 0}
-  _inputAction: {fileID: 0}
 --- !u!1 &7650309720883873222
 GameObject:
   m_ObjectHideFlags: 0

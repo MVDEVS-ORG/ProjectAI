@@ -5,6 +5,7 @@ using UnityEngine.InputSystem.UI;
 using UnityEngine.UI;
 using Zenject;
 
+[RequireComponent(typeof(ZenAutoInjecter))]
 public class ControllerNavigation : MonoBehaviour
 {
     [Inject] IUniversalDeviceController _universalDeviceController;
