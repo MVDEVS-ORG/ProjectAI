@@ -14,6 +14,8 @@ public class CharacterView : MonoBehaviour
     private Rigidbody2D _rigidBody;
     private Vector2 _moveInput;
 
+    private IGamePauseController _gamePauseController;
+
     private GameObject _BulletCursor = null;
     private GameObject _bulletCursorUI = null;
     private PlayerInput _playerInput;
@@ -38,8 +40,9 @@ public class CharacterView : MonoBehaviour
     private Coroutine _KickbackBoostcoroutine = null;
 
 
-    public void Initialize(IPlayerController playerController, PlayerModel playerModel, GameObject bulletCursor, GameObject bulletCursorUI, SignalBus signalBus)
+    public void Initialize(IPlayerController playerController, PlayerModel playerModel, GameObject bulletCursor, GameObject bulletCursorUI, SignalBus signalBus, IGamePauseController gamePauseController)
     {
+        _gamePauseController = gamePauseController;
         _playerController = playerController;
         _playerModel = playerModel;
         _BulletCursor = bulletCursor;
@@ -57,6 +60,11 @@ public class CharacterView : MonoBehaviour
         CheckInitialControlSchema();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _flashFeedback = GetComponent<FlashFeedback>();
+    }
+
+    private void OnDestroy()
+    {
+        InputSystem.onDeviceChange -= OnDeviceChange;
     }
 
     // Update is called once per frame
@@ -220,6 +228,15 @@ public class CharacterView : MonoBehaviour
         if (context.performed)
         {
             _playerController.ActivateAbility();
+        }
+    }
+
+    public void PauseGame(InputAction.CallbackContext context)
+    {
+        if (!_playerController.Initialized) return;
+        if(context.performed && !_gamePauseController.IsPaused)
+        {
+            _gamePauseController.PauseGame();
         }
     }
 

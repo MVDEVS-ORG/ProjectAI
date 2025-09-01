@@ -14,6 +14,7 @@ public class GameInstaller : MonoInstaller
     [SerializeField] private GameObject _prefabPlacer;
     public override void InstallBindings()
     {
+        Container.Bind<IGamePauseController>().To<GamePauseController>().AsSingle().NonLazy();
         Container.Bind<GamepadRumble>().AsSingle();
         Container.Bind<CameraController>().AsSingle().OnInstantiated(PlayerCameraSetup);
         Container.Bind<IUpgradeController>().To<UpgradeController>().AsSingle();

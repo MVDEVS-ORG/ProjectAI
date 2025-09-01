@@ -92,5 +92,6 @@ public static class AddressableIds
 
     #region UI Addressables
     public const string PopUp_UI = "PopUpUI";
+    public const string Pause_Screen = "PauseScreen";
     #endregion
 }
