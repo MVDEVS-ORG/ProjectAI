@@ -24,11 +24,13 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
         [SerializeField] private float _novaExplosionDuration = 3f;
         [SerializeField] private float _startingDistanceFormPlayer = 5f;
         [SerializeField] private int _noOfLightningAttack = 3;
+        [Range(0.0f, 3f)][SerializeField] private float _sweepDuration = 1.5f;
 
         [Header("Health Settings")]
         [SerializeField] private HealthModelsSO _healthModel;
 
         public GameObject EmergencyWalls { get; set; }
+        public GameObject BossRoomDoor { get; set; }
 
         private int _health;
         private int _maxHealth;
@@ -38,16 +40,25 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
 
         private bool _isInPhase1 = true;
         private bool _bossInitialized = false;
+
+        //Private References
         private ObjectPoolManager _poolManager;
         private IAssetService _assetService;
         private IPlayerController _target;
         private BossHealthUI _bossHealthUI;
+        private CameraController _camController;
+        private Transform _camTransform;
+        private string _lastAttack = null;
+        private bool _isFirstAttack = true;
         // Use this for initialization
-        public async void InitializeBoss(ObjectPoolManager poolManager, IAssetService assetService, IPlayerController playerController)
+        public async void InitializeBoss(ObjectPoolManager poolManager, IAssetService assetService, IPlayerController playerController, CameraController camController, Transform camTransform)
         {
+            _isFirstAttack = true;
             _poolManager = poolManager;
             _assetService = assetService;
             _target = playerController;
+            _camController = camController;
+            _camTransform = camTransform;
             await WaitForPlayer();
         }
 
@@ -58,7 +69,11 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
                 Transform target = await _target.GetPlayerTransform();
                 if(target != null && Vector2.Distance(transform.position, target.position)<= _startingDistanceFormPlayer)
                 {
+                    BossRoomDoor?.SetActive(true);
                     BossWakeUp();
+                    Debug.LogError(_camController == null);
+                    Debug.LogError(_camTransform == null);
+                    _camController.DetachCamera(_camTransform, 16.5f);
                     var bossHpCanvas = await _assetService.InstantiateAsync(AddressableIds.Boss_HP_Canvas);
                     _bossHealthUI = bossHpCanvas.GetComponent<BossHealthUI>();
                     Initialize(_healthModel);
@@ -89,15 +104,32 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
 
         private string GetRandomAttack()
         {
-            List<string> attacks = new List<string>()
+            List<string> weightedAttacks = new List<string>()
             {
-                "UpwardAttack",
-                "Nova",
-                "LaserAttack"
+                "UpwardAttack", "UpwardAttack", "UpwardAttack",
+                "LaserAttack", "LaserAttack", "LaserAttack",
+                "Nova"
             };
+            string chosenAttack;
 
-            int index = UnityEngine.Random.Range(0, attacks.Count);
-            return attacks[index];
+            // Handle first attack: cannot be "Nova"
+            if (_isFirstAttack)
+            {
+                List<string> noNovaList = new List<string>()
+                {
+                    "UpwardAttack", "LaserAttack"
+                };
+
+                chosenAttack = noNovaList[UnityEngine.Random.Range(0, noNovaList.Count)];
+                _isFirstAttack = false;
+            }
+            else
+            {
+                chosenAttack = weightedAttacks[UnityEngine.Random.Range(0, weightedAttacks.Count)];
+            }
+
+            _lastAttack = chosenAttack;
+            return chosenAttack;
         }
 
         public void AttackFinished()
@@ -180,7 +212,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
             if (beam != null)
             {
                 var target = await _target.GetPlayerTransform();
-                beam.FireSweep(origin, _poolManager);
+                beam.FireSweep(origin, _poolManager, _sweepDuration);
             }
 
             await Awaitable.WaitForSecondsAsync(_laserDuration);

@@ -3,7 +3,6 @@ using Assets.ProjectAI.Scripts.PathFinding;
 using Assets.Services;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 using Zenject;
 
 namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem
@@ -14,14 +13,19 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem
         [SerializeField] private Transform _bossSpawnTransform;
         [SerializeField] private float _spawnRadius = 5f;
         [SerializeField] GameObject _emergencyWalls;
+        [SerializeField] GameObject _door;
+        [SerializeField] Transform _camTransform;
 
         [Inject] IAssetService _assetService;
         [Inject] ObjectPoolManager _poolManager;
+
+        private CameraController _cameraController;
         private Transform _player;
         private IPlayerController _playerController;
 
-        public async void InitializeRoom(PlayerPicker playerPicker, IPlayerController playerController)
+        public async void InitializeRoom(PlayerPicker playerPicker, IPlayerController playerController, CameraController cameraController)
         {
+            _cameraController = cameraController;
             _playerController = playerController;
             await PathFindingManager.Instance.BakeFromTilemapsAsync();
             await playerPicker.SetPlayer();
@@ -33,8 +37,9 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem
                 Quaternion.identity
             );
             ORBReactor ORB = boss.GetComponent<ORBReactor>();
-            ORB.InitializeBoss(_poolManager, _assetService, _playerController);
+            ORB.InitializeBoss(_poolManager, _assetService, _playerController, _cameraController, _camTransform);
             ORB.EmergencyWalls = _emergencyWalls;
+            ORB.BossRoomDoor = _door;
         }
     }
 }
