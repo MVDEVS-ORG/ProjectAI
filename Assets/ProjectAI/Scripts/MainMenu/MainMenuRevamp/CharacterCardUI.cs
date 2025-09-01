@@ -1,6 +1,4 @@
 ﻿using Assets.ProjectAI.Scripts.Player.Characters;
-using System;
-using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,16 +13,25 @@ namespace Assets.ProjectAI.Scripts.MainMenu
         public Button selectButton;
 
         private CharacterDescriptionSO _characterData;
+        private CharacterDetailsUI _characterDetailsUI;
+        private CharacterSelectionView _characterSelectionView;
 
-        public void Setup(CharacterDescriptionSO data, Action<CharacterDescriptionSO> onClick)
+        public void Setup(CharacterDescriptionSO data, CharacterDetailsUI characterDetailsUI, CharacterSelectionView view)
         {
+            _characterSelectionView = view;
+            _characterDetailsUI = characterDetailsUI;
             _characterData = data;
             characterName.text = data.character.ToString();
             characterSprite.sprite = data.characterSprite;
             shortDescription.text = data.description;
+            selectButton.onClick.AddListener(OpenCharacterDetails);
+        }
 
-            selectButton.onClick.RemoveAllListeners();
-            selectButton.onClick.AddListener(() => onClick?.Invoke(_characterData));
+        private void OpenCharacterDetails()
+        {
+            _characterDetailsUI.gameObject.SetActive(true);
+            _characterDetailsUI.Setup(_characterData);
+            _characterSelectionView.gameObject.SetActive(false);
         }
     }
 }

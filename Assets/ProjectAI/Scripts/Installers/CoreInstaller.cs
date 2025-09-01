@@ -11,6 +11,7 @@ public class CoreInstaller : MonoInstaller
         Container.Bind<PlayerSelectionService>().AsSingle();
         Container.Bind<ObjectPoolManager>().AsSingle().NonLazy();
         Container.Bind<PlayerPicker>().AsSingle();
+        Container.Bind<IUniversalDeviceController>().To<UniversalDeviceController>().AsCached().NonLazy();
         SignalBusInstaller.Install(Container);
     }
 }
