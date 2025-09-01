@@ -37,7 +37,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
             _light2D.intensity = _minIntensity;
             _circleCollider.radius = _minRadius;
 
-            // Phase 1: Charging
+            //Charging
             float elapsed = 0f;
             while (elapsed < chargeTime)
             {
@@ -47,29 +47,39 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
                 await Awaitable.EndOfFrameAsync();
             }
 
-            // Phase 2: Explosion
+            //Explosion
             _light2D.intensity = _maxIntensity;
             _circleCollider.radius = _maxRadius;
 
-            if (_target != null)
+            float explosionElapsed = 0f;
+            while (explosionElapsed < explosionDuration)
             {
-                Vector2 dir = (_target.position - transform.position).normalized;
-                float dist = Vector2.Distance(transform.position, _target.position);
+                explosionElapsed += Time.deltaTime;
 
-                if (dist <= _maxRadius)
+                if (_target != null)
                 {
-                    RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, dist, _obstacleMask);
-                    if (!hit) // not behind obstacle
+                    Vector2 dir = (_target.position - transform.position).normalized;
+                    float dist = Vector2.Distance(transform.position, _target.position);
+
+                    if (dist <= _maxRadius)
                     {
-                        var playerHealth = _target.GetComponent<CharacterView>();
-                        playerHealth?.TakeDamage((int)_damage, transform.position);
+                        RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, dist, _obstacleMask);
+                        if (!hit) // not behind obstacle
+                        {
+                            var playerHealth = _target.GetComponent<CharacterView>();
+                            if (playerHealth != null)
+                            {
+                                // Continuous damage every frame (scaled by deltaTime)
+                                playerHealth.TakeDamage((int)(_damage * Time.deltaTime), transform.position);
+                            }
+                        }
                     }
                 }
+
+                await Awaitable.EndOfFrameAsync();
             }
 
-            await Awaitable.WaitForSecondsAsync(explosionDuration);
-
-            // Reset before returning to pool
+            //Reset before returning to pool
             _light2D.pointLightInnerAngle = 0f;
             _light2D.intensity = _minIntensity;
             _circleCollider.radius = _minRadius;

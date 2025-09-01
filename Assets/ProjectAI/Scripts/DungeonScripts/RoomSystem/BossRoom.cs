@@ -33,7 +33,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem
                 Quaternion.identity
             );
             ORBReactor ORB = boss.GetComponent<ORBReactor>();
-            ORB.Initilaize(_poolManager, _assetService, _playerController);
+            ORB.InitializeBoss(_poolManager, _assetService, _playerController);
             ORB.EmergencyWalls = _emergencyWalls;
         }
     }

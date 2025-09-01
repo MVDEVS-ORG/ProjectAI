@@ -8,7 +8,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts
     public class RangedRoomba : EnemyAI
     {
 
-        public override void Initialize(HealthModels model)
+        public override void Initialize(HealthModelsSO model)
         {
             base.Initialize(model);
         }

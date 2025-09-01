@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
 {
     // TODO: add halo range where player can take damage
-    public class ORBReactor : MonoBehaviour
+    public class ORBReactor : MonoBehaviour, IHealthSystem
     {
         [Header("References")]
         [SerializeField] private Animator _bossAnimator;
@@ -25,15 +25,25 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
         [SerializeField] private float _startingDistanceFormPlayer = 5f;
         [SerializeField] private int _noOfLightningAttack = 3;
 
+        [Header("Health Settings")]
+        [SerializeField] private HealthModelsSO _healthModel;
+
         public GameObject EmergencyWalls { get; set; }
 
+        private int _health;
+        private int _maxHealth;
+        public int Health => _health;
+
+        public int MaxHealth => _maxHealth;
 
         private bool _isInPhase1 = true;
+        private bool _bossInitialized = false;
         private ObjectPoolManager _poolManager;
         private IAssetService _assetService;
         private IPlayerController _target;
+        private BossHealthUI _bossHealthUI;
         // Use this for initialization
-        public async void Initilaize(ObjectPoolManager poolManager, IAssetService assetService, IPlayerController playerController)
+        public async void InitializeBoss(ObjectPoolManager poolManager, IAssetService assetService, IPlayerController playerController)
         {
             _poolManager = poolManager;
             _assetService = assetService;
@@ -49,6 +59,11 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
                 if(target != null && Vector2.Distance(transform.position, target.position)<= _startingDistanceFormPlayer)
                 {
                     BossWakeUp();
+                    var bossHpCanvas = await _assetService.InstantiateAsync(AddressableIds.Boss_HP_Canvas);
+                    _bossHealthUI = bossHpCanvas.GetComponent<BossHealthUI>();
+                    Initialize(_healthModel);
+                    _bossHealthUI.Initialize(_healthModel);
+                    _bossInitialized = true;
                     return;
                 }
                 await Awaitable.EndOfFrameAsync();
@@ -202,6 +217,36 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
             EmergencyWalls?.SetActive(false);
             Debug.Log(" Nova attack finished.");
             AttackFinished();
+        }
+
+        public void TakeDamage(int damage)
+        {
+            if (!_bossInitialized) return;
+            _healthModel.Health = Mathf.Max(0, _healthModel.Health - damage);
+            _bossHealthUI.AlterHealthBar();
+            if(_healthModel.Health*100/_healthModel.MaxHealth <= 40)
+            {
+                _isInPhase1 = false;
+                //transition to phase 2
+            }
+        }
+
+        public void Heal(int healing)
+        {
+            // No Healing Required
+        }
+
+        public void Initialize(HealthModelsSO model)
+        {
+            model.Health = model.MaxHealth;
+            _health = model.MaxHealth;
+            _maxHealth = model.MaxHealth;
+
+        }
+
+        public void ResetHealth()
+        {
+            // Not required
         }
 
     }

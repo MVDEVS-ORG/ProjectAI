@@ -75,7 +75,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items
             //throw new NotImplementedException();
         }
 
-        public void Initialize(HealthModels model)
+        public void Initialize(HealthModelsSO model)
         {
             
             //_health = MaxHealth;

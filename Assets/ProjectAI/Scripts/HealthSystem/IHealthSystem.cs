@@ -4,6 +4,6 @@ public interface IHealthSystem
     int MaxHealth { get; }
     void TakeDamage(int damage);
     void Heal(int healing);
-    void Initialize(HealthModels model);
+    void Initialize(HealthModelsSO model);
     void ResetHealth();
 }
