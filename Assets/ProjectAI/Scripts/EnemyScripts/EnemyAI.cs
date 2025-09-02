@@ -17,7 +17,7 @@ public enum EnemyStateTypes {
 public class EnemyAI : MonoBehaviour, IHealthSystem
 {
     public Transform attackSpawnPos;
-    public HealthModels healthModel;
+    public HealthModelsSO healthModel;
     [HideInInspector] public Animator animator;
 
     [SerializeField] private EnemyDataSO _enemyDataSO;
@@ -146,7 +146,7 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
         _health = Mathf.Clamp(_health + healing, 0, _maxHealth);
     }
 
-    public virtual void Initialize(HealthModels model)
+    public virtual void Initialize(HealthModelsSO model)
     {
         _health = model.Health;
         _maxHealth = model.MaxHealth;
