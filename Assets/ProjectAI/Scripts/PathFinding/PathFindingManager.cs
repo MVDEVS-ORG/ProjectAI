@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using Assets.ProjectAI.Scripts.DungeonScripts;
 using Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items;
+using Zenject;
+
 
 
 #if UNITY_EDITOR
@@ -38,10 +40,19 @@ namespace Assets.ProjectAI.Scripts.PathFinding
         /// </summary>
         public bool IsMapBaked => _initialBaked && _itemsBaked;
 
-        private void Awake()
+        [Inject]
+        public void Initialize()
         {
-            if (Instance == null) Instance = this;
-            else Destroy(gameObject);
+            Debug.Log("Reached here");
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            else
+            {
+                Destroy(Instance);
+                Instance = this;
+            }
         }
 
         /// <summary>

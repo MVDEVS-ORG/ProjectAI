@@ -1,4 +1,5 @@
 using Assets.ProjectAI.Scripts.DungeonScripts;
+using Assets.ProjectAI.Scripts.PathFinding;
 using Assets.ProjectAI.Scripts.Player;
 using Assets.Services;
 using System;
