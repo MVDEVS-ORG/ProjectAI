@@ -71,8 +71,6 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
                 {
                     BossRoomDoor?.SetActive(true);
                     BossWakeUp();
-                    Debug.LogError(_camController == null);
-                    Debug.LogError(_camTransform == null);
                     _camController.DetachCamera(_camTransform, 16.5f);
                     var bossHpCanvas = await _assetService.InstantiateAsync(AddressableIds.Boss_HP_Canvas);
                     _bossHealthUI = bossHpCanvas.GetComponent<BossHealthUI>();
