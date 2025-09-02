@@ -30,6 +30,7 @@ public class GamePauseController : IGamePauseController
     {
         Time.timeScale = 1f;
         _paused = false;
+        _pauseScreen?.SetActive(false);
     }
 
     private async Awaitable CreatePauseScreen()
