@@ -10,8 +10,10 @@ public class CameraController
     private CinemachineCamera _cam;
     private CinemachineBasicMultiChannelPerlin _camShakeComponent;
     private Coroutine _currentCamEffect;
+    private Coroutine _camScaleCoroutine;
     private bool _isInitialized = false;
     private bool _active = false;
+    private float _camSize = 5;
 
     public void InitializeCamera(CinemachineCamera cam)
     {
@@ -24,6 +26,12 @@ public class CameraController
     public void Initialize(Transform player)
     {
         _cam.Target.TrackingTarget = player;
+        if(_camScaleCoroutine!= null)
+        {
+            _cam.StopCoroutine(_camScaleCoroutine);
+            _camScaleCoroutine = null;
+        }
+        _camScaleCoroutine = _cam.StartCoroutine(CamScaling(_camSize));
         _isInitialized = true;
     }
 
@@ -63,4 +71,29 @@ public class CameraController
         }
         _camShakeComponent.AmplitudeGain = 0f;
     }
+
+    public void DetachCamera(Transform holdPosition, float camSize)
+    {
+        _cam.Target.TrackingTarget = holdPosition;
+        if (_camScaleCoroutine != null)
+        {
+            _cam.StopCoroutine(_camScaleCoroutine);
+            _camScaleCoroutine = null;
+        }
+        _camScaleCoroutine = _cam.StartCoroutine(CamScaling(camSize));
+    }
+
+    IEnumerator CamScaling(float value)
+    {
+        float timer = 0f;
+        float camStartSize = _cam.Lens.OrthographicSize;
+        while (timer<1)
+        {
+            _cam.Lens.OrthographicSize = Mathf.Lerp(camStartSize, value, timer);
+            timer += Time.deltaTime;
+            yield return Awaitable.EndOfFrameAsync();
+        }
+        _cam.Lens.OrthographicSize = value;
+    }
+
 }

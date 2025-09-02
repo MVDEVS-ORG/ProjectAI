@@ -105,7 +105,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts
         #endregion
 
         #region Sweep Fire
-        public void FireSweep(Vector3 origin, ObjectPoolManager pool, float sweepDuration = 1f)
+        public void FireSweep(Vector3 origin, ObjectPoolManager pool, float sweepDuration = 1.5f)
         {
             _pool = pool;
             _origin = origin;
