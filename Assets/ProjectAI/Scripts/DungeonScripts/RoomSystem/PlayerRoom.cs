@@ -14,9 +14,6 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem
 
         public List<ItemPlacementData> itemData;
 
-        [SerializeField]
-        private PrefabPlacer _prefabPlacer;
-
         private Vector2 _playerSpawnPoint = Vector2.zero;
 
         public override async Awaitable<List<GameObject>> ProcessRoom(Vector2Int roomCenter, HashSet<Vector2Int> roomFloor, HashSet<Vector2Int> roomFloorNoCorridors, IAssetService assetService)
@@ -49,7 +46,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem
         )
         {
             ItemPlacementHelper itemPlacementHelper = new ItemPlacementHelper(roomFloor, roomFloorNoCorridors);
-            List<GameObject> placedObjects = await _prefabPlacer.PlaceAllItems(itemData, itemPlacementHelper, assetService);
+            List<GameObject> placedObjects = await PrefabPlacer.PlaceAllItems(itemData, itemPlacementHelper, assetService);
 
             Vector2Int playerSpawnPoint = roomCenter;
             _playerSpawnPoint = roomCenter;

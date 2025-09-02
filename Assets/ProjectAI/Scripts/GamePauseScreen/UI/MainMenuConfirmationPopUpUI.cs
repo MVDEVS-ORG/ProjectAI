@@ -12,11 +12,6 @@ public class MainMenuConfirmationPopUpUI : MonoBehaviour
     [Header("Transitions")]
     [SerializeField] GamePauseScreenUI _gamePauseScreenUI;
 
-    /*private void OnEnable()
-    {
-        _gamePauseScreenUI.gameObject.SetActive(false);
-    }*/
-
     private void Start()
     {
         Accept.onClick.AddListener(BackToMainMenu);

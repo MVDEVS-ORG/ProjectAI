@@ -9,7 +9,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items
 {
     public class PrefabPlacer : MonoBehaviour
     {
-        public async Awaitable<GameObject> CreateObject(string prefabAddress, Vector2 placementPosition, IAssetService assetService)
+        public static async Awaitable<GameObject> CreateObject(string prefabAddress, Vector2 placementPosition, IAssetService assetService)
         {
             if(prefabAddress == null)
             {
@@ -20,7 +20,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items
             return newItem;
         }
 
-        public async Awaitable<List<GameObject>> PlaceAllItems(List<ItemPlacementData> itemData, ItemPlacementHelper itemPlacementHelper, IAssetService assetService)
+        public static async Awaitable<List<GameObject>> PlaceAllItems(List<ItemPlacementData> itemData, ItemPlacementHelper itemPlacementHelper, IAssetService assetService)
         {
             if (itemData == null) return null;
             List<GameObject> placedObjects = new List<GameObject>();
@@ -47,7 +47,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items
             return placedObjects;
         }
 
-        public async Awaitable<List<GameObject>> PlaceEnemies(ObjectPoolManager opManager, List<EnemyPlacementData> enemyPlacementData, ItemPlacementHelper itemPlacementHelper, Transform characterView, Transform spawnerTransform)
+        public static async Awaitable<List<GameObject>> PlaceEnemies(ObjectPoolManager opManager, List<EnemyPlacementData> enemyPlacementData, ItemPlacementHelper itemPlacementHelper, Transform characterView, Transform spawnerTransform)
         {
             List<GameObject> placedObjects = new List<GameObject>();
 
@@ -83,7 +83,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items
             return placedObjects;
         }
 
-        private async Awaitable<GameObject> PlaceItem(ItemData itemData, Vector2 value, IAssetService assetService)
+        private static async Awaitable<GameObject> PlaceItem(ItemData itemData, Vector2 value, IAssetService assetService)
         {
             GameObject newItem = await CreateObject(itemData.itemId, value, assetService);
             newItem.GetComponent<Item>().InitializeItemData(itemData);

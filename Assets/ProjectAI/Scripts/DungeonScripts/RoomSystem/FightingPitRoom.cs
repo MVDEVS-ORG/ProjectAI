@@ -11,8 +11,6 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem
 {
     public class FightingPitRoom : RoomGenerator
     {
-        [SerializeField]
-        private PrefabPlacer prefabPlacer;
 
         public List<EnemyPlacementData> enemyPlacementData;
         public List<ItemPlacementData> itemData;
@@ -39,7 +37,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem
 
             Transform characterView = playerTransform;
 
-            var placedObjects = await prefabPlacer.PlaceAllItems(itemData, itemPlacementHelper, assetService);
+            var placedObjects = await PrefabPlacer.PlaceAllItems(itemData, itemPlacementHelper, assetService);
             /*placedObjects.AddRange(await prefabPlacer.PlaceEnemies(enemyPlacementData, itemPlacementHelper, assetService, characterView));*/
             var enemySpawnerObj = await assetService.InstantiateWithPRAsync(AddressableIds.Enemy_Spawner, (Vector3)itemPlacementHelper.GetItemPlacementPosition(PlacementType.OpenSpace, 1, Vector2Int.one, false), Quaternion.identity);
             placedObjects.Add(enemySpawnerObj);

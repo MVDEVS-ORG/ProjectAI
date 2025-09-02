@@ -23,7 +23,6 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Enemies
 
         public void Attack()
         {
-            Debug.LogError(currentState);
             (currentState as MeleeAttack)?.Attack();
         }
     }
