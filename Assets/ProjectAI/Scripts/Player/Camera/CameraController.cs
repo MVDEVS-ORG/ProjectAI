@@ -2,7 +2,6 @@ using System.Collections;
 using Unity.Cinemachine;
 using UnityEngine;
 using Zenject;
-using Zenject.SpaceFighter;
 
 public class CameraController
 {
