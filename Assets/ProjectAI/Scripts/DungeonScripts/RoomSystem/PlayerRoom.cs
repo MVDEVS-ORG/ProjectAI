@@ -29,11 +29,9 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem
         {
             if (_playerSpawnPoint != Vector2.zero)
             {
-                Debug.LogError($" roomCenter: {_playerSpawnPoint}");
                 Vector2Int spawnCell = Vector2Int.RoundToInt(_playerSpawnPoint);
                 Vector2Int validCell = PathFindingManager.Instance.GetNearestValidWalkableTile(spawnCell);
                 var resultPos = PathFindingManager.Instance.floorTilemap.GetCellCenterWorld((Vector3Int)validCell);
-                Debug.LogError($" roomCenter: {resultPos}");
                 return resultPos;
             }
 

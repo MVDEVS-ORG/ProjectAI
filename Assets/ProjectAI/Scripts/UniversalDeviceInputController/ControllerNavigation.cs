@@ -34,7 +34,6 @@ public class ControllerNavigation : MonoBehaviour
         _universalDeviceController.OnDeviceChanged += OnDeviceChanged;
         _ = _universalDeviceController.OnGamePadSetUI(_lastSelectedObject != null ? _lastSelectedObject : _firstSelectedObject);
         _inputAction = EventSystem.current.GetComponent<InputSystemUIInputModule>().actionsAsset;
-        Debug.Log(_inputAction.FindActionMap("UI").FindAction("Back") != null);
         _inputAction.FindActionMap("UI").FindAction("Back").performed += OnBackAction;
         _inputAction.FindActionMap("UI").FindAction("Back").Enable();
     }
@@ -54,7 +53,7 @@ public class ControllerNavigation : MonoBehaviour
 
     private void OnDisable()
     {
-        _lastSelectedObject = EventSystem.current.currentSelectedGameObject??null;
+        _lastSelectedObject = EventSystem.current?.currentSelectedGameObject??null;
         _universalDeviceController.OnDeviceChanged -= OnDeviceChanged;
         _inputAction.FindActionMap("UI").FindAction("Back").performed -= OnBackAction;
         _inputAction.FindActionMap("UI").FindAction("Back").Disable();

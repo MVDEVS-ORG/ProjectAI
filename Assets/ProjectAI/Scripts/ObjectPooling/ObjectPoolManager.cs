@@ -172,6 +172,17 @@ public class ObjectPoolManager
             }
             temp.Clear();
         }
+        foreach(var obj in _poolObject)
+        {
+            if(obj==null)
+            {
+                continue;
+            }
+            else
+            {
+                GameObject.Destroy(obj);
+            }
+        }
         _objectPrefabMap.Clear();
         _poolObject.Clear();
     }

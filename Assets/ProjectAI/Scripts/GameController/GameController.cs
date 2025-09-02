@@ -34,7 +34,6 @@ public class GameController : IGameController
             _playerController.EnableController(true);
             await _upgradeController.Initialize();
             await _sceneManager.FadeBack();
-            Debug.LogError($"Spawned Enemies are: {_enemies.Count}");
         }
         catch (Exception exception)
         {
