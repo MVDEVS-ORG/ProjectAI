@@ -15,6 +15,8 @@ public class PlayerController : IPlayerController
     [Inject] IGunsController _gunsController;
     [Inject] IMeleeWeaponController _meleeWeaponController;
     [Inject] IUpgradeController _upgradeController;
+    [Inject] IGamePauseController _gamePauseController;
+    [Inject] ISceneManager _sceneManager;
     [Inject] CameraController _cameraController;
     [Inject] GamepadRumble _rumbleController;
     [Inject] SignalBus _signalBus;
@@ -43,7 +45,12 @@ public class PlayerController : IPlayerController
 
     public void Initialize()
     {
+        
+    }
 
+    private void StopControllerOnLevelChange()
+    {
+        _initialized = false;
     }
 
     async Awaitable IPlayerController.SpawnPlayer(Vector3 pos, PlayerCharactersSO playerCharacter)
@@ -86,7 +93,7 @@ public class PlayerController : IPlayerController
             //Assign the _player model and the controller to the view alongside the _player cursor aka reticle for shooting
             (GameObject,GameObject) bulletCursor = await PlayerCursorInitialization();
             _bulletCursorUI = bulletCursor.Item2.transform;
-            _characterView.Initialize(this, _playerModel, bulletCursor.Item1, bulletCursor.Item2,_signalBus);
+            _characterView.Initialize(this, _playerModel, bulletCursor.Item1, bulletCursor.Item2,_signalBus,_gamePauseController);
             Debug.Log("PlayerView Initialized");
             #endregion
 
@@ -128,7 +135,7 @@ public class PlayerController : IPlayerController
 
             //Assign the player abilities
             _ = _abilityController.Initialize(_assetService, _playerModel, (this as IPlayerController), _gunsController, _meleeWeaponController);
-
+            _sceneManager.BeforeChangeScene += StopControllerOnLevelChange;
         }
         catch (Exception exception)
         {

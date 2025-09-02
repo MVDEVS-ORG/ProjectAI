@@ -147,18 +147,43 @@ public class ObjectPoolManager
 
     public void DestroyObject(GameObject gameobject)
     {
-        string address = _objectPrefabMap[gameobject];
-        _objectPrefabMap.Remove(gameobject);
-        _objectPools[address].Remove(gameobject);
-        _poolObject.Remove(gameobject);
-        GameObject.Destroy(gameobject);
+        try
+        {
+            string address = _objectPrefabMap[gameobject];
+            _objectPrefabMap.Remove(gameobject);
+            _objectPools[address].Remove(gameobject);
+            _poolObject.Remove(gameobject);
+            GameObject.Destroy(gameobject);
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError(ex);
+        }
     }
 
     public void RemoveAllPoolObjects()
     {
-        foreach (GameObject gameObject in _poolObject)
+        foreach(var obj in _objectPools)
         {
-            DestroyObject(gameObject);
+            List<GameObject> temp = obj.Value;
+            for(int i=0;i<temp.Count;i++)
+            {
+                GameObject.Destroy(temp[i]);
+            }
+            temp.Clear();
         }
+        foreach(var obj in _poolObject)
+        {
+            if(obj==null)
+            {
+                continue;
+            }
+            else
+            {
+                GameObject.Destroy(obj);
+            }
+        }
+        _objectPrefabMap.Clear();
+        _poolObject.Clear();
     }
 }

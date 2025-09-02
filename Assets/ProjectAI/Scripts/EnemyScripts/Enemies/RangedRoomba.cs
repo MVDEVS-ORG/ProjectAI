@@ -25,7 +25,6 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts
 
         public void Attack()
         {
-            Debug.LogError(currentState);
             (currentState as RangedAttack)?.Attack();
         }
     }

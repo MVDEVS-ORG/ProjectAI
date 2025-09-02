@@ -17,7 +17,6 @@ public class ShotGun : GunsView
             _view = PlayerTransform.GetComponent<CharacterView>();
         }
         _firing = firing;
-        Debug.LogError(_firingGun == null);
         if (_firingGun == null)
         {
             _firingGun = StartCoroutine(Firing());

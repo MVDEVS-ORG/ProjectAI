@@ -1,9 +1,12 @@
 using Assets.ProjectAI.Scripts.MainMenu;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 public class MainMenuView : MonoBehaviour
 {
+    [Inject] ISceneManager _sceneManager;
+
     [SerializeField] private Button _newGame;
     [SerializeField] private Button _settings;
     [SerializeField] private Button _credits;
@@ -18,6 +21,7 @@ public class MainMenuView : MonoBehaviour
         _settings.onClick.AddListener(OpenSettings);
         _credits.onClick.AddListener(OpenCredits);
         _exit.onClick.AddListener(ExitGame);
+        _sceneManager.FadeBack();
     }
 
     private void StartNewGame()
