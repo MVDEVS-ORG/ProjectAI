@@ -43,14 +43,6 @@ public class GunsModel
 
     public static GunsModel operator +(GunsModel left, GunsModel right)
     {
-        /*GunsModel temp = new GunsModel();
-        temp.PrimaryProjectileAddressable = left.PrimaryProjectileAddressable;
-        temp.SecondaryProjectileAddressable = left.SecondaryProjectileAddressable;
-        temp.GunUIAddressable = left.GunUIAddressable;
-        temp.ElipseVerticalRadius = left.ElipseVerticalRadius;
-        temp.ElipseHorizontalRadius = left.ElipseHorizontalRadius;
-        temp.OverHeatValue = left.OverHeatValue;
-        temp.Empty = left.Empty;*/
         // the above values do not change
 
         left.FireRate = left.FireRate + right.FireRate;
@@ -65,14 +57,6 @@ public class GunsModel
 
     public static GunsModel operator *(GunsModel left, GunsModel right)
     {
-        /*GunsModel temp = new GunsModel();
-        temp.PrimaryProjectileAddressable = left.PrimaryProjectileAddressable;
-        temp.SecondaryProjectileAddressable = left.SecondaryProjectileAddressable;
-        temp.GunUIAddressable = left.GunUIAddressable;
-        temp.ElipseVerticalRadius = left.ElipseVerticalRadius;
-        temp.ElipseHorizontalRadius = left.ElipseHorizontalRadius;
-        temp.OverHeatValue = left.OverHeatValue;
-        temp.Empty = left.Empty;*/
         // the above values do not change
 
         left.FireRate = left.FireRate * right.FireRate;
@@ -87,14 +71,6 @@ public class GunsModel
 
     public static GunsModel operator %(GunsModel left, GunsModel right)
     {
-        /*GunsModel temp = new GunsModel();
-        temp.PrimaryProjectileAddressable = left.PrimaryProjectileAddressable;
-        temp.SecondaryProjectileAddressable = left.SecondaryProjectileAddressable;
-        temp.GunUIAddressable = left.GunUIAddressable;
-        temp.ElipseVerticalRadius = left.ElipseVerticalRadius;
-        temp.ElipseHorizontalRadius = left.ElipseHorizontalRadius;
-        temp.OverHeatValue = left.OverHeatValue;
-        temp.Empty = left.Empty;*/
         // the above values do not change
 
         left.FireRate = right.FireRate != 0 ? right.FireRate : left.FireRate;

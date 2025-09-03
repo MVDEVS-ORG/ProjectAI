@@ -9,6 +9,7 @@ public class GamePauseController : IGamePauseController
     private bool _paused = false;
     bool IGamePauseController.IsPaused => _paused;
     private GameObject _pauseScreen;
+    private float _timeScaleBeforePause;
 
     [Inject]
     public void Initialize()
@@ -20,6 +21,7 @@ public class GamePauseController : IGamePauseController
     {
         if (!_paused)
         {
+            _timeScaleBeforePause = Time.timeScale;
             Time.timeScale = 0f;
             _pauseScreen.SetActive(true);
             _paused = true;
@@ -28,7 +30,7 @@ public class GamePauseController : IGamePauseController
 
     void IGamePauseController.ResumeGame()
     {
-        Time.timeScale = 1f;
+        Time.timeScale = _timeScaleBeforePause;
         _paused = false;
         _pauseScreen?.SetActive(false);
     }

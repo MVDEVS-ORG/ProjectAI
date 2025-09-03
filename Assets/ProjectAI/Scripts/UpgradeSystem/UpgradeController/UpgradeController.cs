@@ -29,7 +29,7 @@ public class UpgradeController : IUpgradeController
 
     void IUpgradeController.DisplayUpgrades()
     {
-        Cursor.visible = true;
+        //Cursor.visible = true;
         _upgradesPopup.gameObject.SetActive(true);
         _upgradesCanvas.enabled = true;
         _upgradesPopup.UpdateList(GenerateUpgrades());
@@ -41,7 +41,6 @@ public class UpgradeController : IUpgradeController
         #region logic for tier one items
 
         List<UpgradeSO> possibleUpgrades = new List<UpgradeSO>(_upgradeList.Tier1);
-        Debug.LogError(possibleUpgrades.Count);
         foreach (UpgradeSO upgrade in _activeUpgrades)
         {
             if (_activeUpgrades.Contains(upgrade.FuturePath))
@@ -88,7 +87,6 @@ public class UpgradeController : IUpgradeController
                 upgrades.Add(upgrade);
             }
         }
-        Debug.LogError(upgrades.Count);
         return upgrades;
         #endregion
     }

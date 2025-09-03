@@ -15,4 +15,4 @@ MonoBehaviour:
   ProjectileDuration: 4
   ProjectileSpeed: 20
   ProjectileDistance: 0
-  Damage: 2
+  Damage: 100

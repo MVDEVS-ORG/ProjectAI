@@ -8,7 +8,6 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts
 {
     public class EnemySpawner : MonoBehaviour
     {
-        [SerializeField] private PrefabPlacer _prefabPlacer;
         [SerializeField] private float _detectionRange = 4f;
 
         private ObjectPoolManager _poolManager;

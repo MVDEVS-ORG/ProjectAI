@@ -29,6 +29,8 @@ namespace Assets.ProjectAI.Scripts.MainMenu
 
         private IUniversalDeviceController _universalDeviceController;
 
+        bool _toDungeonSelected = false;
+
         public void Setup(CharacterDescriptionSO data)
         {
             _character = data.character;
@@ -47,8 +49,13 @@ namespace Assets.ProjectAI.Scripts.MainMenu
 
         private void EnterTheDungeonButtonSelected()
         {
-            _playerPicker.SelectPlayer(_character);
-            _ = _sceneManager.LoadSceneAsync("GameScene");
+            if (!_toDungeonSelected)
+            {
+                _toDungeonSelected = true;
+                _playerPicker.SelectPlayer(_character);
+                _ = _sceneManager.LoadSceneAsync("GameScene");
+                gameObject.SetActive(false);
+            }
         }
 
         private void BackToCharacterSelect()
@@ -61,6 +68,12 @@ namespace Assets.ProjectAI.Scripts.MainMenu
         {
             _changeAvatarButton.onClick.RemoveAllListeners();
             _enterDungeonButton.onClick.RemoveAllListeners();
+            UIController.LookAtUI(false, gameObject);
+        }
+
+        private void OnEnable()
+        {
+            UIController.LookAtUI(true, gameObject);
         }
     }
 }

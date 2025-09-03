@@ -12,6 +12,11 @@ public class MainMenuConfirmationPopUpUI : MonoBehaviour
     [Header("Transitions")]
     [SerializeField] GamePauseScreenUI _gamePauseScreenUI;
 
+    private void OnEnable()
+    {
+        UIController.LookAtUI(true, gameObject);
+    }
+
     private void Start()
     {
         Accept.onClick.AddListener(BackToMainMenu);
@@ -22,11 +27,17 @@ public class MainMenuConfirmationPopUpUI : MonoBehaviour
     {
         _sceneManager.LoadSceneAsync("MainMenu");
         Time.timeScale = 1.0f;
+        gameObject.SetActive(false);
     }
 
     private void BackToPauseScreen()
     {
         gameObject.SetActive(false);
         _gamePauseScreenUI.gameObject.SetActive(true);
+    }
+
+    private void OnDisable()
+    {
+        UIController.LookAtUI(false, gameObject);
     }
 }

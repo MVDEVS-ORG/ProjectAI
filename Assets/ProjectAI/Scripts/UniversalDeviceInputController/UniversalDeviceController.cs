@@ -67,7 +67,7 @@ public class UniversalDeviceController : IUniversalDeviceController
     private void SwitchToKBM()
     {
         Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = true;
+        Cursor.visible = UIController.LookingAtUI; 
         _currentControllerType = ControllerType.KBM;
     }
 
@@ -77,12 +77,11 @@ public class UniversalDeviceController : IUniversalDeviceController
         EventSystem.current.SetSelectedGameObject(obj);
     }
 
-    async Awaitable IUniversalDeviceController.OnGamePadSetUI(GameObject obj)
+    void IUniversalDeviceController.OnGamePadSetUI(GameObject obj)
     {
         (this as IUniversalDeviceController).GetCurrentActiveDevice();
         if (_currentControllerType == ControllerType.GamePad)
         {
-            await Awaitable.EndOfFrameAsync();
             EventSystem.current.SetSelectedGameObject(obj);
         }
         else

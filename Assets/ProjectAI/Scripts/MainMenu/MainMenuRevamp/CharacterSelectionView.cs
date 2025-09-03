@@ -11,7 +11,6 @@ namespace Assets.ProjectAI.Scripts.MainMenu
     {
         [Inject] IAssetService _assetService;
         [Inject] PlayerPicker _playerPicker;
-        [Inject] IUniversalDeviceController _universalDeviceController;
 
         [SerializeField] private Transform _cardsContainer;
         [SerializeField] private Button _backToMainMenu;
@@ -24,6 +23,15 @@ namespace Assets.ProjectAI.Scripts.MainMenu
         [SerializeField] private MainMenuView _mainMenu;
         [SerializeField] private CharacterDetailsUI _characterDetailsUI;
 
+        private void OnEnable()
+        {
+            UIController.LookAtUI(true, gameObject);
+        }
+
+        private void OnDisable()
+        {
+            UIController.LookAtUI(false, gameObject);
+        }
         public async Awaitable Initialize()
         {
             await LoadCharacters();
@@ -36,38 +44,6 @@ namespace Assets.ProjectAI.Scripts.MainMenu
             }
             _isInitialized = true;
             _backToMainMenu.onClick.AddListener(ToMainMenu);
-        }
-
-        private void OnDeviceChanged(ControllerType controller)
-        {
-            if (controller == ControllerType.GamePad)
-            {
-                _universalDeviceController.SetGameObjectUI(_backToMainMenu.gameObject);
-            }
-            else
-            {
-                _universalDeviceController.SetGameObjectUI(null);
-            }
-        }
-
-        private async void OnEnable()
-        {
-            await Awaitable.EndOfFrameAsync();
-            _universalDeviceController.OnDeviceChanged += OnDeviceChanged;
-            _ = _universalDeviceController.OnGamePadSetUI(_backToMainMenu.gameObject);
-        }
-
-        private void OnApplicationFocus(bool focus)
-        {
-            if (focus)
-            {
-                _universalDeviceController.OnGamePadSetUI(_backToMainMenu.gameObject);
-            }
-        }
-
-        private void OnDisable()
-        {
-            _universalDeviceController.OnDeviceChanged -= OnDeviceChanged;
         }
 
         private void Start()
