@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -9,6 +10,8 @@ using Zenject;
 public class ControllerNavigation : MonoBehaviour
 {
     [Inject] IUniversalDeviceController _universalDeviceController;
+
+    public static List<ControllerNavigation> _activeNavigators = new();
 
     [SerializeField] private GameObject _firstSelectedObject;
     [SerializeField] private Button _primaryBackButton;
@@ -28,11 +31,39 @@ public class ControllerNavigation : MonoBehaviour
         }
     }
 
+    public void ForcedSelectionAfterInitialization()
+    {
+        ControllerType controller = _universalDeviceController.GetCurrentActiveDevice();
+        if (controller == ControllerType.GamePad)
+        {
+            EventSystem.current.SetSelectedGameObject(_lastSelectedObject != null ? _lastSelectedObject : _firstSelectedObject);
+        }
+        else
+        {
+            EventSystem.current.SetSelectedGameObject(_lastSelectedObject != null ? _lastSelectedObject : _firstSelectedObject);
+        }
+    }
+
     private async void OnEnable()
     {
-        await Awaitable.EndOfFrameAsync();
+        if (_universalDeviceController != null)
+        {
+            await Awaitable.EndOfFrameAsync();
+        }
+        /*if (_activeNavigators != null && _activeNavigators.Count > 0)
+        {
+            for (int i = 0; i < _activeNavigators.Count; i++)
+            {
+                Debug.Log($"Hashcode: {_activeNavigators[i].GetHashCode()} + object name {_activeNavigators[i].gameObject}");
+                if (_activeNavigators[i] != this)
+                {
+                    _activeNavigators[i].enabled = false;
+                }
+            }
+        }*/
+        _activeNavigators.Add(this);
         _universalDeviceController.OnDeviceChanged += OnDeviceChanged;
-        _ = _universalDeviceController.OnGamePadSetUI(_lastSelectedObject != null ? _lastSelectedObject : _firstSelectedObject);
+        _universalDeviceController.OnGamePadSetUI(_lastSelectedObject != null ? _lastSelectedObject : _firstSelectedObject);
         _inputAction = EventSystem.current.GetComponent<InputSystemUIInputModule>().actionsAsset;
         _inputAction.FindActionMap("UI").FindAction("Back").performed += OnBackAction;
         _inputAction.FindActionMap("UI").FindAction("Back").Enable();
@@ -53,6 +84,11 @@ public class ControllerNavigation : MonoBehaviour
 
     private void OnDisable()
     {
+        _activeNavigators.Remove(this);
+        if (_activeNavigators != null && _activeNavigators.Count > 0)
+        {
+            _activeNavigators[_activeNavigators.Count-1].ForcedSelectionAfterInitialization();
+        }
         _lastSelectedObject = EventSystem.current?.currentSelectedGameObject??null;
         _universalDeviceController.OnDeviceChanged -= OnDeviceChanged;
         _inputAction.FindActionMap("UI").FindAction("Back").performed -= OnBackAction;

@@ -29,6 +29,8 @@ namespace Assets.ProjectAI.Scripts.MainMenu
 
         private IUniversalDeviceController _universalDeviceController;
 
+        bool _toDungeonSelected = false;
+
         public void Setup(CharacterDescriptionSO data)
         {
             _character = data.character;
@@ -47,8 +49,12 @@ namespace Assets.ProjectAI.Scripts.MainMenu
 
         private void EnterTheDungeonButtonSelected()
         {
-            _playerPicker.SelectPlayer(_character);
-            _ = _sceneManager.LoadSceneAsync("GameScene");
+            if (!_toDungeonSelected)
+            {
+                _toDungeonSelected = true;
+                _playerPicker.SelectPlayer(_character);
+                _ = _sceneManager.LoadSceneAsync("GameScene");
+            }
         }
 
         private void BackToCharacterSelect()

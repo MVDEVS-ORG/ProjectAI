@@ -21,7 +21,6 @@ public class GunnerAbility : CharacterAbility
 
     public override void UseAbility()
     {
-        Debug.LogError("Reached here");
         if(AbilityOnCooldown)
         {
             return;

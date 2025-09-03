@@ -7,10 +7,10 @@ public class UpgradesPopUp : MonoBehaviour
 {
     [SerializeField] List<UpgradeCard> _upgradeCards;
     private IUpgradeController _upgradeController;
+    [SerializeField] private ControllerNavigation _controllerNavigation;
+
     public void UpdateList(List<List<UpgradeSO>> ListOfUpgrades)
     {
-        EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(_upgradeCards[0].gameObject);
         if (ListOfUpgrades != null)
         {
             int i = 0;
@@ -23,6 +23,7 @@ public class UpgradesPopUp : MonoBehaviour
                 _upgradeCards[i].gameObject.SetActive(false);
             }
         }
+        //_controllerNavigation.ForcedSelectionAfterInitialization();
         Time.timeScale = 0f;
     }
 
@@ -33,6 +34,7 @@ public class UpgradesPopUp : MonoBehaviour
         {
             card.Initialize(this, assetService);
         }
+
     }
 
 
@@ -51,14 +53,14 @@ public class UpgradesPopUp : MonoBehaviour
         }
     }
 
-    private void OnEnable()
+    public void SkipUpgrade()
     {
-        EventSystem.current.firstSelectedGameObject = _upgradeCards[0].gameObject;
+        gameObject.SetActive(false);
+        Time.timeScale = 1f;
     }
 
-    private void OnDisable()
+    /*private void OnEnable()
     {
-        EventSystem.current.firstSelectedGameObject = null;
-    }
-
+        //EventSystem.current.firstSelectedGameObject = _upgradeCards[0].gameObject;
+    }*/
 }
