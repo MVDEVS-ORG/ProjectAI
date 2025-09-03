@@ -148,6 +148,14 @@ public class CharacterView : MonoBehaviour
             {
                 _playerInput.SwitchCurrentControlScheme("Controller", Gamepad.current);
             }
+            else
+            {
+                if (Time.timeScale != 0)
+                {
+                    Cursor.lockState = CursorLockMode.Confined;
+                    Cursor.visible = false;
+                }
+            }
         }
     }
 
@@ -310,12 +318,22 @@ public class CharacterView : MonoBehaviour
             else
             {
                 _playerInput.SwitchCurrentControlScheme("KBM", Keyboard.current, Mouse.current);
+                if (Time.timeScale != 0)
+                {
+                    Cursor.lockState = CursorLockMode.Confined;
+                    Cursor.visible = false;
+                }
             }
         }
         catch (Exception exception)
         {
             Debug.Log(exception);
             _playerInput.SwitchCurrentControlScheme("KBM", Keyboard.current, Mouse.current);
+            if (Time.timeScale != 0)
+            {
+                Cursor.lockState = CursorLockMode.Confined;
+                Cursor.visible = false;
+            }
         }
     }
 
@@ -331,6 +349,11 @@ public class CharacterView : MonoBehaviour
         else if(Gamepad.all.Count == 0)
         {
             _playerInput.SwitchCurrentControlScheme("KBM", Keyboard.current, Mouse.current);
+            if (Time.timeScale != 0)
+            {
+                Cursor.lockState = CursorLockMode.Confined;
+                Cursor.visible = false;
+            }
         }
     }
 

@@ -50,17 +50,6 @@ public class ControllerNavigation : MonoBehaviour
         {
             await Awaitable.EndOfFrameAsync();
         }
-        /*if (_activeNavigators != null && _activeNavigators.Count > 0)
-        {
-            for (int i = 0; i < _activeNavigators.Count; i++)
-            {
-                Debug.Log($"Hashcode: {_activeNavigators[i].GetHashCode()} + object name {_activeNavigators[i].gameObject}");
-                if (_activeNavigators[i] != this)
-                {
-                    _activeNavigators[i].enabled = false;
-                }
-            }
-        }*/
         _activeNavigators.Add(this);
         _universalDeviceController.OnDeviceChanged += OnDeviceChanged;
         _universalDeviceController.OnGamePadSetUI(_lastSelectedObject != null ? _lastSelectedObject : _firstSelectedObject);

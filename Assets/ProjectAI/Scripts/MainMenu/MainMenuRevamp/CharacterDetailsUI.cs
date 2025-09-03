@@ -54,6 +54,7 @@ namespace Assets.ProjectAI.Scripts.MainMenu
                 _toDungeonSelected = true;
                 _playerPicker.SelectPlayer(_character);
                 _ = _sceneManager.LoadSceneAsync("GameScene");
+                gameObject.SetActive(false);
             }
         }
 
@@ -67,6 +68,12 @@ namespace Assets.ProjectAI.Scripts.MainMenu
         {
             _changeAvatarButton.onClick.RemoveAllListeners();
             _enterDungeonButton.onClick.RemoveAllListeners();
+            UIController.LookAtUI(false, gameObject);
+        }
+
+        private void OnEnable()
+        {
+            UIController.LookAtUI(true, gameObject);
         }
     }
 }

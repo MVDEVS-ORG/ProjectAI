@@ -9,6 +9,11 @@ public class UpgradesPopUp : MonoBehaviour
     private IUpgradeController _upgradeController;
     [SerializeField] private ControllerNavigation _controllerNavigation;
 
+    private void OnEnable()
+    {
+        UIController.LookAtUI(true, gameObject);
+    }
+
     public void UpdateList(List<List<UpgradeSO>> ListOfUpgrades)
     {
         if (ListOfUpgrades != null)
@@ -23,7 +28,6 @@ public class UpgradesPopUp : MonoBehaviour
                 _upgradeCards[i].gameObject.SetActive(false);
             }
         }
-        //_controllerNavigation.ForcedSelectionAfterInitialization();
         Time.timeScale = 0f;
     }
 
@@ -59,8 +63,8 @@ public class UpgradesPopUp : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    /*private void OnEnable()
+    private void OnDisable()
     {
-        //EventSystem.current.firstSelectedGameObject = _upgradeCards[0].gameObject;
-    }*/
+        UIController.LookAtUI(false, gameObject);
+    }
 }

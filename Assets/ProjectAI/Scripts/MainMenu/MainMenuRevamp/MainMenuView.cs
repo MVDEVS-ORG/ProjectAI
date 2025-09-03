@@ -15,6 +15,16 @@ public class MainMenuView : MonoBehaviour
     [Header("Transitions to")]
     [SerializeField] private CharacterSelectionView _characterSelection;
 
+    private void OnEnable()
+    {
+        UIController.LookAtUI(true, gameObject);
+    }
+
+    private void OnDisable()
+    {
+        UIController.LookAtUI(false, gameObject);
+    }
+
     private void Start()
     {
         _newGame.onClick.AddListener(StartNewGame);

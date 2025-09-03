@@ -67,7 +67,7 @@ public class UniversalDeviceController : IUniversalDeviceController
     private void SwitchToKBM()
     {
         Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = true;
+        Cursor.visible = UIController.LookingAtUI; 
         _currentControllerType = ControllerType.KBM;
     }
 

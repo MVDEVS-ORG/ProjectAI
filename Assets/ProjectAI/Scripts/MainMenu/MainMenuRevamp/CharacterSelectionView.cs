@@ -23,6 +23,15 @@ namespace Assets.ProjectAI.Scripts.MainMenu
         [SerializeField] private MainMenuView _mainMenu;
         [SerializeField] private CharacterDetailsUI _characterDetailsUI;
 
+        private void OnEnable()
+        {
+            UIController.LookAtUI(true, gameObject);
+        }
+
+        private void OnDisable()
+        {
+            UIController.LookAtUI(false, gameObject);
+        }
         public async Awaitable Initialize()
         {
             await LoadCharacters();

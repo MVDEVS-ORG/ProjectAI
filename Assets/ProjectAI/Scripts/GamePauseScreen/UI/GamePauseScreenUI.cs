@@ -13,6 +13,11 @@ public class GamePauseScreenUI : MonoBehaviour
     [Header("Transitions")]
     [SerializeField] private MainMenuConfirmationPopUpUI _mainMenuConfirmationPopUpUI;
 
+    private void OnEnable()
+    {
+        UIController.LookAtUI(true, gameObject);
+    }
+
     void Start()
     {
         Resume.onClick.AddListener(ResumeGame);
@@ -34,5 +39,10 @@ public class GamePauseScreenUI : MonoBehaviour
     {
         _mainMenuConfirmationPopUpUI.gameObject.SetActive(true);
         gameObject.SetActive(false);
+    }
+
+    private void OnDisable()
+    {
+        UIController.LookAtUI(false, gameObject);
     }
 }
