@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 58ca997f0a3dfb84590febf580194214
 timeCreated: 1538196674
-licenseType: Pro
+licenseType: Store
 PluginImporter:
   externalObjects: {}
   serializedVersion: 2
@@ -30,3 +30,10 @@ PluginImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 157735
+  packageName: Extenject Dependency Injection IOC
+  packageVersion: 9.2.0
+  assetPath: Assets/Plugins/Zenject/OptionalExtras/ReflectionBaking/Lib/Zenject.ReflectionBaking.Mono.Cecil.Rocks.dll
+  uploadId: 370902

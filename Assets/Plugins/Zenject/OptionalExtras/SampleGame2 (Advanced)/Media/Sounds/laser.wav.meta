@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 34c638d8d99ccfd44a261f13505ab317
 timeCreated: 1484701350
-licenseType: Free
+licenseType: Store
 AudioImporter:
   serializedVersion: 6
   defaultSettings:
@@ -20,3 +20,10 @@ AudioImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 157735
+  packageName: Extenject Dependency Injection IOC
+  packageVersion: 9.2.0
+  assetPath: Assets/Plugins/Zenject/OptionalExtras/SampleGame2 (Advanced)/Media/Sounds/laser.wav
+  uploadId: 370902

@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: cad41a65c3c0b0f46a659557b2d716e0
 timeCreated: 1461708053
-licenseType: Pro
+licenseType: Store
 MonoImporter:
   serializedVersion: 2
   defaultReferences: []
@@ -10,3 +10,10 @@ MonoImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 157735
+  packageName: Extenject Dependency Injection IOC
+  packageVersion: 9.2.0
+  assetPath: Assets/Plugins/Zenject/Source/Util/ExecutionOrderInstaller.cs
+  uploadId: 370902

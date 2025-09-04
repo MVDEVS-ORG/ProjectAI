@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 100b8c53531c9e049bd6ac742c979248
 timeCreated: 1476625195
-licenseType: Free
+licenseType: Store
 MonoImporter:
   serializedVersion: 2
   defaultReferences: []
@@ -10,3 +10,10 @@ MonoImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 157735
+  packageName: Extenject Dependency Injection IOC
+  packageVersion: 9.2.0
+  assetPath: Assets/Plugins/Zenject/OptionalExtras/IntegrationTests/Tests/Bindings/TestFromPrefabResource/TestFromPrefabResource.cs
+  uploadId: 370902

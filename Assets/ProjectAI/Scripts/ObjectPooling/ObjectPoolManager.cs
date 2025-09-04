@@ -83,7 +83,7 @@ public class ObjectPoolManager
         }
     }
 
-    private async Awaitable<GameObject> GetObjectFromPool(string prefabAddress,PoolType poolType)
+    private async Awaitable<GameObject> GetObjectFromPool(string prefabAddress, PoolType poolType)
     {
         if(_objectPools.ContainsKey(prefabAddress))
         {

@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 549215a3ba27806449b2b1542fdffc03
 timeCreated: 1537690031
-licenseType: Free
+licenseType: Store
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
@@ -11,3 +11,10 @@ MonoImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 157735
+  packageName: Extenject Dependency Injection IOC
+  packageVersion: 9.2.0
+  assetPath: Assets/Plugins/Zenject/OptionalExtras/ReflectionBaking/Unity/ReflectionBakingMenuItems.cs
+  uploadId: 370902

@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 389794c3c2d66a24f9146f9071f398aa
 timeCreated: 1464374481
-licenseType: Free
+licenseType: Store
 MonoImporter:
   serializedVersion: 2
   defaultReferences: []
@@ -10,3 +10,10 @@ MonoImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 157735
+  packageName: Extenject Dependency Injection IOC
+  packageVersion: 9.2.0
+  assetPath: Assets/Plugins/Zenject/OptionalExtras/UnitTests/Editor/BindFeatures/TestRebind.cs
+  uploadId: 370902

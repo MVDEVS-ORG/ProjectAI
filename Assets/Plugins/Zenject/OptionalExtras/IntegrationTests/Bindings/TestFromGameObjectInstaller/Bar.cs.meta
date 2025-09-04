@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 08c786d92d7b8294e9aedb09fe828957
 timeCreated: 1538468409
-licenseType: Pro
+licenseType: Store
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
@@ -11,3 +11,10 @@ MonoImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 157735
+  packageName: Extenject Dependency Injection IOC
+  packageVersion: 9.2.0
+  assetPath: Assets/Plugins/Zenject/OptionalExtras/IntegrationTests/Bindings/TestFromGameObjectInstaller/Bar.cs
+  uploadId: 370902

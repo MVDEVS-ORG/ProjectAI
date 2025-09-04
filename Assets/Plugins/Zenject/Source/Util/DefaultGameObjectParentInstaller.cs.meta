@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: dd79d0a4f0b28314cbd6701ff5ab9062
 timeCreated: 1538629352
-licenseType: Pro
+licenseType: Store
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
@@ -11,3 +11,10 @@ MonoImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 157735
+  packageName: Extenject Dependency Injection IOC
+  packageVersion: 9.2.0
+  assetPath: Assets/Plugins/Zenject/Source/Util/DefaultGameObjectParentInstaller.cs
+  uploadId: 370902
