@@ -1,4 +1,5 @@
-﻿using Assets.ProjectAI.Scripts.Player.Characters;
+﻿using Assets.ProjectAI.Scripts.Player;
+using Assets.ProjectAI.Scripts.Player.Characters;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,6 +11,7 @@ namespace Assets.ProjectAI.Scripts.MainMenu
     {
         [Inject] PlayerPicker _playerPicker;
         [Inject] ISceneManager _sceneManager;
+        [Inject] PlayerSelectionService _playerSelectionService;
 
         [SerializeField] private Image _characterSprite;
         [SerializeField] private TextMeshProUGUI _characterName;
@@ -52,7 +54,7 @@ namespace Assets.ProjectAI.Scripts.MainMenu
             if (!_toDungeonSelected)
             {
                 _toDungeonSelected = true;
-                _playerPicker.SelectPlayer(_character);
+                _playerSelectionService.SelectCharacter(_character);
                 _ = _sceneManager.LoadSceneAsync("GameScene");
                 gameObject.SetActive(false);
             }
