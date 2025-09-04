@@ -1,5 +1,6 @@
 ﻿using Assets.ProjectAI.Scripts.EnemyScripts.Bosses;
 using Assets.ProjectAI.Scripts.PathFinding;
+using Assets.ProjectAI.Scripts.Player;
 using Assets.Services;
 using System.Collections;
 using UnityEngine;
@@ -18,6 +19,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem
 
         [Inject] IAssetService _assetService;
         [Inject] ObjectPoolManager _poolManager;
+        [Inject] private PlayerSelectionService _playerSelectionService;
 
         private CameraController _cameraController;
         private Transform _player;
@@ -28,8 +30,11 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem
             _cameraController = cameraController;
             _playerController = playerController;
             await PathFindingManager.Instance.BakeFromTilemapsAsync();
+# if UNITY_EDITOR
             await playerPicker.SetPlayer();
-            await playerController.SpawnPlayer(_playerSpawnTransform.position, playerPicker.PickPlayer());
+#endif
+            Character selected = _playerSelectionService.SelectedCharacter;
+            await playerController.SpawnPlayer(_playerSpawnTransform.position, playerPicker.SelectPlayer(selected));
 
             GameObject boss = await _assetService.InstantiateWithPRAsync(
                 AddressableIds.ORBReactor,

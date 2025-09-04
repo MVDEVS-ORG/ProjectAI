@@ -22,7 +22,6 @@ namespace Assets.ProjectAI.Scripts.Installers
             Container.Bind<IGunsController>().To<GunsController>().AsSingle();
             Container.Bind<IMeleeWeaponController>().To<MeleeWeaponController>().AsSingle();
             Container.Bind<IPlayerController>().To<PlayerController>().AsSingle();
-            Container.Bind<PrefabPlacer>().FromNewComponentOnNewPrefab(_prefabPlacer).AsTransient();
             Container.Bind<IBossRoomController>()
             .To<BossRoomController>()
             .AsCached()
