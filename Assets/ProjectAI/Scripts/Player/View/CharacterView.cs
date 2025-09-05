@@ -126,7 +126,7 @@ public class CharacterView : MonoBehaviour
             {
                 if (collider.TryGetComponent<XPParticle>(out XPParticle particle))
                 {
-                    if (!particle.MoveToPlayer )
+                    if (!particle.MoveToPlayer)
                     {
                         particle.CollectParticle(this);
                     }
@@ -162,7 +162,7 @@ public class CharacterView : MonoBehaviour
     #region button inputs
     public void Shoot(InputAction.CallbackContext context)
     {
-        if (!_playerController.Initialized) return;
+        if (!_playerController.Initialized || UIController.LookingAtUI) return;
         if (context.performed)
         {
             _playerController.Shoot(true);
@@ -185,7 +185,7 @@ public class CharacterView : MonoBehaviour
     public void Interact(InputAction.CallbackContext context)
     {
         if (!_playerController.Initialized) return;
-        if (context.performed && _interactableObjects.Count>0)
+        if (context.performed && _interactableObjects.Count > 0)
         {
             if (_interactableObjects[0].TryGetComponent<GunsView>(out GunsView gun))
             {
@@ -197,11 +197,11 @@ public class CharacterView : MonoBehaviour
             }
         }
     }
-     
+
     public void MeleeAttack(InputAction.CallbackContext context)
     {
         if (!_playerController.Initialized) return;
-        if(context.performed)
+        if (context.performed)
         {
             _playerController.MeleeAttack();
         }
@@ -242,7 +242,7 @@ public class CharacterView : MonoBehaviour
     public void PauseGame(InputAction.CallbackContext context)
     {
         if (!_playerController.Initialized) return;
-        if(context.performed && !_gamePauseController.IsPaused)
+        if (context.performed && !_gamePauseController.IsPaused)
         {
             _gamePauseController.PauseGame();
         }
@@ -250,11 +250,11 @@ public class CharacterView : MonoBehaviour
 
     #endregion
 
-    public void TakeDamage(int damage,Vector2 damagePosition, float kickbackMultiplier = 0f)
+    public void TakeDamage(int damage, Vector2 damagePosition, float kickbackMultiplier = 0f)
     {
         if (!_playerController.Initialized || _playerController.IsInvincible) return;
         _playerController.TakeDamage(damage);
-        _lastDamageTickDirection = (new Vector2(transform.position.x,transform.position.y) - damagePosition).normalized * kickbackMultiplier;
+        _lastDamageTickDirection = (new Vector2(transform.position.x, transform.position.y) - damagePosition).normalized * kickbackMultiplier;
         _flashFeedback.Flash(_playerModel.InvincibilityTime);
     }
 
@@ -339,14 +339,14 @@ public class CharacterView : MonoBehaviour
 
     private void CheckInitialControlSchema()
     {
-        if(_playerInput.currentControlScheme == "KBM")
+        if (_playerInput.currentControlScheme == "KBM")
         {
-            if(Gamepad.all.Count > 0)
+            if (Gamepad.all.Count > 0)
             {
                 _playerInput.SwitchCurrentControlScheme("Controller", Gamepad.current);
             }
         }
-        else if(Gamepad.all.Count == 0)
+        else if (Gamepad.all.Count == 0)
         {
             _playerInput.SwitchCurrentControlScheme("KBM", Keyboard.current, Mouse.current);
             if (Time.timeScale != 0)
