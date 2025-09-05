@@ -104,3 +104,6 @@ Assets/Plugins/Zenject/Source/Zenject.csproj.meta
 
 # Log files can be ignored.
 fmod_editor.log
+
+# Zenjects Folder
+/[Aa]ssets/Plugins/Zenject
