@@ -111,7 +111,6 @@ public class SimpleGun : GunsView
         }
         else
         {
-            Debug.Log(Vector3.Dot((PlayerCursor.position - GunBulletSpawnTransform.position).normalized, (PlayerCursor.position - PlayerTransform.position).normalized));
             if(Vector3.Dot((PlayerCursor.position- GunBulletSpawnTransform.position).normalized,(PlayerCursor.position - PlayerTransform.position).normalized)< 0.99f)// && ((PlayerCursor.position - PlayerTransform.position).magnitude < (transform.position - PlayerTransform.position).magnitude + 5))
             {
                 bulletRotationAndFireDirection = (PlayerCursor.position - PlayerTransform.position).normalized;

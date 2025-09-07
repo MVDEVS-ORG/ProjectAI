@@ -13,6 +13,9 @@ GameObject:
   - component: {fileID: 6180998025946354453}
   - component: {fileID: 4849354085201782366}
   - component: {fileID: 1811863821250102337}
+  - component: {fileID: 4779654805869396656}
+  - component: {fileID: -8559953130537635063}
+  - component: {fileID: 7255123577904765767}
   m_Layer: 0
   m_Name: Portal
   m_TagString: Untagged
@@ -197,6 +200,70 @@ PolygonCollider2D:
       - {x: 0.096321195, y: 0.37519795}
       - {x: -0.09619436, y: 0.37600288}
   m_UseDelaunayMesh: 0
+--- !u!114 &4779654805869396656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 338338256942219013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 717a02054ef2699498e6bd4234fd7995, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _containerSource: 0
+--- !u!114 &-8559953130537635063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 338338256942219013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01669762538e3eb47bb50756745a39dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetSceneName: BossScene
+  _animator: {fileID: 0}
+  _trigger: {fileID: 7255123577904765767}
+--- !u!58 &7255123577904765767
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 338338256942219013}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.89782286
 --- !u!1 &980586036529009355
 GameObject:
   m_ObjectHideFlags: 0
