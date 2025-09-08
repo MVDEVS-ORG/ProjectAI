@@ -41,17 +41,12 @@ public class CameraController
         {
             return;
         }
-        if (_currentCamEffect != null)
-        {
-            _camShakeComponent.StopCoroutine(_currentCamEffect);
-            _currentCamEffect = null;
-        }
+
         switch (camEffect.CamEffect)
         {
             case CamEffect.CamShakeConstant:
                 _currentCamEffect = _camShakeComponent.StartCoroutine(CamShakeConstant(camEffect));
                 break;
-
             case CamEffect.CamWobble:
                 Debug.Log("Cam wobble");
                 //_currentCamEffect = _camShakeComponent.StartCoroutine(CamWobble());
@@ -61,15 +56,23 @@ public class CameraController
 
     IEnumerator CamShakeConstant(CamEffectsSignal signal)
     {
-        _camShakeComponent.FrequencyGain = signal.Frequency;
-        _camShakeComponent.AmplitudeGain = signal.Amplitude;
         float timer = 0f;
         while (timer < 1)
         {
             timer += Time.deltaTime/signal.Duration;
+            _camShakeComponent.FrequencyGain = signal.Frequency;
+            _camShakeComponent.AmplitudeGain = signal.Amplitude;
+            yield return Awaitable.EndOfFrameAsync();
+        }
+        float fadeTimer = 0f;
+        while (fadeTimer < 1)
+        {
+            fadeTimer += Time.deltaTime / signal.FadeDuration;
+            _camShakeComponent.AmplitudeGain = Mathf.Lerp(signal.Amplitude, 0, fadeTimer);
             yield return Awaitable.EndOfFrameAsync();
         }
         _camShakeComponent.AmplitudeGain = 0f;
+        _currentCamEffect = null;
     }
 
     public void DetachCamera(Transform holdPosition, float camSize)

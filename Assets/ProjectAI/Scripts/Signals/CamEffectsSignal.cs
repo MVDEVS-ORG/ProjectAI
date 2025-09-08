@@ -7,6 +7,7 @@ public class CamEffectsSignal
     public float Amplitude;
     public float Frequency;
     public float Duration;
+    public float FadeDuration;
     public CamEffect CamEffect;
 
     public CamEffectsSignal(SignalEffect build)
@@ -15,13 +16,15 @@ public class CamEffectsSignal
         Frequency = build.Frequency;
         CamEffect = build.CamEffect;
         Duration = build.Duration;
+        FadeDuration = build.FadeDuration;
     }
 
     public class SignalEffect
     {
         public float Amplitude = 1f;
         public float Frequency = 1f;
-        public float Duration = 1f; 
+        public float Duration = 1f;
+        public float FadeDuration = 0f;
         public CamEffect CamEffect = CamEffect.CamShakeConstant;
 
         public SignalEffect WithAmplitude(float amplitude)
@@ -45,6 +48,12 @@ public class CamEffectsSignal
         public SignalEffect WithDuration(float duration)
         {
             this.Duration = Mathf.Abs(duration);
+            return this;
+        }
+
+        public SignalEffect WithFadeDuration(float fadeDuration)
+        {
+            this.FadeDuration = fadeDuration;
             return this;
         }
 
