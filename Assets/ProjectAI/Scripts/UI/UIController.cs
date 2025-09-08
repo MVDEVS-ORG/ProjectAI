@@ -17,10 +17,10 @@ public static class UIController
             {
                 openUIs.Add(obj);
             }
-            else
-            {
-                openUIs.Remove(obj);
-            }
+        }
+        else
+        {
+            openUIs.Remove(obj);
         }
         if (openUIs.Count > 0)
         {

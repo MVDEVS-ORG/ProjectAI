@@ -26,12 +26,12 @@ public class UniversalDeviceController : IUniversalDeviceController
             if (device is Gamepad && !(change == InputDeviceChange.Disconnected || change == InputDeviceChange.Disabled))
             {
                 SwitchToController();
-                
+
             }
             else
             {
                 SwitchToKBM();
-                
+
             }
             OnDeviceChanged?.Invoke(_currentControllerType);
         }
@@ -45,7 +45,7 @@ public class UniversalDeviceController : IUniversalDeviceController
 
     ControllerType IUniversalDeviceController.GetCurrentActiveDevice()
     {
-        if(Gamepad.all.Count>0)
+        if (Gamepad.all.Count > 0)
         {
             SwitchToController();
             return ControllerType.GamePad;
@@ -67,7 +67,7 @@ public class UniversalDeviceController : IUniversalDeviceController
     private void SwitchToKBM()
     {
         Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = UIController.LookingAtUI; 
+        Cursor.visible = UIController.LookingAtUI;
         _currentControllerType = ControllerType.KBM;
     }
 
@@ -82,12 +82,18 @@ public class UniversalDeviceController : IUniversalDeviceController
         (this as IUniversalDeviceController).GetCurrentActiveDevice();
         if (_currentControllerType == ControllerType.GamePad)
         {
-            EventSystem.current.SetSelectedGameObject(obj);
+            _ = SetUI(obj);
         }
         else
         {
             EventSystem.current.SetSelectedGameObject(null);
         }
+    }
+
+    private async Awaitable SetUI(GameObject obj)
+    {
+        await Awaitable.EndOfFrameAsync();
+        EventSystem.current.SetSelectedGameObject(obj);
     }
 
     private void RemoveListners()
