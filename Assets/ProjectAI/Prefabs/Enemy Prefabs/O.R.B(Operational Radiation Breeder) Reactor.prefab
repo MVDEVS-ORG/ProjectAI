@@ -333,7 +333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebf83516563c45d4bb211d247ec56d91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bossName: O.R.B (Operational Radiation Breeder) Reactor
+  _bossName: O.R.B Reactor
   _bossAnimator: {fileID: 1065701107481231833}
   _lightningAttackPosition: {fileID: 619998274664511531}
   _laserAttackPosition: {fileID: 5064968696234630832}
