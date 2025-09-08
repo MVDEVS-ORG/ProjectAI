@@ -42,7 +42,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.AttackBehaviour
 
         public override void Update()
         {
-            if (_hasPerformedAttack && CanExecute())
+            if (_hasPerformedAttack && CanExecute() && !_enemy.enemyModel.Stunned)
             {
                 if (Time.time >= _lastAttackTime + _attackCooldown)
                 {
