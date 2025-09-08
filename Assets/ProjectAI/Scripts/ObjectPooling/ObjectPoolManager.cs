@@ -87,14 +87,17 @@ public class ObjectPoolManager
     {
         if(_objectPools.ContainsKey(prefabAddress))
         {
-            if (_objectPools[prefabAddress].Count!=0)
+            if (_objectPools[prefabAddress].Count > 0)
             {
-                return _objectPools[prefabAddress][0];
+                var obj = _objectPools[prefabAddress][0];
+                _objectPools[prefabAddress].Remove(obj);
+                return obj;
             }
             else
             {
                 GameObject obj = await CreateObject(prefabAddress, poolType);
                 _objectPrefabMap.Add(obj, prefabAddress);
+                _objectPools[prefabAddress].Add(obj);
                 return obj;
             }
         }
@@ -112,7 +115,11 @@ public class ObjectPoolManager
         }
 
         GameObject obj = await GetObjectFromPool(prefabAddress,poolType);
-        _objectPools[prefabAddress].Remove(obj);
+        if (_objectPools[prefabAddress].Contains(obj))
+        {
+            _objectPools[prefabAddress].Remove(obj);
+        }
+       
 
         if (obj != null)
         {

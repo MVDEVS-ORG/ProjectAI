@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
         [SerializeField] private Image _health;
         [SerializeField] private Image _rallyHealth;
         [SerializeField] private Animator _coreAnimator;
+        [SerializeField] private TMP_Text _bossNameText;
         [Range(0.1f, 3f)]
         [SerializeField] private float _healthDropTime;
         private Coroutine _healthChangeCoroutine = null;
@@ -19,11 +21,12 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
         private float _timer;
 
 
-        public void Initialize(HealthModelsSO model)
+        public void Initialize(HealthModelsSO model, string bossName)
         {
             _healthModel = model;
             _health.fillAmount = _healthModel.Health / _healthModel.MaxHealth;
             _rallyHealth.fillAmount = _healthModel.Health / _healthModel.MaxHealth;
+            _bossNameText.text = bossName;
             _cachedHealth = _healthModel.Health;
             _coreAnimator.SetFloat("Health", _healthModel.Health * 100 / _healthModel.MaxHealth);
         }

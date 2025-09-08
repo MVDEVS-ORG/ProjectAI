@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Net;
+using System.Threading;
 using UnityEngine;
 
 namespace Assets.ProjectAI.Scripts.EnemyScripts
@@ -105,7 +106,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts
         #endregion
 
         #region Sweep Fire
-        public void FireSweep(Vector3 origin, ObjectPoolManager pool, float sweepDuration = 1.5f)
+        public void FireSweep(Vector3 origin, ObjectPoolManager pool, bool leftToRight, bool isPhase2,float sweepDuration, CancellationToken cancellationToken)
         {
             _pool = pool;
             _origin = origin;
@@ -113,25 +114,49 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts
             gameObject.SetActive(true);
 
             // Start sweeping coroutine
-            StartCoroutine(SweepLaser(sweepDuration));
+            StartCoroutine(SweepLaser(sweepDuration, leftToRight, isPhase2, cancellationToken));
         }
 
-        private IEnumerator SweepLaser(float sweepDuration)
+        private IEnumerator SweepLaser(float sweepDuration, bool leftToRight, bool isPhase2, CancellationToken cancellationToken)
         {
             _boxCollider.enabled = true;
             _lineRenderer.colorGradient = _sweepGradient;
 
-            // Randomize sweep direction
-            bool leftToRight = UnityEngine.Random.value > 0.5f;
-
             float elapsed = 0f;
 
-            // Sweep from +75 → -75 OR -75 → +75
-            float startAngle = leftToRight ? 75f : -75f;
-            float endAngle = leftToRight ? -75f : 75f;
+            float startAngle;
+            float endAngle;
+
+            if (isPhase2)
+            {
+                // Only sweep halfway (to center 0°)
+                sweepDuration /= 2f;
+
+                if (leftToRight)
+                {
+                    startAngle = 75f;
+                    endAngle = 0f;
+                }
+                else
+                {
+                    startAngle = -75f;
+                    endAngle = 0f;
+                }
+            }
+            else
+            {
+                // Full sweep
+                startAngle = leftToRight ? 75f : -75f;
+                endAngle = leftToRight ? -75f : 75f;
+            }
 
             while (elapsed < sweepDuration)
             {
+                if (cancellationToken.IsCancellationRequested)
+                {
+                    Interrupt();
+                    yield return null;
+                }
                 elapsed += Time.deltaTime;
                 float t = elapsed / sweepDuration;
                 float angle = Mathf.Lerp(startAngle, endAngle, t);
@@ -144,7 +169,6 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts
                 _lineRenderer.SetPosition(0, _origin);
                 _lineRenderer.SetPosition(1, endPoint);
 
-                // Width fixed or grown
                 _lineRenderer.startWidth = maxWidth;
                 _lineRenderer.endWidth = maxWidth;
 
@@ -169,6 +193,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts
 
             ResetObject();
         }
+
         #endregion
         private void OnTriggerEnter2D(Collider2D other)
         {
@@ -192,7 +217,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts
             _boxCollider.size = Vector2.one;
             _boxCollider.offset = Vector2.zero;
             _boxCollider.enabled = false;
-            _pool.ReleaseGameObject(gameObject, ObjectPoolManager.PoolType.ParticleSystems);
+            _pool.ReleaseGameObject(gameObject, ObjectPoolManager.PoolType.GameObjects);
         }
 
         public void Interrupt()
