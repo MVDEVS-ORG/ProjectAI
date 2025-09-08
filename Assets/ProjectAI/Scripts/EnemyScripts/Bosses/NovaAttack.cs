@@ -52,7 +52,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
             //Explosion
             _light2D.intensity = _maxIntensity;
             _circleCollider.radius = _maxRadius;
-            _signalBus.Fire(new CamEffectsSignal(new CamEffectsSignal.SignalEffect().WithEffect(CamEffect.CamShakeConstant).WithFrequency(1f).WithAmplitude(5f).WithDuration(explosionDuration)));
+            _signalBus.Fire(new CamEffectsSignal(new CamEffectsSignal.SignalEffect().WithEffect(CamEffect.CamShakeConstant).WithFrequency(1f).WithAmplitude(5f).WithDuration(explosionDuration).WithFadeDuration(1f)));
             float explosionElapsed = 0f;
             while (explosionElapsed < explosionDuration)
             {
