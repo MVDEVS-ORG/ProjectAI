@@ -291,7 +291,6 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
 
                 // Right to Left
                 await LaserSweep(false);
-                //yield return new WaitForSeconds(_laserDuration);
 
                 //both at at the Same Time
                 _= FireSweepNoWait(true);
@@ -299,7 +298,6 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
                 _= FireSweepNoWait(false);
                 await Awaitable.WaitForSecondsAsync(_laserDuration);
 
-                //await Task.WhenAll(left, right)
             }
             _LaserSmoke.SetActive(false);
             AttackFinished();
