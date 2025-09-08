@@ -15,17 +15,6 @@ public class PopUpUI : MonoBehaviour
     public void DisplayTextWithDuration(string Text, float duration)
     {
         text.text = Text;
-        if(DestroyTextCoroutine!=null)
-        {
-            StopCoroutine(DestroyTextCoroutine);
-            DestroyTextCoroutine = null;
-        }
-        DestroyTextCoroutine = StartCoroutine(DestroyCurrentText(duration));
-    }
-
-    IEnumerator DestroyCurrentText(float duration)
-    {
-        yield return new WaitForSeconds(duration);
-        Destroy(gameObject);
+        Destroy(gameObject, duration);
     }
 }

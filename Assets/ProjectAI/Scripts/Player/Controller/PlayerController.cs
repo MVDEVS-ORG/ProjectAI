@@ -61,6 +61,7 @@ public class PlayerController : IPlayerController
             //Get the character prefab address
             string prefabAddress = null;
             string gunAddress = null;
+            Debug.LogError(playerCharacter != null);
             switch (playerCharacter.CharacterType)
             {
                 case Character.Gunner:

@@ -426,5 +426,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a0c43ccce0cc9d42bc137b79ab08110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _TextOnOpening: You have acquired the portal key
+  _textOnOpening: You Found the Portal Key (Portal is Now Opened)
   _chestAnimator: {fileID: 6428569098346378118}
