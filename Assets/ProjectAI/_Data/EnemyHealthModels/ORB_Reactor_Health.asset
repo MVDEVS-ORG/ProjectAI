@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97ec4932c20f9224f916c98884e017c2, type: 3}
   m_Name: ORB_Reactor_Health
   m_EditorClassIdentifier: 
-  MaxHealth: 1000
-  Health: 1000
+  MaxHealth: 5000
+  Health: 0

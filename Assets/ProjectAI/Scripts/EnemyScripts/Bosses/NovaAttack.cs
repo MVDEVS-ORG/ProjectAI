@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
-using UnityEngine.Rendering.Universal; // For Light2D
+using UnityEngine.Rendering.Universal;
+using Zenject; // For Light2D
 
 namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
 {
@@ -25,13 +26,14 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
         [SerializeField] private float _minRadius = 1f;
 
         private Transform _target;
+        private SignalBus _signalBus;
         private ObjectPoolManager _poolManager;
 
-        public async Awaitable PlayNova(float chargeTime, float explosionDuration, Transform target, ObjectPoolManager poolManager)
+        public async Awaitable PlayNova(float chargeTime, float explosionDuration, Transform target, ObjectPoolManager poolManager, SignalBus signalBus)
         {
             _target = target;
             _poolManager = poolManager;
-
+            _signalBus = signalBus;
             // reset
             _light2D.pointLightInnerAngle = 0f;
             _light2D.intensity = _minIntensity;
@@ -50,7 +52,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
             //Explosion
             _light2D.intensity = _maxIntensity;
             _circleCollider.radius = _maxRadius;
-
+            _signalBus.Fire(new CamEffectsSignal(new CamEffectsSignal.SignalEffect().WithEffect(CamEffect.CamShakeConstant).WithFrequency(1f).WithAmplitude(5f).WithDuration(explosionDuration)));
             float explosionElapsed = 0f;
             while (explosionElapsed < explosionDuration)
             {

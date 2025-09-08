@@ -18,7 +18,8 @@ namespace Assets.ProjectAI.Scripts.GameController
         [Inject] private IUpgradeController _upgradeController;
         [Inject] private ObjectPoolManager _poolManager;
         [Inject] private CameraController _cameraController;
- 
+        [Inject] private SignalBus _signalBus;
+  
         private List<GameObject> _enemies = new List<GameObject>();
         private Vector2 _playerSpawnPositon;
 
@@ -38,7 +39,7 @@ namespace Assets.ProjectAI.Scripts.GameController
                     ObjectPoolManager.PoolType.GameObjects
                     );
                 bossRoomObj.TryGetComponent<BossRoom>(out var bossRoom);
-                bossRoom.InitializeRoom(_playerPicker, _playerController, _cameraController);
+                bossRoom.InitializeRoom(_playerPicker, _playerController, _cameraController, _signalBus);
                 _playerController.EnableController(true);
                 await _upgradeController.Initialize();
                 await _sceneManager.FadeBack();

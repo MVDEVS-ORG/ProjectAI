@@ -13,22 +13,25 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem
         [SerializeField] private Transform _playerSpawnTransform;
         [SerializeField] private Transform _bossSpawnTransform;
         [SerializeField] private float _spawnRadius = 5f;
-        [SerializeField] GameObject _emergencyWalls;
-        [SerializeField] GameObject _door;
-        [SerializeField] Transform _camTransform;
+        [SerializeField] private GameObject _emergencyWalls;
+        [SerializeField] private GameObject _door;
+        [SerializeField] private Transform _camTransform;
 
-        [Inject] IAssetService _assetService;
-        [Inject] ObjectPoolManager _poolManager;
+        [Inject] private IAssetService _assetService;
+        [Inject] private ObjectPoolManager _poolManager;
         [Inject] private PlayerSelectionService _playerSelectionService;
+        
+        private SignalBus _signalBus;
 
         private CameraController _cameraController;
         private Transform _player;
         private IPlayerController _playerController;
 
-        public async void InitializeRoom(PlayerPicker playerPicker, IPlayerController playerController, CameraController cameraController)
+        public async void InitializeRoom(PlayerPicker playerPicker, IPlayerController playerController, CameraController cameraController, SignalBus signalBus)
         {
             _cameraController = cameraController;
             _playerController = playerController;
+            _signalBus = signalBus;
             await PathFindingManager.Instance.BakeFromTilemapsAsync();
 # if UNITY_EDITOR
             await playerPicker.SetPlayer();
@@ -42,7 +45,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem
                 Quaternion.identity
             );
             ORBReactor ORB = boss.GetComponent<ORBReactor>();
-            ORB.InitializeBoss(_poolManager, _assetService, _playerController, _cameraController, _camTransform);
+            ORB.InitializeBoss(_poolManager, _assetService, _playerController, _cameraController, _camTransform, _signalBus);
             ORB.EmergencyWalls = _emergencyWalls;
             ORB.BossRoomDoor = _door;
         }

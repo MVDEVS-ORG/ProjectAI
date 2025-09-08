@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/ProjectAI/Scenes/GameScene.unity
     guid: 49c3a378aced42543a783d20deaf96e9
+  - enabled: 1
+    path: Assets/ProjectAI/Scenes/BossScene.unity
+    guid: 68ba6b93318c7744b99ff03f2520575b
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 1838647ae9f7f2a42a4ddd0ddf327b5b, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
