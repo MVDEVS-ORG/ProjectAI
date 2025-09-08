@@ -16,14 +16,13 @@ public class ControllerNavigation : MonoBehaviour
     [SerializeField] private GameObject _firstSelectedObject;
     [SerializeField] private Button _primaryBackButton;
 
-    private GameObject _lastSelectedObject;
     InputActionAsset _inputAction;
 
     private void OnDeviceChanged(ControllerType controller)
     {
         if (controller == ControllerType.GamePad)
         {
-            _universalDeviceController.SetGameObjectUI(_lastSelectedObject!=null?_lastSelectedObject:_firstSelectedObject);
+            _universalDeviceController.SetGameObjectUI(_firstSelectedObject);
         }
         else
         {
@@ -36,23 +35,20 @@ public class ControllerNavigation : MonoBehaviour
         ControllerType controller = _universalDeviceController.GetCurrentActiveDevice();
         if (controller == ControllerType.GamePad)
         {
-            EventSystem.current.SetSelectedGameObject(_lastSelectedObject != null ? _lastSelectedObject : _firstSelectedObject);
+            EventSystem.current.SetSelectedGameObject(_firstSelectedObject);
         }
         else
         {
-            EventSystem.current.SetSelectedGameObject(_lastSelectedObject != null ? _lastSelectedObject : _firstSelectedObject);
+            EventSystem.current.SetSelectedGameObject(_firstSelectedObject);
         }
     }
 
     private async void OnEnable()
     {
-        if (_universalDeviceController != null)
-        {
-            await Awaitable.EndOfFrameAsync();
-        }
+        await Awaitable.EndOfFrameAsync();
         _activeNavigators.Add(this);
+        _universalDeviceController.OnGamePadSetUI(_firstSelectedObject);
         _universalDeviceController.OnDeviceChanged += OnDeviceChanged;
-        _universalDeviceController.OnGamePadSetUI(_lastSelectedObject != null ? _lastSelectedObject : _firstSelectedObject);
         _inputAction = EventSystem.current.GetComponent<InputSystemUIInputModule>().actionsAsset;
         _inputAction.FindActionMap("UI").FindAction("Back").performed += OnBackAction;
         _inputAction.FindActionMap("UI").FindAction("Back").Enable();
@@ -67,7 +63,7 @@ public class ControllerNavigation : MonoBehaviour
     {
         if (focus)
         {
-            _universalDeviceController.OnGamePadSetUI(_lastSelectedObject != null ? _lastSelectedObject : _firstSelectedObject);
+            _universalDeviceController.OnGamePadSetUI(_firstSelectedObject);
         }
     }
 
@@ -76,9 +72,8 @@ public class ControllerNavigation : MonoBehaviour
         _activeNavigators.Remove(this);
         if (_activeNavigators != null && _activeNavigators.Count > 0)
         {
-            _activeNavigators[_activeNavigators.Count-1].ForcedSelectionAfterInitialization();
+            _activeNavigators[_activeNavigators.Count - 1].ForcedSelectionAfterInitialization();
         }
-        _lastSelectedObject = EventSystem.current?.currentSelectedGameObject??null;
         _universalDeviceController.OnDeviceChanged -= OnDeviceChanged;
         _inputAction.FindActionMap("UI").FindAction("Back").performed -= OnBackAction;
         _inputAction.FindActionMap("UI").FindAction("Back").Disable();
