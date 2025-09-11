@@ -27,6 +27,8 @@ public static class AddressableIds
     public const string Gun_UI_Canvas = "gunUICanvas";
 
     public const string Shotgun_Sprite = "ShotgunSprite";
+
+    public const string Gun_Carousel = "GunCarousel";
     #endregion
 
     #region meleedata

@@ -135,7 +135,6 @@ public class UpgradeController : IUpgradeController
 
     void IUpgradeController.SelectedUpgrade(List<UpgradeSO> upgrades)
     {
-        Debug.LogError(upgrades[0].Header);
         foreach (UpgradeSO upgrade in upgrades)
         {
             if (upgrade.UpgradeTier != UpgradeTier.Cursed)
