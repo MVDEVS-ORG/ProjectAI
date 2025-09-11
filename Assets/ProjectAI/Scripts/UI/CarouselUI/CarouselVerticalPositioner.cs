@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CarouselVerticalPositioner : MonoBehaviour
 {
-    [SerializeField] float _offSetY;
-    [SerializeField] float _gap;
-    [SerializeField] Ease _ease;
+    [SerializeField] private float _offSetY;
+    [SerializeField] private float _gap;
+    [SerializeField] private Ease _ease;
 
     public void SetPosition(RectTransform rectTransform, int index)
     {
