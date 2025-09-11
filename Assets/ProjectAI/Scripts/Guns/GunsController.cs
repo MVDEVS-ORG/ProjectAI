@@ -20,6 +20,8 @@ public class GunsController : IGunsController
     private Transform _playerTransform;
     private Transform _playerCursor;
 
+    private Carousel _gunCarousel;
+
     GunsView IGunsController.View => _currentActiveGun;
 
     private IGunUI _currentGunUI;
@@ -41,9 +43,10 @@ public class GunsController : IGunsController
         _currentActiveGun.gameObject.SetActive(false);
         _currentActiveGun = gun;
         _currentActiveGun.gameObject.SetActive(true);
-        _currentGunsModel = gun.InitializeGun(this,_poolManager, _playerTransform, _playerCursor);
+        _currentGunsModel = gun.GunsModel;
         _currentGunUI.SwapGun(gun.GunsModel);
         gun.SetGunUI(_currentGunUI);
+        _gunCarousel.MoveToIndex(_currentActiveGun.name);
     }
 
     private void UpgradeWeapon(List<UpgradeSO> upgrades)
@@ -121,6 +124,13 @@ public class GunsController : IGunsController
             _upgradeController.OnUpgrade += UpgradeWeapon;
             _upgradeController.RefreshUpgrades();
             gun.SetGunUI(_currentGunUI);
+
+            //setting up guns carousel
+            var carousel = await _assetService.InstantiateAsync(AddressableIds.Gun_Carousel);
+            _gunCarousel = carousel.GetComponent<Carousel>();
+            Dictionary<string,Sprite> guns = new Dictionary<string,Sprite>();
+            guns[_currentActiveGun.name] = _currentActiveGun.GunSprite;
+            await _gunCarousel.Initialize(guns, _assetService);
         }
         catch(Exception ex)
         {
@@ -154,10 +164,12 @@ public class GunsController : IGunsController
             #endregion
 
             #region Gun UI
-            Debug.LogError(_currentGunsModel);
             await _currentGunUI.AddGun(_currentGunsModel);
             gun.SetGunUI(_currentGunUI);
             #endregion
+
+            //Gun carousel
+            await _gunCarousel.AddItem(_currentActiveGun.name, _currentActiveGun.GunSprite, true);
         }
         //Debug.LogError(JsonConvert.SerializeObject(lst) + "\n" + JsonConvert.SerializeObject(lst2));
     }
@@ -178,6 +190,7 @@ public class GunsController : IGunsController
                 index = index % _orderedValues.Count;
                 _currentActiveGun.StopAllCoroutines();
                 (this as IGunsController).SetCurrentActiveGun(_allGuns[_orderedValues[index]]);
+                //gun carousel
             }
         }
         catch (Exception exception)

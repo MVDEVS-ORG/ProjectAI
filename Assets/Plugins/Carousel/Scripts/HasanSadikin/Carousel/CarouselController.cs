@@ -66,7 +66,6 @@ namespace HasanSadikin.Carousel
         protected virtual void CreateCarouselItems()
         {
             int itemsCount = _isInfinity ? _data.Count * _repeat : _data.Count;
-            _carouselItems.Capacity = itemsCount;
 
             for (int i = 0; i < itemsCount; i++)
             {
@@ -85,13 +84,60 @@ namespace HasanSadikin.Carousel
 
         protected virtual void AddItem(T data)
         {
+            Debug.LogError(_data.Count);
             _data.Add(data);
+            Debug.LogError(_data.Count);
             if (_isInfinity)
             {
                 for(int i=0;i<transform.childCount;i++)
                 {
                     Destroy(transform.GetChild(i));
                 }
+                _carouselItems.Clear();
+                int itemsCount = _data.Count * _repeat;
+                for (int i = 0; i < itemsCount; i++)
+                {
+                    var newItem = Instantiate(_carouselItemPrefab, transform);
+                    newItem.Data = _data[i % _data.Count];
+
+                    var rect = newItem.transform as RectTransform;
+                    SetChildOrigin(rect);
+                    rect.anchoredPosition = new Vector3(0, 0);
+
+                    newItem.OnSelected += AdjustIndexForClickedItem;
+
+                    _carouselItems.Add(newItem);
+                }
+            }
+            else
+            {
+                int index = _data.Count - 1;
+
+                var newItem = Instantiate(_carouselItemPrefab, transform);
+                newItem.Data = _data[index];
+
+                var rect = newItem.transform as RectTransform;
+                SetChildOrigin(rect);
+                rect.anchoredPosition = new Vector3(0, 0);
+
+                newItem.OnSelected += AdjustIndexForClickedItem;
+                _carouselItems.Add(newItem);
+
+                _carouselItems.Add(newItem);
+            }
+            UpdateData();
+        }
+
+        protected virtual void RemoveItem(T data)
+        {
+            if(_isInfinity)
+            {
+                for (int i = 0; i < transform.childCount; i++)
+                {
+                    Destroy(transform.GetChild(i));
+                }
+                _carouselItems.Clear();
+                _data.Remove(data);
                 int itemsCount = _data.Count * _repeat;
                 _carouselItems.Capacity = itemsCount;
                 for (int i = 0; i < itemsCount; i++)
@@ -110,19 +156,10 @@ namespace HasanSadikin.Carousel
             }
             else
             {
-                int index = _data.Count - 1;
-                _carouselItems.Capacity = _data.Count;
-
-                var newItem = Instantiate(_carouselItemPrefab, transform);
-                newItem.Data = _data[index];
-
-                var rect = newItem.transform as RectTransform;
-                SetChildOrigin(rect);
-                rect.anchoredPosition = new Vector3(0, 0);
-
-                newItem.OnSelected += AdjustIndexForClickedItem;
-                _carouselItems.Add(newItem);
+                _data.Remove(data);
+                _carouselItems.RemoveAt(_carouselItems.Count-1);
             }
+            UpdateData();
         }
 
         protected virtual void OnDisable()
@@ -221,9 +258,9 @@ namespace HasanSadikin.Carousel
 
         public virtual void Next()
         {
-            if (!_isInfinity && _currentIndex + 1 >= _data.Count) return;
+            /*if (!_isInfinity) return;*/
 
-            _currentIndex++;
+            _currentIndex = (_currentIndex+1)%_data.Count;
           
             UpdateData();
             _onNext?.Invoke();
@@ -231,10 +268,7 @@ namespace HasanSadikin.Carousel
 
         public virtual void Previous()
         {
-            if (!_isInfinity && _currentIndex - 1 < 0) return;
-
-            _currentIndex--;
-
+            _currentIndex = _currentIndex <= 0 ? _data.Count-1 : _currentIndex - 1;
             UpdateData();
             _onPrev?.Invoke();
         }

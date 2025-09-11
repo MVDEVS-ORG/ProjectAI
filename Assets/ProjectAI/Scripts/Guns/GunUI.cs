@@ -38,7 +38,7 @@ public class GunUI : MonoBehaviour, IGunUI
         {
             if (_initialized)
             {
-                if (GunUIs[_currentGun].gameObject.activeSelf)
+                if (_currentGun!=null && GunUIs.ContainsKey(_currentGun) && GunUIs[_currentGun].gameObject.activeSelf)
                 {
                     GunUIs[_currentGun].transform.position = _playerTransform.position + new Vector3(GunUIs[_currentGun].Offset.x, GunUIs[_currentGun].Offset.y, GunUIs[_currentGun].transform.position.z);
                 }
@@ -52,7 +52,6 @@ public class GunUI : MonoBehaviour, IGunUI
 
     async Awaitable IGunUI.AddGun(GunsModel model)
     {
-        Debug.LogError(model.GunViewAddressableId);
         GunUIs[_currentGun].gameObject.SetActive(false);
         _currentGun = model;
         GameObject obj = await _assetService.InstantiateWithParentAsync(model.GunUIAddressable, transform);
