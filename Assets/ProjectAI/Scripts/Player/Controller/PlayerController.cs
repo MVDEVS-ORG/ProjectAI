@@ -1,8 +1,8 @@
-using Assets.Services;
-using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Services;
+using Newtonsoft.Json;
 using Unity.Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -31,7 +31,7 @@ public class PlayerController : IPlayerController
     private bool _isInvincible = false;
     private bool _gunEnabled = true;
 
-    bool IPlayerController.GunEnabled { get => _gunEnabled; set => _gunEnabled = value; } 
+    bool IPlayerController.GunEnabled { get => _gunEnabled; set => _gunEnabled = value; }
     bool IPlayerController.Initialized => _initialized;
     bool IPlayerController.MovementPossible => _movementPossible;
     bool IPlayerController.IsInvincible => _isInvincible;
@@ -45,7 +45,7 @@ public class PlayerController : IPlayerController
 
     public void Initialize()
     {
-        
+
     }
 
     private void StopControllerOnLevelChange()
@@ -85,21 +85,21 @@ public class PlayerController : IPlayerController
                 throw new Exception("Character type not implemented in addressableIds");
             }
             //instantiate the asset
-            var result = await _assetService.InstantiateWithPRAsync(prefabAddress, pos , Quaternion.identity);
+            var result = await _assetService.InstantiateWithPRAsync(prefabAddress, pos, Quaternion.identity);
             _characterView = result.GetComponent<CharacterView>();
             //Create a new _player model for that character
             _playerModel = new PlayerModel(playerCharacter);
             Debug.Log("PlayerModel initialized");
             //Assign the _player model and the controller to the view alongside the _player cursor aka reticle for shooting
-            (GameObject,GameObject) bulletCursor = await PlayerCursorInitialization();
+            (GameObject, GameObject) bulletCursor = await PlayerCursorInitialization();
             _bulletCursorUI = bulletCursor.Item2.transform;
-            _characterView.Initialize(this, _playerModel, bulletCursor.Item1, bulletCursor.Item2,_signalBus,_gamePauseController);
+            _characterView.Initialize(this, _playerModel, bulletCursor.Item1, bulletCursor.Item2, _signalBus, _gamePauseController);
             Debug.Log("PlayerView Initialized");
             #endregion
 
             #region Gun instantiation
             await _gunsController.InitializeOnSceneLoad(gunAddress, _characterView.transform, bulletCursor.Item2.transform);
-            
+
             //var gun = await _assetService.InstantiateAsync(gunAddress);
             //await _gunsController.SetCurrentActiveGun(gun.GetComponent<GunsView>(), _characterView.transform, bulletCursor.Item2.transform);
             #endregion
@@ -114,17 +114,23 @@ public class PlayerController : IPlayerController
             //Create the _player UI alongside the _player and pass the model for data
             result = await _assetService.InstantiateAsync(AddressableIds.Player_UI);
             _playerUI = result.GetComponent<PlayerUI>();
-            _playerUI.Initialize(_playerModel , _xpLevelMap);
+            _playerUI.Initialize(_playerModel, _xpLevelMap);
             Debug.Log("PlayerUI Initialized");
             _cameraController.Initialize(_characterView.transform);
             _rumbleController.Initialize(_characterView);
+            #endregion
+
+            #region player XP
+            (int, int, int) playerStats = _upgradeController.RefreshPlayerStats();
+            LoadPlayerStats(playerStats.Item1, playerStats.Item2, playerStats.Item3);
+            _sceneManager.BeforeChangeScene += () => { _upgradeController.SavePlayerStats(_playerModel.Experience, _playerModel.PlayerLevel, _playerModel.Health); };
             #endregion
 
             #region melee instantiation
 
             var melee = await _assetService.InstantiateAsync(AddressableIds.MeleeSlash);
             MeleeWeaponView meleeView = melee.GetComponent<MeleeWeaponView>();
-            _meleeWeaponController.Initialize(_characterView.transform,_bulletCursorUI, this);
+            _meleeWeaponController.Initialize(_characterView.transform, _bulletCursorUI, this);
             _meleeWeaponController.SetupWeapon(meleeView);
 
             #endregion
@@ -164,13 +170,13 @@ public class PlayerController : IPlayerController
         }
     }
 
-    private async Awaitable<(GameObject,GameObject)> PlayerCursorInitialization()
+    private async Awaitable<(GameObject, GameObject)> PlayerCursorInitialization()
     {
-        GameObject bulletCursor=await _assetService.InstantiateAsync(AddressableIds.Bullet_Cursor);
+        GameObject bulletCursor = await _assetService.InstantiateAsync(AddressableIds.Bullet_Cursor);
         GameObject bulletCursorUI = await _assetService.InstantiateAsync(AddressableIds.Bullet_Cursor_UI);
         FollowScript bulletCursorFollow = bulletCursorUI.GetComponent<FollowScript>();
         bulletCursorFollow.Initialize(bulletCursor.transform);
-        return (bulletCursor,bulletCursorUI);
+        return (bulletCursor, bulletCursorUI);
     }
 
     void IPlayerController.TakeDamage(int damage)
@@ -181,7 +187,7 @@ public class PlayerController : IPlayerController
         _rumbleController.Rumble(0.25f, 1f, 0.5f);
         _signalBus.Fire(new CamEffectsSignal(new CamEffectsSignal.SignalEffect().WithEffect(CamEffect.CamShakeConstant).WithFrequency(1f).WithAmplitude(5f).WithDuration(0.1f)));
         _isInvincible = true;
-        if(_characterView!=null)
+        if (_characterView != null)
         {
             _characterView.StartCoroutine(InvincibilityDuration());
             _characterView.StartCoroutine(DamageKickbackTimer());
@@ -215,8 +221,8 @@ public class PlayerController : IPlayerController
 
     Vector2 IPlayerController.Dash(Vector2 MoveInput)
     {
-       // Debug.LogError(_playerModel.GetHashCode());
-        if (_moveState == State.Moving && MoveInput!= Vector2.zero && _playerModel.NoOfRoll<_playerModel.MaxNoOfRolls) //also need to addd the stamina part here
+        // Debug.LogError(_playerModel.GetHashCode());
+        if (_moveState == State.Moving && MoveInput != Vector2.zero && _playerModel.NoOfRoll < _playerModel.MaxNoOfRolls) //also need to addd the stamina part here
         {
             _playerModel.NoOfRoll++;
             _characterView.StartCoroutine(RollDash());
@@ -229,7 +235,7 @@ public class PlayerController : IPlayerController
     IEnumerator DashCoolDown()
     {
         yield return Awaitable.WaitForSecondsAsync(_playerModel.RolllCooldown);
-        _playerModel.NoOfRoll = _playerModel.NoOfRoll > 0 ? _playerModel.NoOfRoll - 1 : 0 ;
+        _playerModel.NoOfRoll = _playerModel.NoOfRoll > 0 ? _playerModel.NoOfRoll - 1 : 0;
     }
 
     IEnumerator RollDash()
@@ -243,7 +249,7 @@ public class PlayerController : IPlayerController
 
     async Awaitable<Transform> IPlayerController.GetPlayerTransform()
     {
-        while(_characterView == null)
+        while (_characterView == null)
         {
             Debug.LogError("Waiting for _player to spawn");
             await Awaitable.EndOfFrameAsync();
@@ -261,7 +267,7 @@ public class PlayerController : IPlayerController
 
     void IPlayerController.MeleeAttack()
     {
-        if(_meleeWeaponController.Initialized)
+        if (_meleeWeaponController.Initialized)
         {
             _meleeWeaponController.MeleeAttack();
         }
@@ -306,6 +312,18 @@ public class PlayerController : IPlayerController
         }
         _playerUI.UpdateXpBar();
     }
+
+
+    private void LoadPlayerStats(int xp, int level, int health)
+    {
+        if (xp <= 0) return;
+        _playerModel.Experience = xp;
+        _playerModel.PlayerLevel = level;
+        _playerModel.Health = health;
+        _playerUI.UpdateXpBar();
+        _playerUI.AlterHealthBar();
+    }
+
     IEnumerator MeleeDashTimer()
     {
         yield return Awaitable.WaitForSecondsAsync(_playerModel.MeleeDashTime);
