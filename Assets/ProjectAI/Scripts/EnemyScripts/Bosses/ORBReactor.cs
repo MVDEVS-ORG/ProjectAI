@@ -1,9 +1,9 @@
-﻿using Assets.Services;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Assets.Services;
 using UnityEngine;
 using Zenject;
 
@@ -75,10 +75,10 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
 
         async Awaitable WaitForPlayer()
         {
-            while(_target != null)
+            while (!destroyCancellationToken.IsCancellationRequested && _target != null)
             {
                 Transform target = await _target.GetPlayerTransform();
-                if(target != null && Vector2.Distance(transform.position, target.position)<= _startingDistanceFormPlayer)
+                if (target != null && Vector2.Distance(transform.position, target.position) <= _startingDistanceFormPlayer)
                 {
                     BossRoomDoor?.SetActive(true);
                     BossWakeUp();
@@ -105,16 +105,16 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
             {
                 StartCoroutine(PlayRandomAttack());
             }
-            else if(_isPhase2Active && _healthModel.Health > 0)
+            else if (_isPhase2Active && _healthModel.Health > 0)
             {
                 //Phase 2 starts
                 StartCoroutine(PlayPhaseTwoAttacks(false));
             }
-            else if(_healthModel.Health <= 0)
+            else if (_healthModel.Health <= 0)
             {
                 StartCoroutine(PlayPhaseTwoAttacks(true));
             }
-            
+
         }
 
         private IEnumerator PlayRandomAttack()
@@ -231,7 +231,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
             {
                 await Phase2AttackLoop();
             }
-            
+
         }
 
 
@@ -273,7 +273,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
             if (beam != null)
             {
                 var target = await _target.GetPlayerTransform();
-                beam.FireSweep(origin, _poolManager, leftToRight, _isPhase2Active,_sweepDuration , _cancellationToken);
+                beam.FireSweep(origin, _poolManager, leftToRight, _isPhase2Active, _sweepDuration, _cancellationToken);
 
                 // stop beam after duration
                 await Awaitable.WaitForSecondsAsync(_laserDuration);
@@ -293,9 +293,9 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
                 await LaserSweep(false);
 
                 //both at at the Same Time
-                _= FireSweepNoWait(true);
+                _ = FireSweepNoWait(true);
                 await Awaitable.EndOfFrameAsync();
-                _= FireSweepNoWait(false);
+                _ = FireSweepNoWait(false);
                 await Awaitable.WaitForSecondsAsync(_laserDuration);
 
             }
@@ -316,7 +316,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
                 Quaternion.identity,
                 ObjectPoolManager.PoolType.GameObjects
             );
-            
+
             var nova = novaGO.GetComponent<NovaAttack>();
             if (nova != null)
             {
@@ -334,17 +334,17 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
             if (!_bossInitialized) return;
             _healthModel.Health = Mathf.Max(0, _healthModel.Health - damage);
             _bossHealthUI.AlterHealthBar();
-            if(_healthModel.Health*100/_healthModel.MaxHealth <= 40)
+            if (_healthModel.Health * 100 / _healthModel.MaxHealth <= 40)
             {
                 _isInPhase1 = false;
-                if(!_isPhase2Active)
+                if (!_isPhase2Active)
                 {
                     _isPhase2Active = true;
                     StopAllCoroutines();
                     _bossAnimator.SetBool("Phase2", true);
                 }
             }
-            if(_healthModel.Health <= 0)
+            if (_healthModel.Health <= 0)
             {
                 _cancellationTokenSource?.Cancel();
                 _cancellationTokenSource = null;
