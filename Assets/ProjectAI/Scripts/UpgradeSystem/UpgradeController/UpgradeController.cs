@@ -1,8 +1,8 @@
-using Assets.Services;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using Assets.Services;
+using Newtonsoft.Json;
 using UnityEngine;
 using Zenject;
 
@@ -16,7 +16,7 @@ public class UpgradeController : IUpgradeController
     private UpgradesLists _upgradeList;
 
     private string _path;
-    private DataSerializer _dataSerializer =  new DataSerializer();
+    private DataSerializer _dataSerializer = new DataSerializer();
 
     public event Action<List<UpgradeSO>> OnUpgrade;
 
@@ -109,7 +109,7 @@ public class UpgradeController : IUpgradeController
         {
             Debug.LogException(ex);
         }
-        
+
     }
 
     void IUpgradeController.LoadUpgrades()
@@ -127,8 +127,8 @@ public class UpgradeController : IUpgradeController
 
     void IUpgradeController.SaveUpgrades()
     {
-        _dataSerializer.SaveData("/upgrades.json",_activeUpgrades);
-        _dataSerializer.SaveData("/curses.json",_cursedUpgrades);
+        _dataSerializer.SaveData("/upgrades.json", _activeUpgrades);
+        _dataSerializer.SaveData("/curses.json", _cursedUpgrades);
     }
 
 
@@ -138,7 +138,7 @@ public class UpgradeController : IUpgradeController
         Debug.LogError(upgrades[0].Header);
         foreach (UpgradeSO upgrade in upgrades)
         {
-            if(upgrade.UpgradeTier!=UpgradeTier.Cursed)
+            if (upgrade.UpgradeTier != UpgradeTier.Cursed)
             {
                 _activeUpgrades.Add(upgrade);
                 List<UpgradeSO> temp = new();
@@ -153,7 +153,7 @@ public class UpgradeController : IUpgradeController
                 _cursedUpgrades.Add(upgrade);
             }
         }
-        if(_cursedUpgrades.Count>0 && OnUpgrade!=null)
+        if (_cursedUpgrades.Count > 0 && OnUpgrade != null)
         {
             OnUpgrade.Invoke(_cursedUpgrades);
         }
@@ -162,5 +162,22 @@ public class UpgradeController : IUpgradeController
         _upgradesCanvas.enabled = false;
         _upgradesPopup.gameObject.SetActive(false);
         Cursor.visible = false;
+    }
+
+    void IUpgradeController.SaveXPAndHP(int currentXP, int playerLevel, int playerHealth)
+    {
+        (int, int, int) playerStats = new(currentXP, playerLevel, playerHealth);
+        _dataSerializer.SaveData("/experience.json", playerStats);
+    }
+
+    (int, int, int) IUpgradeController.RefreshXP()
+    {
+        (int, int, int) _xp = _dataSerializer.LoadData<(int, int, int)>("/experience.json");
+        return _xp;
+    }
+
+    void IUpgradeController.ClearXP()
+    {
+        _dataSerializer.SaveData("/experience.json", (0, 0, 0));
     }
 }

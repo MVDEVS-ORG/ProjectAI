@@ -13,4 +13,7 @@ public interface IUpgradeController
     void SaveUpgrades();
     void LoadUpgrades();
     void ClearUpgrades();
+    void SaveXPAndHP(int currentXP, int playerLevel, int playerHealth);
+    (int, int, int) RefreshXP();
+    void ClearXP();
 }
