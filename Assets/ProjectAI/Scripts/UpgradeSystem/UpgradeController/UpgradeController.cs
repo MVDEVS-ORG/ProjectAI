@@ -172,8 +172,8 @@ public class UpgradeController : IUpgradeController
 
     (int, int, int) IUpgradeController.RefreshPlayerStats()
     {
-        (int, int, int) _xp = _dataSerializer.LoadData<(int, int, int)>("/experience.json");
-        return _xp;
+        (int, int, int) xp = _dataSerializer.LoadData<(int, int, int)>("/experience.json");
+        return xp;
     }
 
     void IUpgradeController.ClearPlayerStats()
