@@ -8,12 +8,11 @@ using HasanSadikin.Carousel;
 
 public class Carousel : MonoBehaviour
 {
-    [SerializeField] string CarouselPrefabAddress;
+    [SerializeField] string _carouselPrefabAddress;
     [SerializeField] Transform _parentObject;
     List<Image> _carouselItems =  new List<Image>();
     Dictionary<string,Image> _keyValuePairs = new Dictionary<string,Image>();
     int _index = 0;
-    int signedIndex;
     IAssetService _assetService;
     CarouselVerticalPositioner _verticalPositioner;
 
@@ -79,7 +78,7 @@ public class Carousel : MonoBehaviour
         {
             EffectOutOfFocus(_carouselItems[_index]);
         }
-        GameObject obj = await _assetService.InstantiateWithParentAsync(CarouselPrefabAddress, _parentObject, false);
+        GameObject obj = await _assetService.InstantiateWithParentAsync(_carouselPrefabAddress, _parentObject, false);
         Image img = obj.GetComponent<Image>();
         img.sprite = sprite;
         var rect = obj.transform as RectTransform;
