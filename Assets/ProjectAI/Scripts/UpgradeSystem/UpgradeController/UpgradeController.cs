@@ -164,19 +164,19 @@ public class UpgradeController : IUpgradeController
         Cursor.visible = false;
     }
 
-    void IUpgradeController.SaveXPAndHP(int currentXP, int playerLevel, int playerHealth)
+    void IUpgradeController.SavePlayerStats(int currentXP, int playerLevel, int playerHealth)
     {
         (int, int, int) playerStats = new(currentXP, playerLevel, playerHealth);
         _dataSerializer.SaveData("/experience.json", playerStats);
     }
 
-    (int, int, int) IUpgradeController.RefreshXP()
+    (int, int, int) IUpgradeController.RefreshPlayerStats()
     {
         (int, int, int) _xp = _dataSerializer.LoadData<(int, int, int)>("/experience.json");
         return _xp;
     }
 
-    void IUpgradeController.ClearXP()
+    void IUpgradeController.ClearPlayerStats()
     {
         _dataSerializer.SaveData("/experience.json", (0, 0, 0));
     }

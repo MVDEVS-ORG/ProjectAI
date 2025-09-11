@@ -121,9 +121,9 @@ public class PlayerController : IPlayerController
             #endregion
 
             #region player XP
-            (int, int, int) playerStats = _upgradeController.RefreshXP();
+            (int, int, int) playerStats = _upgradeController.RefreshPlayerStats();
             LoadPlayerStats(playerStats.Item1, playerStats.Item2, playerStats.Item3);
-            _sceneManager.BeforeChangeScene += () => { _upgradeController.SaveXPAndHP(_playerModel.Experience, _playerModel.PlayerLevel, _playerModel.Health); };
+            _sceneManager.BeforeChangeScene += () => { _upgradeController.SavePlayerStats(_playerModel.Experience, _playerModel.PlayerLevel, _playerModel.Health); };
             #endregion
 
             #region melee instantiation

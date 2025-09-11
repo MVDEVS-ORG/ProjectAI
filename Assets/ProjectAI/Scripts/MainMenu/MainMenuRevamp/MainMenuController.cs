@@ -9,7 +9,7 @@ public class MainMenuController
     public void Initialize()
     {
         _upgradeController.ClearUpgrades();
-        _upgradeController.ClearXP();
+        _upgradeController.ClearPlayerStats();
         _assetService.InstantiateAsync(AddressableIds.Main_Menu_UI);
     }
 }
