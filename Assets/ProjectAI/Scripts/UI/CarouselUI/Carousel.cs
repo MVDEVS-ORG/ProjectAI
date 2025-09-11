@@ -8,14 +8,14 @@ using HasanSadikin.Carousel;
 
 public class Carousel : MonoBehaviour
 {
-    [SerializeField] string _carouselPrefabAddress;
-    [SerializeField] Transform _parentObject;
-    List<Image> _carouselItems =  new List<Image>();
-    Dictionary<string,Image> _keyValuePairs = new Dictionary<string,Image>();
-    int _index = 0;
-    int signedIndex;
-    IAssetService _assetService;
-    CarouselVerticalPositioner _verticalPositioner;
+    [SerializeField] private string _carouselPrefabAddress;
+    [SerializeField] private Transform _parentObject;
+    private List<Image> _carouselItems =  new List<Image>();
+    private Dictionary<string,Image> _keyValuePairs = new Dictionary<string,Image>();
+    private int _index = 0;
+    private int signedIndex;
+    private IAssetService _assetService;
+    private CarouselVerticalPositioner _verticalPositioner;
 
     public async Awaitable Initialize(Dictionary<string,Sprite> namePrefabAddress, IAssetService assetService)
     {
