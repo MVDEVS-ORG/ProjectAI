@@ -5,24 +5,50 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.AttackBehaviour
 {
     public class RangedAttack : AbstractAttackState
     {
-        private bool _isWaitingForAttackEnd = false;
-        private bool _hasPerformedAttack = false;
-        private float _lastAttackTime = -Mathf.Infinity;
         private EnemyLaserBeam _activeLaserBeam;
         private Coroutine _exitCoroutine;
+        private bool _isAttacking;
+
         public override void Enter(EnemyAI enemy, Transform player, ObjectPoolManager op)
         {
             base.Enter(enemy, player, op);
+            _isAttacking = true;
             _enemy.animator?.SetBool("Attack", true);
             _enemy.animator?.SetBool("AttackEnd", false);
         }
-        private bool CanExecute()
+
+        public override void Update()
         {
-            return _enemy.IsPlayerInAttackRange() && !_isWaitingForAttackEnd;
+            if (!_enemy.IsPlayerInAttackRange() && _isAttacking)
+            {
+                // Player left range → stop attacking immediately
+                _isAttacking = false;
+                _enemy.animator?.SetBool("Attack", false);
+                _enemy.animator?.SetBool("AttackEnd", true);
+
+                if (_activeLaserBeam != null && _activeLaserBeam.gameObject.activeSelf)
+                {
+                    _activeLaserBeam.Interrupt();
+                    _activeLaserBeam = null;
+                }
+
+                _exitCoroutine = _enemy.StartCoroutine(WaitForAttackEndAndTransition());
+            }
+        }
+
+        // Called by Animation Event
+        public override void Attack()
+        {
+            if (!_isAttacking) return;
+
+            Execute();
         }
 
         private async void Execute()
         {
+            // If there is already a beam active, don’t fire another
+            if (_activeLaserBeam != null && _activeLaserBeam.gameObject.activeSelf) return;
+
             Vector3 origin = _enemy.attackSpawnPos.position;
 
             GameObject beamGO = await _poolManager.SpawnObjectAsync(
@@ -37,66 +63,80 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.AttackBehaviour
             {
                 _activeLaserBeam = beam;
                 beam.Fire(origin, _enemy.Target, _poolManager);
+
+                // Wait until beam finishes before next attack
+                _enemy.StartCoroutine(WaitForBeamToFinish());
             }
         }
 
-        public override void Update()
+        private IEnumerator WaitForBeamToFinish()
         {
-            if (_hasPerformedAttack && CanExecute())
+            // Wait while beam is alive
+            while (_activeLaserBeam != null && _activeLaserBeam.lockOn)
             {
-                if (Time.time >= _lastAttackTime + _attackCooldown)
-                {
-                    _lastAttackTime = Time.time;
-                    Execute();
-                }
+                yield return null;
             }
-            if (!_enemy.IsPlayerInAttackRange() && !_isWaitingForAttackEnd)
+
+            // Beam finished → if still in attack range, restart attack
+            if (_enemy.IsPlayerInAttackRange() && _isAttacking)
             {
-                _isWaitingForAttackEnd = true;
-                _hasPerformedAttack = false;
                 _enemy.animator?.SetBool("Attack", false);
-                _enemy.animator?.SetBool("AttackEnd", true);
-                _exitCoroutine = _enemy.StartCoroutine(WaitForAttackEndAndTransition());
+                yield return null; // force animator reset
+                _enemy.animator?.SetBool("Attack", true);
+            }
+            else if (!_enemy.IsPlayerInAttackRange())
+            {
+                _enemy.TransitionToState(_enemy.GetNextStateFromMap(EnemyStateTypes.Chase));
             }
         }
 
         private IEnumerator WaitForAttackEndAndTransition()
         {
+            while (_activeLaserBeam != null && _activeLaserBeam.lockOn)
+            {
+                yield return null;
+            }
             AnimatorStateInfo stateInfo = _enemy.animator.GetCurrentAnimatorStateInfo(0);
+
+            // Wait until we are actually in AttackEnd animation
             while (!stateInfo.IsName("AttackEnd"))
             {
                 yield return null;
                 stateInfo = _enemy.animator.GetCurrentAnimatorStateInfo(0);
             }
+
+            // Wait until AttackEnd finishes
             while (stateInfo.normalizedTime < 1f)
             {
                 yield return null;
                 stateInfo = _enemy.animator.GetCurrentAnimatorStateInfo(0);
             }
-
+/*            while (_activeLaserBeam!= null && !_activeLaserBeam.lockOn)
+            {
+                yield return null;
+            }*/
             _enemy.TransitionToState(_enemy.GetNextStateFromMap(EnemyStateTypes.Chase));
-            _isWaitingForAttackEnd = false;
         }
-        public override void Attack()
-        {
-            _hasPerformedAttack = true;
-        }
+
         public override void Exit()
         {
+            _isAttacking = false;
+            _enemy.animator?.SetBool("Attack", false);
             _enemy.animator?.SetBool("AttackEnd", true);
+
             if (_exitCoroutine != null)
             {
                 _enemy.StopCoroutine(_exitCoroutine);
                 _exitCoroutine = null;
             }
+
             if (_activeLaserBeam != null && _activeLaserBeam.gameObject.activeSelf)
             {
                 _activeLaserBeam.Interrupt();
                 _activeLaserBeam = null;
             }
-            _isWaitingForAttackEnd = false;
+
             base.Exit();
-            
         }
     }
 }

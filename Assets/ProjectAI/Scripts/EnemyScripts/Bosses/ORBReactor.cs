@@ -9,7 +9,6 @@ using Zenject;
 
 namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
 {
-    // TODO: add halo range where player can take damage
     public class ORBReactor : MonoBehaviour, IHealthSystem
     {
         [SerializeField] private string _bossName;

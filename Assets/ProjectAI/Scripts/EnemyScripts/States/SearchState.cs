@@ -15,10 +15,7 @@ public class SearchState : IEnemyState
         _enemy = enemy;
         _player = player;
         lastKnownPos = _player.position;
-        var startPos = PathFindingManager.Instance.floorTilemap.WorldToCell(_enemy.transform.position);
-        var targetPositon = PathFindingManager.Instance.floorTilemap.WorldToCell(lastKnownPos);
-        List<Vector3Int> path = PathFindingManager.Instance.FindPath(startPos, targetPositon);
-        enemy.StartPathMovement(path);
+        FindPath();
         timer = 0f;
     }
 
@@ -36,6 +33,20 @@ public class SearchState : IEnemyState
         {
             _enemy.TransitionToState(_enemy.GetNextStateFromMap(EnemyStateTypes.Idle));
         }
+    }
+
+    private void FindPath()
+    {
+        List<Vector3Int> path = new();
+        var startPos = PathFindingManager.Instance.floorTilemap.WorldToCell(_enemy.transform.position);
+        var targetPositon = PathFindingManager.Instance.floorTilemap.WorldToCell(lastKnownPos);
+        path = PathFindingManager.Instance.FindPath(startPos, targetPositon);
+        if (path == null)
+        {
+            Debug.LogError($"{_enemy.name} no path found s-{startPos}, e- {targetPositon}");
+            return;
+        }
+        _enemy.StartPathMovement(path);
     }
 
     public void Exit() 

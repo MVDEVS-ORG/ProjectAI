@@ -9,6 +9,7 @@ public class IdleState : IEnemyState
 
     public void Enter(EnemyAI enemy, Transform player, ObjectPoolManager op)
     {
+        Debug.LogError("Enemy Entered Idle State");
         this._enemy = enemy;
         timer = 0f;
         enemy.animator?.SetBool("Idle", true);

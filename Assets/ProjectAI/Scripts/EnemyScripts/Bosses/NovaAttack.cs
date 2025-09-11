@@ -71,7 +71,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
                             var playerHealth = _target.GetComponent<CharacterView>();
                             if (playerHealth != null)
                             {
-                                // Continuous damage every frame (scaled by deltaTime)
+                                // Continuous _damage every frame (scaled by deltaTime)
                                 playerHealth.TakeDamage((int)(_damage * Time.deltaTime), transform.position);
                             }
                         }

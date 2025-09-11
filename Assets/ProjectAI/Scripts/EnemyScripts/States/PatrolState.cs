@@ -58,10 +58,11 @@ public class PatrolState : IEnemyState
 
     private void SetNewPatrolTarget()
     {
+        List<Vector3Int> path = new();
         patrolTarget = PathFindingManager.Instance.GetRandomWalkableTile();
         var startPos = PathFindingManager.Instance.floorTilemap.WorldToCell(_enemy.transform.position);
         var targetPos = PathFindingManager.Instance.floorTilemap.WorldToCell(patrolTarget);
-        List<Vector3Int> path = PathFindingManager.Instance.FindPath(startPos, targetPos);
+        path = PathFindingManager.Instance.FindPath(startPos, targetPos);
         if (path == null)
         {
             Debug.LogError($"{_enemy.name} no path found s-{startPos}, e- {targetPos}");
