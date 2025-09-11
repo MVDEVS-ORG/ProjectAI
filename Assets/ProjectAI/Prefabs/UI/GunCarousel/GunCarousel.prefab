@@ -205,7 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f059fff14e506924a90320ee636fcadb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CarouselPrefabAddress: CarouselItem
+  _carouselPrefabAddress: CarouselItem
   _parentObject: {fileID: 5898096457623564339}
 --- !u!114 &3010470493641530775
 MonoBehaviour:

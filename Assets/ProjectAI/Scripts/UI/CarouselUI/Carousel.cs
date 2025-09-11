@@ -13,6 +13,7 @@ public class Carousel : MonoBehaviour
     List<Image> _carouselItems =  new List<Image>();
     Dictionary<string,Image> _keyValuePairs = new Dictionary<string,Image>();
     int _index = 0;
+    int signedIndex;
     IAssetService _assetService;
     CarouselVerticalPositioner _verticalPositioner;
 
