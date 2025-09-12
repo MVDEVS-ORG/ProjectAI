@@ -226,7 +226,6 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
     {
         if (currentPath == null || currentPath.Count == 0 || PathFindingManager.Instance == null)
             return;
-        Debug.LogError(currentState);
 
         Tilemap floor = PathFindingManager.Instance.floorTilemap;
 

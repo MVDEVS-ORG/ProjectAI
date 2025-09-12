@@ -12,7 +12,6 @@ public class ChaseState : IEnemyState
 
     public void Enter(EnemyAI enemy, Transform player, ObjectPoolManager op)
     {
-        Debug.LogError("Enemy Entered in Chase state");
         _enemy = enemy;
         _player = player;
         RequestPath();
@@ -52,7 +51,6 @@ public class ChaseState : IEnemyState
 
     private void RequestPath()
     {
-        Debug.LogError("Enemy Requested For the path");
         Vector3 targetPos;
         List<Vector3Int> path = new();
         // If enemy is close to player, calculate offset to spread around

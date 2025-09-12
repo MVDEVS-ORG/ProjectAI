@@ -1,10 +1,19 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Net;
 using System.Threading;
 using UnityEngine;
 
 namespace Assets.ProjectAI.Scripts.EnemyScripts
 {
+    public enum BeamPhase
+    {
+        Tracking,
+        Locked,
+        Growing,
+        Finished
+    }
+
     [RequireComponent(typeof(LineRenderer), typeof(BoxCollider2D))]
     public class EnemyLaserBeam : MonoBehaviour
     {
@@ -25,11 +34,14 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts
         [SerializeField] private Gradient _lockGradient;
         [SerializeField] private Gradient _sweepGradient;
 
+        public BeamPhase CurrentPhase {  get; private set; }
+        public Action OnBeamFinished;
+
+        private bool lockOn = false;
         private ObjectPoolManager _pool;
         private Vector3 _origin;
         private Vector3 _direction;
         private bool _damageApplied;
-        public bool lockOn = false;
         private Coroutine _trackingCoroutine;
         private Coroutine _growCoroutine;
         private Coroutine _sweepCoroutine;
@@ -46,6 +58,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts
         
         private IEnumerator TrackPlayer(Transform playerTansform)
         {
+            CurrentPhase = BeamPhase.Tracking;
             while(!lockOn)
             {
                 _direction = (playerTansform.position - _origin).normalized;
@@ -67,6 +80,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts
             }
             if (lockOn)
             {
+                CurrentPhase = BeamPhase.Locked;
                 _lineRenderer.colorGradient = _lockGradient;
                 yield return Awaitable.WaitForSecondsAsync(_lockOnendDuration);
                 _growCoroutine = StartCoroutine(GrowBeamWidth());
@@ -80,7 +94,8 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts
         }
         private IEnumerator GrowBeamWidth()
         {
-            //yield return new WaitForSeconds(_beamDuration);
+            CurrentPhase = BeamPhase.Growing;
+
             _boxCollider.enabled = true;
             float width = 0.05f;
             while (width < _maxWidth)
@@ -103,6 +118,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts
             }
 
             yield return new WaitForSeconds(_beamDuration);
+            CurrentPhase = BeamPhase.Finished;
             lockOn = false;
             ResetObject();
         }
@@ -217,10 +233,13 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts
 
         void ResetObject()
         {
+            CurrentPhase = BeamPhase.Finished;
             lockOn = false;
             _boxCollider.size = Vector2.one;
             _boxCollider.offset = Vector2.zero;
             _boxCollider.enabled = false;
+
+            OnBeamFinished?.Invoke();
             _pool.ReleaseGameObject(gameObject, ObjectPoolManager.PoolType.GameObjects);
         }
 
