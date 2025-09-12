@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Threading;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Assets.ProjectAI.Scripts.EnemyScripts.AttackBehaviour
@@ -96,7 +95,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.AttackBehaviour
         private IEnumerator WaitForBeamToFinish()
         {
 
-            // Beam finished → if still in attack range, restart attack
+            // Beam finished if still in attack range, restart attack
             if (_enemy.IsPlayerInAttackRange() && _isAttacking)
             {
                 _enemy.animator?.SetBool("Attack", false);

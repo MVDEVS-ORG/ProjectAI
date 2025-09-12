@@ -8,7 +8,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
         [Header("Settings")]
         [SerializeField] private float _riseHeight = 5f;         // how high it rises before disappearing
         [SerializeField] private float _riseSpeed = 10f;         // speed of upward motion
-        [SerializeField] private int damage = 20;                // _damage dealt by spawned lightning
+        [SerializeField] private int _damage = 20;                // _damage dealt by spawned lightning
         [SerializeField] private float _destroyDelay = 0.5f;     // delay before pooling back
         [SerializeField] private float _warningDuration = 1.5f;  // delay before lightning spawns
         [SerializeField] private TrailRenderer _trailRenderer;
@@ -53,7 +53,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
             var lightningScript = lightning.GetComponent<SpawnedLightning>();
             if (lightningScript != null)
             {
-                lightningScript.Initialize(damage, _poolManager, _warningObject);
+                lightningScript.Initialize(_damage, _poolManager, _warningObject);
             }
             else
             {
