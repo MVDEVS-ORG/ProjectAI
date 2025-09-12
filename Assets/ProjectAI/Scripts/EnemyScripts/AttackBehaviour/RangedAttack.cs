@@ -87,24 +87,6 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.AttackBehaviour
                 };
                 beam.Fire(origin, _enemy.Target, _poolManager);
 
-                // Wait until beam finishes before next attack
-                _enemy.StartCoroutine(WaitForBeamToFinish());
-            }
-        }
-
-        private IEnumerator WaitForBeamToFinish()
-        {
-
-            // Beam finished if still in attack range, restart attack
-            if (_enemy.IsPlayerInAttackRange() && _isAttacking)
-            {
-                _enemy.animator?.SetBool("Attack", false);
-                yield return null; // force animator reset
-                _enemy.animator?.SetBool("Attack", true);
-            }
-            else if (!_enemy.IsPlayerInAttackRange())
-            {
-                _enemy.TransitionToState(_enemy.GetNextStateFromMap(EnemyStateTypes.Chase));
             }
         }
 
