@@ -21,7 +21,23 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 50c37ae7c851b0f47ae539f56025c42b, type: 2}
   - {fileID: 11400000, guid: afae1e9f19f9b364e9f09721bb3a182d, type: 2}
   - {fileID: 11400000, guid: d608dc259ab59ec4fa86c22328c9dd22, type: 2}
-  Tier2: []
-  Tier3: []
+  Tier2:
+  - {fileID: 11400000, guid: 4e8e77fbd2b6a2542860bcf0d0fd09b0, type: 2}
+  - {fileID: 11400000, guid: 2f2924590d61bea45905aba03377f24a, type: 2}
+  - {fileID: 11400000, guid: 85f62e302f28baa499932540bd560b5e, type: 2}
+  - {fileID: 11400000, guid: 427d34f2f032bd045a40637faba9ec66, type: 2}
+  - {fileID: 11400000, guid: a709f7d418768e24683ee202aa240330, type: 2}
+  - {fileID: 11400000, guid: 0da5b0d9260427743a2a06e02bdfa830, type: 2}
+  - {fileID: 11400000, guid: 2785e0521f696f643b6b67dd0013b7dc, type: 2}
+  - {fileID: 11400000, guid: 3c7cd2a3b58a752429e7af11b7debfc5, type: 2}
+  Tier3:
+  - {fileID: 11400000, guid: 0ecb888bf25610241ba21af235d5ac48, type: 2}
+  - {fileID: 11400000, guid: 4ca1eaae3e57aa047981039ce270fa27, type: 2}
+  - {fileID: 11400000, guid: 7d28364ea3e061c4c82b83a8a59d017b, type: 2}
+  - {fileID: 11400000, guid: 420722643b470ac4ba1834c6bf399f80, type: 2}
+  - {fileID: 11400000, guid: 853bb323e848bae4ab478b152014e5e1, type: 2}
+  - {fileID: 11400000, guid: 08eba8f6967d1a1439e8ca8799e9f1b2, type: 2}
+  - {fileID: 11400000, guid: 32c62261bea5086489595c6ce747a442, type: 2}
+  - {fileID: 11400000, guid: bebc9e0da9453b143ac21bedfcf84367, type: 2}
   Cursed: []
   Blessed: []

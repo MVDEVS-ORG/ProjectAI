@@ -37,58 +37,61 @@ public class UpgradeController : IUpgradeController
 
     private List<List<UpgradeSO>> GenerateUpgrades()
     {
-        List<List<UpgradeSO>> upgrades = new List<List<UpgradeSO>>();
-        #region logic for tier one items
+        List<List<UpgradeSO>> finalUpgrades = new();
+        HashSet<UpgradeSO> activeUpgradeSet = new(_activeUpgrades);
+        List<UpgradeSO> possibleUpgrades = new(_upgradeList.Tier1);
+        HashSet<UpgradeSO> possibleUpgradeSet = new();
 
-        List<UpgradeSO> possibleUpgrades = new List<UpgradeSO>(_upgradeList.Tier1);
-        foreach (UpgradeSO upgrade in _activeUpgrades)
+        possibleUpgrades.RemoveAll(x => activeUpgradeSet.Contains(x));
+
+        foreach (UpgradeSO activeUpgrade in _activeUpgrades)
         {
-            if (_activeUpgrades.Contains(upgrade.FuturePath))
+            UpgradeSO newUpgrade = FindPossibleUpgrade(activeUpgrade, activeUpgradeSet, 2);
+            if (newUpgrade != null && possibleUpgradeSet.Add(newUpgrade))
             {
-                if (_activeUpgrades.Contains(upgrade.FuturePath.FuturePath))
-                {
-                    possibleUpgrades.Remove(upgrade);
-                }
-                else
-                {
-                    possibleUpgrades.Remove(upgrade);
-                    if (upgrade.FuturePath.FuturePath != null)
-                    {
-                        possibleUpgrades.Add(upgrade.FuturePath.FuturePath);
-                    }
-                }
-            }
-            else
-            {
-                possibleUpgrades.Remove(upgrade);
-                if (upgrade.FuturePath != null)
-                {
-                    possibleUpgrades.Add(upgrade.FuturePath);
-                }
+                possibleUpgrades.Add(newUpgrade);
             }
         }
-        if (possibleUpgrades.Count > 3)
+
+        List<UpgradeSO> selectedUpgrade = new();
+        int maxCount = 3;
+        if (possibleUpgrades.Count > maxCount)
         {
-            while (upgrades.Count < 3)
+            int temp = maxCount;
+            while (temp > 0)
             {
-                List<UpgradeSO> upgrade = new();
-                int randomUpgrade = UnityEngine.Random.Range(0, possibleUpgrades.Count);
-                upgrade.Add(possibleUpgrades[(int)randomUpgrade]);
-                upgrades.Add(upgrade);
-                possibleUpgrades.Remove(possibleUpgrades[(int)randomUpgrade]);
+                int choice = UnityEngine.Random.Range(0, possibleUpgrades.Count);
+                selectedUpgrade.Add(possibleUpgrades[choice]);
+                possibleUpgrades.RemoveAt(choice);
+                temp--;
             }
         }
         else
         {
-            foreach (UpgradeSO possibleUpgrade in possibleUpgrades)
-            {
-                List<UpgradeSO> upgrade = new();
-                upgrade.Add(possibleUpgrade);
-                upgrades.Add(upgrade);
-            }
+            selectedUpgrade = new(possibleUpgrades);
         }
-        return upgrades;
-        #endregion
+
+        foreach (UpgradeSO upgrade in selectedUpgrade)
+        {
+            finalUpgrades.Add(new List<UpgradeSO> { upgrade });
+        }
+
+        return finalUpgrades;
+    }
+
+    private UpgradeSO FindPossibleUpgrade(UpgradeSO upgrade, HashSet<UpgradeSO> activeUpgradeSet, int depth, HashSet<UpgradeSO> visitedUpgradeSet = null)
+    {
+        if (depth <= 0) return null;
+        visitedUpgradeSet ??= new();
+
+        if (!visitedUpgradeSet.Add(upgrade)) return null;
+
+        UpgradeSO nextUpgrade = upgrade.FuturePath;
+        if (nextUpgrade == null) return null;
+
+        if (!activeUpgradeSet.Contains(nextUpgrade)) return nextUpgrade;
+
+        return FindPossibleUpgrade(nextUpgrade, activeUpgradeSet, depth - 1, visitedUpgradeSet);
     }
 
     async Awaitable IUpgradeController.Initialize()
