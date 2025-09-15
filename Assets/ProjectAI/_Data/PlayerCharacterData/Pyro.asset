@@ -27,3 +27,6 @@ MonoBehaviour:
   XPCollectionRadius: 1
   MeleeDashTime: 0.1
   MeleeDashSpeed: 18
+  CharacterAbilityAddressableId: ElementalistAbility
+  AbilityCooldown: 0
+  AbilityDuration: 0

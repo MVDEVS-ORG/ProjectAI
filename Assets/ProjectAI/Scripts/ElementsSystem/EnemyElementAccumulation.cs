@@ -31,13 +31,13 @@ public class EnemyElementAccumulation : MonoBehaviour
         {
             var cuurentAfflictionData = _model.EnemyAfflictionData[element.Key];
             cuurentAfflictionData.AfflictionAccumulation += element.Value;
-            if (cuurentAfflictionData.AfflictionAccumulation> cuurentAfflictionData.AfflictionLimit)
+            if (cuurentAfflictionData.AfflictionAccumulation>= cuurentAfflictionData.AfflictionLimit)
             {
                 cuurentAfflictionData.AfflictionAccumulation %= cuurentAfflictionData.AfflictionLimit;
                 cuurentAfflictionData.Afflicted = true;
                 InflictAffliction(element.Key);
             }
-            if(_model.EnemyAfflictionData[cuurentAfflictionData.OpposingElement].Afflicted)
+            if(_model.EnemyAfflictionData[element.Key].Afflicted && _model.EnemyAfflictionData[cuurentAfflictionData.OpposingElement].Afflicted)
             {
                 DisableAffliction(cuurentAfflictionData.OpposingElement);
             }
@@ -81,7 +81,10 @@ public class EnemyElementAccumulation : MonoBehaviour
     private IEnumerator FrostAffliction(float duration)
     {
         _model.MoveSpeed = _model.SlowedSpeed;
+        Debug.LogError(_model.GetHashCode() + "duration" + duration);
+        Debug.LogError($"speed is {_enemyAI.enemyModel.MoveSpeed}");
         yield return new WaitForSeconds(duration);
+        Debug.LogError($"speed is {_enemyAI.enemyModel.MoveSpeed}");
         DisableAffliction(ElementEnum.Ice);
     }
 
@@ -101,6 +104,7 @@ public class EnemyElementAccumulation : MonoBehaviour
 
     private void DisableAffliction(ElementEnum element)
     {
+        Debug.LogError($"{_model.GetHashCode()} is clearing {element}");
         switch (element)
         {
             case ElementEnum.Ice:
