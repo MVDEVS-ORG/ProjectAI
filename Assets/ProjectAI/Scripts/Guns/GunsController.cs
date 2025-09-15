@@ -22,6 +22,8 @@ public class GunsController : IGunsController
 
     private Carousel _gunCarousel;
 
+    public event Action<GunsView> OnGunSwap;
+
     GunsView IGunsController.View => _currentActiveGun;
 
     private IGunUI _currentGunUI;
@@ -40,12 +42,14 @@ public class GunsController : IGunsController
 
     void IGunsController.SetCurrentActiveGun(GunsView gun)
     {
+        _currentActiveGun.StopAllCoroutines();
         _currentActiveGun.gameObject.SetActive(false);
         _currentActiveGun = gun;
         _currentActiveGun.gameObject.SetActive(true);
         _currentGunsModel = gun.GunsModel;
         _currentGunUI.SwapGun(gun.GunsModel);
         gun.SetGunUI(_currentGunUI);
+        OnGunSwap?.Invoke(gun);
         _gunCarousel.MoveToIndex(_currentActiveGun.name);
     }
 
@@ -75,24 +79,24 @@ public class GunsController : IGunsController
 
     async Awaitable IGunsController.ReplaceGuns(GunsView gun)
     {
+        #region removing the current active gun
         Debug.LogError($"Deactivating gun {_currentActiveGun.name}");
-        //add the new system here
         _allGuns.Remove(_currentActiveGun.GunsModel);
         _orderedValues.Remove(_currentActiveGun.GunsModel);
-         //problem lies here cause gun.GunsModel is not create yet
         _currentActiveGun.DeactivateGun(gun.transform.position);
-
-        //new system changes above
-
-        //await (this as IGunsController).AddGun(gun);
+        _currentActiveGun.StopAllCoroutines();
         if (_allGuns.ContainsKey(_currentActiveGun.GunsModel))
         {
             _currentActiveGun.gameObject.SetActive(false);
         }
+        #endregion
+
+        #region setting new current active gun
         _currentActiveGun = gun;
         _currentActiveGun.gameObject.SetActive(true);
         GunsModel toRemove = _currentGunsModel;
         _currentGunsModel = gun.InitializeGun(this, _poolManager, _playerTransform, _playerCursor);
+        #endregion
 
         #region adding the new gun to the gun array and ordered list
         _allGuns.Add(_currentGunsModel, _currentActiveGun);
@@ -107,32 +111,41 @@ public class GunsController : IGunsController
     {
         try
         {
+            #region Instanting Default Gun for Character
             GameObject obj = await _assetService.InstantiateAsync(gunAddress);
             GunsView gun = obj.GetComponent<GunsView>();
             _playerTransform = playerTransform;
             _playerCursor = playerCursor;
             _currentActiveGun = gun;
             _currentGunsModel = gun.InitializeGun(this, _poolManager, _playerTransform, _playerCursor);
+            #endregion
 
+            #region Gun UI
             var gunUIgameObject = await _assetService.InstantiateAsync(AddressableIds.Gun_UI_Canvas);
             _currentGunUI = gunUIgameObject.GetComponent<IGunUI>();
             await _currentGunUI.Initialize(_currentGunsModel, _playerTransform);
-            //new system added
+            gun.SetGunUI(_currentGunUI);
+            #endregion
+
+            #region Adding it to multi gun system
             _allGuns.Add(_currentGunsModel, _currentActiveGun);
             _orderedValues.Add(_currentGunsModel);
-            //new system
+            #endregion
+
+            #region subscribing to upgrades controller
             _upgradeController.OnUpgrade += UpgradeWeapon;
             _upgradeController.RefreshUpgrades();
-            gun.SetGunUI(_currentGunUI);
+            #endregion
 
-            //setting up guns carousel
+            #region Gun Carousel
             var carousel = await _assetService.InstantiateAsync(AddressableIds.Gun_Carousel);
             _gunCarousel = carousel.GetComponent<Carousel>();
             Dictionary<string,Sprite> guns = new Dictionary<string,Sprite>();
-            guns[_currentActiveGun.name] = _currentActiveGun.GunSprite;
+            guns[_currentActiveGun.name] = _currentActiveGun.GunSprite; // need to add all active guns when we are switcching scene which is a TODO
             await _gunCarousel.Initialize(guns, _assetService);
+            #endregion
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             Debug.LogError(ex);
         }
@@ -140,8 +153,8 @@ public class GunsController : IGunsController
 
     async Awaitable IGunsController.AddGun(GunsView gun)
     {
-        
-        if(_allGuns.Count>=_gunLimit)
+        //checks if we are going over the permitted limit of guns for the character
+        if (_allGuns.Count>=_gunLimit)
         {
             await (this as IGunsController).ReplaceGuns(gun);
         }
@@ -168,10 +181,12 @@ public class GunsController : IGunsController
             gun.SetGunUI(_currentGunUI);
             #endregion
 
-            //Gun carousel
+            #region Adding the gun to the carousel
             await _gunCarousel.AddItem(_currentActiveGun.name, _currentActiveGun.GunSprite, true);
+            #endregion
+
+            OnGunSwap?.Invoke(gun);
         }
-        //Debug.LogError(JsonConvert.SerializeObject(lst) + "\n" + JsonConvert.SerializeObject(lst2));
     }
 
     void IGunsController.ChangeGunLimit(int limit)
@@ -189,8 +204,7 @@ public class GunsController : IGunsController
                 index = updown > 0 ? (index + 1) : ((index - 1)<0?_orderedValues.Count-1: (index - 1));
                 index = index % _orderedValues.Count;
                 _currentActiveGun.StopAllCoroutines();
-                (this as IGunsController).SetCurrentActiveGun(_allGuns[_orderedValues[index]]);
-                //gun carousel
+                (this as IGunsController).SetCurrentActiveGun(_allGuns[_orderedValues[index]]); // sets the current active gun after the swap
             }
         }
         catch (Exception exception)
@@ -211,7 +225,6 @@ public class GunsController : IGunsController
                     gun.Key.DisableOverheat = true;
                 }
                 gun.Value.SetStartingRotation(_orderedValues.IndexOf(gun.Key), _orderedValues.Count);
-                //gun.Value.RandomRotateGun();
                 gun.Value.AlternateRotation = true;
                 gun.Value.Fire(true);
             }
@@ -241,5 +254,10 @@ public class GunsController : IGunsController
                 }
             }
         }
+    }
+
+    void IGunsController.SetGunElements(Dictionary<ElementEnum,int> ElementalBuffs)
+    {
+        _currentActiveGun.ElementalBuffs = ElementalBuffs;
     }
 }
