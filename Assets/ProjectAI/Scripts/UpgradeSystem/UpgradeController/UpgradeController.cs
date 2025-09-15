@@ -68,7 +68,7 @@ public class UpgradeController : IUpgradeController
         }
         else
         {
-            selectedUpgrade = new(possibleUpgrades);
+            selectedUpgrade = possibleUpgrades;
         }
 
         foreach (UpgradeSO upgrade in selectedUpgrade)
