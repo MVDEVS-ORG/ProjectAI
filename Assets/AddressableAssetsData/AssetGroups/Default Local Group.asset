@@ -300,6 +300,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d0865baea8c9a094582df4471b42f7b6
+    m_Address: pyro
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d8fde6f46fd9bec48b7ea50f6fc2a38d
     m_Address: Goblin
     m_ReadOnly: 0
