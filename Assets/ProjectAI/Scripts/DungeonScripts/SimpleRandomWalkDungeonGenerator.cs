@@ -18,7 +18,8 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
             HashSet<Vector2Int> floorPositions = RunRandomWalk(randomWalkParameters, startPosition);
             tilemapVisualizer.Clear();
             tilemapVisualizer.PaintFloorTiles(floorPositions);
-            await WallGenerator.CreateWalls(floorPositions, tilemapVisualizer);
+            WallGenerator.CreateWalls(floorPositions, tilemapVisualizer);
+            await Awaitable.EndOfFrameAsync();
             DungeonData data = new DungeonData();
             return data;
         }
