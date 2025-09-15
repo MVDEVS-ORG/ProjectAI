@@ -52,7 +52,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dbd1e1ba7e6e51439681cc2034d82dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomFirstDungeonGenerator: {fileID: 2090961810433112212}
+  _roomFirstDungeonGenerator: {fileID: 2090961810433112212}
+  _tileMapVisualizer: {fileID: 4568488876918413640}
 --- !u!1 &700158020342015200
 GameObject:
   m_ObjectHideFlags: 0
@@ -545,6 +546,7 @@ MonoBehaviour:
   wallDiagonalCornerDownLeft: {fileID: 11400000, guid: f0876383a0a9e9f4a8f543d8515e12c0, type: 2}
   wallDiagonalCornerUpRight: {fileID: 11400000, guid: 809171e13e7908f40a916074c244f08c, type: 2}
   wallDiagonalCornerUpLeft: {fileID: 11400000, guid: 990709a76d4f9124db8ca4026e79a932, type: 2}
+  _currentTileSet: {fileID: 0}
 --- !u!1 &7886161548347080701
 GameObject:
   m_ObjectHideFlags: 0

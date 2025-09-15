@@ -1,8 +1,8 @@
-﻿using Assets.ProjectAI.Scripts.HelperClass;
+﻿using Assets.ProjectAI.Scripts.DungeonScripts.Data;
+using Assets.ProjectAI.Scripts.HelperClass;
 using Assets.Services;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Zenject;
@@ -14,19 +14,23 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
         [Inject] IAssetService _assetService;
         [SerializeField]
         private Tilemap _floorTilemap, _wallTilemap;
-        [SerializeField]
-        private TileBase _floorTile, wallTop, wallSideRight, wallSideLeft, wallBottom, wallFull,
-            wallInnerCornerDownLeft, wallInnerCornerDownRight, 
-            wallDiagonalCornerDownRight, wallDiagonalCornerDownLeft, wallDiagonalCornerUpRight, wallDiagonalCornerUpLeft;
+        [SerializeField] private TileSetSO _currentTileSet;
 
-        public async void PaintFloorTiles(IEnumerable<Vector2Int> floorPositions)
+        public void SetTileSet(TileSetSO tileSet)
         {
-            if (_assetService == null)
+            _currentTileSet = tileSet;
+            Debug.Log($"Tile Set changed at runTime to: {_currentTileSet.name}");
+        }
+
+        public void PaintFloorTiles(IEnumerable<Vector2Int> floorPositions)
+        {
+            if (_currentTileSet == null || _currentTileSet.floorTile == null)
             {
-                Debug.LogError("asset service is null");
+                Debug.LogError("TileSet or floor tile not assigned!");
+                return;
             }
-            var tileBase = await _assetService.LoadAssetAsync<TileBase>(AddressableIds.Floor);
-            PaintTiles(floorPositions, _floorTilemap, tileBase);
+
+            PaintTiles(floorPositions, _floorTilemap, _currentTileSet.floorTile);
         }
 
         private void PaintTiles(IEnumerable<Vector2Int> positions, Tilemap tilemap, TileBase tile)
@@ -49,107 +53,62 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
             _wallTilemap.ClearAllTiles();
         }
 
-        public async Awaitable PaintSingleBasicWall(Vector2Int position, string binaryType)
+        public void PaintSingleBasicWall(Vector2Int position, string binaryType)
         {
-            int typeAsInt = Convert.ToInt32(binaryType, 2);
-            string tileBase = null;
-            if (WallTypesHelper.wallTop.Contains(typeAsInt))
+            if (_currentTileSet == null)
             {
-                tileBase = AddressableIds.Wall_Top;
-            }
-            else if (WallTypesHelper.wallSideRight.Contains(typeAsInt))
-            {
-                tileBase = AddressableIds.Wall_Side_Right;
-            }
-            else if (WallTypesHelper.wallSideLeft.Contains(typeAsInt))
-            {
-                tileBase = AddressableIds.Wall_Side_Left;
-            }
-            else if (WallTypesHelper.wallBottm.Contains(typeAsInt))
-            {
-                tileBase = AddressableIds.Wall_Bottom;
-            }
-            else if (WallTypesHelper.wallFull.Contains(typeAsInt))
-            {
-                tileBase = AddressableIds.Wall_Full;
-            }
-            if (tileBase == null)
+                Debug.LogError("TileSet not assigned!");
                 return;
-            try
-            {
-                TileBase tile = await _assetService.LoadAssetAsync<TileBase>(tileBase);
-                if (tile != null)
-                {
-                    PaintSingleTile(_wallTilemap, tile, position);
-                }
-                else
-                {
-                    Debug.LogError($"tile is null addressable Id: {tileBase}");
-                }
             }
-            catch (Exception ex)
-            {
-                Debug.LogError($"tile is null addressable Id: {tileBase} \n {ex}");
-            }
+
+            int typeAsInt = Convert.ToInt32(binaryType, 2);
+            TileBase tile = null;
+
+            if (WallTypesHelper.wallTop.Contains(typeAsInt))
+                tile = _currentTileSet.wallTop;
+            else if (WallTypesHelper.wallSideRight.Contains(typeAsInt))
+                tile = _currentTileSet.wallSideRight;
+            else if (WallTypesHelper.wallSideLeft.Contains(typeAsInt))
+                tile = _currentTileSet.wallSideLeft;
+            else if (WallTypesHelper.wallBottm.Contains(typeAsInt))
+                tile = _currentTileSet.wallBottom;
+            else if (WallTypesHelper.wallFull.Contains(typeAsInt))
+                tile = _currentTileSet.wallFull;
+
+            if (tile != null)
+                PaintSingleTile(_wallTilemap, tile, position);
         }
 
-        public async Awaitable PaintSingleCornerWall(Vector2Int position, string binaryType)
+        public void PaintSingleCornerWall(Vector2Int position, string binaryType)
         {
+            if (_currentTileSet == null)
+            {
+                Debug.LogError("TileSet not assigned!");
+                return;
+            }
+
             int typeAsInt = Convert.ToInt32(binaryType, 2);
-            string tileBase = null;
+            TileBase tile = null;
+
             if (WallTypesHelper.wallInnerCornerDownLeft.Contains(typeAsInt))
-            {
-                tileBase = AddressableIds.Wall_Inner_Corner_Down_Left;
-            }
+                tile = _currentTileSet.wallInnerCornerDownLeft;
             else if (WallTypesHelper.wallInnerCornerDownRight.Contains(typeAsInt))
-            {
-                tileBase = AddressableIds.Wall_Inner_Corner_Down_Right;
-            }
+                tile = _currentTileSet.wallInnerCornerDownRight;
             else if (WallTypesHelper.wallDiagonalCornerDownLeft.Contains(typeAsInt))
-            {
-                tileBase = AddressableIds.Wall_Diagonal_Corner_Down_Left;
-            }
+                tile = _currentTileSet.wallDiagonalCornerDownLeft;
             else if (WallTypesHelper.wallDiagonalCornerDownRight.Contains(typeAsInt))
-            {
-                tileBase = AddressableIds.Wall_Diagonal_Corner_Down_Right;
-            }
+                tile = _currentTileSet.wallDiagonalCornerDownRight;
             else if (WallTypesHelper.wallDiagonalCornerUpRight.Contains(typeAsInt))
-            {
-                tileBase = AddressableIds.Wall_Diagonal_Corner_Up_Right;
-            }
+                tile = _currentTileSet.wallDiagonalCornerUpRight;
             else if (WallTypesHelper.wallDiagonalCornerUpLeft.Contains(typeAsInt))
-            {
-                tileBase = AddressableIds.Wall_Diagonal_Corner_Up_Left;
-            }
+                tile = _currentTileSet.wallDiagonalCornerUpLeft;
             else if (WallTypesHelper.wallFullEightDirections.Contains(typeAsInt))
-            {
-                tileBase = AddressableIds.Wall_Full;
-            }
+                tile = _currentTileSet.wallFull;
             else if (WallTypesHelper.wallBottmEightDirections.Contains(typeAsInt))
-            {
-                tileBase = AddressableIds.Wall_Bottom;
-            }
-            if (string.IsNullOrEmpty(tileBase))
-            {
-                return;
-            }
-            try
-            {
-                TileBase tile = await _assetService.LoadAssetAsync<TileBase>(tileBase);
-                if (tile != null)
-                {
-                    PaintSingleTile(_wallTilemap, tile, position);
-                }
-                else
-                {
-                    Debug.LogError($"tile is null addressable Id: {tileBase}");
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.LogError($"error in loading addressable Id: {tileBase} \n {ex}");
-                return;
-            }
+                tile = _currentTileSet.wallBottom;
+
+            if (tile != null)
+                PaintSingleTile(_wallTilemap, tile, position);
         }
     }
 }

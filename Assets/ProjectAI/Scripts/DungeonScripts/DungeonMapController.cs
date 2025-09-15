@@ -1,4 +1,7 @@
-﻿using Assets.ProjectAI.Scripts.PathFinding;
+﻿using Assets.ProjectAI.Scripts.DungeonScripts.Data;
+using Assets.ProjectAI.Scripts.GameController;
+using Assets.ProjectAI.Scripts.PathFinding;
+using Assets.Services;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
@@ -8,15 +11,20 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
     public class DungeonMapController : MonoBehaviour
     {
         [SerializeField]
-        private RoomFirstDungeonGenerator roomFirstDungeonGenerator;
-        [Inject] private RoomContentGenerator roomContentGenerator;
+        private RoomFirstDungeonGenerator _roomFirstDungeonGenerator;
+        [SerializeField] private TilemapVisualizer _tileMapVisualizer;
+        [Inject] private RoomContentGenerator _roomContentGenerator;
+        [Inject] private IAssetService _assetService;
+        [Inject] private LevelManager _levelManager;
 
         // Use this for initialization
         public async Awaitable Initialize()
         {
-            DungeonData data = await roomFirstDungeonGenerator.GenerateDungeon();
+            var tileSet = await _assetService.LoadAssetAsync<TileSetSO>(AddressableIds.TileSet + _levelManager.CurrentLevel.ToString());
+            _tileMapVisualizer.SetTileSet(tileSet);
+            DungeonData data = await _roomFirstDungeonGenerator.GenerateDungeon();
             var isMapBaked = await PathFindingManager.Instance.InitialBakeAsync(data);
-            var items = await roomContentGenerator.GenerateRoomContent(data);
+            var items = await _roomContentGenerator.GenerateRoomContent(data);
             foreach (var item in items)
             {
                 data.items.Add(item);
@@ -30,7 +38,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
 
         public List<GameObject> GetAllSpawnedEnemies()
         {
-            return roomContentGenerator.GetSpawnedGameObjects<EnemyAI>();
+            return _roomContentGenerator.GetSpawnedGameObjects<EnemyAI>();
         }
     }
 }
