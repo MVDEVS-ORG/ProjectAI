@@ -1,19 +1,29 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Net;
 using System.Threading;
 using UnityEngine;
 
 namespace Assets.ProjectAI.Scripts.EnemyScripts
 {
+    public enum BeamPhase
+    {
+        Tracking,
+        Locked,
+        Growing,
+        Finished
+    }
+
     [RequireComponent(typeof(LineRenderer), typeof(BoxCollider2D))]
     public class EnemyLaserBeam : MonoBehaviour
     {
         [Header("General Settings")]
-        [SerializeField] private float maxWidth = 0.5f;
-        [SerializeField] private float growSpeed = 2f;
-        [SerializeField] private float beamDuration = 0.3f;
-        [SerializeField] private LayerMask collisionMask;
-        [SerializeField] private int damage = 10;
+        [SerializeField] private float _maxWidth = 0.5f;
+        [SerializeField] private float _growSpeed = 2f;
+        [SerializeField] private float _beamDuration = 0.3f;
+        [SerializeField] private float _lockOnendDuration = 0.5f;
+        [SerializeField] private LayerMask _collisionMask;
+        [SerializeField] private int _damage = 10;
 
         [Header("References")]
         [SerializeField] private LineRenderer _lineRenderer;
@@ -24,13 +34,17 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts
         [SerializeField] private Gradient _lockGradient;
         [SerializeField] private Gradient _sweepGradient;
 
+        public BeamPhase CurrentPhase {  get; private set; }
+        public Action OnBeamFinished;
+
+        private bool lockOn = false;
         private ObjectPoolManager _pool;
         private Vector3 _origin;
         private Vector3 _direction;
         private bool _damageApplied;
-        private bool _lockOn = false;
         private Coroutine _trackingCoroutine;
         private Coroutine _growCoroutine;
+        private Coroutine _sweepCoroutine;
 
         #region Lock-On Fire
         public void Fire(Vector3 origin, Transform playerTransform, ObjectPoolManager pool)
@@ -44,7 +58,8 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts
         
         private IEnumerator TrackPlayer(Transform playerTansform)
         {
-            while(!_lockOn)
+            CurrentPhase = BeamPhase.Tracking;
+            while(!lockOn)
             {
                 _direction = (playerTansform.position - _origin).normalized;
 
@@ -63,8 +78,11 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts
                 gameObject.SetActive(true);
                 yield return Awaitable.EndOfFrameAsync();
             }
-            if (_lockOn)
+            if (lockOn)
             {
+                CurrentPhase = BeamPhase.Locked;
+                _lineRenderer.colorGradient = _lockGradient;
+                yield return Awaitable.WaitForSecondsAsync(_lockOnendDuration);
                 _growCoroutine = StartCoroutine(GrowBeamWidth());
             }
         }
@@ -72,16 +90,17 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts
         private IEnumerator LockOn()
         {
             yield return new WaitForSeconds(2f);
-            _lockOn = true;
+            lockOn = true;
         }
         private IEnumerator GrowBeamWidth()
         {
-            //yield return new WaitForSeconds(beamDuration);
+            CurrentPhase = BeamPhase.Growing;
+
             _boxCollider.enabled = true;
             float width = 0.05f;
-            while (width < maxWidth)
+            while (width < _maxWidth)
             {
-                width += Time.deltaTime * growSpeed;
+                width += Time.deltaTime * _growSpeed;
                 _lineRenderer.startWidth = width;
                 _lineRenderer.endWidth = width;
                 _lineRenderer.colorGradient = _lockGradient;
@@ -98,8 +117,9 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts
                 yield return null;
             }
 
-            yield return new WaitForSeconds(beamDuration);
-            _lockOn = false;
+            yield return new WaitForSeconds(_beamDuration);
+            CurrentPhase = BeamPhase.Finished;
+            lockOn = false;
             ResetObject();
         }
 
@@ -114,7 +134,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts
             gameObject.SetActive(true);
 
             // Start sweeping coroutine
-            StartCoroutine(SweepLaser(sweepDuration, leftToRight, isPhase2, cancellationToken));
+            _sweepCoroutine = StartCoroutine(SweepLaser(sweepDuration, leftToRight, isPhase2, cancellationToken));
         }
 
         private IEnumerator SweepLaser(float sweepDuration, bool leftToRight, bool isPhase2, CancellationToken cancellationToken)
@@ -169,13 +189,13 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts
                 _lineRenderer.SetPosition(0, _origin);
                 _lineRenderer.SetPosition(1, endPoint);
 
-                _lineRenderer.startWidth = maxWidth;
-                _lineRenderer.endWidth = maxWidth;
+                _lineRenderer.startWidth = _maxWidth;
+                _lineRenderer.endWidth = _maxWidth;
 
                 // Update collider to match beam
                 float length = Vector3.Distance(_origin, endPoint);
                 Vector2 size = _boxCollider.size;
-                size.y = maxWidth;
+                size.y = _maxWidth;
                 size.x = length;
                 _boxCollider.size = size;
 
@@ -189,7 +209,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts
                 yield return null;
             }
 
-            yield return new WaitForSeconds(beamDuration);
+            yield return new WaitForSeconds(_beamDuration);
 
             ResetObject();
         }
@@ -201,7 +221,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts
             if (other.CompareTag("Player"))
             {
                 var playerHealth = other.GetComponent<CharacterView>();
-                playerHealth?.TakeDamage(damage,_origin , 0.2f);
+                playerHealth?.TakeDamage(_damage,_origin , 0.2f);
                 _damageApplied = true;
             }
         }
@@ -213,10 +233,13 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts
 
         void ResetObject()
         {
-            _lockOn = false;
+            CurrentPhase = BeamPhase.Finished;
+            lockOn = false;
             _boxCollider.size = Vector2.one;
             _boxCollider.offset = Vector2.zero;
             _boxCollider.enabled = false;
+
+            OnBeamFinished?.Invoke();
             _pool.ReleaseGameObject(gameObject, ObjectPoolManager.PoolType.GameObjects);
         }
 
@@ -224,6 +247,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts
         {
             if (_trackingCoroutine != null) StopCoroutine(_trackingCoroutine);
             if (_growCoroutine != null) StopCoroutine(_growCoroutine);
+            if (_sweepCoroutine != null) StopCoroutine(_sweepCoroutine);
             ResetObject();
         }
     }
