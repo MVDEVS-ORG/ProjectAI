@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb3e83c82a21b99448c1a9b802fc5f4f, type: 3}
-  m_Name: DashCooldownReduction1
+  m_Name: GunOverheatDecrease2
   m_EditorClassIdentifier: 
-  Header: Dash Cooldown Reduction
-  Description: Reduces the dash cooldown by 1 second
+  Header: 2Gun Overheat Rate Decrease
+  Description: Slightly decreases the guns overheat rate
   SpriteAddressable: ShotgunSprite
   Type: 0
-  UpgradeTier: 0
-  UpgradeType: 0
+  UpgradeTier: 1
+  UpgradeType: 1
   playerModel:
     MaxHealth: 0
     Health: 0
@@ -28,7 +28,7 @@ MonoBehaviour:
     RollSpeed: 0
     NoOfRoll: 0
     MaxNoOfRolls: 0
-    RolllCooldown: -1
+    RolllCooldown: 0
     InvincibilityTime: 0
     DamageKickBackSpeed: 0
     DamageKickBackTime: 0
@@ -49,7 +49,7 @@ MonoBehaviour:
     FireRate: 0
     GunWindUpTime: 0
     OverHeatLimit: 0
-    OverHeatRate: 0
+    OverHeatRate: -6
     CoolDownRate: 0
     MinCooldownThreshold: 0
     OverHeatValue: 0
