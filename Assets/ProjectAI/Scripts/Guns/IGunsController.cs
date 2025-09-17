@@ -1,5 +1,6 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public interface IGunsController
 {
@@ -12,4 +13,6 @@ public interface IGunsController
     void ChangeGunLimit(int limit);
     void SwapGuns(int updown);
     void FireAllGuns(bool toggle, bool alternateAbility);
+    void SetGunElements(Dictionary<ElementEnum, int> ElementalBuffs);
+    event Action<GunsView> OnGunSwap;
 }

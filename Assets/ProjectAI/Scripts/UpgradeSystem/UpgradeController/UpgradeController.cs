@@ -1,8 +1,8 @@
-using Assets.Services;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using Assets.Services;
+using Newtonsoft.Json;
 using UnityEngine;
 using Zenject;
 
@@ -16,7 +16,7 @@ public class UpgradeController : IUpgradeController
     private UpgradesLists _upgradeList;
 
     private string _path;
-    private DataSerializer _dataSerializer =  new DataSerializer();
+    private DataSerializer _dataSerializer = new DataSerializer();
 
     public event Action<List<UpgradeSO>> OnUpgrade;
 
@@ -37,58 +37,61 @@ public class UpgradeController : IUpgradeController
 
     private List<List<UpgradeSO>> GenerateUpgrades()
     {
-        List<List<UpgradeSO>> upgrades = new List<List<UpgradeSO>>();
-        #region logic for tier one items
+        List<List<UpgradeSO>> finalUpgrades = new();
+        HashSet<UpgradeSO> activeUpgradeSet = new(_activeUpgrades);
+        List<UpgradeSO> possibleUpgrades = new(_upgradeList.Tier1);
+        HashSet<UpgradeSO> possibleUpgradeSet = new();
 
-        List<UpgradeSO> possibleUpgrades = new List<UpgradeSO>(_upgradeList.Tier1);
-        foreach (UpgradeSO upgrade in _activeUpgrades)
+        possibleUpgrades.RemoveAll(x => activeUpgradeSet.Contains(x));
+
+        foreach (UpgradeSO activeUpgrade in _activeUpgrades)
         {
-            if (_activeUpgrades.Contains(upgrade.FuturePath))
+            UpgradeSO newUpgrade = FindPossibleUpgrade(activeUpgrade, activeUpgradeSet, 2);
+            if (newUpgrade != null && possibleUpgradeSet.Add(newUpgrade))
             {
-                if (_activeUpgrades.Contains(upgrade.FuturePath.FuturePath))
-                {
-                    possibleUpgrades.Remove(upgrade);
-                }
-                else
-                {
-                    possibleUpgrades.Remove(upgrade);
-                    if (upgrade.FuturePath.FuturePath != null)
-                    {
-                        possibleUpgrades.Add(upgrade.FuturePath.FuturePath);
-                    }
-                }
-            }
-            else
-            {
-                possibleUpgrades.Remove(upgrade);
-                if (upgrade.FuturePath != null)
-                {
-                    possibleUpgrades.Add(upgrade.FuturePath);
-                }
+                possibleUpgrades.Add(newUpgrade);
             }
         }
-        if (possibleUpgrades.Count > 3)
+
+        List<UpgradeSO> selectedUpgrade = new();
+        int maxCount = 3;
+        if (possibleUpgrades.Count > maxCount)
         {
-            while (upgrades.Count < 3)
+            int temp = maxCount;
+            while (temp > 0)
             {
-                List<UpgradeSO> upgrade = new();
-                int randomUpgrade = UnityEngine.Random.Range(0, possibleUpgrades.Count);
-                upgrade.Add(possibleUpgrades[(int)randomUpgrade]);
-                upgrades.Add(upgrade);
-                possibleUpgrades.Remove(possibleUpgrades[(int)randomUpgrade]);
+                int choice = UnityEngine.Random.Range(0, possibleUpgrades.Count);
+                selectedUpgrade.Add(possibleUpgrades[choice]);
+                possibleUpgrades.RemoveAt(choice);
+                temp--;
             }
         }
         else
         {
-            foreach (UpgradeSO possibleUpgrade in possibleUpgrades)
-            {
-                List<UpgradeSO> upgrade = new();
-                upgrade.Add(possibleUpgrade);
-                upgrades.Add(upgrade);
-            }
+            selectedUpgrade = possibleUpgrades;
         }
-        return upgrades;
-        #endregion
+
+        foreach (UpgradeSO upgrade in selectedUpgrade)
+        {
+            finalUpgrades.Add(new List<UpgradeSO> { upgrade });
+        }
+
+        return finalUpgrades;
+    }
+
+    private UpgradeSO FindPossibleUpgrade(UpgradeSO upgrade, HashSet<UpgradeSO> activeUpgradeSet, int depth, HashSet<UpgradeSO> visitedUpgradeSet = null)
+    {
+        if (depth <= 0) return null;
+        visitedUpgradeSet ??= new();
+
+        if (!visitedUpgradeSet.Add(upgrade)) return null;
+
+        UpgradeSO nextUpgrade = upgrade.FuturePath;
+        if (nextUpgrade == null) return null;
+
+        if (!activeUpgradeSet.Contains(nextUpgrade)) return nextUpgrade;
+
+        return FindPossibleUpgrade(nextUpgrade, activeUpgradeSet, depth - 1, visitedUpgradeSet);
     }
 
     async Awaitable IUpgradeController.Initialize()
@@ -109,7 +112,7 @@ public class UpgradeController : IUpgradeController
         {
             Debug.LogException(ex);
         }
-        
+
     }
 
     void IUpgradeController.LoadUpgrades()
@@ -127,18 +130,17 @@ public class UpgradeController : IUpgradeController
 
     void IUpgradeController.SaveUpgrades()
     {
-        _dataSerializer.SaveData("/upgrades.json",_activeUpgrades);
-        _dataSerializer.SaveData("/curses.json",_cursedUpgrades);
+        _dataSerializer.SaveData("/upgrades.json", _activeUpgrades);
+        _dataSerializer.SaveData("/curses.json", _cursedUpgrades);
     }
 
 
 
     void IUpgradeController.SelectedUpgrade(List<UpgradeSO> upgrades)
     {
-        Debug.LogError(upgrades[0].Header);
         foreach (UpgradeSO upgrade in upgrades)
         {
-            if(upgrade.UpgradeTier!=UpgradeTier.Cursed)
+            if (upgrade.UpgradeTier != UpgradeTier.Cursed)
             {
                 _activeUpgrades.Add(upgrade);
                 List<UpgradeSO> temp = new();
@@ -153,7 +155,7 @@ public class UpgradeController : IUpgradeController
                 _cursedUpgrades.Add(upgrade);
             }
         }
-        if(_cursedUpgrades.Count>0 && OnUpgrade!=null)
+        if (_cursedUpgrades.Count > 0 && OnUpgrade != null)
         {
             OnUpgrade.Invoke(_cursedUpgrades);
         }
@@ -162,5 +164,22 @@ public class UpgradeController : IUpgradeController
         _upgradesCanvas.enabled = false;
         _upgradesPopup.gameObject.SetActive(false);
         Cursor.visible = false;
+    }
+
+    void IUpgradeController.SavePlayerStats(int currentXP, int playerLevel, int playerHealth)
+    {
+        (int, int, int) playerStats = new(currentXP, playerLevel, playerHealth);
+        _dataSerializer.SaveData("/experience.json", playerStats);
+    }
+
+    (int, int, int) IUpgradeController.RefreshPlayerStats()
+    {
+        (int, int, int) xp = _dataSerializer.LoadData<(int, int, int)>("/experience.json");
+        return xp;
+    }
+
+    void IUpgradeController.ClearPlayerStats()
+    {
+        _dataSerializer.SaveData("/experience.json", (0, 0, 0));
     }
 }

@@ -30,7 +30,7 @@ public class ShotgunBlast : MonoBehaviour, IGunProjectileBehavior
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //create system to deal damage to enemies
+        //create system to deal _damage to enemies
         if (collision.transform.TryGetComponent<IHealthSystem>(out IHealthSystem health))
         {
             health.TakeDamage(_projectileProperties.Damage);

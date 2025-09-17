@@ -35,13 +35,13 @@ public class EnemyElementAccumulation : MonoBehaviour
         {
             var cuurentAfflictionData = _model.EnemyAfflictionData[element.Key];
             cuurentAfflictionData.AfflictionAccumulation += element.Value;
-            if (cuurentAfflictionData.AfflictionAccumulation> cuurentAfflictionData.AfflictionLimit)
+            if (cuurentAfflictionData.AfflictionAccumulation>= cuurentAfflictionData.AfflictionLimit)
             {
                 cuurentAfflictionData.AfflictionAccumulation %= cuurentAfflictionData.AfflictionLimit;
                 cuurentAfflictionData.Afflicted = true;
                 InflictAffliction(element.Key);
             }
-            if(_model.EnemyAfflictionData[cuurentAfflictionData.OpposingElement].Afflicted)
+            if(_model.EnemyAfflictionData[element.Key].Afflicted && _model.EnemyAfflictionData[cuurentAfflictionData.OpposingElement].Afflicted)
             {
                 DisableAffliction(cuurentAfflictionData.OpposingElement);
             }

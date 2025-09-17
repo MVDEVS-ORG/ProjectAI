@@ -42,7 +42,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
                 doorPositions = this._doorPositions
             };
             return data;
-            //await roomContentGenerator.GenerateRoomContent(data);
+            //await _roomContentGenerator.GenerateRoomContent(data);
         }
         private void DetectDoorPositions()
         {
@@ -119,7 +119,8 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
             _floorPositions.UnionWith(corridors);
 
             tilemapVisualizer.PaintFloorTiles(_floorPositions);
-            await WallGenerator.CreateWalls(_floorPositions, tilemapVisualizer);
+            WallGenerator.CreateWalls(_floorPositions, tilemapVisualizer);
+            await Awaitable.EndOfFrameAsync();
             //DetectDoorPositions();
         }
 

@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb3e83c82a21b99448c1a9b802fc5f4f, type: 3}
+  m_Name: HealthBoost2
+  m_EditorClassIdentifier: 
+  Header: Health Boost
+  Description: 2Increases health slightly
+  SpriteAddressable: ShotgunSprite
+  Type: 0
+  UpgradeTier: 1
+  UpgradeType: 0
+  playerModel:
+    MaxHealth: 40
+    Health: 0
+    Speed: 0
+    Character: 0
+    CursorDistance: 0
+    RollDuration: 0
+    RollSpeed: 0
+    NoOfRoll: 0
+    MaxNoOfRolls: 0
+    RolllCooldown: 0
+    InvincibilityTime: 0
+    DamageKickBackSpeed: 0
+    DamageKickBackTime: 0
+    Experience: 0
+    PlayerLevel: 0
+    XPCollectionRadius: 0
+    MeleeDashTime: 0
+    MeleeDashSpeed: 0
+    CharacterAbilityAddressableId: 
+    AbilityCooldown: 0
+    AbilityDuration: 0
+    AbilityAlter: 0
+  gunsModel:
+    PrimaryProjectileAddressable: 
+    SecondaryProjectileAddressable: 
+    GunUIAddressable: 
+    GunViewAddressableId: 
+    FireRate: 0
+    GunWindUpTime: 0
+    OverHeatLimit: 0
+    OverHeatRate: 0
+    CoolDownRate: 0
+    MinCooldownThreshold: 0
+    OverHeatValue: 0
+    ElipseVerticalRadius: 0
+    ElipseHorizontalRadius: 0
+    DisableOverheat: 0
+    Empty: 0
+  meleeWeaponModel:
+    AttackSpeed: 0
+    AttackTime: 0
+    AttackChainLimit: 0
+    AttackRechargeDelay: 0
+    DistanceFromPlayer: 0
+    Attacks: 0
+    Damage: 0
+  FuturePath: {fileID: 0}
