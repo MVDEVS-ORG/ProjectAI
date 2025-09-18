@@ -10,7 +10,7 @@ public class AbilityController : IAbilityController
     {
         _model = model;
         _characterAbility = await assetService.LoadAssetAsync<CharacterAbility>(model.CharacterAbilityAddressableId);
-        _characterAbility.Initialize(model, playerController, meleeWeaponController, gunsController);
+        _characterAbility.Initialize(model, playerController, meleeWeaponController, gunsController, assetService);
     }
 
     void IAbilityController.UseAbility()

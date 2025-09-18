@@ -1,3 +1,4 @@
+using Assets.Services;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -6,16 +7,21 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ElementalistAbility", menuName = "Scriptable Objects/ElementalistAbility")]
 public class ElementalistAbility : CharacterAbility
 {
+    public const string Elementalist_UI = "ElementalistUI";
+
     private IGunsController _gunsController;
     private IMeleeWeaponController _meleeWeaponController;
     [SerializeField] private int _startingAfflictionValue;
     Dictionary<ElementEnum,int> _elementalBuffs = new Dictionary<ElementEnum,int>();
     private int _index = 0;
-    public override void Initialize(PlayerModel playerModel, IPlayerController playerController, IMeleeWeaponController meleeWeaponController, IGunsController gunsController)
+    private ElementalistAbilityUI _abilityUI; 
+    public override void Initialize(PlayerModel playerModel, IPlayerController playerController, IMeleeWeaponController meleeWeaponController, IGunsController gunsController, IAssetService assetService)
     {
         _gunsController = gunsController;
         _meleeWeaponController = meleeWeaponController;
         _elementalBuffs.Clear();
+
+        _ = LoadUI(assetService);
 
         #region initialize buffs dictionary
         foreach(ElementEnum element in Enum.GetValues(typeof(ElementEnum)))
@@ -38,6 +44,7 @@ public class ElementalistAbility : CharacterAbility
     {
         Debug.LogError("Use ability called");
         _index = (_index + 1) % (Enum.GetValues(typeof(ElementEnum)).Length);
+        _abilityUI.SetImage(_index);
         foreach (ElementEnum element in Enum.GetValues(typeof(ElementEnum)))
         {
             if ((int)element == _index)
@@ -55,5 +62,12 @@ public class ElementalistAbility : CharacterAbility
     public void SetElements(GunsView view)
     {
         view.ElementalBuffs = _elementalBuffs;
+    }
+
+    private async Awaitable LoadUI(IAssetService assetService)
+    {
+        GameObject obj = await assetService.InstantiateAsync(Elementalist_UI);
+        _abilityUI = obj.GetComponent<ElementalistAbilityUI>();
+        _abilityUI.SetImage(_index);
     }
 }
