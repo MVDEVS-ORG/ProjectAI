@@ -39,10 +39,12 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
     [HideInInspector] public List<Vector3Int> currentPath;
     [HideInInspector] public int currentPathIndex;
 
+
     public int Health => _health;
     public Transform Target => _player;
     public int MaxHealth => _maxHealth;
     public List<IAttackBehavior> attackBehaviors = new List<IAttackBehavior>();
+
     public virtual void InitializeEnemy(Transform playerTransform, ObjectPoolManager poolManager)
     {
         _player = playerTransform;
@@ -103,8 +105,11 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
             Vector3 targetPos = floorTilemap.GetCellCenterWorld(currentPath[currentPathIndex]);
             while (Vector3.Distance(transform.position, targetPos) > 0.05f)
             {
-                transform.position = Vector3.MoveTowards(transform.position, targetPos, enemyModel.MoveSpeed * Time.deltaTime);
-                yield return new WaitForEndOfFrame();
+                if (!enemyModel.Stunned)
+                {
+                    transform.position = Vector3.MoveTowards(transform.position, targetPos, enemyModel.MoveSpeed * Time.deltaTime);
+                    yield return new WaitForEndOfFrame();
+                }
             }
             currentPathIndex++;
         }
@@ -172,7 +177,6 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
         StopMovement();
         TransitionToState(GetNextStateFromMap(EnemyStateTypes.Dead));
     }
-
 
     private List<IEnemyState> GetStateFromMap(EnemyStateTypes stateType)
     {

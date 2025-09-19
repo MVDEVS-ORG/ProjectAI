@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: GunnerCharacter
   m_EditorClassIdentifier: 
   character: 0
-  description: this is the gunner Character with a gun Pew Pew Pew
+  description: The gunner is a simple character rocking a high amount of firepower.
   characterSprite: {fileID: 49891880447364413, guid: 4eda27fe042e205418a28275d72ff045, type: 3}
   passiveAbility:
     abilitySprite: {fileID: 21300000, guid: b761ff163fff29c40abcd33e3110f131, type: 3}
-    description: use melee
+    description: The gunner can carry multiple guns. Upto 4 in total and can swap
+      between them any time.
   activeAbility:
     abilitySprite: {fileID: -6007857137893288414, guid: dfde88041d3679a44a0daa060e446f67, type: 3}
-    description: health is good
+    description: 'Chaos : The gunner simultaneously fires all his guns in all directions.
+      During this period of time the guns do not overheat.'

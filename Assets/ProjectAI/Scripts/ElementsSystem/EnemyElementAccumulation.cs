@@ -1,16 +1,20 @@
-using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Android.Gradle;
 using UnityEngine;
 
 public class EnemyElementAccumulation : MonoBehaviour
 {
     private EnemyModel _model;
     private Dictionary<ElementEnum, Coroutine> AfflictionCooldowns = new();
-    private int Tick = 0;
-    private const int TickRate = 10;
+    private int _tick = 0;
+    private const int _tickRate = 10;
     private EnemyAI _enemyAI;
+    private Animator _animator;
+
+    private void Awake()
+    {
+        _animator = GetComponent<Animator>();
+    }
 
     private async void OnEnable()
     {
@@ -88,6 +92,7 @@ public class EnemyElementAccumulation : MonoBehaviour
     private IEnumerator LightningAffliction(float duration)
     {
         _model.Stunned = true;
+        _animator.speed = 0;
         yield return new WaitForSeconds(duration);
         DisableAffliction(ElementEnum.Lightning);
     }
@@ -114,6 +119,7 @@ public class EnemyElementAccumulation : MonoBehaviour
 
             case ElementEnum.Lightning:
                 _model.Stunned = false;
+                _animator.speed = 1f;
                 _model.EnemyAfflictionData[ElementEnum.Lightning].Afflicted = false;
                 break;
 
@@ -128,13 +134,13 @@ public class EnemyElementAccumulation : MonoBehaviour
     {
         if (_model != null)
         {
-            if (Tick < TickRate)
+            if (_tick < _tickRate)
             {
-                Tick += 1;
+                _tick += 1;
             }
             else
             {
-                Tick = 0;
+                _tick = 0;
                 if (_model.EnemyAfflictionData[ElementEnum.Fire].Afflicted)
                 {
                     _enemyAI.TakeDamage((int)_model.EnemyAfflictionData[ElementEnum.Fire].EffectValue);
