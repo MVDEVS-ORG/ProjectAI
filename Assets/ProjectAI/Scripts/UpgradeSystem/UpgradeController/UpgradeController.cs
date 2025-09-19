@@ -121,11 +121,10 @@ public class UpgradeController : IUpgradeController
         _cursedUpgrades = _dataSerializer.LoadData<List<UpgradeSO>>("/curses.json");
     }
 
-    void IUpgradeController.RefreshUpgrades()
+    (List<UpgradeSO>, List<UpgradeSO>) IUpgradeController.RefreshUpgrades()
     {
         (this as IUpgradeController).LoadUpgrades();
-        OnUpgrade.Invoke(_activeUpgrades);
-        OnUpgrade.Invoke(_cursedUpgrades);
+        return (_activeUpgrades, _cursedUpgrades);
     }
 
     void IUpgradeController.SaveUpgrades()

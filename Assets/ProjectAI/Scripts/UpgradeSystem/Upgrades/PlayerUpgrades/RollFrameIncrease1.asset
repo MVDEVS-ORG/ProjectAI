@@ -29,10 +29,23 @@ MonoBehaviour:
     NoOfRoll: 0
     MaxNoOfRolls: 0
     RolllCooldown: 0
+    InvincibilityTime: 0
+    DamageKickBackSpeed: 0
+    DamageKickBackTime: 0
+    Experience: 0
+    PlayerLevel: 0
+    XPCollectionRadius: 0
+    MeleeDashTime: 0
+    MeleeDashSpeed: 0
+    CharacterAbilityAddressableId: 
+    AbilityCooldown: 0
+    AbilityDuration: 0
+    AbilityAlter: 0
   gunsModel:
     PrimaryProjectileAddressable: 
     SecondaryProjectileAddressable: 
     GunUIAddressable: 
+    GunViewAddressableId: 
     FireRate: 0
     GunWindUpTime: 0
     OverHeatLimit: 0
@@ -42,6 +55,7 @@ MonoBehaviour:
     OverHeatValue: 0
     ElipseVerticalRadius: 0
     ElipseHorizontalRadius: 0
+    DisableOverheat: 0
     Empty: 0
   meleeWeaponModel:
     AttackSpeed: 0
@@ -51,4 +65,4 @@ MonoBehaviour:
     DistanceFromPlayer: 0
     Attacks: 0
     Damage: 0
-  FuturePath: {fileID: 0}
+  FuturePath: {fileID: 11400000, guid: 3c7cd2a3b58a752429e7af11b7debfc5, type: 2}
