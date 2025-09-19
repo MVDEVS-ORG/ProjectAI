@@ -168,7 +168,6 @@ public class GunsController : IGunsController
             _orderedValues.Add(_currentGunsModel);
             //new system
             _upgradeController.OnUpgrade += UpgradeWeapon;
-            // _upgradeController.RefreshUpgrades();
             (List<UpgradeSO> tempActiveUpgrades, List<UpgradeSO> tempCursedUpgrades) = _upgradeController.RefreshUpgrades();
             LoadWeaponUpgrades(tempActiveUpgrades, tempCursedUpgrades);
 
