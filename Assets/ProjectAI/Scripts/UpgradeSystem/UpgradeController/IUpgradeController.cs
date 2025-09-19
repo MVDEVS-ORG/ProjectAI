@@ -9,7 +9,7 @@ public interface IUpgradeController
     void SelectedUpgrade(List<UpgradeSO> upgrades);
 
     event Action<List<UpgradeSO>> OnUpgrade;
-    void RefreshUpgrades();
+    (List<UpgradeSO>, List<UpgradeSO>) RefreshUpgrades();
     void SaveUpgrades();
     void LoadUpgrades();
     void ClearUpgrades();

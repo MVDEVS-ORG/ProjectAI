@@ -65,4 +65,4 @@ MonoBehaviour:
     DistanceFromPlayer: 0
     Attacks: 0
     Damage: 0
-  FuturePath: {fileID: 0}
+  FuturePath: {fileID: 11400000, guid: 4ca1eaae3e57aa047981039ce270fa27, type: 2}

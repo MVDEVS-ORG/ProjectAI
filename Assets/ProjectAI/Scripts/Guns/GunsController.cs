@@ -1,6 +1,6 @@
-using Assets.Services;
 using System;
 using System.Collections.Generic;
+using Assets.Services;
 using UnityEngine;
 using Zenject;
 
@@ -10,8 +10,8 @@ public class GunsController : IGunsController
     [Inject] ObjectPoolManager _poolManager;
     [Inject] IAssetService _assetService;
     [Inject] IUpgradeController _upgradeController;
-    private Dictionary<GunsModel,GunsView> _allGuns = new();
-    private List<GunsModel> _orderedValues =new();
+    private Dictionary<GunsModel, GunsView> _allGuns = new();
+    private List<GunsModel> _orderedValues = new();
     private int _gunLimit = 1;
     private GunsView _currentActiveGun;
     private GunsModel _currentGunsModel;
@@ -51,6 +51,52 @@ public class GunsController : IGunsController
         gun.SetGunUI(_currentGunUI);
         OnGunSwap?.Invoke(gun);
         _gunCarousel.MoveToIndex(_currentActiveGun.name);
+    }
+
+    private void LoadWeaponUpgrades(List<UpgradeSO> activeUpgrades, List<UpgradeSO> cursedUpgrades)
+    {
+        foreach (UpgradeSO upgrade in activeUpgrades)
+        {
+            if (upgrade.UpgradeType == UpgradeType.Gun)
+            {
+                switch (upgrade.Type)
+                {
+                    case StatType.Additive:
+                        _currentGunsModel = _currentGunsModel + upgrade.gunsModel;
+                        break;
+
+                    case StatType.Multiplicative:
+                        _currentGunsModel = _currentGunsModel * upgrade.gunsModel;
+                        break;
+
+                    case StatType.Set:
+                        _currentGunsModel = _currentGunsModel % upgrade.gunsModel;
+                        break;
+                }
+            }
+        }
+
+        foreach (UpgradeSO upgrade in cursedUpgrades)
+        {
+            if (upgrade.UpgradeType == UpgradeType.Gun)
+            {
+                switch (upgrade.Type)
+                {
+                    case StatType.Additive:
+                        _currentGunsModel = _currentGunsModel + upgrade.gunsModel;
+                        break;
+
+                    case StatType.Multiplicative:
+                        _currentGunsModel = _currentGunsModel * upgrade.gunsModel;
+                        break;
+
+                    case StatType.Set:
+                        _currentGunsModel = _currentGunsModel % upgrade.gunsModel;
+                        break;
+                }
+            }
+        }
+
     }
 
     private void UpgradeWeapon(List<UpgradeSO> upgrades)
@@ -134,13 +180,14 @@ public class GunsController : IGunsController
 
             #region subscribing to upgrades controller
             _upgradeController.OnUpgrade += UpgradeWeapon;
-            _upgradeController.RefreshUpgrades();
+            (List<UpgradeSO> tempActiveUpgrades, List<UpgradeSO> tempCursedUpgrades) = _upgradeController.RefreshUpgrades();
+            LoadWeaponUpgrades(tempActiveUpgrades, tempCursedUpgrades);
             #endregion
 
             #region Gun Carousel
             var carousel = await _assetService.InstantiateAsync(AddressableIds.Gun_Carousel);
             _gunCarousel = carousel.GetComponent<Carousel>();
-            Dictionary<string,Sprite> guns = new Dictionary<string,Sprite>();
+            Dictionary<string, Sprite> guns = new Dictionary<string, Sprite>();
             guns[_currentActiveGun.name] = _currentActiveGun.GunSprite; // need to add all active guns when we are switcching scene which is a TODO
             await _gunCarousel.Initialize(guns, _assetService);
             #endregion
@@ -154,14 +201,14 @@ public class GunsController : IGunsController
     async Awaitable IGunsController.AddGun(GunsView gun)
     {
         //checks if we are going over the permitted limit of guns for the character
-        if (_allGuns.Count>=_gunLimit)
+        if (_allGuns.Count >= _gunLimit)
         {
             await (this as IGunsController).ReplaceGuns(gun);
         }
         else
         {
             #region Disabling old gun and setting new gun
-            if(_allGuns.ContainsKey(_currentActiveGun.GunsModel))
+            if (_allGuns.ContainsKey(_currentActiveGun.GunsModel))
             {
                 _currentActiveGun.gameObject.SetActive(false);
             }
@@ -198,10 +245,10 @@ public class GunsController : IGunsController
     {
         try
         {
-            if (_gunLimit > 1 && _allGuns.Count>1)
+            if (_gunLimit > 1 && _allGuns.Count > 1)
             {
                 int index = _orderedValues.IndexOf(_currentGunsModel);
-                index = updown > 0 ? (index + 1) : ((index - 1)<0?_orderedValues.Count-1: (index - 1));
+                index = updown > 0 ? (index + 1) : ((index - 1) < 0 ? _orderedValues.Count - 1 : (index - 1));
                 index = index % _orderedValues.Count;
                 _currentActiveGun.StopAllCoroutines();
                 (this as IGunsController).SetCurrentActiveGun(_allGuns[_orderedValues[index]]); // sets the current active gun after the swap
@@ -243,7 +290,7 @@ public class GunsController : IGunsController
                     gun.Value.AlternateRotation = false;
                 }
                 else
-                { 
+                {
                     gun.Value.gameObject.SetActive(false);
                     if (!alternateAbility)
                     {
@@ -256,7 +303,7 @@ public class GunsController : IGunsController
         }
     }
 
-    void IGunsController.SetGunElements(Dictionary<ElementEnum,int> ElementalBuffs)
+    void IGunsController.SetGunElements(Dictionary<ElementEnum, int> ElementalBuffs)
     {
         _currentActiveGun.ElementalBuffs = ElementalBuffs;
     }
