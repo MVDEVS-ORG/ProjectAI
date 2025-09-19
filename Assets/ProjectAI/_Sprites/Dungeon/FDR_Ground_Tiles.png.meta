@@ -1,0 +1,2977 @@
+fileFormatVersion: 2
+guid: f22fd302e7d8ccd4baac1175a7a0fc59
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3431182623053092808
+    second: FDR_Ground_Tiles_0
+  - first:
+      213: -8953182953575932277
+    second: FDR_Ground_Tiles_1
+  - first:
+      213: 4125053361925713145
+    second: FDR_Ground_Tiles_2
+  - first:
+      213: -7049320153345727855
+    second: FDR_Ground_Tiles_3
+  - first:
+      213: 8771894222567549241
+    second: FDR_Ground_Tiles_4
+  - first:
+      213: 4019931453717976501
+    second: FDR_Ground_Tiles_5
+  - first:
+      213: 7459918523430210115
+    second: FDR_Ground_Tiles_6
+  - first:
+      213: 8245858251326555104
+    second: FDR_Ground_Tiles_7
+  - first:
+      213: 2490232019602367721
+    second: FDR_Ground_Tiles_8
+  - first:
+      213: -2711984967366880025
+    second: FDR_Ground_Tiles_9
+  - first:
+      213: -8776604425285883923
+    second: FDR_Ground_Tiles_10
+  - first:
+      213: -8416168415283438411
+    second: FDR_Ground_Tiles_11
+  - first:
+      213: 9031414824212083624
+    second: FDR_Ground_Tiles_12
+  - first:
+      213: 4441030052998565387
+    second: FDR_Ground_Tiles_13
+  - first:
+      213: -2251995885701965458
+    second: FDR_Ground_Tiles_14
+  - first:
+      213: -8729756739837857217
+    second: FDR_Ground_Tiles_15
+  - first:
+      213: 813687680934234345
+    second: FDR_Ground_Tiles_16
+  - first:
+      213: 7731632076229861902
+    second: FDR_Ground_Tiles_17
+  - first:
+      213: 6011103323890194516
+    second: FDR_Ground_Tiles_18
+  - first:
+      213: 6810058602393371295
+    second: FDR_Ground_Tiles_19
+  - first:
+      213: 5526903036237497521
+    second: FDR_Ground_Tiles_20
+  - first:
+      213: -507288476547173901
+    second: FDR_Ground_Tiles_21
+  - first:
+      213: 6623625318427682901
+    second: FDR_Ground_Tiles_22
+  - first:
+      213: -8790261429296521990
+    second: FDR_Ground_Tiles_23
+  - first:
+      213: -2073422031101669257
+    second: FDR_Ground_Tiles_24
+  - first:
+      213: -4483711794764048838
+    second: FDR_Ground_Tiles_25
+  - first:
+      213: 4616009092098591336
+    second: FDR_Ground_Tiles_26
+  - first:
+      213: -1077688137099773716
+    second: FDR_Ground_Tiles_27
+  - first:
+      213: -7964229167757266432
+    second: FDR_Ground_Tiles_28
+  - first:
+      213: -7699306254376130449
+    second: FDR_Ground_Tiles_29
+  - first:
+      213: -7286176872683117623
+    second: FDR_Ground_Tiles_30
+  - first:
+      213: -1347225720567915422
+    second: FDR_Ground_Tiles_31
+  - first:
+      213: -3983802279162360950
+    second: FDR_Ground_Tiles_32
+  - first:
+      213: -1863980246373424256
+    second: FDR_Ground_Tiles_33
+  - first:
+      213: 8713192112175214563
+    second: FDR_Ground_Tiles_34
+  - first:
+      213: 7669863657522692557
+    second: FDR_Ground_Tiles_35
+  - first:
+      213: 9174546739663332713
+    second: FDR_Ground_Tiles_36
+  - first:
+      213: 2278035942565397204
+    second: FDR_Ground_Tiles_37
+  - first:
+      213: -6345573394839603899
+    second: FDR_Ground_Tiles_38
+  - first:
+      213: -6761748251909749607
+    second: FDR_Ground_Tiles_39
+  - first:
+      213: -5205526241328589721
+    second: FDR_Ground_Tiles_40
+  - first:
+      213: 171688254266565967
+    second: FDR_Ground_Tiles_41
+  - first:
+      213: 7401028701302338925
+    second: FDR_Ground_Tiles_42
+  - first:
+      213: 6660166502910786520
+    second: FDR_Ground_Tiles_43
+  - first:
+      213: 8497085687606267029
+    second: FDR_Ground_Tiles_44
+  - first:
+      213: -4656422542150938175
+    second: FDR_Ground_Tiles_45
+  - first:
+      213: -6036032698230850240
+    second: FDR_Ground_Tiles_46
+  - first:
+      213: -8334990660569315467
+    second: FDR_Ground_Tiles_47
+  - first:
+      213: -2029118241189345392
+    second: FDR_Ground_Tiles_48
+  - first:
+      213: -6828763468524712586
+    second: FDR_Ground_Tiles_49
+  - first:
+      213: 560698324260141978
+    second: FDR_Ground_Tiles_50
+  - first:
+      213: -1578205490549289172
+    second: FDR_Ground_Tiles_51
+  - first:
+      213: -2255568878596485786
+    second: FDR_Ground_Tiles_52
+  - first:
+      213: 5804017236604596458
+    second: FDR_Ground_Tiles_53
+  - first:
+      213: 257661771581953547
+    second: FDR_Ground_Tiles_54
+  - first:
+      213: -6639995420726575441
+    second: FDR_Ground_Tiles_55
+  - first:
+      213: -4377790099862698997
+    second: FDR_Ground_Tiles_56
+  - first:
+      213: 3790033828322747921
+    second: FDR_Ground_Tiles_57
+  - first:
+      213: 610252041597974348
+    second: FDR_Ground_Tiles_58
+  - first:
+      213: -1942917183974939969
+    second: FDR_Ground_Tiles_59
+  - first:
+      213: 2430711838112852120
+    second: FDR_Ground_Tiles_60
+  - first:
+      213: -8502817449638341825
+    second: FDR_Ground_Tiles_61
+  - first:
+      213: 8739211867436329541
+    second: FDR_Ground_Tiles_62
+  - first:
+      213: 6197289913910745819
+    second: FDR_Ground_Tiles_63
+  - first:
+      213: -2976452045726661798
+    second: FDR_Ground_Tiles_64
+  - first:
+      213: 5552207995123520298
+    second: FDR_Ground_Tiles_65
+  - first:
+      213: -6873532736623054545
+    second: FDR_Ground_Tiles_66
+  - first:
+      213: -1496757390696020072
+    second: FDR_Ground_Tiles_67
+  - first:
+      213: 8849546203096341504
+    second: FDR_Ground_Tiles_68
+  - first:
+      213: 5413248690558373114
+    second: FDR_Ground_Tiles_69
+  - first:
+      213: 1431479086454705854
+    second: FDR_Ground_Tiles_70
+  - first:
+      213: -4070627559601870471
+    second: FDR_Ground_Tiles_71
+  - first:
+      213: 6095623694718296538
+    second: FDR_Ground_Tiles_72
+  - first:
+      213: 6054525761578710320
+    second: FDR_Ground_Tiles_73
+  - first:
+      213: -7755985927461523763
+    second: FDR_Ground_Tiles_74
+  - first:
+      213: 1497120385154227054
+    second: FDR_Ground_Tiles_75
+  - first:
+      213: 5533625418464608543
+    second: FDR_Ground_Tiles_76
+  - first:
+      213: 4914433198382722168
+    second: FDR_Ground_Tiles_77
+  - first:
+      213: 7972771451864619672
+    second: FDR_Ground_Tiles_78
+  - first:
+      213: 4580241535083773254
+    second: FDR_Ground_Tiles_79
+  - first:
+      213: -3637083382738248714
+    second: FDR_Ground_Tiles_80
+  - first:
+      213: 4049875062950465984
+    second: FDR_Ground_Tiles_81
+  - first:
+      213: -2951611276979617000
+    second: FDR_Ground_Tiles_82
+  - first:
+      213: 8640612682543090855
+    second: FDR_Ground_Tiles_83
+  - first:
+      213: -651675973754043989
+    second: FDR_Ground_Tiles_84
+  - first:
+      213: -7072614232605735966
+    second: FDR_Ground_Tiles_85
+  - first:
+      213: -3701539148458699521
+    second: FDR_Ground_Tiles_86
+  - first:
+      213: -2417642895296294552
+    second: FDR_Ground_Tiles_87
+  - first:
+      213: 57251456989127340
+    second: FDR_Ground_Tiles_88
+  - first:
+      213: -1845094939665018394
+    second: FDR_Ground_Tiles_89
+  - first:
+      213: -1636143870412640800
+    second: FDR_Ground_Tiles_90
+  - first:
+      213: 7295184274012896565
+    second: FDR_Ground_Tiles_91
+  - first:
+      213: 6635190807809051810
+    second: FDR_Ground_Tiles_92
+  - first:
+      213: 6858819464323359672
+    second: FDR_Ground_Tiles_93
+  - first:
+      213: -3549262268050049045
+    second: FDR_Ground_Tiles_94
+  - first:
+      213: 7925131564959232009
+    second: FDR_Ground_Tiles_95
+  - first:
+      213: -8301431807634416785
+    second: FDR_Ground_Tiles_96
+  - first:
+      213: -1556076071115012930
+    second: FDR_Ground_Tiles_97
+  - first:
+      213: -8844742862819486028
+    second: FDR_Ground_Tiles_98
+  - first:
+      213: -585446163216550918
+    second: FDR_Ground_Tiles_99
+  - first:
+      213: 6930695237149296818
+    second: FDR_Ground_Tiles_100
+  - first:
+      213: 1904243828081159892
+    second: FDR_Ground_Tiles_101
+  - first:
+      213: -6408362215013785475
+    second: FDR_Ground_Tiles_102
+  - first:
+      213: -1456212233389276532
+    second: FDR_Ground_Tiles_103
+  - first:
+      213: 4781632695051154429
+    second: FDR_Ground_Tiles_104
+  - first:
+      213: 973107768717565332
+    second: FDR_Ground_Tiles_105
+  - first:
+      213: 2739654899801098298
+    second: FDR_Ground_Tiles_106
+  - first:
+      213: -8020102197328118539
+    second: FDR_Ground_Tiles_107
+  - first:
+      213: 7053868299167295659
+    second: FDR_Ground_Tiles_108
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 72
+        width: 97
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c7929e9a620e9f20800000000000000
+      internalID: 3431182623053092808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_1
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 151
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8e160b2a87efb380800000000000000
+      internalID: -8953182953575932277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_2
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 123
+        width: 146
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fcec1d5d222f3930800000000000000
+      internalID: 4125053361925713145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_3
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 151
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19263df5ba8cb2e90800000000000000
+      internalID: -7049320153345727855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_4
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 136
+        width: 49
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 939a077e1570cb970800000000000000
+      internalID: 8771894222567549241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_5
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 72
+        width: 50
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b59740db5aa9c730800000000000000
+      internalID: 4019931453717976501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_6
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 117
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34a0a6a6f54f68760800000000000000
+      internalID: 7459918523430210115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_7
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 119
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e30b82246c2f6270800000000000000
+      internalID: 8245858251326555104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_8
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 121
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e4e3b8f3d41f8220800000000000000
+      internalID: 2490232019602367721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_9
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 120
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e4d5e77a081d5ad0800000000000000
+      internalID: -2711984967366880025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_10
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 121
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de7a6b096cc333680800000000000000
+      internalID: -8776604425285883923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_11
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 119
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5bc1b25ca63c33b80800000000000000
+      internalID: -8416168415283438411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_12
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 112
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a3bb50aee7065d70800000000000000
+      internalID: 9031414824212083624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_13
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 123
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0e40d9bd45b1ad30800000000000000
+      internalID: 4441030052998565387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_14
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 117
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e69d71d6cad4fb0e0800000000000000
+      internalID: -2251995885701965458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_15
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 119
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3274625f7ca9d680800000000000000
+      internalID: -8729756739837857217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_16
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 121
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e8423c72acca4b00800000000000000
+      internalID: 813687680934234345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_17
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 120
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0262bdc8664c4b60800000000000000
+      internalID: 7731632076229861902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_18
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 121
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45815a8ff9abb6350800000000000000
+      internalID: 6011103323890194516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_19
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 119
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f920047b730328e50800000000000000
+      internalID: 6810058602393371295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_20
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 123
+        width: 8
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b4c6f6570183bc40800000000000000
+      internalID: 5526903036237497521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_21
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 112
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f1b1cc71dfb5f8f0800000000000000
+      internalID: -507288476547173901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_22
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 86
+        width: 36
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5586a263228dbeb50800000000000000
+      internalID: 6623625318427682901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_23
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 107
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afc96f78dc7b20680800000000000000
+      internalID: -8790261429296521990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_24
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 112
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77057bee5a9b933e0800000000000000
+      internalID: -2073422031101669257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_25
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 99
+        width: 9
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a361cddd0e7a6c1c0800000000000000
+      internalID: -4483711794764048838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_26
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 112
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86a828600db5f0040800000000000000
+      internalID: 4616009092098591336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_27
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 107
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce8f38169584b01f0800000000000000
+      internalID: -1077688137099773716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_28
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 112
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 002f50aa4cf597190800000000000000
+      internalID: -7964229167757266432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_29
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 101
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f68a7fa11c1962590800000000000000
+      internalID: -7699306254376130449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_30
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 112
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c36e05fcbc42ea90800000000000000
+      internalID: -7286176872683117623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_31
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 107
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26c97455851bd4de0800000000000000
+      internalID: -1347225720567915422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_32
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 107
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8bc2272fe0b6b8c0800000000000000
+      internalID: -3983802279162360950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_33
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 112
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 083219a77dfc126e0800000000000000
+      internalID: -1863980246373424256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_34
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 99
+        width: 9
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ef60f1cf0a7be870800000000000000
+      internalID: 8713192112175214563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_35
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 112
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc1815e1c54d07a60800000000000000
+      internalID: 7669863657522692557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_36
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 107
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 965e9d0a6a9825f70800000000000000
+      internalID: 9174546739663332713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_37
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 112
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d2ce26ce953d9f10800000000000000
+      internalID: 2278035942565397204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_38
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 101
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5457a602e9effe7a0800000000000000
+      internalID: -6345573394839603899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_39
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 112
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9940d484ac17922a0800000000000000
+      internalID: -6761748251909749607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_40
+      rect:
+        serializedVersion: 2
+        x: 379
+        y: 107
+        width: 5
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76492aca67142c7b0800000000000000
+      internalID: -5205526241328589721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_41
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 101
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f456aafbe85f16200800000000000000
+      internalID: 171688254266565967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_42
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 105
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d65b899346cb5b660800000000000000
+      internalID: 7401028701302338925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_43
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 101
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8dbf3f6b52aad6c50800000000000000
+      internalID: 6660166502910786520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_44
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 105
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59cc3d3d966bbe570800000000000000
+      internalID: 8497085687606267029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_45
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 96
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c1d8f26e50116fb0800000000000000
+      internalID: -4656422542150938175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_46
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 104
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04dbe41cd34bb3ca0800000000000000
+      internalID: -6036032698230850240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_47
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 96
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5774196a72a245c80800000000000000
+      internalID: -8334990660569315467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_48
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 101
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 097c4aad5bf17d3e0800000000000000
+      internalID: -2029118241189345392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_49
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 105
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67d8b634ecb5b31a0800000000000000
+      internalID: -6828763468524712586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_50
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 101
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9bbeabb72008c700800000000000000
+      internalID: 560698324260141978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_51
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 105
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2f0d31d776191ae0800000000000000
+      internalID: -1578205490549289172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_52
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 96
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66d84d03e0c92b0e0800000000000000
+      internalID: -2255568878596485786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_53
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 104
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae0bf0afce20c8050800000000000000
+      internalID: 5804017236604596458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_54
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 96
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b06175f1406639300800000000000000
+      internalID: 257661771581953547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_55
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 91
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fae3f55585ff9d3a0800000000000000
+      internalID: -6639995420726575441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_56
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 89
+        width: 13
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0446744917fe33c0800000000000000
+      internalID: -4377790099862698997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_57
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 96
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11624e7bfa7e89430800000000000000
+      internalID: 3790033828322747921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_58
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 96
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4777e2affc087800800000000000000
+      internalID: 610252041597974348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_59
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 91
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb2eb2d7d1f5905e0800000000000000
+      internalID: -1942917183974939969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_60
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 96
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 898ad0ec98f9bb120800000000000000
+      internalID: 2430711838112852120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_61
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 83
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f335054549ceff980800000000000000
+      internalID: -8502817449638341825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_62
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 91
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54aab6f14eae74970800000000000000
+      internalID: 8739211867436329541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_63
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 91
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdad2c09752310650800000000000000
+      internalID: 6197289913910745819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_64
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 89
+        width: 13
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a534a7362a481b6d0800000000000000
+      internalID: -2976452045726661798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_65
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 96
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a23db6431c76d0d40800000000000000
+      internalID: 5552207995123520298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_66
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 96
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f217091c46e4c90a0800000000000000
+      internalID: -6873532736623054545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_67
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 91
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8978f9455137a3be0800000000000000
+      internalID: -1496757390696020072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_68
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 96
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00cd6f28267efca70800000000000000
+      internalID: 8849546203096341504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_69
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 83
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afc8491e009bf1b40800000000000000
+      internalID: 5413248690558373114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_70
+      rect:
+        serializedVersion: 2
+        x: 379
+        y: 91
+        width: 5
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebe888315a2add310800000000000000
+      internalID: 1431479086454705854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_71
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 89
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 979e3093dc93287c0800000000000000
+      internalID: -4070627559601870471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_72
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 80
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad163205471089450800000000000000
+      internalID: 6095623694718296538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_73
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 88
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 035b9561a1ff50450800000000000000
+      internalID: 6054525761578710320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_74
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 79
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dce2ab654e33d5490800000000000000
+      internalID: -7755985927461523763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_75
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 89
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6b1d17ee07d6c410800000000000000
+      internalID: 1497120385154227054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_76
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 80
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f11c7abeff26bcc40800000000000000
+      internalID: 5533625418464608543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_77
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 88
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87c2df5c4f2933440800000000000000
+      internalID: 4914433198382722168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_78
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 79
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89a14c7d469f4ae60800000000000000
+      internalID: 7972771451864619672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_79
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 80
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64d7824b869409f30800000000000000
+      internalID: 4580241535083773254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_80
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 80
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fb1969feeb768dc0800000000000000
+      internalID: -3637083382738248714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_81
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 75
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c110ef99eb043830800000000000000
+      internalID: 4049875062950465984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_82
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 80
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 813c7909e25c907d0800000000000000
+      internalID: -2951611276979617000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_83
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 79
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ac47b0747f99e770800000000000000
+      internalID: 8640612682543090855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_84
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 73
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba1cbb39728c4f6f0800000000000000
+      internalID: -651675973754043989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_85
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 80
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e3c928e3d609dd90800000000000000
+      internalID: -7072614232605735966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_86
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 80
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff4daed81cd71acc0800000000000000
+      internalID: -3701539148458699521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_87
+      rect:
+        serializedVersion: 2
+        x: 347
+        y: 75
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8611e10989ec27ed0800000000000000
+      internalID: -2417642895296294552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_88
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 80
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca2e5b495e56bc000800000000000000
+      internalID: 57251456989127340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_89
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 79
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e155689de7e466e0800000000000000
+      internalID: -1845094939665018394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_90
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 73
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ed2f9a81df3b49e0800000000000000
+      internalID: -1636143870412640800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_91
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 9
+        width: 50
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53dfd871273bd3560800000000000000
+      internalID: 7295184274012896565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_92
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 9
+        width: 50
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ac456c82eee41c50800000000000000
+      internalID: 6635190807809051810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_93
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 9
+        width: 50
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b3678596fb6f2f50800000000000000
+      internalID: 6858819464323359672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_94
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 64
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be7fd22a5cc7ebec0800000000000000
+      internalID: -3549262268050049045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_95
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 9
+        width: 49
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90071af4b29bbfd60800000000000000
+      internalID: 7925131564959232009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_96
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 64
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6b52daf0c36bcc80800000000000000
+      internalID: -8301431807634416785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_97
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 23
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb444b9ce05b76ae0800000000000000
+      internalID: -1556076071115012930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_98
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 23
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b619fb4a39214580800000000000000
+      internalID: -8844742862819486028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_99
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 23
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af3bc5ef0d310e7f0800000000000000
+      internalID: -585446163216550918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_100
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 23
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b886c80996ce2060800000000000000
+      internalID: 6930695237149296818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_101
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 0
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4dee18a2cab3d6a10800000000000000
+      internalID: 1904243828081159892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_102
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 0
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d706116b48ce017a0800000000000000
+      internalID: -6408362215013785475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_103
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 0
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c82014760be7acbe0800000000000000
+      internalID: -1456212233389276532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_104
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 0
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df3faea1a95cb5240800000000000000
+      internalID: 4781632695051154429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_105
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 0
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49d55922c5c218d00800000000000000
+      internalID: 973107768717565332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_106
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 0
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a388dc5bd95350620800000000000000
+      internalID: 2739654899801098298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_107
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 0
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fc7de93b8fd2b090800000000000000
+      internalID: -8020102197328118539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Ground_Tiles_108
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 0
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba8614858df54e160800000000000000
+      internalID: 7053868299167295659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      FDR_Ground_Tiles_0: 3431182623053092808
+      FDR_Ground_Tiles_1: -8953182953575932277
+      FDR_Ground_Tiles_10: -8776604425285883923
+      FDR_Ground_Tiles_100: 6930695237149296818
+      FDR_Ground_Tiles_101: 1904243828081159892
+      FDR_Ground_Tiles_102: -6408362215013785475
+      FDR_Ground_Tiles_103: -1456212233389276532
+      FDR_Ground_Tiles_104: 4781632695051154429
+      FDR_Ground_Tiles_105: 973107768717565332
+      FDR_Ground_Tiles_106: 2739654899801098298
+      FDR_Ground_Tiles_107: -8020102197328118539
+      FDR_Ground_Tiles_108: 7053868299167295659
+      FDR_Ground_Tiles_11: -8416168415283438411
+      FDR_Ground_Tiles_12: 9031414824212083624
+      FDR_Ground_Tiles_13: 4441030052998565387
+      FDR_Ground_Tiles_14: -2251995885701965458
+      FDR_Ground_Tiles_15: -8729756739837857217
+      FDR_Ground_Tiles_16: 813687680934234345
+      FDR_Ground_Tiles_17: 7731632076229861902
+      FDR_Ground_Tiles_18: 6011103323890194516
+      FDR_Ground_Tiles_19: 6810058602393371295
+      FDR_Ground_Tiles_2: 4125053361925713145
+      FDR_Ground_Tiles_20: 5526903036237497521
+      FDR_Ground_Tiles_21: -507288476547173901
+      FDR_Ground_Tiles_22: 6623625318427682901
+      FDR_Ground_Tiles_23: -8790261429296521990
+      FDR_Ground_Tiles_24: -2073422031101669257
+      FDR_Ground_Tiles_25: -4483711794764048838
+      FDR_Ground_Tiles_26: 4616009092098591336
+      FDR_Ground_Tiles_27: -1077688137099773716
+      FDR_Ground_Tiles_28: -7964229167757266432
+      FDR_Ground_Tiles_29: -7699306254376130449
+      FDR_Ground_Tiles_3: -7049320153345727855
+      FDR_Ground_Tiles_30: -7286176872683117623
+      FDR_Ground_Tiles_31: -1347225720567915422
+      FDR_Ground_Tiles_32: -3983802279162360950
+      FDR_Ground_Tiles_33: -1863980246373424256
+      FDR_Ground_Tiles_34: 8713192112175214563
+      FDR_Ground_Tiles_35: 7669863657522692557
+      FDR_Ground_Tiles_36: 9174546739663332713
+      FDR_Ground_Tiles_37: 2278035942565397204
+      FDR_Ground_Tiles_38: -6345573394839603899
+      FDR_Ground_Tiles_39: -6761748251909749607
+      FDR_Ground_Tiles_4: 8771894222567549241
+      FDR_Ground_Tiles_40: -5205526241328589721
+      FDR_Ground_Tiles_41: 171688254266565967
+      FDR_Ground_Tiles_42: 7401028701302338925
+      FDR_Ground_Tiles_43: 6660166502910786520
+      FDR_Ground_Tiles_44: 8497085687606267029
+      FDR_Ground_Tiles_45: -4656422542150938175
+      FDR_Ground_Tiles_46: -6036032698230850240
+      FDR_Ground_Tiles_47: -8334990660569315467
+      FDR_Ground_Tiles_48: -2029118241189345392
+      FDR_Ground_Tiles_49: -6828763468524712586
+      FDR_Ground_Tiles_5: 4019931453717976501
+      FDR_Ground_Tiles_50: 560698324260141978
+      FDR_Ground_Tiles_51: -1578205490549289172
+      FDR_Ground_Tiles_52: -2255568878596485786
+      FDR_Ground_Tiles_53: 5804017236604596458
+      FDR_Ground_Tiles_54: 257661771581953547
+      FDR_Ground_Tiles_55: -6639995420726575441
+      FDR_Ground_Tiles_56: -4377790099862698997
+      FDR_Ground_Tiles_57: 3790033828322747921
+      FDR_Ground_Tiles_58: 610252041597974348
+      FDR_Ground_Tiles_59: -1942917183974939969
+      FDR_Ground_Tiles_6: 7459918523430210115
+      FDR_Ground_Tiles_60: 2430711838112852120
+      FDR_Ground_Tiles_61: -8502817449638341825
+      FDR_Ground_Tiles_62: 8739211867436329541
+      FDR_Ground_Tiles_63: 6197289913910745819
+      FDR_Ground_Tiles_64: -2976452045726661798
+      FDR_Ground_Tiles_65: 5552207995123520298
+      FDR_Ground_Tiles_66: -6873532736623054545
+      FDR_Ground_Tiles_67: -1496757390696020072
+      FDR_Ground_Tiles_68: 8849546203096341504
+      FDR_Ground_Tiles_69: 5413248690558373114
+      FDR_Ground_Tiles_7: 8245858251326555104
+      FDR_Ground_Tiles_70: 1431479086454705854
+      FDR_Ground_Tiles_71: -4070627559601870471
+      FDR_Ground_Tiles_72: 6095623694718296538
+      FDR_Ground_Tiles_73: 6054525761578710320
+      FDR_Ground_Tiles_74: -7755985927461523763
+      FDR_Ground_Tiles_75: 1497120385154227054
+      FDR_Ground_Tiles_76: 5533625418464608543
+      FDR_Ground_Tiles_77: 4914433198382722168
+      FDR_Ground_Tiles_78: 7972771451864619672
+      FDR_Ground_Tiles_79: 4580241535083773254
+      FDR_Ground_Tiles_8: 2490232019602367721
+      FDR_Ground_Tiles_80: -3637083382738248714
+      FDR_Ground_Tiles_81: 4049875062950465984
+      FDR_Ground_Tiles_82: -2951611276979617000
+      FDR_Ground_Tiles_83: 8640612682543090855
+      FDR_Ground_Tiles_84: -651675973754043989
+      FDR_Ground_Tiles_85: -7072614232605735966
+      FDR_Ground_Tiles_86: -3701539148458699521
+      FDR_Ground_Tiles_87: -2417642895296294552
+      FDR_Ground_Tiles_88: 57251456989127340
+      FDR_Ground_Tiles_89: -1845094939665018394
+      FDR_Ground_Tiles_9: -2711984967366880025
+      FDR_Ground_Tiles_90: -1636143870412640800
+      FDR_Ground_Tiles_91: 7295184274012896565
+      FDR_Ground_Tiles_92: 6635190807809051810
+      FDR_Ground_Tiles_93: 6858819464323359672
+      FDR_Ground_Tiles_94: -3549262268050049045
+      FDR_Ground_Tiles_95: 7925131564959232009
+      FDR_Ground_Tiles_96: -8301431807634416785
+      FDR_Ground_Tiles_97: -1556076071115012930
+      FDR_Ground_Tiles_98: -8844742862819486028
+      FDR_Ground_Tiles_99: -585446163216550918
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

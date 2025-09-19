@@ -1,0 +1,611 @@
+fileFormatVersion: 2
+guid: a82a3004017f51a49969d9e5a30214ca
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2869504686296909191
+    second: FDR_Water_Tiles_0
+  - first:
+      213: -5055852132773907004
+    second: FDR_Water_Tiles_1
+  - first:
+      213: -3501653812257944530
+    second: FDR_Water_Tiles_2
+  - first:
+      213: 8539495688766755528
+    second: FDR_Water_Tiles_3
+  - first:
+      213: -5605671235990758566
+    second: FDR_Water_Tiles_4
+  - first:
+      213: -8823405475741530721
+    second: FDR_Water_Tiles_5
+  - first:
+      213: -9188187077858381127
+    second: FDR_Water_Tiles_6
+  - first:
+      213: 2668797713487101581
+    second: FDR_Water_Tiles_7
+  - first:
+      213: 62089161980480604
+    second: FDR_Water_Tiles_8
+  - first:
+      213: 9105274574672145118
+    second: FDR_Water_Tiles_9
+  - first:
+      213: 5332350243739812268
+    second: FDR_Water_Tiles_10
+  - first:
+      213: 4155899440711048716
+    second: FDR_Water_Tiles_11
+  - first:
+      213: -6408829045581150940
+    second: FDR_Water_Tiles_12
+  - first:
+      213: -2349881173575111954
+    second: FDR_Water_Tiles_13
+  - first:
+      213: -6027032893638541908
+    second: FDR_Water_Tiles_14
+  - first:
+      213: -5031896023273018281
+    second: FDR_Water_Tiles_15
+  - first:
+      213: -1990976712297969722
+    second: FDR_Water_Tiles_16
+  - first:
+      213: -8526059446161532852
+    second: FDR_Water_Tiles_17
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 340
+        width: 38
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 785cb041f4782d720800000000000000
+      internalID: 2869504686296909191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_1
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 325
+        width: 50
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c53c15b54106d9b0800000000000000
+      internalID: -5055852132773907004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_2
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 340
+        width: 38
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2c09f90960a76fc0800000000000000
+      internalID: -3501653812257944530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_3
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 325
+        width: 50
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c21ce1b512628670800000000000000
+      internalID: 8539495688766755528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_4
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 340
+        width: 38
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5b552306b7a432b0800000000000000
+      internalID: -5605671235990758566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_5
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 325
+        width: 50
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f95803dd777fc8580800000000000000
+      internalID: -8823405475741530721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_6
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 340
+        width: 38
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b2ba66a8800d7080800000000000000
+      internalID: -9188187077858381127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_7
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 325
+        width: 49
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8ef5c96169790520800000000000000
+      internalID: 2668797713487101581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_8
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 319
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5c8f3c83c59cd000800000000000000
+      internalID: 62089161980480604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_9
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 276
+        width: 38
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edaaabddbfe6c5e70800000000000000
+      internalID: 9105274574672145118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_10
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 261
+        width: 50
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca144107b40500a40800000000000000
+      internalID: 5332350243739812268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_11
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 276
+        width: 38
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0e93ddb588bca930800000000000000
+      internalID: 4155899440711048716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_12
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 261
+        width: 50
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4250eef30f34f07a0800000000000000
+      internalID: -6408829045581150940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_13
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 276
+        width: 38
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eea6da8d58b836fd0800000000000000
+      internalID: -2349881173575111954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_14
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 261
+        width: 50
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cad741d048dab5ca0800000000000000
+      internalID: -6027032893638541908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_15
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 276
+        width: 38
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75c6c1a1a3d1b2ab0800000000000000
+      internalID: -5031896023273018281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_16
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 261
+        width: 49
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c787639a31ae54e0800000000000000
+      internalID: -1990976712297969722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_17
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 384
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c489da15b1a5da980800000000000000
+      internalID: -8526059446161532852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      FDR_Water_Tiles_0: 2869504686296909191
+      FDR_Water_Tiles_1: -5055852132773907004
+      FDR_Water_Tiles_10: 5332350243739812268
+      FDR_Water_Tiles_11: 4155899440711048716
+      FDR_Water_Tiles_12: -6408829045581150940
+      FDR_Water_Tiles_13: -2349881173575111954
+      FDR_Water_Tiles_14: -6027032893638541908
+      FDR_Water_Tiles_15: -5031896023273018281
+      FDR_Water_Tiles_16: -1990976712297969722
+      FDR_Water_Tiles_17: -8526059446161532852
+      FDR_Water_Tiles_2: -3501653812257944530
+      FDR_Water_Tiles_3: 8539495688766755528
+      FDR_Water_Tiles_4: -5605671235990758566
+      FDR_Water_Tiles_5: -8823405475741530721
+      FDR_Water_Tiles_6: -9188187077858381127
+      FDR_Water_Tiles_7: 2668797713487101581
+      FDR_Water_Tiles_8: 62089161980480604
+      FDR_Water_Tiles_9: 9105274574672145118
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

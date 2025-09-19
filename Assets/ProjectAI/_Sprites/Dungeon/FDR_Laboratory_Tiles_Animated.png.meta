@@ -1,0 +1,3575 @@
+fileFormatVersion: 2
+guid: 8fd3b0a6a90b220458a4da0107670eba
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4604122517750988322
+    second: FDR_Laboratory_Tiles_Animated_0
+  - first:
+      213: 3699794284553362003
+    second: FDR_Laboratory_Tiles_Animated_1
+  - first:
+      213: 3620634561361876925
+    second: FDR_Laboratory_Tiles_Animated_2
+  - first:
+      213: -7090015999944172957
+    second: FDR_Laboratory_Tiles_Animated_3
+  - first:
+      213: -2256825861173895160
+    second: FDR_Laboratory_Tiles_Animated_4
+  - first:
+      213: 7485150017487711385
+    second: FDR_Laboratory_Tiles_Animated_5
+  - first:
+      213: -9151833109891762645
+    second: FDR_Laboratory_Tiles_Animated_6
+  - first:
+      213: -6399501420293826038
+    second: FDR_Laboratory_Tiles_Animated_7
+  - first:
+      213: 372972118216195183
+    second: FDR_Laboratory_Tiles_Animated_8
+  - first:
+      213: 4487099090144961711
+    second: FDR_Laboratory_Tiles_Animated_9
+  - first:
+      213: -2641583448209521380
+    second: FDR_Laboratory_Tiles_Animated_10
+  - first:
+      213: -6784133455782145073
+    second: FDR_Laboratory_Tiles_Animated_11
+  - first:
+      213: -1372451617497967461
+    second: FDR_Laboratory_Tiles_Animated_12
+  - first:
+      213: -4585320628678661980
+    second: FDR_Laboratory_Tiles_Animated_13
+  - first:
+      213: -5840367447175305322
+    second: FDR_Laboratory_Tiles_Animated_14
+  - first:
+      213: 5154644804707320584
+    second: FDR_Laboratory_Tiles_Animated_15
+  - first:
+      213: 7865659798886949841
+    second: FDR_Laboratory_Tiles_Animated_16
+  - first:
+      213: 2683146603412476000
+    second: FDR_Laboratory_Tiles_Animated_17
+  - first:
+      213: -6467872253054408715
+    second: FDR_Laboratory_Tiles_Animated_18
+  - first:
+      213: 8398970981447935981
+    second: FDR_Laboratory_Tiles_Animated_19
+  - first:
+      213: 7980509145507633063
+    second: FDR_Laboratory_Tiles_Animated_20
+  - first:
+      213: 3026558325772614926
+    second: FDR_Laboratory_Tiles_Animated_21
+  - first:
+      213: -8936854824315019964
+    second: FDR_Laboratory_Tiles_Animated_22
+  - first:
+      213: 8907922257296134024
+    second: FDR_Laboratory_Tiles_Animated_23
+  - first:
+      213: -2400852651747126652
+    second: FDR_Laboratory_Tiles_Animated_24
+  - first:
+      213: -1769935882104972561
+    second: FDR_Laboratory_Tiles_Animated_25
+  - first:
+      213: 1858533065067642429
+    second: FDR_Laboratory_Tiles_Animated_26
+  - first:
+      213: 1525305669330554697
+    second: FDR_Laboratory_Tiles_Animated_27
+  - first:
+      213: 120936071656716889
+    second: FDR_Laboratory_Tiles_Animated_28
+  - first:
+      213: -5640605325304191745
+    second: FDR_Laboratory_Tiles_Animated_29
+  - first:
+      213: 4060983220629841498
+    second: FDR_Laboratory_Tiles_Animated_30
+  - first:
+      213: 8844016173902619138
+    second: FDR_Laboratory_Tiles_Animated_31
+  - first:
+      213: 282508641366742098
+    second: FDR_Laboratory_Tiles_Animated_32
+  - first:
+      213: -3151238386067906996
+    second: FDR_Laboratory_Tiles_Animated_33
+  - first:
+      213: -3412436968798364351
+    second: FDR_Laboratory_Tiles_Animated_34
+  - first:
+      213: -4275536265170647255
+    second: FDR_Laboratory_Tiles_Animated_35
+  - first:
+      213: -4187855106030894948
+    second: FDR_Laboratory_Tiles_Animated_36
+  - first:
+      213: 6203826913250129780
+    second: FDR_Laboratory_Tiles_Animated_37
+  - first:
+      213: 8044617963718963969
+    second: FDR_Laboratory_Tiles_Animated_38
+  - first:
+      213: 7683029992316926149
+    second: FDR_Laboratory_Tiles_Animated_39
+  - first:
+      213: 6827952293038038527
+    second: FDR_Laboratory_Tiles_Animated_40
+  - first:
+      213: -6670663126735856304
+    second: FDR_Laboratory_Tiles_Animated_41
+  - first:
+      213: -6769725439064611456
+    second: FDR_Laboratory_Tiles_Animated_42
+  - first:
+      213: -6583401978074119481
+    second: FDR_Laboratory_Tiles_Animated_43
+  - first:
+      213: -481143324679897682
+    second: FDR_Laboratory_Tiles_Animated_44
+  - first:
+      213: 1761349740988804518
+    second: FDR_Laboratory_Tiles_Animated_45
+  - first:
+      213: 8257698299550614796
+    second: FDR_Laboratory_Tiles_Animated_46
+  - first:
+      213: 7852668493599444779
+    second: FDR_Laboratory_Tiles_Animated_47
+  - first:
+      213: -8455454356785676702
+    second: FDR_Laboratory_Tiles_Animated_48
+  - first:
+      213: 9164621684907696812
+    second: FDR_Laboratory_Tiles_Animated_49
+  - first:
+      213: -5930655239047897649
+    second: FDR_Laboratory_Tiles_Animated_50
+  - first:
+      213: -8601291892187833983
+    second: FDR_Laboratory_Tiles_Animated_51
+  - first:
+      213: -5593880853497571221
+    second: FDR_Laboratory_Tiles_Animated_52
+  - first:
+      213: 5935628184439346891
+    second: FDR_Laboratory_Tiles_Animated_53
+  - first:
+      213: 1735131167477412297
+    second: FDR_Laboratory_Tiles_Animated_54
+  - first:
+      213: 3911253057551633215
+    second: FDR_Laboratory_Tiles_Animated_55
+  - first:
+      213: 952662540158133419
+    second: FDR_Laboratory_Tiles_Animated_56
+  - first:
+      213: 5913801241745136673
+    second: FDR_Laboratory_Tiles_Animated_57
+  - first:
+      213: -3200055189445319971
+    second: FDR_Laboratory_Tiles_Animated_58
+  - first:
+      213: 9060701543196465383
+    second: FDR_Laboratory_Tiles_Animated_59
+  - first:
+      213: -7374478154688986484
+    second: FDR_Laboratory_Tiles_Animated_60
+  - first:
+      213: -2137306382027612274
+    second: FDR_Laboratory_Tiles_Animated_61
+  - first:
+      213: -6927359167082421215
+    second: FDR_Laboratory_Tiles_Animated_62
+  - first:
+      213: 3686406962957414342
+    second: FDR_Laboratory_Tiles_Animated_63
+  - first:
+      213: -254118318251101567
+    second: FDR_Laboratory_Tiles_Animated_64
+  - first:
+      213: 166632963227336542
+    second: FDR_Laboratory_Tiles_Animated_65
+  - first:
+      213: -2589886763607652428
+    second: FDR_Laboratory_Tiles_Animated_66
+  - first:
+      213: 6521124699027350625
+    second: FDR_Laboratory_Tiles_Animated_67
+  - first:
+      213: 5423827572879695360
+    second: FDR_Laboratory_Tiles_Animated_68
+  - first:
+      213: 7890775652341889673
+    second: FDR_Laboratory_Tiles_Animated_69
+  - first:
+      213: 5118820046286697652
+    second: FDR_Laboratory_Tiles_Animated_70
+  - first:
+      213: 9169413281429822607
+    second: FDR_Laboratory_Tiles_Animated_71
+  - first:
+      213: -6393395231085713675
+    second: FDR_Laboratory_Tiles_Animated_72
+  - first:
+      213: -464356469413111185
+    second: FDR_Laboratory_Tiles_Animated_73
+  - first:
+      213: -1841318619202745286
+    second: FDR_Laboratory_Tiles_Animated_74
+  - first:
+      213: 8408623223114120998
+    second: FDR_Laboratory_Tiles_Animated_75
+  - first:
+      213: -9166761806991469507
+    second: FDR_Laboratory_Tiles_Animated_76
+  - first:
+      213: 4737232082325499404
+    second: FDR_Laboratory_Tiles_Animated_77
+  - first:
+      213: 6085710106574896415
+    second: FDR_Laboratory_Tiles_Animated_78
+  - first:
+      213: 5782789971937298347
+    second: FDR_Laboratory_Tiles_Animated_79
+  - first:
+      213: 2219001118338343039
+    second: FDR_Laboratory_Tiles_Animated_80
+  - first:
+      213: 6232643080096934587
+    second: FDR_Laboratory_Tiles_Animated_81
+  - first:
+      213: -8804571417692356367
+    second: FDR_Laboratory_Tiles_Animated_82
+  - first:
+      213: -6276210777443585881
+    second: FDR_Laboratory_Tiles_Animated_83
+  - first:
+      213: 1672793428044267211
+    second: FDR_Laboratory_Tiles_Animated_84
+  - first:
+      213: -6078203536067177523
+    second: FDR_Laboratory_Tiles_Animated_85
+  - first:
+      213: 8230114215068307815
+    second: FDR_Laboratory_Tiles_Animated_86
+  - first:
+      213: -6170137702776482946
+    second: FDR_Laboratory_Tiles_Animated_87
+  - first:
+      213: -3320645612982488691
+    second: FDR_Laboratory_Tiles_Animated_88
+  - first:
+      213: -7326276406159959650
+    second: FDR_Laboratory_Tiles_Animated_89
+  - first:
+      213: 8293261038053240126
+    second: FDR_Laboratory_Tiles_Animated_90
+  - first:
+      213: 389720855188817661
+    second: FDR_Laboratory_Tiles_Animated_91
+  - first:
+      213: -1154369992625837676
+    second: FDR_Laboratory_Tiles_Animated_92
+  - first:
+      213: 9090712338242480080
+    second: FDR_Laboratory_Tiles_Animated_93
+  - first:
+      213: -821614625517545709
+    second: FDR_Laboratory_Tiles_Animated_94
+  - first:
+      213: 7601326055176626631
+    second: FDR_Laboratory_Tiles_Animated_95
+  - first:
+      213: -729381641811717817
+    second: FDR_Laboratory_Tiles_Animated_96
+  - first:
+      213: 9075613659907750441
+    second: FDR_Laboratory_Tiles_Animated_97
+  - first:
+      213: -2961356234590803456
+    second: FDR_Laboratory_Tiles_Animated_98
+  - first:
+      213: -3941800564000835414
+    second: FDR_Laboratory_Tiles_Animated_99
+  - first:
+      213: 3145785205168247585
+    second: FDR_Laboratory_Tiles_Animated_100
+  - first:
+      213: -1175739526017187649
+    second: FDR_Laboratory_Tiles_Animated_101
+  - first:
+      213: -900181466059855492
+    second: FDR_Laboratory_Tiles_Animated_102
+  - first:
+      213: 6662986919096726839
+    second: FDR_Laboratory_Tiles_Animated_103
+  - first:
+      213: -7576498008931262551
+    second: FDR_Laboratory_Tiles_Animated_104
+  - first:
+      213: 1037882199397358500
+    second: FDR_Laboratory_Tiles_Animated_105
+  - first:
+      213: -2255168567552305303
+    second: FDR_Laboratory_Tiles_Animated_106
+  - first:
+      213: 5253509882625203463
+    second: FDR_Laboratory_Tiles_Animated_107
+  - first:
+      213: 7150361626396938985
+    second: FDR_Laboratory_Tiles_Animated_108
+  - first:
+      213: -1274010625313409810
+    second: FDR_Laboratory_Tiles_Animated_109
+  - first:
+      213: -122711013038002381
+    second: FDR_Laboratory_Tiles_Animated_110
+  - first:
+      213: -3955727156299286538
+    second: FDR_Laboratory_Tiles_Animated_111
+  - first:
+      213: 2728312203244512047
+    second: FDR_Laboratory_Tiles_Animated_112
+  - first:
+      213: -6914407273949097749
+    second: FDR_Laboratory_Tiles_Animated_113
+  - first:
+      213: -7494016191762770757
+    second: FDR_Laboratory_Tiles_Animated_114
+  - first:
+      213: -7710290856464224469
+    second: FDR_Laboratory_Tiles_Animated_115
+  - first:
+      213: -7472216486520279703
+    second: FDR_Laboratory_Tiles_Animated_116
+  - first:
+      213: -6985734418300707096
+    second: FDR_Laboratory_Tiles_Animated_117
+  - first:
+      213: 7057674030372377593
+    second: FDR_Laboratory_Tiles_Animated_118
+  - first:
+      213: -934274159786035448
+    second: FDR_Laboratory_Tiles_Animated_119
+  - first:
+      213: -7104495776343732849
+    second: FDR_Laboratory_Tiles_Animated_120
+  - first:
+      213: -8554521702478116008
+    second: FDR_Laboratory_Tiles_Animated_121
+  - first:
+      213: 6171496015576014717
+    second: FDR_Laboratory_Tiles_Animated_122
+  - first:
+      213: -7484418857961860037
+    second: FDR_Laboratory_Tiles_Animated_123
+  - first:
+      213: -2880039294008396005
+    second: FDR_Laboratory_Tiles_Animated_124
+  - first:
+      213: -353677109636437883
+    second: FDR_Laboratory_Tiles_Animated_125
+  - first:
+      213: 5882405947107482897
+    second: FDR_Laboratory_Tiles_Animated_126
+  - first:
+      213: -2381596840762501147
+    second: FDR_Laboratory_Tiles_Animated_127
+  - first:
+      213: -6050067555181763805
+    second: FDR_Laboratory_Tiles_Animated_128
+  - first:
+      213: 5487869088233859502
+    second: FDR_Laboratory_Tiles_Animated_129
+  - first:
+      213: -7141706687159252423
+    second: FDR_Laboratory_Tiles_Animated_130
+  - first:
+      213: 9134997588296726030
+    second: FDR_Laboratory_Tiles_Animated_131
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 504
+        width: 512
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed1431bb6feda10c0800000000000000
+      internalID: -4604122517750988322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_1
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 481
+        width: 44
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35ad2d8ac4f485330800000000000000
+      internalID: 3699794284553362003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_2
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 489
+        width: 8
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db71a7b53f31f3230800000000000000
+      internalID: 3620634561361876925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_3
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 467
+        width: 44
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36add7733043b9d90800000000000000
+      internalID: -7090015999944172957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_4
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 495
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 800a0d026d42ea0e0800000000000000
+      internalID: -2256825861173895160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_5
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 495
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99c2dda684890e760800000000000000
+      internalID: 7485150017487711385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_6
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 495
+        width: 30
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b263e3966482ef080800000000000000
+      internalID: -9151833109891762645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_7
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 495
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0a57cf3d576037a0800000000000000
+      internalID: -6399501420293826038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_8
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 495
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6cb6695a201d2500800000000000000
+      internalID: 372972118216195183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_9
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 495
+        width: 30
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa4a11c49d0654e30800000000000000
+      internalID: 4487099090144961711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_10
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 479
+        width: 16
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c158bec79d5375bd0800000000000000
+      internalID: -2641583448209521380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_11
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 463
+        width: 66
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc3134bd09ae9d1a0800000000000000
+      internalID: -6784133455782145073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_12
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 499
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b949f93868214fce0800000000000000
+      internalID: -1372451617497967461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_13
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 499
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a8665aae2bad50c0800000000000000
+      internalID: -4585320628678661980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_14
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 463
+        width: 66
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6976c5910c8d2fea0800000000000000
+      internalID: -5840367447175305322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_15
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 463
+        width: 30
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80384efa32af88740800000000000000
+      internalID: 5154644804707320584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_16
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 472
+        width: 24
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d32abcb9ef682d60800000000000000
+      internalID: 7865659798886949841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_17
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 472
+        width: 50
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06052b0be937c3520800000000000000
+      internalID: 2683146603412476000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_18
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 472
+        width: 28
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f7261044708d36a0800000000000000
+      internalID: -6467872253054408715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_19
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 483
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de7a404ab932f8470800000000000000
+      internalID: 8398970981447935981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_20
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 483
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a71db809c670ce60800000000000000
+      internalID: 7980509145507633063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_21
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 468
+        width: 27
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0d7dab03ce700a20800000000000000
+      internalID: 3026558325772614926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_22
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 463
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44d977303e9e9f380800000000000000
+      internalID: -8936854824315019964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_23
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 463
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88f8ee8c81c4f9b70800000000000000
+      internalID: 8907922257296134024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_24
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 447
+        width: 16
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 482de86cb357eaed0800000000000000
+      internalID: -2400852651747126652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_25
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 467
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fea5ae751bcef67e0800000000000000
+      internalID: -1769935882104972561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_26
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 467
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3ebcaac9f5dac910800000000000000
+      internalID: 1858533065067642429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_27
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 419
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94f4652cc69fa2510800000000000000
+      internalID: 1525305669330554697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_28
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 419
+        width: 58
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95a31a767b6ada100800000000000000
+      internalID: 120936071656716889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_29
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 431
+        width: 66
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff42113875b88b1b0800000000000000
+      internalID: -5640605325304191745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_30
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 431
+        width: 16
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a56a67029b28b5830800000000000000
+      internalID: 4060983220629841498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_31
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 431
+        width: 16
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20266414ad14cba70800000000000000
+      internalID: 8844016173902619138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_32
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 431
+        width: 30
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25494aecc1cabe300800000000000000
+      internalID: 282508641366742098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_33
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 271
+        width: 257
+        height: 190
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4ed8d3426d8444d0800000000000000
+      internalID: -3151238386067906996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_34
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 440
+        width: 24
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14ddc5028a694a0d0800000000000000
+      internalID: -3412436968798364351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_35
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 440
+        width: 50
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 927043a6b6e3aa4c0800000000000000
+      internalID: -4275536265170647255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_36
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 440
+        width: 28
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c90093228ffb1e5c0800000000000000
+      internalID: -4187855106030894948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_37
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 442
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 477384455bb681650800000000000000
+      internalID: 6203826913250129780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_38
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 442
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 103f1317a6934af60800000000000000
+      internalID: 8044617963718963969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_39
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 399
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c8f8b2521b9f9a60800000000000000
+      internalID: 7683029992316926149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_40
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 399
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffd98d93f62c1ce50800000000000000
+      internalID: 6827952293038038527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_41
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 417
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05ddc9a9a3b0d63a0800000000000000
+      internalID: -6670663126735856304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_42
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 417
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 085e0a9a49a1d02a0800000000000000
+      internalID: -6769725439064611456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_43
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 417
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c2c94308ce03a4a0800000000000000
+      internalID: -6583401978074119481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_44
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 417
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ead776602b2a259f0800000000000000
+      internalID: -481143324679897682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_45
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 401
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ad2dd4e142917810800000000000000
+      internalID: 1761349740988804518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_46
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 401
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c05cf0f2adc399270800000000000000
+      internalID: 8257698299550614796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_47
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 401
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2f85e3c3684afc60800000000000000
+      internalID: 7852668493599444779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_48
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 401
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26eb249bf0138aa80800000000000000
+      internalID: -8455454356785676702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_49
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 343
+        width: 225
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca2e3cdbdd64f2f70800000000000000
+      internalID: 9164621684907696812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_50
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 367
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcd9d376b7412bda0800000000000000
+      internalID: -5930655239047897649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_51
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 271
+        width: 18
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18952bc789212a880800000000000000
+      internalID: -8601291892187833983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_52
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 335
+        width: 26
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b681b6b500b8e52b0800000000000000
+      internalID: -5593880853497571221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_53
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 335
+        width: 26
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc6dd4ca2669f5250800000000000000
+      internalID: 5935628184439346891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_54
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 271
+        width: 65
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c1333c8a9c641810800000000000000
+      internalID: 1735131167477412297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_55
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 271
+        width: 66
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3b8602eeef874630800000000000000
+      internalID: 3911253057551633215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_56
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 303
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba462f86889883d00800000000000000
+      internalID: 952662540158133419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_57
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 303
+        width: 26
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12c9b7e85ea021250800000000000000
+      internalID: 5913801241745136673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_58
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 271
+        width: 26
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd2677382ce1793d0800000000000000
+      internalID: -3200055189445319971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_59
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 271
+        width: 26
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e81f024c041ebd70800000000000000
+      internalID: 9060701543196465383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_60
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 271
+        width: 26
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8282e1a03798a990800000000000000
+      internalID: -7374478154688986484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_61
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 232
+        width: 24
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8f91136b23c652e0800000000000000
+      internalID: -2137306382027612274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_62
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 232
+        width: 24
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 124a18e4a831ddf90800000000000000
+      internalID: -6927359167082421215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_63
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 232
+        width: 66
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cf6a94f99fb82330800000000000000
+      internalID: 3686406962957414342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_64
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 232
+        width: 28
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18239b56cb0397cf0800000000000000
+      internalID: -254118318251101567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_65
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 232
+        width: 28
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5f39051ccfff4200800000000000000
+      internalID: 166632963227336542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_66
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 232
+        width: 24
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b70ea6d5bfde0cd0800000000000000
+      internalID: -2589886763607652428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_67
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 232
+        width: 34
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1642d850d50bf7a50800000000000000
+      internalID: 6521124699027350625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_68
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 232
+        width: 28
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00e967cd07e454b40800000000000000
+      internalID: 5423827572879695360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_69
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 234
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98ab32016aaa18d60800000000000000
+      internalID: 7890775652341889673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_70
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 234
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b4311026b3b90740800000000000000
+      internalID: 5118820046286697652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_71
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 234
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8c9f5e3ccc404f70800000000000000
+      internalID: 9169413281429822607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_72
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 115
+        width: 44
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f6a57639e81647a0800000000000000
+      internalID: -6393395231085713675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_73
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 232
+        width: 26
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6a1a7750464e89f0800000000000000
+      internalID: -464356469413111185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_74
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 232
+        width: 26
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3c8b18b8725276e0800000000000000
+      internalID: -1841318619202745286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_75
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 200
+        width: 24
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62f31d7454e61b470800000000000000
+      internalID: 8408623223114120998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_76
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 200
+        width: 24
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d34d7a144be19c080800000000000000
+      internalID: -9166761806991469507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_77
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 200
+        width: 66
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0e689dda770eb140800000000000000
+      internalID: 4737232082325499404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_78
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 200
+        width: 28
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1db6643919c47450800000000000000
+      internalID: 6085710106574896415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_79
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 200
+        width: 28
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba7830847d8904050800000000000000
+      internalID: 5782789971937298347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_80
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 200
+        width: 24
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7060c6a2c97bce10800000000000000
+      internalID: 2219001118338343039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_81
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 200
+        width: 34
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bba69f00cdbce7650800000000000000
+      internalID: 6232643080096934587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_82
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 200
+        width: 28
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f0c3e8b1f0efc580800000000000000
+      internalID: -8804571417692356367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_83
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 202
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a03ffafc8b66e8a0800000000000000
+      internalID: -6276210777443585881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_84
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 202
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bcebf2d82c4f63710800000000000000
+      internalID: 1672793428044267211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_85
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 202
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc351307612e5aba0800000000000000
+      internalID: -6078203536067177523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_86
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 200
+        width: 26
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7611a0a064d373270800000000000000
+      internalID: 8230114215068307815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_87
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 200
+        width: 26
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7353ca33744f5aa0800000000000000
+      internalID: -6170137702776482946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_88
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 168
+        width: 24
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8138359862bae1d0800000000000000
+      internalID: -3320645612982488691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_89
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 168
+        width: 24
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e999284cc66d35a90800000000000000
+      internalID: -7326276406159959650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_90
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 168
+        width: 66
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3d20ca79f4971370800000000000000
+      internalID: 8293261038053240126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_91
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 168
+        width: 28
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df6471f8d01986500800000000000000
+      internalID: 389720855188817661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_92
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 168
+        width: 28
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 499aa2a9b9adaffe0800000000000000
+      internalID: -1154369992625837676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_93
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 168
+        width: 24
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d7243cf4b2b82e70800000000000000
+      internalID: 9090712338242480080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_94
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 168
+        width: 34
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 317d2c7e9d90994f0800000000000000
+      internalID: -821614625517545709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_95
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 168
+        width: 28
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c169bc06c55d7960800000000000000
+      internalID: 7601326055176626631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_96
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 170
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7411f1ed247b0e5f0800000000000000
+      internalID: -729381641811717817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_97
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 170
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92afb7df98e03fd70800000000000000
+      internalID: 9075613659907750441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_98
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 170
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00aa3dfc13627e6d0800000000000000
+      internalID: -2961356234590803456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_99
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 168
+        width: 26
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa8bb478549eb49c0800000000000000
+      internalID: -3941800564000835414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_100
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 168
+        width: 26
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1239bbd1af218ab20800000000000000
+      internalID: 3145785205168247585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_101
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 136
+        width: 24
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb00c53612feeafe0800000000000000
+      internalID: -1175739526017187649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_102
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 136
+        width: 24
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c79ac1ad9b9e183f0800000000000000
+      internalID: -900181466059855492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_103
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 136
+        width: 66
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 735b5d70d4fa77c50800000000000000
+      internalID: 6662986919096726839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_104
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 136
+        width: 28
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9af9230f33fdad690800000000000000
+      internalID: -7576498008931262551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_105
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 136
+        width: 28
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4abd7c58c5c476e00800000000000000
+      internalID: 1037882199397358500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_106
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 136
+        width: 24
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9671b6ed22804b0e0800000000000000
+      internalID: -2255168567552305303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_107
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 136
+        width: 34
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70d11e9676738e840800000000000000
+      internalID: 5253509882625203463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_108
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 136
+        width: 28
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e259f4d3003b3360800000000000000
+      internalID: 7150361626396938985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_109
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 138
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee4fe16161ec15ee0800000000000000
+      internalID: -1274010625313409810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_110
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 138
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33f67d9dbfa0c4ef0800000000000000
+      internalID: -122711013038002381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_111
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 138
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f73a641c1f6a19c0800000000000000
+      internalID: -3955727156299286538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_112
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 115
+        width: 61
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f23a0ce5e79ecd520800000000000000
+      internalID: 2728312203244512047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_113
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 0
+        width: 98
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be013ebe7371b00a0800000000000000
+      internalID: -6914407273949097749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_114
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 95
+        width: 32
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb454f48af7eff790800000000000000
+      internalID: -7494016191762770757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_115
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 0
+        width: 210
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2fe181215b8ff490800000000000000
+      internalID: -7710290856464224469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_116
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 115
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96d242ce1ba5d4890800000000000000
+      internalID: -7472216486520279703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_117
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 99
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ee57fdfe8fad0f90800000000000000
+      internalID: -6985734418300707096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_118
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 99
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f358d03325e1f160800000000000000
+      internalID: 7057674030372377593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_119
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 99
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80770270a9ac803f0800000000000000
+      internalID: -934274159786035448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_120
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 99
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8dc4ce8bb2c76d90800000000000000
+      internalID: -7104495776343732849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_121
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 63
+        width: 32
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85b0c6cd5db384980800000000000000
+      internalID: -8554521702478116008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_122
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 83
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7f952d9dee85a550800000000000000
+      internalID: 6171496015576014717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_123
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 83
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b34d2fce3b0022890800000000000000
+      internalID: -7484418857961860037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_124
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 83
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b17767d658b0808d0800000000000000
+      internalID: -2880039294008396005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_125
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 83
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 588eeeaea8c771bf0800000000000000
+      internalID: -353677109636437883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_126
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 67
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11d9cf5ea0182a150800000000000000
+      internalID: 5882405947107482897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_127
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 67
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e79824aa4ed2fed0800000000000000
+      internalID: -2381596840762501147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_128
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 67
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 323664afc97d90ca0800000000000000
+      internalID: -6050067555181763805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_129
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 67
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea9a60a1cd3d82c40800000000000000
+      internalID: 5487869088233859502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_130
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 31
+        width: 32
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93a47dd3b9f83ec90800000000000000
+      internalID: -7141706687159252423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_Tiles_Animated_131
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e06f97248e706ce70800000000000000
+      internalID: 9134997588296726030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      FDR_Laboratory_Tiles_Animated_0: -4604122517750988322
+      FDR_Laboratory_Tiles_Animated_1: 3699794284553362003
+      FDR_Laboratory_Tiles_Animated_10: -2641583448209521380
+      FDR_Laboratory_Tiles_Animated_100: 3145785205168247585
+      FDR_Laboratory_Tiles_Animated_101: -1175739526017187649
+      FDR_Laboratory_Tiles_Animated_102: -900181466059855492
+      FDR_Laboratory_Tiles_Animated_103: 6662986919096726839
+      FDR_Laboratory_Tiles_Animated_104: -7576498008931262551
+      FDR_Laboratory_Tiles_Animated_105: 1037882199397358500
+      FDR_Laboratory_Tiles_Animated_106: -2255168567552305303
+      FDR_Laboratory_Tiles_Animated_107: 5253509882625203463
+      FDR_Laboratory_Tiles_Animated_108: 7150361626396938985
+      FDR_Laboratory_Tiles_Animated_109: -1274010625313409810
+      FDR_Laboratory_Tiles_Animated_11: -6784133455782145073
+      FDR_Laboratory_Tiles_Animated_110: -122711013038002381
+      FDR_Laboratory_Tiles_Animated_111: -3955727156299286538
+      FDR_Laboratory_Tiles_Animated_112: 2728312203244512047
+      FDR_Laboratory_Tiles_Animated_113: -6914407273949097749
+      FDR_Laboratory_Tiles_Animated_114: -7494016191762770757
+      FDR_Laboratory_Tiles_Animated_115: -7710290856464224469
+      FDR_Laboratory_Tiles_Animated_116: -7472216486520279703
+      FDR_Laboratory_Tiles_Animated_117: -6985734418300707096
+      FDR_Laboratory_Tiles_Animated_118: 7057674030372377593
+      FDR_Laboratory_Tiles_Animated_119: -934274159786035448
+      FDR_Laboratory_Tiles_Animated_12: -1372451617497967461
+      FDR_Laboratory_Tiles_Animated_120: -7104495776343732849
+      FDR_Laboratory_Tiles_Animated_121: -8554521702478116008
+      FDR_Laboratory_Tiles_Animated_122: 6171496015576014717
+      FDR_Laboratory_Tiles_Animated_123: -7484418857961860037
+      FDR_Laboratory_Tiles_Animated_124: -2880039294008396005
+      FDR_Laboratory_Tiles_Animated_125: -353677109636437883
+      FDR_Laboratory_Tiles_Animated_126: 5882405947107482897
+      FDR_Laboratory_Tiles_Animated_127: -2381596840762501147
+      FDR_Laboratory_Tiles_Animated_128: -6050067555181763805
+      FDR_Laboratory_Tiles_Animated_129: 5487869088233859502
+      FDR_Laboratory_Tiles_Animated_13: -4585320628678661980
+      FDR_Laboratory_Tiles_Animated_130: -7141706687159252423
+      FDR_Laboratory_Tiles_Animated_131: 9134997588296726030
+      FDR_Laboratory_Tiles_Animated_14: -5840367447175305322
+      FDR_Laboratory_Tiles_Animated_15: 5154644804707320584
+      FDR_Laboratory_Tiles_Animated_16: 7865659798886949841
+      FDR_Laboratory_Tiles_Animated_17: 2683146603412476000
+      FDR_Laboratory_Tiles_Animated_18: -6467872253054408715
+      FDR_Laboratory_Tiles_Animated_19: 8398970981447935981
+      FDR_Laboratory_Tiles_Animated_2: 3620634561361876925
+      FDR_Laboratory_Tiles_Animated_20: 7980509145507633063
+      FDR_Laboratory_Tiles_Animated_21: 3026558325772614926
+      FDR_Laboratory_Tiles_Animated_22: -8936854824315019964
+      FDR_Laboratory_Tiles_Animated_23: 8907922257296134024
+      FDR_Laboratory_Tiles_Animated_24: -2400852651747126652
+      FDR_Laboratory_Tiles_Animated_25: -1769935882104972561
+      FDR_Laboratory_Tiles_Animated_26: 1858533065067642429
+      FDR_Laboratory_Tiles_Animated_27: 1525305669330554697
+      FDR_Laboratory_Tiles_Animated_28: 120936071656716889
+      FDR_Laboratory_Tiles_Animated_29: -5640605325304191745
+      FDR_Laboratory_Tiles_Animated_3: -7090015999944172957
+      FDR_Laboratory_Tiles_Animated_30: 4060983220629841498
+      FDR_Laboratory_Tiles_Animated_31: 8844016173902619138
+      FDR_Laboratory_Tiles_Animated_32: 282508641366742098
+      FDR_Laboratory_Tiles_Animated_33: -3151238386067906996
+      FDR_Laboratory_Tiles_Animated_34: -3412436968798364351
+      FDR_Laboratory_Tiles_Animated_35: -4275536265170647255
+      FDR_Laboratory_Tiles_Animated_36: -4187855106030894948
+      FDR_Laboratory_Tiles_Animated_37: 6203826913250129780
+      FDR_Laboratory_Tiles_Animated_38: 8044617963718963969
+      FDR_Laboratory_Tiles_Animated_39: 7683029992316926149
+      FDR_Laboratory_Tiles_Animated_4: -2256825861173895160
+      FDR_Laboratory_Tiles_Animated_40: 6827952293038038527
+      FDR_Laboratory_Tiles_Animated_41: -6670663126735856304
+      FDR_Laboratory_Tiles_Animated_42: -6769725439064611456
+      FDR_Laboratory_Tiles_Animated_43: -6583401978074119481
+      FDR_Laboratory_Tiles_Animated_44: -481143324679897682
+      FDR_Laboratory_Tiles_Animated_45: 1761349740988804518
+      FDR_Laboratory_Tiles_Animated_46: 8257698299550614796
+      FDR_Laboratory_Tiles_Animated_47: 7852668493599444779
+      FDR_Laboratory_Tiles_Animated_48: -8455454356785676702
+      FDR_Laboratory_Tiles_Animated_49: 9164621684907696812
+      FDR_Laboratory_Tiles_Animated_5: 7485150017487711385
+      FDR_Laboratory_Tiles_Animated_50: -5930655239047897649
+      FDR_Laboratory_Tiles_Animated_51: -8601291892187833983
+      FDR_Laboratory_Tiles_Animated_52: -5593880853497571221
+      FDR_Laboratory_Tiles_Animated_53: 5935628184439346891
+      FDR_Laboratory_Tiles_Animated_54: 1735131167477412297
+      FDR_Laboratory_Tiles_Animated_55: 3911253057551633215
+      FDR_Laboratory_Tiles_Animated_56: 952662540158133419
+      FDR_Laboratory_Tiles_Animated_57: 5913801241745136673
+      FDR_Laboratory_Tiles_Animated_58: -3200055189445319971
+      FDR_Laboratory_Tiles_Animated_59: 9060701543196465383
+      FDR_Laboratory_Tiles_Animated_6: -9151833109891762645
+      FDR_Laboratory_Tiles_Animated_60: -7374478154688986484
+      FDR_Laboratory_Tiles_Animated_61: -2137306382027612274
+      FDR_Laboratory_Tiles_Animated_62: -6927359167082421215
+      FDR_Laboratory_Tiles_Animated_63: 3686406962957414342
+      FDR_Laboratory_Tiles_Animated_64: -254118318251101567
+      FDR_Laboratory_Tiles_Animated_65: 166632963227336542
+      FDR_Laboratory_Tiles_Animated_66: -2589886763607652428
+      FDR_Laboratory_Tiles_Animated_67: 6521124699027350625
+      FDR_Laboratory_Tiles_Animated_68: 5423827572879695360
+      FDR_Laboratory_Tiles_Animated_69: 7890775652341889673
+      FDR_Laboratory_Tiles_Animated_7: -6399501420293826038
+      FDR_Laboratory_Tiles_Animated_70: 5118820046286697652
+      FDR_Laboratory_Tiles_Animated_71: 9169413281429822607
+      FDR_Laboratory_Tiles_Animated_72: -6393395231085713675
+      FDR_Laboratory_Tiles_Animated_73: -464356469413111185
+      FDR_Laboratory_Tiles_Animated_74: -1841318619202745286
+      FDR_Laboratory_Tiles_Animated_75: 8408623223114120998
+      FDR_Laboratory_Tiles_Animated_76: -9166761806991469507
+      FDR_Laboratory_Tiles_Animated_77: 4737232082325499404
+      FDR_Laboratory_Tiles_Animated_78: 6085710106574896415
+      FDR_Laboratory_Tiles_Animated_79: 5782789971937298347
+      FDR_Laboratory_Tiles_Animated_8: 372972118216195183
+      FDR_Laboratory_Tiles_Animated_80: 2219001118338343039
+      FDR_Laboratory_Tiles_Animated_81: 6232643080096934587
+      FDR_Laboratory_Tiles_Animated_82: -8804571417692356367
+      FDR_Laboratory_Tiles_Animated_83: -6276210777443585881
+      FDR_Laboratory_Tiles_Animated_84: 1672793428044267211
+      FDR_Laboratory_Tiles_Animated_85: -6078203536067177523
+      FDR_Laboratory_Tiles_Animated_86: 8230114215068307815
+      FDR_Laboratory_Tiles_Animated_87: -6170137702776482946
+      FDR_Laboratory_Tiles_Animated_88: -3320645612982488691
+      FDR_Laboratory_Tiles_Animated_89: -7326276406159959650
+      FDR_Laboratory_Tiles_Animated_9: 4487099090144961711
+      FDR_Laboratory_Tiles_Animated_90: 8293261038053240126
+      FDR_Laboratory_Tiles_Animated_91: 389720855188817661
+      FDR_Laboratory_Tiles_Animated_92: -1154369992625837676
+      FDR_Laboratory_Tiles_Animated_93: 9090712338242480080
+      FDR_Laboratory_Tiles_Animated_94: -821614625517545709
+      FDR_Laboratory_Tiles_Animated_95: 7601326055176626631
+      FDR_Laboratory_Tiles_Animated_96: -729381641811717817
+      FDR_Laboratory_Tiles_Animated_97: 9075613659907750441
+      FDR_Laboratory_Tiles_Animated_98: -2961356234590803456
+      FDR_Laboratory_Tiles_Animated_99: -3941800564000835414
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
