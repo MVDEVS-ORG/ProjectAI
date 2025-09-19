@@ -184,6 +184,7 @@ public class GunsController : IGunsController
             LoadWeaponUpgrades(tempActiveUpgrades, tempCursedUpgrades);
 
             gun.SetGunUI(_currentGunUI);
+            #endregion
 
             #region Gun Carousel
             var carousel = await _assetService.InstantiateAsync(AddressableIds.Gun_Carousel);
@@ -202,7 +203,7 @@ public class GunsController : IGunsController
     async Awaitable IGunsController.AddGun(GunsView gun)
     {
         //checks if we are going over the permitted limit of guns for the character
-        if (_allGuns.Count>=_gunLimit)
+        if (_allGuns.Count >= _gunLimit)
         {
             await (this as IGunsController).ReplaceGuns(gun);
         }
@@ -304,7 +305,7 @@ public class GunsController : IGunsController
         }
     }
 
-    void IGunsController.SetGunElements(Dictionary<ElementEnum,int> ElementalBuffs)
+    void IGunsController.SetGunElements(Dictionary<ElementEnum, int> ElementalBuffs)
     {
         _currentActiveGun.ElementalBuffs = ElementalBuffs;
     }
