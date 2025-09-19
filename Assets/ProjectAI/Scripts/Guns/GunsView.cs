@@ -26,6 +26,8 @@ public class GunsView : MonoBehaviour, IInteractable
 
     [HideInInspector] public bool AlternateRotation = false;
     [HideInInspector] public bool WeaponKnockback = false;
+
+    public Action<IGunProjectileBehavior> OnShotFired;
     public Sprite GunSprite;
     private float _angle;
     private void Start()
@@ -35,6 +37,12 @@ public class GunsView : MonoBehaviour, IInteractable
         ReverseScale = new Vector3(transform.localScale.x, -transform.localScale.y, transform.localScale.z);
         Collider = GetComponent<BoxCollider2D>();
     }
+
+    protected void ShotFired(IGunProjectileBehavior projectileBehavior)
+    {
+        OnShotFired?.Invoke(projectileBehavior);
+    }
+
     public GunsModel InitializeGun(GunsController controller, ObjectPoolManager objectPoolManager, Transform playerTrasform, Transform playerCursor)
     {
         Debug.Log("Gun initialized");

@@ -39,7 +39,8 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
             }
 
             tilemapVisualizer.PaintFloorTiles(floorPositions);
-            await WallGenerator.CreateWalls(floorPositions, tilemapVisualizer);
+            WallGenerator.CreateWalls(floorPositions, tilemapVisualizer);
+            await Awaitable.EndOfFrameAsync();
         }
 
         private List<Vector2Int> IncreaseCorridorSizeByOne(List<Vector2Int> corridor)

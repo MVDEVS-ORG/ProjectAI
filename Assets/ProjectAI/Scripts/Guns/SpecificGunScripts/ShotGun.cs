@@ -124,6 +124,7 @@ public class ShotGun : GunsView
         GameObject bullet = await PoolManager.SpawnObjectAsync(GunsModel.PrimaryProjectileAddressable, GunBulletSpawnTransform.position, Quaternion.identity, ObjectPoolManager.PoolType.GameObjects);
         bullet.transform.right = transform.right;
         IGunProjectileBehavior weaponBehavior = bullet.GetComponent<IGunProjectileBehavior>();
+        ShotFired(weaponBehavior);
         weaponBehavior.Initialize(PoolManager);
         weaponBehavior.SpawnProjectileAnimation();
         weaponBehavior.AddModifications(ElementalBuffs);

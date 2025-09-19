@@ -1,3 +1,4 @@
+using Assets.ProjectAI.Scripts.GameController;
 using Assets.ProjectAI.Scripts.MainMenu;
 using UnityEngine;
 using UnityEngine.UI;
@@ -5,7 +6,8 @@ using Zenject;
 
 public class MainMenuView : MonoBehaviour
 {
-    [Inject] ISceneManager _sceneManager;
+    [Inject] private ISceneManager _sceneManager;
+    [Inject] private LevelManager _levelManager;
 
     [SerializeField] private Button _newGame;
     [SerializeField] private Button _settings;
@@ -32,6 +34,7 @@ public class MainMenuView : MonoBehaviour
         _credits.onClick.AddListener(OpenCredits);
         _exit.onClick.AddListener(ExitGame);
         _sceneManager.FadeBack();
+        _levelManager.ResetLevel();
     }
 
     private void StartNewGame()

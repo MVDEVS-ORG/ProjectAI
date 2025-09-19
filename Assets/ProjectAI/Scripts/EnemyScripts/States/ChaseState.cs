@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Assets.ProjectAI.Scripts.PathFinding;
 using Assets.ProjectAI.Scripts.EnemyScripts;
-using Assets.ProjectAI.Scripts.EnemyScripts.States;
 
 public class ChaseState : IEnemyState
 {
@@ -53,7 +52,7 @@ public class ChaseState : IEnemyState
     private void RequestPath()
     {
         Vector3 targetPos;
-
+        List<Vector3Int> path = new();
         // If enemy is close to player, calculate offset to spread around
         float distanceToPlayer = Vector3.Distance(_enemy.transform.position, _player.position);
         if (distanceToPlayer < 2f)
@@ -71,9 +70,15 @@ public class ChaseState : IEnemyState
         Vector3Int startCell = PathFindingManager.Instance.floorTilemap.WorldToCell(_enemy.transform.position);
         Vector3Int finalTargetCell = (Vector3Int)nearestValidTarget;
 
-        List<Vector3Int> path = PathFindingManager.Instance.FindPath(startCell, finalTargetCell);
+        path = PathFindingManager.Instance.FindPath(startCell, finalTargetCell);
+        if (path == null)
+        {
+            Debug.LogError($"{_enemy.name} no path found s-{startCell}, e- {targetPos}");
+            return;
+        }
         _enemy.StartPathMovement(path);
     }
+
     private Vector3 GetOffsetAroundPlayer(GameObject self, Transform player)
     {
         List<GameObject> allEnemies = new List<GameObject>();

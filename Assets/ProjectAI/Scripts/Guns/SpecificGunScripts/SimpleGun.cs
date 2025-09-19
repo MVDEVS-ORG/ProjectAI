@@ -122,6 +122,7 @@ public class SimpleGun : GunsView
         }
         bullet.transform.right = bulletRotationAndFireDirection;
         IGunProjectileBehavior weaponBehavior = bullet.GetComponent<IGunProjectileBehavior>();
+        ShotFired(weaponBehavior);
         weaponBehavior.Initialize(PoolManager);
         weaponBehavior.SpawnProjectileAnimation();
         weaponBehavior.AddModifications(ElementalBuffs);

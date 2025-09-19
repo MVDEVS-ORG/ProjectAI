@@ -35,6 +35,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 19e52bf78a4a62b4c82a5614cc78702b
+    m_Address: TileSetLVL_1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1a8bfa989c43ddc4dbd24783654a6fec
     m_Address: LightningAttack
     m_ReadOnly: 0
@@ -112,6 +117,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4e024ad029743584d94fe1cfc1ac9f6c
     m_Address: ShotgunSprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 54179ceb801fd374089cf4f79f7d39cb
+    m_Address: ElementalistAbility
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -290,6 +300,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d0865baea8c9a094582df4471b42f7b6
+    m_Address: pyro
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d8fde6f46fd9bec48b7ea50f6fc2a38d
     m_Address: Goblin
     m_ReadOnly: 0
@@ -332,11 +347,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f0bc24bc58adfc24d8759e7982ced24a
     m_Address: Table_Short
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: f44ab2521acd52f459f35a8b1ff06c40
-    m_Address: pyro
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
