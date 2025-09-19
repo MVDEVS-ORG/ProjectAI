@@ -182,8 +182,6 @@ public class GunsController : IGunsController
             _upgradeController.OnUpgrade += UpgradeWeapon;
             (List<UpgradeSO> tempActiveUpgrades, List<UpgradeSO> tempCursedUpgrades) = _upgradeController.RefreshUpgrades();
             LoadWeaponUpgrades(tempActiveUpgrades, tempCursedUpgrades);
-
-            gun.SetGunUI(_currentGunUI);
             #endregion
 
             #region Gun Carousel
