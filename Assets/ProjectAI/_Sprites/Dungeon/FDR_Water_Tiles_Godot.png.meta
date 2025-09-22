@@ -1,0 +1,1989 @@
+fileFormatVersion: 2
+guid: 91b62b5c85e4c054682d691658256be6
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3033835591348250044
+    second: FDR_Water_Tiles_Godot_0
+  - first:
+      213: 800490629917109212
+    second: FDR_Water_Tiles_Godot_1
+  - first:
+      213: 4283755786581711148
+    second: FDR_Water_Tiles_Godot_2
+  - first:
+      213: -4788115565054360551
+    second: FDR_Water_Tiles_Godot_3
+  - first:
+      213: -4094847854443144174
+    second: FDR_Water_Tiles_Godot_4
+  - first:
+      213: 2243384881111192625
+    second: FDR_Water_Tiles_Godot_5
+  - first:
+      213: 2324347913200433687
+    second: FDR_Water_Tiles_Godot_6
+  - first:
+      213: -2434077558688008278
+    second: FDR_Water_Tiles_Godot_7
+  - first:
+      213: 5846949601527351918
+    second: FDR_Water_Tiles_Godot_8
+  - first:
+      213: -3365493954329553249
+    second: FDR_Water_Tiles_Godot_9
+  - first:
+      213: 7116173959503623839
+    second: FDR_Water_Tiles_Godot_10
+  - first:
+      213: 4261320676358633506
+    second: FDR_Water_Tiles_Godot_11
+  - first:
+      213: 5517419605863864863
+    second: FDR_Water_Tiles_Godot_12
+  - first:
+      213: 2143826226087741033
+    second: FDR_Water_Tiles_Godot_13
+  - first:
+      213: -3340337313692434722
+    second: FDR_Water_Tiles_Godot_14
+  - first:
+      213: -2477683961756754227
+    second: FDR_Water_Tiles_Godot_15
+  - first:
+      213: 5218769935601982550
+    second: FDR_Water_Tiles_Godot_16
+  - first:
+      213: -1377948420013106603
+    second: FDR_Water_Tiles_Godot_17
+  - first:
+      213: -1926618678562990709
+    second: FDR_Water_Tiles_Godot_18
+  - first:
+      213: 234626625174515497
+    second: FDR_Water_Tiles_Godot_19
+  - first:
+      213: 2567868822469346442
+    second: FDR_Water_Tiles_Godot_20
+  - first:
+      213: -2497866753868801730
+    second: FDR_Water_Tiles_Godot_21
+  - first:
+      213: 7803826840817607263
+    second: FDR_Water_Tiles_Godot_22
+  - first:
+      213: -6804295996100063474
+    second: FDR_Water_Tiles_Godot_23
+  - first:
+      213: 2122222402670275922
+    second: FDR_Water_Tiles_Godot_24
+  - first:
+      213: -3247086168585558095
+    second: FDR_Water_Tiles_Godot_25
+  - first:
+      213: 4800002568473024290
+    second: FDR_Water_Tiles_Godot_26
+  - first:
+      213: -4991297549508888569
+    second: FDR_Water_Tiles_Godot_27
+  - first:
+      213: -1100498615540891522
+    second: FDR_Water_Tiles_Godot_28
+  - first:
+      213: -2745001160558132582
+    second: FDR_Water_Tiles_Godot_29
+  - first:
+      213: 5166725337909597139
+    second: FDR_Water_Tiles_Godot_30
+  - first:
+      213: 4675215639870136410
+    second: FDR_Water_Tiles_Godot_31
+  - first:
+      213: 2947160031700337404
+    second: FDR_Water_Tiles_Godot_32
+  - first:
+      213: -1836523749612642889
+    second: FDR_Water_Tiles_Godot_33
+  - first:
+      213: -874733341841390654
+    second: FDR_Water_Tiles_Godot_34
+  - first:
+      213: -6370528932727392714
+    second: FDR_Water_Tiles_Godot_35
+  - first:
+      213: 1964534876679830468
+    second: FDR_Water_Tiles_Godot_36
+  - first:
+      213: 5215008656039867911
+    second: FDR_Water_Tiles_Godot_37
+  - first:
+      213: 2893669304647803192
+    second: FDR_Water_Tiles_Godot_38
+  - first:
+      213: -4867413375375873155
+    second: FDR_Water_Tiles_Godot_39
+  - first:
+      213: -4534799907865967672
+    second: FDR_Water_Tiles_Godot_40
+  - first:
+      213: -7994183173008581925
+    second: FDR_Water_Tiles_Godot_41
+  - first:
+      213: -3819791770086516711
+    second: FDR_Water_Tiles_Godot_42
+  - first:
+      213: -2890974728674959870
+    second: FDR_Water_Tiles_Godot_43
+  - first:
+      213: 2908156524336876125
+    second: FDR_Water_Tiles_Godot_44
+  - first:
+      213: 7311352985712422085
+    second: FDR_Water_Tiles_Godot_45
+  - first:
+      213: 1179259095467195076
+    second: FDR_Water_Tiles_Godot_46
+  - first:
+      213: -4574747365569456355
+    second: FDR_Water_Tiles_Godot_47
+  - first:
+      213: 7035817464011923642
+    second: FDR_Water_Tiles_Godot_48
+  - first:
+      213: 4476190501106960060
+    second: FDR_Water_Tiles_Godot_49
+  - first:
+      213: -1336165157478747313
+    second: FDR_Water_Tiles_Godot_50
+  - first:
+      213: 8691353416001528747
+    second: FDR_Water_Tiles_Godot_51
+  - first:
+      213: 970639332439324803
+    second: FDR_Water_Tiles_Godot_52
+  - first:
+      213: -7017260977378195188
+    second: FDR_Water_Tiles_Godot_53
+  - first:
+      213: 7408829499983709237
+    second: FDR_Water_Tiles_Godot_54
+  - first:
+      213: 8224905619396200014
+    second: FDR_Water_Tiles_Godot_55
+  - first:
+      213: -6329475944667975098
+    second: FDR_Water_Tiles_Godot_56
+  - first:
+      213: -697675224204480813
+    second: FDR_Water_Tiles_Godot_57
+  - first:
+      213: -1310001758628333778
+    second: FDR_Water_Tiles_Godot_58
+  - first:
+      213: 931502325763435952
+    second: FDR_Water_Tiles_Godot_59
+  - first:
+      213: -3787686368884537602
+    second: FDR_Water_Tiles_Godot_60
+  - first:
+      213: 4085314469515134831
+    second: FDR_Water_Tiles_Godot_61
+  - first:
+      213: -6462250209975235723
+    second: FDR_Water_Tiles_Godot_62
+  - first:
+      213: -5834918995937888145
+    second: FDR_Water_Tiles_Godot_63
+  - first:
+      213: -8653115155914243913
+    second: FDR_Water_Tiles_Godot_64
+  - first:
+      213: -5392886916047779229
+    second: FDR_Water_Tiles_Godot_65
+  - first:
+      213: -6853947428807123827
+    second: FDR_Water_Tiles_Godot_66
+  - first:
+      213: -6693097781671259090
+    second: FDR_Water_Tiles_Godot_67
+  - first:
+      213: 3647354438350579210
+    second: FDR_Water_Tiles_Godot_68
+  - first:
+      213: -7117263806270703997
+    second: FDR_Water_Tiles_Godot_69
+  - first:
+      213: -7274017674386568801
+    second: FDR_Water_Tiles_Godot_70
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 239
+        width: 193
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb5ef3975695a1a20800000000000000
+      internalID: 3033835591348250044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_1
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 305
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cdbec3a9cf9eb1b00800000000000000
+      internalID: 800490629917109212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_2
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 305
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c291abb0135f27b30800000000000000
+      internalID: 4283755786581711148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_3
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 305
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9148a6913423d8db0800000000000000
+      internalID: -4788115565054360551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_4
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 305
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21c55a2629d2c27c0800000000000000
+      internalID: -4094847854443144174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_5
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 305
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1345d15d9aa122f10800000000000000
+      internalID: 2243384881111192625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_6
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 305
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71a7bb4bc1eb14020800000000000000
+      internalID: 2324347913200433687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_7
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 305
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa7b6ae4b5b683ed0800000000000000
+      internalID: -2434077558688008278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_8
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 239
+        width: 193
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6a46a22fa9842150800000000000000
+      internalID: 5846949601527351918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_9
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 305
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f965676641d5b41d0800000000000000
+      internalID: -3365493954329553249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_10
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 305
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f963918538ab1c260800000000000000
+      internalID: 7116173959503623839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_11
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 305
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2283264e390432b30800000000000000
+      internalID: 4261320676358633506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_12
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 305
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1a9a4426efc19c40800000000000000
+      internalID: 5517419605863864863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_13
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 305
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 966402a189660cd10800000000000000
+      internalID: 2143826226087741033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_14
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 305
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ede316b39ecb4a1d0800000000000000
+      internalID: -3340337313692434722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_15
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 305
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dce5ec9609f7d9dd0800000000000000
+      internalID: -2477683961756754227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_16
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 305
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65c5b003b9bcc6840800000000000000
+      internalID: 5218769935601982550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_17
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 159
+        width: 193
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55ade42763b80ece0800000000000000
+      internalID: -1377948420013106603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_18
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 225
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b85de9ef4864345e0800000000000000
+      internalID: -1926618678562990709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_19
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 225
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92f20682caf814300800000000000000
+      internalID: 234626625174515497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_20
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 225
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a840611c617e2a320800000000000000
+      internalID: 2567868822469346442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_21
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 225
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e39546feb6bc55dd0800000000000000
+      internalID: -2497866753868801730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_22
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 225
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f52a79f4a23cc4c60800000000000000
+      internalID: 7803826840817607263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_23
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 225
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0fc7dd97d84291a0800000000000000
+      internalID: -6804295996100063474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_24
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 225
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25da98df706a37d10800000000000000
+      internalID: 2122222402670275922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_25
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 225
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b7af5e555800f2d0800000000000000
+      internalID: -3247086168585558095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_26
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 159
+        width: 193
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2271cce87e80d9240800000000000000
+      internalID: 4800002568473024290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_27
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 225
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 708be31e2595bbab0800000000000000
+      internalID: -4991297549508888569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_28
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 225
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7040e0075e3ab0f0800000000000000
+      internalID: -1100498615540891522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_29
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 225
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a92c5e4fcfbc7e9d0800000000000000
+      internalID: -2745001160558132582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_30
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 225
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d39c120255e3b740800000000000000
+      internalID: 5166725337909597139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_31
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 225
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a506fc6aad3b1e040800000000000000
+      internalID: 4675215639870136410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_32
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 225
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf24ab12f6a66e820800000000000000
+      internalID: 2947160031700337404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_33
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 225
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7bd15ca416b5386e0800000000000000
+      internalID: -1836523749612642889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_34
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 225
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c38a5ef8a25cd3f0800000000000000
+      internalID: -874733341841390654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 79
+        width: 193
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6367f6d20b55797a0800000000000000
+      internalID: -6370528932727392714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_36
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 145
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4cbfd51df0e634b10800000000000000
+      internalID: 1964534876679830468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_37
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 145
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 706f7db0ebe6f5840800000000000000
+      internalID: 5215008656039867911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_38
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 145
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 831ebf8b6e0682820800000000000000
+      internalID: 2893669304647803192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_39
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 145
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7b6cb1e259737cb0800000000000000
+      internalID: -4867413375375873155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_40
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 145
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c3cc2c92872111c0800000000000000
+      internalID: -4534799907865967672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_41
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 145
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bda1b6752c4fe0190800000000000000
+      internalID: -7994183173008581925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_42
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 145
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 918580c8f9f5dfac0800000000000000
+      internalID: -3819791770086516711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_43
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 145
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20e92b22dc131e7d0800000000000000
+      internalID: -2890974728674959870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_44
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 79
+        width: 193
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5a855863f8db5820800000000000000
+      internalID: 2908156524336876125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_45
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 145
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5cc61e4adc4277560800000000000000
+      internalID: 7311352985712422085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_46
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 145
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ca787b36e19d5010800000000000000
+      internalID: 1179259095467195076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_47
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 145
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d171412528b3380c0800000000000000
+      internalID: -4574747365569456355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_48
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 145
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab0abe6c4be34a160800000000000000
+      internalID: 7035817464011923642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_49
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 145
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb6457d7b8f9e1e30800000000000000
+      internalID: 4476190501106960060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_50
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 145
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f43b93b5edcf47de0800000000000000
+      internalID: -1336165157478747313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_51
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 145
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba3262212e3ed9870800000000000000
+      internalID: 8691353416001528747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_52
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 145
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38871178457687d00800000000000000
+      internalID: 970639332439324803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_53
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 193
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c098923f15ead9e90800000000000000
+      internalID: -7017260977378195188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_54
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 65
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 534c6f33d2371d660800000000000000
+      internalID: 7408829499983709237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_55
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 65
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e46893b551cb42270800000000000000
+      internalID: 8224905619396200014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_56
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 65
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6427fafc92f2928a0800000000000000
+      internalID: -6329475944667975098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_57
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 65
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3de63bc741c5156f0800000000000000
+      internalID: -697675224204480813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_58
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 65
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2732d95750f1dde0800000000000000
+      internalID: -1310001758628333778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_59
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 65
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0bd64921e6c5dec00800000000000000
+      internalID: 931502325763435952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_60
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 65
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef64c06c05f6f6bc0800000000000000
+      internalID: -3787686368884537602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_61
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 65
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6786377dd3f1b830800000000000000
+      internalID: 4085314469515134831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_62
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 0
+        width: 193
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57b8bb82ca97156a0800000000000000
+      internalID: -6462250209975235723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_63
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 65
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6871f18614360fa0800000000000000
+      internalID: -5834918995937888145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_64
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 65
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b0ce23ac95f9e780800000000000000
+      internalID: -8653115155914243913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_65
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 65
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36ace1f2ced9825b0800000000000000
+      internalID: -5392886916047779229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_66
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 65
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8cdfb49023e1e0a0800000000000000
+      internalID: -6853947428807123827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_67
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 65
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e24978477075d13a0800000000000000
+      internalID: -6693097781671259090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_68
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 65
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a06a4d389810e9230800000000000000
+      internalID: 3647354438350579210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_69
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 65
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3867d7ee6466a3d90800000000000000
+      internalID: -7117263806270703997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Water_Tiles_Godot_70
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 65
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f99864ce67f7d0b90800000000000000
+      internalID: -7274017674386568801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      FDR_Water_Tiles_Godot_0: 3033835591348250044
+      FDR_Water_Tiles_Godot_1: 800490629917109212
+      FDR_Water_Tiles_Godot_10: 7116173959503623839
+      FDR_Water_Tiles_Godot_11: 4261320676358633506
+      FDR_Water_Tiles_Godot_12: 5517419605863864863
+      FDR_Water_Tiles_Godot_13: 2143826226087741033
+      FDR_Water_Tiles_Godot_14: -3340337313692434722
+      FDR_Water_Tiles_Godot_15: -2477683961756754227
+      FDR_Water_Tiles_Godot_16: 5218769935601982550
+      FDR_Water_Tiles_Godot_17: -1377948420013106603
+      FDR_Water_Tiles_Godot_18: -1926618678562990709
+      FDR_Water_Tiles_Godot_19: 234626625174515497
+      FDR_Water_Tiles_Godot_2: 4283755786581711148
+      FDR_Water_Tiles_Godot_20: 2567868822469346442
+      FDR_Water_Tiles_Godot_21: -2497866753868801730
+      FDR_Water_Tiles_Godot_22: 7803826840817607263
+      FDR_Water_Tiles_Godot_23: -6804295996100063474
+      FDR_Water_Tiles_Godot_24: 2122222402670275922
+      FDR_Water_Tiles_Godot_25: -3247086168585558095
+      FDR_Water_Tiles_Godot_26: 4800002568473024290
+      FDR_Water_Tiles_Godot_27: -4991297549508888569
+      FDR_Water_Tiles_Godot_28: -1100498615540891522
+      FDR_Water_Tiles_Godot_29: -2745001160558132582
+      FDR_Water_Tiles_Godot_3: -4788115565054360551
+      FDR_Water_Tiles_Godot_30: 5166725337909597139
+      FDR_Water_Tiles_Godot_31: 4675215639870136410
+      FDR_Water_Tiles_Godot_32: 2947160031700337404
+      FDR_Water_Tiles_Godot_33: -1836523749612642889
+      FDR_Water_Tiles_Godot_34: -874733341841390654
+      FDR_Water_Tiles_Godot_35: -6370528932727392714
+      FDR_Water_Tiles_Godot_36: 1964534876679830468
+      FDR_Water_Tiles_Godot_37: 5215008656039867911
+      FDR_Water_Tiles_Godot_38: 2893669304647803192
+      FDR_Water_Tiles_Godot_39: -4867413375375873155
+      FDR_Water_Tiles_Godot_4: -4094847854443144174
+      FDR_Water_Tiles_Godot_40: -4534799907865967672
+      FDR_Water_Tiles_Godot_41: -7994183173008581925
+      FDR_Water_Tiles_Godot_42: -3819791770086516711
+      FDR_Water_Tiles_Godot_43: -2890974728674959870
+      FDR_Water_Tiles_Godot_44: 2908156524336876125
+      FDR_Water_Tiles_Godot_45: 7311352985712422085
+      FDR_Water_Tiles_Godot_46: 1179259095467195076
+      FDR_Water_Tiles_Godot_47: -4574747365569456355
+      FDR_Water_Tiles_Godot_48: 7035817464011923642
+      FDR_Water_Tiles_Godot_49: 4476190501106960060
+      FDR_Water_Tiles_Godot_5: 2243384881111192625
+      FDR_Water_Tiles_Godot_50: -1336165157478747313
+      FDR_Water_Tiles_Godot_51: 8691353416001528747
+      FDR_Water_Tiles_Godot_52: 970639332439324803
+      FDR_Water_Tiles_Godot_53: -7017260977378195188
+      FDR_Water_Tiles_Godot_54: 7408829499983709237
+      FDR_Water_Tiles_Godot_55: 8224905619396200014
+      FDR_Water_Tiles_Godot_56: -6329475944667975098
+      FDR_Water_Tiles_Godot_57: -697675224204480813
+      FDR_Water_Tiles_Godot_58: -1310001758628333778
+      FDR_Water_Tiles_Godot_59: 931502325763435952
+      FDR_Water_Tiles_Godot_6: 2324347913200433687
+      FDR_Water_Tiles_Godot_60: -3787686368884537602
+      FDR_Water_Tiles_Godot_61: 4085314469515134831
+      FDR_Water_Tiles_Godot_62: -6462250209975235723
+      FDR_Water_Tiles_Godot_63: -5834918995937888145
+      FDR_Water_Tiles_Godot_64: -8653115155914243913
+      FDR_Water_Tiles_Godot_65: -5392886916047779229
+      FDR_Water_Tiles_Godot_66: -6853947428807123827
+      FDR_Water_Tiles_Godot_67: -6693097781671259090
+      FDR_Water_Tiles_Godot_68: 3647354438350579210
+      FDR_Water_Tiles_Godot_69: -7117263806270703997
+      FDR_Water_Tiles_Godot_7: -2434077558688008278
+      FDR_Water_Tiles_Godot_70: -7274017674386568801
+      FDR_Water_Tiles_Godot_8: 5846949601527351918
+      FDR_Water_Tiles_Godot_9: -3365493954329553249
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

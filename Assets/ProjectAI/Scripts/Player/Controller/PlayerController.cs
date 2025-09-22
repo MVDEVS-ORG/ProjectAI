@@ -193,6 +193,47 @@ public class PlayerController : IPlayerController
 
     }
 
+    private void LoadPlayerUpgrades(List<UpgradeSO> activeUpgrades, List<UpgradeSO> cursedUpgrades)
+    {
+        foreach (UpgradeSO upgrade in activeUpgrades)
+        {
+            switch (upgrade.Type)
+            {
+                case StatType.Additive:
+                    _playerModel = _playerModel + upgrade.playerModel;
+                    break;
+
+                case StatType.Multiplicative:
+                    _playerModel = _playerModel * upgrade.playerModel;
+                    break;
+
+                case StatType.Set:
+                    _playerModel = _playerModel % upgrade.playerModel;
+                    break;
+            }
+        }
+
+        foreach (UpgradeSO upgrade in cursedUpgrades)
+        {
+            switch (upgrade.Type)
+            {
+                case StatType.Additive:
+                    _playerModel = _playerModel + upgrade.playerModel;
+                    break;
+
+                case StatType.Multiplicative:
+                    _playerModel = _playerModel * upgrade.playerModel;
+                    break;
+
+                case StatType.Set:
+                    _playerModel = _playerModel % upgrade.playerModel;
+                    break;
+            }
+        }
+
+
+    }
+
     private void UpgradePlayer(List<UpgradeSO> upgrades)
     {
         foreach (UpgradeSO upgrade in upgrades)

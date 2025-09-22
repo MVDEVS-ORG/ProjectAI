@@ -1,0 +1,3575 @@
+fileFormatVersion: 2
+guid: 3c2623fcc61f838418ca5bdc5e38e86b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2409331493503893188
+    second: FDR_Laboratory_0
+  - first:
+      213: 4822189355530347255
+    second: FDR_Laboratory_1
+  - first:
+      213: 5507813278708660367
+    second: FDR_Laboratory_2
+  - first:
+      213: -8881583689775702453
+    second: FDR_Laboratory_3
+  - first:
+      213: 2023198780169588803
+    second: FDR_Laboratory_4
+  - first:
+      213: -9033904380232457574
+    second: FDR_Laboratory_5
+  - first:
+      213: -1347848521386077298
+    second: FDR_Laboratory_6
+  - first:
+      213: 2791051202612160503
+    second: FDR_Laboratory_7
+  - first:
+      213: -509010504332327111
+    second: FDR_Laboratory_8
+  - first:
+      213: -5635459453466490615
+    second: FDR_Laboratory_9
+  - first:
+      213: -9085940976212683183
+    second: FDR_Laboratory_10
+  - first:
+      213: 999057520115400465
+    second: FDR_Laboratory_11
+  - first:
+      213: -7944674068498450004
+    second: FDR_Laboratory_12
+  - first:
+      213: -6073724886977028396
+    second: FDR_Laboratory_13
+  - first:
+      213: -3571203041447174917
+    second: FDR_Laboratory_14
+  - first:
+      213: -2501002745285821989
+    second: FDR_Laboratory_15
+  - first:
+      213: 3024606801825559820
+    second: FDR_Laboratory_16
+  - first:
+      213: 5840511222754299891
+    second: FDR_Laboratory_17
+  - first:
+      213: -7958161487278987899
+    second: FDR_Laboratory_18
+  - first:
+      213: -7094939795138418128
+    second: FDR_Laboratory_19
+  - first:
+      213: -5380701371081731990
+    second: FDR_Laboratory_20
+  - first:
+      213: 1228073753473984998
+    second: FDR_Laboratory_21
+  - first:
+      213: -4866263394557378953
+    second: FDR_Laboratory_22
+  - first:
+      213: 4843928146175454398
+    second: FDR_Laboratory_23
+  - first:
+      213: -7782813049439691633
+    second: FDR_Laboratory_24
+  - first:
+      213: -7974281592428272413
+    second: FDR_Laboratory_25
+  - first:
+      213: 1985725764805606507
+    second: FDR_Laboratory_26
+  - first:
+      213: -7503223265911751181
+    second: FDR_Laboratory_27
+  - first:
+      213: 211226381264968908
+    second: FDR_Laboratory_28
+  - first:
+      213: -7452997532107803805
+    second: FDR_Laboratory_29
+  - first:
+      213: 1561975976040916710
+    second: FDR_Laboratory_30
+  - first:
+      213: -1679360083989794027
+    second: FDR_Laboratory_31
+  - first:
+      213: 1933549742287896889
+    second: FDR_Laboratory_32
+  - first:
+      213: -5480758819588434173
+    second: FDR_Laboratory_33
+  - first:
+      213: 7486298077069860198
+    second: FDR_Laboratory_34
+  - first:
+      213: 122310195091901215
+    second: FDR_Laboratory_35
+  - first:
+      213: 4043848324127715102
+    second: FDR_Laboratory_36
+  - first:
+      213: -921064317879447612
+    second: FDR_Laboratory_37
+  - first:
+      213: -6586653108370668072
+    second: FDR_Laboratory_38
+  - first:
+      213: -835090032563318486
+    second: FDR_Laboratory_39
+  - first:
+      213: -799181015729687749
+    second: FDR_Laboratory_40
+  - first:
+      213: 6459322336847360704
+    second: FDR_Laboratory_41
+  - first:
+      213: 6050133155300365523
+    second: FDR_Laboratory_42
+  - first:
+      213: 2871233144688844614
+    second: FDR_Laboratory_43
+  - first:
+      213: -3139342103057450195
+    second: FDR_Laboratory_44
+  - first:
+      213: 2642224216502324076
+    second: FDR_Laboratory_45
+  - first:
+      213: 3414703002340610184
+    second: FDR_Laboratory_46
+  - first:
+      213: -9052801962002736352
+    second: FDR_Laboratory_47
+  - first:
+      213: -3879550636697857091
+    second: FDR_Laboratory_48
+  - first:
+      213: 5690866567268924749
+    second: FDR_Laboratory_49
+  - first:
+      213: 6610613115189419770
+    second: FDR_Laboratory_50
+  - first:
+      213: 1514756519440888554
+    second: FDR_Laboratory_51
+  - first:
+      213: -4688162286234804827
+    second: FDR_Laboratory_52
+  - first:
+      213: 766283121367780786
+    second: FDR_Laboratory_53
+  - first:
+      213: -3544191979205546819
+    second: FDR_Laboratory_54
+  - first:
+      213: 749021770515214468
+    second: FDR_Laboratory_55
+  - first:
+      213: 6417851639776406983
+    second: FDR_Laboratory_56
+  - first:
+      213: 4255979084601171130
+    second: FDR_Laboratory_57
+  - first:
+      213: -3877838838297402839
+    second: FDR_Laboratory_58
+  - first:
+      213: 1045125732736286812
+    second: FDR_Laboratory_59
+  - first:
+      213: -3494762087491515043
+    second: FDR_Laboratory_60
+  - first:
+      213: 2289672605066312364
+    second: FDR_Laboratory_61
+  - first:
+      213: 3091732254493959161
+    second: FDR_Laboratory_62
+  - first:
+      213: 3686136033440219826
+    second: FDR_Laboratory_63
+  - first:
+      213: 8433427057093712576
+    second: FDR_Laboratory_64
+  - first:
+      213: -5259893828293002987
+    second: FDR_Laboratory_65
+  - first:
+      213: 5754987471344530103
+    second: FDR_Laboratory_66
+  - first:
+      213: -7076481604457215534
+    second: FDR_Laboratory_67
+  - first:
+      213: 4840743233631427203
+    second: FDR_Laboratory_68
+  - first:
+      213: -8446771281894765192
+    second: FDR_Laboratory_69
+  - first:
+      213: 4681538994335675441
+    second: FDR_Laboratory_70
+  - first:
+      213: 6163169317900469916
+    second: FDR_Laboratory_71
+  - first:
+      213: -6149091938913574436
+    second: FDR_Laboratory_72
+  - first:
+      213: -7596202516158978298
+    second: FDR_Laboratory_73
+  - first:
+      213: 4349545323596750463
+    second: FDR_Laboratory_74
+  - first:
+      213: -8280647946202721568
+    second: FDR_Laboratory_75
+  - first:
+      213: 105552649044076161
+    second: FDR_Laboratory_76
+  - first:
+      213: -1381125078558207644
+    second: FDR_Laboratory_77
+  - first:
+      213: 2010722793653786410
+    second: FDR_Laboratory_78
+  - first:
+      213: 3064757938074463510
+    second: FDR_Laboratory_79
+  - first:
+      213: 3401457934115191542
+    second: FDR_Laboratory_80
+  - first:
+      213: 3535116939821235013
+    second: FDR_Laboratory_81
+  - first:
+      213: 8617637406112232056
+    second: FDR_Laboratory_82
+  - first:
+      213: 4459727742012282696
+    second: FDR_Laboratory_83
+  - first:
+      213: 327933271707709320
+    second: FDR_Laboratory_84
+  - first:
+      213: 3121536587841074956
+    second: FDR_Laboratory_85
+  - first:
+      213: -7222793238946383355
+    second: FDR_Laboratory_86
+  - first:
+      213: -4869126360193821611
+    second: FDR_Laboratory_87
+  - first:
+      213: -7866762820073914513
+    second: FDR_Laboratory_88
+  - first:
+      213: 3347345197916898124
+    second: FDR_Laboratory_89
+  - first:
+      213: -5386064292284306869
+    second: FDR_Laboratory_90
+  - first:
+      213: -4698058471276293216
+    second: FDR_Laboratory_91
+  - first:
+      213: 5305827904398555226
+    second: FDR_Laboratory_92
+  - first:
+      213: 2514374253585072172
+    second: FDR_Laboratory_93
+  - first:
+      213: 8330377981754149555
+    second: FDR_Laboratory_94
+  - first:
+      213: -6606468836585364472
+    second: FDR_Laboratory_95
+  - first:
+      213: -774936540311558136
+    second: FDR_Laboratory_96
+  - first:
+      213: 8458023697306622010
+    second: FDR_Laboratory_97
+  - first:
+      213: -1449454198677000870
+    second: FDR_Laboratory_98
+  - first:
+      213: -8093062412479311053
+    second: FDR_Laboratory_99
+  - first:
+      213: -8388636040725668260
+    second: FDR_Laboratory_100
+  - first:
+      213: -2502450259541111469
+    second: FDR_Laboratory_101
+  - first:
+      213: -869860488803450601
+    second: FDR_Laboratory_102
+  - first:
+      213: 4730649613972820273
+    second: FDR_Laboratory_103
+  - first:
+      213: 8498016391446957213
+    second: FDR_Laboratory_104
+  - first:
+      213: 5110777628291616929
+    second: FDR_Laboratory_105
+  - first:
+      213: 6632004217812856908
+    second: FDR_Laboratory_106
+  - first:
+      213: 8156701548033031513
+    second: FDR_Laboratory_107
+  - first:
+      213: 3151859281742202838
+    second: FDR_Laboratory_108
+  - first:
+      213: 5814116582081813130
+    second: FDR_Laboratory_109
+  - first:
+      213: 4369168717805137754
+    second: FDR_Laboratory_110
+  - first:
+      213: 4420535220947453329
+    second: FDR_Laboratory_111
+  - first:
+      213: -4887375388694138752
+    second: FDR_Laboratory_112
+  - first:
+      213: 4840523833147168167
+    second: FDR_Laboratory_113
+  - first:
+      213: 8781203703061068638
+    second: FDR_Laboratory_114
+  - first:
+      213: 5558185700095058992
+    second: FDR_Laboratory_115
+  - first:
+      213: 2788091474114936159
+    second: FDR_Laboratory_116
+  - first:
+      213: 5410519784663922260
+    second: FDR_Laboratory_117
+  - first:
+      213: 1014999962811680765
+    second: FDR_Laboratory_118
+  - first:
+      213: -4521319905878776981
+    second: FDR_Laboratory_119
+  - first:
+      213: -5352003606635437597
+    second: FDR_Laboratory_120
+  - first:
+      213: -384009231451007698
+    second: FDR_Laboratory_121
+  - first:
+      213: -2624449263578220660
+    second: FDR_Laboratory_122
+  - first:
+      213: 3317385825248739424
+    second: FDR_Laboratory_123
+  - first:
+      213: 3851481285604996677
+    second: FDR_Laboratory_124
+  - first:
+      213: -5017453606366768120
+    second: FDR_Laboratory_125
+  - first:
+      213: -1488851934468608242
+    second: FDR_Laboratory_126
+  - first:
+      213: -7219095771922413621
+    second: FDR_Laboratory_127
+  - first:
+      213: 544034204439033132
+    second: FDR_Laboratory_128
+  - first:
+      213: 6088022160209092748
+    second: FDR_Laboratory_129
+  - first:
+      213: 972121611841532619
+    second: FDR_Laboratory_130
+  - first:
+      213: 8131954796417462903
+    second: FDR_Laboratory_131
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: FDR_Laboratory_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 504
+        width: 512
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c310a8795c5509ed0800000000000000
+      internalID: -2409331493503893188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_1
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 481
+        width: 44
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f26e087babdbe240800000000000000
+      internalID: 4822189355530347255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_2
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 489
+        width: 8
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f88fb9ecefeaf6c40800000000000000
+      internalID: 5507813278708660367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_3
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 467
+        width: 44
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4e1408d0b64eb480800000000000000
+      internalID: -8881583689775702453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_4
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 495
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 340130a3298d31c10800000000000000
+      internalID: 2023198780169588803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_5
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 495
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a92266174df11a280800000000000000
+      internalID: -9033904380232457574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_6
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 495
+        width: 30
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e835fb739ea7b4de0800000000000000
+      internalID: -1347848521386077298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_7
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 495
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f7ef99f74ecbb620800000000000000
+      internalID: 2791051202612160503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_8
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 495
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9374456a4a1afe8f0800000000000000
+      internalID: -509010504332327111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_9
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 495
+        width: 30
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 909430a2c73dac1b0800000000000000
+      internalID: -5635459453466490615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_10
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 479
+        width: 16
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1565dae42d048e180800000000000000
+      internalID: -9085940976212683183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_11
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 463
+        width: 66
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11f39a4758d5ddd00800000000000000
+      internalID: 999057520115400465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_12
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 499
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca974e20709deb190800000000000000
+      internalID: -7944674068498450004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_13
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 499
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ded840356bc5bba0800000000000000
+      internalID: -6073724886977028396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_14
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 463
+        width: 66
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bfc1fbd31c9807ec0800000000000000
+      internalID: -3571203041447174917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_15
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 463
+        width: 30
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd936f80147aa4dd0800000000000000
+      internalID: -2501002745285821989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_16
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 472
+        width: 24
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c05fa087cdf89f920800000000000000
+      internalID: 3024606801825559820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_17
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 472
+        width: 50
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ffc3f2430aad0150800000000000000
+      internalID: 5840511222754299891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_18
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 472
+        width: 28
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 585aa8d9a4eee8190800000000000000
+      internalID: -7958161487278987899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_19
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 483
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03aedffc8d5b98d90800000000000000
+      internalID: -7094939795138418128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_20
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 483
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6057367c98e355b0800000000000000
+      internalID: -5380701371081731990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_21
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 468
+        width: 27
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e92cc9729efa0110800000000000000
+      internalID: 1228073753473984998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_22
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 463
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77ebbe7a93f877cb0800000000000000
+      internalID: -4866263394557378953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_23
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 463
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebced461cf6193340800000000000000
+      internalID: 4843928146175454398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_24
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 447
+        width: 16
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8c5fd244c4edf390800000000000000
+      internalID: -7782813049439691633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_25
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 467
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e460682429a55190800000000000000
+      internalID: -7974281592428272413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_26
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 467
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6c3490ff07be8b10800000000000000
+      internalID: 1985725764805606507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_27
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 419
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fd32e481323fd790800000000000000
+      internalID: -7503223265911751181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_28
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 419
+        width: 58
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ccc5d7e464d6ee200800000000000000
+      internalID: 211226381264968908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_29
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 431
+        width: 66
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 363f9d27b32a19890800000000000000
+      internalID: -7452997532107803805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_30
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 431
+        width: 16
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e6ec9fdfd04da510800000000000000
+      internalID: 1561975976040916710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_31
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 431
+        width: 16
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51371d7b6e6b1b8e0800000000000000
+      internalID: -1679360083989794027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_32
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 431
+        width: 30
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9314e980f3955da10800000000000000
+      internalID: 1933549742287896889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_33
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 271
+        width: 257
+        height: 190
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30797d254ee60f3b0800000000000000
+      internalID: -5480758819588434173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_34
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 440
+        width: 24
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66d507edf6ca4e760800000000000000
+      internalID: 7486298077069860198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_35
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 440
+        width: 50
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1b8cd2797882b100800000000000000
+      internalID: 122310195091901215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_36
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 440
+        width: 28
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1fe03520a2ae1830800000000000000
+      internalID: 4043848324127715102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_37
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 442
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4cf028502e8b733f0800000000000000
+      internalID: -921064317879447612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_38
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 442
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d508d045e18794a0800000000000000
+      internalID: -6586653108370668072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_39
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 399
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2118953a0a2964f0800000000000000
+      internalID: -835090032563318486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_40
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 399
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b333236b91db8e4f0800000000000000
+      internalID: -799181015729687749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_41
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 417
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c27881417f14a950800000000000000
+      internalID: 6459322336847360704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_42
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 417
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d4dd7dbc0466f350800000000000000
+      internalID: 6050133155300365523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_43
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 417
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64f9188255ba8d720800000000000000
+      internalID: 2871233144688844614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_44
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 417
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2b35de7df0de64d0800000000000000
+      internalID: -3139342103057450195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_45
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 401
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6b4e810de01ba420800000000000000
+      internalID: 2642224216502324076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_46
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 401
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 880d8fbe946736f20800000000000000
+      internalID: 3414703002340610184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_47
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 401
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02b1ed0549cfd5280800000000000000
+      internalID: -9052801962002736352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_48
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 401
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db3db7b2041192ac0800000000000000
+      internalID: -3879550636697857091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_49
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 343
+        width: 225
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4df53ecdf40afe40800000000000000
+      internalID: 5690866567268924749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_50
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 367
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afe576e8a9d9dbb50800000000000000
+      internalID: 6610613115189419770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_51
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 271
+        width: 18
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae23b76670f750510800000000000000
+      internalID: 1514756519440888554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_52
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 335
+        width: 26
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ad57975d3d40feb0800000000000000
+      internalID: -4688162286234804827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_53
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 335
+        width: 26
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2bd018e507262aa00800000000000000
+      internalID: 766283121367780786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_54
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 271
+        width: 65
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbc2aaf3c2080dec0800000000000000
+      internalID: -3544191979205546819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_55
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 271
+        width: 66
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 480f790f45f056a00800000000000000
+      internalID: 749021770515214468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_56
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 303
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cde70a201ac01950800000000000000
+      internalID: 6417851639776406983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_57
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 303
+        width: 26
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abc1525ad66401b30800000000000000
+      internalID: 4255979084601171130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_58
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 271
+        width: 26
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 922e11b4f162f2ac0800000000000000
+      internalID: -3877838838297402839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_59
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 271
+        width: 26
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c50cd5d0158018e00800000000000000
+      internalID: 1045125732736286812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_60
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 271
+        width: 26
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5dc090c56c108fc0800000000000000
+      internalID: -3494762087491515043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_61
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 232
+        width: 24
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: caabbe46a1d86cf10800000000000000
+      internalID: 2289672605066312364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_62
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 232
+        width: 24
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f3eab1da1a08ea20800000000000000
+      internalID: 3091732254493959161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_63
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 232
+        width: 66
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b2c8f24139c72330800000000000000
+      internalID: 3686136033440219826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_64
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 232
+        width: 28
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ca1d39e93d890570800000000000000
+      internalID: 8433427057093712576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_65
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 232
+        width: 28
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51973586e6a1107b0800000000000000
+      internalID: -5259893828293002987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_66
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 232
+        width: 24
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b2705c2d92dddf40800000000000000
+      internalID: 5754987471344530103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_67
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 232
+        width: 34
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d9cdba39794bcd90800000000000000
+      internalID: -7076481604457215534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_68
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 232
+        width: 28
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38a1a79d256cd2340800000000000000
+      internalID: 4840743233631427203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_69
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 234
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87d01b3a54a07ca80800000000000000
+      internalID: -8446771281894765192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_70
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 234
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 134748759ea28f040800000000000000
+      internalID: 4681538994335675441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_71
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 234
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c964b0c37d9f78550800000000000000
+      internalID: 6163169317900469916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_72
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 115
+        width: 44
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd1a6d9f5790aaaa0800000000000000
+      internalID: -6149091938913574436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_73
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 232
+        width: 26
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6076a66de0ed49690800000000000000
+      internalID: -7596202516158978298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_74
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 232
+        width: 26
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7e127b4d60bc5c30800000000000000
+      internalID: 4349545323596750463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_75
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 200
+        width: 24
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e2d480d09a351d80800000000000000
+      internalID: -8280647946202721568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_76
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 200
+        width: 24
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 186af57339ff67100800000000000000
+      internalID: 105552649044076161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_77
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 200
+        width: 66
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 461972efe0245dce0800000000000000
+      internalID: -1381125078558207644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_78
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 200
+        width: 28
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a27d3814ab587eb10800000000000000
+      internalID: 2010722793653786410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_79
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 200
+        width: 28
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61dac7d5b15388a20800000000000000
+      internalID: 3064757938074463510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_80
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 200
+        width: 24
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fabe5928f7643f20800000000000000
+      internalID: 3401457934115191542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_81
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 200
+        width: 34
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54bb28d70224f0130800000000000000
+      internalID: 3535116939821235013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_82
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 200
+        width: 28
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 872307a009ff79770800000000000000
+      internalID: 8617637406112232056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_83
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 202
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 847d891b0c224ed30800000000000000
+      internalID: 4459727742012282696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_84
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 202
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88f6b2ab29d0d8400800000000000000
+      internalID: 327933271707709320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_85
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 202
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c07f6afecfce15b20800000000000000
+      internalID: 3121536587841074956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_86
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 200
+        width: 26
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50af18231db73cb90800000000000000
+      internalID: -7222793238946383355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_87
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 200
+        width: 26
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55418268f536d6cb0800000000000000
+      internalID: -4869126360193821611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_88
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 168
+        width: 24
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6f7e3125e4a3d290800000000000000
+      internalID: -7866762820073914513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_89
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 168
+        width: 24
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c434276f8b8247e20800000000000000
+      internalID: 3347345197916898124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_90
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 168
+        width: 66
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4a6af0101bd045b0800000000000000
+      internalID: -5386064292284306869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_91
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 168
+        width: 28
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a3df8536b42dceb0800000000000000
+      internalID: -4698058471276293216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_92
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 168
+        width: 28
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a58f7091e5612a940800000000000000
+      internalID: 5305827904398555226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_93
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 168
+        width: 24
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c208359df0ad4e220800000000000000
+      internalID: 2514374253585072172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_94
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 168
+        width: 34
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ba013f53a27b9370800000000000000
+      internalID: 8330377981754149555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_95
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 168
+        width: 28
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80424af789b1154a0800000000000000
+      internalID: -6606468836585364472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_96
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 170
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8086247825fde35f0800000000000000
+      internalID: -774936540311558136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_97
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 170
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a381ccb7dbfe06570800000000000000
+      internalID: 8458023697306622010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_98
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 170
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5da8a9f51182ebe0800000000000000
+      internalID: -1449454198677000870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_99
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 168
+        width: 26
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 333da1f5d9aafaf80800000000000000
+      internalID: -8093062412479311053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_100
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 168
+        width: 26
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5ed18247f3959b80800000000000000
+      internalID: -8388636040725668260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_101
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 136
+        width: 24
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35dc7fb5fb2854dd0800000000000000
+      internalID: -2502450259541111469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_102
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 136
+        width: 24
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71109b08e72ade3f0800000000000000
+      internalID: -869860488803450601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_103
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 136
+        width: 66
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13150b582c4a6a140800000000000000
+      internalID: 4730649613972820273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_104
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 136
+        width: 28
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9c84a332e40fe570800000000000000
+      internalID: 8498016391446957213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_105
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 136
+        width: 28
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a0d554cc212de640800000000000000
+      internalID: 5110777628291616929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_106
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 136
+        width: 24
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c40b0afb2bc990c50800000000000000
+      internalID: 6632004217812856908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_107
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 136
+        width: 34
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95d336587dc623170800000000000000
+      internalID: 8156701548033031513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_108
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 136
+        width: 28
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d703464157adbb20800000000000000
+      internalID: 3151859281742202838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_109
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 138
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8ad1b51a34efa050800000000000000
+      internalID: 5814116582081813130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_110
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 138
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5f268cccc762ac30800000000000000
+      internalID: 4369168717805137754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_111
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 138
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1950da9cc55e85d30800000000000000
+      internalID: 4420535220947453329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_112
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 115
+        width: 61
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08036e87afd8c2cb0800000000000000
+      internalID: -4887375388694138752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_113
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 0
+        width: 98
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a59c81b7cefc2340800000000000000
+      internalID: 4840523833147168167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_114
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 95
+        width: 32
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5bbc4d3e3a1dd970800000000000000
+      internalID: 8781203703061068638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_115
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 0
+        width: 210
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03462d91274a22d40800000000000000
+      internalID: 5558185700095058992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_116
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 115
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5d7aeb7c6a41b620800000000000000
+      internalID: 2788091474114936159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_117
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 99
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 456bd17f317061b40800000000000000
+      internalID: 5410519784663922260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_118
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 99
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df7cc66a611061e00800000000000000
+      internalID: 1014999962811680765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_119
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 99
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b636136208b0141c0800000000000000
+      internalID: -4521319905878776981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_120
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 99
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e1a2ed631dd9b5b0800000000000000
+      internalID: -5352003606635437597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_121
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 63
+        width: 32
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2554e873a9bbaaf0800000000000000
+      internalID: -384009231451007698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_122
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 83
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c877269bc45149bd0800000000000000
+      internalID: -2624449263578220660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_123
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 83
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0600ed0f4d8b90e20800000000000000
+      internalID: 3317385825248739424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_124
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 83
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 546fc8fb2d5337530800000000000000
+      internalID: 3851481285604996677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_125
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 83
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8049183578c6e5ab0800000000000000
+      internalID: -5017453606366768120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_126
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 67
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0f68dacd09865be0800000000000000
+      internalID: -1488851934468608242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_127
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 67
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc74a03d4ae90db90800000000000000
+      internalID: -7219095771922413621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_128
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 67
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c25304df93ccc8700800000000000000
+      internalID: 544034204439033132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_129
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 67
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8028f326effc7450800000000000000
+      internalID: 6088022160209092748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_130
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 31
+        width: 32
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc27b48947bad7d00800000000000000
+      internalID: 972121611841532619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FDR_Laboratory_131
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7723ff96dc18ad070800000000000000
+      internalID: 8131954796417462903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      FDR_Laboratory_0: -2409331493503893188
+      FDR_Laboratory_1: 4822189355530347255
+      FDR_Laboratory_10: -9085940976212683183
+      FDR_Laboratory_100: -8388636040725668260
+      FDR_Laboratory_101: -2502450259541111469
+      FDR_Laboratory_102: -869860488803450601
+      FDR_Laboratory_103: 4730649613972820273
+      FDR_Laboratory_104: 8498016391446957213
+      FDR_Laboratory_105: 5110777628291616929
+      FDR_Laboratory_106: 6632004217812856908
+      FDR_Laboratory_107: 8156701548033031513
+      FDR_Laboratory_108: 3151859281742202838
+      FDR_Laboratory_109: 5814116582081813130
+      FDR_Laboratory_11: 999057520115400465
+      FDR_Laboratory_110: 4369168717805137754
+      FDR_Laboratory_111: 4420535220947453329
+      FDR_Laboratory_112: -4887375388694138752
+      FDR_Laboratory_113: 4840523833147168167
+      FDR_Laboratory_114: 8781203703061068638
+      FDR_Laboratory_115: 5558185700095058992
+      FDR_Laboratory_116: 2788091474114936159
+      FDR_Laboratory_117: 5410519784663922260
+      FDR_Laboratory_118: 1014999962811680765
+      FDR_Laboratory_119: -4521319905878776981
+      FDR_Laboratory_12: -7944674068498450004
+      FDR_Laboratory_120: -5352003606635437597
+      FDR_Laboratory_121: -384009231451007698
+      FDR_Laboratory_122: -2624449263578220660
+      FDR_Laboratory_123: 3317385825248739424
+      FDR_Laboratory_124: 3851481285604996677
+      FDR_Laboratory_125: -5017453606366768120
+      FDR_Laboratory_126: -1488851934468608242
+      FDR_Laboratory_127: -7219095771922413621
+      FDR_Laboratory_128: 544034204439033132
+      FDR_Laboratory_129: 6088022160209092748
+      FDR_Laboratory_13: -6073724886977028396
+      FDR_Laboratory_130: 972121611841532619
+      FDR_Laboratory_131: 8131954796417462903
+      FDR_Laboratory_14: -3571203041447174917
+      FDR_Laboratory_15: -2501002745285821989
+      FDR_Laboratory_16: 3024606801825559820
+      FDR_Laboratory_17: 5840511222754299891
+      FDR_Laboratory_18: -7958161487278987899
+      FDR_Laboratory_19: -7094939795138418128
+      FDR_Laboratory_2: 5507813278708660367
+      FDR_Laboratory_20: -5380701371081731990
+      FDR_Laboratory_21: 1228073753473984998
+      FDR_Laboratory_22: -4866263394557378953
+      FDR_Laboratory_23: 4843928146175454398
+      FDR_Laboratory_24: -7782813049439691633
+      FDR_Laboratory_25: -7974281592428272413
+      FDR_Laboratory_26: 1985725764805606507
+      FDR_Laboratory_27: -7503223265911751181
+      FDR_Laboratory_28: 211226381264968908
+      FDR_Laboratory_29: -7452997532107803805
+      FDR_Laboratory_3: -8881583689775702453
+      FDR_Laboratory_30: 1561975976040916710
+      FDR_Laboratory_31: -1679360083989794027
+      FDR_Laboratory_32: 1933549742287896889
+      FDR_Laboratory_33: -5480758819588434173
+      FDR_Laboratory_34: 7486298077069860198
+      FDR_Laboratory_35: 122310195091901215
+      FDR_Laboratory_36: 4043848324127715102
+      FDR_Laboratory_37: -921064317879447612
+      FDR_Laboratory_38: -6586653108370668072
+      FDR_Laboratory_39: -835090032563318486
+      FDR_Laboratory_4: 2023198780169588803
+      FDR_Laboratory_40: -799181015729687749
+      FDR_Laboratory_41: 6459322336847360704
+      FDR_Laboratory_42: 6050133155300365523
+      FDR_Laboratory_43: 2871233144688844614
+      FDR_Laboratory_44: -3139342103057450195
+      FDR_Laboratory_45: 2642224216502324076
+      FDR_Laboratory_46: 3414703002340610184
+      FDR_Laboratory_47: -9052801962002736352
+      FDR_Laboratory_48: -3879550636697857091
+      FDR_Laboratory_49: 5690866567268924749
+      FDR_Laboratory_5: -9033904380232457574
+      FDR_Laboratory_50: 6610613115189419770
+      FDR_Laboratory_51: 1514756519440888554
+      FDR_Laboratory_52: -4688162286234804827
+      FDR_Laboratory_53: 766283121367780786
+      FDR_Laboratory_54: -3544191979205546819
+      FDR_Laboratory_55: 749021770515214468
+      FDR_Laboratory_56: 6417851639776406983
+      FDR_Laboratory_57: 4255979084601171130
+      FDR_Laboratory_58: -3877838838297402839
+      FDR_Laboratory_59: 1045125732736286812
+      FDR_Laboratory_6: -1347848521386077298
+      FDR_Laboratory_60: -3494762087491515043
+      FDR_Laboratory_61: 2289672605066312364
+      FDR_Laboratory_62: 3091732254493959161
+      FDR_Laboratory_63: 3686136033440219826
+      FDR_Laboratory_64: 8433427057093712576
+      FDR_Laboratory_65: -5259893828293002987
+      FDR_Laboratory_66: 5754987471344530103
+      FDR_Laboratory_67: -7076481604457215534
+      FDR_Laboratory_68: 4840743233631427203
+      FDR_Laboratory_69: -8446771281894765192
+      FDR_Laboratory_7: 2791051202612160503
+      FDR_Laboratory_70: 4681538994335675441
+      FDR_Laboratory_71: 6163169317900469916
+      FDR_Laboratory_72: -6149091938913574436
+      FDR_Laboratory_73: -7596202516158978298
+      FDR_Laboratory_74: 4349545323596750463
+      FDR_Laboratory_75: -8280647946202721568
+      FDR_Laboratory_76: 105552649044076161
+      FDR_Laboratory_77: -1381125078558207644
+      FDR_Laboratory_78: 2010722793653786410
+      FDR_Laboratory_79: 3064757938074463510
+      FDR_Laboratory_8: -509010504332327111
+      FDR_Laboratory_80: 3401457934115191542
+      FDR_Laboratory_81: 3535116939821235013
+      FDR_Laboratory_82: 8617637406112232056
+      FDR_Laboratory_83: 4459727742012282696
+      FDR_Laboratory_84: 327933271707709320
+      FDR_Laboratory_85: 3121536587841074956
+      FDR_Laboratory_86: -7222793238946383355
+      FDR_Laboratory_87: -4869126360193821611
+      FDR_Laboratory_88: -7866762820073914513
+      FDR_Laboratory_89: 3347345197916898124
+      FDR_Laboratory_9: -5635459453466490615
+      FDR_Laboratory_90: -5386064292284306869
+      FDR_Laboratory_91: -4698058471276293216
+      FDR_Laboratory_92: 5305827904398555226
+      FDR_Laboratory_93: 2514374253585072172
+      FDR_Laboratory_94: 8330377981754149555
+      FDR_Laboratory_95: -6606468836585364472
+      FDR_Laboratory_96: -774936540311558136
+      FDR_Laboratory_97: 8458023697306622010
+      FDR_Laboratory_98: -1449454198677000870
+      FDR_Laboratory_99: -8093062412479311053
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
