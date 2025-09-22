@@ -28,7 +28,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem
             {
                 Vector2Int spawnCell = Vector2Int.RoundToInt(_playerSpawnPoint);
                 Vector2Int validCell = PathFindingManager.Instance.GetNearestValidWalkableTile(spawnCell);
-                var resultPos = PathFindingManager.Instance.floorTilemap.GetCellCenterWorld((Vector3Int)validCell);
+                var resultPos = PathFindingManager.Instance.GetCellCenterWorld((Vector3Int)validCell);
                 return resultPos;
             }
 

@@ -32,7 +32,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem
             _cameraController = cameraController;
             _playerController = playerController;
             _signalBus = signalBus;
-            await PathFindingManager.Instance.BakeFromTilemapsAsync();
+            //await PathFindingManager.Instance.BakeFromTilemapsAsync();
 # if UNITY_EDITOR
             await playerPicker.SetPlayer();
 #endif

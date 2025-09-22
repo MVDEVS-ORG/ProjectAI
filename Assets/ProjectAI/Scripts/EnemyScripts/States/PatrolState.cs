@@ -59,15 +59,34 @@ public class PatrolState : IEnemyState
     private void SetNewPatrolTarget()
     {
         List<Vector3Int> path = new();
-        patrolTarget = PathFindingManager.Instance.GetRandomWalkableTile();
-        var startPos = PathFindingManager.Instance.floorTilemap.WorldToCell(_enemy.transform.position);
-        var targetPos = PathFindingManager.Instance.floorTilemap.WorldToCell(patrolTarget);
-        path = PathFindingManager.Instance.FindPath(startPos, targetPos);
-        if (path == null)
+
+        // Get a random valid tile from the dungeon
+        Vector2Int patrolTargetCell = PathFindingManager.Instance.GetRandomWalkableTile();
+
+        // Convert enemy world position to cell
+        Vector3Int startPos = PathFindingManager.Instance.WorldToCell(_enemy.transform.position);
+
+        // If enemy somehow is outside walkable area, snap to nearest valid tile
+        if (!PathFindingManager.Instance.IsWalkable((Vector2Int)startPos))
         {
-            Debug.LogError($"{_enemy.name} no path found s-{startPos}, e- {targetPos}");
-            return;
+            startPos = (Vector3Int)PathFindingManager.Instance.GetNearestValidWalkableTile((Vector2Int)startPos);
         }
+
+        // Find a path to the patrol target
+        path = PathFindingManager.Instance.FindPath(startPos, (Vector3Int)patrolTargetCell);
+
+        if (path == null || path.Count == 0)
+        {
+            Debug.LogWarning($"{_enemy.name} no path found for patrol s-{startPos}, e-{patrolTargetCell}, retrying...");
+            // Retry once with a different target
+            patrolTargetCell = PathFindingManager.Instance.GetRandomWalkableTile();
+            path = PathFindingManager.Instance.FindPath(startPos, (Vector3Int)patrolTargetCell);
+
+            if (path == null || path.Count == 0)
+                return; // give up this frame
+        }
+
         _enemy.StartPathMovement(path);
     }
+
 }

@@ -53,29 +53,33 @@ public class ChaseState : IEnemyState
     {
         Vector3 targetPos;
         List<Vector3Int> path = new();
-        // If enemy is close to player, calculate offset to spread around
         float distanceToPlayer = Vector3.Distance(_enemy.transform.position, _player.position);
-        if (distanceToPlayer < 2f)
-        {
-            targetPos = GetOffsetAroundPlayer(_enemy.gameObject, _player);
-        }
-        else
-        {
-            targetPos = _player.position + Vector3.down * 1.5f;
-        }
 
+        if (distanceToPlayer < 2f)
+            targetPos = GetOffsetAroundPlayer(_enemy.gameObject, _player);
+        else
+            targetPos = _player.position + Vector3.down * 1.5f;
+
+        // Convert positions to grid cells
         Vector2Int targetCell = Vector2Int.RoundToInt(targetPos);
         Vector2Int nearestValidTarget = PathFindingManager.Instance.GetNearestValidWalkableTile(targetCell);
 
-        Vector3Int startCell = PathFindingManager.Instance.floorTilemap.WorldToCell(_enemy.transform.position);
-        Vector3Int finalTargetCell = (Vector3Int)nearestValidTarget;
+        Vector3Int startCell = PathFindingManager.Instance.WorldToCell(_enemy.transform.position);
 
-        path = PathFindingManager.Instance.FindPath(startCell, finalTargetCell);
-        if (path == null)
+        // Ensure start cell is walkable too
+        if (!PathFindingManager.Instance.IsWalkable((Vector2Int)startCell))
         {
-            Debug.LogError($"{_enemy.name} no path found s-{startCell}, e- {targetPos}");
+            startCell = (Vector3Int)PathFindingManager.Instance.GetNearestValidWalkableTile((Vector2Int)startCell);
+        }
+
+        path = PathFindingManager.Instance.FindPath(startCell, (Vector3Int)nearestValidTarget);
+
+        if (path == null || path.Count == 0)
+        {
+            Debug.LogError($"{_enemy.name} no path found s-{startCell}, e- {nearestValidTarget}");
             return;
         }
+
         _enemy.StartPathMovement(path);
     }
 

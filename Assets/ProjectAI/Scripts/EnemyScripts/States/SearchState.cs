@@ -38,8 +38,8 @@ public class SearchState : IEnemyState
     private void FindPath()
     {
         List<Vector3Int> path = new();
-        var startPos = PathFindingManager.Instance.floorTilemap.WorldToCell(_enemy.transform.position);
-        var targetPositon = PathFindingManager.Instance.floorTilemap.WorldToCell(lastKnownPos);
+        var startPos = PathFindingManager.Instance.WorldToCell(_enemy.transform.position);
+        var targetPositon = PathFindingManager.Instance.WorldToCell(lastKnownPos);
         path = PathFindingManager.Instance.FindPath(startPos, targetPositon);
         if (path == null)
         {

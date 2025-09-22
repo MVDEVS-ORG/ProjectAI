@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Assets.ProjectAI.Scripts.DungeonScripts.Interfaces;
-using System.Threading.Tasks;
 namespace Assets.ProjectAI.Scripts.DungeonScripts
 {
     public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator, IDungeonGenerator
@@ -28,11 +27,12 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
         private List<Color> roomColors = new List<Color>();
         [SerializeField]
         private bool showCorridorsPositions;
-
+        [SerializeField] private bool _isTopWallRequired;
         protected override async Awaitable<DungeonData> RunProceduralGeneration()
         {
             ClearRoomData();
             await CreateRooms();
+            DetectDoorPositions();
 
             DungeonData data = new DungeonData
             {
@@ -48,39 +48,27 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
         {
             _doorPositions.Clear();
 
-            // 1️⃣ Flatten all room tiles
-            var cleanRoomTiles = new HashSet<Vector2Int>();
-            foreach (var room in _roomsDictionary.Values)
-                cleanRoomTiles.UnionWith(room);
-
-            // 2️⃣ Copy corridors, strip overlaps
-            var cleanCorridorTiles = new HashSet<Vector2Int>(_corridorPositions);
-            cleanCorridorTiles.ExceptWith(cleanRoomTiles);
-            cleanRoomTiles.ExceptWith(_corridorPositions);
-
-            // 3️⃣ For each corridor tile, look for exactly one room neighbor
-            //    *and* ensure the corridor extends on the opposite side
-            foreach (var corridorTile in cleanCorridorTiles)
+            var cleanRoomFloor = new HashSet<Vector2Int>();
+            foreach(var room in _roomsDictionary.Values)
             {
-                foreach (var dir in Direction2D.cardinalDirectionList)
-                {
-                    var roomNeighbor = corridorTile + dir;
-                    if (!cleanRoomTiles.Contains(roomNeighbor))
-                        continue;    // not the room‐facing side
-
-                    var opposite = corridorTile - dir;
-                    // must be corridor on the other side
-                    if (!cleanCorridorTiles.Contains(opposite))
-                        break;       // if it's not a corridor continuation, it isn't an entrance
-
-                    //  this tile is the one and only door spot
-                    _doorPositions.Add(corridorTile);
-                    goto NextTile;  // break out of both loops
-                }
-            NextTile:
-                ;
+                cleanRoomFloor.UnionWith(room);
             }
+            var cleanCorridorFloor = new HashSet<Vector2Int>(_corridorPositions);
+            cleanCorridorFloor.ExceptWith(cleanRoomFloor);
+            foreach(var corFloor in cleanCorridorFloor)
+            {
+                foreach(var dir in Direction2D.cardinalDirectionList)
+                {
+                    var neighbour = corFloor + dir;
+                    if(!cleanCorridorFloor.Contains(neighbour) && cleanRoomFloor.Contains(neighbour) && !_doorPositions.Contains(neighbour))
+                    {
+                        _doorPositions.Add(corFloor);
+                    }
+                }
+            }
+
         }
+
 
         private void OnDrawGizmos()
         {
@@ -119,7 +107,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
             _floorPositions.UnionWith(corridors);
 
             tilemapVisualizer.PaintFloorTiles(_floorPositions);
-            WallGenerator.CreateWalls(_floorPositions, tilemapVisualizer);
+            WallGenerator.CreateWalls(_floorPositions, tilemapVisualizer, _isTopWallRequired);
             await Awaitable.EndOfFrameAsync();
             //DetectDoorPositions();
         }

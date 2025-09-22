@@ -71,7 +71,6 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
 
     IEnumerator WaitForBakeAndStart()
     {
-        floorTilemap = PathFindingManager.Instance.floorTilemap;
         while (!PathFindingManager.Instance.IsMapBaked)
             yield return null;
         TransitionToState(GetNextStateFromMap(EnemyStateTypes.Idle));
@@ -102,7 +101,7 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
     {
         while (currentPathIndex < currentPath.Count)
         {
-            Vector3 targetPos = floorTilemap.GetCellCenterWorld(currentPath[currentPathIndex]);
+            Vector3 targetPos = PathFindingManager.Instance.GetCellCenterWorld(currentPath[currentPathIndex]);
             while (Vector3.Distance(transform.position, targetPos) > 0.05f)
             {
                 if (!enemyModel.Stunned)
@@ -226,7 +225,7 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
     }
 
 #if UNITY_EDITOR
-    private void OnDrawGizmosSelected()
+    /*private void OnDrawGizmosSelected()
     {
         if (currentPath == null || currentPath.Count == 0 || PathFindingManager.Instance == null)
             return;
@@ -258,6 +257,6 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
         //  Optional: Attack Range
         Gizmos.color = new Color(1f, 0.3f, 0f); // Orange
         Gizmos.DrawWireSphere(transform.position, enemyModel.AttackRange);
-    }
+    }*/
 #endif
 }
