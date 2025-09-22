@@ -55,8 +55,8 @@ public class PlayerController : IPlayerController
 
     async Awaitable IPlayerController.SpawnPlayer(Vector3 pos, PlayerCharactersSO playerCharacter)
     {
-        try
-        {
+        // try
+        // {
             #region player selection and instantiation
             //Get the character prefab address
             string prefabAddress = null;
@@ -97,13 +97,6 @@ public class PlayerController : IPlayerController
             Debug.Log("PlayerView Initialized");
             #endregion
 
-            #region Gun instantiation
-            await _gunsController.InitializeOnSceneLoad(gunAddress, _characterView.transform, bulletCursor.Item2.transform);
-
-            //var gun = await _assetService.InstantiateAsync(gunAddress);
-            //await _gunsController.SetCurrentActiveGun(gun.GetComponent<GunsView>(), _characterView.transform, bulletCursor.Item2.transform);
-            #endregion
-
             #region XP bar
             ExperienceListSO experienceList = await _assetService.LoadAssetAsync<ExperienceListSO>(AddressableIds.Player_Level_Chart);
             _xpLevelMap = new List<int>(experienceList.ExperiencePerLevel);
@@ -121,13 +114,13 @@ public class PlayerController : IPlayerController
             #endregion
 
             #region player XP
-            (int, int, int) playerStats = _upgradeController.RefreshPlayerStats();
+            (int, int, int) playerStats = _upgradeController.LoadPlayerStats();
+            int accumulatedXP = playerStats.Item1;
             LoadPlayerStats(playerStats.Item1, playerStats.Item2, playerStats.Item3);
             _sceneManager.BeforeChangeScene += () => { _upgradeController.SavePlayerStats(_playerModel.Experience, _playerModel.PlayerLevel, _playerModel.Health); };
             #endregion
 
             #region melee instantiation
-
             var melee = await _assetService.InstantiateAsync(AddressableIds.MeleeSlash);
             MeleeWeaponView meleeView = melee.GetComponent<MeleeWeaponView>();
             _meleeWeaponController.Initialize(_characterView.transform, _bulletCursorUI, this);
@@ -135,19 +128,28 @@ public class PlayerController : IPlayerController
 
             #endregion
 
+            #region player upgrades
             _upgradeController.OnUpgrade += UpgradePlayer;
             (List<UpgradeSO> tempActiveUpgrades, List<UpgradeSO> tempCursedUpgrades) = _upgradeController.RefreshUpgrades();
             LoadPlayerUpgrades(tempActiveUpgrades, tempCursedUpgrades);
             _movementPossible = true;
+            #endregion
+
+            #region Gun instantiation
+            await _gunsController.IntializeOnSceneLoad(_characterView.transform, bulletCursor.Item2.transform);
+            await _gunsController.InitializeGunsOnSceneLoad(gunAddress);
+            //var gun = await _assetService.InstantiateAsync(gunAddress);
+            //await _gunsController.SetCurrentActiveGun(gun.GetComponent<GunsView>(), _characterView.transform, bulletCursor.Item2.transform);
+            #endregion
 
             //Assign the player abilities
             _ = _abilityController.Initialize(_assetService, _playerModel, (this as IPlayerController), _gunsController, _meleeWeaponController);
             _sceneManager.BeforeChangeScene += StopControllerOnLevelChange;
-        }
-        catch (Exception exception)
-        {
-            Debug.LogError(exception.Message);
-        }
+        // }
+        // catch (Exception exception)
+        // {
+        //     Debug.LogError(exception.Message);
+        // }
     }
 
     private void LoadPlayerUpgrades(List<UpgradeSO> activeUpgrades, List<UpgradeSO> cursedUpgrades)
@@ -365,6 +367,9 @@ public class PlayerController : IPlayerController
         _playerUI.UpdateXpBar();
         _playerUI.AlterHealthBar();
     }
+
+    //save all guns here
+    //load all guns here
 
     IEnumerator MeleeDashTimer()
     {

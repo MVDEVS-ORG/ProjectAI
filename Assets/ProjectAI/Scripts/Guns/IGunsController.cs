@@ -4,7 +4,8 @@ using UnityEngine;
 
 public interface IGunsController
 {
-    Awaitable InitializeOnSceneLoad(string gunAddress, Transform playerTransform, Transform playerCursor);
+    Awaitable IntializeOnSceneLoad(Transform playerTransform, Transform playerCursor);
+    Awaitable InitializeGunsOnSceneLoad(string defaultGunAddress);
     void SetCurrentActiveGun(GunsView gun);
     void Fire(bool firing);
     Awaitable ReplaceGuns(GunsView gun);
@@ -15,4 +16,6 @@ public interface IGunsController
     void FireAllGuns(bool toggle, bool alternateAbility);
     void SetGunElements(Dictionary<ElementEnum, int> ElementalBuffs);
     event Action<GunsView> OnGunSwap;
+    public void SavePlayerGuns();
+    public (string, List<string>) LoadPlayerGuns();
 }

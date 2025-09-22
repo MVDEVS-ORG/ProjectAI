@@ -1,7 +1,7 @@
-using Assets.Services;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using Assets.Services;
+using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -16,6 +16,8 @@ public class GunUI : MonoBehaviour, IGunUI
 
     private bool _initialized = false;
     private Transform _playerTransform;
+
+    public bool Initialized => _initialized;
 
     async Awaitable IGunUI.Initialize(GunsModel model, Transform playerTransform)
     {
@@ -38,13 +40,13 @@ public class GunUI : MonoBehaviour, IGunUI
         {
             if (_initialized)
             {
-                if (_currentGun!=null && GunUIs.ContainsKey(_currentGun) && GunUIs[_currentGun].gameObject.activeSelf)
+                if (_currentGun != null && GunUIs.ContainsKey(_currentGun) && GunUIs[_currentGun].gameObject.activeSelf)
                 {
                     GunUIs[_currentGun].transform.position = _playerTransform.position + new Vector3(GunUIs[_currentGun].Offset.x, GunUIs[_currentGun].Offset.y, GunUIs[_currentGun].transform.position.z);
                 }
             }
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             Debug.LogError(ex);
         }
