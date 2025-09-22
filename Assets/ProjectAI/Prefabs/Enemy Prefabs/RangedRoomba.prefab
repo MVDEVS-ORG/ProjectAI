@@ -112,7 +112,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 22d185c3b44c0aa40a25de424ea77414, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -213,6 +213,7 @@ MonoBehaviour:
   healthModel: {fileID: 11400000, guid: dd952a87abf29984e94e6f574d9340a4, type: 2}
   animator: {fileID: 6473217288016659291}
   _enemyDataSO: {fileID: 11400000, guid: 5f3524b3ad92aab48a9ba4a1269ea173, type: 2}
+  EnemyModelInitialized: 0
   _enemyCollider: {fileID: 8689835268274908973}
   currentPath: []
   currentPathIndex: 0

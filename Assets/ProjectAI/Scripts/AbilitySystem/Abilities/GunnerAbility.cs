@@ -1,3 +1,4 @@
+using Assets.Services;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -11,7 +12,7 @@ public class GunnerAbility : CharacterAbility
 
     private bool AbilityOnCooldown = false;
 
-    public override void Initialize(PlayerModel playerModel, IPlayerController playerController, IMeleeWeaponController meleeWeaponController, IGunsController gunsController)
+    public override void Initialize(PlayerModel playerModel, IPlayerController playerController, IMeleeWeaponController meleeWeaponController, IGunsController gunsController, IAssetService assetService)
     {
         _playerController = playerController;
         _weaponController = meleeWeaponController;
