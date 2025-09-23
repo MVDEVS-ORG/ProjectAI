@@ -117,8 +117,8 @@ public class UpgradeController : IUpgradeController
 
     void IUpgradeController.LoadUpgrades()
     {
-        _activeUpgrades = _dataSerializer.LoadData<List<UpgradeSO>>("/upgrades.json");
-        _cursedUpgrades = _dataSerializer.LoadData<List<UpgradeSO>>("/curses.json");
+        _activeUpgrades = _dataSerializer.LoadData<List<UpgradeSO>>(AddressableIds.Normal_Upgrades_Path);
+        _cursedUpgrades = _dataSerializer.LoadData<List<UpgradeSO>>(AddressableIds.Cursed_Upgrades_Path);
     }
 
     (List<UpgradeSO>, List<UpgradeSO>) IUpgradeController.RefreshUpgrades()
@@ -129,8 +129,8 @@ public class UpgradeController : IUpgradeController
 
     void IUpgradeController.SaveUpgrades()
     {
-        _dataSerializer.SaveData("/upgrades.json", _activeUpgrades);
-        _dataSerializer.SaveData("/curses.json", _cursedUpgrades);
+        _dataSerializer.SaveData(AddressableIds.Normal_Upgrades_Path, _activeUpgrades);
+        _dataSerializer.SaveData(AddressableIds.Cursed_Upgrades_Path, _cursedUpgrades);
     }
 
 
@@ -168,17 +168,17 @@ public class UpgradeController : IUpgradeController
     void IUpgradeController.SavePlayerStats(int currentXP, int playerLevel, int playerHealth)
     {
         (int, int, int) playerStats = new(currentXP, playerLevel, playerHealth);
-        _dataSerializer.SaveData("/experience.json", playerStats);
+        _dataSerializer.SaveData(AddressableIds.Player_Stats_Path, playerStats);
     }
 
-    (int, int, int) IUpgradeController.RefreshPlayerStats()
+    (int, int, int) IUpgradeController.LoadPlayerStats()
     {
-        (int, int, int) xp = _dataSerializer.LoadData<(int, int, int)>("/experience.json");
+        (int, int, int) xp = _dataSerializer.LoadData<(int, int, int)>(AddressableIds.Player_Stats_Path);
         return xp;
     }
 
     void IUpgradeController.ClearPlayerStats()
     {
-        _dataSerializer.SaveData("/experience.json", (0, 0, 0));
+        _dataSerializer.SaveData(AddressableIds.Player_Stats_Path, (0, 0, 0));
     }
 }

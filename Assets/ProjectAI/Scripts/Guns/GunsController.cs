@@ -10,6 +10,7 @@ public class GunsController : IGunsController
     [Inject] ObjectPoolManager _poolManager;
     [Inject] IAssetService _assetService;
     [Inject] IUpgradeController _upgradeController;
+    [Inject] ISceneManager _sceneManager;
     private Dictionary<GunsModel, GunsView> _allGuns = new();
     private List<GunsModel> _orderedValues = new();
     private int _gunLimit = 1;
@@ -27,6 +28,8 @@ public class GunsController : IGunsController
     GunsView IGunsController.View => _currentActiveGun;
 
     private IGunUI _currentGunUI;
+
+    private DataSerializer _dataSerializer = new DataSerializer();
 
     void IGunsController.Fire(bool firing)
     {
@@ -153,50 +156,115 @@ public class GunsController : IGunsController
         #endregion
     }
 
-    async Awaitable IGunsController.InitializeOnSceneLoad(string gunAddress, Transform playerTransform, Transform playerCursor)
+    async Awaitable<GunsView> InstantiateGunAsync(string gunAddress)
     {
-        try
-        {
-            #region Instanting Default Gun for Character
-            GameObject obj = await _assetService.InstantiateAsync(gunAddress);
-            GunsView gun = obj.GetComponent<GunsView>();
-            _playerTransform = playerTransform;
-            _playerCursor = playerCursor;
-            _currentActiveGun = gun;
-            _currentGunsModel = gun.InitializeGun(this, _poolManager, _playerTransform, _playerCursor);
-            #endregion
-
-            #region Gun UI
-            var gunUIgameObject = await _assetService.InstantiateAsync(AddressableIds.Gun_UI_Canvas);
-            _currentGunUI = gunUIgameObject.GetComponent<IGunUI>();
-            await _currentGunUI.Initialize(_currentGunsModel, _playerTransform);
-            gun.SetGunUI(_currentGunUI);
-            #endregion
-
-            #region Adding it to multi gun system
-            _allGuns.Add(_currentGunsModel, _currentActiveGun);
-            _orderedValues.Add(_currentGunsModel);
-            #endregion
-
-            #region subscribing to upgrades controller
-            _upgradeController.OnUpgrade += UpgradeWeapon;
-            (List<UpgradeSO> tempActiveUpgrades, List<UpgradeSO> tempCursedUpgrades) = _upgradeController.RefreshUpgrades();
-            LoadWeaponUpgrades(tempActiveUpgrades, tempCursedUpgrades);
-            #endregion
-
-            #region Gun Carousel
-            var carousel = await _assetService.InstantiateAsync(AddressableIds.Gun_Carousel);
-            _gunCarousel = carousel.GetComponent<Carousel>();
-            Dictionary<string, Sprite> guns = new Dictionary<string, Sprite>();
-            guns[_currentActiveGun.name] = _currentActiveGun.GunSprite; // need to add all active guns when we are switcching scene which is a TODO
-            await _gunCarousel.Initialize(guns, _assetService);
-            #endregion
-        }
-        catch (Exception ex)
-        {
-            Debug.LogError(ex);
-        }
+        GameObject obj = await _assetService.InstantiateAsync(gunAddress);
+        GunsView gun = obj.GetComponent<GunsView>();
+        _ = gun.InitializeGun(this, _poolManager, _playerTransform, _playerCursor);
+        return gun;
     }
+
+    async Awaitable RegisterGun(GunsView gun)
+    {
+        GunsModel gunModel = gun.GunsModel;
+        if (!_allGuns.ContainsKey(gunModel))
+        {
+            _allGuns.Add(gunModel, gun);
+            _orderedValues.Add(gunModel);
+        }
+
+        #region UI
+        gun.SetGunUI(_currentGunUI);
+
+        if (!_currentGunUI.Initialized)
+        {
+            await _currentGunUI.Initialize(gunModel, _playerTransform);
+        }
+        else
+        {
+            await _currentGunUI.AddGun(gunModel);
+        }
+        #endregion
+
+        #region  Carousel
+        await _gunCarousel.AddItem(gun.name, gun.GunSprite, true);
+        #endregion
+
+        gun.gameObject.SetActive(false);
+    }
+
+
+    async Awaitable IGunsController.IntializeOnSceneLoad(Transform playerTransform, Transform playerCursor)
+    {
+        //intialize the imp systems
+        _playerTransform = playerTransform;
+        _playerCursor = playerCursor;
+
+        //UI
+        var gunUIgameObject = await _assetService.InstantiateAsync(AddressableIds.Gun_UI_Canvas);
+        _currentGunUI = gunUIgameObject.GetComponent<IGunUI>();
+
+        //Carousel
+        var carouselgameObject = await _assetService.InstantiateAsync(AddressableIds.Gun_Carousel);
+        _gunCarousel = carouselgameObject.GetComponent<Carousel>();
+        await _gunCarousel.Initialize(new Dictionary<string, Sprite>(), _assetService);
+
+        //events
+        _upgradeController.OnUpgrade += UpgradeWeapon;
+        _sceneManager.BeforeChangeScene += ((IGunsController)this).SavePlayerGuns;
+    }
+
+    async Awaitable IGunsController.InitializeGunsOnSceneLoad(string defaultGunAddress)
+    {
+        //load the savegundata
+        (string currentGunAddress, List<string> gunAddressableIds) = (this as IGunsController).LoadPlayerGuns();
+        List<GunsView> loadedGuns = new();
+        GunsView currentGun = null;
+
+        if (gunAddressableIds.Count != 0)
+        {
+            foreach (string gunAddress in gunAddressableIds)
+            {
+                GunsView gun = await InstantiateGunAsync(gunAddress);
+                await RegisterGun(gun);
+                loadedGuns.Add(gun);
+            }
+
+            foreach (GunsView gun in loadedGuns)
+            {
+                if (gun.GunsModel.GunViewAddressableId == currentGunAddress)
+                {
+                    currentGun = gun;
+                    break;
+                }
+            }
+        }
+        else
+        {
+            currentGun = await InstantiateGunAsync(defaultGunAddress);
+            await RegisterGun(currentGun);
+        }
+
+        if (_currentActiveGun == null)
+        {
+            _currentActiveGun = currentGun;
+            _currentActiveGun.gameObject.SetActive(true);
+            _currentGunsModel = _currentActiveGun.GunsModel;
+            _currentGunUI.SwapGun(_currentGunsModel);
+            _currentActiveGun.SetGunUI(_currentGunUI);
+            OnGunSwap?.Invoke(_currentActiveGun);
+            _gunCarousel.MoveToIndex(_currentActiveGun.name);
+            (this as IGunsController).SavePlayerGuns();
+        }
+        else
+        {
+            (this as IGunsController).SetCurrentActiveGun(currentGun);
+        }
+
+        (List<UpgradeSO> active, List<UpgradeSO> cursed) = _upgradeController.RefreshUpgrades();
+        LoadWeaponUpgrades(active, cursed);
+    }
+
 
     async Awaitable IGunsController.AddGun(GunsView gun)
     {
@@ -306,5 +374,21 @@ public class GunsController : IGunsController
     void IGunsController.SetGunElements(Dictionary<ElementEnum, int> ElementalBuffs)
     {
         _currentActiveGun.ElementalBuffs = ElementalBuffs;
+    }
+
+    void IGunsController.SavePlayerGuns()
+    {
+        List<string> gunAddressableIds = new();
+        foreach ((GunsModel m, GunsView v) in _allGuns)
+        {
+            gunAddressableIds.Add(m.GunViewAddressableId);
+        }
+        _dataSerializer.SaveData(AddressableIds.Player_Guns_Path, (_currentGunsModel.GunViewAddressableId, gunAddressableIds));
+    }
+
+    (string, List<string>) IGunsController.LoadPlayerGuns()
+    {
+        (string, List<string>) playerGunDetails = _dataSerializer.LoadData<(string, List<string>)>(AddressableIds.Player_Guns_Path);
+        return playerGunDetails;
     }
 }

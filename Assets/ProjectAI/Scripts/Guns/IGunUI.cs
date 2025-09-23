@@ -7,4 +7,5 @@ public interface IGunUI
     Awaitable AddGun(GunsModel model);
     void RemoveGun(GunsModel model, GunsModel switchTo);
     void SwapGun(GunsModel model);
+    bool Initialized { get; }
 }
