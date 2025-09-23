@@ -3,13 +3,14 @@ using Zenject;
 
 public class MainMenuController
 {
-    [Inject] IUpgradeController _upgradeController;
     [Inject] IAssetService _assetService;
+
+    private ResetData _resetData = new();
+
     [Inject]
     public void Initialize()
     {
-        _upgradeController.ClearUpgrades();
-        _upgradeController.ClearPlayerStats();
+        _resetData.ClearData();
         _assetService.InstantiateAsync(AddressableIds.Main_Menu_UI);
     }
 }

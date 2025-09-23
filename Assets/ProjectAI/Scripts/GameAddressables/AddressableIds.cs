@@ -12,7 +12,7 @@ public static class AddressableIds
     public const string Gunner_Data_SO = "gunnerDataSO";
     public const string Shotgunner_Data_SO = "shotgunnerDataSO";
     public const string Pyro_Data_SO = "pyroDataSO";
-    
+
     public const string Gunner_Detail_SO = "gunnerDetailSO";
     public const string Shotgunner_Detail_SO = "shotgunnerDetailSO";
     public const string Pyro_Detail_SO = "pyroDetailSO";
@@ -85,4 +85,13 @@ public static class AddressableIds
     public const string PopUp_UI = "PopUpUI";
     public const string Pause_Screen = "PauseScreen";
     #endregion
+
+    #region Stored Data
+    public const string Cursed_Upgrades_Path = "/curses.json";
+    public const string Normal_Upgrades_Path = "/upgrades.json";
+    public const string Player_Stats_Path = "/playerstats.json";
+    public const string Player_Guns_Path = "/playerguns.json";
+
+    #endregion
 }
+
