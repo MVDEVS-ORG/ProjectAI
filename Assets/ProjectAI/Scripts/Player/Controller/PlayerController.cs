@@ -30,11 +30,13 @@ public class PlayerController : IPlayerController
     private bool _movementPossible = false;
     private bool _isInvincible = false;
     private bool _gunEnabled = true;
+    private bool _isAbilityInUse = false;
 
     bool IPlayerController.GunEnabled { get => _gunEnabled; set => _gunEnabled = value; }
     bool IPlayerController.Initialized => _initialized;
     bool IPlayerController.MovementPossible => _movementPossible;
     bool IPlayerController.IsInvincible => _isInvincible;
+    bool IPlayerController.IsAbilityInUse { get => _isAbilityInUse; set => _isAbilityInUse = value; }
 
     private State _moveState = State.Moving;
     State IPlayerController.MoveState => _moveState;
@@ -266,7 +268,7 @@ public class PlayerController : IPlayerController
     Vector2 IPlayerController.Dash(Vector2 MoveInput)
     {
         // Debug.LogError(_playerModel.GetHashCode());
-        if (_moveState == State.Moving && MoveInput != Vector2.zero && _playerModel.NoOfRoll < _playerModel.MaxNoOfRolls) //also need to addd the stamina part here
+        if (!_isAbilityInUse && _moveState == State.Moving && MoveInput != Vector2.zero && _playerModel.NoOfRoll < _playerModel.MaxNoOfRolls) //also need to addd the stamina part here
         {
             _playerModel.NoOfRoll++;
             _characterView.StartCoroutine(RollDash());
@@ -311,7 +313,7 @@ public class PlayerController : IPlayerController
 
     void IPlayerController.MeleeAttack()
     {
-        if (_meleeWeaponController.Initialized)
+        if (_meleeWeaponController.Initialized && !_isAbilityInUse)
         {
             _meleeWeaponController.MeleeAttack();
         }

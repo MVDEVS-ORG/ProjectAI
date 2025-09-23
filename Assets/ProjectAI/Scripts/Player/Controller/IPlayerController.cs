@@ -7,6 +7,7 @@ public interface IPlayerController
     bool MovementPossible { get; }
     bool IsInvincible { get; }
     bool GunEnabled { get; set; }
+    bool IsAbilityInUse { get; set; }
     void TakeDamage(int damage);
     void RestoreHealth(int health);
     void Shoot(bool firing);
