@@ -55,101 +55,101 @@ public class PlayerController : IPlayerController
 
     async Awaitable IPlayerController.SpawnPlayer(Vector3 pos, PlayerCharactersSO playerCharacter)
     {
-        // try
-        // {
-        #region player selection and instantiation
-        //Get the character prefab address
-        string prefabAddress = null;
-        string gunAddress = null;
-        switch (playerCharacter.CharacterType)
+        try
         {
-            case Character.Gunner:
-                prefabAddress = AddressableIds.Gunner_Character;
-                gunAddress = AddressableIds.Simple_Gun;
-                _gunsController.ChangeGunLimit(5);
-                break;
+            #region player selection and instantiation
+            //Get the character prefab address
+            string prefabAddress = null;
+            string gunAddress = null;
+            switch (playerCharacter.CharacterType)
+            {
+                case Character.Gunner:
+                    prefabAddress = AddressableIds.Gunner_Character;
+                    gunAddress = AddressableIds.Simple_Gun;
+                    _gunsController.ChangeGunLimit(5);
+                    break;
 
-            case Character.Shotgun:
-                prefabAddress = AddressableIds.Shotgunner_Character;
-                gunAddress = AddressableIds.Shot_Gun;
-                break;
+                case Character.Shotgun:
+                    prefabAddress = AddressableIds.Shotgunner_Character;
+                    gunAddress = AddressableIds.Shot_Gun;
+                    break;
 
-            case Character.Pyro:
-                prefabAddress = AddressableIds.Pyro;
-                gunAddress = AddressableIds.Shot_Gun;
-                break;
+                case Character.Pyro:
+                    prefabAddress = AddressableIds.Pyro;
+                    gunAddress = AddressableIds.Shot_Gun;
+                    break;
+            }
+            //test if the prefabaddress is available
+            if (prefabAddress == null)
+            {
+                throw new Exception("Character type not implemented in addressableIds");
+            }
+            //instantiate the asset
+            var result = await _assetService.InstantiateWithPRAsync(prefabAddress, pos, Quaternion.identity);
+            _characterView = result.GetComponent<CharacterView>();
+            //Create a new _player model for that character
+            _playerModel = new PlayerModel(playerCharacter);
+            Debug.Log("PlayerModel initialized");
+            //Assign the _player model and the controller to the view alongside the _player cursor aka reticle for shooting
+            (GameObject, GameObject) bulletCursor = await PlayerCursorInitialization();
+            _bulletCursorUI = bulletCursor.Item2.transform;
+            _characterView.Initialize(this, _playerModel, bulletCursor.Item1, bulletCursor.Item2, _signalBus, _gamePauseController);
+            Debug.Log("PlayerView Initialized");
+            #endregion
+
+            #region XP bar
+            ExperienceListSO experienceList = await _assetService.LoadAssetAsync<ExperienceListSO>(AddressableIds.Player_Level_Chart);
+            _xpLevelMap = new List<int>(experienceList.ExperiencePerLevel);
+            _assetService.UnloadAsset(experienceList);
+            #endregion
+
+            #region player ui instantiation
+            //Create the _player UI alongside the _player and pass the model for data
+            result = await _assetService.InstantiateAsync(AddressableIds.Player_UI);
+            _playerUI = result.GetComponent<PlayerUI>();
+            _playerUI.Initialize(_playerModel, _xpLevelMap);
+            Debug.Log("PlayerUI Initialized");
+            _cameraController.Initialize(_characterView.transform);
+            _rumbleController.Initialize(_characterView);
+            #endregion
+
+            #region player XP
+            (int, int, int) playerStats = _upgradeController.LoadPlayerStats();
+            int accumulatedXP = playerStats.Item1;
+            LoadPlayerStats(playerStats.Item1, playerStats.Item2, playerStats.Item3);
+            _sceneManager.BeforeChangeScene += () => { _upgradeController.SavePlayerStats(_playerModel.Experience, _playerModel.PlayerLevel, _playerModel.Health); };
+            #endregion
+
+            #region melee instantiation
+            var melee = await _assetService.InstantiateAsync(AddressableIds.MeleeSlash);
+            MeleeWeaponView meleeView = melee.GetComponent<MeleeWeaponView>();
+            _meleeWeaponController.Initialize(_characterView.transform, _bulletCursorUI, this);
+            _meleeWeaponController.SetupWeapon(meleeView);
+
+            #endregion
+
+            #region player upgrades
+            _upgradeController.OnUpgrade += UpgradePlayer;
+            (List<UpgradeSO> tempActiveUpgrades, List<UpgradeSO> tempCursedUpgrades) = _upgradeController.RefreshUpgrades();
+            LoadPlayerUpgrades(tempActiveUpgrades, tempCursedUpgrades);
+            _movementPossible = true;
+            #endregion
+
+            #region Gun instantiation
+            await _gunsController.IntializeOnSceneLoad(_characterView.transform, bulletCursor.Item2.transform);
+            await _gunsController.InitializeGunsOnSceneLoad(gunAddress);
+            //var gun = await _assetService.InstantiateAsync(gunAddress);
+            //await _gunsController.SetCurrentActiveGun(gun.GetComponent<GunsView>(), _characterView.transform, bulletCursor.Item2.transform);
+            #endregion
+
+            //Assign the player abilities
+            _ = _abilityController.Initialize(_assetService, _playerModel, (this as IPlayerController), _gunsController, _meleeWeaponController);
+            _sceneManager.BeforeChangeScene += StopControllerOnLevelChange;
         }
-        //test if the prefabaddress is available
-        if (prefabAddress == null)
+        catch (Exception exception)
         {
-            throw new Exception("Character type not implemented in addressableIds");
+            Debug.LogError(exception.Message);
         }
-        //instantiate the asset
-        var result = await _assetService.InstantiateWithPRAsync(prefabAddress, pos, Quaternion.identity);
-        _characterView = result.GetComponent<CharacterView>();
-        //Create a new _player model for that character
-        _playerModel = new PlayerModel(playerCharacter);
-        Debug.Log("PlayerModel initialized");
-        //Assign the _player model and the controller to the view alongside the _player cursor aka reticle for shooting
-        (GameObject, GameObject) bulletCursor = await PlayerCursorInitialization();
-        _bulletCursorUI = bulletCursor.Item2.transform;
-        _characterView.Initialize(this, _playerModel, bulletCursor.Item1, bulletCursor.Item2, _signalBus, _gamePauseController);
-        Debug.Log("PlayerView Initialized");
-        #endregion
-
-        #region XP bar
-        ExperienceListSO experienceList = await _assetService.LoadAssetAsync<ExperienceListSO>(AddressableIds.Player_Level_Chart);
-        _xpLevelMap = new List<int>(experienceList.ExperiencePerLevel);
-        _assetService.UnloadAsset(experienceList);
-        #endregion
-
-        #region player ui instantiation
-        //Create the _player UI alongside the _player and pass the model for data
-        result = await _assetService.InstantiateAsync(AddressableIds.Player_UI);
-        _playerUI = result.GetComponent<PlayerUI>();
-        _playerUI.Initialize(_playerModel, _xpLevelMap);
-        Debug.Log("PlayerUI Initialized");
-        _cameraController.Initialize(_characterView.transform);
-        _rumbleController.Initialize(_characterView);
-        #endregion
-
-        #region player XP
-        (int, int, int) playerStats = _upgradeController.LoadPlayerStats();
-        int accumulatedXP = playerStats.Item1;
-        LoadPlayerStats(playerStats.Item1, playerStats.Item2, playerStats.Item3);
-        _sceneManager.BeforeChangeScene += () => { _upgradeController.SavePlayerStats(_playerModel.Experience, _playerModel.PlayerLevel, _playerModel.Health); };
-        #endregion
-
-        #region melee instantiation
-        var melee = await _assetService.InstantiateAsync(AddressableIds.MeleeSlash);
-        MeleeWeaponView meleeView = melee.GetComponent<MeleeWeaponView>();
-        _meleeWeaponController.Initialize(_characterView.transform, _bulletCursorUI, this);
-        _meleeWeaponController.SetupWeapon(meleeView);
-
-        #endregion
-
-        #region player upgrades
-        _upgradeController.OnUpgrade += UpgradePlayer;
-        (List<UpgradeSO> tempActiveUpgrades, List<UpgradeSO> tempCursedUpgrades) = _upgradeController.RefreshUpgrades();
-        LoadPlayerUpgrades(tempActiveUpgrades, tempCursedUpgrades);
-        _movementPossible = true;
-        #endregion
-
-        #region Gun instantiation
-        await _gunsController.IntializeOnSceneLoad(_characterView.transform, bulletCursor.Item2.transform);
-        await _gunsController.InitializeGunsOnSceneLoad(gunAddress);
-        //var gun = await _assetService.InstantiateAsync(gunAddress);
-        //await _gunsController.SetCurrentActiveGun(gun.GetComponent<GunsView>(), _characterView.transform, bulletCursor.Item2.transform);
-        #endregion
-
-        //Assign the player abilities
-        _ = _abilityController.Initialize(_assetService, _playerModel, (this as IPlayerController), _gunsController, _meleeWeaponController);
-        _sceneManager.BeforeChangeScene += StopControllerOnLevelChange;
-        // }
-        // catch (Exception exception)
-        // {
-        //     Debug.LogError(exception.Message);
-        // }
     }
 
     private void LoadPlayerUpgrades(List<UpgradeSO> activeUpgrades, List<UpgradeSO> cursedUpgrades)
@@ -367,9 +367,6 @@ public class PlayerController : IPlayerController
         _playerUI.UpdateXpBar();
         _playerUI.AlterHealthBar();
     }
-
-    //save all guns here
-    //load all guns here
 
     IEnumerator MeleeDashTimer()
     {
