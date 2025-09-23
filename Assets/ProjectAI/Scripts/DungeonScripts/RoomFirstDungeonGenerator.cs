@@ -32,7 +32,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
         {
             ClearRoomData();
             await CreateRooms();
-            DetectDoorPositions();
+            //DetectDoorPositions();
 
             DungeonData data = new DungeonData
             {
@@ -44,29 +44,99 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
             return data;
             //await _roomContentGenerator.GenerateRoomContent(data);
         }
-        private void DetectDoorPositions()
+        public DungeonData DetectDoorPositions(DungeonData data)
         {
             _doorPositions.Clear();
 
-            var cleanRoomFloor = new HashSet<Vector2Int>();
-            foreach(var room in _roomsDictionary.Values)
+            var allDirections = Direction2D.eightDirectionList;
+
+            foreach (var tile in data.corridorPositions)
             {
-                cleanRoomFloor.UnionWith(room);
-            }
-            var cleanCorridorFloor = new HashSet<Vector2Int>(_corridorPositions);
-            cleanCorridorFloor.ExceptWith(cleanRoomFloor);
-            foreach(var corFloor in cleanCorridorFloor)
-            {
-                foreach(var dir in Direction2D.cardinalDirectionList)
-                {
-                    var neighbour = corFloor + dir;
-                    if(!cleanCorridorFloor.Contains(neighbour) && cleanRoomFloor.Contains(neighbour) && !_doorPositions.Contains(neighbour))
-                    {
-                        _doorPositions.Add(corFloor);
-                    }
-                }
+                CheckDoorPosition(data, allDirections, tile);
             }
 
+            data.doorPositions = new HashSet<Vector2Int>(_doorPositions);
+            Debug.Log($"Detected {_doorPositions.Count} door positions (with corner validation).");
+            return data;
+        }
+
+        private void CheckDoorPosition(DungeonData data, List<Vector2Int> allDirections, Vector2Int tile)
+        {
+            string neighborBinary = "";
+            foreach (var dir in allDirections)
+            {
+                var neighbor = tile + dir;
+                neighborBinary += data.floorPositions.Contains(neighbor) ? "1" : "0";
+            }
+
+            switch (neighborBinary)
+            {
+                // Straight openings (no extended check needed)
+                case "11001001": //Top Door
+                    _doorPositions.Add(tile);
+                    break;
+                case "10011100": //Down Door
+                    _doorPositions.Add(tile);
+                    break;
+                case "00100111": //Left Door
+                    _doorPositions.Add(tile);
+                    break;
+                case "01110010": //Right Door
+                    _doorPositions.Add(tile);
+                    break;
+
+                // Corner openings (extended neighbor check required)
+                case "11001000": // UP-RIGHT corner
+                    if (IsExtendedNeighborWall(tile, new Vector2Int(0, 1), data))
+                        _doorPositions.Add(tile);
+                    break;
+
+                case "10011000": // DOWN-RIGHT corner
+                    if (IsExtendedNeighborWall(tile, new Vector2Int(0, -1), data))
+                        _doorPositions.Add(tile);
+                    break;
+
+                case "10001100": // DOWN-LEFT corner
+                    if (IsExtendedNeighborWall(tile, new Vector2Int(0, -1), data))
+                        _doorPositions.Add(tile);
+                    break;
+
+                case "10001001": // UP-LEFT corner
+                    if (IsExtendedNeighborWall(tile, new Vector2Int(0, 1), data))
+                        _doorPositions.Add(tile);
+                    break;
+                case "01100010": //Right-Up corner
+                    if (IsExtendedNeighborWall(tile, new Vector2Int(1, 0), data))
+                        _doorPositions.Add(tile);
+                    break;
+                case "00100011": //Left-Up corner
+                    if (IsExtendedNeighborWall(tile, new Vector2Int(-1, 0), data))
+                        _doorPositions.Add(tile);
+                    break;
+                case "00110010": //Right - Down corner
+                    if (IsExtendedNeighborWall(tile, new Vector2Int(1, 0), data))
+                        _doorPositions.Add(tile);
+                    break;
+                case "00100110": //Left - Down corner
+                    if (IsExtendedNeighborWall(tile, new Vector2Int(-1, 0), data))
+                        _doorPositions.Add(tile);
+                    break;
+
+            }
+        }
+
+        private bool IsExtendedNeighborWall(Vector2Int tile, Vector2Int dir, DungeonData data)
+        {
+            var neighborTile = tile + dir;
+            int neighborFloorTileCount = 0;
+            foreach(var dirs in Direction2D.eightDirectionList)
+            {
+                if(data.floorPositions.Contains(neighborTile + dirs))
+                {
+                    neighborFloorTileCount++;
+                }
+            }
+            return (neighborFloorTileCount >= 4);
         }
 
 
@@ -77,6 +147,15 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
             foreach (var pos in _doorPositions)
             {
                 Gizmos.DrawSphere(new Vector3(pos.x + 0.5f, pos.y + 0.5f, 0), 0.2f);
+            }
+            
+        }
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.gray;
+            foreach (var floor in _corridorPositions)
+            {
+                Gizmos.DrawCube(new Vector3(floor.x + 0.5f, floor.y + 0.5f, 0), Vector3.one);
             }
         }
 

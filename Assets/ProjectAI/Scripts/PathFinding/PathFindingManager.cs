@@ -3,6 +3,8 @@ using UnityEngine;
 using Assets.ProjectAI.Scripts.DungeonScripts;
 using Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items;
 using Zenject;
+using UnityEngine.Tilemaps;
+
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -13,6 +15,8 @@ namespace Assets.ProjectAI.Scripts.PathFinding
     public class PathFindingManager : MonoBehaviour
     {
         public static PathFindingManager Instance { get; private set; }
+        [SerializeField] private Tilemap _tileMap;
+        [SerializeField] private Sprite _floorSprite;
 
         [Header("Debug Grid (Editor Only)")]
         public bool debugDrawGrid = true;
@@ -110,20 +114,20 @@ namespace Assets.ProjectAI.Scripts.PathFinding
 #endif
         }
 
-        public async Awaitable<bool> InitialBakeAsync(DungeonData data)
+        public async Awaitable<DungeonData> InitialBakeAsync(DungeonData data)
         {
             try
             {
                 _initialBaked = false;
-                InitialBake(data);
+                data = BakeFromTilemapAndPopulateDungeonData(_tileMap, _floorSprite, data);
                 await Awaitable.NextFrameAsync();
                 _itemsBaked = false; // Require items bake afterwards
-                return true;
+                return data;
             }
             catch (System.Exception e)
             {
                 Debug.LogError($"InitialBakeAsync failed: {e}");
-                return false;
+                return data;
             }
         }
 
@@ -186,6 +190,143 @@ namespace Assets.ProjectAI.Scripts.PathFinding
                         nodes[ix, iy].walkable = false;
                 }
             }
+
+#if UNITY_EDITOR
+            if (debugDrawGrid) SceneView.RepaintAll();
+#endif
+        }
+
+        public DungeonData BakeFromTilemapAndPopulateDungeonData(Tilemap tilemap, Sprite floorSprite, DungeonData data)
+        {
+            if (tilemap == null || floorSprite == null)
+            {
+                Debug.LogError("BakeFromTilemapAndPopulateDungeonData: Missing tilemap or floor sprite reference.");
+                return data;
+            }
+
+            if (data == null)
+            {
+                Debug.LogError("BakeFromTilemapAndPopulateDungeonData: DungeonData is null.");
+                return data;
+            }
+
+            _initialBaked = false;
+            blockedByItems.Clear();
+            _walkablePositions.Clear();
+
+
+            BoundsInt bounds = tilemap.cellBounds;
+
+            width = bounds.size.x;
+            height = bounds.size.y;
+            offsetX = bounds.xMin;
+            offsetY = bounds.yMin;
+
+            nodes = new PathNode[width, height];
+            baseWalkable = new bool[width, height];
+
+            for (int x = 0; x < width; x++)
+            {
+                for (int y = 0; y < height; y++)
+                {
+                    Vector3Int cellPos = new Vector3Int(x + offsetX, y + offsetY, 0);
+                    TileBase tile = tilemap.GetTile(cellPos);
+
+                    bool canWalk = false;
+
+                    if (tile != null)
+                    {
+                        Sprite tileSprite = tilemap.GetSprite(cellPos);
+                        if (tileSprite != null && tileSprite == floorSprite)
+                        {
+                            canWalk = true;
+                        }
+                    }
+
+                    baseWalkable[x, y] = canWalk;
+                    nodes[x, y] = new PathNode
+                    {
+                        position = cellPos,
+                        walkable = canWalk
+                    };
+
+                    if (canWalk)
+                    {
+                        Vector2Int gridPos = new Vector2Int(cellPos.x, cellPos.y);
+                        _walkablePositions.Add(gridPos);
+                        if(!data.floorPositions.Contains(gridPos))
+                            data.floorPositions.Add(gridPos);
+                    }
+                }
+            }
+
+            _initialBaked = true;
+
+#if UNITY_EDITOR
+            if (debugDrawGrid) SceneView.RepaintAll();
+#endif
+
+            Debug.Log($"BakeFromTilemapAndPopulateDungeonData complete: {data.floorPositions.Count} floor positions added.");
+            return data;
+        }
+
+
+        public void BakeFromTilemap()
+        {
+            if (_tileMap == null || _floorSprite == null)
+            {
+                Debug.LogError("BakeFromTilemap: Missing tilemap or floor sprite reference.");
+                return;
+            }
+
+            _initialBaked = false;
+            blockedByItems.Clear();
+            _walkablePositions.Clear();
+
+            // 1️⃣ Get tilemap bounds
+            BoundsInt bounds = _tileMap.cellBounds;
+
+            width = bounds.size.x;
+            height = bounds.size.y;
+            offsetX = bounds.xMin;
+            offsetY = bounds.yMin;
+
+            nodes = new PathNode[width, height];
+            baseWalkable = new bool[width, height];
+
+            // 2️⃣ Iterate through all tiles in bounds
+            for (int x = 0; x < width; x++)
+            {
+                for (int y = 0; y < height; y++)
+                {
+                    Vector3Int cellPos = new Vector3Int(x + offsetX, y + offsetY, 0);
+                    TileBase tile = _tileMap.GetTile(cellPos);
+
+                    bool canWalk = false;
+
+                    if (tile != null)
+                    {
+                        // Get tile sprite and check if it matches floorSprite
+                        Sprite tileSprite = _tileMap.GetSprite(cellPos);
+                        if (tileSprite != null && tileSprite == _floorSprite)
+                        {
+                            canWalk = true;
+                        }
+                    }
+
+                    baseWalkable[x, y] = canWalk;
+                    nodes[x, y] = new PathNode
+                    {
+                        position = cellPos,
+                        walkable = canWalk
+                    };
+
+                    if (canWalk)
+                        _walkablePositions.Add(new Vector2Int(cellPos.x, cellPos.y));
+                }
+            }
+
+            _initialBaked = true;
 
 #if UNITY_EDITOR
             if (debugDrawGrid) SceneView.RepaintAll();
