@@ -4,7 +4,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "GunnerAbility", menuName = "Scriptable Objects/GunnerAbility")]
 public class GunnerAbility : CharacterAbility
-{  
+{
     private IPlayerController _playerController;
     private IMeleeWeaponController _weaponController;
     private IGunsController _gunsController;
@@ -22,7 +22,7 @@ public class GunnerAbility : CharacterAbility
 
     public override void UseAbility()
     {
-        if(AbilityOnCooldown)
+        if (AbilityOnCooldown)
         {
             return;
         }
@@ -39,10 +39,12 @@ public class GunnerAbility : CharacterAbility
 
     private async Awaitable AbilityDuration()
     {
+        _playerController.IsAbilityInUse = true;
         _gunsController.FireAllGuns(true, _playerModel.AbilityAlter);
         _playerController.GunEnabled = false;
         await Awaitable.WaitForSecondsAsync(_playerModel.AbilityDuration);
         _playerController.GunEnabled = true;
         _gunsController.FireAllGuns(false, _playerModel.AbilityAlter);
+        _playerController.IsAbilityInUse = false;
     }
 }
