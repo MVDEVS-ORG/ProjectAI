@@ -120,6 +120,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 525610885dde205409eb9eb82334cd3f
+    m_Address: DashBot
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 54179ceb801fd374089cf4f79f7d39cb
     m_Address: ElementalistAbility
     m_ReadOnly: 0
