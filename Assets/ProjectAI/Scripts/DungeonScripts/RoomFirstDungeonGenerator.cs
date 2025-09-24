@@ -17,6 +17,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
         private bool randomWalkRooms = false;
         [SerializeField]
         private RoomContentGenerator roomContentGenerator;
+        [SerializeField] private bool _isDoorNeeded = true;
 
         // PCG Data
         private Dictionary<Vector2Int, HashSet<Vector2Int>> _roomsDictionary = new Dictionary<Vector2Int, HashSet<Vector2Int>>();
@@ -39,24 +40,28 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
                 roomsDictionary = this._roomsDictionary,
                 corridorPositions = this._corridorPositions,
                 floorPositions = this._floorPositions,
-                doorPositions = this._doorPositions
+                doorPositions = this._doorPositions,
+                isDoorNeeded = this._isDoorNeeded,
             };
             return data;
             //await _roomContentGenerator.GenerateRoomContent(data);
         }
         public DungeonData DetectDoorPositions(DungeonData data)
         {
-            _doorPositions.Clear();
-
-            var allDirections = Direction2D.eightDirectionList;
-
-            foreach (var tile in data.corridorPositions)
+            if (_isDoorNeeded)
             {
-                CheckDoorPosition(data, allDirections, tile);
-            }
+                _doorPositions.Clear();
 
-            data.doorPositions = new HashSet<Vector2Int>(_doorPositions);
-            Debug.Log($"Detected {_doorPositions.Count} door positions (with corner validation).");
+                var allDirections = Direction2D.eightDirectionList;
+
+                foreach (var tile in data.corridorPositions)
+                {
+                    CheckDoorPosition(data, allDirections, tile);
+                }
+
+                data.doorPositions = new HashSet<Vector2Int>(_doorPositions);
+                Debug.Log($"Detected {_doorPositions.Count} door positions (with corner validation).");
+            }
             return data;
         }
 
@@ -187,6 +192,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
 
             tilemapVisualizer.PaintFloorTiles(_floorPositions);
             WallGenerator.CreateWalls(_floorPositions, tilemapVisualizer, _isTopWallRequired);
+            tilemapVisualizer.PaintBackgroundTiles(dungeonWidth, dungeonHeight);
             await Awaitable.EndOfFrameAsync();
             //DetectDoorPositions();
         }

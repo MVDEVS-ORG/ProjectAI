@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 8023739332899901663}
   - component: {fileID: 6638433405945970078}
   m_Layer: 0
-  m_Name: Floor
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -389,7 +389,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c2c1e082797e744592649e8a8141b1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugDrawGrid: 1
+  _tileMap: {fileID: 7860892945105457831}
+  _floorSprite: {fileID: -4192121498313641769, guid: 2437401ace0ceec40aaabfbd0d582927, type: 3}
+  debugDrawGrid: 0
   walkableColor: {r: 0, g: 1, b: 0, a: 0.3}
   unwalkableColor: {r: 1, g: 0, b: 0, a: 0.3}
 --- !u!1 &5964548398302593810
@@ -581,7 +583,7 @@ GameObject:
   - component: {fileID: 5785483791150690459}
   - component: {fileID: 8018093379425579728}
   m_Layer: 13
-  m_Name: Walls
+  m_Name: Dungeon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -612,15 +614,71 @@ Tilemap:
   m_Enabled: 1
   m_Tiles: {}
   m_AnimatedTiles: {}
-  m_TileAssetArray: []
-  m_TileSpriteArray: []
-  m_TileMatrixArray: []
-  m_TileColorArray: []
+  m_TileAssetArray:
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  m_TileSpriteArray:
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  m_TileMatrixArray:
+  - m_RefCount: 0
+    m_Data:
+      e00: -2.6273633e-29
+      e01: 0
+      e02: 1.15e-43
+      e03: -1.4737257e-21
+      e10: 8.34e-43
+      e11: 0
+      e12: 0
+      e13: 3.57e-43
+      e20: -94024320
+      e21: -1.4737257e-21
+      e22: -2.6273633e-29
+      e23: -6.029197e-28
+      e30: 4.5912e-41
+      e31: 3.57e-43
+      e32: 8.34e-43
+      e33: 8.31e-43
+  m_TileColorArray:
+  - m_RefCount: 0
+    m_Data: {r: NaN, g: NaN, b: NaN, a: NaN}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Origin: {x: 0, y: 0, z: 0}
-  m_Size: {x: 0, y: 0, z: 1}
+  m_Origin: {x: -9, y: -4, z: 0}
+  m_Size: {x: 134, y: 109, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:

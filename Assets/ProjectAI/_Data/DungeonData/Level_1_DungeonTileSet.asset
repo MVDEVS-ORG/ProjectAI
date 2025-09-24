@@ -12,15 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 139ead2794bae1c4b992e9697be8d9b4, type: 3}
   m_Name: Level_1_DungeonTileSet
   m_EditorClassIdentifier: 
-  floorTile: {fileID: 11400000, guid: e26c5b469e34887468ee483110c81815, type: 2}
-  wallTop: {fileID: 11400000, guid: e26c5b469e34887468ee483110c81815, type: 2}
-  wallSideRight: {fileID: 11400000, guid: e26c5b469e34887468ee483110c81815, type: 2}
-  wallSideLeft: {fileID: 11400000, guid: e26c5b469e34887468ee483110c81815, type: 2}
-  wallBottom: {fileID: 11400000, guid: e26c5b469e34887468ee483110c81815, type: 2}
-  wallFull: {fileID: 11400000, guid: e26c5b469e34887468ee483110c81815, type: 2}
-  wallInnerCornerDownLeft: {fileID: 11400000, guid: e26c5b469e34887468ee483110c81815, type: 2}
-  wallInnerCornerDownRight: {fileID: 11400000, guid: e26c5b469e34887468ee483110c81815, type: 2}
-  wallDiagonalCornerDownRight: {fileID: 11400000, guid: e26c5b469e34887468ee483110c81815, type: 2}
-  wallDiagonalCornerDownLeft: {fileID: 11400000, guid: e26c5b469e34887468ee483110c81815, type: 2}
-  wallDiagonalCornerUpRight: {fileID: 11400000, guid: e26c5b469e34887468ee483110c81815, type: 2}
-  wallDiagonalCornerUpLeft: {fileID: 11400000, guid: e26c5b469e34887468ee483110c81815, type: 2}
+  dungeonRuleTile: {fileID: 11400000, guid: e26c5b469e34887468ee483110c81815, type: 2}
+  backgroundTile: {fileID: 11400000, guid: da6fd8ec88a2313428ef4f750025ba36, type: 2}
