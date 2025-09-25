@@ -40,7 +40,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
 
                 if (isTopWallRequired && !basicWallPosition.Contains(position + Vector2Int.up) && !floorPositions.Contains(position + Vector2Int.up))
                 {
-                    // This is a TOP corner wall → paint 2 units high
+                    // This is a TOP corner wall -> paint 2 units high
                     tilemapVisualizer.PaintSingleCornerWall(position, neighborsBinaryType);
 
                     Vector2Int above = position + Vector2Int.up;
@@ -64,7 +64,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
                 }
                 else
                 {
-                    // Bottom corner → paint only single tile
+                    // Bottom corner -> paint only single tile
                     tilemapVisualizer.PaintSingleCornerWall(position, neighborsBinaryType);
                 }
             }
