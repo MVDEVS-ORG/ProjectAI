@@ -26,6 +26,11 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Enemies
         private void OnCollisionEnter2D(Collision2D collision)
         {
             _rb.linearVelocity = Vector2.zero;
+            animator?.Play("Stunned");
+            if(collision.collider.TryGetComponent(out CharacterView player ))
+            {
+                player.TakeDamage(10,transform.position, 1f);
+            }
         }
     }
 }

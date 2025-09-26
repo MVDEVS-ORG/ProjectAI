@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: -4500229181939326428, guid: 92dbe53264647e147a9578d65095bddc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -101,7 +101,7 @@ Animator:
   m_GameObject: {fileID: 6814471503683204822}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f7d20faeb76dd9645a8bbe8523089f3d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -133,7 +133,7 @@ MonoBehaviour:
   _enemyCollider: {fileID: 87275507197403897}
   currentPath: []
   currentPathIndex: 0
-  _rb: {fileID: 0}
+  _rb: {fileID: 5679907292579396927}
 --- !u!58 &87275507197403897
 CircleCollider2D:
   m_ObjectHideFlags: 0

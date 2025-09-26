@@ -21,13 +21,12 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.AttackBehaviour
         {
             _rb = enemy.GetComponent<Rigidbody2D>();
             base.Enter(enemy, player, op);
-            _enemy.animator?.SetBool("Attack", true);
-            _enemy.animator?.SetBool("AttackEnd", false);
+            
             if (_characterView == null)
             {
                 _characterView = _player.GetComponent<CharacterView>();
             }
-            _attackCooldown = 2f;
+            _attackCooldown = 5f;
         }
 
         private bool CanExecute()
@@ -57,10 +56,6 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.AttackBehaviour
                     Execute();
                 }
             }
-            if ((_player.position - _enemy.transform.position).magnitude < 1.2f)
-            {
-                _characterView.TakeDamage(_attackDamage, _enemy.transform.position, 1f);
-            }
             if(!_enemy.IsPlayerInAttackRange())
             {
                 _enemy.TransitionToState(_enemy.GetNextStateFromMap(EnemyStateTypes.Search));
@@ -70,9 +65,10 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.AttackBehaviour
         private IEnumerator RollAttackExecution(Vector3 StartPos, Vector3 Direction)
         {
             float timer = 0f;
-            bool attackSuccessfull = false;
+            _enemy.animator?.Play("AttackStart");
             //before attack
             yield return new WaitForSeconds(1f);
+            _enemy.animator?.Play("Attack");
             _rb.linearVelocity = Direction * 10f;
             while (_inAttack)
             {
