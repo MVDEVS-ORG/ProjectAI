@@ -12,8 +12,9 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
     public class TilemapVisualizer : MonoBehaviour
     {
         [Inject] IAssetService _assetService;
+        [SerializeField] private Tilemap _backgroundTilemap;
         [SerializeField]
-        private Tilemap _floorTilemap, _wallTilemap;
+        private Tilemap _dungeonTilemap;
         [SerializeField] private TileSetSO _currentTileSet;
 
         public void SetTileSet(TileSetSO tileSet)
@@ -24,13 +25,25 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
 
         public void PaintFloorTiles(IEnumerable<Vector2Int> floorPositions)
         {
-            if (_currentTileSet == null || _currentTileSet.floorTile == null)
+            if (_currentTileSet == null || _currentTileSet.dungeonRuleTile == null)
             {
                 Debug.LogError("TileSet or floor tile not assigned!");
                 return;
             }
 
-            PaintTiles(floorPositions, _floorTilemap, _currentTileSet.floorTile);
+            PaintTiles(floorPositions, _dungeonTilemap, _currentTileSet.dungeonRuleTile);
+        }
+
+        public void PaintBackgroundTiles(int dungeonWidth, int dungeonHeight)
+        {
+            for(int i=-10; i<dungeonWidth + 10; i++)
+            {
+                for(int j=-5; j< dungeonHeight + 5; j++)
+                {
+                    Vector2Int tilePos = new Vector2Int(i, j);
+                    PaintSingleTile(_backgroundTilemap, _currentTileSet.backgroundTile, tilePos);
+                }
+            }
         }
 
         private void PaintTiles(IEnumerable<Vector2Int> positions, Tilemap tilemap, TileBase tile)
@@ -49,8 +62,8 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
 
         public void Clear()
         {
-            _floorTilemap.ClearAllTiles();
-            _wallTilemap.ClearAllTiles();
+            _backgroundTilemap.ClearAllTiles();
+            _dungeonTilemap.ClearAllTiles();
         }
 
         public void PaintSingleBasicWall(Vector2Int position, string binaryType)
@@ -65,18 +78,18 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
             TileBase tile = null;
 
             if (WallTypesHelper.wallTop.Contains(typeAsInt))
-                tile = _currentTileSet.wallTop;
+                tile = _currentTileSet.dungeonRuleTile;
             else if (WallTypesHelper.wallSideRight.Contains(typeAsInt))
-                tile = _currentTileSet.wallSideRight;
+                tile = _currentTileSet.dungeonRuleTile;
             else if (WallTypesHelper.wallSideLeft.Contains(typeAsInt))
-                tile = _currentTileSet.wallSideLeft;
+                tile = _currentTileSet.dungeonRuleTile;
             else if (WallTypesHelper.wallBottm.Contains(typeAsInt))
-                tile = _currentTileSet.wallBottom;
+                tile = _currentTileSet.dungeonRuleTile;
             else if (WallTypesHelper.wallFull.Contains(typeAsInt))
-                tile = _currentTileSet.wallFull;
+                tile = _currentTileSet.dungeonRuleTile;
 
             if (tile != null)
-                PaintSingleTile(_wallTilemap, tile, position);
+                PaintSingleTile(_dungeonTilemap, tile, position);
         }
 
         public void PaintSingleCornerWall(Vector2Int position, string binaryType)
@@ -91,24 +104,24 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
             TileBase tile = null;
 
             if (WallTypesHelper.wallInnerCornerDownLeft.Contains(typeAsInt))
-                tile = _currentTileSet.wallInnerCornerDownLeft;
+                tile = _currentTileSet.dungeonRuleTile;
             else if (WallTypesHelper.wallInnerCornerDownRight.Contains(typeAsInt))
-                tile = _currentTileSet.wallInnerCornerDownRight;
+                tile = _currentTileSet.dungeonRuleTile;
             else if (WallTypesHelper.wallDiagonalCornerDownLeft.Contains(typeAsInt))
-                tile = _currentTileSet.wallDiagonalCornerDownLeft;
+                tile = _currentTileSet.dungeonRuleTile;
             else if (WallTypesHelper.wallDiagonalCornerDownRight.Contains(typeAsInt))
-                tile = _currentTileSet.wallDiagonalCornerDownRight;
+                tile = _currentTileSet.dungeonRuleTile;
             else if (WallTypesHelper.wallDiagonalCornerUpRight.Contains(typeAsInt))
-                tile = _currentTileSet.wallDiagonalCornerUpRight;
+                tile = _currentTileSet.dungeonRuleTile;
             else if (WallTypesHelper.wallDiagonalCornerUpLeft.Contains(typeAsInt))
-                tile = _currentTileSet.wallDiagonalCornerUpLeft;
+                tile = _currentTileSet.dungeonRuleTile;
             else if (WallTypesHelper.wallFullEightDirections.Contains(typeAsInt))
-                tile = _currentTileSet.wallFull;
+                tile = _currentTileSet.dungeonRuleTile;
             else if (WallTypesHelper.wallBottmEightDirections.Contains(typeAsInt))
-                tile = _currentTileSet.wallBottom;
+                tile = _currentTileSet.dungeonRuleTile;
 
             if (tile != null)
-                PaintSingleTile(_wallTilemap, tile, position);
+                PaintSingleTile(_dungeonTilemap, tile, position);
         }
     }
 }

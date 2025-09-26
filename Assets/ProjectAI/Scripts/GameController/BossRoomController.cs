@@ -34,7 +34,7 @@ namespace Assets.ProjectAI.Scripts.GameController
             {
                 GameObject bossRoomObj = await _poolManager.SpawnObjectAsync(
                     AddressableIds.BossRoom_LVL_1, 
-                    Vector2.one, 
+                    Vector2.zero, 
                     Quaternion.identity, 
                     ObjectPoolManager.PoolType.GameObjects
                     );

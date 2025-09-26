@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 using Assets.ProjectAI.Scripts.DungeonScripts;
 using Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items;
 using Zenject;
-
+using UnityEngine.Tilemaps;
 
 
 #if UNITY_EDITOR
@@ -16,11 +15,8 @@ namespace Assets.ProjectAI.Scripts.PathFinding
     public class PathFindingManager : MonoBehaviour
     {
         public static PathFindingManager Instance { get; private set; }
-
-        [Header("Assign the Obstacle Tilemap (walls)")]
-        public Tilemap wallTileMap;
-        [Header("Assign the floor Tilemap (walkable area)")]
-        public Tilemap floorTilemap;
+        [SerializeField] private Tilemap _tileMap;
+        [SerializeField] private Sprite _floorSprite;
 
         [Header("Debug Grid (Editor Only)")]
         public bool debugDrawGrid = true;
@@ -29,11 +25,12 @@ namespace Assets.ProjectAI.Scripts.PathFinding
 
         private PathNode[,] nodes;
         private bool[,] baseWalkable;
-        private HashSet<Vector2Int> blockedByItems = new HashSet<Vector2Int>();
+        private HashSet<Vector2Int> blockedByItems = new();
 
         private int width, height, offsetX, offsetY;
         private bool _initialBaked = false;
         private bool _itemsBaked = false;
+        private List<Vector2Int> _walkablePositions = new();
 
         /// <summary>
         /// True once both static and item bakes have been performed successfully.
@@ -43,11 +40,8 @@ namespace Assets.ProjectAI.Scripts.PathFinding
         [Inject]
         public void Initialize()
         {
-            Debug.Log("Reached here");
             if (Instance == null)
-            {
                 Instance = this;
-            }
             else
             {
                 Destroy(Instance);
@@ -56,34 +50,60 @@ namespace Assets.ProjectAI.Scripts.PathFinding
         }
 
         /// <summary>
-        /// Static initial bake: rooms, corridors, walls.
+        /// Bake navigation grid using DungeonData (rooms + corridors).
         /// </summary>
         public void InitialBake(DungeonData data)
         {
-            BoundsInt bounds = wallTileMap.cellBounds;
-            width = bounds.size.x;
-            height = bounds.size.y;
-            offsetX = bounds.xMin;
-            offsetY = bounds.yMin;
+            // Combine floor + corridor positions
+            HashSet<Vector2Int> walkableTiles = new HashSet<Vector2Int>();
+            walkableTiles.UnionWith(data.floorPositions);
+            walkableTiles.UnionWith(data.corridorPositions);
+
+            // Determine grid bounds dynamically
+            int minX = int.MaxValue, minY = int.MaxValue;
+            int maxX = int.MinValue, maxY = int.MinValue;
+
+            foreach (var pos in walkableTiles)
+            {
+                if (pos.x < minX) minX = pos.x;
+                if (pos.y < minY) minY = pos.y;
+                if (pos.x > maxX) maxX = pos.x;
+                if (pos.y > maxY) maxY = pos.y;
+            }
+
+            // Safety: if walkableTiles empty, create 1x1 around (0,0)
+            if (walkableTiles.Count == 0)
+            {
+                minX = minY = 0;
+                maxX = maxY = 0;
+            }
+
+            width = maxX - minX + 1;
+            height = maxY - minY + 1;
+            offsetX = minX;
+            offsetY = minY;
 
             nodes = new PathNode[width, height];
             baseWalkable = new bool[width, height];
+            blockedByItems.Clear();
 
-            // Combine room and corridor tiles
-            HashSet<Vector2Int> walkableTiles = new HashSet<Vector2Int>();
-            foreach (var kvp in data.roomsDictionary)
-                walkableTiles.UnionWith(kvp.Value);
-            walkableTiles.UnionWith(data.corridorPositions);
+            _walkablePositions.Clear();
 
             for (int x = 0; x < width; x++)
             {
                 for (int y = 0; y < height; y++)
                 {
-                    Vector3Int cell = new Vector3Int(x + offsetX, y + offsetY, 0);
-                    Vector2Int c2 = new Vector2Int(cell.x, cell.y);
-                    bool canWalk = walkableTiles.Contains(c2) && !wallTileMap.HasTile(cell);
+                    Vector2Int pos = new Vector2Int(x + offsetX, y + offsetY);
+                    bool canWalk = walkableTiles.Contains(pos);
+
                     baseWalkable[x, y] = canWalk;
-                    nodes[x, y] = new PathNode { position = cell, walkable = canWalk };
+                    nodes[x, y] = new PathNode
+                    {
+                        position = new Vector3Int(pos.x, pos.y, 0),
+                        walkable = canWalk
+                    };
+                    if (baseWalkable[x, y])
+                        _walkablePositions.Add(new Vector2Int(x + offsetX, y + offsetY));
                 }
             }
 
@@ -94,23 +114,20 @@ namespace Assets.ProjectAI.Scripts.PathFinding
 #endif
         }
 
-        /// <summary>
-        /// Awaitable wrapper around InitialBake.
-        /// </summary>
-        public async Awaitable<bool> InitialBakeAsync(DungeonData data)
+        public async Awaitable<DungeonData> InitialBakeAsync(DungeonData data)
         {
             try
             {
                 _initialBaked = false;
-                InitialBake(data);
+                data = BakeFromTilemapAndPopulateDungeonData(_tileMap, _floorSprite, data);
                 await Awaitable.NextFrameAsync();
-                _itemsBaked = false; // require items bake afterwards
-                return true;
+                _itemsBaked = false; // Require items bake afterwards
+                return data;
             }
             catch (System.Exception e)
             {
                 Debug.LogError($"InitialBakeAsync failed: {e}");
-                return false;
+                return data;
             }
         }
 
@@ -128,60 +145,7 @@ namespace Assets.ProjectAI.Scripts.PathFinding
 
             _itemsBaked = true;
         }
-        public async Awaitable<bool> BakeFromTilemapsAsync()
-        {
-            try
-            {
-                BakeFromTilemaps();
-                await Awaitable.NextFrameAsync();
-                return true;
-            }
-            catch (System.Exception e)
-            {
-                Debug.LogError($"BakeFromTilemapsAsync failed: {e}");
-                return false;
-            }
-        }
-        public void BakeFromTilemaps()
-        {
-            BoundsInt bounds = floorTilemap.cellBounds;
-            width = bounds.size.x;
-            height = bounds.size.y;
-            offsetX = bounds.xMin;
-            offsetY = bounds.yMin;
 
-            nodes = new PathNode[width, height];
-            baseWalkable = new bool[width, height];
-            blockedByItems.Clear();
-
-            for (int x = 0; x < width; x++)
-            {
-                for (int y = 0; y < height; y++)
-                {
-                    Vector3Int cell = new Vector3Int(x + offsetX, y + offsetY, 0);
-                    bool hasFloor = floorTilemap.HasTile(cell);
-                    bool hasWall = wallTileMap.HasTile(cell);
-                    bool canWalk = hasFloor && !hasWall;
-
-                    baseWalkable[x, y] = canWalk;
-                    nodes[x, y] = new PathNode
-                    {
-                        position = cell,
-                        walkable = canWalk
-                    };
-                }
-            }
-
-            _initialBaked = true;
-            _itemsBaked = true;
-
-#if UNITY_EDITOR
-            if (debugDrawGrid) SceneView.RepaintAll();
-#endif
-        }
-        /// <summary>
-        /// Awaitable wrapper around BakeItems.
-        /// </summary>
         public async Awaitable<bool> BakeItemsAsync(DungeonData data)
         {
             try
@@ -198,37 +162,29 @@ namespace Assets.ProjectAI.Scripts.PathFinding
         }
 
         /// <summary>
-        /// Block tiles under an item immediately.
+        /// Block tiles under an item based on its itemSize and grid offset.
         /// </summary>
         public void BlockItemArea(Item item)
         {
             if (item == null) return;
 
+            Vector2Int center = Vector2Int.RoundToInt(item.transform.position);
             Vector2Int size = item.itemSize;
-            Vector3 itemPos = item.transform.position;
 
-            Vector3Int centerTile = floorTilemap.WorldToCell(itemPos);
-
-            // Correct bottom-left calculation that works for both even and odd sizes
             int halfWidth = Mathf.FloorToInt((size.x - 1) / 2f);
             int halfHeight = Mathf.FloorToInt((size.y - 1) / 2f);
 
-            Vector3Int bottomLeft = new Vector3Int(
-                centerTile.x - halfWidth,
-                centerTile.y - halfHeight,
-                0
-            );
+            Vector2Int bottomLeft = new Vector2Int(center.x - halfWidth, center.y - halfHeight);
 
             for (int x = 0; x < size.x; x++)
             {
                 for (int y = 0; y < size.y; y++)
                 {
-                    Vector3Int tile = bottomLeft + new Vector3Int(x, y, 0);
-                    Vector2Int pos = new Vector2Int(tile.x, tile.y);
+                    Vector2Int pos = bottomLeft + new Vector2Int(x, y);
                     blockedByItems.Add(pos);
 
-                    int ix = tile.x - offsetX;
-                    int iy = tile.y - offsetY;
+                    int ix = pos.x - offsetX;
+                    int iy = pos.y - offsetY;
 
                     if (IsInBounds(ix, iy) && nodes[ix, iy] != null)
                         nodes[ix, iy].walkable = false;
@@ -240,37 +196,167 @@ namespace Assets.ProjectAI.Scripts.PathFinding
 #endif
         }
 
+        public DungeonData BakeFromTilemapAndPopulateDungeonData(Tilemap tilemap, Sprite floorSprite, DungeonData data)
+        {
+            if (tilemap == null || floorSprite == null)
+            {
+                Debug.LogError("BakeFromTilemapAndPopulateDungeonData: Missing tilemap or floor sprite reference.");
+                return data;
+            }
+
+            if (data == null)
+            {
+                Debug.LogError("BakeFromTilemapAndPopulateDungeonData: DungeonData is null.");
+                return data;
+            }
+
+            _initialBaked = false;
+            blockedByItems.Clear();
+            _walkablePositions.Clear();
+
+
+            BoundsInt bounds = tilemap.cellBounds;
+
+            width = bounds.size.x;
+            height = bounds.size.y;
+            offsetX = bounds.xMin;
+            offsetY = bounds.yMin;
+
+            nodes = new PathNode[width, height];
+            baseWalkable = new bool[width, height];
+
+            for (int x = 0; x < width; x++)
+            {
+                for (int y = 0; y < height; y++)
+                {
+                    Vector3Int cellPos = new Vector3Int(x + offsetX, y + offsetY, 0);
+                    TileBase tile = tilemap.GetTile(cellPos);
+
+                    bool canWalk = false;
+
+                    if (tile != null)
+                    {
+                        Sprite tileSprite = tilemap.GetSprite(cellPos);
+                        if (tileSprite != null && tileSprite == floorSprite)
+                        {
+                            canWalk = true;
+                        }
+                    }
+
+                    baseWalkable[x, y] = canWalk;
+                    nodes[x, y] = new PathNode
+                    {
+                        position = cellPos,
+                        walkable = canWalk
+                    };
+
+                    if (canWalk)
+                    {
+                        Vector2Int gridPos = new Vector2Int(cellPos.x, cellPos.y);
+                        _walkablePositions.Add(gridPos);
+                        if(!data.floorPositions.Contains(gridPos))
+                            data.floorPositions.Add(gridPos);
+                    }
+                }
+            }
+
+            _initialBaked = true;
+
+#if UNITY_EDITOR
+            if (debugDrawGrid) SceneView.RepaintAll();
+#endif
+
+            Debug.Log($"BakeFromTilemapAndPopulateDungeonData complete: {data.floorPositions.Count} floor positions added.");
+            return data;
+        }
+
+
+        public void BakeFromTilemap()
+        {
+            if (_tileMap == null || _floorSprite == null)
+            {
+                Debug.LogError("BakeFromTilemap: Missing tilemap or floor sprite reference.");
+                return;
+            }
+
+            _initialBaked = false;
+            blockedByItems.Clear();
+            _walkablePositions.Clear();
+
+            // 1️⃣ Get tilemap bounds
+            BoundsInt bounds = _tileMap.cellBounds;
+
+            width = bounds.size.x;
+            height = bounds.size.y;
+            offsetX = bounds.xMin;
+            offsetY = bounds.yMin;
+
+            nodes = new PathNode[width, height];
+            baseWalkable = new bool[width, height];
+
+            // 2️⃣ Iterate through all tiles in bounds
+            for (int x = 0; x < width; x++)
+            {
+                for (int y = 0; y < height; y++)
+                {
+                    Vector3Int cellPos = new Vector3Int(x + offsetX, y + offsetY, 0);
+                    TileBase tile = _tileMap.GetTile(cellPos);
+
+                    bool canWalk = false;
+
+                    if (tile != null)
+                    {
+                        // Get tile sprite and check if it matches floorSprite
+                        Sprite tileSprite = _tileMap.GetSprite(cellPos);
+                        if (tileSprite != null && tileSprite == _floorSprite)
+                        {
+                            canWalk = true;
+                        }
+                    }
+
+                    baseWalkable[x, y] = canWalk;
+                    nodes[x, y] = new PathNode
+                    {
+                        position = cellPos,
+                        walkable = canWalk
+                    };
+
+                    if (canWalk)
+                        _walkablePositions.Add(new Vector2Int(cellPos.x, cellPos.y));
+                }
+            }
+
+            _initialBaked = true;
+
+#if UNITY_EDITOR
+            if (debugDrawGrid) SceneView.RepaintAll();
+#endif
+        }
+
         /// <summary>
-        /// Unblock tiles under a destroyed item immediately.
+        /// Unblock tiles under a destroyed item.
         /// </summary>
         public void UnblockItemArea(Item item)
         {
             if (item == null) return;
 
+            Vector2Int center = Vector2Int.RoundToInt(item.transform.position);
             Vector2Int size = item.itemSize;
-            Vector3 itemPos = item.transform.position;
-
-            Vector3Int centerTile = floorTilemap.WorldToCell(itemPos);
 
             int halfWidth = Mathf.FloorToInt((size.x - 1) / 2f);
             int halfHeight = Mathf.FloorToInt((size.y - 1) / 2f);
 
-            Vector3Int bottomLeft = new Vector3Int(
-                centerTile.x - halfWidth,
-                centerTile.y - halfHeight,
-                0
-            );
+            Vector2Int bottomLeft = new Vector2Int(center.x - halfWidth, center.y - halfHeight);
 
             for (int x = 0; x < size.x; x++)
             {
                 for (int y = 0; y < size.y; y++)
                 {
-                    Vector3Int tile = bottomLeft + new Vector3Int(x, y, 0);
-                    Vector2Int pos = new Vector2Int(tile.x, tile.y);
+                    Vector2Int pos = bottomLeft + new Vector2Int(x, y);
                     blockedByItems.Remove(pos);
 
-                    int ix = tile.x - offsetX;
-                    int iy = tile.y - offsetY;
+                    int ix = pos.x - offsetX;
+                    int iy = pos.y - offsetY;
 
                     if (IsInBounds(ix, iy) && nodes[ix, iy] != null)
                         nodes[ix, iy].walkable = baseWalkable[ix, iy];
@@ -282,82 +368,109 @@ namespace Assets.ProjectAI.Scripts.PathFinding
 #endif
         }
 
-        public Vector2Int GetNearestValidWalkableTile(Vector2Int position)
+        public Vector2Int GetNearestValidWalkableTile(Vector2Int startCell)
         {
-            int x = position.x - offsetX;
-            int y = position.y - offsetY;
+            // If already walkable, return it
+            if (IsWalkable(startCell)) return startCell;
 
-            if (IsInBounds(x, y) && baseWalkable[x, y] && nodes[x, y]?.walkable == true && !blockedByItems.Contains(position))
-            {
-                return position;
-            }
+            // Breadth-first search to find nearest walkable
+            Queue<Vector2Int> queue = new Queue<Vector2Int>();
+            HashSet<Vector2Int> visited = new HashSet<Vector2Int>();
+            queue.Enqueue(startCell);
+            visited.Add(startCell);
 
-            // Spiral outward search in 8 directions
-            int maxRadius = Mathf.Max(width, height);
-            for (int radius = 1; radius < maxRadius; radius++)
+            List<Vector2Int> directions = new List<Vector2Int>
             {
-                foreach (var dir in Direction2D.eightDirectionList)
+                Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right
+            };
+
+            while (queue.Count > 0)
+            {
+                Vector2Int current = queue.Dequeue();
+
+                foreach (var dir in directions)
                 {
-                    Vector2Int checkPos = position + dir * radius;
+                    Vector2Int next = current + dir;
+                    if (visited.Contains(next)) continue;
+                    visited.Add(next);
 
-                    int cx = checkPos.x - offsetX;
-                    int cy = checkPos.y - offsetY;
-
-                    if (!IsInBounds(cx, cy)) continue;
-
-                    if (baseWalkable[cx, cy] && nodes[cx, cy]?.walkable == true && !blockedByItems.Contains(checkPos))
-                    {
-                        return checkPos;
-                    }
+                    if (IsWalkable(next)) return next;
+                    queue.Enqueue(next);
                 }
             }
 
-            // Fallback: return original position if nothing found
-            return position;
+            Debug.LogWarning($"No walkable tile found near {startCell}");
+            return startCell; // fallback
         }
 
-        public Vector3Int GetRandomWalkableTile()
+        public bool IsWalkable(Vector2Int cell)
         {
-            int attempts = 0;
-
-            while (attempts < 100)
-            {
-                int x = Random.Range(0, floorTilemap.cellBounds.size.x);
-                int y = Random.Range(0, floorTilemap.cellBounds.size.y);
-                Vector3Int cell = new Vector3Int(x + floorTilemap.cellBounds.xMin, y + floorTilemap.cellBounds.yMin, 0);
-
-                int nx = cell.x - offsetX;
-                int ny = cell.y - offsetY;
-
-                if (!IsInBounds(nx, ny))
-                {
-                    attempts++;
-                    continue;
-                }
-
-                PathNode node = nodes[nx, ny];
-                if (node != null && node.walkable && baseWalkable[nx, ny] && !blockedByItems.Contains((Vector2Int)cell))
-                {
-                    return cell;
-                }
-
-                attempts++;
-            }
-
-            // Fallback to current position snapped to tile
-            return floorTilemap.WorldToCell(transform.position);
+            int localX = cell.x - offsetX;
+            int localY = cell.y - offsetY;
+            if (localX < 0 || localY < 0 || localX >= width || localY >= height)
+                return false;
+            return baseWalkable[localX, localY];
         }
 
         /// <summary>
-        /// Find a path using A* from start to target.
+        /// Convert a world position (Vector3) to the nearest grid cell (Vector3Int), clamped to the baked grid.
         /// </summary>
+        public Vector3Int WorldToCell(Vector3 worldPos)
+        {
+            int cellX = Mathf.RoundToInt(worldPos.x);
+            int cellY = Mathf.RoundToInt(worldPos.y);
+
+            int localX = Mathf.Clamp(cellX - offsetX, 0, Mathf.Max(0, width - 1));
+            int localY = Mathf.Clamp(cellY - offsetY, 0, Mathf.Max(0, height - 1));
+
+            return new Vector3Int(localX + offsetX, localY + offsetY, 0);
+        }
+
+        /// <summary>
+        /// Overload to accept a Vector3Int (already integer world coords) and clamp to grid.
+        /// Useful if you already have a cell position from GetRandomWalkableTile.
+        /// </summary>
+        public Vector3Int WorldToCell(Vector3Int worldCell)
+        {
+            int localX = Mathf.Clamp(worldCell.x - offsetX, 0, Mathf.Max(0, width - 1));
+            int localY = Mathf.Clamp(worldCell.y - offsetY, 0, Mathf.Max(0, height - 1));
+            return new Vector3Int(localX + offsetX, localY + offsetY, 0);
+        }
+
+        /// <summary>
+        /// Convert a cell coordinate back to world center (center of tile).
+        /// </summary>
+        public Vector3 CellToWorld(Vector3Int cell)
+        {
+            return new Vector3(cell.x + 0.5f, cell.y + 0.5f, 0f);
+        }
+
+        public Vector3Int GetRandomWalkableTileNear(Vector3Int center, int radius)
+        {
+            // Optional helper if you want nearby randoms; not required for now.
+            var tilePos = GetNearestValidWalkableTile(new Vector2Int(center.x, center.y));
+            Vector3Int ranTile = new Vector3Int(tilePos.x, tilePos.y, 0);
+            return ranTile;
+        }
+
+        /// <summary>
+        /// Returns a random walkable tile from the baked grid.
+        /// </summary>
+        public Vector2Int GetRandomWalkableTile()
+        {
+            if (_walkablePositions.Count == 0)
+            {
+                Debug.LogError("No walkable positions found in dungeon!");
+                return Vector2Int.zero;
+            }
+
+            int index = UnityEngine.Random.Range(0, _walkablePositions.Count);
+            return _walkablePositions[index];
+        }
+
         public List<Vector3Int> FindPath(Vector3Int startCell, Vector3Int targetCell)
         {
             if (nodes == null) return null;
-
-
-            if (!floorTilemap.HasTile(startCell) || !floorTilemap.HasTile(targetCell))
-                return null;
 
             Vector2Int start = (Vector2Int)startCell;
             Vector2Int target = (Vector2Int)targetCell;
@@ -387,6 +500,7 @@ namespace Assets.ProjectAI.Scripts.PathFinding
 
             startNode.gCost = 0;
             startNode.hCost = Heuristic(startNode.position, endNode.position);
+
             var openSet = new SimplePriorityQueue<PathNode>();
             openSet.Enqueue(startNode, startNode.fCost);
 
@@ -396,7 +510,7 @@ namespace Assets.ProjectAI.Scripts.PathFinding
                 current.closed = true;
 
                 if (current == endNode)
-                    return ReconstrucPath(startNode, endNode);
+                    return ReconstructPath(startNode, endNode);
 
                 foreach (var dir in Direction2D.eightDirectionList)
                 {
@@ -408,7 +522,7 @@ namespace Assets.ProjectAI.Scripts.PathFinding
                     if (neighbor == null || neighbor.closed || !neighbor.walkable)
                         continue;
 
-                    // Diagonal corner-cutting prevention
+                    // Prevent corner cutting
                     if (dir.x != 0 && dir.y != 0)
                     {
                         Vector2Int adj1 = new(current.position.x + dir.x, current.position.y);
@@ -435,9 +549,16 @@ namespace Assets.ProjectAI.Scripts.PathFinding
                 }
             }
 
-            return null; // No path found
+            return null;
         }
 
+        /// <summary>
+        /// Returns the world position of the center of a given cell (grid coordinate).
+        /// </summary>
+        public Vector3 GetCellCenterWorld(Vector3Int cell)
+        {
+            return new Vector3(cell.x + 0.5f, cell.y + 0.5f, 0f);
+        }
 
 #if UNITY_EDITOR
         private void OnDrawGizmos()
@@ -451,10 +572,12 @@ namespace Assets.ProjectAI.Scripts.PathFinding
 
                     Vector2Int coord = new Vector2Int(node.position.x, node.position.y);
                     bool showWalkable = baseWalkable[x, y] && !blockedByItems.Contains(coord);
-                    Vector3 worldPos = wallTileMap.GetCellCenterWorld(node.position);
+
+                    Vector3 worldPos = new Vector3(node.position.x + 0.5f, node.position.y + 0.5f, 0);
                     Gizmos.color = showWalkable ? walkableColor : unwalkableColor;
                     Gizmos.DrawCube(worldPos, Vector3.one * 0.9f);
                 }
+
         }
 #endif
 
@@ -465,7 +588,7 @@ namespace Assets.ProjectAI.Scripts.PathFinding
             return 14 * Mathf.Min(dx, dy) + 10 * Mathf.Abs(dx - dy);
         }
 
-        private List<Vector3Int> ReconstrucPath(PathNode startNode, PathNode endNode)
+        private List<Vector3Int> ReconstructPath(PathNode startNode, PathNode endNode)
         {
             List<Vector3Int> path = new List<Vector3Int>();
             PathNode current = endNode;
@@ -483,55 +606,55 @@ namespace Assets.ProjectAI.Scripts.PathFinding
             return x >= 0 && x < width && y >= 0 && y < height;
         }
     }
-}
 
-public class SimplePriorityQueue<T>
-{
-    private List<(T item, int priority)> elements = new();
-
-    public int Count => elements.Count;
-
-    public void Enqueue(T item, int priority)
+    public class SimplePriorityQueue<T>
     {
-        elements.Add((item, priority));
-        int c = elements.Count - 1;
+        private List<(T item, int priority)> elements = new();
 
-        while (c > 0)
+        public int Count => elements.Count;
+
+        public void Enqueue(T item, int priority)
         {
-            int parent = (c - 1) / 2;
-            if (elements[c].priority >= elements[parent].priority) break;
+            elements.Add((item, priority));
+            int c = elements.Count - 1;
 
-            (elements[c], elements[parent]) = (elements[parent], elements[c]);
-            c = parent;
+            while (c > 0)
+            {
+                int parent = (c - 1) / 2;
+                if (elements[c].priority >= elements[parent].priority) break;
+
+                (elements[c], elements[parent]) = (elements[parent], elements[c]);
+                c = parent;
+            }
         }
-    }
 
-    public T Dequeue()
-    {
-        int last = elements.Count - 1;
-        T item = elements[0].item;
-        elements[0] = elements[last];
-        elements.RemoveAt(last);
-        Heapify(0);
-        return item;
-    }
-
-    private void Heapify(int i)
-    {
-        int smallest = i;
-        int left = 2 * i + 1;
-        int right = 2 * i + 2;
-
-        if (left < elements.Count && elements[left].priority < elements[smallest].priority)
-            smallest = left;
-
-        if (right < elements.Count && elements[right].priority < elements[smallest].priority)
-            smallest = right;
-
-        if (smallest != i)
+        public T Dequeue()
         {
-            (elements[i], elements[smallest]) = (elements[smallest], elements[i]);
-            Heapify(smallest);
+            int last = elements.Count - 1;
+            T item = elements[0].item;
+            elements[0] = elements[last];
+            elements.RemoveAt(last);
+            Heapify(0);
+            return item;
+        }
+
+        private void Heapify(int i)
+        {
+            int smallest = i;
+            int left = 2 * i + 1;
+            int right = 2 * i + 2;
+
+            if (left < elements.Count && elements[left].priority < elements[smallest].priority)
+                smallest = left;
+
+            if (right < elements.Count && elements[right].priority < elements[smallest].priority)
+                smallest = right;
+
+            if (smallest != i)
+            {
+                (elements[i], elements[smallest]) = (elements[smallest], elements[i]);
+                Heapify(smallest);
+            }
         }
     }
 }

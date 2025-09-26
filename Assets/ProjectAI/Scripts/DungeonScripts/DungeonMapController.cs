@@ -23,13 +23,14 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
             var tileSet = await _assetService.LoadAssetAsync<TileSetSO>(AddressableIds.TileSet + _levelManager.CurrentLevel.ToString());
             _tileMapVisualizer.SetTileSet(tileSet);
             DungeonData data = await _roomFirstDungeonGenerator.GenerateDungeon();
-            var isMapBaked = await PathFindingManager.Instance.InitialBakeAsync(data);
+            data = await PathFindingManager.Instance.InitialBakeAsync(data);
+            data =  _roomFirstDungeonGenerator.DetectDoorPositions(data);
             var items = await _roomContentGenerator.GenerateRoomContent(data);
             foreach (var item in items)
             {
                 data.items.Add(item);
             }
-            isMapBaked = await PathFindingManager.Instance.BakeItemsAsync(data);
+            var isMapBaked = await PathFindingManager.Instance.BakeItemsAsync(data);
             if (isMapBaked)
             {
                 Debug.Log("Baking Complete");
