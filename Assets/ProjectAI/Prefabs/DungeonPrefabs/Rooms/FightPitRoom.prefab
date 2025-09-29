@@ -44,7 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1848dba18d4075248b2277569da69e91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabPlacer: {fileID: 2182287869053027293, guid: d6acdd40924c5f9409603dd8825c5640, type: 3}
   enemyPlacementData:
   - minQuantity: 2
     maxQuantity: 3
@@ -53,6 +52,10 @@ MonoBehaviour:
   - minQuantity: 2
     maxQuantity: 3
     enemyPrefabAddress: Slicenator
+    enemySize: {x: 1, y: 1}
+  - minQuantity: 2
+    maxQuantity: 3
+    enemyPrefabAddress: DashBot
     enemySize: {x: 1, y: 1}
   itemData:
   - minQuantity: 2

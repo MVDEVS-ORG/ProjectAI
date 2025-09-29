@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 935257101753178581}
   - component: {fileID: 1987065589951516102}
   - component: {fileID: 1391214655419286422}
-  - component: {fileID: 3335955240467550703}
   m_Layer: 5
   m_Name: GunSprite
   m_TagString: Untagged
@@ -76,19 +75,3 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3335955240467550703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2519839188076477335}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 551059e799448404296fad8bb2bb1c9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _data:
-    Sprite: {fileID: 0}
-  _rectTransform: {fileID: 935257101753178581}
-  _image: {fileID: 1391214655419286422}

@@ -35,6 +35,7 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
 
     protected Dictionary<IEnemyState, EnemyStateTypes> stateMap = new();
     protected IEnemyState currentState;
+    protected EnemyStateTypes StartStateType;
 
     [HideInInspector] public List<Vector3Int> currentPath;
     [HideInInspector] public int currentPathIndex;
@@ -60,6 +61,7 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
         _enemyCollider.enabled = true;
         animator = GetComponent<Animator>();
         StartCoroutine(WaitForBakeAndStart());
+        InitialState();
     }
 
     void OnEnable()
@@ -69,11 +71,16 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
         StartCoroutine(WaitForBakeAndStart());
     }
 
+    public virtual void InitialState()
+    {
+        StartStateType = EnemyStateTypes.Idle;
+    }
+
     IEnumerator WaitForBakeAndStart()
     {
         while (!PathFindingManager.Instance.IsMapBaked)
             yield return null;
-        TransitionToState(GetNextStateFromMap(EnemyStateTypes.Idle));
+        TransitionToState(GetNextStateFromMap(StartStateType));
     }
 
     void Update()
