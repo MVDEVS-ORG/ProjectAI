@@ -229,7 +229,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cardsContainer: {fileID: 4555976297166519107}
-  detailsPanel: {fileID: 4694276059889473613}
   _backToMainMenu: {fileID: 3501436766317684981}
   _mainMenu: {fileID: 5909123148405359354}
   _characterDetailsUI: {fileID: 4694276059889473613}
@@ -351,6 +350,7 @@ GameObject:
   - component: {fileID: 5934630946766650504}
   - component: {fileID: 3501436766317684981}
   - component: {fileID: 3597985615011042003}
+  - component: {fileID: 6557789029926797038}
   m_Layer: 5
   m_Name: BackToMainMenu
   m_TagString: Untagged
@@ -480,6 +480,33 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &6557789029926797038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984621593240714971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98c63a1815188114c8ff6b15739440ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _selectedSoundReference:
+    Guid:
+      Data1: -1024091519
+      Data2: 1321853135
+      Data3: -1670977108
+      Data4: 1237347797
+    Path: event:/UISelection
+  _clickedSoundReference:
+    Guid:
+      Data1: -1024091519
+      Data2: 1321853135
+      Data3: -1670977108
+      Data4: 1237347797
+    Path: event:/UISelection
+  _objInWorldSpace: 0
 --- !u!1 &1015573017764892919
 GameObject:
   m_ObjectHideFlags: 0
@@ -1340,6 +1367,7 @@ GameObject:
   - component: {fileID: 6350895767531703383}
   - component: {fileID: 7550646883830549181}
   - component: {fileID: 4043287808788096886}
+  - component: {fileID: 8086015902673349942}
   m_Layer: 5
   m_Name: Change Character
   m_TagString: Untagged
@@ -1449,6 +1477,33 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8086015902673349942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2875315326896648350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98c63a1815188114c8ff6b15739440ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _selectedSoundReference:
+    Guid:
+      Data1: -1024091519
+      Data2: 1321853135
+      Data3: -1670977108
+      Data4: 1237347797
+    Path: event:/UISelection
+  _clickedSoundReference:
+    Guid:
+      Data1: -1024091519
+      Data2: 1321853135
+      Data3: -1670977108
+      Data4: 1237347797
+    Path: event:/UISelection
+  _objInWorldSpace: 0
 --- !u!1 &3471526562431631339
 GameObject:
   m_ObjectHideFlags: 0
@@ -2625,6 +2680,7 @@ GameObject:
   - component: {fileID: 8260338892664322649}
   - component: {fileID: 5737120002299291623}
   - component: {fileID: 4350789496456488281}
+  - component: {fileID: 1736318719387306347}
   m_Layer: 5
   m_Name: SettingsButton
   m_TagString: Untagged
@@ -2734,6 +2790,33 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1736318719387306347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6194065328697372326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98c63a1815188114c8ff6b15739440ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _selectedSoundReference:
+    Guid:
+      Data1: -1024091519
+      Data2: 1321853135
+      Data3: -1670977108
+      Data4: 1237347797
+    Path: event:/UISelection
+  _clickedSoundReference:
+    Guid:
+      Data1: -1024091519
+      Data2: 1321853135
+      Data3: -1670977108
+      Data4: 1237347797
+    Path: event:/UISelection
+  _objInWorldSpace: 0
 --- !u!1 &6247411605076074575
 GameObject:
   m_ObjectHideFlags: 0
@@ -3049,6 +3132,7 @@ GameObject:
   - component: {fileID: 362638081390333422}
   - component: {fileID: 2564152898778381815}
   - component: {fileID: 2197181163940833596}
+  - component: {fileID: 9091024263649651843}
   m_Layer: 5
   m_Name: Enter the Dungeon Button
   m_TagString: Untagged
@@ -3158,6 +3242,33 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &9091024263649651843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6918216252308750980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98c63a1815188114c8ff6b15739440ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _selectedSoundReference:
+    Guid:
+      Data1: -1024091519
+      Data2: 1321853135
+      Data3: -1670977108
+      Data4: 1237347797
+    Path: event:/UISelection
+  _clickedSoundReference:
+    Guid:
+      Data1: -1024091519
+      Data2: 1321853135
+      Data3: -1670977108
+      Data4: 1237347797
+    Path: event:/UISelection
+  _objInWorldSpace: 0
 --- !u!1 &7001066992097063883
 GameObject:
   m_ObjectHideFlags: 0
@@ -3621,6 +3732,7 @@ GameObject:
   - component: {fileID: 3497999197042169724}
   - component: {fileID: 2078212049779782582}
   - component: {fileID: 6373262973077535661}
+  - component: {fileID: 192663757257366578}
   m_Layer: 5
   m_Name: QuitToDesktop
   m_TagString: Untagged
@@ -3730,6 +3842,33 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &192663757257366578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7540414770859940232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98c63a1815188114c8ff6b15739440ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _selectedSoundReference:
+    Guid:
+      Data1: -1024091519
+      Data2: 1321853135
+      Data3: -1670977108
+      Data4: 1237347797
+    Path: event:/UISelection
+  _clickedSoundReference:
+    Guid:
+      Data1: -1024091519
+      Data2: 1321853135
+      Data3: -1670977108
+      Data4: 1237347797
+    Path: event:/UISelection
+  _objInWorldSpace: 0
 --- !u!1 &7541697973425447892
 GameObject:
   m_ObjectHideFlags: 0
@@ -4291,6 +4430,7 @@ GameObject:
   - component: {fileID: 4091858460961212369}
   - component: {fileID: 2975772299692286253}
   - component: {fileID: 1603250414912312667}
+  - component: {fileID: 1964216414515483396}
   m_Layer: 5
   m_Name: NewGame
   m_TagString: Untagged
@@ -4400,6 +4540,33 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1964216414515483396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8105813649980867580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98c63a1815188114c8ff6b15739440ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _selectedSoundReference:
+    Guid:
+      Data1: -1024091519
+      Data2: 1321853135
+      Data3: -1670977108
+      Data4: 1237347797
+    Path: event:/UISelection
+  _clickedSoundReference:
+    Guid:
+      Data1: -1024091519
+      Data2: 1321853135
+      Data3: -1670977108
+      Data4: 1237347797
+    Path: event:/UISelection
+  _objInWorldSpace: 0
 --- !u!1 &9037979561023758604
 GameObject:
   m_ObjectHideFlags: 0
@@ -4515,6 +4682,7 @@ GameObject:
   - component: {fileID: 5222235742006103250}
   - component: {fileID: 6787998919105881234}
   - component: {fileID: 8479993864125601478}
+  - component: {fileID: 14746292014246882}
   m_Layer: 5
   m_Name: Credits
   m_TagString: Untagged
@@ -4624,3 +4792,30 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &14746292014246882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9179566259254691615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98c63a1815188114c8ff6b15739440ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _selectedSoundReference:
+    Guid:
+      Data1: -1024091519
+      Data2: 1321853135
+      Data3: -1670977108
+      Data4: 1237347797
+    Path: event:/UISelection
+  _clickedSoundReference:
+    Guid:
+      Data1: -1024091519
+      Data2: 1321853135
+      Data3: -1670977108
+      Data4: 1237347797
+    Path: event:/UISelection
+  _objInWorldSpace: 0
