@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{2bb80827-fa7e-4977-8651-2466212086e0}">
+		<property name="assetPath">
+			<value>SFX/clicking-interface-select-201946.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>0.0033124999999999999</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{2fbef013-8a74-4e82-80af-3f144fa6fb8a}</destination>
+		</relationship>
+	</object>
+</objects>

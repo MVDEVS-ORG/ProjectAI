@@ -150,6 +150,7 @@ GameObject:
   - component: {fileID: 8716829590517263266}
   - component: {fileID: 8246144165883463901}
   - component: {fileID: 8053935020958972679}
+  - component: {fileID: 2150131042899063346}
   m_Layer: 5
   m_Name: CharacterCardUI
   m_TagString: Untagged
@@ -292,6 +293,33 @@ MonoBehaviour:
   characterName: {fileID: 1522938594077098486}
   shortDescription: {fileID: 8142731356228661647}
   selectButton: {fileID: 8716829590517263266}
+--- !u!114 &2150131042899063346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2522102240968590822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98c63a1815188114c8ff6b15739440ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _selectedSoundReference:
+    Guid:
+      Data1: -1024091519
+      Data2: 1321853135
+      Data3: -1670977108
+      Data4: 1237347797
+    Path: event:/UISelection
+  _clickedSoundReference:
+    Guid:
+      Data1: -1024091519
+      Data2: 1321853135
+      Data3: -1670977108
+      Data4: 1237347797
+    Path: event:/UISelection
+  _objInWorldSpace: 0
 --- !u!1 &4658678446765563018
 GameObject:
   m_ObjectHideFlags: 0
