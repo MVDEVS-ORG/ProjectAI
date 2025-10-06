@@ -50,7 +50,7 @@ MonoBehaviour:
   - {fileID: 7658538758332548435}
   StringsBanks:
   - {fileID: 5056094646823294983}
-  cacheTime: 638948357688575164
+  cacheTime: 638949141503698249
   cacheVersion: 131625
 --- !u!114 &5056094646823294983
 MonoBehaviour:
@@ -107,8 +107,8 @@ MonoBehaviour:
   Path: FMOD/DungeonGameProject/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638948357688575164
+  lastModified: 638949141503698249
   FileSizes:
   - Name: Desktop
-    Value: 2528
+    Value: 1920
   Exists: 1
