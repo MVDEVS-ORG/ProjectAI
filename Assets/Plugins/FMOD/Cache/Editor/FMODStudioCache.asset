@@ -1,51 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-2929679350704769951
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/SFX.bank
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
-  Path: FMOD/DungeonGameProject/Build/Desktop/SFX.bank
-  Name: SFX
-  StudioPath: bank:/SFX
-  lastModified: 638953445525865659
-  FileSizes:
-  - Name: Desktop
-    Value: 1920
-  Exists: 1
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
-  m_Name: FMODStudioCache
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EventCache
-  EditorBanks:
-  - {fileID: 7995014348643647255}
-  - {fileID: 5237530236576540461}
-  - {fileID: -2929679350704769951}
-  EditorEvents:
-  - {fileID: 3197989036494341735}
-  EditorParameters: []
-  MasterBanks:
-  - {fileID: 5237530236576540461}
-  StringsBanks:
-  - {fileID: 7995014348643647255}
-  cacheTime: 638953445525865659
-  cacheVersion: 131632
---- !u!114 &3197989036494341735
+--- !u!114 &-8707732602413048081
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -59,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
   Path: event:/UISelection
   Guid:
-    Data1: -1024091519
-    Data2: 1321853135
-    Data3: -1670977108
-    Data4: 1237347797
+    Data1: -1161230092
+    Data2: 1117511937
+    Data3: 1647265456
+    Data4: -971720382
   Banks:
-  - {fileID: -2929679350704769951}
+  - {fileID: 2471935825988635551}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -72,7 +27,35 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &5237530236576540461
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EventCache
+  EditorBanks:
+  - {fileID: 2911915510492111105}
+  - {fileID: 9152151792810080475}
+  - {fileID: 2471935825988635551}
+  EditorEvents:
+  - {fileID: -8707732602413048081}
+  EditorParameters: []
+  MasterBanks:
+  - {fileID: 9152151792810080475}
+  StringsBanks:
+  - {fileID: 2911915510492111105}
+  cacheVersion: 131849
+  cacheTime: 638954380484742416
+  SerializableEventsDict:
+  - key: event:/UISelection
+    index: 0
+--- !u!114 &2471935825988635551
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -82,17 +65,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
+  m_Name: bank:/SFX.bank
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
-  Path: FMOD/DungeonGameProject/Build/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 638948352427877106
+  Path: FMOD/DungeonGameProjectV2/DungeonGameProject/Build/Desktop/SFX.bank
+  Name: SFX
+  StudioPath: bank:/SFX
+  lastModified: 638954380484742416
   FileSizes:
   - Name: Desktop
-    Value: 1036
+    Value: 1920
   Exists: 1
---- !u!114 &7995014348643647255
+--- !u!114 &2911915510492111105
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -104,11 +87,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
   m_Name: bank:/Master.strings.bank
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
-  Path: FMOD/DungeonGameProject/Build/Desktop/Master.strings.bank
+  Path: FMOD/DungeonGameProjectV2/DungeonGameProject/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638948352427882152
+  lastModified: 638954380484592858
   FileSizes:
   - Name: Desktop
-    Value: 806
+    Value: 818
+  Exists: 1
+--- !u!114 &9152151792810080475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorBankRef
+  Path: FMOD/DungeonGameProjectV2/DungeonGameProject/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 638954380484581298
+  FileSizes:
+  - Name: Desktop
+    Value: 1074
   Exists: 1
