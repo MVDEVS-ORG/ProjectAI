@@ -16,6 +16,7 @@ public class MainMenuView : MonoBehaviour
 
     [Header("Transitions to")]
     [SerializeField] private CharacterSelectionView _characterSelection;
+    [SerializeField] private SoundSettingsUI _soundSettingsUI;
 
     private void OnEnable()
     {
@@ -45,7 +46,8 @@ public class MainMenuView : MonoBehaviour
 
     private void OpenSettings()
     {
-        Debug.Log("Open Settings");
+        _soundSettingsUI.gameObject.SetActive(true);
+        gameObject.SetActive(false);
     }
 
     private void OpenCredits()
