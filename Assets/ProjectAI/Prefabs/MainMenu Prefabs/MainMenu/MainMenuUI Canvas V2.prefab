@@ -494,17 +494,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _selectedSoundReference:
     Guid:
-      Data1: -1024091519
-      Data2: 1321853135
-      Data3: -1670977108
-      Data4: 1237347797
+      Data1: -1161230092
+      Data2: 1117511937
+      Data3: 1647265456
+      Data4: -971720382
     Path: event:/UISelection
   _clickedSoundReference:
     Guid:
-      Data1: -1024091519
-      Data2: 1321853135
-      Data3: -1670977108
-      Data4: 1237347797
+      Data1: -1161230092
+      Data2: 1117511937
+      Data3: 1647265456
+      Data4: -971720382
     Path: event:/UISelection
   _objInWorldSpace: 0
 --- !u!1 &1015573017764892919
@@ -1491,17 +1491,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _selectedSoundReference:
     Guid:
-      Data1: -1024091519
-      Data2: 1321853135
-      Data3: -1670977108
-      Data4: 1237347797
+      Data1: -1161230092
+      Data2: 1117511937
+      Data3: 1647265456
+      Data4: -971720382
     Path: event:/UISelection
   _clickedSoundReference:
     Guid:
-      Data1: -1024091519
-      Data2: 1321853135
-      Data3: -1670977108
-      Data4: 1237347797
+      Data1: -1161230092
+      Data2: 1117511937
+      Data3: 1647265456
+      Data4: -971720382
     Path: event:/UISelection
   _objInWorldSpace: 0
 --- !u!1 &3471526562431631339
@@ -2804,17 +2804,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _selectedSoundReference:
     Guid:
-      Data1: -1024091519
-      Data2: 1321853135
-      Data3: -1670977108
-      Data4: 1237347797
+      Data1: -1161230092
+      Data2: 1117511937
+      Data3: 1647265456
+      Data4: -971720382
     Path: event:/UISelection
   _clickedSoundReference:
     Guid:
-      Data1: -1024091519
-      Data2: 1321853135
-      Data3: -1670977108
-      Data4: 1237347797
+      Data1: -1161230092
+      Data2: 1117511937
+      Data3: 1647265456
+      Data4: -971720382
     Path: event:/UISelection
   _objInWorldSpace: 0
 --- !u!1 &6247411605076074575
@@ -3256,17 +3256,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _selectedSoundReference:
     Guid:
-      Data1: -1024091519
-      Data2: 1321853135
-      Data3: -1670977108
-      Data4: 1237347797
+      Data1: -1161230092
+      Data2: 1117511937
+      Data3: 1647265456
+      Data4: -971720382
     Path: event:/UISelection
   _clickedSoundReference:
     Guid:
-      Data1: -1024091519
-      Data2: 1321853135
-      Data3: -1670977108
-      Data4: 1237347797
+      Data1: -1161230092
+      Data2: 1117511937
+      Data3: 1647265456
+      Data4: -971720382
     Path: event:/UISelection
   _objInWorldSpace: 0
 --- !u!1 &7001066992097063883
@@ -3856,17 +3856,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _selectedSoundReference:
     Guid:
-      Data1: -1024091519
-      Data2: 1321853135
-      Data3: -1670977108
-      Data4: 1237347797
+      Data1: -1161230092
+      Data2: 1117511937
+      Data3: 1647265456
+      Data4: -971720382
     Path: event:/UISelection
   _clickedSoundReference:
     Guid:
-      Data1: -1024091519
-      Data2: 1321853135
-      Data3: -1670977108
-      Data4: 1237347797
+      Data1: -1161230092
+      Data2: 1117511937
+      Data3: 1647265456
+      Data4: -971720382
     Path: event:/UISelection
   _objInWorldSpace: 0
 --- !u!1 &7541697973425447892
@@ -4554,17 +4554,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _selectedSoundReference:
     Guid:
-      Data1: -1024091519
-      Data2: 1321853135
-      Data3: -1670977108
-      Data4: 1237347797
+      Data1: -1161230092
+      Data2: 1117511937
+      Data3: 1647265456
+      Data4: -971720382
     Path: event:/UISelection
   _clickedSoundReference:
     Guid:
-      Data1: -1024091519
-      Data2: 1321853135
-      Data3: -1670977108
-      Data4: 1237347797
+      Data1: -1161230092
+      Data2: 1117511937
+      Data3: 1647265456
+      Data4: -971720382
     Path: event:/UISelection
   _objInWorldSpace: 0
 --- !u!1 &9037979561023758604
@@ -4806,16 +4806,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _selectedSoundReference:
     Guid:
-      Data1: -1024091519
-      Data2: 1321853135
-      Data3: -1670977108
-      Data4: 1237347797
+      Data1: -1161230092
+      Data2: 1117511937
+      Data3: 1647265456
+      Data4: -971720382
     Path: event:/UISelection
   _clickedSoundReference:
     Guid:
-      Data1: -1024091519
-      Data2: 1321853135
-      Data3: -1670977108
-      Data4: 1237347797
+      Data1: -1161230092
+      Data2: 1117511937
+      Data3: 1647265456
+      Data4: -971720382
     Path: event:/UISelection
   _objInWorldSpace: 0
