@@ -91,7 +91,7 @@ public static class AddressableIds
     public const string Normal_Upgrades_Path = "/upgrades.json";
     public const string Player_Stats_Path = "/playerstats.json";
     public const string Player_Guns_Path = "/playerguns.json";
-
+    public const string Sound_Volume_Data_Path = "/soundvolumedata.json";
     #endregion
 }
 
