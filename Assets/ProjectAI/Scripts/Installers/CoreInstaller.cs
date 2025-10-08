@@ -7,6 +7,7 @@ public class CoreInstaller : MonoInstaller
 {
     public override void InstallBindings()
     {
+        Container.Bind<SoundController>().AsCached().NonLazy();
         Container.Bind<IAssetService>().To<AssetService>().AsCached().NonLazy();
         Container.Bind<LevelManager>().AsSingle().NonLazy();
         Container.Bind<ISceneManager>().To<SceneManager>().AsSingle().NonLazy();
