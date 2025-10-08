@@ -62,6 +62,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem
         [Min(0)]
         [Tooltip("Max is Inclusive")]
         public int maxQuantity = 0;
+        [Range(0f, 1.0f)]
         public float spawnChance = 1f; // 0 to 1
         public int Quantity => UnityEngine.Random.Range(minQuantity, maxQuantity + 1);
     } 
