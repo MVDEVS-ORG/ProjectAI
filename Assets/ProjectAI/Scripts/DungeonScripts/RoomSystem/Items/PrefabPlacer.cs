@@ -28,19 +28,28 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items
             IEnumerable<ItemPlacementData> sortedList = new List<ItemPlacementData>(itemData).OrderByDescending(placementData=>
             placementData.itemData.size.x * placementData.itemData.size.y);
 
-            foreach(var placementData in sortedList)
+            foreach (var placementData in sortedList)
             {
-                for(int i = 0; i< placementData.Quantity; i++)
+                // Normalize chance: allow either 0..1 values
+                float chance = placementData.spawnChance;
+                chance = Mathf.Clamp01(chance);
+
+                // Per-instance roll (recommended): each of the Quantity attempts has its own chance
+                for (int i = 0; i < placementData.Quantity; i++)
                 {
-                    Vector2? possiblePlacementSpot = itemPlacementHelper.GetItemPlacementPosition(
-                        placementData.itemData.placementType,
-                        100,
-                        placementData.itemData.size,
-                        placementData.itemData.addOffset
-                        );
-                    if( possiblePlacementSpot.HasValue )
+                    if (Random.value < chance) // Random.value returns [0.0, 1.0)
                     {
-                        placedObjects.Add(await PlaceItem(placementData.itemData, possiblePlacementSpot.Value, assetService));
+                        Vector2? possiblePlacementSpot = itemPlacementHelper.GetItemPlacementPosition(
+                            placementData.itemData.placementType,
+                            100,
+                            placementData.itemData.size,
+                            placementData.itemData.addOffset);
+
+                        if (possiblePlacementSpot.HasValue)
+                        {
+                            placedObjects.Add(
+                                await PlaceItem(placementData.itemData, possiblePlacementSpot.Value, assetService));
+                        }
                     }
                 }
             }
@@ -67,7 +76,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items
                     {
                         Vector2 position = possiblePlacementSpot.Value + new Vector2(0.5f, 0.5f);
                         var go = await opManager.SpawnObjectAsync(
-                            placementData.enemyPrefabAddress,
+                            placementData.enemyData.enemyId,
                             position,
                             Quaternion.identity,
                             ObjectPoolManager.PoolType.Enemies

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a06d897a597b3864b8d4507b7235392f, type: 3}
   m_Name: DashBot
   m_EditorClassIdentifier: 
+  enemyId: DashBot
   MoveSpeed: 2
   SlowedSpeed: 0
   AttackRange: 6

@@ -45,17 +45,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1408297854879292345, guid: 600f4cb2bddade34d9fc41b2888b5ce7, type: 3}
-  itemData:
-  - minQuantity: 4
-    maxQuantity: 6
-    itemData: {fileID: 11400000, guid: 01f9b9b54b8389847a1d4b93668c0c08, type: 2}
-  - minQuantity: 4
-    maxQuantity: 6
-    itemData: {fileID: 11400000, guid: 64e3fff920dc3194f9eb908f30e064c6, type: 2}
-  - minQuantity: 4
-    maxQuantity: 6
-    itemData: {fileID: 11400000, guid: e28bfa7ead1c5794fb61cd332b48b287, type: 2}
-  - minQuantity: 4
-    maxQuantity: 6
-    itemData: {fileID: 11400000, guid: 3e1b7eab1b19d1942a486bd3b3d7bdb8, type: 2}
-  _prefabPlacer: {fileID: 2182287869053027293, guid: d6acdd40924c5f9409603dd8825c5640, type: 3}
+  placementData:
+  - items:
+    - minQuantity: 1
+      maxQuantity: 1
+      spawnChance: 1
+      itemData: {fileID: 11400000, guid: 20019ae2d3aa92e4fb856eee5fa41d9f, type: 2}
+    - minQuantity: 1
+      maxQuantity: 3
+      spawnChance: 1
+      itemData: {fileID: 11400000, guid: 01f9b9b54b8389847a1d4b93668c0c08, type: 2}
+    - minQuantity: 1
+      maxQuantity: 3
+      spawnChance: 1
+      itemData: {fileID: 11400000, guid: 3e1b7eab1b19d1942a486bd3b3d7bdb8, type: 2}
+    enemies: []
+  - items: []
+    enemies: []

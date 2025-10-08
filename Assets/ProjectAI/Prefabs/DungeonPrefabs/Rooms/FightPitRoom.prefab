@@ -44,29 +44,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1848dba18d4075248b2277569da69e91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPlacementData:
-  - minQuantity: 2
-    maxQuantity: 3
-    enemyPrefabAddress: RangedRoomba
-    enemySize: {x: 1, y: 1}
-  - minQuantity: 2
-    maxQuantity: 3
-    enemyPrefabAddress: Slicenator
-    enemySize: {x: 1, y: 1}
-  - minQuantity: 2
-    maxQuantity: 3
-    enemyPrefabAddress: DashBot
-    enemySize: {x: 1, y: 1}
-  itemData:
-  - minQuantity: 2
-    maxQuantity: 3
-    itemData: {fileID: 11400000, guid: e28bfa7ead1c5794fb61cd332b48b287, type: 2}
-  - minQuantity: 2
-    maxQuantity: 3
-    itemData: {fileID: 11400000, guid: 01f9b9b54b8389847a1d4b93668c0c08, type: 2}
-  - minQuantity: 2
-    maxQuantity: 3
-    itemData: {fileID: 11400000, guid: 3e1b7eab1b19d1942a486bd3b3d7bdb8, type: 2}
-  - minQuantity: 2
-    maxQuantity: 3
-    itemData: {fileID: 11400000, guid: 64e3fff920dc3194f9eb908f30e064c6, type: 2}
+  placementData:
+  - items:
+    - minQuantity: 1
+      maxQuantity: 3
+      spawnChance: 1
+      itemData: {fileID: 11400000, guid: 64e3fff920dc3194f9eb908f30e064c6, type: 2}
+    - minQuantity: 0
+      maxQuantity: 1
+      spawnChance: 0.5
+      itemData: {fileID: 11400000, guid: 20019ae2d3aa92e4fb856eee5fa41d9f, type: 2}
+    - minQuantity: 0
+      maxQuantity: 5
+      spawnChance: 1
+      itemData: {fileID: 11400000, guid: eeac39a943148d14c88ce67ebe159b21, type: 2}
+    enemies:
+    - minQuantity: 1
+      maxQuantity: 3
+      spawnChance: 1
+      enemyData: {fileID: 11400000, guid: 45975987619f5a2479acb607dadc0d8d, type: 2}
+      enemySize: {x: 1, y: 1}
+    - minQuantity: 1
+      maxQuantity: 3
+      spawnChance: 1
+      enemyData: {fileID: 11400000, guid: 5f3524b3ad92aab48a9ba4a1269ea173, type: 2}
+      enemySize: {x: 0, y: 0}
+    - minQuantity: 1
+      maxQuantity: 3
+      spawnChance: 1
+      enemyData: {fileID: 11400000, guid: 8a7b511f2c847d8419a9d159ddda0a36, type: 2}
+      enemySize: {x: 1, y: 1}
