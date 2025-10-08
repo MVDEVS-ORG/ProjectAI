@@ -23,7 +23,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
             var tileSet = await _assetService.LoadAssetAsync<TileSetSO>(AddressableIds.TileSet + _levelManager.CurrentLevel.ToString());
             _tileMapVisualizer.SetTileSet(tileSet);
             DungeonData data = await _roomFirstDungeonGenerator.GenerateDungeon();
-            data.currentDungeonLevel = _levelManager.CurrentLevel - 1;
+            data.currentDungeonLevel = _levelManager.CurrentLevel;
             data = await PathFindingManager.Instance.InitialBakeAsync(data);
             data =  _roomFirstDungeonGenerator.DetectDoorPositions(data);
             var items = await _roomContentGenerator.GenerateRoomContent(data);

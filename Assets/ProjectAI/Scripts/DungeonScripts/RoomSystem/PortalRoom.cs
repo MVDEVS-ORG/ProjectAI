@@ -23,11 +23,11 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem
         {
             var itemPlacementHelper = new ItemPlacementHelper(roomFloor, roomFloorNoCorridors, dungeonData);
 
-            var placedObjects = await PrefabPlacer.PlaceAllItems(placementData[dungeonData.currentDungeonLevel].items, itemPlacementHelper, assetService);
+            var placedObjects = await PrefabPlacer.PlaceAllItems(placementData[dungeonData.currentDungeonLevel - 1].items, itemPlacementHelper, assetService);
             var enemySpawnerObj = await assetService.InstantiateWithPRAsync(AddressableIds.Enemy_Spawner, (Vector3)itemPlacementHelper.GetItemPlacementPosition(PlacementType.OpenSpace, 1, Vector2Int.one, false), Quaternion.identity);
             placedObjects.Add(enemySpawnerObj);
             var enemySpawner = enemySpawnerObj.GetComponent<EnemySpawner>();
-            enemySpawner.InitializeSpawner(opManager, placementData[dungeonData.currentDungeonLevel].enemies, itemPlacementHelper, playerTransform);
+            enemySpawner.InitializeSpawner(opManager, placementData[dungeonData.currentDungeonLevel -  1].enemies, itemPlacementHelper, playerTransform);
 
             return placedObjects;
         }

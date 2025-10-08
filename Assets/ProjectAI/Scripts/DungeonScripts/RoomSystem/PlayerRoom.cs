@@ -47,7 +47,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem
         )
         {
             ItemPlacementHelper itemPlacementHelper = new ItemPlacementHelper(roomFloor, roomFloorNoCorridors, dungeonData);
-            List<GameObject> placedObjects = await PrefabPlacer.PlaceAllItems(placementData[dungeonData.currentDungeonLevel].items, itemPlacementHelper, assetService);
+            List<GameObject> placedObjects = await PrefabPlacer.PlaceAllItems(placementData[dungeonData.currentDungeonLevel - 1].items, itemPlacementHelper, assetService);
 
             Vector2Int playerSpawnPoint = roomCenter;
             _playerSpawnPoint = roomCenter;
