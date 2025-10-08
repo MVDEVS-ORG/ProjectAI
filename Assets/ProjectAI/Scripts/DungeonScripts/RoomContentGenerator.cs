@@ -83,7 +83,8 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
                     dungeonData.GetRoomFloorwithoutCorridors(roomData.Key),
                     _assetService,
                     playerTransform,
-                    _objectPoolManager
+                    _objectPoolManager,
+                    dungeonData
                 );
                 spawnedObjects.AddRange(
                     roomObjects
@@ -102,7 +103,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
                 var bossRoomFloor = dungeonData.GetRoomFloorwithoutCorridors(bossCenter);
                 var bossRoom = dungeonData.roomsDictionary[bossCenter];
 
-                var bossRoomObjects = await _portalRoom.ProcessRoom(bossCenter, bossRoom, bossRoomFloor, _assetService, playerTransform, _objectPoolManager);
+                var bossRoomObjects = await _portalRoom.ProcessRoom(bossCenter, bossRoom, bossRoomFloor, _assetService, playerTransform, _objectPoolManager, dungeonData);
                 spawnedObjects.AddRange(bossRoomObjects);
             }
 
@@ -113,7 +114,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
                 var treasureRoomFloor = dungeonData.GetRoomFloorwithoutCorridors(treasureCenter);
                 var treasureRoom = dungeonData.roomsDictionary[treasureCenter];
 
-                var treasureRoomObjects = await _treasureRoom.ProcessRoom(treasureCenter, treasureRoom, treasureRoomFloor, _assetService, playerTransform, _objectPoolManager);
+                var treasureRoomObjects = await _treasureRoom.ProcessRoom(treasureCenter, treasureRoom, treasureRoomFloor, _assetService, playerTransform, _objectPoolManager, dungeonData);
                 spawnedObjects.AddRange(treasureRoomObjects);
             }
         }
@@ -192,7 +193,8 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
                 playerSpawnPoint,
                 dungeonData.roomsDictionary[roomIndex],
                 dungeonData.GetRoomFloorwithoutCorridors(roomIndex),
-                _assetService
+                _assetService,
+                dungeonData
             );
 
             Vector2 spawnPosition = (_playerRoom as PlayerRoom).GetPlayerSpawnLocation();

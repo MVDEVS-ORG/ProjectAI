@@ -12,14 +12,14 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem
     {
         public GameObject player;
 
-        public List<ItemPlacementData> itemData;
+        public List<PlacementDataList> placementData;
 
         private Vector2 _playerSpawnPoint = Vector2.zero;
 
-        public override async Awaitable<List<GameObject>> ProcessRoom(Vector2Int roomCenter, HashSet<Vector2Int> roomFloor, HashSet<Vector2Int> roomFloorNoCorridors, IAssetService assetService)
+        public override async Awaitable<List<GameObject>> ProcessRoom(Vector2Int roomCenter, HashSet<Vector2Int> roomFloor, HashSet<Vector2Int> roomFloorNoCorridors, IAssetService assetService, DungeonData dungeonData)
 
         {
-            return await ProcessRoom(roomCenter, roomFloor, roomFloorNoCorridors, assetService, null, null);
+            return await ProcessRoom(roomCenter, roomFloor, roomFloorNoCorridors, assetService, null, null, dungeonData);
         }
 
         public Vector3 GetPlayerSpawnLocation()
@@ -42,11 +42,12 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem
             HashSet<Vector2Int> roomFloorNoCorridors,
             IAssetService assetService,
             Transform playerTransform,
-            ObjectPoolManager opManager
+            ObjectPoolManager opManager,
+            DungeonData dungeonData
         )
         {
-            ItemPlacementHelper itemPlacementHelper = new ItemPlacementHelper(roomFloor, roomFloorNoCorridors);
-            List<GameObject> placedObjects = await PrefabPlacer.PlaceAllItems(itemData, itemPlacementHelper, assetService);
+            ItemPlacementHelper itemPlacementHelper = new ItemPlacementHelper(roomFloor, roomFloorNoCorridors, dungeonData);
+            List<GameObject> placedObjects = await PrefabPlacer.PlaceAllItems(placementData[dungeonData.currentDungeonLevel - 1].items, itemPlacementHelper, assetService);
 
             Vector2Int playerSpawnPoint = roomCenter;
             _playerSpawnPoint = roomCenter;
@@ -61,6 +62,8 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem
         [Min(0)]
         [Tooltip("Max is Inclusive")]
         public int maxQuantity = 0;
+        [Range(0f, 1.0f)]
+        public float spawnChance = 1f; // 0 to 1
         public int Quantity => UnityEngine.Random.Range(minQuantity, maxQuantity + 1);
     } 
     [Serializable]
@@ -70,9 +73,16 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem
     }
 
     [Serializable]
+    public class PlacementDataList
+    {
+        public List<ItemPlacementData> items = new List<ItemPlacementData>();
+        public List<EnemyPlacementData> enemies = new List<EnemyPlacementData>();
+    }
+
+    [Serializable]
     public class EnemyPlacementData: PlacementData
     {
-        public string enemyPrefabAddress;
+        public EnemyDataSO enemyData;
         public Vector2Int enemySize = Vector2Int.one;
     }
 }

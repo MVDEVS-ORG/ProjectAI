@@ -1,4 +1,5 @@
-﻿using Assets.ProjectAI.Scripts.HelperClass;
+﻿using Assets.ProjectAI.Scripts.DungeonScripts;
+using Assets.ProjectAI.Scripts.HelperClass;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -10,24 +11,41 @@ namespace Assets.ProjectAI.Scripts.HelperClasses
         Dictionary<PlacementType, HashSet<Vector2Int>> tileByType = new Dictionary<PlacementType, HashSet<Vector2Int>>();
         HashSet<Vector2Int> roomFloorNoCorridor;
 
-        public ItemPlacementHelper(HashSet<Vector2Int> roomFloor, HashSet<Vector2Int> roomFloorNoCorridor)
+        public ItemPlacementHelper(HashSet<Vector2Int> roomFloor, HashSet<Vector2Int> roomFloorNoCorridor, DungeonData dungeonData)
         {
             Graph graph = new Graph(roomFloor);
             this.roomFloorNoCorridor = roomFloorNoCorridor;
 
-            foreach(var position in roomFloorNoCorridor)
+            foreach (var position in roomFloorNoCorridor)
             {
+                // Skip if tile is a door
+                if (dungeonData.doorPositions.Contains(position))
+                    continue;
+
+                // Optionally skip tiles directly adjacent to a door (to keep item spacing)
+                bool nearDoor = false;
+                foreach (var dir in Direction2D.cardinalDirectionList)
+                {
+                    if (dungeonData.doorPositions.Contains(position + dir))
+                    {
+                        nearDoor = true;
+                        break;
+                    }
+                }
+                if (nearDoor)
+                    continue;
+
                 int neighborsCount8Dir = graph.GetNeighbors8Directions(position).Count;
                 PlacementType type = neighborsCount8Dir < 8 ? PlacementType.NearWall : PlacementType.OpenSpace;
 
-                if(tileByType.ContainsKey(type) == false)
-                {
-                    tileByType[type] = new HashSet<Vector2Int>();
-                } 
-                if(type == PlacementType.NearWall && graph.GetNeighbors4Directions(position).Count == 4)
-                {
+                // Skip tiles that are completely enclosed (4 neighbors)
+                var n4 = graph.GetNeighbors4Directions(position);
+                if (type == PlacementType.NearWall && n4.Count == 4)
                     continue;
-                }
+
+                if (!tileByType.ContainsKey(type))
+                    tileByType[type] = new HashSet<Vector2Int>();
+
                 tileByType[type].Add(position);
             }
         }

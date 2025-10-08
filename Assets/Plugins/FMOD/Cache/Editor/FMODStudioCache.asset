@@ -51,7 +51,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 2911915510492111105}
   cacheVersion: 131849
-  cacheTime: 638954405781919374
+  cacheTime: 638954435663915644
   SerializableEventsDict:
   - key: event:/UISelection
     index: 0
@@ -70,7 +70,7 @@ MonoBehaviour:
   Path: FMOD/DungeonGameProjectV2/DungeonGameProject/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638954405781919374
+  lastModified: 638954435663915644
   FileSizes:
   - Name: Desktop
     Value: 1920
@@ -90,10 +90,10 @@ MonoBehaviour:
   Path: FMOD/DungeonGameProjectV2/DungeonGameProject/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638954405781765395
+  lastModified: 638954435663017592
   FileSizes:
   - Name: Desktop
-    Value: 928
+    Value: 818
   Exists: 1
 --- !u!114 &9152151792810080475
 MonoBehaviour:
@@ -110,8 +110,8 @@ MonoBehaviour:
   Path: FMOD/DungeonGameProjectV2/DungeonGameProject/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638954405781760412
+  lastModified: 638954435663007524
   FileSizes:
   - Name: Desktop
-    Value: 1524
+    Value: 1074
   Exists: 1

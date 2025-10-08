@@ -44,16 +44,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f93f9c5124ec62c4d99161957ee544d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabPlacer: {fileID: 2182287869053027293, guid: d6acdd40924c5f9409603dd8825c5640, type: 3}
-  enemyPlacementData:
-  - minQuantity: 2
-    maxQuantity: 3
-    enemyPrefabAddress: Slicenator
-    enemySize: {x: 1, y: 1}
-  itemData:
-  - minQuantity: 1
-    maxQuantity: 1
-    itemData: {fileID: 11400000, guid: 1dcab421fe7547b479cf90033c92831d, type: 2}
-  - minQuantity: 1
-    maxQuantity: 1
-    itemData: {fileID: 11400000, guid: 64e3fff920dc3194f9eb908f30e064c6, type: 2}
+  placementData:
+  - items:
+    - minQuantity: 1
+      maxQuantity: 1
+      spawnChance: 1
+      itemData: {fileID: 11400000, guid: 1dcab421fe7547b479cf90033c92831d, type: 2}
+    - minQuantity: 1
+      maxQuantity: 2
+      spawnChance: 1
+      itemData: {fileID: 11400000, guid: eeac39a943148d14c88ce67ebe159b21, type: 2}
+    enemies:
+    - minQuantity: 1
+      maxQuantity: 3
+      spawnChance: 1
+      enemyData: {fileID: 11400000, guid: 5f3524b3ad92aab48a9ba4a1269ea173, type: 2}
+      enemySize: {x: 1, y: 1}
+    - minQuantity: 1
+      maxQuantity: 3
+      spawnChance: 1
+      enemyData: {fileID: 11400000, guid: 8a7b511f2c847d8419a9d159ddda0a36, type: 2}
+      enemySize: {x: 1, y: 1}

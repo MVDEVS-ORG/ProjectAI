@@ -17,6 +17,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
 
         public Vector2Int? bossRoomCenter;
         public Vector2Int? treasureRoomCenter;
+        public int currentDungeonLevel;
 
         public bool isDoorNeeded;
 
