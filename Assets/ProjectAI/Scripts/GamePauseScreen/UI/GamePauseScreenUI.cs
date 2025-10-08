@@ -12,6 +12,7 @@ public class GamePauseScreenUI : MonoBehaviour
 
     [Header("Transitions")]
     [SerializeField] private MainMenuConfirmationPopUpUI _mainMenuConfirmationPopUpUI;
+    [SerializeField] private SoundSettingsUI _soundSettingsUI;
 
     private void OnEnable()
     {
@@ -32,7 +33,8 @@ public class GamePauseScreenUI : MonoBehaviour
 
     private void Setting()
     {
-        Debug.Log("To Settings");
+        _soundSettingsUI.gameObject.SetActive(true);
+        gameObject.SetActive(false);
     }
 
     private void ToMainMenu()
