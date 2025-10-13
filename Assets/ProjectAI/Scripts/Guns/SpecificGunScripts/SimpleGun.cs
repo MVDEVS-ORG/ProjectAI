@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SimpleGun : GunsView
 {
+    public Animator _animator;
     private Coroutine _firingGun;
     private bool _overheat = false;
     private CancellationTokenSource _cancellationTokenSource;
@@ -103,6 +104,7 @@ public class SimpleGun : GunsView
     
     private async Awaitable FireBullet()
     {
+        _animator.Play("Fire");
         GameObject bullet = await PoolManager.SpawnObjectAsync(GunsModel.PrimaryProjectileAddressable, GunBulletSpawnTransform.position, Quaternion.identity, ObjectPoolManager.PoolType.GameObjects);
         Vector3 bulletRotationAndFireDirection;
         if (AlternateRotation)
