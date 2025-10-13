@@ -13,7 +13,7 @@ public class GunsView : MonoBehaviour, IInteractable
     [HideInInspector] public ObjectPoolManager PoolManager;
     public Transform GunBulletSpawnTransform;
     [HideInInspector] public Transform PlayerCursor;
-    [HideInInspector] public SpriteRenderer SpriteRenderer;
+    public SpriteRenderer SpriteRenderer;
     [HideInInspector] public Vector3 Scale;
     [HideInInspector] public Vector3 ReverseScale;
     [HideInInspector] public Vector3 LateralInversion;
@@ -32,7 +32,10 @@ public class GunsView : MonoBehaviour, IInteractable
     private float _angle;
     private void Start()
     {
-        SpriteRenderer = GetComponent<SpriteRenderer>();
+        if (SpriteRenderer == null)
+        {
+            SpriteRenderer = GetComponent<SpriteRenderer>();
+        }
         Scale = transform.localScale;
         ReverseScale = new Vector3(transform.localScale.x, -transform.localScale.y, transform.localScale.z);
         Collider = GetComponent<BoxCollider2D>();
