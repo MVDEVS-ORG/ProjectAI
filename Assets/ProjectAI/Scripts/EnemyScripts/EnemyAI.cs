@@ -18,7 +18,7 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
 {
     public Transform attackSpawnPos;
     public HealthModelsSO healthModel;
-    [HideInInspector] public Animator animator;
+    public Animator animator;
 
     [SerializeField] private EnemyDataSO _enemyDataSO;
     [HideInInspector] public EnemyModel enemyModel;
