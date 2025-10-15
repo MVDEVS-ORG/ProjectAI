@@ -28,7 +28,7 @@ namespace Assets.ProjectAI.Scripts.Interaction
             _isActive = true;
             if (_trigger != null) _trigger.enabled = true;
             Debug.LogError("Portal Activated");
-            _animator?.Play("PortalOpen");
+            _animator?.Play("Portal Open");
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
