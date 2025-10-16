@@ -39,6 +39,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
             await SelectPlayerSpawnPoint(dungeonData);
             await SelectEnemySpawnPoint(dungeonData);
             await SpawnSpecialRoomContent(dungeonData);
+            await SpawnDoors(dungeonData);
             /*foreach (var doorPos in dungeonData.doorPositions)
             {
                 if (_doorPrefab != null)
@@ -66,6 +67,30 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
                 }
                 );
             return spawnedItem;
+        }
+
+        private async Awaitable SpawnDoors(DungeonData dungeonData)
+        {
+            foreach(var doorPositon in dungeonData.doorPositionWithDirection["Down"])
+            {
+                var doorObj = await _assetService.InstantiateWithParentAsync(AddressableIds.Door_Down + dungeonData.currentDungeonLevel.ToString(), itemParent, true);
+                doorObj.transform.position = (Vector3Int)doorPositon;
+            }
+            foreach (var doorPositon in dungeonData.doorPositionWithDirection["Top"])
+            {
+                var doorObj = await _assetService.InstantiateWithParentAsync(AddressableIds.Door_Top + dungeonData.currentDungeonLevel.ToString(), itemParent, true);
+                doorObj.transform.position = (Vector3Int)doorPositon;
+            }
+            foreach (var doorPositon in dungeonData.doorPositionWithDirection["Left"])
+            {
+                var doorObj = await _assetService.InstantiateWithParentAsync(AddressableIds.Door_Left + dungeonData.currentDungeonLevel.ToString(), itemParent, true);
+                doorObj.transform.position = (Vector3Int)doorPositon;
+            }
+            foreach (var doorPositon in dungeonData.doorPositionWithDirection["Right"])
+            {
+                var doorObj = await _assetService.InstantiateWithParentAsync(AddressableIds.Door_Right + dungeonData.currentDungeonLevel.ToString(), itemParent, true);
+                doorObj.transform.position = (Vector3Int)doorPositon;
+            }
         }
 
         private async Awaitable SelectEnemySpawnPoint(DungeonData dungeonData)

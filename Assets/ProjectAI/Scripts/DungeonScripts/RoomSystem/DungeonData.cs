@@ -13,6 +13,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
         public HashSet<Vector2Int> floorPositions;
         public HashSet<Vector2Int> corridorPositions;
         public HashSet<Vector2Int> doorPositions;
+        public Dictionary<string, HashSet<Vector2Int>> doorPositionWithDirection = new();
         public HashSet<Item> items = new HashSet<Item>();
 
         public Vector2Int? bossRoomCenter;

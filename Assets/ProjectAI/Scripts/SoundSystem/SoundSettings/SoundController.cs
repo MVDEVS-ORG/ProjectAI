@@ -29,6 +29,10 @@ public class SoundController
         try
         {
             _volumeData = _dataSerializer.LoadData<Dictionary<SoundType,float>>(AddressableIds.Sound_Volume_Data_Path);
+            if(_volumeData.Count < _busDictionary.Count)
+            {
+                throw new Exception("Volume data is incomplete, resetting to default values.");
+            }
         }
         catch (Exception ex)
         {
