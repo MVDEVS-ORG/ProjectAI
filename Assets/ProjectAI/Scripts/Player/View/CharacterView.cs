@@ -39,6 +39,8 @@ public class CharacterView : MonoBehaviour
     private float _temporarySpeedHolder = 0f;
     private Coroutine _KickbackBoostcoroutine = null;
 
+    private Animator _animator;
+
 
     public void Initialize(IPlayerController playerController, PlayerModel playerModel, GameObject bulletCursor, GameObject bulletCursorUI, SignalBus signalBus, IGamePauseController gamePauseController)
     {
@@ -60,6 +62,7 @@ public class CharacterView : MonoBehaviour
         CheckInitialControlSchema();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _flashFeedback = GetComponent<FlashFeedback>();
+        _animator = GetComponent<Animator>();
     }
 
     private void OnDestroy()
@@ -80,6 +83,16 @@ public class CharacterView : MonoBehaviour
             {
                 case State.Moving:
                     _rigidBody.linearVelocity = _moveInput * _playerModel.Speed;
+                    if (Mathf.Abs(_moveInput.x) > Mathf.Abs(_moveInput.y))
+                    {
+                        _animator.SetBool("XGreater", true);
+                    }
+                    else
+                    {
+                        _animator.SetBool("XGreater", false);
+                    }
+                    _animator.SetFloat("MoveXDir", _moveInput.x);
+                    _animator.SetFloat("MoveYDir", _moveInput.y);
                     break;
 
                 case State.RollDash:
