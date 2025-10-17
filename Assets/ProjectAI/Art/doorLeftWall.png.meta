@@ -1,19 +1,28 @@
 fileFormatVersion: 2
-guid: 4342701f7b0711243a98ea78ce63d3ee
+guid: f61cfc36bd2e3084c82dd7ea6025c4e5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7097530898738743829
-    second: 16x32 door_0
+      213: 374165180089268012
+    second: doorLeftWall_0
   - first:
-      213: -2558116298397747608
-    second: 16x32 door_1
+      213: 5946733137501549549
+    second: doorLeftWall_1
   - first:
-      213: 6184151734540017313
-    second: 16x32 door_2
+      213: -3713310268317190599
+    second: doorLeftWall_2
   - first:
-      213: -1177295967586446130
-    second: 16x32 door_3
+      213: 5334901636386778727
+    second: doorLeftWall_3
+  - first:
+      213: -4289660046102104239
+    second: doorLeftWall_4
+  - first:
+      213: 8314212208140304968
+    second: doorLeftWall_5
+  - first:
+      213: 5122763981981136657
+    second: doorLeftWall_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -105,37 +114,11 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: iOS
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 16x32 door_0
+      name: doorLeftWall_0
       rect:
         serializedVersion: 2
         x: 0
@@ -150,14 +133,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: be5715e7041808d90800000000000000
-      internalID: -7097530898738743829
+      spriteID: c277a86bf3d413500800000000000000
+      internalID: 374165180089268012
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 16x32 door_1
+      name: doorLeftWall_1
       rect:
         serializedVersion: 2
         x: 16
@@ -172,14 +155,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8667dd3b7cebf7cd0800000000000000
-      internalID: -2558116298397747608
+      spriteID: de3f2da084a078250800000000000000
+      internalID: 5946733137501549549
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 16x32 door_2
+      name: doorLeftWall_2
       rect:
         serializedVersion: 2
         x: 32
@@ -194,14 +177,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1ae9f5ecc3582d550800000000000000
-      internalID: 6184151734540017313
+      spriteID: 936b4242cfba77cc0800000000000000
+      internalID: -3713310268317190599
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 16x32 door_3
+      name: doorLeftWall_3
       rect:
         serializedVersion: 2
         x: 48
@@ -216,14 +199,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ec492881e8769afe0800000000000000
-      internalID: -1177295967586446130
+      spriteID: 76eeb74d5c0690a40800000000000000
+      internalID: 5334901636386778727
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 16x32 door_4
+      name: doorLeftWall_4
       rect:
         serializedVersion: 2
         x: 64
@@ -236,10 +219,32 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: b79a393cc4920da4e881e04d94f318b5
-      internalID: 940518220
+      spriteID: 157f5e86ae01874c0800000000000000
+      internalID: -4289660046102104239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doorLeftWall_5
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8424b65e3f3026370800000000000000
+      internalID: 8314212208140304968
       vertices: []
       indices: 
       edges: []
@@ -248,7 +253,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: c3687048722956c4b9221d3591f09fac
+    spriteID: 518964841ffc3ce45ab13e80c3821ac4
     internalID: 0
     vertices: []
     indices: 
@@ -256,13 +261,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":16.0,"y":32.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      16x32 door_0: -7097530898738743829
-      16x32 door_1: -2558116298397747608
-      16x32 door_2: 6184151734540017313
-      16x32 door_3: -1177295967586446130
-      16x32 door_4: 940518220
+      doorLeftWall_0: 374165180089268012
+      doorLeftWall_1: 5946733137501549549
+      doorLeftWall_2: -3713310268317190599
+      doorLeftWall_3: 5334901636386778727
+      doorLeftWall_4: -4289660046102104239
+      doorLeftWall_5: 8314212208140304968
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

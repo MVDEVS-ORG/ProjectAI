@@ -24,6 +24,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
         private HashSet<Vector2Int> _floorPositions = new HashSet<Vector2Int>();
         private HashSet<Vector2Int> _corridorPositions = new HashSet<Vector2Int>();
         private HashSet<Vector2Int> _doorPositions = new HashSet<Vector2Int>();
+        private Dictionary<string, HashSet<Vector2Int>> _doorPositionWithDirection = new();
         // GizmosData
         private List<Color> roomColors = new List<Color>();
         [SerializeField]
@@ -60,6 +61,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
                 }
 
                 data.doorPositions = new HashSet<Vector2Int>(_doorPositions);
+                data.doorPositionWithDirection = new Dictionary<string, HashSet<Vector2Int>>(_doorPositionWithDirection);
                 Debug.Log($"Detected {_doorPositions.Count} door positions (with corner validation).");
             }
             return data;
@@ -73,61 +75,86 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
                 var neighbor = tile + dir;
                 neighborBinary += data.floorPositions.Contains(neighbor) ? "1" : "0";
             }
-
+            
             switch (neighborBinary)
             {
                 // Straight openings (no extended check needed)
                 case "11001001": //Top Door
-                    _doorPositions.Add(tile);
+                    AddDoorPosition("Top", tile);
                     break;
                 case "10011100": //Down Door
-                    _doorPositions.Add(tile);
+                    AddDoorPosition("Down", tile);
                     break;
                 case "00100111": //Left Door
-                    _doorPositions.Add(tile);
+                    AddDoorPosition("Right", tile);
                     break;
                 case "01110010": //Right Door
-                    _doorPositions.Add(tile);
+                    AddDoorPosition("Left", tile);
                     break;
 
                 // Corner openings (extended neighbor check required)
                 case "11001000": // UP-RIGHT corner
                     if (IsExtendedNeighborWall(tile, new Vector2Int(0, 1), data))
-                        _doorPositions.Add(tile);
+                    {
+                        AddDoorPosition("Top", tile);
+                    }
                     break;
 
                 case "10011000": // DOWN-RIGHT corner
                     if (IsExtendedNeighborWall(tile, new Vector2Int(0, -1), data))
-                        _doorPositions.Add(tile);
+                    {
+                        AddDoorPosition("Down", tile);
+                    }
                     break;
 
                 case "10001100": // DOWN-LEFT corner
                     if (IsExtendedNeighborWall(tile, new Vector2Int(0, -1), data))
-                        _doorPositions.Add(tile);
+                    {
+                        AddDoorPosition("Down", tile);
+                    }
                     break;
 
                 case "10001001": // UP-LEFT corner
                     if (IsExtendedNeighborWall(tile, new Vector2Int(0, 1), data))
-                        _doorPositions.Add(tile);
+                    {
+                        AddDoorPosition("Top", tile);
+                    }
                     break;
                 case "01100010": //Right-Up corner
                     if (IsExtendedNeighborWall(tile, new Vector2Int(1, 0), data))
-                        _doorPositions.Add(tile);
+                    {
+                        AddDoorPosition("Left", tile);
+                    }
                     break;
                 case "00100011": //Left-Up corner
                     if (IsExtendedNeighborWall(tile, new Vector2Int(-1, 0), data))
-                        _doorPositions.Add(tile);
+                    {
+                        AddDoorPosition("Right", tile);
+                    }
                     break;
                 case "00110010": //Right - Down corner
                     if (IsExtendedNeighborWall(tile, new Vector2Int(1, 0), data))
-                        _doorPositions.Add(tile);
+                    {
+                        AddDoorPosition("Left", tile);
+                    }
                     break;
                 case "00100110": //Left - Down corner
                     if (IsExtendedNeighborWall(tile, new Vector2Int(-1, 0), data))
-                        _doorPositions.Add(tile);
+                    {
+                        AddDoorPosition("Right", tile);
+                    }
                     break;
 
             }
+        }
+
+        private void AddDoorPosition(string direction, Vector2Int tile)
+        {
+            if (!_doorPositionWithDirection.ContainsKey(direction))
+                _doorPositionWithDirection[direction] = new HashSet<Vector2Int>();
+
+            _doorPositionWithDirection[direction].Add(tile);
+            _doorPositions.Add(tile);
         }
 
         private bool IsExtendedNeighborWall(Vector2Int tile, Vector2Int dir, DungeonData data)

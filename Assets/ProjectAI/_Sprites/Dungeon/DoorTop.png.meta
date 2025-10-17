@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-guid: 4342701f7b0711243a98ea78ce63d3ee
+guid: 59f32df9ca9255c46be77d4b7cd87d8b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7097530898738743829
-    second: 16x32 door_0
-  - first:
-      213: -2558116298397747608
-    second: 16x32 door_1
-  - first:
-      213: 6184151734540017313
-    second: 16x32 door_2
-  - first:
-      213: -1177295967586446130
-    second: 16x32 door_3
+      213: 4948789046011246671
+    second: DoorDown_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -135,101 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 16x32 door_0
+      name: DoorDown_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 16
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: be5715e7041808d90800000000000000
-      internalID: -7097530898738743829
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 16x32 door_1
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8667dd3b7cebf7cd0800000000000000
-      internalID: -2558116298397747608
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 16x32 door_2
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 16
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1ae9f5ecc3582d550800000000000000
-      internalID: 6184151734540017313
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 16x32 door_3
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 16
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ec492881e8769afe0800000000000000
-      internalID: -1177295967586446130
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 16x32 door_4
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 16
-        height: 32
+        height: 22
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -238,8 +141,118 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b79a393cc4920da4e881e04d94f318b5
-      internalID: 940518220
+      spriteID: 1a6b3cdc10a87c340b04917baffcb02e
+      internalID: 4948789046011246671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoorDown_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62394517f7d3b9b4b942bcaec341cc4f
+      internalID: 2017063090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoorDown_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 735a55b05077d8a42839c0b81a33c4f6
+      internalID: -1375100347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoorDown_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c882ad7fceb79f4c9c08d9d30362e2c
+      internalID: 2028283678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoorDown_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9622fc528aa7c7e4bb3265ff2e7bd7e5
+      internalID: 176358424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DoorDown_5
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 16
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fc3d4a6eb430884baba67f1562b3616
+      internalID: 1342956902
       vertices: []
       indices: 
       edges: []
@@ -248,7 +261,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: c3687048722956c4b9221d3591f09fac
+    spriteID: c25f461e807659048887bef819b4a26a
     internalID: 0
     vertices: []
     indices: 
@@ -258,11 +271,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      16x32 door_0: -7097530898738743829
-      16x32 door_1: -2558116298397747608
-      16x32 door_2: 6184151734540017313
-      16x32 door_3: -1177295967586446130
-      16x32 door_4: 940518220
+      DoorDown_0: 4948789046011246671
+      DoorDown_1: 2017063090
+      DoorDown_2: -1375100347
+      DoorDown_3: 2028283678
+      DoorDown_4: 176358424
+      DoorDown_5: 1342956902
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

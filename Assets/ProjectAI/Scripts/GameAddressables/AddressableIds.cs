@@ -64,6 +64,10 @@ public static class AddressableIds
     #endregion
     #region TileMap Addressables
     public const string TileSet = "TileSetLVL_";
+    public const string Door_Down = "Door_Down_LVL_";
+    public const string Door_Top = "Door_Top_LVL_";
+    public const string Door_Left = "Door_Left_LVL_";
+    public const string Door_Right = "Door_Right_LVL_";
     #endregion
 
     #region Main Menu
