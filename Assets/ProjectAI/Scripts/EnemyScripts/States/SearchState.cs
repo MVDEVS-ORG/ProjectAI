@@ -1,5 +1,5 @@
-﻿using Assets.ProjectAI.Scripts.PathFinding;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Assets.ProjectAI.Scripts.PathFinding;
 using UnityEngine;
 using Zenject;
 
@@ -49,7 +49,7 @@ public class SearchState : IEnemyState
         _enemy.StartPathMovement(path);
     }
 
-    public void Exit() 
+    public void Exit()
     {
         _enemy = null;
         _player = null;

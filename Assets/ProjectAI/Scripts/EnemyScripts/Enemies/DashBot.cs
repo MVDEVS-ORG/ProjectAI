@@ -1,5 +1,5 @@
-﻿using Assets.ProjectAI.Scripts.EnemyScripts.AttackBehaviour;
-using System.Collections;
+﻿using System.Collections;
+using Assets.ProjectAI.Scripts.EnemyScripts.AttackBehaviour;
 using UnityEngine;
 
 namespace Assets.ProjectAI.Scripts.EnemyScripts.Enemies
@@ -23,13 +23,20 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Enemies
             _rb = GetComponent<Rigidbody2D>();
         }
 
+        public override void TransitionToState(IEnemyState newState)
+        {
+            base.TransitionToState(newState);
+            _rb.bodyType = RigidbodyType2D.Kinematic;
+        }
+
         private void OnCollisionEnter2D(Collision2D collision)
         {
             _rb.linearVelocity = Vector2.zero;
+            _rb.bodyType = RigidbodyType2D.Static;
             animator?.Play("Stunned");
-            if(collision.collider.TryGetComponent(out CharacterView player ))
+            if (collision.collider.TryGetComponent(out CharacterView player))
             {
-                player.TakeDamage(10,transform.position, 1f);
+                player.TakeDamage(10, transform.position, 1f);
             }
         }
     }

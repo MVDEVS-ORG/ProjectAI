@@ -1,7 +1,7 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
-using Assets.ProjectAI.Scripts.PathFinding;
+﻿using System.Collections.Generic;
 using Assets.ProjectAI.Scripts.EnemyScripts;
+using Assets.ProjectAI.Scripts.PathFinding;
+using UnityEngine;
 
 public class ChaseState : IEnemyState
 {
@@ -41,7 +41,7 @@ public class ChaseState : IEnemyState
         }
     }
 
-    public void Exit() 
+    public void Exit()
     {
         _enemy.animator?.SetBool("Walking", false);
         _enemy = null;
@@ -86,12 +86,12 @@ public class ChaseState : IEnemyState
     private Vector3 GetOffsetAroundPlayer(GameObject self, Transform player)
     {
         List<GameObject> allEnemies = new List<GameObject>();
-        foreach(var enemy in EnemyManager.spawnedEnemies)
+        foreach (var enemy in EnemyManager.spawnedEnemies)
         {
-            if(Vector3.Distance(enemy.transform.position, player.position) < 6f)
+            if (Vector3.Distance(enemy.transform.position, player.position) < 6f)
             {
                 allEnemies.Add(enemy);
-            }   
+            }
         }
         int index = allEnemies.IndexOf(self);
         int nearbyEnemyCount = allEnemies.Count;

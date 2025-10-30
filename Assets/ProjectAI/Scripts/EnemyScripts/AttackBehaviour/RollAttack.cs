@@ -21,7 +21,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.AttackBehaviour
         {
             _rb = enemy.GetComponent<Rigidbody2D>();
             base.Enter(enemy, player, op);
-            
+
             if (_characterView == null)
             {
                 _characterView = _player.GetComponent<CharacterView>();
@@ -56,7 +56,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.AttackBehaviour
                     Execute();
                 }
             }
-            if(!_enemy.IsPlayerInAttackRange())
+            if (!_enemy.IsPlayerInAttackRange())
             {
                 _enemy.TransitionToState(_enemy.GetNextStateFromMap(EnemyStateTypes.Search));
             }

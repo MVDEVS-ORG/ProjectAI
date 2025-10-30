@@ -1,11 +1,12 @@
-﻿using Assets.ProjectAI.Scripts.EnemyScripts;
-using Assets.ProjectAI.Scripts.PathFinding;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using Assets.ProjectAI.Scripts.EnemyScripts;
+using Assets.ProjectAI.Scripts.PathFinding;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public enum EnemyStateTypes {
+public enum EnemyStateTypes
+{
     Idle,
     Patrol,
     Chase,
@@ -27,7 +28,7 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
     [SerializeField] private Collider2D _enemyCollider;
     private ObjectPoolManager _objectPoolmanager;
     private Transform _player;
-    private int _health; 
+    private int _health;
     private int _maxHealth;
 
     private Tilemap floorTilemap;
@@ -88,7 +89,7 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
         currentState?.Update();
     }
 
-    public void TransitionToState(IEnemyState newState)
+    public virtual void TransitionToState(IEnemyState newState)
     {
         currentState?.Exit();
         currentState = newState;
@@ -146,7 +147,7 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
     public void TakeDamage(int damage)
     {
         _health = Mathf.Clamp(_health - (int)(damage * enemyModel.DamageTakenMultiplier), 0, _maxHealth);
-        if(_health <= 0)
+        if (_health <= 0)
         {
             OnEnemyDeath();
         }
@@ -162,11 +163,11 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
         _health = model.Health;
         _maxHealth = model.MaxHealth;
         enemyModel = new EnemyModel(_enemyDataSO);
-        if(gameObject.name.Contains("+"))
+        if (gameObject.name.Contains("+"))
         {
             gameObject.name = gameObject.name.Substring(0, gameObject.name.LastIndexOf("+"));
         }
-        gameObject.name = gameObject.name + "+" +enemyModel.GetHashCode();
+        gameObject.name = gameObject.name + "+" + enemyModel.GetHashCode();
         EnemyModelInitialized = true;
         InitializeStates();
     }
@@ -194,7 +195,7 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
                 enemyState.Add(state.Key);
             }
         }
-        if(enemyState.Count == 0)
+        if (enemyState.Count == 0)
         {
             Debug.LogError("State Can not be found!");
             enemyState.Add(new IdleState());
