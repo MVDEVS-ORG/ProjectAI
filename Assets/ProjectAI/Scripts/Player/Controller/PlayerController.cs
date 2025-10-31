@@ -106,10 +106,12 @@ public class PlayerController : IPlayerController
             #endregion
 
             #region player ui instantiation
+            Debug.LogWarning("Initializing Player UI");
             //Create the _player UI alongside the _player and pass the model for data
             result = await _assetService.InstantiateAsync(AddressableIds.Player_UI);
             _playerUI = result.GetComponent<PlayerUI>();
             _playerUI.Initialize(_playerModel, _xpLevelMap);
+            Debug.LogWarning("Initialized Player UI");
             Debug.Log("PlayerUI Initialized");
             _cameraController.Initialize(_characterView.transform);
             _rumbleController.Initialize(_characterView);
@@ -214,6 +216,7 @@ public class PlayerController : IPlayerController
                     break;
             }
         }
+        _playerUI.AlterHealthBar();
     }
 
     private async Awaitable<(GameObject, GameObject)> PlayerCursorInitialization()

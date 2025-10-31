@@ -42,7 +42,7 @@ public class PlayerModel
         Health = MaxHealth;
         CursorDistance = playerModelData.CursorDistance;
         RollDuration = playerModelData.RollDuration;
-        RollSpeed = playerModelData.RollSpeed;  
+        RollSpeed = playerModelData.RollSpeed;
         NoOfRoll = playerModelData.NoOfRolls;
         RolllCooldown = playerModelData.RollCooldown;
         MaxNoOfRolls = playerModelData.MaxNoOfRolls;
@@ -90,7 +90,7 @@ public class PlayerModel
         return left;
     }
 
-    public static PlayerModel operator %(PlayerModel left,PlayerModel right)
+    public static PlayerModel operator %(PlayerModel left, PlayerModel right)
     {
         left.MaxHealth = right.MaxHealth != 0 ? right.MaxHealth : left.MaxHealth;
         left.Speed = right.Speed != 0 ? right.Speed : left.Speed;
@@ -98,8 +98,8 @@ public class PlayerModel
         left.RollSpeed = right.RollSpeed != 0 ? right.RollSpeed : left.RollSpeed;
         left.MaxNoOfRolls = right.MaxNoOfRolls != 0 ? right.MaxNoOfRolls : left.MaxNoOfRolls;
         left.RolllCooldown = right.RolllCooldown != 0 ? right.RolllCooldown : left.RolllCooldown;
-        left.InvincibilityTime = right.InvincibilityTime !=0 ? right.InvincibilityTime : left.InvincibilityTime;
-        left.DamageKickBackSpeed = right.DamageKickBackSpeed !=0 ? right.DamageKickBackSpeed : left.DamageKickBackSpeed;
+        left.InvincibilityTime = right.InvincibilityTime != 0 ? right.InvincibilityTime : left.InvincibilityTime;
+        left.DamageKickBackSpeed = right.DamageKickBackSpeed != 0 ? right.DamageKickBackSpeed : left.DamageKickBackSpeed;
         left.MeleeDashSpeed = right.MeleeDashSpeed != 0 ? right.MeleeDashSpeed : left.MeleeDashSpeed;
         left.AbilityCooldown = right.AbilityCooldown != 0 ? right.AbilityCooldown : left.AbilityCooldown;
         left.AbilityDuration = right.AbilityDuration != 0 ? right.AbilityCooldown : left.AbilityCooldown;
