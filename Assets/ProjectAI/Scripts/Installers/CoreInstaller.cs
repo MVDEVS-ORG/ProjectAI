@@ -7,6 +7,7 @@ public class CoreInstaller : MonoInstaller
 {
     public override void InstallBindings()
     {
+        Container.Bind<UniversalFlagStorage>().AsCached().NonLazy();
         Container.Bind<SoundController>().AsCached().NonLazy();
         Container.Bind<IAssetService>().To<AssetService>().AsCached().NonLazy();
         Container.Bind<LevelManager>().AsSingle().NonLazy();
