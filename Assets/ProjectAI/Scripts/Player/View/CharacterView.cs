@@ -50,8 +50,9 @@ public class CharacterView : MonoBehaviour
         _BulletCursor = bulletCursor;
         _bulletCursorUI = bulletCursorUI;
         _signalBus = signalBus;
+        _playerController.OnDeath += _playerController.OnPlayerDeath;
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
         _rigidBody = GetComponent<Rigidbody2D>();
@@ -70,7 +71,6 @@ public class CharacterView : MonoBehaviour
         InputSystem.onDeviceChange -= OnDeviceChange;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (_playerController != null && _playerController.Initialized)
@@ -384,4 +384,11 @@ public class CharacterView : MonoBehaviour
         _playerModel.Speed = _temporarySpeedHolder;
     }
 
+    private void OnDisable()
+    {
+        if(_playerController!=null)
+        {
+            _playerController.OnDeath -= _playerController.OnPlayerDeath;
+        }
+    }
 }
