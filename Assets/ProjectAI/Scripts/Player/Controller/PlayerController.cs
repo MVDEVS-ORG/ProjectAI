@@ -45,6 +45,8 @@ public class PlayerController : IPlayerController
 
     private List<int> _xpLevelMap;
 
+    public event Action OnDeath;
+
     public void Initialize()
     {
 
@@ -245,6 +247,11 @@ public class PlayerController : IPlayerController
         {
             _isInvincible = false;
         }
+
+        if(_playerModel.Health<=0)
+        {
+            OnDeath?.Invoke();
+        }
     }
 
     void IPlayerController.KickBack(float strength, float duration, Vector2 direction)
@@ -397,6 +404,16 @@ public class PlayerController : IPlayerController
     void IPlayerController.ActivateAbility()
     {
         _abilityController.UseAbility();
+    }
+
+    void IPlayerController.OnPlayerDeath()
+    {
+        _ = ShowDeathScreen();
+    }
+
+    private async Awaitable ShowDeathScreen()
+    {
+        await _assetService.InstantiateAsync(AddressableIds.Death_UI);
     }
 }
 

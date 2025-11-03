@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public interface IPlayerController
@@ -23,6 +24,8 @@ public interface IPlayerController
     void KickBack(float strength, float duration, Vector2 direction);
     void SwapWeapons(int value);
     void ActivateAbility();
+    event Action OnDeath;
+    void OnPlayerDeath();
 }
 
 public enum State
