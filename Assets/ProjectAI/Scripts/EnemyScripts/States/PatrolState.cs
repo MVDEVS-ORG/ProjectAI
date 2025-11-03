@@ -1,5 +1,5 @@
-﻿using Assets.ProjectAI.Scripts.PathFinding;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Assets.ProjectAI.Scripts.PathFinding;
 using TMPro;
 using UnityEngine;
 
@@ -46,7 +46,7 @@ public class PatrolState : IEnemyState
         }
     }
 
-    public void Exit() 
+    public void Exit()
     {
         _enemy.animator?.SetBool("Walking", false);
 

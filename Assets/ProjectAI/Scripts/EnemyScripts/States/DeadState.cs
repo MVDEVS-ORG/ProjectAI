@@ -37,7 +37,7 @@ public class DeadState : IEnemyState
     }
 
     public void Update() { }
-    public void Exit() 
+    public void Exit()
     {
         _enemy.animator?.Rebind();
         _enemy.animator?.Update(0);
@@ -50,13 +50,13 @@ public class DeadState : IEnemyState
         int numberOfParticles = Random.Range(1, 5);
         int XpPerParticle = (int)_enemy.enemyModel.Xp / numberOfParticles;
         int RemainingXP = _enemy.enemyModel.Xp - (XpPerParticle * numberOfParticles);
-        for(int i= 0;i<=numberOfParticles;i++)
+        for (int i = 0; i <= numberOfParticles; i++)
         {
-            GameObject particle = await _objectPoolmanager.SpawnObjectAsync(AddressableIds.Experience_Particle_Metal_Small,_enemy.transform.position, Quaternion.identity, ObjectPoolManager.PoolType.ParticleSystems);
+            GameObject particle = await _objectPoolmanager.SpawnObjectAsync(AddressableIds.Experience_Particle_Metal_Small, _enemy.transform.position, Quaternion.identity, ObjectPoolManager.PoolType.ParticleSystems);
             XPParticle xp = particle.GetComponent<XPParticle>();
             if (i == numberOfParticles)
             {
-                xp.Initialize(_objectPoolmanager,RemainingXP);
+                xp.Initialize(_objectPoolmanager, RemainingXP);
             }
             else
             {
