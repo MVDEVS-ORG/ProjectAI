@@ -37,23 +37,11 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items
                 // Per-instance roll (recommended): each of the Quantity attempts has its own chance
                 for (int i = 0; i < placementData.Quantity; i++)
                 {
-                    if (placementData.itemData.name == "Portal")
-                    {
-                        Debug.LogError($"placing portal....");
-                    }
                     if (Random.value < chance) // Random.value returns [0.0, 1.0)
                     {
                         Vector2? possiblePlacementSpot = itemPlacementHelper.GetItemPlacementPosition(placementData.itemData);
-                        if (placementData.itemData.name == "Portal")
-                        {
-                            Debug.LogError($"found portal location....");
-                        }
                         if (possiblePlacementSpot.HasValue)
                         {
-                            if (placementData.itemData.name == "Portal")
-                            {
-                                Debug.LogError($"Placing Portal at {possiblePlacementSpot.Value}");
-                            }
                             placedObjects.Add(
                                 await PlaceItem(placementData.itemData, possiblePlacementSpot.Value, assetService));
                         }

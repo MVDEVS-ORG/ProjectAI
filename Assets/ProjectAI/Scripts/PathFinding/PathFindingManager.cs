@@ -333,7 +333,7 @@ namespace Assets.ProjectAI.Scripts.PathFinding
                 }
             }
 
-            // 3️⃣ Mark occupied positions as NOT walkable (if helper provided)
+            //3️⃣ Mark occupied positions as NOT walkable (if helper provided)
             if (occupiedPositions.Count > 0)
             {
                 foreach (var occPos in occupiedPositions)

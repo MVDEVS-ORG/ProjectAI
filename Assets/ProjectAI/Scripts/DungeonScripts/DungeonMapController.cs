@@ -37,11 +37,14 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
             }
             var isMapBaked = await PathFindingManager.Instance.BakeItemsAsync(data);
             //PathFindingManager.Instance.BakeFromTilemap(data.occupiedPosition);
-            Debug.Log("Dungeon Map Initialized");
-           /* if (isMapBaked)
+            if (isMapBaked)
             {
                 Debug.Log("Baking Complete");
-            }*/
+            }
+            else
+            {
+                Debug.LogError("Baking Failed");
+            }
         }
 
         public List<GameObject> GetAllSpawnedEnemies()
