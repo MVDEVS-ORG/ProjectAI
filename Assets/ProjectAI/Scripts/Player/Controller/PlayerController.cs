@@ -248,7 +248,7 @@ public class PlayerController : IPlayerController
             _isInvincible = false;
         }
 
-        if(_playerModel.Health<=0)
+        if (_playerModel.Health <= 0)
         {
             OnDeath?.Invoke();
         }

@@ -2,11 +2,12 @@ using System;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using Zenject;
 
 public class GunsView : MonoBehaviour, IInteractable
 {
-    [HideInInspector]public GunsModel GunsModel;
-    [HideInInspector]public GunsController GunsController;
+    [HideInInspector] public GunsModel GunsModel;
+    [HideInInspector] public GunsController GunsController;
     [HideInInspector] public bool GunActive;
     public GunsSO GunsDataModel;
     [HideInInspector] public Transform PlayerTransform;
@@ -30,6 +31,8 @@ public class GunsView : MonoBehaviour, IInteractable
     public Action<IGunProjectileBehavior> OnShotFired;
     public Sprite GunSprite;
     private float _angle;
+    protected SignalBus _signalBus;
+
     private void Start()
     {
         if (SpriteRenderer == null)
@@ -46,7 +49,7 @@ public class GunsView : MonoBehaviour, IInteractable
         OnShotFired?.Invoke(projectileBehavior);
     }
 
-    public GunsModel InitializeGun(GunsController controller, ObjectPoolManager objectPoolManager, Transform playerTrasform, Transform playerCursor)
+    public GunsModel InitializeGun(GunsController controller, ObjectPoolManager objectPoolManager, Transform playerTrasform, Transform playerCursor, SignalBus singalBus)
     {
         Debug.Log("Gun initialized");
         GunsController = controller;
@@ -59,8 +62,9 @@ public class GunsView : MonoBehaviour, IInteractable
         PlayerTransform = playerTrasform;
         PoolManager = objectPoolManager;
         PlayerCursor = playerCursor;
+        _signalBus = singalBus;
         Collider.enabled = false;
-        gameObject.name = gameObject.name + (GunsModel.GetHashCode()%1000000);
+        gameObject.name = gameObject.name + (GunsModel.GetHashCode() % 1000000);
         ActivateGun();
         return GunsModel;
     }
@@ -95,7 +99,7 @@ public class GunsView : MonoBehaviour, IInteractable
 
     public void Update()
     {
-        if(GunActive)
+        if (GunActive)
         {
             if (!AlternateRotation)
             {
@@ -132,12 +136,12 @@ public class GunsView : MonoBehaviour, IInteractable
         RotateGun();
     }
 
-    public void SetStartingRotation(int order,int max)
+    public void SetStartingRotation(int order, int max)
     {
         _angle = 0 + (Mathf.PI * 2 / max) * order;
         transform.position = PlayerTransform.position + new Vector3(GunsModel.ElipseHorizontalRadius * MathF.Cos(_angle), GunsModel.ElipseHorizontalRadius * MathF.Sin(_angle), transform.position.z);
         transform.right = (transform.position - PlayerTransform.position).normalized;
-        RotateGun();   
+        RotateGun();
     }
 
     public void RotationalMotion()

@@ -12,7 +12,7 @@ public class ShotGun : GunsView
 
     public override void Fire(bool firing)
     {
-        if(_view==null)
+        if (_view == null)
         {
             _view = PlayerTransform.GetComponent<CharacterView>();
         }
@@ -20,7 +20,7 @@ public class ShotGun : GunsView
         if (_firingGun == null)
         {
             _firingGun = StartCoroutine(Firing());
-            if(_cancellationTokenSource!=null)
+            if (_cancellationTokenSource != null)
             {
                 _cancellationTokenSource.Cancel();
                 _cancellationTokenSource.Dispose();
@@ -41,7 +41,7 @@ public class ShotGun : GunsView
             _firingGun = null;
             _cancellationTokenSource.Cancel();
             _cancellationTokenSource.Dispose();
-            _cancellationTokenSource=null;
+            _cancellationTokenSource = null;
             _firing = false;
         }
     }
@@ -74,6 +74,8 @@ public class ShotGun : GunsView
             if (_firing && GunsModel.OverHeatValue < GunsModel.OverHeatLimit && !_overheat)
             {
                 _ = FireBullet((PlayerCursor.position - GunBulletSpawnTransform.position).normalized);
+                Debug.LogWarning("Firing Gun: " + gameObject.name);
+                _signalBus.Fire(new CamEffectsSignal(new CamEffectsSignal.SignalEffect().WithEffect(CamEffect.CamShakeConstant).WithFrequency(1f).WithAmplitude(5f).WithDuration(0.1f)));
                 if (WeaponKnockback && !AlternateRotation)
                 {
                     _view.ExternalKickBack(3, transform.position, 0.2f);
@@ -101,7 +103,7 @@ public class ShotGun : GunsView
         while (!cancellationToken.IsCancellationRequested)
         {
             await Awaitable.EndOfFrameAsync();
-            if (GunsModel.OverHeatValue > 0 )//&& !_firing)
+            if (GunsModel.OverHeatValue > 0)//&& !_firing)
             {
                 GunsModel.OverHeatValue = GunsModel.OverHeatValue > 0 ? GunsModel.OverHeatValue - GunsModel.CoolDownRate * Time.deltaTime : 0;
                 if (GunsModel.OverHeatValue < GunsModel.MinCooldownThreshold)
