@@ -33,13 +33,15 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem
                 DungeonData dungeonData
            )
         {
-            var itemPlacementHelper = new ItemPlacementHelper(roomFloor, roomFloorNoCorridors, dungeonData);
-
+            Room room = new Room(roomCenter, roomFloor, dungeonData.doorPositions);
+            room.ProcessRooms();
+            var itemPlacementHelper = new ItemPlacementHelper(room);
+            dungeonData.Rooms.Add(room);
             Transform characterView = playerTransform;
 
             var placedObjects = await PrefabPlacer.PlaceAllItems(placementData[dungeonData.currentDungeonLevel -1].items, itemPlacementHelper, assetService);
             /*placedObjects.AddRange(await prefabPlacer.PlaceEnemies(enemyPlacementData, itemPlacementHelper, assetService, characterView));*/
-            var enemySpawnerObj = await assetService.InstantiateWithPRAsync(AddressableIds.Enemy_Spawner, (Vector3)itemPlacementHelper.GetItemPlacementPosition(PlacementType.OpenSpace, 1, Vector2Int.one, false), Quaternion.identity);
+            var enemySpawnerObj = await assetService.InstantiateWithPRAsync(AddressableIds.Enemy_Spawner, room.RoomCenterPos, Quaternion.identity);
             placedObjects.Add(enemySpawnerObj);
             var enemySpawner = enemySpawnerObj.GetComponent<EnemySpawner>();
             enemySpawner.InitializeSpawner(opManager, placementData[dungeonData.currentDungeonLevel -1].enemies, itemPlacementHelper, playerTransform);

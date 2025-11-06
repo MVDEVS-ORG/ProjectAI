@@ -46,11 +46,15 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem
             DungeonData dungeonData
         )
         {
-            ItemPlacementHelper itemPlacementHelper = new ItemPlacementHelper(roomFloor, roomFloorNoCorridors, dungeonData);
+            Room room = new Room(roomCenter, roomFloor, dungeonData.doorPositions);
+            room.ProcessRooms();
+            ItemPlacementHelper itemPlacementHelper = new ItemPlacementHelper(room);
+            dungeonData.Rooms.Add(room);
             List<GameObject> placedObjects = await PrefabPlacer.PlaceAllItems(placementData[dungeonData.currentDungeonLevel - 1].items, itemPlacementHelper, assetService);
 
             Vector2Int playerSpawnPoint = roomCenter;
-            _playerSpawnPoint = roomCenter;
+            var spawnPos = itemPlacementHelper.GetPlacementNearPosition(roomCenter, 8f);
+            _playerSpawnPoint = spawnPos.HasValue? spawnPos.Value : roomCenter;
             return placedObjects;
         }
     }

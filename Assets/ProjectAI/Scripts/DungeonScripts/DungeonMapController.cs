@@ -1,8 +1,10 @@
 ﻿using Assets.ProjectAI.Scripts.DungeonScripts.Data;
 using Assets.ProjectAI.Scripts.GameController;
+using Assets.ProjectAI.Scripts.HelperClasses;
 using Assets.ProjectAI.Scripts.PathFinding;
 using Assets.Services;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Zenject;
 
@@ -26,16 +28,20 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
             data.currentDungeonLevel = _levelManager.CurrentLevel;
             data = await PathFindingManager.Instance.InitialBakeAsync(data);
             data =  _roomFirstDungeonGenerator.DetectDoorPositions(data);
+            var roomFloor = new HashSet<Vector2Int>(data.floorPositions.Except(data.corridorPositions));
+
             var items = await _roomContentGenerator.GenerateRoomContent(data);
             foreach (var item in items)
             {
                 data.items.Add(item);
             }
             var isMapBaked = await PathFindingManager.Instance.BakeItemsAsync(data);
-            if (isMapBaked)
+            //PathFindingManager.Instance.BakeFromTilemap(data.occupiedPosition);
+            Debug.Log("Dungeon Map Initialized");
+           /* if (isMapBaked)
             {
                 Debug.Log("Baking Complete");
-            }
+            }*/
         }
 
         public List<GameObject> GetAllSpawnedEnemies()

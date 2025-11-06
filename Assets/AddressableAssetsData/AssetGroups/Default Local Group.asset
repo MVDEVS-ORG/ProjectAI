@@ -115,6 +115,16 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3ba0fca3fb94eae4b84ab6c18587e919
+    m_Address: GreenCapsule
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3cf14b568617ca94181b1f188f73240c
+    m_Address: BlueCapsule
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 471853985ed4b5242ad12af71ace0cf6
     m_Address: floor
     m_ReadOnly: 0
@@ -227,6 +237,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 87095a3371bb892479defb688fa9abda
     m_Address: shotgunner
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8a9c9b146141c4140af7a210449664ab
+    m_Address: WireMachine
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -347,6 +362,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: df74987f9ca26f141b2af642ae8d39c0
     m_Address: gunUICanvas
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ea88407c5802c8d429b7c8b4cfd5720e
+    m_Address: TableChair5X5
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
