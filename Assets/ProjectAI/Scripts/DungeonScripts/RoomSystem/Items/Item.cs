@@ -35,10 +35,6 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items
         public Vector2Int itemSize;
         public void InitializeItemData(ItemData itemData)
         {
-            //_spriteRenderer.sprite = placementData.sprite;
-            //_spriteRenderer.transform.localPosition = new Vector2(0.5f * placementData.size.x, 0.5f * placementData.size.y);
-
-            //_itemCollider.offset = _spriteRenderer.transform.localPosition;
             if (itemData.litObject)
             {
                 _light.enabled = true;

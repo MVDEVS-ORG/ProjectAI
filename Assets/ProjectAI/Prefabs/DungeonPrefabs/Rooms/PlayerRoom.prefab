@@ -59,6 +59,14 @@ MonoBehaviour:
       maxQuantity: 3
       spawnChance: 1
       itemData: {fileID: 11400000, guid: 3e1b7eab1b19d1942a486bd3b3d7bdb8, type: 2}
+    - minQuantity: 1
+      maxQuantity: 1
+      spawnChance: 1
+      itemData: {fileID: 11400000, guid: bca5fbb7f4335d34c81ab49f762aace8, type: 2}
+    - minQuantity: 1
+      maxQuantity: 4
+      spawnChance: 1
+      itemData: {fileID: 11400000, guid: dcce0e6cc7040c74b9b2846ec013466c, type: 2}
     enemies: []
   - items: []
     enemies: []

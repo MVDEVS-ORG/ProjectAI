@@ -4,6 +4,8 @@ using Assets.ProjectAI.Scripts.DungeonScripts;
 using Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items;
 using Zenject;
 using UnityEngine.Tilemaps;
+using Assets.ProjectAI.Scripts.HelperClasses;
+
 
 
 #if UNITY_EDITOR
@@ -174,7 +176,7 @@ namespace Assets.ProjectAI.Scripts.PathFinding
             int halfWidth = Mathf.FloorToInt((size.x - 1) / 2f);
             int halfHeight = Mathf.FloorToInt((size.y - 1) / 2f);
 
-            Vector2Int bottomLeft = new Vector2Int(center.x - halfWidth, center.y - halfHeight);
+            Vector2Int bottomLeft = new Vector2Int(center.x, center.y);
 
             for (int x = 0; x < size.x; x++)
             {
@@ -271,8 +273,13 @@ namespace Assets.ProjectAI.Scripts.PathFinding
         }
 
 
-        public void BakeFromTilemap()
+        public void BakeFromTilemap(HashSet<Vector2Int> occupiedPositions = null)
         {
+            if(occupiedPositions == null || occupiedPositions.Count == 0)
+            {
+                Debug.LogWarning("BakeFromTilemap: No occupied positions provided to block.");
+                occupiedPositions = new HashSet<Vector2Int>();
+            }
             if (_tileMap == null || _floorSprite == null)
             {
                 Debug.LogError("BakeFromTilemap: Missing tilemap or floor sprite reference.");
@@ -326,12 +333,31 @@ namespace Assets.ProjectAI.Scripts.PathFinding
                 }
             }
 
+            //3️⃣ Mark occupied positions as NOT walkable (if helper provided)
+            if (occupiedPositions.Count > 0)
+            {
+                foreach (var occPos in occupiedPositions)
+                {
+                    int x = occPos.x - offsetX;
+                    int y = occPos.y - offsetY;
+
+                    if (x >= 0 && x < width && y >= 0 && y < height)
+                    {
+                        nodes[x, y].walkable = false;
+                        baseWalkable[x, y] = false;
+                        _walkablePositions.Remove(occPos);
+                        blockedByItems.Add(occPos);
+                    }
+                }
+            }
+
             _initialBaked = true;
 
 #if UNITY_EDITOR
             if (debugDrawGrid) SceneView.RepaintAll();
 #endif
         }
+
 
         /// <summary>
         /// Unblock tiles under a destroyed item.

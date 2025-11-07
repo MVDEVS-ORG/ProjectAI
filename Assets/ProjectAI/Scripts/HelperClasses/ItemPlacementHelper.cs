@@ -1,5 +1,6 @@
-﻿using Assets.ProjectAI.Scripts.DungeonScripts;
-using Assets.ProjectAI.Scripts.HelperClass;
+﻿using Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem;
+using Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -8,153 +9,325 @@ namespace Assets.ProjectAI.Scripts.HelperClasses
 {
     public class ItemPlacementHelper
     {
-        Dictionary<PlacementType, HashSet<Vector2Int>> tileByType = new Dictionary<PlacementType, HashSet<Vector2Int>>();
-        HashSet<Vector2Int> roomFloorNoCorridor;
+        private Room _room;
+        public HashSet<Vector2Int> OccupiedPositions { get; private set; } = new();
 
-        public ItemPlacementHelper(HashSet<Vector2Int> roomFloor, HashSet<Vector2Int> roomFloorNoCorridor, DungeonData dungeonData)
+        public ItemPlacementHelper(Room room)
         {
-            Graph graph = new Graph(roomFloor);
-            this.roomFloorNoCorridor = roomFloorNoCorridor;
+            this._room = room;
+        }
+        /// <summary>
+        /// Tries to find a valid position near an origin within a given radius.
+        /// </summary>
+        public Vector2? GetPlacementNearPosition(Vector2 origin, float searchRadius)
+        {
+            // Convert the origin to grid coordinates
+            Vector2Int originInt = Vector2Int.RoundToInt(origin);
 
-            foreach (var position in roomFloorNoCorridor)
+            // Collect all valid nearby tiles
+            List<Vector2Int> nearbyTiles = new();
+
+            int intRadius = Mathf.CeilToInt(searchRadius);
+            for (int x = -intRadius; x <= intRadius; x++)
             {
-                // Skip if tile is a door
-                if (dungeonData.doorPositions.Contains(position))
-                    continue;
-
-                // Optionally skip tiles directly adjacent to a door (to keep item spacing)
-                bool nearDoor = false;
-                foreach (var dir in Direction2D.cardinalDirectionList)
+                for (int y = -intRadius; y <= intRadius; y++)
                 {
-                    if (dungeonData.doorPositions.Contains(position + dir))
+                    Vector2Int testPos = originInt + new Vector2Int(x, y);
+
+                    // Check if within circular radius
+                    if (Vector2.Distance(originInt, testPos) > searchRadius)
+                        continue;
+
+                    // Must be part of the room floor and not occupied
+                    if (_room.FloorTiles.Contains(testPos) && !OccupiedPositions.Contains(testPos))
                     {
-                        nearDoor = true;
-                        break;
+                        nearbyTiles.Add(testPos);
                     }
                 }
-                if (nearDoor)
-                    continue;
-
-                int neighborsCount8Dir = graph.GetNeighbors8Directions(position).Count;
-                PlacementType type = neighborsCount8Dir < 8 ? PlacementType.NearWall : PlacementType.OpenSpace;
-
-                // Skip tiles that are completely enclosed (4 neighbors)
-                var n4 = graph.GetNeighbors4Directions(position);
-                if (type == PlacementType.NearWall && n4.Count == 4)
-                    continue;
-
-                if (!tileByType.ContainsKey(type))
-                    tileByType[type] = new HashSet<Vector2Int>();
-
-                tileByType[type].Add(position);
-            }
-        }
-        public Vector2? GetPlacementNearPosition(Vector2 origin, PlacementType placementType, int searchRadius, Vector2Int size, bool addOffset)
-        {
-            Vector2Int originInt = Vector2Int.FloorToInt(origin);
-
-            List<Vector2Int> validPositions = new();
-
-            foreach (var pos in tileByType[placementType])
-            {
-                if (Vector2Int.Distance(originInt, pos) <= searchRadius)
-                {
-                    validPositions.Add(pos);
-                }
             }
 
-            // Sort by proximity to origin
-            validPositions = validPositions.OrderBy(p => Vector2Int.Distance(originInt, p)).ToList();
-
-            foreach (var position in validPositions)
+            // If no valid positions found, return null
+            if (nearbyTiles.Count == 0)
             {
-                if (size.x * size.y > 1)
-                {
-                    var (result, placementTiles) = PlaceBigItem(position, size, addOffset);
-                    if (result)
-                    {
-                        tileByType[placementType].ExceptWith(placementTiles);
-                        return position;
-                    }
-                }
-                else
-                {
-                    tileByType[placementType].Remove(position);
-                    return position;
-                }
-            }
-
-            return null;
-        }
-
-
-        public Vector2? GetItemPlacementPosition(PlacementType placementType, int iterationsMax, Vector2Int size, bool addoffset)
-        {
-            int itemArea = size.x * size.y;
-            if (tileByType[placementType].Count < itemArea)
-            {
+                Debug.LogError("No valid nearby positions found for placement.");
                 return null;
             }
-            int iteration = 0;
-            while(iteration < iterationsMax)
+                
+
+            // Pick a random one for variation
+            var selected = nearbyTiles[UnityEngine.Random.Range(0, nearbyTiles.Count)];
+            return selected;
+        }
+
+
+        /// <summary>
+        /// Randomly finds a placement position of given type.
+        /// </summary>
+        public Vector2? GetItemPlacementPosition(ItemData itemData)
+        {
+            switch (itemData)
             {
-                iteration++;
-                int index = Random.Range(0, tileByType[placementType].Count);
-                Vector2Int position = tileByType[placementType].ElementAt(index);
-
-                if(itemArea > 1)
-                {
-                    var (result, placementPosition) = PlaceBigItem(position, size, addoffset);
-
-                    if(result == false)
-                    {
-                        continue;
-                    }
-                    tileByType[placementType].ExceptWith(placementPosition);
-                }
-                else
-                {
-                    tileByType[placementType].Remove(position);
-                }
-                return position;
+                case { Corner: true }:
+                    return PlaceCornerItem(itemData);
+                case { NearWallDown: true }:
+                    return PlaceNearWallVerticleItem(itemData, Vector2Int.up);
+                case { NearWallUp: true }:
+                    return PlaceNearWallVerticleItem(itemData, Vector2Int.down);
+                case { NearWallLeft: true }:
+                    return PlaceNearWallHorizontalItem(itemData, Vector2Int.right);
+                case { NearWallRight: true }:
+                    return PlaceNearWallHorizontalItem(itemData, Vector2Int.left);
+                case { Inner: true }:
+                    return PlaceInnerItem(itemData);
+                default:
+                    Debug.LogError($"ItemData {itemData.name} has no valid placement type set.");
+                    return null;
             }
+        }
+        private Vector2? PlaceInnerItem(ItemData itemData)
+        {
+            // Get all available inner tiles that aren't occupied
+            HashSet<Vector2Int> availableTiles = _room.InnerTiles.Except(OccupiedPositions).ToHashSet();
+            if (availableTiles.Count == 0)
+            {
+                Debug.LogError("No Inner positions available for placement.");
+                return null;
+            }
+
+            // Shuffle list for randomized placement
+            var shuffledTiles = availableTiles.OrderBy(_ => UnityEngine.Random.value).ToList();
+
+            foreach (var baseTile in shuffledTiles)
+            {
+                // Try placing directly or near this base tile
+                // Small random offsets in four directions for natural variation
+                List<Vector2Int> offsets = new()
+                {
+                    Vector2Int.zero,
+                    Vector2Int.up,
+                    Vector2Int.down,
+                    Vector2Int.left,
+                    Vector2Int.right
+                };
+
+                foreach (var offset in offsets)
+                {
+                    Vector2Int testTile = baseTile + offset;
+
+                    if (!itemData.CanBePlaced(testTile, _room.FloorTiles, OccupiedPositions, itemData.size))
+                        continue;
+
+                    // Get all tiles the item would occupy
+                    var occupiedTiles = itemData.GetOccupiedTiles(testTile, itemData.size);
+
+                    // Check if any occupied tile is adjacent to a door
+                    bool nearDoor = occupiedTiles.Any(tile =>
+                        Direction2D.cardinalDirectionList.Any(neighbor => _room.DoorPositons.Contains(neighbor + tile))
+                    );
+
+                    if (nearDoor)
+                        continue; // Skip placement near door
+
+                    // Mark tiles as occupied and return
+                    MarkOccupied(itemData, testTile);
+                    return testTile;
+                }
+            }
+
+            Debug.LogError($"No valid Inner position found for item {itemData.name}");
             return null;
         }
 
-        private (bool, List<Vector2Int>) PlaceBigItem(Vector2Int originPosition, Vector2Int size, bool addOffset)
+        private Vector2? PlaceNearWallHorizontalItem(ItemData itemData, Vector2Int direction)
         {
-            List<Vector2Int> positions = new();
-
-            // Adjust offset if required
-            int offsetX = addOffset ? -1 : 0;
-            int offsetY = addOffset ? -1 : 0;
-            int width = size.x + (addOffset ? 2 : 0);
-            int height = size.y + (addOffset ? 2 : 0);
-
-            // Treat originPosition as bottom-left corner
-            for (int x = 0; x < width; x++)
+            // Get unoccupied tiles near the left or right wall
+            HashSet<Vector2Int> availableTiles = _room.NearWallTilesLeft.Except(OccupiedPositions).ToHashSet();
+            if (availableTiles.Count == 0)
             {
-                for (int y = 0; y < height; y++)
+                Debug.LogError("No NearWallLeft positions available for placement.");
+                return null;
+            }
+
+            // Shuffle list to randomize placement
+            var shuffledTiles = availableTiles.OrderBy(_ => UnityEngine.Random.value).ToList();
+
+            foreach (var baseTile in shuffledTiles)
+            {
+                Vector2Int moveDir = direction;
+                int maxOffset = Mathf.Clamp(itemData.size.x, 1, 5);
+
+                for (int offsetX = 0; offsetX <= maxOffset; offsetX++)
                 {
-                    Vector2Int pos = new Vector2Int(originPosition.x + offsetX + x, originPosition.y + offsetY + y);
+                    Vector2Int testTile = baseTile + moveDir * offsetX;
 
-                    if (!roomFloorNoCorridor.Contains(pos))
-                    {
-                        return (false, positions); // early exit on failure
-                    }
+                    if (!itemData.CanBePlaced(testTile, _room.FloorTiles, OccupiedPositions, itemData.size))
+                        continue;
 
-                    positions.Add(pos);
+                    // Get all tiles the item would occupy
+                    var occupiedTiles = itemData.GetOccupiedTiles(testTile, itemData.size);
+
+                    // Check if any occupied tile is adjacent to a door
+                    bool nearDoor = occupiedTiles.Any(tile =>
+                        Direction2D.cardinalDirectionList.Any(neighbor => _room.DoorPositons.Contains(neighbor + tile))
+                    );
+
+                    if (nearDoor)
+                        continue; // Skip placement near door
+
+                    // Mark tiles as occupied and return
+                    MarkOccupied(itemData, testTile);
+                    return testTile;
                 }
             }
 
-            return (true, positions);
+            Debug.LogError($"No valid NearWallLeft position found for item {itemData.name}");
+            return null;
         }
 
+
+
+        private Vector2? PlaceNearWallVerticleItem(ItemData itemData, Vector2Int direction)
+        {
+            // Get unoccupied tiles near the top or bottom wall
+            HashSet<Vector2Int> availableTiles = _room.NearWallTilesUp.Except(OccupiedPositions).ToHashSet();
+            if (availableTiles.Count == 0)
+            {
+                Debug.LogError("No NearWallUp positions available for placement.");
+                return null;
+            }
+
+            // Shuffle list for random placement variety
+            var shuffledTiles = availableTiles.OrderBy(_ => UnityEngine.Random.value).ToList();
+
+            foreach (var baseTile in shuffledTiles)
+            {
+                Vector2Int moveDir = direction;
+                int maxOffset = Mathf.Clamp(itemData.size.y, 1, 5);
+
+                for (int offsetY = 0; offsetY <= maxOffset; offsetY++)
+                {
+                    Vector2Int testTile = baseTile + moveDir * offsetY;
+
+                    if (!itemData.CanBePlaced(testTile, _room.FloorTiles, OccupiedPositions, itemData.size))
+                        continue;
+
+                    var occupiedTiles = itemData.GetOccupiedTiles(testTile, itemData.size);
+
+                    // Check for any door adjacent to these tiles
+                    bool nearDoor = occupiedTiles.Any(tile =>
+                        Direction2D.cardinalDirectionList.Any(neighbor => _room.DoorPositons.Contains(neighbor + tile))
+                    );
+
+                    if (nearDoor)
+                        continue; // Avoid placing near door
+
+                    // Mark tiles as occupied
+                    MarkOccupied(itemData, testTile);
+                    return testTile;
+                }
+            }
+
+            Debug.LogError($"No valid NearWall position found for item {itemData.name}");
+            return null;
+        }
+
+
+        private Vector2? PlaceCornerItem(ItemData itemData)
+        {
+            HashSet<Vector2Int> availableCorners = _room.CornerTiles.Except(OccupiedPositions).ToHashSet();
+            if (availableCorners.Count == 0)
+            {
+                Debug.LogError($"No corner positions available for placement. Item: {itemData.name}");
+                return null;
+            }
+
+            // Shuffle corner list to make random selection fair
+            var shuffledCorners = availableCorners.OrderBy(_ => UnityEngine.Random.value).ToList();
+
+            foreach (var cornerTile in shuffledCorners)
+            {
+                // Determine binary neighbor pattern
+                string neighborBinary = "";
+                foreach (var dir in Direction2D.eightDirectionList)
+                {
+                    var neighbor = cornerTile + dir;
+                    neighborBinary += _room.FloorTiles.Contains(neighbor) ? "1" : "0";
+                }
+
+                // Determine which corner type this tile likely represents
+                Vector2Int moveDir1 = Vector2Int.zero;
+                Vector2Int moveDir2 = Vector2Int.zero;
+
+                if (neighborBinary == "11100000") // Bottom Left
+                {
+                    moveDir1 = Vector2Int.right;
+                    moveDir2 = Vector2Int.up;
+                }
+                else if (neighborBinary == "00000111") // Bottom Right
+                {
+                    moveDir1 = Vector2Int.left;
+                    moveDir2 = Vector2Int.up;
+                }
+                else if (neighborBinary == "00111000") // Top Left
+                {
+                    moveDir1 = Vector2Int.right;
+                    moveDir2 = Vector2Int.down;
+                }
+                else if (neighborBinary == "00001110") // Top Right
+                {
+                    moveDir1 = Vector2Int.left;
+                    moveDir2 = Vector2Int.down;
+                }
+                else
+                {
+                    // Not a clear corner pattern — skip this one
+                    continue;
+                }
+
+                // Try to place at this corner or adjusted positions
+                Vector2Int currentTile = cornerTile;
+
+                // Try a few possible offset moves if the item doesn’t fit perfectly
+                // Try multiple inward moves depending on item size
+                int maxOffsetX = Mathf.Clamp(itemData.size.x, 1, 5);
+                int maxOffsetY = Mathf.Clamp(itemData.size.y, 1, 5);
+
+                for (int dx = 0; dx <= maxOffsetX; dx++)
+                {
+                    for (int dy = 0; dy <= maxOffsetY; dy++)
+                    {
+                        Vector2Int testTile = currentTile + moveDir1 * dx + moveDir2 * dy;
+
+                        if (itemData.CanBePlaced(testTile, _room.FloorTiles, OccupiedPositions, itemData.size))
+                        {
+                            // Mark tiles as occupied
+                            MarkOccupied(itemData, testTile);
+
+                            return testTile; // Found a valid placement
+                        }
+                    }
+                }
+            }
+
+            Debug.LogError($"No valid corner found for {itemData.name} after trying all corners.");
+            return null;
+        }
+
+        /// <summary>
+        /// Mark tiles as occupied for a given ItemData (used by PrefabPlacer).
+        /// </summary>
+        public void MarkOccupied(ItemData item, Vector2Int origin)
+        {
+            foreach (var pos in item.GetOccupiedTiles(origin, item.size))
+                OccupiedPositions.Add(pos);
+        }
     }
 
     public enum PlacementType
     {
+        Corner,
         OpenSpace,
-        NearWall
+        NearWall,
+        Enemy
     }
 }

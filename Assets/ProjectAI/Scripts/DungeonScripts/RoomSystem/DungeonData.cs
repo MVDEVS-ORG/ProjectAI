@@ -1,4 +1,6 @@
-﻿using Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items;
+﻿using Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem;
+using Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items;
+using Assets.ProjectAI.Scripts.HelperClasses;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,11 +17,12 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
         public HashSet<Vector2Int> doorPositions;
         public Dictionary<string, HashSet<Vector2Int>> doorPositionWithDirection = new();
         public HashSet<Item> items = new HashSet<Item>();
+        public List<Room> Rooms = new List<Room>();
 
         public Vector2Int? bossRoomCenter;
         public Vector2Int? treasureRoomCenter;
         public int currentDungeonLevel;
-
+        public HashSet<Vector2Int> occupiedPosition = new HashSet<Vector2Int>();
         public bool isDoorNeeded;
 
         public HashSet<Vector2Int> GetRoomFloorwithoutCorridors(Vector2Int dictionaryKey)

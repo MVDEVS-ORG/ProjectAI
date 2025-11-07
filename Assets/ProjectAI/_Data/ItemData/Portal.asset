@@ -12,12 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5853ce55987e334192cd2d9d09062c3, type: 3}
   m_Name: Portal
   m_EditorClassIdentifier: 
+  itemId: Portal
   sprite: {fileID: 21300000, guid: 4732f7895661ec348bfdaf134b76d9dd, type: 3}
   size: {x: 1, y: 1}
   placementType: 0
   addOffset: 0
+  PlaceAsGroup: 0
+  GroupMinCount: 2
+  GroupMaxCount: 4
+  Corner: 0
+  NearWallUp: 0
+  NearWallDown: 0
+  NearWallLeft: 0
+  NearWallRight: 0
+  Inner: 1
   health: 5
   maxHealth: 5
   nonDestructible: 1
   litObject: 1
-  itemId: Portal

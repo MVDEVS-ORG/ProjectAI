@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f5853ce55987e334192cd2d9d09062c3, type: 3}
-  m_Name: Torch
+  m_Name: GreenCapsule
   m_EditorClassIdentifier: 
-  itemId: Torch
-  sprite: {fileID: 5860325458425312261, guid: a0d3fbbc155eb404a87f827b40a48dfe, type: 3}
+  itemId: GreenCapsule
+  sprite: {fileID: -60726250400011180, guid: fc5028170ab84ed4bbf43948f12a52d6, type: 3}
   size: {x: 1, y: 1}
   placementType: 0
   addOffset: 0
   PlaceAsGroup: 0
   GroupMinCount: 2
   GroupMaxCount: 4
-  Corner: 1
-  NearWallUp: 0
+  Corner: 0
+  NearWallUp: 1
   NearWallDown: 0
   NearWallLeft: 0
   NearWallRight: 0

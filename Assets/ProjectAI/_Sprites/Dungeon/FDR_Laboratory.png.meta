@@ -1707,7 +1707,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FDR_Laboratory_54
+      name: Machine
       rect:
         serializedVersion: 2
         x: 0
@@ -3431,7 +3431,7 @@ TextureImporter:
         width: 22
         height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -3453,7 +3453,7 @@ TextureImporter:
         width: 22
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -3462,6 +3462,182 @@ TextureImporter:
       bones: []
       spriteID: 8f8bd853b1ddef845949e08654292179
       internalID: 2059394639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Table3X3
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 528
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a306674f974942943988646f1bf99b0f
+      internalID: 380841181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChairLeft
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 529
+        width: 14
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac883404024328941b7a456fa66a5121
+      internalID: -811757275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChairRight
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 529
+        width: 14
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4f1310287e0dae46894cc1253a1900e
+      internalID: -472081249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChairTop
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 561
+        width: 12
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84c860bd089eb284bab632716c7ea958
+      internalID: 1253463041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChairBottom
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 561
+        width: 12
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 424ec21aee31ccd4c8d227ef34256902
+      internalID: 1481727269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shelf_1
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 728
+        width: 32
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f697828fc82edd46a26ada83d260fb8
+      internalID: 1273053058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shelf_2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 728
+        width: 32
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1950ff1bf55d74e4a964acd4dc5b2edf
+      internalID: -2096309555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallShelf
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 760
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 864948b48243b8841ac1ffda958e12b3
+      internalID: -1871313516
       vertices: []
       indices: 
       edges: []
@@ -3481,6 +3657,10 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       Blue Capsule: -381175841
+      ChairBottom: 1481727269
+      ChairLeft: -811757275
+      ChairRight: -472081249
+      ChairTop: 1253463041
       FDR_Laboratory_1: 4822189355530347255
       FDR_Laboratory_10: -9085940976212683183
       FDR_Laboratory_100: -8388636040725668260
@@ -3561,7 +3741,6 @@ TextureImporter:
       FDR_Laboratory_51: 1514756519440888554
       FDR_Laboratory_52: -4688162286234804827
       FDR_Laboratory_53: 766283121367780786
-      FDR_Laboratory_54: -3544191979205546819
       FDR_Laboratory_55: 749021770515214468
       FDR_Laboratory_56: 6417851639776406983
       FDR_Laboratory_57: 4255979084601171130
@@ -3612,7 +3791,12 @@ TextureImporter:
       FDR_Laboratory_98: -1449454198677000870
       FDR_Laboratory_99: -8093062412479311053
       GreenCapsules: -5480758819588434173
+      Machine: -3544191979205546819
       Pod: 2059394639
+      Shelf_1: 1273053058
+      Shelf_2: -2096309555
+      SmallShelf: -1871313516
+      Table3X3: 380841181
       health Pod: -2409331493503893188
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0

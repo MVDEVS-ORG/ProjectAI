@@ -1,10 +1,8 @@
 ﻿using Assets.ProjectAI.Scripts.DungeonScripts.DecisionSystem;
 using Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem;
 using Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items;
-using Assets.ProjectAI.Scripts.HelperClasses;
 using Assets.ProjectAI.Scripts.Player;
 using Assets.Services;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -29,6 +27,7 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
 
         public Transform itemParent;
         private Vector2Int _playerSpawnPoint;
+        private DungeonData _dungeonData;
         public async Awaitable<List<Item>> GenerateRoomContent(DungeonData dungeonData)
         {
             foreach (GameObject obj in spawnedObjects)
@@ -40,6 +39,8 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
             await SelectEnemySpawnPoint(dungeonData);
             await SpawnSpecialRoomContent(dungeonData);
             await SpawnDoors(dungeonData);
+            _dungeonData = dungeonData;
+            Debug.LogError($"No. of Rooms in Dungeon = {dungeonData.Rooms.Count}");
             /*foreach (var doorPos in dungeonData.doorPositions)
             {
                 if (_doorPrefab != null)
@@ -68,7 +69,50 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts
                 );
             return spawnedItem;
         }
-
+        private void OnDrawGizmosSelected()
+        {
+            if (_dungeonData == null)
+                return;
+            foreach (Room room in _dungeonData.Rooms)
+            {
+                //Draw inner tiles
+                Gizmos.color = Color.yellow;
+                foreach (Vector2Int floorPosition in room.InnerTiles)
+                {
+                    Gizmos.DrawCube(floorPosition + Vector2.one * 0.5f, Vector2.one);
+                }
+                //Draw near wall tiles UP
+                Gizmos.color = Color.blue;
+                foreach (Vector2Int floorPosition in room.NearWallTilesUp)
+                {
+                    Gizmos.DrawCube(floorPosition + Vector2.one * 0.5f, Vector2.one);
+                }
+                //Draw near wall tiles DOWN
+                Gizmos.color = Color.green;
+                foreach (Vector2Int floorPosition in room.NearWallTilesDown)
+                {
+                    Gizmos.DrawCube(floorPosition + Vector2.one * 0.5f, Vector2.one);
+                }
+                //Draw near wall tiles RIGHT
+                Gizmos.color = Color.white;
+                foreach (Vector2Int floorPosition in room.NearWallTilesRight)
+                {
+                    Gizmos.DrawCube(floorPosition + Vector2.one * 0.5f, Vector2.one);
+                }
+                //Draw near wall tiles LEFT
+                Gizmos.color = Color.cyan;
+                foreach (Vector2Int floorPosition in room.NearWallTilesLeft)
+                {
+                    Gizmos.DrawCube(floorPosition + Vector2.one * 0.5f, Vector2.one);
+                }
+                //Draw near wall tiles CORNERS
+                Gizmos.color = Color.magenta;
+                foreach (Vector2Int floorPosition in room.CornerTiles)
+                {
+                    Gizmos.DrawCube(floorPosition + Vector2.one * 0.5f, Vector2.one);
+                }
+            }
+        }
         private async Awaitable SpawnDoors(DungeonData dungeonData)
         {
             foreach(var doorPositon in dungeonData.doorPositionWithDirection["Down"])
