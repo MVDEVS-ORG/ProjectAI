@@ -9,6 +9,8 @@ public class DeathUI : MonoBehaviour
 
     [Inject] private ISceneManager _sceneManager;
 
+    private ResetData _resetData =  new ResetData();
+
     private void OnEnable()
     {
         Time.timeScale = 0f;
@@ -19,6 +21,7 @@ public class DeathUI : MonoBehaviour
 
     private void HeadToMainMenu()
     {
+        _resetData.ClearData();
         Time.timeScale = 1f;
         _sceneManager.FadeToBlack();
         _sceneManager.LoadSceneAsync("MainMenu");
@@ -26,6 +29,7 @@ public class DeathUI : MonoBehaviour
 
     private void Retry()
     {
+        _resetData.ClearData();
         Time.timeScale = 1f;
         _sceneManager.FadeToBlack();
         _sceneManager.LoadSceneAsync("GameScene");
