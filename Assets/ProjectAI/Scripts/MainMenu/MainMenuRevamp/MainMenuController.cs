@@ -1,4 +1,7 @@
+using Assets.ProjectAI.Scripts.MainMenu;
 using Assets.Services;
+using System.Threading.Tasks;
+using UnityEngine;
 using Zenject;
 
 public class MainMenuController
@@ -8,9 +11,16 @@ public class MainMenuController
     private ResetData _resetData = new();
 
     [Inject]
-    public void Initialize()
+    public async Task Initialize()
     {
         _resetData.ClearData();
-        _assetService.InstantiateAsync(AddressableIds.Main_Menu_UI);
+        var introObj = await _assetService.InstantiateAsync(AddressableIds.Intro_UI);
+        var introController = introObj.GetComponent<IntroController>();
+        while (!introController.IsIntroComplete)
+        {
+            await Awaitable.NextFrameAsync();
+        }
+        GameObject.Destroy(introObj);
+        _ = _assetService.InstantiateAsync(AddressableIds.Main_Menu_UI);
     }
 }
