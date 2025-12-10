@@ -73,6 +73,7 @@ public static class AddressableIds
     #region Main Menu
     public const string Main_Menu_UI = "MainMenuUI";
     public const string Fade_Screen = "FadeScreen";
+    public const string Intro_UI = "IntroUI";
     #endregion
 
     #region upgrades

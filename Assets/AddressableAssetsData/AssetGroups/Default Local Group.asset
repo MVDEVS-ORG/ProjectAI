@@ -120,6 +120,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3c1af1eb7b6c45943bdead4942069e2b
+    m_Address: IntroUI
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3cf14b568617ca94181b1f188f73240c
     m_Address: BlueCapsule
     m_ReadOnly: 0
