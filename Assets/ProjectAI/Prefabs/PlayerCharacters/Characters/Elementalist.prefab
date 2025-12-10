@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fc73b443e61c154ea1dd83d3f20414f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _spriteLayerOffset: -1
 --- !u!114 &5428964057762681750
 MonoBehaviour:
   m_ObjectHideFlags: 0

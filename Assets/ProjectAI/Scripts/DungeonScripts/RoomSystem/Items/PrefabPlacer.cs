@@ -84,7 +84,8 @@ namespace Assets.ProjectAI.Scripts.DungeonScripts.RoomSystem.Items
         private static async Awaitable<GameObject> PlaceItem(ItemData itemData, Vector2 value, IAssetService assetService)
         {
             GameObject newItem = await CreateObject(itemData.itemId, value, assetService);
-            newItem.GetComponent<Item>().InitializeItemData(itemData);
+            var itemDataClass = newItem.GetComponent<Item>();
+            itemDataClass.InitializeItemData(itemData);
             return newItem;
         }
     }

@@ -128,6 +128,7 @@ GameObject:
   - component: {fileID: 8311156325279906015}
   - component: {fileID: 2934274661106345426}
   - component: {fileID: 6428569098346378118}
+  - component: {fileID: 4541001728385529282}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -230,6 +231,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4541001728385529282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6713039196820815736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e26b66fcaaa38e14a8d960e20e3a5a51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SortOrderSetter
 --- !u!1 &7652876574312827688
 GameObject:
   m_ObjectHideFlags: 0

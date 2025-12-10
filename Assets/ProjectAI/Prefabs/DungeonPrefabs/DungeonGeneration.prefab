@@ -195,6 +195,8 @@ TilemapRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -216,9 +218,10 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1001
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -281,6 +284,7 @@ MonoBehaviour:
   offset: 2
   randomWalkRooms: 0
   roomContentGenerator: {fileID: 6605950156024319504}
+  _isDoorNeeded: 1
   showCorridorsPositions: 1
   _isTopWallRequired: 1
 --- !u!1 &3740773268491300678
@@ -533,8 +537,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5790bfc89b79cbb4c9218e6448c94860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _floorTilemap: {fileID: 7860892945105457831}
-  _wallTilemap: {fileID: 7860892945105457831}
+  _backgroundTilemap: {fileID: 0}
+  _dungeonTilemap: {fileID: 0}
   _currentTileSet: {fileID: 11400000, guid: 19e52bf78a4a62b4c82a5614cc78702b, type: 2}
 --- !u!1 &7886161548347080701
 GameObject:
@@ -718,6 +722,8 @@ TilemapRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -739,9 +745,10 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1000
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -875,7 +882,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShadowGroup: 0
-  m_Priority: 0
+  m_Priority: -1000
   m_ComponentVersion: 5
   m_HasRenderer: 1
   m_UseRendererSilhouette: 1

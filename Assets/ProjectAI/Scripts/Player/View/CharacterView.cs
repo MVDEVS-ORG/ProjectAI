@@ -41,6 +41,8 @@ public class CharacterView : MonoBehaviour
 
     private Animator _animator;
 
+    [SerializeField] private int _spriteLayerOffset;
+
 
     public void Initialize(IPlayerController playerController, PlayerModel playerModel, GameObject bulletCursor, GameObject bulletCursorUI, SignalBus signalBus, IGamePauseController gamePauseController)
     {
@@ -150,7 +152,16 @@ public class CharacterView : MonoBehaviour
                 }
             }
         }
+
         #endregion
+
+        #region Sprite Layer mask shifting
+        if ((int)MathF.Round(transform.position.y) + _spriteLayerOffset != _spriteRenderer.sortingOrder)
+        {
+            _spriteRenderer.sortingOrder = -((int)MathF.Round(transform.position.y) + _spriteLayerOffset);
+        }
+        #endregion 
+
     }
 
     public void OnApplicationFocus(bool focus)
