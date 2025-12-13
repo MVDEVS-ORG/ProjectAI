@@ -352,6 +352,7 @@ MonoBehaviour:
   _novaExplosionDuration: 3
   _startingDistanceFormPlayer: 10
   _noOfLightningAttack: 6
+  _bossAura: {fileID: 2542610922383902363}
   _sweepDuration: 1.5
   _healthModel: {fileID: 11400000, guid: 206114dbba9e5114aa8054dc9efabe2c, type: 2}
 --- !u!1 &3516487363652521199
@@ -669,6 +670,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  _aura: {fileID: 2545515528490276091}
+  _auraIntensity: 1.41
 --- !u!1 &7955715155689362858
 GameObject:
   m_ObjectHideFlags: 0
