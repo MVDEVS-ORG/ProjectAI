@@ -27,6 +27,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
         [SerializeField] private float _novaExplosionDuration = 3f;
         [SerializeField] private float _startingDistanceFormPlayer = 5f;
         [SerializeField] private int _noOfLightningAttack = 3;
+        [SerializeField] private NearDistanceDamageDealer _bossAura;
         [Range(0.0f, 3f)][SerializeField] private float _sweepDuration = 1.5f;
 
         [Header("Health Settings")]
@@ -96,6 +97,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
         public void EnterIdle()
         {
             _bossAnimator.SetTrigger("Idle");
+            _bossAura.TurnOnAura();
         }
 
         public void SelectAndPlayAttack()
@@ -162,10 +164,12 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
         public void AttackFinished()
         {
             _bossAnimator.SetTrigger("AttackComplete");
+            _bossAura.TurnOnAura();
         }
 
         public async void SummonLightning()
         {
+            _bossAura.TurnOffAura();
             Debug.LogError("Summoning Lightning");
             _summoningLight.SetActive(true);
             // Fire lightning _noOfLightningAttack times in a row
@@ -188,6 +192,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
 
         private async Awaitable LightningStrike()
         {
+            _bossAura.TurnOffAura();
             Debug.LogError("Summoning Lightning on the player...");
             Vector3 origin = _lightningAttackPosition.position;
             var target = await _target.GetPlayerTransform();
@@ -215,6 +220,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
 
         public async void LaserAttack()
         {
+            _bossAura.TurnOffAura();
             if (_isInPhase1)
             {
                 // laser is fired (Laser sweep) towards player
@@ -282,6 +288,7 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
 
         private async Awaitable Phase2AttackLoop()
         {
+            _bossAura.TurnOffAura();
             _LaserSmoke.SetActive(true);
             while (_healthModel.Health > 0) // keep going until boss dies
             {
@@ -305,10 +312,12 @@ namespace Assets.ProjectAI.Scripts.EnemyScripts.Bosses
         public void BossWakeUp()
         {
             _bossAnimator.SetTrigger("WakeUp");
+            _bossAura.TurnOnAura();
         }
 
         public async void PerformNovaAttack()
         {
+            _bossAura.TurnOffAura();
             GameObject novaGO = await _poolManager.SpawnObjectAsync(
                 AddressableIds.Enemy_Nova,
                 transform.position,             // spawn at boss position
