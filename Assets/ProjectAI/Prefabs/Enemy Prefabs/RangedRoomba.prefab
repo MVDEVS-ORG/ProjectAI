@@ -215,6 +215,7 @@ MonoBehaviour:
   attackSpawnPos: {fileID: 3432260869315414889}
   healthModel: {fileID: 11400000, guid: dd952a87abf29984e94e6f574d9340a4, type: 2}
   animator: {fileID: 6473217288016659291}
+  spriteRenderer: {fileID: 324703102801763957}
   _enemyDataSO: {fileID: 11400000, guid: 5f3524b3ad92aab48a9ba4a1269ea173, type: 2}
   EnemyModelInitialized: 0
   _enemyCollider: {fileID: 8689835268274908973}

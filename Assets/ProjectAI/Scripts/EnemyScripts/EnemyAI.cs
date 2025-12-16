@@ -19,6 +19,7 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
     public Transform attackSpawnPos;
     public HealthModelsSO healthModel;
     public Animator animator;
+    public SpriteRenderer spriteRenderer;
 
     [SerializeField] private EnemyDataSO _enemyDataSO;
     [HideInInspector] public EnemyModel enemyModel;
@@ -86,6 +87,8 @@ public class EnemyAI : MonoBehaviour, IHealthSystem
     void Update()
     {
         currentState?.Update();
+        if (spriteRenderer)
+            spriteRenderer.sortingOrder = -(int)transform.position.y;
     }
 
     public void TransitionToState(IEnemyState newState)

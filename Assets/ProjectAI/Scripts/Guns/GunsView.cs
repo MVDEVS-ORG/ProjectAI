@@ -113,11 +113,11 @@ public class GunsView : MonoBehaviour, IInteractable
         _angle = MathF.Atan2(PlayerCursor.position.y - PlayerTransform.position.y, PlayerCursor.position.x - PlayerTransform.position.x);
         if (_angle > 0)
         {
-            SpriteRenderer.sortingOrder = 4;
+            SpriteRenderer.sortingOrder = -(int)(transform.position.y);
         }
         else
         {
-            SpriteRenderer.sortingOrder = 10;
+            SpriteRenderer.sortingOrder = -(int)(transform.position.y-2);
         }
         transform.position = PlayerTransform.position + new Vector3(GunsModel.ElipseHorizontalRadius * MathF.Cos(_angle), GunsModel.ElipseVerticalRadius * MathF.Sin(_angle), transform.position.z);
         transform.right = (PlayerCursor.transform.position - PlayerTransform.position).normalized;

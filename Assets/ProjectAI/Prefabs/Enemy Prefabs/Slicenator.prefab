@@ -140,6 +140,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -161,6 +163,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
@@ -247,7 +250,9 @@ MonoBehaviour:
   attackSpawnPos: {fileID: 8504197059348783951}
   healthModel: {fileID: 11400000, guid: 06f5326d63099334aa4e7fed63e39d7d, type: 2}
   animator: {fileID: 2018304359489993399}
+  spriteRenderer: {fileID: 5602585989204928776}
   _enemyDataSO: {fileID: 11400000, guid: 8a7b511f2c847d8419a9d159ddda0a36, type: 2}
+  EnemyModelInitialized: 0
   _enemyCollider: {fileID: 2298294354932179435}
   currentPath: []
   currentPathIndex: 0
@@ -315,6 +320,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -336,6 +343,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -5
