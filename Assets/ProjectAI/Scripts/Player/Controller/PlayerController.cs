@@ -119,8 +119,12 @@ public class PlayerController : IPlayerController
             _rumbleController.Initialize(_characterView);
             #endregion
 
-            #region player XP
-            (int, int, int) playerStats = _upgradeController.LoadPlayerStats();
+            #region player stats
+            (int, int, int) playerStats = _upgradeController.LoadPlayerStats(_playerModel);
+            if(playerStats == (0,0,0)) // this is a specific case where we reload from death screen or anywhere and have saved stats
+            {
+                playerStats.Item3 = _playerModel.MaxHealth;
+            }
             int accumulatedXP = playerStats.Item1;
             LoadPlayerStats(playerStats.Item1, playerStats.Item2, playerStats.Item3);
             _sceneManager.BeforeChangeScene += () => { _upgradeController.SavePlayerStats(_playerModel.Experience, _playerModel.PlayerLevel, _playerModel.Health); };

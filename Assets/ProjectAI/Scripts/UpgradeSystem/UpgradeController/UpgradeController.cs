@@ -171,10 +171,14 @@ public class UpgradeController : IUpgradeController
         _dataSerializer.SaveData(AddressableIds.Player_Stats_Path, playerStats);
     }
 
-    (int, int, int) IUpgradeController.LoadPlayerStats()
+    (int, int, int) IUpgradeController.LoadPlayerStats(PlayerModel playerModel)
     {
-        (int, int, int) xp = _dataSerializer.LoadData<(int, int, int)>(AddressableIds.Player_Stats_Path);
-        return xp;
+        (int, int, int) stats = _dataSerializer.LoadData<(int, int, int)>(AddressableIds.Player_Stats_Path);
+        if (stats == (0,0,0))
+        {
+            stats.Item3 = playerModel.MaxHealth;
+        }
+        return stats;
     }
 
     void IUpgradeController.ClearPlayerStats()
