@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4936605241025251285}
   - component: {fileID: 4647848726551266211}
+  - component: {fileID: 6277760517379007929}
   m_Layer: 0
   m_Name: BottomChairs
   m_TagString: Untagged
@@ -90,6 +91,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6277760517379007929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 553835129764369943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e26b66fcaaa38e14a8d960e20e3a5a51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SortOrderSetter
 --- !u!1 &724802810805543851
 GameObject:
   m_ObjectHideFlags: 0
@@ -100,6 +113,7 @@ GameObject:
   m_Component:
   - component: {fileID: 300402980341903640}
   - component: {fileID: 3918360766816199815}
+  - component: {fileID: 6371444678107655302}
   m_Layer: 0
   m_Name: TopChairs
   m_TagString: Untagged
@@ -180,6 +194,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6371444678107655302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 724802810805543851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e26b66fcaaa38e14a8d960e20e3a5a51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SortOrderSetter
 --- !u!1 &2400922118905113715
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,6 +216,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4399511078855899202}
   - component: {fileID: 8045883021293738568}
+  - component: {fileID: 5251528838016156778}
   m_Layer: 0
   m_Name: RightChairs
   m_TagString: Untagged
@@ -270,6 +297,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5251528838016156778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2400922118905113715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e26b66fcaaa38e14a8d960e20e3a5a51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SortOrderSetter
 --- !u!1 &4209056918555136787
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,6 +319,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3869693773707034577}
   - component: {fileID: 7336901900448896837}
+  - component: {fileID: 5998816132000224507}
   m_Layer: 0
   m_Name: TopChairs
   m_TagString: Untagged
@@ -360,6 +400,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5998816132000224507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4209056918555136787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e26b66fcaaa38e14a8d960e20e3a5a51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SortOrderSetter
 --- !u!1 &4265263922900564636
 GameObject:
   m_ObjectHideFlags: 0
@@ -370,6 +422,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4664231067572246907}
   - component: {fileID: 3309000954649244653}
+  - component: {fileID: 8474043110608243469}
   m_Layer: 0
   m_Name: TopChairs
   m_TagString: Untagged
@@ -450,6 +503,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8474043110608243469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4265263922900564636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e26b66fcaaa38e14a8d960e20e3a5a51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SortOrderSetter
 --- !u!1 &4788451979935279004
 GameObject:
   m_ObjectHideFlags: 0
@@ -460,6 +525,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8250241761782337822}
   - component: {fileID: 8030717143411584708}
+  - component: {fileID: 3167192502857315817}
   m_Layer: 0
   m_Name: BottomChairs
   m_TagString: Untagged
@@ -540,6 +606,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3167192502857315817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4788451979935279004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e26b66fcaaa38e14a8d960e20e3a5a51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SortOrderSetter
 --- !u!1 &4978020162863535183
 GameObject:
   m_ObjectHideFlags: 0
@@ -550,6 +628,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3534352835095911295}
   - component: {fileID: 1181452293764097589}
+  - component: {fileID: 7516946737958226280}
   m_Layer: 0
   m_Name: Sprite (13)
   m_TagString: Untagged
@@ -630,6 +709,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7516946737958226280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4978020162863535183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e26b66fcaaa38e14a8d960e20e3a5a51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SortOrderSetter
 --- !u!1 &5602883339833973812
 GameObject:
   m_ObjectHideFlags: 0
@@ -640,6 +731,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1679685773179662878}
   - component: {fileID: 8224735087099621680}
+  - component: {fileID: 9016630692613999591}
   m_Layer: 0
   m_Name: BottomChairs
   m_TagString: Untagged
@@ -720,6 +812,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &9016630692613999591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5602883339833973812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e26b66fcaaa38e14a8d960e20e3a5a51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SortOrderSetter
 --- !u!1 &5831585140873710206
 GameObject:
   m_ObjectHideFlags: 0
@@ -730,6 +834,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8431900703739312374}
   - component: {fileID: 3239129314721818537}
+  - component: {fileID: 3293306717884661164}
   m_Layer: 0
   m_Name: RightChairs
   m_TagString: Untagged
@@ -810,6 +915,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3293306717884661164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5831585140873710206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e26b66fcaaa38e14a8d960e20e3a5a51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SortOrderSetter
 --- !u!1 &6152357891556195223
 GameObject:
   m_ObjectHideFlags: 0
@@ -820,6 +937,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6628219660446035821}
   - component: {fileID: 800017196630221329}
+  - component: {fileID: 8997819665409475045}
   m_Layer: 0
   m_Name: LeftChairs
   m_TagString: Untagged
@@ -900,6 +1018,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8997819665409475045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6152357891556195223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e26b66fcaaa38e14a8d960e20e3a5a51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SortOrderSetter
 --- !u!1 &6515155868460061871
 GameObject:
   m_ObjectHideFlags: 0
@@ -1190,6 +1320,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5365616205873120631}
   - component: {fileID: 7983953846896675621}
+  - component: {fileID: 5264139730672511025}
   m_Layer: 0
   m_Name: LeftChairs
   m_TagString: Untagged
@@ -1270,6 +1401,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5264139730672511025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7623173261088372706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e26b66fcaaa38e14a8d960e20e3a5a51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SortOrderSetter
 --- !u!1 &7678686450075964092
 GameObject:
   m_ObjectHideFlags: 0
@@ -1280,6 +1423,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2105479772205211859}
   - component: {fileID: 8867881764134060374}
+  - component: {fileID: 5727709651975509815}
   m_Layer: 0
   m_Name: LeftChairs
   m_TagString: Untagged
@@ -1360,6 +1504,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5727709651975509815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7678686450075964092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e26b66fcaaa38e14a8d960e20e3a5a51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SortOrderSetter
 --- !u!1 &7878042169351913481
 GameObject:
   m_ObjectHideFlags: 0
@@ -1370,6 +1526,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3751936545913439852}
   - component: {fileID: 2345432761527696955}
+  - component: {fileID: 2171227479082612569}
   m_Layer: 0
   m_Name: RightChairs
   m_TagString: Untagged
@@ -1450,6 +1607,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2171227479082612569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7878042169351913481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e26b66fcaaa38e14a8d960e20e3a5a51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SortOrderSetter
 --- !u!1 &8739546602546732729
 GameObject:
   m_ObjectHideFlags: 0
@@ -1506,6 +1675,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8935696971506109615}
   - component: {fileID: 6631872336397022399}
+  - component: {fileID: 4170685656254670291}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -1586,3 +1756,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4170685656254670291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8944120570664001449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e26b66fcaaa38e14a8d960e20e3a5a51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SortOrderSetter
