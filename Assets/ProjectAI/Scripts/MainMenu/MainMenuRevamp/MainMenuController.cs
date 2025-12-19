@@ -14,13 +14,6 @@ public class MainMenuController
     public async Task Initialize()
     {
         _resetData.ClearData();
-        var introObj = await _assetService.InstantiateAsync(AddressableIds.Intro_UI);
-        var introController = introObj.GetComponent<IntroController>();
-        while (!introController.IsIntroComplete)
-        {
-            await Awaitable.NextFrameAsync();
-        }
-        GameObject.Destroy(introObj);
         _ = _assetService.InstantiateAsync(AddressableIds.Main_Menu_UI);
     }
 }

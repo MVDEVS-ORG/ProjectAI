@@ -50,7 +50,8 @@ namespace Assets.ProjectAI.Scripts.MainMenu
             yield return new WaitForSeconds(2.0f); 
             //Wait before transitioning 
             //_sceneManager.FadeToBlack();
-            IsIntroComplete = true; 
+            IsIntroComplete = true;
+            gameObject.SetActive(false);
         } 
         private IEnumerator TypeLine(string line) 
         { 
