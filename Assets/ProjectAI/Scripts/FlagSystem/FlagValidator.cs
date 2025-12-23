@@ -28,6 +28,11 @@ public abstract class FlagValidator : MonoBehaviour
             Invoke();
         }
     }
+
+    protected virtual bool ValidateFromUniversalFlags()
+    {
+        return validation.reverseValidate(validation.logic,flagStorage.GetFlags());
+    }
 }
 
 public enum ValidationsBooleanLogic
@@ -72,6 +77,31 @@ public class Validation
         }
         return test;
     }
+
+    public bool reverseValidate(ValidationsBooleanLogic logic, List<Flag> testflags)
+    {
+        bool test = false;
+        switch (logic)
+        {
+            case ValidationsBooleanLogic.And:
+                foreach (Flag flags in flag)
+                {
+                    test = true;
+                    test = test && testflags.Contains(flags);
+                }
+                break;
+
+            case ValidationsBooleanLogic.Or:
+                foreach (Flag flags in flag)
+                {
+                    test = false;
+                    test = test || testflags.Contains(flags);
+                }
+                break;
+        }
+        return test;
+    }
+
     
 }
 
