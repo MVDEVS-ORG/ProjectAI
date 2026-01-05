@@ -121,10 +121,7 @@ public class PlayerController : IPlayerController
 
             #region player stats
             (int, int, int) playerStats = _upgradeController.LoadPlayerStats(_playerModel);
-            if(playerStats == (0,0,0)) // this is a specific case where we reload from death screen or anywhere and have saved stats
-            {
-                playerStats.Item3 = _playerModel.MaxHealth;
-            }
+            
             int accumulatedXP = playerStats.Item1;
             LoadPlayerStats(playerStats.Item1, playerStats.Item2, playerStats.Item3);
             _sceneManager.BeforeChangeScene += () => { _upgradeController.SavePlayerStats(_playerModel.Experience, _playerModel.PlayerLevel, _playerModel.Health); };
@@ -376,12 +373,12 @@ public class PlayerController : IPlayerController
 
     private void LoadPlayerStats(int xp, int level, int health)
     {
+        _playerModel.Health = health;
+        _playerUI.AlterHealthBar();
         if (xp <= 0) return;
         _playerModel.Experience = xp;
         _playerModel.PlayerLevel = level;
-        _playerModel.Health = health;
         _playerUI.UpdateXpBar();
-        _playerUI.AlterHealthBar();
     }
 
     IEnumerator MeleeDashTimer()
