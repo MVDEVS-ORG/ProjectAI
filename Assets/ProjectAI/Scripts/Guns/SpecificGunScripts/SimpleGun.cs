@@ -12,7 +12,7 @@ public class SimpleGun : GunsView
     public override void Fire(bool firing)
     {
         _firing = firing;
-        if(_firingGun==null)
+        if (_firingGun == null)
         {
             _firingGun = StartCoroutine(Firing());
             if (_cancellationTokenSource != null)
@@ -40,7 +40,7 @@ public class SimpleGun : GunsView
     public override void DeactivateGun(Vector3 position)
     {
         base.DeactivateGun(position);
-        if (_firingGun!=null)
+        if (_firingGun != null)
         {
             StopCoroutine(_firingGun);
             _firingGun = null;
@@ -65,14 +65,17 @@ public class SimpleGun : GunsView
     {
         while (true)
         {
-            if (_firing && GunsModel.OverHeatValue < GunsModel.OverHeatLimit && (!_overheat||GunsModel.DisableOverheat))
+            if (_firing && GunsModel.OverHeatValue < GunsModel.OverHeatLimit && (!_overheat || GunsModel.DisableOverheat))
             {
                 _ = FireBullet();
+                Debug.LogWarning("Firing Gun: " + gameObject.name);
+                _signalBus.Fire(new CamEffectsSignal(new CamEffectsSignal.SignalEffect().WithEffect(CamEffect.CamShakeConstant).WithFrequency(1f).WithAmplitude(5f).WithDuration(0.1f)));
+
                 if (!GunsModel.DisableOverheat)
                 {
                     GunsModel.OverHeatValue += GunsModel.OverHeatRate;
                 }
-                if(GunsModel.OverHeatValue >= GunsModel.OverHeatLimit)
+                if (GunsModel.OverHeatValue >= GunsModel.OverHeatLimit)
                 {
                     _overheat = true;
                 }
@@ -101,7 +104,7 @@ public class SimpleGun : GunsView
             }
         }
     }
-    
+
     private async Awaitable FireBullet()
     {
         _animator.Play("Fire");
@@ -113,7 +116,7 @@ public class SimpleGun : GunsView
         }
         else
         {
-            if(Vector3.Dot((PlayerCursor.position- GunBulletSpawnTransform.position).normalized,(PlayerCursor.position - PlayerTransform.position).normalized)< 0.99f)// && ((PlayerCursor.position - PlayerTransform.position).magnitude < (transform.position - PlayerTransform.position).magnitude + 5))
+            if (Vector3.Dot((PlayerCursor.position - GunBulletSpawnTransform.position).normalized, (PlayerCursor.position - PlayerTransform.position).normalized) < 0.99f)// && ((PlayerCursor.position - PlayerTransform.position).magnitude < (transform.position - PlayerTransform.position).magnitude + 5))
             {
                 bulletRotationAndFireDirection = (PlayerCursor.position - PlayerTransform.position).normalized;
             }

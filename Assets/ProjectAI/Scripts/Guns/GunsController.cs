@@ -11,6 +11,7 @@ public class GunsController : IGunsController
     [Inject] IAssetService _assetService;
     [Inject] IUpgradeController _upgradeController;
     [Inject] ISceneManager _sceneManager;
+    [Inject] SignalBus _signalBus;
     private Dictionary<GunsModel, GunsView> _allGuns = new();
     private List<GunsModel> _orderedValues = new();
     private int _gunLimit = 1;
@@ -144,7 +145,7 @@ public class GunsController : IGunsController
         _currentActiveGun = gun;
         _currentActiveGun.gameObject.SetActive(true);
         GunsModel toRemove = _currentGunsModel;
-        _currentGunsModel = gun.InitializeGun(this, _poolManager, _playerTransform, _playerCursor);
+        _currentGunsModel = gun.InitializeGun(this, _poolManager, _playerTransform, _playerCursor, _signalBus);
         #endregion
 
         #region adding the new gun to the gun array and ordered list
@@ -160,7 +161,7 @@ public class GunsController : IGunsController
     {
         GameObject obj = await _assetService.InstantiateAsync(gunAddress);
         GunsView gun = obj.GetComponent<GunsView>();
-        _ = gun.InitializeGun(this, _poolManager, _playerTransform, _playerCursor);
+        _ = gun.InitializeGun(this, _poolManager, _playerTransform, _playerCursor, _signalBus);
         return gun;
     }
 
@@ -282,7 +283,7 @@ public class GunsController : IGunsController
             }
             _currentActiveGun = gun;
             _currentActiveGun.gameObject.SetActive(true);
-            _currentGunsModel = gun.InitializeGun(this, _poolManager, _playerTransform, _playerCursor);
+            _currentGunsModel = gun.InitializeGun(this, _poolManager, _playerTransform, _playerCursor, _signalBus);
 
             #endregion
 

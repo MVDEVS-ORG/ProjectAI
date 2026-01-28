@@ -26,7 +26,7 @@ public class CameraController
     public void Initialize(Transform player)
     {
         _cam.Target.TrackingTarget = player;
-        if(_camScaleCoroutine!= null)
+        if (_camScaleCoroutine != null)
         {
             _cam.StopCoroutine(_camScaleCoroutine);
             _camScaleCoroutine = null;
@@ -59,7 +59,7 @@ public class CameraController
         float timer = 0f;
         while (timer < 1)
         {
-            timer += Time.deltaTime/signal.Duration;
+            timer += Time.deltaTime / signal.Duration;
             _camShakeComponent.FrequencyGain = signal.Frequency;
             _camShakeComponent.AmplitudeGain = signal.Amplitude;
             yield return Awaitable.EndOfFrameAsync();
@@ -90,7 +90,7 @@ public class CameraController
     {
         float timer = 0f;
         float camStartSize = _cam.Lens.OrthographicSize;
-        while (timer<1)
+        while (timer < 1)
         {
             _cam.Lens.OrthographicSize = Mathf.Lerp(camStartSize, value, timer);
             timer += Time.deltaTime;
